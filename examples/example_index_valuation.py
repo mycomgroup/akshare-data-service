@@ -81,7 +81,7 @@ def example_compare_indices():
     for code, name in indices.items():
         try:
             df = service.get_index_valuation(index_code=code)
-            if not df.empty:
+            if df is not None and not df.empty:
                 row = {"指数代码": code, "指数名称": name}
                 for col in ["pe_ttm", "pb"]:
                     if col in df.columns:
@@ -187,7 +187,7 @@ def example_error_handling():
     print("\n测试 1: 正常获取")
     try:
         df = service.get_index_valuation(index_code="000001")
-        if df.empty:
+        if df is None or df.empty:
             print("  结果: 无数据 (空 DataFrame)")
         else:
             print(f"  结果: 获取到 {len(df)} 行数据")
@@ -198,7 +198,7 @@ def example_error_handling():
     print("\n测试 2: 无效指数代码")
     try:
         df = service.get_index_valuation(index_code="999999")
-        if df.empty:
+        if df is None or df.empty:
             print("  结果: 无数据")
         else:
             print(f"  结果: 获取到 {len(df)} 行数据")

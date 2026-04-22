@@ -80,13 +80,19 @@ __init__.py → DataService (api.py) → Sources (sources/) → Store (store/) �
 
 ## Cache Tables
 
-64 pre-registered tables organized in 4 layers:
-- **daily**: stock_daily, etf_daily, index_daily, finance_indicator, money_flow, etc. (42 tables)
+69 pre-registered tables organized in 4 layers:
+- **daily**: stock_daily, etf_daily, index_daily, finance_indicator, money_flow, etc. (45 tables)
 - **snapshot**: spot_snapshot, sector_flow_snapshot, etc. (7 tables, 168h TTL)
 - **minute**: stock_minute, etf_minute (partitioned by week)
-- **meta**: securities, trade_calendar, macro_data, etc. (14 tables)
+- **meta**: securities, trade_calendar, macro_data, etc. (15 tables)
 
 Full schema reference: `docs/07-schema-registry.md`
+
+## Documentation
+
+14 user-facing docs in `docs/`: 01-overview through 14-getting-started, plus CLI_REFERENCE.md.
+Internal design docs in `docs/design/`: 8 design/archival documents (see `docs/design/README.md` index).
+Full docs index: `docs/README.md`.
 
 ## Configuration
 

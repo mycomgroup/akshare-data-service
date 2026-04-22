@@ -96,6 +96,9 @@ def has_range(
 | `aggregate(table)` | 运行 compaction（小文件合并） |
 | `cleanup(retention_hours)` | 清理旧 raw 文件 |
 | `aggregation_status(table)` | 查看聚合状态 |
+| `reset_instance()` | 重置 CacheManager 单例 |
+| `aggregate_all()` | 运行所有表的 compaction |
+| `_cleanup_expired_files()` | 清理过期缓存文件 |
 
 ---
 
@@ -194,6 +197,14 @@ def aggregate(
 
 支持 SUM/AVG/MAX/MIN 等聚合函数。
 
+#### 其他方法
+
+| 方法 | 说明 |
+|------|------|
+| `register_table(table, path)` | 注册外部表路径 |
+| `unregister_table(table)` | 注销外部表 |
+| `close()` | 关闭 DuckDB 连接 |
+
 ### 3.3 线程安全
 
 使用 `threading.local()` 为每个线程维护独立的 DuckDB 连接：
@@ -261,7 +272,15 @@ def write(
 - 验证失败时 fallback 到 `_coerce_columns` 做宽松类型转换
 - 按 `primary_key` 去重（`drop_duplicates(subset=key, keep="last")`）
 
-### 4.4 PartitionManager（分区管理）
+### 4.4 方法
+
+| 方法 | 说明 |
+|------|------|
+| `write(table, storage_layer, data, ...)` | 主写入方法，原子写入 Parquet |
+| `_write_atomic(data, target_path)` | 写入 .tmp 再原子替换 |
+| `write_meta(table, storage_layer, metadata)` | 写入表元数据 |
+
+### 4.5 PartitionManager（分区管理）
 
 | 方法 | 说明 |
 |------|------|
@@ -274,7 +293,7 @@ def write(
 | `lock_path(name)` | 文件锁路径 `{base_dir}/_locks/{name}.lock` |
 | `remove_file(path)` / `remove_dir(path)` | 删除文件/目录 |
 
-### 4.5 ParquetWriter（带锁写入器）
+### 4.6 ParquetWriter（带锁写入器）
 
 ```python
 class ParquetWriter:
@@ -363,6 +382,8 @@ IncrementalStrategy 是时序数据的缓存策略实现，替代了旧的 `Incr
 | `should_fetch(cached, **params)` | 检查缓存是否覆盖完整日期区间 |
 | `merge(cached, fresh, **params)` | 按 date_col 排序去重合并 |
 | `build_where(**params)` | 构建日期范围的 WHERE 条件 |
+| `_is_complete(cached, start, end)` | 检查缓存是否覆盖完整区间 |
+| `_extract_ranges(cached)` | 提取已有数据区间 |
 
 ### 6.2 增量执行逻辑
 
@@ -405,6 +426,12 @@ def _execute_incremental(self, config, strategy, cached, fetch_fn, params):
 
 验证 DataFrame 是否符合预定义的 Schema，确保列名和类型正确。
 
+| 函数/类 | 说明 |
+|---------|------|
+| `infer_schema(df)` | 从 DataFrame 推断 schema |
+| `normalize_date_columns(df)` | 标准化日期列 |
+| `deduplicate_by_key(df, key)` | 按主键去重 |
+
 ---
 
 ## 9. Aggregator（数据聚合器）
@@ -412,6 +439,11 @@ def _execute_incremental(self, config, strategy, cached, fetch_fn, params):
 **位置**: `src/akshare_data/store/aggregator.py`
 
 负责将多个小 Parquet 文件合并为较大的聚合文件，提升 DuckDB 查询性能。
+
+| 函数/类 | 说明 |
+|---------|------|
+| `run_aggregation(cache_manager, table, group_by)` | 运行表聚合 |
+| `AggregationError` | 聚合异常类 |
 
 ---
 

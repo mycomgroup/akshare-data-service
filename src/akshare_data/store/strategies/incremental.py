@@ -69,10 +69,10 @@ class IncrementalStrategy(CacheStrategy):
         if cached is None or cached.empty or self.date_col not in cached.columns:
             return False
 
-        min_date = pd.to_datetime(cached[self.date_col].min())
-        max_date = pd.to_datetime(cached[self.date_col].max())
-        target_start = pd.to_datetime(start_date)
-        target_end = pd.to_datetime(end_date)
+        min_date = pd.to_datetime(cached[self.date_col].min()).tz_localize(None)
+        max_date = pd.to_datetime(cached[self.date_col].max()).tz_localize(None)
+        target_start = pd.to_datetime(start_date).tz_localize(None)
+        target_end = pd.to_datetime(end_date).tz_localize(None)
 
         return min_date <= target_start and max_date >= target_end
 

@@ -1,31 +1,57 @@
-# 设计文档（已归档）
+# 设计文档
 
-本目录包含架构设计、开发计划等历史文档。这些文档描述了**未实现或部分未实现**的设计方案，仅供历史参考。
+本目录存放项目重构后的核心设计文档。当前以“严肃数据工程数据服务”为目标，优先建设统一的数据契约、分层架构和并行实施任务。
 
-> **注意：** 本文档中的方案均未在代码中完整实现。请勿将其描述的功能当作现有特性使用。
+## 阅读顺序
 
-## 架构设计
+建议按以下顺序阅读，越靠前越接近事实来源：
 
-| 文档 | 描述 | 状态 |
+1. [00-project-goal.md](00-project-goal.md) - 项目目标、边界、单一事实来源
+2. [01-architecture-rfc.md](01-architecture-rfc.md) - 总体架构决策与依赖规则
+3. [10-target-repo-layout.md](10-target-repo-layout.md) - 目标目录与模块边界
+4. [20-raw-spec.md](20-raw-spec.md) - Raw 层规范
+5. [30-standard-entities.md](30-standard-entities.md) - 标准实体与字段契约
+6. [50-quality-rule-spec.md](50-quality-rule-spec.md) - 质量 DSL 与门禁
+7. [05-current-to-target-mapping.md](05-current-to-target-mapping.md) - 旧模块到新架构的迁移映射
+8. [03-change-freeze.md](03-change-freeze.md) - 重构期间变更冻结规则
+
+## 当前有效文档
+
+| 文档 | 用途 | 状态 |
 |------|------|------|
-| [DATA_SOURCE_REDESIGN.md](DATA_SOURCE_REDESIGN.md) | 按域名粒度重新设计限速策略 | 未实现（限速通过 `rate_limits.yaml` 实现） |
-| [11-config-redesign.md](11-config-redesign.md) | 拆分 akshare_registry.yaml 为模块化配置 | 已部分实现（`config/interfaces/` 已拆分） |
-| [11-cache-policy-config.md](11-cache-policy-config.md) | 缓存策略配置化 + 离线分析工具 | 已部分实现 |
-| [DESIGN_non_akshare_sources.md](DESIGN_non_akshare_sources.md) | 非 AkShare 数据源设计方案 | 部分实现（Lixinger/Tushare/Mock） |
+| [00-project-goal.md](00-project-goal.md) | 定义项目目标和北极星 | 有效 |
+| [01-architecture-rfc.md](01-architecture-rfc.md) | 定义架构决策和边界 | 有效 |
+| [03-change-freeze.md](03-change-freeze.md) | 约束重构期变更 | 有效 |
+| [05-current-to-target-mapping.md](05-current-to-target-mapping.md) | 指导模块迁移 | 有效 |
+| [10-target-repo-layout.md](10-target-repo-layout.md) | 指导目录重构 | 有效 |
+| [20-raw-spec.md](20-raw-spec.md) | 指导 Raw 实现 | 有效 |
+| [30-standard-entities.md](30-standard-entities.md) | 指导字段与实体实现 | 有效 |
+| [50-quality-rule-spec.md](50-quality-rule-spec.md) | 指导质量规则和发布门禁 | 有效 |
 
-## 开发计划
+## Prompt 文件
 
-| 文档 | 描述 |
-|------|------|
-| [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) | 开发计划（历史文档） |
-| [implementation_plan.md](implementation_plan.md) | 实现计划（历史文档） |
-| [MIGRATION_PLAN.md](MIGRATION_PLAN.md) | 迁移计划（历史文档） |
-| [TESTING_PLAN.md](TESTING_PLAN.md) | 测试计划（部分已实现） |
+并行推进任务的提示词文件放在：
 
-## 验证脚本
+- [prompts/README.md](prompts/README.md)
 
-| 文件 | 描述 |
-|------|------|
-| [verify_service.py](../verify_service.py) | 服务验证脚本 |
-| [test_completeness.py](../test_completeness.py) | 完整性测试脚本 |
-| [imports.txt](../imports.txt) | 导入列表 |
+每个提示词对应一个独立任务，默认面向并行执行，但都必须遵守：
+
+- 不破坏外部兼容入口
+- 不引入第二套命名体系
+- 不让 service 重新直接回源
+- 不跳过 Raw/Standardized/Served 主链路
+
+## 历史文档
+
+以下文档保留用于参考，但不作为当前重构事实来源：
+
+- `DATA_SOURCE_REDESIGN.md`
+- `DESIGN_non_akshare_sources.md`
+- `DEVELOPMENT_PLAN.md`
+- `MIGRATION_PLAN.md`
+- `TESTING_PLAN.md`
+- `implementation_plan.md`
+- `11-cache-policy-config.md`
+- `11-config-redesign.md`
+
+使用这些历史文档时，若与当前有效文档冲突，以当前有效文档为准。

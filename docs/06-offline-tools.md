@@ -15,7 +15,11 @@ offline/
 ├── scheduler/         # 定时任务调度
 ├── source_manager/    # 数据源健康管理
 ├── report/            # 报告生成
-└── cli/               # 命令行入口
+├── cli/               # 命令行入口
+├── quality.py         # 数据质量检查器（兼容层）
+├── reporter.py        # 报告生成器（兼容层）
+├── access_logger.py   # 访问日志记录器
+└── field_mapper.py    # 字段映射器
 ```
 
 ## 目录
@@ -308,9 +312,9 @@ python -m akshare_data.offline.prober
 
 ## 3. DataQualityChecker — 数据质量检查器
 
-**文件**: `src/akshare_data/offline/quality.py`
+**文件**: `src/akshare_data/offline/analyzer/cache_analysis/completeness.py`（兼容层：`src/akshare_data/offline/quality.py`）
 
-数据质量检查器提供完整性检查、异常值检测、跨源一致性比对等功能。
+数据质量检查器提供完整性检查、异常值检测、跨源一致性比对等功能。实际实现类 `CompletenessChecker` 位于 `src/akshare_data/offline/analyzer/cache_analysis/completeness.py`，`DataQualityChecker` 为兼容别名。兼容层入口位于 `src/akshare_data/offline/quality.py`。
 
 ### 3.1 构造函数
 

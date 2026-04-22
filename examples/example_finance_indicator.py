@@ -41,7 +41,8 @@ def example_with_date_range():
 
     df = get_finance_indicator(
         symbol="002594",
-        start_year="2023",
+        start_date="2023-01-01",
+        end_date="2023-12-31",
     )
     if df.empty:
         print("无数据")
@@ -62,7 +63,8 @@ def example_recent_quarters():
 
     df = get_finance_indicator(
         symbol="300750",
-        start_year="2024",
+        start_date="2024-01-01",
+        end_date="2024-12-31",
     )
     if df.empty:
         print("无数据")
@@ -87,7 +89,8 @@ def example_multiple_stocks():
         print(f"\n--- 获取 {symbol} 的财务指标 ---")
         df = get_finance_indicator(
             symbol=symbol,
-            start_year="2024",
+            start_date="2024-01-01",
+            end_date="2024-12-31",
         )
         if df.empty:
             print(f"  {symbol}: 无数据")
@@ -107,7 +110,8 @@ def example_analyze_metrics():
 
     df = get_finance_indicator(
         symbol="000001",
-        start_year="2020",
+        start_date="2020-01-01",
+        end_date="2024-12-31",
     )
     if df.empty:
         print("无数据")

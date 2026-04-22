@@ -44,7 +44,7 @@ def example_convert_bond_list():
         print(f"获取数据失败: {e}")
         return
 
-    if df.empty:
+    if df is None or df.empty:
         print("无数据")
         return
 
@@ -76,7 +76,7 @@ def example_convert_bond_daily():
         print(f"获取数据失败: {e}")
         return
 
-    if df.empty:
+    if df is None or df.empty:
         print("无数据")
         return
 
@@ -108,7 +108,7 @@ def example_convert_bond_daily_with_prefix():
         print(f"获取数据失败: {e}")
         return
 
-    if df.empty:
+    if df is None or df.empty:
         print("无数据")
         return
 
@@ -167,7 +167,7 @@ def example_convert_bond_analysis():
         print(f"获取数据失败: {e}")
         return
 
-    if df.empty:
+    if df is None or df.empty:
         print("无数据")
         return
 
@@ -215,7 +215,7 @@ def example_batch_convert_bond_daily():
         except Exception as e:
             print(f"\n可转债 {code}: 获取失败 - {e}")
             continue
-        if df.empty:
+        if df is None or df.empty:
             print(f"\n可转债 {code}: 无数据")
             continue
         print(f"\n可转债 {code}:")

@@ -47,6 +47,7 @@ df = service.cn.stock.quote.daily("000001", "2024-01-01", "2024-12-31")
 |------|------|------|
 | `get_securities_list` | `(security_type="stock", date=None, source=None)` | 证券列表 |
 | `get_security_info` | `(symbol, source=None)` | 证券信息 |
+| `get_basic_info` | `(symbol, source=None)` | 基本信息 |
 | `get_trading_days` | `(start_date=None, end_date=None, source=None)` | 交易日历 |
 | `get_st_stocks` | `(source=None)` | ST股票 |
 | `get_suspended_stocks` | `(source=None)` | 停牌股票 |

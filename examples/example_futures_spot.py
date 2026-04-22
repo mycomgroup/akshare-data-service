@@ -35,6 +35,11 @@ def example_futures_spot_basic():
         # 无需参数，获取全市场期货实时行情
         df = service.get_futures_spot()
 
+        if df is None:
+            print("无数据 (接口可能未实现)")
+            _show_mock_futures_spot()
+            return
+
         # 打印数据形状
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -81,7 +86,7 @@ def example_futures_spot_filter_by_variety():
     try:
         df = service.get_futures_spot()
 
-        if df.empty:
+        if df is None or df.empty:
             print("无数据")
             return
 
@@ -122,7 +127,7 @@ def example_futures_spot_top_gainers_losers():
     try:
         df = service.get_futures_spot()
 
-        if df.empty:
+        if df is None or df.empty:
             print("无数据")
             return
 
@@ -172,7 +177,7 @@ def example_futures_spot_by_exchange():
     try:
         df = service.get_futures_spot()
 
-        if df.empty:
+        if df is None or df.empty:
             print("无数据")
             return
 
@@ -238,7 +243,7 @@ def example_futures_spot_volume_oi_analysis():
     try:
         df = service.get_futures_spot()
 
-        if df.empty:
+        if df is None or df.empty:
             print("无数据")
             return
 
@@ -292,7 +297,7 @@ def example_futures_spot_market_overview():
     try:
         df = service.get_futures_spot()
 
-        if df.empty:
+        if df is None or df.empty:
             print("无数据")
             return
 
@@ -352,6 +357,9 @@ def example_futures_spot_refresh():
         # 第一次获取
         print("\n第一次获取:")
         df1 = service.get_futures_spot()
+        if df1 is None:
+            print("  结果: 返回 None (接口可能未实现)")
+            return
         print(f"  合约数量: {len(df1)}")
         if not df1.empty and "last_price" in df1.columns:
             print(f"  示例合约价格: {df1['last_price'].iloc[0]}")
@@ -362,6 +370,9 @@ def example_futures_spot_refresh():
 
         print("\n第二次获取:")
         df2 = service.get_futures_spot()
+        if df2 is None:
+            print("  结果: 返回 None")
+            return
         print(f"  合约数量: {len(df2)}")
         if not df2.empty and "last_price" in df2.columns:
             print(f"  示例合约价格: {df2['last_price'].iloc[0]}")
@@ -387,7 +398,12 @@ def example_futures_spot_error_handling():
     print("\n测试: 正常调用")
     try:
         df = service.get_futures_spot()
-        print(f"  结果: 获取到 {len(df)} 行数据")
+        if df is None:
+            print("  结果: 返回 None (接口可能未实现)")
+        elif df.empty:
+            print("  结果: 返回空 DataFrame")
+        else:
+            print(f"  结果: 获取到 {len(df)} 行数据")
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
 

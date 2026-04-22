@@ -134,6 +134,6 @@ def example_latest_data():
 
 if __name__ == "__main__":
     example_basic()
-    example_date_range()
+    example_filtered()
     example_analysis()
     example_latest_data()
