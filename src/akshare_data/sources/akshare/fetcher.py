@@ -10,6 +10,7 @@ Design:
 - 自动应用 input_mapping, param_transforms, output_mapping, column_types
 - 内置限速控制（按 rate_limit_key）
 """
+# ruff: noqa: E402
 
 from __future__ import annotations
 

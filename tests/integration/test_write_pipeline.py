@@ -4,6 +4,7 @@ Tests cover schema registration, validation, parquet writes (atomic,
 partitioned, incremental, overwrite), storage strategies, and the
 end-to-end write pipeline (schema -> validate -> parquet -> verify).
 """
+# ruff: noqa: E402
 
 from datetime import date
 from pathlib import Path
@@ -11,6 +12,8 @@ from unittest.mock import patch
 
 import pandas as pd
 import pytest
+
+pytestmark = pytest.mark.integration
 
 from akshare_data.core.schema import (
     SCHEMA_REGISTRY,

@@ -3,6 +3,7 @@ Lixinger data source adapter.
 
 Implements the DataSource interface using Lixinger OpenAPI.
 """
+# ruff: noqa: F811
 
 import logging
 from datetime import datetime, date

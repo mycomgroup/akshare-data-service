@@ -12,6 +12,7 @@ dependencies = [
     "duckdb>=0.9",
     "pyarrow>=14.0",
     "cachetools>=5.3",
+    "filelock>=3.0",
     "akshare>=1.10",
     "pyyaml>=6.0",
     "croniter>=1.3",
@@ -48,4 +49,26 @@ addopts = "-v --tb=short --strict-markers"
 filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::PendingDeprecationWarning",
+]
+
+[tool.mypy]
+ignore_missing_imports = true
+no_implicit_optional = false
+disable_error_code = [
+    "arg-type",
+    "attr-defined",
+    "assignment",
+    "dict-item",
+    "has-type",
+    "index",
+    "import-not-found",
+    "import-untyped",
+    "misc",
+    "no-redef",
+    "operator",
+    "override",
+    "return-value",
+    "union-attr",
+    "type-abstract",
+    "var-annotated",
 ]

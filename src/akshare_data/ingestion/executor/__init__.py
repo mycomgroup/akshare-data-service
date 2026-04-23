@@ -19,5 +19,7 @@ __all__ = [
     "Executor",
     "ExecutorContext",
     "ExecutorStats",
+    "BaseTaskExecutor",
+    "ExecutorContext",
     "TaskExecutionResult",
 ]

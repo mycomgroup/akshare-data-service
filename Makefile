@@ -1,4 +1,4 @@
-.PHONY: help install test test-unit test-integration test-system test-all lint lint-fix format type-check clean build docker-run docker-build docker-stop docker-logs docker-clean config-lint prober batch-download quality-check dev version
+.PHONY: help install test test-unit test-integration test-system test-all lint lint-fix format type-check clean build docker-run docker-build docker-stop docker-logs docker-clean config-lint prober batch-download quality-check dev version ensure-test-deps
 
 help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -9,22 +9,31 @@ install: ## Install dependencies in development mode
 install-prod: ## Install production dependencies only
 	pip install .
 
+ensure-test-deps: ## Ensure minimal test dependencies are installed
+	@python -c "import pandas, pytest" >/dev/null 2>&1 || (echo 'Installing missing test dependencies...' && pip install -e ".[all,dev]")
+
 test: ## Run the test suite
+	@$(MAKE) ensure-test-deps
 	python -m pytest tests/ -v
 
 test-cov: ## Run tests with coverage
+	@$(MAKE) ensure-test-deps
 	python -m pytest tests/ -v --cov=akshare_data --cov-report=term-missing
 
 test-unit: ## Run unit tests only (excluding integration/ and system/)
+	@$(MAKE) ensure-test-deps
 	python -m pytest tests/ -v -m unit --ignore=tests/integration --ignore=tests/system
 
 test-integration: ## Run integration tests
+	@$(MAKE) ensure-test-deps
 	python -m pytest tests/integration/ -v -m integration
 
 test-system: ## Run system tests
+	@$(MAKE) ensure-test-deps
 	python -m pytest tests/system/ -v -m system
 
 test-all: ## Run all tests with coverage (fails if <75%)
+	@$(MAKE) ensure-test-deps
 	python -m pytest tests/ -v --cov=akshare_data --cov-fail-under=75
 
 lint: ## Run linter (ruff)
