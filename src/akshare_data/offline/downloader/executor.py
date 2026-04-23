@@ -48,7 +48,7 @@ class TaskExecutor(
         context: ExecutionContext | None = None,
     ) -> Dict[str, Any]:
         """兼容旧调用方：返回 dict 结构。"""
-        legacy_context = None
+        legacy_context: ExecutorContext | None = None
         if context is not None:
             legacy_context = ExecutorContext(
                 batch_id=context.batch_id,
@@ -56,15 +56,23 @@ class TaskExecutor(
                 trigger=context.source,
                 metadata=context.tags,
             )
-        return self.run(task, context=legacy_context).to_dict()
+
+        result = self.run(task, context=legacy_context)
+        return {
+            "success": result.success,
+            "rows": result.rows,
+            "task": task.interface,
+            "error": result.error,
+        }
 
     def execute_structured(
         self,
         task: DownloadTask,
         *,
         context: ExecutionContext,
-    ) -> UnifiedExecutionResult[pd.DataFrame]:
-        start = datetime.now(timezone.utc)
+    ) -> ExecutionResult[pd.DataFrame]:
+        """新执行接口：返回结构化统一结果。"""
+        start = time.perf_counter()
         result = self.run(
             task,
             context=ExecutorContext(
@@ -74,25 +82,30 @@ class TaskExecutor(
                 metadata=context.tags,
             ),
         )
-
+        stats = ExecutorStats(
+            latency_ms=(time.perf_counter() - start) * 1000,
+            input_count=1,
+            output_count=result.rows,
+        )
         if result.success:
-            return UnifiedExecutionResult.success(
+            return ExecutionResult.create_success(
                 payload=result.payload,
-                stats=ExecutorStats(
-                    latency_ms=(result.finished_at - start).total_seconds() * 1000,
-                    input_count=1,
-                    output_count=result.rows,
-                ),
+                task_name=task.interface,
+                rows=result.rows,
+                stats=stats,
                 metadata=result.metadata,
+                started_at=result.started_at,
+                finished_at=result.finished_at,
             )
-
-        return UnifiedExecutionResult.failure(
+        return ExecutionResult.create_failure(
             error_code="download_failed",
             error_message=result.error,
-            stats=ExecutorStats(
-                latency_ms=(result.finished_at - start).total_seconds() * 1000,
-            ),
+            task_name=task.interface,
+            rows=result.rows,
+            stats=stats,
             metadata=result.metadata,
+            started_at=result.started_at,
+            finished_at=result.finished_at,
         )
 
     def execute(self, task: DownloadTask, context: ExecutionContext | None = None) -> Dict[str, Any]:
@@ -119,17 +132,16 @@ class TaskExecutor(
         task: DownloadTask,
         *,
         context: Optional[ExecutorContext] = None,
-    ) -> TaskExecutionResult[pd.DataFrame]:
-        """执行单个下载任务，返回统一结果对象。"""
     ) -> ExecutionResult[pd.DataFrame]:
-        """兼容旧任务执行接口：返回 ExecutionResult。"""
+        """执行单个下载任务并返回统一结果对象。"""
         started_at = datetime.now(timezone.utc)
         metadata: Dict[str, Any] = {
             "interface": task.interface,
             "table": task.table,
             "rate_limit_key": task.rate_limit_key,
+            "task": task.interface,
         }
-        if context:
+        if context is not None:
             metadata.update(
                 {
                     "batch_id": context.batch_id,
@@ -141,12 +153,12 @@ class TaskExecutor(
         try:
             self._rate_limiter.wait(task.rate_limit_key)
             df = self._call_akshare(task.func, **task.kwargs)
-        except Exception as e:
-            logger.error("Task %s failed: %s", task.interface, e)
+        except Exception as exc:
+            logger.error("Task %s failed: %s", task.interface, exc)
             return self.result(
                 success=False,
                 task_name=task.interface,
-                error=str(e),
+                error=str(exc),
                 started_at=started_at,
                 finished_at=datetime.now(timezone.utc),
                 metadata=metadata,
@@ -295,6 +307,30 @@ class TaskExecutor(
             raise DownloadError(f"Function {func_name} not found")
         return func(**kwargs)
 
+    def _write_to_cache(self, task: DownloadTask, df: pd.DataFrame):
+        """写入缓存（先做字段规范化）。"""
+        mapped = self._map_columns(task.table, df)
+        try:
+            if hasattr(self._cache_manager, "write"):
+                self._cache_manager.write(table=task.table, data=mapped, partition_value=None)
+            elif hasattr(self._cache_manager, "write_data"):
+                self._cache_manager.write_data(table=task.table, data=mapped)
+            else:
+                logger.warning("cache_manager has no write/write_data method")
+        except Exception as exc:
+            logger.warning("Cache write failed for %s: %s", task.table, exc)
+
+    def _map_columns(self, table: str, df: pd.DataFrame) -> pd.DataFrame:
+        """将中文列名映射为统一英文字段。"""
+        if df is None or df.empty:
+            return df
+
+        mapping = EXTENDED_CN_TO_EN.get(table, {})
+        if not mapping:
+            return df
+
+        renamed = df.rename(columns={cn: en for cn, en in mapping.items() if cn in df.columns})
+        return renamed
     def _write_to_cache(self, task: DownloadTask, df: pd.DataFrame) -> None:
         """写入缓存（先做字段规范化）。"""
         if not self._cache_manager:
