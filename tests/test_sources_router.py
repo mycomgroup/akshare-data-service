@@ -10,7 +10,7 @@ from unittest.mock import patch, MagicMock
 
 import pandas as pd
 
-from akshare_data.sources.router import (
+from akshare_data.ingestion.router import (
     MultiSourceRouter,
     DomainRateLimiter,
     SourceHealthMonitor,

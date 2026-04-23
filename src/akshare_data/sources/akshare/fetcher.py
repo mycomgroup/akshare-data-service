@@ -271,7 +271,7 @@ def _call_adapter_source(
 
 # ── 限速器（委托给 router.DomainRateLimiter） ─────────────────────────
 
-from akshare_data.sources.router import DomainRateLimiter as _DomainRateLimiter
+from akshare_data.ingestion.router import DomainRateLimiter as _DomainRateLimiter
 
 
 class RateLimiter:
