@@ -39,6 +39,7 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame], BaseTaskExecutor[Downlo
         self._cache_manager = cache_manager
 
     def execute(self, task: DownloadTask, context: ExecutionContext | None = None) -> Dict[str, Any]:
+        """兼容旧调用方：返回 dict 结构。"""
         """执行单个下载任务（兼容旧接口，返回 dict）。"""
         if context is None:
             context = ExecutionContext(
@@ -50,6 +51,80 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame], BaseTaskExecutor[Downlo
 
         result = self.execute_structured(task, context=context)
         return {
+            "success": result.ok,
+            "rows": len(result.payload) if result.payload is not None else 0,
+            "task": task.interface,
+            "error": result.error_message or result.error_code or "",
+        }
+
+    def run(
+        self,
+        task: DownloadTask,
+        *,
+        context: Optional[ExecutorContext] = None,
+    ) -> ExecutionResult[pd.DataFrame]:
+        """兼容旧任务执行接口：返回 ExecutionResult。"""
+        started_at = datetime.now(timezone.utc)
+        metadata = {
+            "interface": task.interface,
+            "table": task.table,
+            "rate_limit_key": task.rate_limit_key,
+        }
+        if context:
+            metadata["batch_id"] = context.batch_id
+            metadata["run_id"] = context.run_id
+            metadata["trigger"] = context.trigger
+
+        try:
+            self._rate_limiter.wait(task.rate_limit_key)
+            df = self._call_akshare(task.func, **task.kwargs)
+        except Exception as e:
+            logger.error("Task %s failed: %s", task.interface, e)
+            return self.result(
+                success=False,
+                task_name=task.interface,
+                error=str(e),
+                started_at=started_at,
+                finished_at=datetime.now(timezone.utc),
+                metadata=metadata,
+            )
+
+        if df is None or df.empty:
+            return self.result(
+                success=False,
+                task_name=task.interface,
+                error="Empty data",
+                started_at=started_at,
+                finished_at=datetime.now(timezone.utc),
+                metadata=metadata,
+            )
+
+        if self._cache_manager:
+            self._write_to_cache(task, df)
+
+        return self.result(
+            success=True,
+            task_name=task.interface,
+            rows=len(df),
+            payload=df,
+            started_at=started_at,
+            finished_at=datetime.now(timezone.utc),
+            metadata=metadata,
+        )
+
+    def execute_structured(
+        self,
+        task: DownloadTask,
+        *,
+        context: ExecutionContext,
+    ) -> ExecutionResult[pd.DataFrame]:
+        """新执行接口：返回结构化统一结果。"""
+        start = time.perf_counter()
+        try:
+            self._rate_limiter.wait(task.rate_limit_key)
+            df = self._call_akshare(task.func, **task.kwargs)
+        except Exception as e:
+            return ExecutionResult.failure_result(
             "success": result.success,
             "rows": result.rows,
             "task": task.interface,
@@ -77,6 +152,7 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame], BaseTaskExecutor[Downlo
                     "request_id": context.request_id,
                     "batch_id": context.batch_id,
                 },
+                task_name=task.interface,
             )
 
         if df is None or df.empty:
@@ -89,6 +165,7 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame], BaseTaskExecutor[Downlo
                     "request_id": context.request_id,
                     "batch_id": context.batch_id,
                 },
+                task_name=task.interface,
             )
 
         if self._cache_manager:
@@ -154,14 +231,22 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame], BaseTaskExecutor[Downlo
         if self._cache_manager:
             self._write_to_cache(task, df)
 
+        return ExecutionResult.success_result(
+            payload=df,
+            rows=len(df),
+            stats=ExecutorStats(
+                latency_ms=(time.perf_counter() - start) * 1000,
+                input_count=1,
+                output_count=len(df),
+            ),
+            metadata={
+                "task": task.interface,
+                "request_id": context.request_id,
+                "batch_id": context.batch_id,
+            },
         return self.result(
             success=True,
             task_name=task.interface,
-            rows=len(df),
-            payload=df,
-            started_at=started_at,
-            finished_at=datetime.now(timezone.utc),
-            metadata=metadata,
         )
 
     @retry(_RETRY_CONFIG)
@@ -174,6 +259,19 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame], BaseTaskExecutor[Downlo
             raise DownloadError(f"Function {func_name} not found")
         return func(**kwargs)
 
+    def _write_to_cache(self, task: DownloadTask, df: pd.DataFrame):
+        """写入缓存（先做字段规范化）。"""
+        if self._cache_manager:
+            try:
+                df = self._normalize_columns(task, df)
+                self._cache_manager.write(
+                    table=task.table,
+                    data=df,
+                    storage_layer="duckdb",
+                    partition_by="date",
+                )
+            except Exception as e:
+                logger.warning("Failed to write cache for %s: %s", task.table, e)
     def _write_to_cache(self, task: DownloadTask, df: pd.DataFrame) -> None:
         """写入缓存（先做字段规范化）。"""
         if not self._cache_manager:
