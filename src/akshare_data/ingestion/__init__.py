@@ -34,6 +34,12 @@ from .source_health import (
 )
 from .scheduler import Scheduler, ScheduleDef, Priority, Frequency
 from .backfill_request import BackfillRequest, BackfillRegistry, BackfillStatus
+from .executor.base import (
+    ExecutionContext,
+    ExecutionMode,
+    Executor,
+    ExecutorStats,
+)
 
 __all__ = [
     "ExtractTask",
@@ -67,4 +73,8 @@ __all__ = [
     "BackfillRequest",
     "BackfillRegistry",
     "BackfillStatus",
+    "ExecutionContext",
+    "ExecutionMode",
+    "Executor",
+    "ExecutorStats",
 ]
