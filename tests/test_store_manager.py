@@ -5,7 +5,6 @@ Comprehensive tests for CacheManager and related classes in store/manager.py
 
 import tempfile
 import threading
-from datetime import datetime
 from pathlib import Path
 
 import pandas as pd

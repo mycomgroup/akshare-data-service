@@ -16,7 +16,6 @@ Test scenarios cover:
 """
 
 import time
-from pathlib import Path
 from unittest.mock import MagicMock
 
 import pandas as pd
