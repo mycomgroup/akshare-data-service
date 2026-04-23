@@ -1,12 +1,3 @@
-"""统一执行器接口（T2-004）。
-
-本模块定义 ingestion 层统一执行抽象，供下载、探测、回放等任务复用。
-该接口强调：
-
-1. 任务上下文（batch/request/source）可追踪
-2. 执行结果结构化（状态、指标、错误）
-3. 资源生命周期可控（open/close、上下文管理器）
-"""
 """Unified executor contracts for ingestion and offline workflows."""
 
 from __future__ import annotations
@@ -171,18 +162,6 @@ class Executor(ABC, Generic[TaskT, PayloadT]):
 
     def healthcheck(self) -> bool:
         return True
-TaskT = TypeVar("TaskT")
-PayloadT = TypeVar("PayloadT")
-
-
-@dataclass(frozen=True)
-class ExecutorContext:
-    """Execution context shared by all task runs."""
-
-    batch_id: str = ""
-    run_id: str = ""
-    trigger: str = "manual"
-    metadata: Mapping[str, Any] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -251,23 +230,6 @@ class BaseTaskExecutor(ABC, Generic[TaskT, PayloadT]):
             started_at=start,
             finished_at=end,
             metadata=dict(metadata or {}),
-        stats = ExecutorStats(
-            latency_ms=max(0.0, (end - start).total_seconds() * 1000),
-            output_count=rows,
-        )
-        merged_metadata = {
-            "task": task_name,
-            "started_at": start.isoformat(),
-            "finished_at": end.isoformat(),
-            **dict(metadata or {}),
-        }
-        if success:
-            return ExecutionResult.create_success(payload=payload, stats=stats, metadata=merged_metadata)
-        return ExecutionResult.create_failure(
-            error_code="task_failed",
-            error_message=error,
-            stats=stats,
-            metadata=merged_metadata,
         )
 
 
@@ -279,6 +241,5 @@ __all__ = [
     "ExecutionResult",
     "Executor",
     "ExecutorStats",
-    "ExecutorContext",
     "BaseTaskExecutor",
 ]
