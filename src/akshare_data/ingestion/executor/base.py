@@ -1,3 +1,12 @@
+"""统一执行器接口（T2-004）。
+
+本模块定义 ingestion 层统一执行抽象，供下载、探测、回放等任务复用。
+该接口强调：
+
+1. 任务上下文（batch/request/source）可追踪
+2. 执行结果结构化（状态、指标、错误）
+3. 资源生命周期可控（open/close、上下文管理器）
+"""
 """Unified executor contracts for ingestion and offline workflows."""
 
 from __future__ import annotations
@@ -162,6 +171,48 @@ class Executor(ABC, Generic[TaskT, PayloadT]):
 
     def healthcheck(self) -> bool:
         return True
+TaskT = TypeVar("TaskT")
+PayloadT = TypeVar("PayloadT")
+
+
+@dataclass(frozen=True)
+class ExecutorContext:
+    """Execution context shared by all task runs."""
+
+    batch_id: str = ""
+    run_id: str = ""
+    trigger: str = "manual"
+    metadata: Mapping[str, Any] = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
+class TaskExecutionResult(Generic[PayloadT]):
+    """Unified result model for extraction execution."""
+
+    success: bool
+    task_name: str
+    rows: int = 0
+    payload: Optional[PayloadT] = None
+    error: str = ""
+    started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    finished_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def duration_ms(self) -> int:
+        return int((self.finished_at - self.started_at).total_seconds() * 1000)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "success": self.success,
+            "task": self.task_name,
+            "rows": self.rows,
+            "error": self.error,
+            "duration_ms": self.duration_ms,
+            "started_at": self.started_at.isoformat(),
+            "finished_at": self.finished_at.isoformat(),
+            "metadata": dict(self.metadata),
+        }
 
 
 class BaseTaskExecutor(ABC, Generic[TaskT, PayloadT]):
@@ -173,7 +224,7 @@ class BaseTaskExecutor(ABC, Generic[TaskT, PayloadT]):
         task: TaskT,
         *,
         context: Optional[ExecutorContext] = None,
-    ) -> ExecutionResult[PayloadT]:
+    ) -> TaskExecutionResult[PayloadT]:
         """Run a task and return unified execution result."""
 
     def result(
@@ -187,10 +238,19 @@ class BaseTaskExecutor(ABC, Generic[TaskT, PayloadT]):
         started_at: Optional[datetime] = None,
         finished_at: Optional[datetime] = None,
         metadata: Optional[MutableMapping[str, Any]] = None,
-    ) -> ExecutionResult[PayloadT]:
+    ) -> TaskExecutionResult[PayloadT]:
         """Helper to build normalized results with timestamps."""
         start = started_at or datetime.now(timezone.utc)
         end = finished_at or datetime.now(timezone.utc)
+        return TaskExecutionResult(
+            success=success,
+            task_name=task_name,
+            rows=rows,
+            payload=payload,
+            error=error,
+            started_at=start,
+            finished_at=end,
+            metadata=dict(metadata or {}),
         stats = ExecutorStats(
             latency_ms=max(0.0, (end - start).total_seconds() * 1000),
             output_count=rows,
@@ -212,6 +272,8 @@ class BaseTaskExecutor(ABC, Generic[TaskT, PayloadT]):
 
 
 __all__ = [
+    "ExecutorContext",
+    "TaskExecutionResult",
     "ExecutionContext",
     "ExecutionMode",
     "ExecutionResult",
