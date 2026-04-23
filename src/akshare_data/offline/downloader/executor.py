@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 import time
 from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
 import pandas as pd
@@ -15,6 +16,9 @@ from akshare_data.ingestion.executor.base import (
     ExecutionResult as UnifiedExecutionResult,
     Executor,
     ExecutorStats,
+    BaseTaskExecutor,
+    ExecutionResult,
+    ExecutorContext,
 )
 from akshare_data.offline.core.errors import DownloadError
 from akshare_data.offline.core.retry import RetryConfig, retry
@@ -69,6 +73,23 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame]):
     ) -> UnifiedExecutionResult[pd.DataFrame]:
         """执行单个下载任务并返回统一结构结果。"""
         start = time.perf_counter()
+    def run(
+        self,
+        task: DownloadTask,
+        *,
+        context: Optional[ExecutorContext] = None,
+    ) -> ExecutionResult[pd.DataFrame]:
+        """执行单个下载任务，返回统一结果对象。"""
+        started_at = datetime.now(timezone.utc)
+        metadata = {
+            "interface": task.interface,
+            "table": task.table,
+            "rate_limit_key": task.rate_limit_key,
+        }
+        if context:
+            metadata["batch_id"] = context.batch_id
+            metadata["run_id"] = context.run_id
+            metadata["trigger"] = context.trigger
 
         try:
             self._rate_limiter.wait(task.rate_limit_key)
@@ -96,6 +117,23 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame]):
                     "request_id": context.request_id,
                     "batch_id": context.batch_id,
                 },
+            return self.result(
+                success=False,
+                task_name=task.interface,
+                error=str(e),
+                started_at=started_at,
+                finished_at=datetime.now(timezone.utc),
+                metadata=metadata,
+            )
+
+        if df is None or df.empty:
+            return self.result(
+                success=False,
+                task_name=task.interface,
+                error="Empty data",
+                started_at=started_at,
+                finished_at=datetime.now(timezone.utc),
+                metadata=metadata,
             )
 
         if self._cache_manager:
@@ -114,6 +152,19 @@ class TaskExecutor(Executor[DownloadTask, pd.DataFrame]):
                 "batch_id": context.batch_id,
             },
         )
+        return self.result(
+            success=True,
+            task_name=task.interface,
+            rows=len(df),
+            payload=df,
+            started_at=started_at,
+            finished_at=datetime.now(timezone.utc),
+            metadata=metadata,
+        )
+
+    def execute(self, task: DownloadTask) -> Dict[str, Any]:
+        """兼容旧调用方：返回 dict 结构。"""
+        return self.run(task).to_dict()
 
     @retry(_RETRY_CONFIG)
     def _call_akshare(self, func_name: str, **kwargs) -> Optional[pd.DataFrame]:

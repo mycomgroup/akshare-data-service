@@ -40,6 +40,7 @@ from .executor.base import (
     Executor,
     ExecutorStats,
 )
+from .executor import BaseTaskExecutor, ExecutionResult as TaskExecutionResult, ExecutorContext
 
 __all__ = [
     "ExtractTask",
@@ -77,4 +78,7 @@ __all__ = [
     "ExecutionMode",
     "Executor",
     "ExecutorStats",
+    "BaseTaskExecutor",
+    "TaskExecutionResult",
+    "ExecutorContext",
 ]
