@@ -30,42 +30,44 @@ RateLimiter = DomainRateLimiter
 # max_calls, time_window, or _calls attributes.
 # ---------------------------------------------------------------------------
 class TestRateLimiter:
-    """RateLimiter 限速器测试 — skipped; old RateLimiter class removed."""
+    """DomainRateLimiter 限速器测试（现行 API）"""
 
-    @pytest.mark.skip(
-        reason="TODO: RateLimiter class removed; DomainRateLimiter has different API (wait/set_interval/get_interval/reset). Rewrite against actual DomainRateLimiter."
-    )
-    def test_init_with_domain_config(self):
-        limiter = RateLimiter("example.com", max_calls=10, time_window=1.0)
-        assert limiter.domain == "example.com"
+    def test_init_with_intervals(self):
+        limiter = DomainRateLimiter({"default": 0.7, "custom": 1.5})
+        assert limiter.get_interval("default") == 0.7
+        assert limiter.get_interval("custom") == 1.5
 
-    @pytest.mark.skip(reason="TODO: RateLimiter.acquire() no longer exists.")
-    def test_acquire_allows_within_limit(self):
-        pass
+    def test_wait_allows_within_limit(self):
+        limiter = DomainRateLimiter({"default": 0.0})
+        limiter.wait("default")
+        limiter.wait("default")
 
-    @pytest.mark.skip(reason="TODO: RateLimiter.acquire() no longer exists.")
-    def test_acquire_blocks_at_limit(self):
-        pass
+    def test_wait_respects_set_interval(self):
+        limiter = DomainRateLimiter({"default": 0.01})
+        limiter.set_interval("default", 0.02)
+        assert limiter.get_interval("default") == 0.02
+        limiter.wait("default")
 
-    @pytest.mark.skip(reason="TODO: RateLimiter time-window semantics changed.")
-    def test_acquire_resets_after_time_window(self):
-        pass
+    def test_reset_after_wait(self):
+        limiter = DomainRateLimiter({"default": 0.01})
+        limiter.wait("default")
+        limiter.reset()
+        limiter.wait("default")
 
-    @pytest.mark.skip(
-        reason="TODO: wait_if_needed replaced by DomainRateLimiter.wait()."
-    )
-    def test_wait_if_needed_returns_immediately_when_allowed(self):
-        pass
+    def test_wait_unknown_key_fallback(self):
+        limiter = DomainRateLimiter({"default": 0.0})
+        limiter.wait("non_existing_key")
 
-    @pytest.mark.skip(
-        reason="TODO: wait_if_needed replaced by DomainRateLimiter.wait()."
-    )
-    def test_wait_if_needed_blocks_when_limited(self):
-        pass
+    def test_set_interval_for_new_key(self):
+        limiter = DomainRateLimiter({"default": 0.5})
+        limiter.set_interval("new_key", 0.3)
+        assert limiter.get_interval("new_key") == 0.3
 
-    @pytest.mark.skip(reason="TODO: RateLimiter class removed.")
-    def test_thread_safety(self):
-        pass
+    def test_get_interval_default_exists(self):
+        limiter = DomainRateLimiter({"default": 0.5})
+        interval = limiter.get_interval("default")
+        assert isinstance(interval, (int, float))
+        assert interval > 0
 
 
 class TestBatchDownloaderInit:
@@ -104,7 +106,7 @@ class TestBatchDownloaderInit:
 # Execution flows through TaskBuilder -> TaskExecutor.execute().
 # ---------------------------------------------------------------------------
 class TestBatchDownloaderUpdateOne:
-    """BatchDownloader._update_one — skipped; method does not exist."""
+    """BatchDownloader task execution tests（替代旧 _update_one）"""
 
     @pytest.fixture
     def downloader(self):
@@ -112,27 +114,66 @@ class TestBatchDownloaderUpdateOne:
         dl = BatchDownloader(cache_manager=mock_cache, max_workers=2, batch_size=2)
         yield dl
 
-    @pytest.mark.skip(
-        reason="TODO: _update_one() removed; execution now uses TaskExecutor.execute(). Adapt test to mock TaskExecutor or use download_incremental/download_full."
-    )
     def test_update_success_with_data(self, downloader):
-        pass
+        """全部任务成功"""
+        with patch("akshare_data.offline.downloader.executor.TaskExecutor.execute") as m:
+            m.return_value = {"success": True, "rows": 3, "task": "iface1"}
+            from akshare_data.offline.downloader.task_builder import DownloadTask
 
-    @pytest.mark.skip(reason="TODO: _update_one() removed.")
+            tasks = [
+                DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={}),
+                DownloadTask(interface="iface2", func="ak.b", table="t", kwargs={}),
+            ]
+            result = downloader._execute_tasks(tasks)
+        assert result["success_count"] == 2
+        assert result["failed_count"] == 0
+
     def test_update_no_data(self, downloader):
-        pass
+        """任务返回空数据/失败计入 failed"""
+        with patch("akshare_data.offline.downloader.executor.TaskExecutor.execute") as m:
+            m.return_value = {"success": False, "error": "Empty data", "task": "iface1"}
+            from akshare_data.offline.downloader.task_builder import DownloadTask
 
-    @pytest.mark.skip(reason="TODO: _update_one() removed.")
+            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            result = downloader._execute_tasks(tasks)
+        assert result["success_count"] == 0
+        assert result["failed_count"] == 1
+        assert result["failed_stocks"][0][0] == "iface1"
+
     def test_update_with_none_result(self, downloader):
-        pass
+        """执行器返回 None 时应抛异常（体现当前行为）"""
+        with patch(
+            "akshare_data.offline.downloader.executor.TaskExecutor.execute",
+            return_value=None,
+        ):
+            from akshare_data.offline.downloader.task_builder import DownloadTask
 
-    @pytest.mark.skip(reason="TODO: _update_one() removed.")
+            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            with pytest.raises(AttributeError):
+                downloader._execute_tasks(tasks)
+
     def test_update_exception_handling(self, downloader):
-        pass
+        """执行器抛异常时冒泡（便于上层感知失败）"""
+        with patch(
+            "akshare_data.offline.downloader.executor.TaskExecutor.execute",
+            side_effect=RuntimeError("boom"),
+        ):
+            from akshare_data.offline.downloader.task_builder import DownloadTask
 
-    @pytest.mark.skip(reason="TODO: _update_one() removed.")
+            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            with pytest.raises(RuntimeError, match="boom"):
+                downloader._execute_tasks(tasks)
+
     def test_update_with_progress_callback(self, downloader):
-        pass
+        """progress callback 被调用"""
+        cb = MagicMock()
+        with patch("akshare_data.offline.downloader.executor.TaskExecutor.execute") as m:
+            m.return_value = {"success": True, "rows": 1, "task": "iface1"}
+            from akshare_data.offline.downloader.task_builder import DownloadTask
+
+            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            downloader._execute_tasks(tasks, progress_callback=cb)
+        assert cb.call_count >= 1
 
 
 # ---------------------------------------------------------------------------
@@ -354,7 +395,7 @@ class TestBatchDownloaderFullMarket:
 # TestBatchDownloaderByIndex — download_by_index() does not exist.
 # ---------------------------------------------------------------------------
 class TestBatchDownloaderByIndex:
-    """BatchDownloader.download_by_index — skipped; method does not exist."""
+    """按接口分组下载（由 download_full/download_incremental 承担）"""
 
     @pytest.fixture
     def downloader(self):
@@ -362,26 +403,51 @@ class TestBatchDownloaderByIndex:
         dl = BatchDownloader(cache_manager=mock_cache, max_workers=2)
         yield dl
 
-    @pytest.mark.skip(
-        reason="TODO: download_by_index() does not exist in current API. Equivalent functionality: download_full(interfaces=...) or download_incremental(). Adapt test."
-    )
     def test_download_by_index_success(self, downloader):
-        pass
+        """以接口子集执行 download_full 成功"""
+        with patch.object(downloader._task_builder, "build_tasks") as mock_build:
+            from akshare_data.offline.downloader.task_builder import DownloadTask
 
-    @pytest.mark.skip(reason="TODO: download_by_index() does not exist.")
+            mock_build.return_value = [
+                DownloadTask(interface="index_1", func="ak.a", table="t", kwargs={}),
+            ]
+            with patch(
+                "akshare_data.offline.downloader.executor.TaskExecutor.execute",
+                return_value={"success": True, "rows": 8, "task": "index_1"},
+            ):
+                result = downloader.download_full(interfaces=["index_1"])
+        assert result["success_count"] == 1
+        assert result["failed_count"] == 0
+
     def test_download_by_index_fetch_fails(self, downloader):
-        pass
+        """接口执行失败时记录 failed_stocks"""
+        with patch.object(downloader._task_builder, "build_tasks") as mock_build:
+            from akshare_data.offline.downloader.task_builder import DownloadTask
 
-    @pytest.mark.skip(reason="TODO: download_by_index() does not exist.")
+            mock_build.return_value = [
+                DownloadTask(interface="index_1", func="ak.a", table="t", kwargs={}),
+            ]
+            with patch(
+                "akshare_data.offline.downloader.executor.TaskExecutor.execute",
+                return_value={"success": False, "error": "failed", "task": "index_1"},
+            ):
+                result = downloader.download_full(interfaces=["index_1"])
+        assert result["success_count"] == 0
+        assert result["failed_count"] == 1
+
     def test_download_by_index_empty_components(self, downloader):
-        pass
+        """空接口列表返回空统计"""
+        with patch.object(downloader._task_builder, "build_tasks", return_value=[]):
+            result = downloader.download_full(interfaces=[])
+        assert result["success_count"] == 0
+        assert result["failed_count"] == 0
 
 
 # ---------------------------------------------------------------------------
 # TestBatchDownloaderBatch — download_batch() does not exist.
 # ---------------------------------------------------------------------------
 class TestBatchDownloaderBatch:
-    """BatchDownloader.download_batch — skipped; method does not exist."""
+    """批量下载场景（由 download_full 承担）"""
 
     @pytest.fixture
     def downloader(self):
@@ -389,19 +455,48 @@ class TestBatchDownloaderBatch:
         dl = BatchDownloader(cache_manager=mock_cache, max_workers=2)
         yield dl
 
-    @pytest.mark.skip(
-        reason="TODO: download_batch() does not exist in current API. Equivalent: download_full() or download_incremental(). Adapt test."
-    )
     def test_batch_download_success(self, downloader):
-        pass
+        with patch.object(downloader._task_builder, "build_tasks") as mock_build:
+            from akshare_data.offline.downloader.task_builder import DownloadTask
 
-    @pytest.mark.skip(reason="TODO: download_batch() does not exist.")
+            mock_build.return_value = [
+                DownloadTask(interface="a", func="ak.a", table="t", kwargs={}),
+                DownloadTask(interface="b", func="ak.b", table="t", kwargs={}),
+            ]
+            with patch(
+                "akshare_data.offline.downloader.executor.TaskExecutor.execute",
+                return_value={"success": True, "rows": 5, "task": "a"},
+            ):
+                result = downloader.download_full(interfaces=["a", "b"])
+        assert result["success_count"] == 2
+        assert result["failed_count"] == 0
+
     def test_batch_download_empty_list(self, downloader):
-        pass
+        with patch.object(downloader._task_builder, "build_tasks", return_value=[]):
+            result = downloader.download_full(interfaces=[])
+        assert result["success_count"] == 0
+        assert result["failed_count"] == 0
 
-    @pytest.mark.skip(reason="TODO: download_batch() does not exist.")
     def test_batch_download_partial_failure(self, downloader):
-        pass
+        with patch.object(downloader._task_builder, "build_tasks") as mock_build:
+            from akshare_data.offline.downloader.task_builder import DownloadTask
+
+            mock_build.return_value = [
+                DownloadTask(interface="a", func="ak.a", table="t", kwargs={}),
+                DownloadTask(interface="b", func="ak.b", table="t", kwargs={}),
+            ]
+
+            seq = [
+                {"success": True, "rows": 5, "task": "a"},
+                {"success": False, "error": "boom", "task": "b"},
+            ]
+            with patch(
+                "akshare_data.offline.downloader.executor.TaskExecutor.execute",
+                side_effect=seq,
+            ):
+                result = downloader.download_full(interfaces=["a", "b"])
+        assert result["success_count"] == 1
+        assert result["failed_count"] == 1
 
 
 # ---------------------------------------------------------------------------
