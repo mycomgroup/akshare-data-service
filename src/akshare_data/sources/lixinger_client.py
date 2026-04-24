@@ -26,6 +26,9 @@ class LixingerClient:
     _instance: ClassVar["LixingerClient | None"] = None
     _instance_lock: ClassVar[threading.Lock] = threading.Lock()
     _DEFAULT_BASE_URL = "https://open.lixinger.com/api/"
+    # Public class attribute preserved for backward compat with tests and
+    # callers that read ``LixingerClient.BASE_URL`` directly.
+    BASE_URL: ClassVar[str] = _DEFAULT_BASE_URL
 
     @property
     def base_url(self) -> str:
