@@ -8,6 +8,7 @@ import time
 from unittest.mock import patch, MagicMock
 
 import pandas as pd
+import pytest
 
 from akshare_data.ingestion.router import (
     MultiSourceRouter,
@@ -17,6 +18,8 @@ from akshare_data.ingestion.router import (
     ExecutionResult,
     create_simple_router,
 )
+
+pytestmark = pytest.mark.unit
 
 
 class TestDomainRateLimiter:

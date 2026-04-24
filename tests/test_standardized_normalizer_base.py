@@ -1,12 +1,15 @@
 """Tests for akshare_data.standardized.normalizer.base module."""
 
 import pandas as pd
+import pytest
 
 from akshare_data.standardized.normalizer.base import (
     NormalizerBase,
     load_field_mapping,
     load_entity_schema,
 )
+
+pytestmark = pytest.mark.unit
 
 
 class ConcreteNormalizer(NormalizerBase):
@@ -21,6 +24,7 @@ class ConcreteNormalizer(NormalizerBase):
         return {"dt": "trade_date", "px": "close_price", "sid": "security_id"}
 
 
+@pytest.mark.unit
 class TestNormalizerBase:
     """Test the generic normalization pipeline."""
 

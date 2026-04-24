@@ -11,6 +11,7 @@ from akshare_data.sources.lixinger_source import LixingerAdapter
 from akshare_data.core.errors import SourceUnavailableError, DataSourceError
 
 
+@pytest.mark.integration
 @pytest.fixture(scope="module")
 def adapter():
     """Create LixingerAdapter. Will be unconfigured without LIXINGER_TOKEN."""

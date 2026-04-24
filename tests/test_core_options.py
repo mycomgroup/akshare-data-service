@@ -16,6 +16,7 @@ from akshare_data.core.options import (
 )
 
 
+@pytest.mark.unit
 class TestBlackScholesPrice:
     """Test black_scholes_price() function."""
 

@@ -10,6 +10,7 @@ from abc import ABC
 from akshare_data.store.strategies.base import CacheStrategy
 
 
+@pytest.mark.unit
 class ConcreteCacheStrategy(CacheStrategy):
     """Concrete implementation of CacheStrategy for testing."""
 

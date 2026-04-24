@@ -42,6 +42,17 @@ datasets:
             mapping_version: v1
             current: true
             effective_from: '2026-04-22'
+            changed_from: null
+            change_reason: "Initial mapping — akshare eastmoney interface"
+      akshare_sina:
+        current_version: v1
+        versions:
+          v1:
+            mapping_version: v1
+            current: true
+            effective_from: '2026-04-22'
+            changed_from: null
+            change_reason: "Initial mapping — akshare sina interface"
       lixinger:
         current_version: v1
         versions:
@@ -60,6 +71,15 @@ datasets:
             effective_from: '2026-04-22'
             changed_from: null
             change_reason: "Initial mapping"
+      baostock:
+        current_version: v1
+        versions:
+          v1:
+            mapping_version: v1
+            current: true
+            effective_from: '2026-04-22'
+            changed_from: null
+            change_reason: "Initial mapping — baostock interface"
 
   # -----------------------------------------------------------------------
   # financial_indicator

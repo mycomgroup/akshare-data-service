@@ -24,11 +24,11 @@ def schema_registry() -> SchemaRegistry:
     return reg
 
 
-
-
 @pytest.fixture(scope="module")
 def naming_standard() -> FieldNamingStandard:
     return FieldNamingStandard()
+
+
 @pytest.fixture(scope="module")
 def canonical_fields() -> set[str]:
     with open(FIELD_DICT_PATH, encoding="utf-8") as fh:
@@ -79,7 +79,9 @@ class TestFieldMappingsContract:
                     f"{path}: '{source_field}' -> '{standard_field}' not in canonical field dictionary"
                 )
 
-    def test_standard_fields_exist_in_entity_schema(self, schema_registry: SchemaRegistry):
+    def test_standard_fields_exist_in_entity_schema(
+        self, schema_registry: SchemaRegistry
+    ):
         for path in sorted(MAPPINGS_ROOT.glob("*/*.yaml")):
             with open(path, encoding="utf-8") as fh:
                 cfg = yaml.safe_load(fh) or {}

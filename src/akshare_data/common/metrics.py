@@ -92,7 +92,18 @@ class HistogramMetric:
     name: str
     description: str
     buckets: tuple[float, ...] = (
-        0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0, float("inf")
+        0.005,
+        0.01,
+        0.025,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1.0,
+        2.5,
+        5.0,
+        10.0,
+        float("inf"),
     )
     _counts: dict[float, int] = field(default_factory=dict, repr=False)
     _sum: float = 0.0
@@ -141,7 +152,9 @@ class HistogramMetric:
 class Timer:
     """Context manager and standalone timer for histogram observation."""
 
-    def __init__(self, histogram: HistogramMetric, labels: dict[str, str] | None = None):
+    def __init__(
+        self, histogram: HistogramMetric, labels: dict[str, str] | None = None
+    ):
         self._histogram = histogram
         self._labels = labels or {}
         self._start: float | None = None
@@ -186,25 +199,25 @@ class MetricRegistry:
         with self._lock:
             self._definitions[definition.name] = definition
 
-    def counter(
-        self, name: str, labels: dict[str, str] | None = None
-    ) -> CounterMetric:
+    def counter(self, name: str, labels: dict[str, str] | None = None) -> CounterMetric:
         key = MetricKey.create(name, labels)
         if key not in self._counters:
             with self._lock:
                 if key not in self._counters:
-                    desc = self._definitions.get(name, MetricDefinition(name, MetricType.COUNTER, "")).description
+                    desc = self._definitions.get(
+                        name, MetricDefinition(name, MetricType.COUNTER, "")
+                    ).description
                     self._counters[key] = CounterMetric(name=name, description=desc)
         return self._counters[key]
 
-    def gauge(
-        self, name: str, labels: dict[str, str] | None = None
-    ) -> GaugeMetric:
+    def gauge(self, name: str, labels: dict[str, str] | None = None) -> GaugeMetric:
         key = MetricKey.create(name, labels)
         if key not in self._gauges:
             with self._lock:
                 if key not in self._gauges:
-                    desc = self._definitions.get(name, MetricDefinition(name, MetricType.GAUGE, "")).description
+                    desc = self._definitions.get(
+                        name, MetricDefinition(name, MetricType.GAUGE, "")
+                    ).description
                     self._gauges[key] = GaugeMetric(name=name, description=desc)
         return self._gauges[key]
 
@@ -216,8 +229,23 @@ class MetricRegistry:
             with self._lock:
                 if key not in self._histograms:
                     defn = self._definitions.get(name)
-                    buckets = defn.buckets if defn and defn.buckets else (
-                        0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0, float("inf")
+                    buckets = (
+                        defn.buckets
+                        if defn and defn.buckets
+                        else (
+                            0.005,
+                            0.01,
+                            0.025,
+                            0.05,
+                            0.1,
+                            0.25,
+                            0.5,
+                            1.0,
+                            2.5,
+                            5.0,
+                            10.0,
+                            float("inf"),
+                        )
                     )
                     desc = defn.description if defn else ""
                     self._histograms[key] = HistogramMetric(
@@ -225,9 +253,7 @@ class MetricRegistry:
                     )
         return self._histograms[key]
 
-    def timer(
-        self, name: str, labels: dict[str, str] | None = None
-    ) -> Timer:
+    def timer(self, name: str, labels: dict[str, str] | None = None) -> Timer:
         return Timer(self.histogram(name, labels))
 
     def get_all(self) -> dict[str, Any]:
@@ -261,7 +287,9 @@ def get_registry() -> MetricRegistry:
     return _global_registry
 
 
-def emit_counter(name: str, value: float = 1.0, labels: dict[str, str] | None = None) -> None:
+def emit_counter(
+    name: str, value: float = 1.0, labels: dict[str, str] | None = None
+) -> None:
     _global_registry.counter(name, labels).inc(value)
 
 

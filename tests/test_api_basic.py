@@ -13,6 +13,7 @@ from akshare_data.store.manager import CacheManager, CacheConfig, reset_cache_ma
 TEST_CACHE_DIR = "./test_data_cache"
 
 
+@pytest.mark.unit
 @pytest.fixture(scope="function", autouse=True)
 def setup_test_env():
     reset_cache_manager()

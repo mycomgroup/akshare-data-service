@@ -84,7 +84,9 @@ class CrossSourceDiffCheck(BaseCheck):
 
         source_dfs: Dict[str, pd.DataFrame] = {}
         for src in sources:
-            sdf = df[df[source_col] == src].drop_duplicates(subset=key_fields, keep="first")
+            sdf = df[df[source_col] == src].drop_duplicates(
+                subset=key_fields, keep="first"
+            )
             source_dfs[src] = sdf.set_index(key_fields)
 
         deviations: List[Dict[str, Any]] = []
@@ -92,7 +94,7 @@ class CrossSourceDiffCheck(BaseCheck):
         compared_pairs = 0
 
         for i, src_a in enumerate(sources):
-            for src_b in sources[i + 1:]:
+            for src_b in sources[i + 1 :]:
                 df_a = source_dfs[src_a]
                 df_b = source_dfs[src_b]
                 common_keys = df_a.index.intersection(df_b.index)
@@ -118,12 +120,14 @@ class CrossSourceDiffCheck(BaseCheck):
 
                 if n_exceeds > 0:
                     bad_keys = common_keys[exceeds].tolist()
-                    deviations.append({
-                        "source_a": src_a,
-                        "source_b": src_b,
-                        "exceed_count": n_exceeds,
-                        "sample_keys": [str(k) for k in bad_keys[:5]],
-                    })
+                    deviations.append(
+                        {
+                            "source_a": src_a,
+                            "source_b": src_b,
+                            "exceed_count": n_exceeds,
+                            "sample_keys": [str(k) for k in bad_keys[:5]],
+                        }
+                    )
 
         status = RuleStatus.FAILED if exceed_count > 0 else RuleStatus.PASSED
         return RuleResult(
@@ -131,7 +135,9 @@ class CrossSourceDiffCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{exceed_count} rows exceed {tolerance_type} tolerance {tolerance}" if exceed_count else f"All {compared_pairs} compared rows within tolerance",
+            message=f"{exceed_count} rows exceed {tolerance_type} tolerance {tolerance}"
+            if exceed_count
+            else f"All {compared_pairs} compared rows within tolerance",
             failed_count=exceed_count,
             total_count=compared_pairs,
             details={
@@ -191,8 +197,12 @@ class CrossTableConsistencyCheck(BaseCheck):
                 message="No compare_fields specified",
             )
 
-        missing_in_main = [f for f in join_fields + compare_fields if f not in df.columns]
-        missing_in_other = [f for f in join_fields + compare_fields if f not in other_df.columns]
+        missing_in_main = [
+            f for f in join_fields + compare_fields if f not in df.columns
+        ]
+        missing_in_other = [
+            f for f in join_fields + compare_fields if f not in other_df.columns
+        ]
         all_missing = missing_in_main + missing_in_other
         if all_missing:
             return RuleResult(
@@ -201,7 +211,10 @@ class CrossTableConsistencyCheck(BaseCheck):
                 severity=rule.severity,
                 gate_action=rule.gate_action,
                 message=f"Fields missing: main={missing_in_main}, other={missing_in_other}",
-                details={"missing_in_main": missing_in_main, "missing_in_other": missing_in_other},
+                details={
+                    "missing_in_main": missing_in_main,
+                    "missing_in_other": missing_in_other,
+                },
             )
 
         merged = df.merge(other_df, on=join_fields, how="inner", suffixes=("_a", "_b"))
@@ -235,7 +248,9 @@ class CrossTableConsistencyCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{total_mismatches} value mismatches across {len(compare_fields)} fields" if total_mismatches else "All compared values consistent",
+            message=f"{total_mismatches} value mismatches across {len(compare_fields)} fields"
+            if total_mismatches
+            else "All compared values consistent",
             failed_count=total_mismatches,
             total_count=len(merged) * len(compare_fields),
             details={
@@ -297,10 +312,16 @@ class CrossLayerConsistencyCheck(BaseCheck):
                 elif field not in raw_df.columns:
                     key_issues.append(f"Key field '{field}' missing in raw")
 
-        status = RuleStatus.FAILED if (missing_ratio > max_missing_ratio or key_issues) else RuleStatus.PASSED
+        status = (
+            RuleStatus.FAILED
+            if (missing_ratio > max_missing_ratio or key_issues)
+            else RuleStatus.PASSED
+        )
         message_parts = []
         if missing_ratio > max_missing_ratio:
-            message_parts.append(f"{missing_ratio:.1%} records lost (max {max_missing_ratio:.1%})")
+            message_parts.append(
+                f"{missing_ratio:.1%} records lost (max {max_missing_ratio:.1%})"
+            )
         if key_issues:
             message_parts.extend(key_issues)
 
@@ -309,7 +330,9 @@ class CrossLayerConsistencyCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message="; ".join(message_parts) if message_parts else f"Raw({raw_count}) -> Standardized({std_count}) consistent",
+            message="; ".join(message_parts)
+            if message_parts
+            else f"Raw({raw_count}) -> Standardized({std_count}) consistent",
             failed_count=int(std_count * missing_ratio),
             total_count=raw_count,
             details={

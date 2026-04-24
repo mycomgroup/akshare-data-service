@@ -6,10 +6,13 @@
 import time
 from unittest.mock import patch
 
+import pytest
+
 from akshare_data.offline.source_manager.health_tracker import HealthTracker
 from akshare_data.offline.source_manager.failover import FailoverManager
 
 
+@pytest.mark.unit
 class TestHealthTrackerInit:
     """测试HealthTracker初始化"""
 

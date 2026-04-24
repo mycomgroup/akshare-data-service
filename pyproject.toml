@@ -44,6 +44,7 @@ markers = [
     "contract: contract and protocol tests (schema, field dictionary, gate DSL)",
     "replay: raw replay and batch reconstruction tests",
     "served: served layer and publish gate tests",
+    "service: service layer tests (DataService, API endpoints)",
 ]
 addopts = "-v --tb=short --strict-markers"
 filterwarnings = [

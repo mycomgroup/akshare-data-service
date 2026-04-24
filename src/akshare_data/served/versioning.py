@@ -16,9 +16,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-_VERSION_RE = re.compile(
-    r"^(?P<dataset>[a-z0-9_]+)-r(?P<ts>\d{12})-(?P<seq>\d{2})$"
-)
+_VERSION_RE = re.compile(r"^(?P<dataset>[a-z0-9_]+)-r(?P<ts>\d{12})-(?P<seq>\d{2})$")
 
 
 class ReleaseVersionError(ValueError):

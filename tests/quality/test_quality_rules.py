@@ -72,4 +72,6 @@ class TestQualityEngineLoading:
         for path in sorted(QUALITY_CONFIG_DIR.glob("*.yaml")):
             engine.load_config(path)
             has_block = any(r.gate_action == GateAction.BLOCK for r in engine._rules)  # noqa: SLF001
-            assert has_block, f"{path} has no block rule; release gate would be non-blocking"
+            assert has_block, (
+                f"{path} has no block rule; release gate would be non-blocking"
+            )

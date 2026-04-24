@@ -1,11 +1,13 @@
 """Tests for akshare_data.standardized.normalizer.market_quote_daily module."""
 
 import pandas as pd
+import pytest
 
 from akshare_data.standardized.normalizer.market_quote_daily import (
     MarketQuoteDailyNormalizer,
 )
 
+pytestmark = pytest.mark.unit
 
 STANDARD_FIELDS = {
     "security_id",
@@ -279,8 +281,12 @@ class TestMarketQuoteDailyNormalizer:
             source_name="akshare",
             interface_name="stock_zh_a_hist",
         )
-        assert result.loc[result["security_id"] == "600519", "exchange"].iloc[0] == "SSE"
-        assert result.loc[result["security_id"] == "000001", "exchange"].iloc[0] == "SZSE"
+        assert (
+            result.loc[result["security_id"] == "600519", "exchange"].iloc[0] == "SSE"
+        )
+        assert (
+            result.loc[result["security_id"] == "000001", "exchange"].iloc[0] == "SZSE"
+        )
 
     # ------------------------------------------------------------------
     # Validation

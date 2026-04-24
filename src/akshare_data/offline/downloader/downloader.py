@@ -14,6 +14,7 @@ from akshare_data.offline.downloader.rate_limiter import DomainRateLimiter
 from akshare_data.offline.downloader.task_builder import DownloadTask, TaskBuilder
 from akshare_data.offline.downloader.executor import TaskExecutor
 from akshare_data.offline.downloader.progress import ProgressTracker
+from akshare_data.core.config_cache import ConfigCache
 
 logger = logging.getLogger("akshare_data")
 
@@ -46,11 +47,24 @@ class BatchDownloader:
         self._priority_config = self._load_priority()
 
     def _load_registry(self) -> Dict[str, Any]:
-        registry_file = paths.legacy_registry_file
-        if not registry_file.exists():
-            return {}
-        with open(registry_file, "r", encoding="utf-8") as f:
-            return yaml.safe_load(f) or {}
+        interfaces = ConfigCache.load_interfaces()
+        registry = ConfigCache.load_registry()
+        interfaces_with_meta = dict(interfaces)
+
+        for iface_name, iface_def in interfaces.items():
+            for source in iface_def.get("sources", []):
+                func_name = source.get("func")
+                if func_name and func_name in registry.get("interfaces", {}):
+                    reg_def = registry["interfaces"][func_name]
+                    if "signature" not in iface_def and "signature" in reg_def:
+                        interfaces_with_meta[iface_name]["signature"] = reg_def[
+                            "signature"
+                        ]
+                    if "domains" not in iface_def and "domains" in reg_def:
+                        interfaces_with_meta[iface_name]["domains"] = reg_def["domains"]
+                    break
+
+        return {"interfaces": interfaces_with_meta}
 
     def _load_rate_limits(self) -> Dict[str, Any]:
         rate_file = paths.legacy_rate_limits_file
@@ -66,6 +80,12 @@ class BatchDownloader:
         with open(priority_file, "r", encoding="utf-8") as f:
             return yaml.safe_load(f) or {}
 
+    # 接口特殊限制（最大回溯天数）
+    INTERFACE_MAX_DAYS = {
+        "limit_down_pool": 30,
+        "limit_up_pool": 30,
+    }
+
     def download_incremental(
         self,
         stock_list: Optional[List[str]] = None,
@@ -73,7 +93,7 @@ class BatchDownloader:
         days_back: int = 1,
         progress_callback: Optional[Callable] = None,
     ) -> Dict[str, Any]:
-        """增量下载"""
+        """增量下载（跳过已缓存的接口）"""
         end = datetime.now().strftime("%Y-%m-%d")
         if start is None:
             start = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
@@ -91,11 +111,60 @@ class BatchDownloader:
         if not incremental_interfaces:
             incremental_interfaces = list(all_interfaces.keys())[:10]
 
+        # 检查缓存，跳过已完全覆盖该日期范围的接口
+        interfaces_to_download = []
+        skipped = []
+        for iface_name in incremental_interfaces:
+            table = iface_name
+            if self._cache_manager and self._cache_manager.has_range(
+                table, start=start, end=end
+            ):
+                skipped.append(iface_name)
+                logger.info(
+                    "Skipping %s: already cached for %s to %s", iface_name, start, end
+                )
+            else:
+                interfaces_to_download.append(iface_name)
+
+        if skipped:
+            logger.info("Skipped %d cached interfaces: %s", len(skipped), skipped)
+
+        if not interfaces_to_download:
+            logger.info("All interfaces already cached for %s to %s", start, end)
+            return {
+                "success": True,
+                "total": 0,
+                "success_count": 0,
+                "failed_count": 0,
+                "skipped": len(skipped),
+                "message": "All data already cached",
+            }
+
         tasks = self._task_builder.build_tasks(
-            incremental_interfaces, start, end, self._registry
+            interfaces_to_download, start, end, self._registry
         )
 
-        return self._execute_tasks(tasks, progress_callback)
+        # 过滤掉超过接口限制的日期范围的任务
+        filtered_tasks = []
+        for task in tasks:
+            max_days = self.INTERFACE_MAX_DAYS.get(task.interface)
+            if max_days:
+                start_dt = datetime.strptime(start, "%Y-%m-%d")
+                end_dt = datetime.strptime(end, "%Y-%m-%d")
+                if (end_dt - start_dt).days > max_days:
+                    logger.warning(
+                        "Skipping %s: date range %s-%s exceeds max %d days",
+                        task.interface,
+                        start,
+                        end,
+                        max_days,
+                    )
+                    continue
+            filtered_tasks.append(task)
+
+        result = self._execute_tasks(filtered_tasks, progress_callback)
+        result["skipped"] = len(skipped)
+        return result
 
     def download_full(
         self,

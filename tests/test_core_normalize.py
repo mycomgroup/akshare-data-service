@@ -30,6 +30,7 @@ from akshare_data.core.normalize import (
 )
 
 
+@pytest.mark.unit
 class TestStandardizeOhlcv:
     """Test standardize_ohlcv() function."""
 

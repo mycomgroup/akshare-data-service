@@ -225,8 +225,42 @@ class DuckDBEngine:
                     result = conn.execute(sql).fetchone()
                     if result:
                         total += result[0]
-                except Exception:
-                    pass
+                except Exception as e:
+                    logger.warning("Count query failed for standardized path: %s", e)
+
+        raw_glob = self._list_all_glob_paths(
+            table, storage_layer, partition_by, layer="raw"
+        )
+        raw_paths = list(
+            Path(self.base_dir).glob(raw_glob.replace(str(self.base_dir) + "/", ""))
+        )
+        if not raw_paths:
+            raw_paths = (
+                list(Path(raw_glob).parent.glob("*.parquet"))
+                if Path(raw_glob).parent.exists()
+                else []
+            )
+        if not raw_paths:
+            raw_paths = (
+                list(Path(raw_glob).parent.rglob("*.parquet"))
+                if Path(raw_glob).parent.exists()
+                else []
+            )
+        raw_paths = [p for p in raw_paths if p.suffix == ".parquet"]
+
+        if raw_paths:
+            where_clause = self._build_where_clause(where) if where else ""
+            paths_str = ", ".join(f"'{p}'" for p in raw_paths)
+            sql = f"SELECT COUNT(*) FROM read_parquet([{paths_str}])"
+            if where_clause:
+                sql += f" WHERE {where_clause}"
+            conn = self._get_connection()
+            try:
+                result = conn.execute(sql).fetchone()
+                if result:
+                    total += result[0]
+            except Exception as e:
+                logger.warning("Count query failed for raw path: %s", e)
 
         raw_glob = self._list_all_glob_paths(
             table, storage_layer, partition_by, layer="raw"

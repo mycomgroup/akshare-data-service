@@ -33,11 +33,15 @@ class TestReleaseVersionModel:
             "market_quote_daily-r202604230930-01",
             "market_quote_daily-r202604230930-02",
         ]
-        nxt = next_release_version("market_quote_daily", now=now, existing_versions=versions)
+        nxt = next_release_version(
+            "market_quote_daily", now=now, existing_versions=versions
+        )
         assert nxt == "market_quote_daily-r202604230930-03"
 
     def test_next_release_version_resets_for_new_minute(self):
         now = datetime(2026, 4, 23, 9, 31, tzinfo=timezone.utc)
         versions = ["market_quote_daily-r202604230930-02"]
-        nxt = next_release_version("market_quote_daily", now=now, existing_versions=versions)
+        nxt = next_release_version(
+            "market_quote_daily", now=now, existing_versions=versions
+        )
         assert nxt == "market_quote_daily-r202604230931-01"

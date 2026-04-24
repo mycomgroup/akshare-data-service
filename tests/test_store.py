@@ -9,6 +9,7 @@ import tempfile
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from akshare_data.store.manager import (
     CacheManager,
@@ -20,7 +21,27 @@ from akshare_data.store.memory import MemoryCache
 from akshare_data.store.duckdb import DuckDBEngine
 from akshare_data.store.parquet import PartitionManager
 
+pytestmark = pytest.mark.unit
 
+
+def make_stock_daily_df(n=10, symbol="sh600000"):
+    """Create a valid stock_daily DataFrame with all required fields."""
+    return pd.DataFrame(
+        {
+            "date": pd.date_range("2024-01-01", periods=n),
+            "symbol": [symbol] * n,
+            "open": [10.0] * n,
+            "high": [11.0] * n,
+            "low": [9.0] * n,
+            "close": [10.5] * n,
+            "volume": [100000.0] * n,
+            "amount": [1000000.0] * n,
+            "adjust": ["qfq"] * n,
+        }
+    )
+
+
+@pytest.mark.unit
 class TestCacheManagerInit:
     """测试 CacheManager 初始化"""
 
@@ -191,17 +212,7 @@ class TestCacheReadWrite:
         """测试基本读写"""
         manager = CacheManager(base_dir=str(tmp_path))
 
-        df = pd.DataFrame(
-            {
-                "date": pd.date_range("2024-01-01", "2024-01-10"),
-                "symbol": ["sh600000"] * 10,
-                "open": [10.0] * 10,
-                "high": [11.0] * 10,
-                "low": [9.0] * 10,
-                "close": [10.5] * 10,
-                "volume": [100000] * 10,
-            }
-        )
+        df = make_stock_daily_df()
 
         file_path = manager.write("stock_daily", df, storage_layer="daily")
         assert file_path != ""
@@ -234,13 +245,7 @@ class TestCacheExists:
         """测试日期范围检查"""
         manager = CacheManager(base_dir=str(tmp_path))
 
-        df = pd.DataFrame(
-            {
-                "date": pd.date_range("2024-01-01", "2024-01-10"),
-                "symbol": ["sh600000"] * 10,
-                "open": [10.0] * 10,
-            }
-        )
+        df = make_stock_daily_df()
 
         manager.write(
             "stock_daily",
@@ -269,13 +274,7 @@ class TestCacheInvalidation:
         """测试表失效"""
         manager = CacheManager(base_dir=str(tmp_path))
 
-        df = pd.DataFrame(
-            {
-                "date": pd.date_range("2024-01-01", "2024-01-10"),
-                "symbol": ["sh600000"] * 10,
-                "open": [10.0] * 10,
-            }
-        )
+        df = make_stock_daily_df()
 
         manager.write("stock_daily", df, storage_layer="daily")
         count = manager.invalidate("stock_daily", storage_layer="daily")
@@ -286,13 +285,7 @@ class TestCacheInvalidation:
         """测试全部失效"""
         manager = CacheManager(base_dir=str(tmp_path))
 
-        df = pd.DataFrame(
-            {
-                "date": pd.date_range("2024-01-01", "2024-01-10"),
-                "symbol": ["sh600000"] * 10,
-                "open": [10.0] * 10,
-            }
-        )
+        df = make_stock_daily_df()
 
         manager.write("stock_daily", df, storage_layer="daily")
         count = manager.invalidate_all()
@@ -317,13 +310,7 @@ class TestTableInfo:
         """测试列出所有表"""
         manager = CacheManager(base_dir=str(tmp_path))
 
-        df = pd.DataFrame(
-            {
-                "date": pd.date_range("2024-01-01", "2024-01-10"),
-                "symbol": ["sh600000"] * 10,
-                "open": [10.0] * 10,
-            }
-        )
+        df = make_stock_daily_df()
 
         manager.write("stock_daily", df, storage_layer="daily")
 
@@ -338,13 +325,7 @@ class TestCacheStats:
         """测试获取统计信息"""
         manager = CacheManager(base_dir=str(tmp_path))
 
-        df = pd.DataFrame(
-            {
-                "date": pd.date_range("2024-01-01", "2024-01-10"),
-                "symbol": ["sh600000"] * 10,
-                "open": [10.0] * 10,
-            }
-        )
+        df = make_stock_daily_df()
 
         manager.write("stock_daily", df, storage_layer="daily")
 

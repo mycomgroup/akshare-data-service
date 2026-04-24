@@ -10,8 +10,11 @@ from pathlib import Path
 from unittest.mock import patch
 
 import pandas as pd
+import pytest
 
 from akshare_data.offline.reporter import Reporter
+
+pytestmark = pytest.mark.unit
 
 
 class TestReporterInit:
@@ -766,3 +769,150 @@ class TestReporterEdgeCases:
                 result = reporter.generate_volume_report(df)
 
                 assert "Total Rows:" in result
+
+
+class TestReporterBugfixes:
+    """测试修复后的边界条件"""
+
+    def test_health_report_total_zero_no_division_error(self):
+        """测试 total=0 时不会触发 ZeroDivisionError"""
+        reporter = Reporter()
+        result = reporter.generate_health_report([])
+        assert result == ""
+
+    def test_health_report_success_rate_format(self):
+        """测试成功率格式化输出正确"""
+        reporter = Reporter()
+        df = pd.DataFrame(
+            {
+                "func_name": ["func1", "func2"],
+                "domain_group": ["stock", "stock"],
+                "status": ["Success", "Failed"],
+                "exec_time": [1.0, 2.0],
+            }
+        )
+        result = reporter.generate_health_report(df.to_dict("records"))
+        assert "50.00%" in result
+        assert "if total > 0 else 0%" not in result
+
+    def test_volume_report_memory_kb_only(self):
+        """测试内存小于 1024 KB 时 Total Memory 显示 KB"""
+        reporter = Reporter()
+        df = pd.DataFrame(
+            {
+                "接口名称": ["small"],
+                "分类": ["daily"],
+                "数据行数": [100],
+                "内存占用_KB": [500.0],
+            }
+        )
+        result = reporter.generate_volume_report(df)
+        assert "**Total Memory:** 500.0 KB" in result
+        assert "MB" not in result.split("###")[0]
+        assert "GB" not in result.split("###")[0]
+
+    def test_volume_report_memory_mb_only(self):
+        """测试内存在 1024-1048575 KB 时 Total Memory 显示 MB"""
+        reporter = Reporter()
+        df = pd.DataFrame(
+            {
+                "接口名称": ["medium"],
+                "分类": ["daily"],
+                "数据行数": [1000],
+                "内存占用_KB": [2048.0],
+            }
+        )
+        result = reporter.generate_volume_report(df)
+        assert "**Total Memory:** 2.00 MB" in result
+        header = result.split("###")[0]
+        assert "KB" not in header
+        assert "GB" not in header
+
+    def test_volume_report_memory_gb_only(self):
+        """测试内存 >= 1024*1024 KB 时 Total Memory 显示 GB"""
+        reporter = Reporter()
+        df = pd.DataFrame(
+            {
+                "接口名称": ["large"],
+                "分类": ["daily"],
+                "数据行数": [10000],
+                "内存占用_KB": [2097152.0],
+            }
+        )
+        result = reporter.generate_volume_report(df)
+        assert "**Total Memory:** 2.00 GB" in result
+        header = result.split("###")[0]
+        assert "KB" not in header
+        assert "MB" not in header
+
+    def test_volume_report_nan_memory_handled(self):
+        """测试 NaN 内存值被正确处理"""
+        reporter = Reporter()
+        df = pd.DataFrame(
+            {
+                "接口名称": ["valid", "nan_mem", "small"],
+                "分类": ["daily", "daily", "daily"],
+                "数据行数": [1000, 500, 100],
+                "内存占用_KB": [2000.0, float("nan"), 50.0],
+            }
+        )
+        result = reporter.generate_volume_report(df)
+        assert "Large (>1000 KB)" in result
+        assert "Small (<100 KB)" in result
+        assert "nan KB" not in result
+
+    def test_volume_report_top20_nan_memory_skipped(self):
+        """测试 Top 20 列表中 NaN 值被跳过"""
+        reporter = Reporter()
+        df = pd.DataFrame(
+            {
+                "接口名称": ["valid", "nan_mem"],
+                "分类": ["daily", "daily"],
+                "数据行数": [1000, 500],
+                "内存占用_KB": [100.0, float("nan")],
+            }
+        )
+        result = reporter.generate_volume_report(df)
+        assert "nan KB" not in result
+        assert "**valid**: 100.0 KB" in result
+
+    def test_health_report_exec_time_string_sorting(self):
+        """测试 exec_time 为字符串时排序正确"""
+        reporter = Reporter()
+        records = [
+            {"func_name": "slow", "exec_time": "10.0", "status": "Success"},
+            {"func_name": "fast", "exec_time": "1.0", "status": "Success"},
+            {"func_name": "medium", "exec_time": "5.0", "status": "Success"},
+        ]
+        result = reporter.generate_health_report(records)
+        slow_pos = result.find("slow")
+        medium_pos = result.find("medium")
+        fast_pos = result.find("fast")
+        assert slow_pos < medium_pos < fast_pos
+
+    def test_integrate_summary_missing_overall_statistics(self):
+        """测试文件不包含 Overall Statistics 时的解析"""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            report_dir = Path(tmpdir) / "reports"
+            os.makedirs(report_dir, exist_ok=True)
+            summary_path = report_dir / "final_summary.txt"
+
+            content = """Interface Health Audit:
+  Audited APIs: 50
+  Available APIs: 40
+
+Some Other Section:
+  Items: 10
+"""
+            with open(summary_path, "w", encoding="utf-8") as f:
+                f.write(content)
+
+            with patch.object(Reporter, "REPORT_DIR", report_dir):
+                reporter = Reporter()
+                reporter.integrate_with_summary(100, 80, 80.0, 5.5)
+
+                with open(summary_path, "r", encoding="utf-8") as f:
+                    new_content = f.read()
+
+                assert "Audited APIs: 100" in new_content
+                assert "Available APIs: 80 (80.0%)" in new_content

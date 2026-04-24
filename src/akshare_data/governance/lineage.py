@@ -414,8 +414,7 @@ class LineageTracker:
             )
         return {
             "standard_field": standard_field,
-            "source_name": str(item.get("source_name", "unknown")).strip()
-            or "unknown",
+            "source_name": str(item.get("source_name", "unknown")).strip() or "unknown",
             "source_field": source_field,
             "interface_name": str(item.get("interface_name", "")).strip(),
             "transform": str(item.get("transform", "direct")).strip() or "direct",
@@ -454,7 +453,11 @@ class LineageTracker:
                 f"No lineage records found for dataset={dataset} batch_id={batch_id}"
             )
         known_release_versions = sorted(
-            {rec.release_version for rec in matched_batch_records if rec.release_version}
+            {
+                rec.release_version
+                for rec in matched_batch_records
+                if rec.release_version
+            }
         )
         if (
             known_release_versions

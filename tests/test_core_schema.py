@@ -38,7 +38,6 @@ from akshare_data.core.schema import (
     INDUSTRY_LIST,
     CONCEPT_LIST,
     COMPANY_INFO,
-    FACTOR_CACHE,
     FINANCIAL_REPORT,
     FINANCIAL_BENEFIT,
     INDUSTRY_MAPPING,
@@ -59,6 +58,7 @@ from akshare_data.core.schema import (
 )
 
 
+@pytest.mark.unit
 class TestCacheTable:
     """Test CacheTable frozen dataclass."""
 
@@ -222,8 +222,8 @@ class TestPredefinedTables:
     def test_finance_indicator(self):
         """FINANCE_INDICATOR should have financial fields."""
         assert FINANCE_INDICATOR.name == "finance_indicator"
-        assert "pe" in FINANCE_INDICATOR.schema
         assert "roe" in FINANCE_INDICATOR.schema
+        assert "net_profit" in FINANCE_INDICATOR.schema
 
     def test_money_flow(self):
         """MONEY_FLOW should have flow columns."""
@@ -308,11 +308,6 @@ class TestPredefinedTables:
     def test_company_info(self):
         """COMPANY_INFO should exist."""
         assert COMPANY_INFO.name == "company_info"
-
-    def test_factor_cache(self):
-        """FACTOR_CACHE should exist."""
-        assert FACTOR_CACHE.name == "factor_cache"
-        assert FACTOR_CACHE.priority == "P1"
 
     def test_financial_report(self):
         """FINANCIAL_REPORT should exist."""

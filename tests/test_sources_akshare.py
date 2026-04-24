@@ -15,6 +15,7 @@ from akshare_data.sources.akshare_source import (
 from akshare_data.core.errors import DataSourceError, SourceUnavailableError
 
 
+@pytest.mark.unit
 class TestAkShareAdapterInit:
     """Test AkShareAdapter initialization"""
 

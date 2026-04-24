@@ -14,6 +14,9 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from unittest.mock import patch
 import pandas as pd
+import pytest
+
+pytestmark = pytest.mark.unit
 
 
 class TestAccessLoggerAnalyzer:

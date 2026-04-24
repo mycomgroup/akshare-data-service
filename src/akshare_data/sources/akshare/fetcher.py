@@ -16,7 +16,10 @@ from __future__ import annotations
 
 import inspect
 import logging
+import signal
+import threading
 from datetime import date, datetime
+from functools import partial
 from typing import Any, Dict, Optional
 
 import pandas as pd
@@ -40,6 +43,7 @@ logger = logging.getLogger(__name__)
 
 _RATE_LIMITER: Optional["RateLimiter"] = None
 _ADAPTER_CACHE: Dict[str, Any] = {}
+_CACHE_LOCK = threading.Lock()
 
 
 def _load_registry() -> Dict:
@@ -203,31 +207,34 @@ def _get_adapter(source_name: str) -> Any:
     if source_name in _ADAPTER_CACHE:
         return _ADAPTER_CACHE[source_name]
 
-    registry = _load_source_registry()
-    source_def = registry.get(source_name, {})
-    if source_def.get("type") != "adapter":
-        return None
+    with _CACHE_LOCK:
+        if source_name in _ADAPTER_CACHE:
+            return _ADAPTER_CACHE[source_name]
 
-    adapter_class_name = source_def.get("adapter_class")
-    if not adapter_class_name:
-        return None
-
-    # 延迟导入以避免循环依赖
-    try:
-        if adapter_class_name == "TushareAdapter":
-            from akshare_data.sources.tushare_source import TushareAdapter as _cls
-        elif adapter_class_name == "LixingerAdapter":
-            from akshare_data.sources.lixinger_source import LixingerAdapter as _cls
-        else:
-            logger.warning("Unknown adapter class: %s", adapter_class_name)
+        registry = _load_source_registry()
+        source_def = registry.get(source_name, {})
+        if source_def.get("type") != "adapter":
             return None
 
-        _ADAPTER_CACHE[source_name] = _cls()
-        logger.debug("Created adapter instance: %s", adapter_class_name)
-        return _ADAPTER_CACHE[source_name]
-    except Exception as e:
-        logger.error("Failed to create adapter %s: %s", adapter_class_name, e)
-        return None
+        adapter_class_name = source_def.get("adapter_class")
+        if not adapter_class_name:
+            return None
+
+        try:
+            if adapter_class_name == "TushareAdapter":
+                from akshare_data.sources.tushare_source import TushareAdapter as _cls
+            elif adapter_class_name == "LixingerAdapter":
+                from akshare_data.sources.lixinger_source import LixingerAdapter as _cls
+            else:
+                logger.warning("Unknown adapter class: %s", adapter_class_name)
+                return None
+
+            _ADAPTER_CACHE[source_name] = _cls()
+            logger.debug("Created adapter instance: %s", adapter_class_name)
+            return _ADAPTER_CACHE[source_name]
+        except Exception as e:
+            logger.error("Failed to create adapter %s: %s", adapter_class_name, e)
+            return None
 
 
 def _resolve_adapter_method(adapter: Any, interface_name: str) -> Optional[str]:
@@ -298,7 +305,9 @@ class RateLimiter:
 def _get_rate_limiter() -> RateLimiter:
     global _RATE_LIMITER
     if _RATE_LIMITER is None:
-        _RATE_LIMITER = RateLimiter()
+        with _CACHE_LOCK:
+            if _RATE_LIMITER is None:
+                _RATE_LIMITER = RateLimiter()
     return _RATE_LIMITER
 
 
@@ -353,6 +362,10 @@ def _transform_param(value: Any, transform: str) -> Any:
         code = str(value).lstrip("0")
         return f"SH{value}" if code.startswith("6") else f"SZ{value}"
 
+    if transform.startswith("prepend_prefix:sh/sz"):
+        code = str(value).zfill(6)
+        return f"sh{code}" if code.startswith("6") else f"sz{code}"
+
     return value
 
 
@@ -368,6 +381,27 @@ def _to_pandas_type(type_name: str) -> str:
 
 
 # ── 核心 fetch 函数 ──────────────────────────────────────────────────
+
+
+def _call_with_timeout(func: callable, args: tuple, kwargs: dict, timeout: int) -> Any:
+    """Call a function with a timeout using signals (Unix) or threading (Windows)."""
+    result = [None]
+    exception = [None]
+
+    def target():
+        try:
+            result[0] = func(*args, **kwargs)
+        except Exception as e:
+            exception[0] = e
+
+    t = threading.Thread(target=target, daemon=True)
+    t.start()
+    t.join(timeout=timeout)
+    if t.is_alive():
+        raise TimeoutError(f"Function call timed out after {timeout}s")
+    if exception[0] is not None:
+        raise exception[0]
+    return result[0]
 
 
 def fetch(
@@ -402,6 +436,7 @@ def fetch(
     sources = iface.get("sources", [])
     rate_key = iface.get("rate_limit_key", "default")
     rate_limiter = _get_rate_limiter()
+    _DEFAULT_TIMEOUT = 30
 
     # 如果没有定义 sources，直接使用同名 akshare 函数
     if not sources:
@@ -417,7 +452,14 @@ def fetch(
             pass
 
         rate_limiter.wait(rate_key)
-        raw_df = ak_func(**kwargs)
+        try:
+            raw_df = _call_with_timeout(ak_func, (), kwargs, _DEFAULT_TIMEOUT)
+        except TimeoutError:
+            raise SourceUnavailableError(
+                f"接口 {interface_name} 调用超时 ({_DEFAULT_TIMEOUT}s)",
+                error_code=ErrorCode.SOURCE_UNAVAILABLE,
+                source="akshare",
+            )
 
         if raw_df is None or (isinstance(raw_df, pd.DataFrame) and raw_df.empty):
             raise SourceUnavailableError(
@@ -493,7 +535,11 @@ def fetch(
             call_kwargs = _build_call_kwargs(kwargs, source, ak_func=ak_func)
 
             try:
-                raw_df = ak_func(**call_kwargs)
+                raw_df = _call_with_timeout(ak_func, (), call_kwargs, _DEFAULT_TIMEOUT)
+            except TimeoutError:
+                errors.append(f"{source_name}: 接口调用超时 ({_DEFAULT_TIMEOUT}s)")
+                logger.debug("数据源 %s 调用 %s 超时", source_name, func_name)
+                continue
             except Exception as e:
                 errors.append(f"{source_name}: {e}")
                 logger.debug("数据源 %s 调用 %s 失败: %s", source_name, func_name, e)
@@ -639,10 +685,11 @@ def _normalize_output(df: pd.DataFrame, source: Dict) -> pd.DataFrame:
 
 def reload_config():
     """重载所有配置（用于测试和热更新）"""
-    global _RATE_LIMITER
-    ConfigCache.invalidate()
-    _RATE_LIMITER = None
-    _ADAPTER_CACHE.clear()
+    global _RATE_LIMITER, _ADAPTER_CACHE
+    with _CACHE_LOCK:
+        ConfigCache.invalidate()
+        _RATE_LIMITER = None
+        _ADAPTER_CACHE.clear()
 
 
 # ── 向后兼容：保留旧函数名作为别名 ──────────────────────────────────

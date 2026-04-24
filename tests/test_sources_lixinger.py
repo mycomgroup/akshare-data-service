@@ -9,6 +9,7 @@ from akshare_data.sources.lixinger_source import LixingerAdapter
 from akshare_data.core.errors import SourceUnavailableError
 
 
+@pytest.mark.unit
 class TestLixingerAdapter:
     """Test suite for LixingerAdapter class."""
 

@@ -21,9 +21,36 @@ equity_daily:
     - {name: "volume", type: "float", desc: "成交量"}
     - {name: "amount", type: "float", desc: "成交额"}
 
-  rate_limit_key: "em_push2his"
+  rate_limit_key: "sina_vip"
 
   sources:
+    - name: "akshare_sina"
+      func: "stock_zh_a_daily"
+      enabled: true
+      input_mapping:
+        symbol: "symbol"
+        start_date: "start_date"
+        end_date: "end_date"
+        adjust: "adjust"
+      param_transforms:
+        symbol: "prepend_prefix:sh/sz"
+        start_date: "YYYYMMDD"
+        end_date: "YYYYMMDD"
+      output_mapping:
+        day: "date"
+        open: "open"
+        high: "high"
+        low: "low"
+        close: "close"
+        volume: "volume"
+      column_types:
+        date: "date"
+        open: "float"
+        high: "float"
+        low: "float"
+        close: "float"
+        volume: "float"
+
     - name: "akshare_em"
       func: "stock_zh_a_hist"
       enabled: true
@@ -51,26 +78,6 @@ equity_daily:
         close: "float"
         volume: "float"
         amount: "float"
-
-    - name: "akshare_sina"
-      func: "stock_zh_a_daily"
-      enabled: true
-      input_mapping:
-        symbol: "symbol"
-      output_mapping:
-        day: "date"
-        open: "open"
-        high: "high"
-        low: "low"
-        close: "close"
-        volume: "volume"
-      column_types:
-        date: "date"
-        open: "float"
-        high: "float"
-        low: "float"
-        close: "float"
-        volume: "float"
 
     - name: "tushare"
       func: "daily"
@@ -123,12 +130,36 @@ equity_minute:
     - {name: "volume", type: "float"}
     - {name: "amount", type: "float"}
 
-  rate_limit_key: "em_push2his"
+  rate_limit_key: "default"
 
   sources:
+    - name: "akshare_sina"
+      func: "stock_zh_a_minute"
+      enabled: true
+      input_mapping:
+        symbol: "symbol"
+        period: "period"
+        adjust: "adjust"
+      output_mapping:
+        day: "datetime"
+        open: "open"
+        high: "high"
+        low: "low"
+        close: "close"
+        volume: "volume"
+        amount: "amount"
+      column_types:
+        datetime: "datetime"
+        open: "float"
+        high: "float"
+        low: "float"
+        close: "float"
+        volume: "float"
+        amount: "float"
+
     - name: "akshare_em"
       func: "stock_zh_a_hist_min_em"
-      enabled: true
+      enabled: false
       input_mapping:
         symbol: "symbol"
         start_date: "start_date"
@@ -265,15 +296,13 @@ block_deal:
   input: []
 
   output:
-    - {name: "datetime", type: "datetime", desc: "成交时间"}
+    - {name: "date", type: "date", desc: "成交日期"}
     - {name: "symbol", type: "str", desc: "股票代码"}
     - {name: "name", type: "str", desc: "股票简称"}
     - {name: "price", type: "float", desc: "成交价格"}
     - {name: "volume", type: "float", desc: "成交量"}
     - {name: "amount", type: "float", desc: "成交额"}
     - {name: "direction", type: "str", desc: "大单性质"}
-    - {name: "pct_change", type: "float", desc: "涨跌幅"}
-    - {name: "change", type: "float", desc: "涨跌额"}
 
   rate_limit_key: "default"
 
@@ -283,25 +312,21 @@ block_deal:
       enabled: true
       input_mapping: {}
       output_mapping:
-        成交时间: "datetime"
+        成交日期: "date"
         股票代码: "symbol"
         股票简称: "name"
         成交价格: "price"
         成交量: "volume"
         成交额: "amount"
         大单性质: "direction"
-        涨跌幅: "pct_change"
-        涨跌额: "change"
       column_types:
-        datetime: "datetime"
+        date: "date"
         symbol: "str"
         name: "str"
         price: "float"
         volume: "float"
         amount: "float"
         direction: "str"
-        pct_change: "float"
-        change: "float"
 
 # ── 龙虎榜 & 涨跌停 & 融资融券 ─────────────────────────────
 
@@ -312,24 +337,35 @@ dragon_tiger_list:
 
   input:
     - {name: "date", type: "date", required: true, desc: "查询日期 YYYY-MM-DD"}
-    - {name: "start_date", type: "date", required: false, desc: "起始日期 (由date自动生成)"}
-    - {name: "end_date", type: "date", required: false, desc: "结束日期 (由date自动生成)"}
 
   output: []
 
-  rate_limit_key: "default"
+  rate_limit_key: "sina_vip"
 
   sources:
-    - name: "akshare_em"
-      func: "stock_lhb_detail_em"
-      enabled: true
+    - name: "akshare_sina"
+      func: "stock_lhb_detail_daily_sina"
+      enabled: false
       input_mapping:
-        start_date: "start_date"
-        end_date: "end_date"
+        date: "date"
       param_transforms:
-        start_date: "YYYYMMDD"
-        end_date: "YYYYMMDD"
-      output_mapping: {}
+        date: "YYYYMMDD"
+      output_mapping:
+        股票代码: "symbol"
+        股票名称: "name"
+        收盘价: "close"
+        对应值: "change_pct"
+        成交量: "turnover"
+        成交额: "amount"
+        指标: "reason"
+      column_types:
+        symbol: "str"
+        name: "str"
+        close: "float"
+        change_pct: "float"
+        turnover: "float"
+        amount: "float"
+        reason: "str"
 
 dragon_tiger_summary:
   name: "dragon_tiger_summary"
@@ -408,19 +444,45 @@ margin_data:
   input:
     - {name: "date", type: "date", required: true, desc: "查询日期 YYYY-MM-DD"}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "margin_balance", type: "float", desc: "融资余额"}
+    - {name: "short_balance", type: "float", desc: "融券余额"}
 
   rate_limit_key: "default"
 
   sources:
     - name: "akshare_sse"
       func: "stock_margin_detail_sse"
-      enabled: true
+      enabled: false
       input_mapping:
         date: "date"
       param_transforms:
         date: "YYYYMMDD"
-      output_mapping: {}
+      output_mapping:
+        信用交易日期: "date"
+        标的证券代码: "symbol"
+        标的证券简称: "name"
+        融资余额: "margin_balance"
+        融资买入额: "margin_buy"
+        融资偿还额: "margin_repay"
+        融券余量: "short_remain"
+        融券卖出量: "short_sell"
+        融券偿还量: "short_repay"
+      column_types:
+        date: "date"
+        symbol: "str"
+        name: "str"
+        margin_balance: "float"
+        margin_buy: "float"
+        margin_repay: "float"
+        short_remain: "float"
+        short_sell: "float"
+        short_repay: "float"
+        symbol: "str"
+        margin_balance: "float"
+        short_balance: "float"
 
 margin_summary:
   name: "margin_summary"
@@ -458,9 +520,7 @@ suspended_stocks:
     - {name: "symbol", type: "str", desc: "股票代码"}
     - {name: "name", type: "str", desc: "股票名称"}
     - {name: "suspend_date", type: "date", desc: "停牌时间"}
-    - {name: "resume_date", type: "date", desc: "复牌时间"}
-    - {name: "suspend_reason", type: "str", desc: "停牌原因"}
-    - {name: "resume_date_actual", type: "date", desc: "实际复牌日期"}
+    - {name: "reason", type: "str", desc: "停牌原因"}
 
   rate_limit_key: "em_datacenter"
 
@@ -473,16 +533,12 @@ suspended_stocks:
         代码: "symbol"
         名称: "name"
         停牌时间: "suspend_date"
-        复牌时间: "resume_date"
-        停牌原因: "suspend_reason"
-        复牌日期: "resume_date_actual"
+        停牌原因: "reason"
       column_types:
         symbol: "str"
         name: "str"
         suspend_date: "date"
-        resume_date: "date"
-        suspend_reason: "str"
-        resume_date_actual: "date"
+        reason: "str"
 
 st_stocks:
   name: "st_stocks"
@@ -553,15 +609,6 @@ industry_stocks:
   output:
     - {name: "symbol", type: "str", desc: "股票代码"}
     - {name: "name", type: "str", desc: "股票简称"}
-    - {name: "sw_level1", type: "str", desc: "申万一级行业"}
-    - {name: "sw_level2", type: "str", desc: "申万二级行业"}
-    - {name: "sw_level3", type: "str", desc: "申万三级行业"}
-    - {name: "price", type: "float", desc: "价格"}
-    - {name: "pe", type: "float", desc: "市盈率"}
-    - {name: "pe_ttm", type: "float", desc: "市盈率TTM"}
-    - {name: "pb", type: "float", desc: "市净率"}
-    - {name: "dividend_yield", type: "float", desc: "股息率"}
-    - {name: "market_cap", type: "float", desc: "市值"}
 
   rate_limit_key: "default"
 
@@ -576,27 +623,9 @@ industry_stocks:
       output_mapping:
         股票代码: "symbol"
         股票简称: "name"
-        申万1级: "sw_level1"
-        申万2级: "sw_level2"
-        申万3级: "sw_level3"
-        价格: "price"
-        市盈率: "pe"
-        市盈率ttm: "pe_ttm"
-        市净率: "pb"
-        股息率: "dividend_yield"
-        市值: "market_cap"
       column_types:
         symbol: "str"
         name: "str"
-        sw_level1: "str"
-        sw_level2: "str"
-        sw_level3: "str"
-        price: "float"
-        pe: "float"
-        pe_ttm: "float"
-        pb: "float"
-        dividend_yield: "float"
-        market_cap: "float"
 
 industry_mapping:
   name: "industry_mapping"
@@ -618,15 +647,9 @@ industry_mapping:
   rate_limit_key: "default"
 
   sources:
-    - name: "akshare_sina"
+    - name: "akshare_cninfo"
       func: "stock_industry_change_cninfo"
-      enabled: true
-      input_mapping:
-        symbol: "symbol"
-        start_date: "start_date"
-        end_date: "end_date"
-      output_mapping: {}
-      column_types: {}
+      enabled: false
 
 industry_list:
   name: "industry_list"
@@ -821,7 +844,13 @@ money_flow:
     - {name: "symbol", type: "str", required: true}
     - {name: "market", type: "str", required: false, default: "sh"}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "main_net_inflow", type: "float", desc: "主力净流入"}
+    - {name: "super_large_net_inflow", type: "float", desc: "超大单净流入"}
+    - {name: "large_net_inflow", type: "float", desc: "大单净流入"}
+    - {name: "medium_net_inflow", type: "float", desc: "中单净流入"}
+    - {name: "small_net_inflow", type: "float", desc: "小单净流入"}
 
   rate_limit_key: "default"
 
@@ -832,7 +861,20 @@ money_flow:
       input_mapping:
         symbol: "stock"
         market: "market"
-      output_mapping: {}
+      output_mapping:
+        日期: "date"
+        主力净流入: "main_net_inflow"
+        超大单净流入: "super_large_net_inflow"
+        大单净流入: "large_net_inflow"
+        中单净流入: "medium_net_inflow"
+        小单净流入: "small_net_inflow"
+      column_types:
+        date: "date"
+        main_net_inflow: "float"
+        super_large_net_inflow: "float"
+        large_net_inflow: "float"
+        medium_net_inflow: "float"
+        small_net_inflow: "float"
 
 north_money_flow:
   name: "north_money_flow"
@@ -841,7 +883,11 @@ north_money_flow:
 
   input: []
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "net_flow", type: "float", desc: "北向资金净流入"}
+    - {name: "buy_amount", type: "float", desc: "买入金额"}
+    - {name: "sell_amount", type: "float", desc: "卖出金额"}
 
   rate_limit_key: "default"
 
@@ -849,7 +895,16 @@ north_money_flow:
     - name: "akshare_em"
       func: "stock_hsgt_fund_flow_summary_em"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        日期: "date"
+        北向资金净流入: "net_flow"
+        买入金额: "buy_amount"
+        卖出金额: "sell_amount"
+      column_types:
+        date: "date"
+        net_flow: "float"
+        buy_amount: "float"
+        sell_amount: "float"
 
 northbound_holdings:
   name: "northbound_holdings"
@@ -859,7 +914,11 @@ northbound_holdings:
   input:
     - {name: "symbol", type: "str", required: false, default: "北向资金"}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "hold_count", type: "float", desc: "持股数量"}
+    - {name: "hold_ratio", type: "float", desc: "持股比例"}
+    - {name: "net_buy", type: "float", desc: "净买入"}
 
   rate_limit_key: "default"
 
@@ -869,7 +928,16 @@ northbound_holdings:
       enabled: true
       input_mapping:
         symbol: "symbol"
-      output_mapping: {}
+      output_mapping:
+        日期: "date"
+        持股数量: "hold_count"
+        持股比例: "hold_ratio"
+        净买入: "net_buy"
+      column_types:
+        date: "date"
+        hold_count: "float"
+        hold_ratio: "float"
+        net_buy: "float"
 
 northbound_top_stocks:
   name: "northbound_top_stocks"
@@ -903,7 +971,12 @@ equity_pledge:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "pledge_date", type: "date", desc: "质押日期"}
+    - {name: "shareholder_name", type: "str", desc: "股东名称"}
+    - {name: "pledge_shares", type: "float", desc: "质押股份数"}
+    - {name: "pledge_ratio", type: "float", desc: "质押比例"}
+    - {name: "pledgee", type: "str", desc: "质权人"}
 
   rate_limit_key: "default"
 
@@ -913,7 +986,18 @@ equity_pledge:
       enabled: true
       input_mapping:
         symbol: "symbol"
-      output_mapping: {}
+      output_mapping:
+        质押日期: "pledge_date"
+        股东名称: "shareholder_name"
+        质押股份: "pledge_shares"
+        质押比例: "pledge_ratio"
+        质权人: "pledgee"
+      column_types:
+        pledge_date: "date"
+        shareholder_name: "str"
+        pledge_shares: "float"
+        pledge_ratio: "float"
+        pledgee: "str"
 
 # ── 股东/筹码 ───────────────────────────────────────────
 
@@ -1009,11 +1093,21 @@ performance_forecast:
 
   sources:
     - name: "akshare_em"
-      func: "stock_yjbb_em"
-      enabled: true
+      func: "stock_yjyg_em"
+      enabled: false
       input_mapping:
         date: "date"
-      output_mapping: {}
+      output_mapping:
+        股票代码: "symbol"
+        股票简称: "name"
+        预测指标: "forecast_type"
+        业绩变动: "change_description"
+        预测数值: "forecast_value"
+        业绩变动幅度: "change_pct"
+        业绩变动原因: "change_reason"
+        预告类型: "forecast_category"
+        上年同期值: "prior_year_value"
+        公告日期: "announce_date"
 
 analyst_rank:
   name: "analyst_rank"
@@ -1065,7 +1159,15 @@ stock_bonus:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "announce_date", type: "date", desc: "公告日期"}
+    - {name: "cash_dividend", type: "float", desc: "现金分红"}
+    - {name: "stock_dividend", type: "float", desc: "股票分红"}
+    - {name: "capitalization_reserve", type: "float", desc: "资本公积金转增"}
+    - {name: "record_date", type: "date", desc: "股权登记日"}
+    - {name: "ex_date", type: "date", desc: "除权除息日"}
+    - {name: "pay_date", type: "date", desc: "派息日"}
 
   rate_limit_key: "default"
 
@@ -1075,7 +1177,24 @@ stock_bonus:
       enabled: true
       input_mapping:
         symbol: "symbol"
-      output_mapping: {}
+      output_mapping:
+        股票代码: "symbol"
+        公告日期: "announce_date"
+        现金分红: "cash_dividend"
+        股票分红: "stock_dividend"
+        资本公积金转增: "capitalization_reserve"
+        股权登记日: "record_date"
+        除权除息日: "ex_date"
+        派息日: "pay_date"
+      column_types:
+        symbol: "str"
+        announce_date: "date"
+        cash_dividend: "float"
+        stock_dividend: "float"
+        capitalization_reserve: "float"
+        record_date: "date"
+        ex_date: "date"
+        pay_date: "date"
 
 dividend_by_date:
   name: "dividend_by_date"
@@ -1094,14 +1213,19 @@ dividend_by_date:
       enabled: true
       output_mapping: {}
 
-repurchase_data:
-  name: "repurchase_data"
+repurchase:
+  name: "repurchase"
   category: "equity"
   description: "股票回购数据"
 
   input: []
 
-  output: []
+  output:
+    - {name: "announcement_date", type: "date", desc: "公告日期"}
+    - {name: "progress", type: "str", desc: "回购进度"}
+    - {name: "amount", type: "float", desc: "回购金额"}
+    - {name: "quantity", type: "float", desc: "回购数量"}
+    - {name: "price_range", type: "str", desc: "价格区间"}
 
   rate_limit_key: "default"
 
@@ -1109,7 +1233,18 @@ repurchase_data:
     - name: "akshare_em"
       func: "stock_repurchase_em"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        公告日期: "announcement_date"
+        回购进度: "progress"
+        回购金额: "amount"
+        回购数量: "quantity"
+        价格区间: "price_range"
+      column_types:
+        announcement_date: "date"
+        progress: "str"
+        amount: "float"
+        quantity: "float"
+        price_range: "str"
 
 earnings_forecast:
   name: "earnings_forecast"
@@ -1140,7 +1275,11 @@ rights_issue:
     - {name: "symbol", type: "str", required: false, default: "沪深A股"}
     - {name: "date", type: "str", required: false, default: "20200331"}
 
-  output: []
+  output:
+    - {name: "announce_date", type: "date", desc: "公告日期"}
+    - {name: "rights_price", type: "float", desc: "配股价格"}
+    - {name: "rights_ratio", type: "float", desc: "配股比例"}
+    - {name: "actual_raise", type: "float", desc: "实际募集资金"}
 
   rate_limit_key: "default"
 
@@ -1151,7 +1290,16 @@ rights_issue:
       input_mapping:
         symbol: "symbol"
         date: "date"
-      output_mapping: {}
+      output_mapping:
+        公告日期: "announce_date"
+        配股价格: "rights_price"
+        配股比例: "rights_ratio"
+        实际募集资金: "actual_raise"
+      column_types:
+        announce_date: "date"
+        rights_price: "float"
+        rights_ratio: "float"
+        actual_raise: "float"
 
 # ── 管理层/资本变动 ─────────────────────────────────────
 
@@ -1228,7 +1376,11 @@ restricted_release:
     - {name: "start_date", type: "str", required: true}
     - {name: "end_date", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "release_date", type: "date", desc: "解禁日期"}
+    - {name: "release_shares", type: "float", desc: "解禁股份数"}
+    - {name: "release_ratio", type: "float", desc: "解禁比例"}
 
   rate_limit_key: "default"
 
@@ -1239,7 +1391,16 @@ restricted_release:
       input_mapping:
         start_date: "start_date"
         end_date: "end_date"
-      output_mapping: {}
+      output_mapping:
+        股票代码: "symbol"
+        解禁日期: "release_date"
+        解禁股份: "release_shares"
+        解禁比例: "release_ratio"
+      column_types:
+        symbol: "str"
+        release_date: "date"
+        release_shares: "float"
+        release_ratio: "float"
 
 restricted_release_calendar:
   name: "restricted_release_calendar"
@@ -1334,7 +1495,9 @@ concept_list:
 
   input: []
 
-  output: []
+  output:
+    - {name: "concept_code", type: "str", desc: "概念板块代码"}
+    - {name: "concept_name", type: "str", desc: "概念板块名称"}
 
   rate_limit_key: "default"
 
@@ -1342,7 +1505,12 @@ concept_list:
     - name: "akshare_em"
       func: "stock_board_concept_name_em"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        板块代码: "concept_code"
+        板块名称: "concept_name"
+      column_types:
+        concept_code: "str"
+        concept_name: "str"
 
 concept_stocks:
   name: "concept_stocks"
@@ -1508,7 +1676,12 @@ hot_rank:
 
   input: []
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "排名"}
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "name", type: "str", desc: "股票名称"}
+    - {name: "price", type: "float", desc: "最新价"}
+    - {name: "pct_change", type: "float", desc: "涨跌幅"}
 
   rate_limit_key: "default"
 
@@ -1516,7 +1689,18 @@ hot_rank:
     - name: "akshare_em"
       func: "stock_hk_hot_rank_em"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        排名: "rank"
+        股票代码: "symbol"
+        股票名称: "name"
+        最新价: "price"
+        涨跌幅: "pct_change"
+      column_types:
+        rank: "int"
+        symbol: "str"
+        name: "str"
+        price: "float"
+        pct_change: "float"
 
 # ── 资金流向排行 ────────────────────────────────────────
 
@@ -1548,7 +1732,11 @@ sector_fund_flow:
   input:
     - {name: "symbol", type: "str", required: false, default: "即时"}
 
-  output: []
+  output:
+    - {name: "sector_name", type: "str", desc: "板块名称"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "net_inflow", type: "float", desc: "净流入"}
+    - {name: "stock_count", type: "int", desc: "股票数量"}
 
   rate_limit_key: "default"
 
@@ -1558,7 +1746,16 @@ sector_fund_flow:
       enabled: true
       input_mapping:
         symbol: "symbol"
-      output_mapping: {}
+      output_mapping:
+        板块: "sector_name"
+        涨跌幅: "change_pct"
+        净流入: "net_inflow"
+        股票数量: "stock_count"
+      column_types:
+        sector_name: "str"
+        change_pct: "float"
+        net_inflow: "float"
+        stock_count: "int"
 
 # ── 交易日历 ────────────────────────────────────────────
 
@@ -1952,7 +2149,14 @@ insider_trading:
   input:
     - {name: "symbol", type: "str", required: true, desc: "股票代码"}
 
-  output: []
+  output:
+    - {name: "transaction_date", type: "date", desc: "交易日期"}
+    - {name: "name", type: "str", desc: "姓名"}
+    - {name: "title", type: "str", desc: "职务"}
+    - {name: "transaction_shares", type: "float", desc: "交易股份数"}
+    - {name: "transaction_price", type: "float", desc: "交易价格"}
+    - {name: "transaction_value", type: "float", desc: "交易金额"}
+    - {name: "relationship", type: "str", desc: "与公司关系"}
 
   rate_limit_key: "default"
 
@@ -1962,7 +2166,22 @@ insider_trading:
       enabled: true
       input_mapping:
         symbol: "symbol"
-      output_mapping: {}
+      output_mapping:
+        交易日期: "transaction_date"
+        姓名: "name"
+        职务: "title"
+        交易股份: "transaction_shares"
+        交易价格: "transaction_price"
+        交易金额: "transaction_value"
+        关系: "relationship"
+      column_types:
+        transaction_date: "date"
+        name: "str"
+        title: "str"
+        transaction_shares: "float"
+        transaction_price: "float"
+        transaction_value: "float"
+        relationship: "str"
 
 name_history:
   name: "name_history"
@@ -1972,7 +2191,10 @@ name_history:
   input:
     - {name: "symbol", type: "str", required: true, desc: "股票代码"}
 
-  output: []
+  output:
+    - {name: "change_date", type: "date", desc: "变更日期"}
+    - {name: "old_name", type: "str", desc: "原名称"}
+    - {name: "new_name", type: "str", desc: "新名称"}
 
   rate_limit_key: "default"
 
@@ -1982,7 +2204,14 @@ name_history:
       enabled: true
       input_mapping:
         symbol: "symbol"
-      output_mapping: {}
+      output_mapping:
+        变更日期: "change_date"
+        原名称: "old_name"
+        新名称: "new_name"
+      column_types:
+        change_date: "date"
+        old_name: "str"
+        new_name: "str"
 
 performance_express:
   name: "performance_express"

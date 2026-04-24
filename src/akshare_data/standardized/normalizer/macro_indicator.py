@@ -227,18 +227,20 @@ class MacroIndicatorNormalizer(BaseNormalizer):
             if indicator_name:
                 result["indicator_name"] = indicator_name
             elif "indicator_code" in result.columns:
-                result["indicator_name"] = result["indicator_code"].map(
-                    self._INDICATOR_NAME_MAP
-                ).fillna(result["indicator_code"])
+                result["indicator_name"] = (
+                    result["indicator_code"]
+                    .map(self._INDICATOR_NAME_MAP)
+                    .fillna(result["indicator_code"])
+                )
 
         # Step 4: Resolve frequency
         if "frequency" not in result.columns:
             if frequency:
                 result["frequency"] = frequency
             elif "indicator_code" in result.columns:
-                result["frequency"] = result["indicator_code"].map(
-                    self._FREQUENCY_MAP
-                ).fillna("M")
+                result["frequency"] = (
+                    result["indicator_code"].map(self._FREQUENCY_MAP).fillna("M")
+                )
 
         # Step 5: Set defaults for region, unit, source_org
         if extra_fields is None:
@@ -251,7 +253,8 @@ class MacroIndicatorNormalizer(BaseNormalizer):
 
         # Step 7: Apply parent normalization (field map, dates, types, system fields)
         parent_extra = {
-            k: v for k, v in extra_fields.items()
+            k: v
+            for k, v in extra_fields.items()
             if k not in ("region", "source_org") or k not in result.columns
         }
 
@@ -269,9 +272,9 @@ class MacroIndicatorNormalizer(BaseNormalizer):
         if "source_org" not in normalized.columns:
             normalized["source_org"] = self.default_source_org
         if "unit" not in normalized.columns and "indicator_code" in normalized.columns:
-            normalized["unit"] = normalized["indicator_code"].map(
-                self._UNIT_MAP
-            ).fillna("")
+            normalized["unit"] = (
+                normalized["indicator_code"].map(self._UNIT_MAP).fillna("")
+            )
 
         return normalized
 
@@ -321,7 +324,7 @@ class MacroIndicatorNormalizer(BaseNormalizer):
 
         # Try to match interface name pattern (e.g., "macro_cpi" -> "china_cpi")
         if interface_name.startswith("macro_"):
-            suffix = interface_name[len("macro_"):]
+            suffix = interface_name[len("macro_") :]
             candidate = f"china_{suffix}"
             if candidate in self._INDICATOR_NAME_MAP:
                 return candidate
@@ -333,9 +336,7 @@ class MacroIndicatorNormalizer(BaseNormalizer):
 
         return None
 
-    def _map_value_column(
-        self, df: pd.DataFrame, interface_name: str
-    ) -> pd.DataFrame:
+    def _map_value_column(self, df: pd.DataFrame, interface_name: str) -> pd.DataFrame:
         """Map the value column to standard 'value' name.
 
         Handles indicator-specific column names that contain the actual value.
@@ -388,7 +389,11 @@ class MacroIndicatorNormalizer(BaseNormalizer):
 
         # If only one numeric column exists (besides date), use it
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
-        date_cols = [c for c in df.columns if "date" in c.lower() or "日期" in c or "月份" in c or "季度" in c]
+        date_cols = [
+            c
+            for c in df.columns
+            if "date" in c.lower() or "日期" in c or "月份" in c or "季度" in c
+        ]
         value_candidates = [c for c in numeric_cols if c not in date_cols]
         if len(value_candidates) == 1:
             df["value"] = df[value_candidates[0]]

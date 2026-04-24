@@ -11,12 +11,7 @@ from typing import List
 import pandas as pd
 import pytest
 
-from akshare_data.served.manifest import (
-    ReleaseManifest,
-    ReleaseStatus,
-    SourceBatch,
-)
-from akshare_data.served.publisher import PublishError, Publisher
+from akshare_data.served.publisher import Publisher
 from akshare_data.served.reader import ReadError, Reader
 from akshare_data.served.versioning import (
     ReleaseVersion,
@@ -85,6 +80,7 @@ def _make_standardized_df(n: int = 5, start_date: str = "2024-01-02") -> pd.Data
     )
 
 
+@pytest.mark.unit
 class TestServedReaderRead:
     def _publish(self, tmp_path: Path, hint: str = "1", partition: bool = False) -> str:
         df = _make_standardized_df()
@@ -171,7 +167,7 @@ class TestServedReaderMetadata:
 
     def test_get_table_info_with_version(self, tmp_path: Path):
         v1 = self._publish(tmp_path, "1")
-        v2 = self._publish(tmp_path, "2")
+        self._publish(tmp_path, "2")
         reader = Reader(served_dir=tmp_path)
         manifest = reader.get_manifest("market_quote_daily", version=v1)
         assert manifest.release_version == v1
@@ -302,9 +298,15 @@ class TestVersionSelectorResolve:
         from akshare_data.service.version_selector import VersionSelector, VersionInfo
 
         selector = VersionSelector()
-        selector.register_version("v_20240101_01", VersionInfo(version="v_20240101_01", status="active"))
-        selector.register_version("v_20240102_01", VersionInfo(version="v_20240102_01", status="active"))
-        selector.register_version("v_20240103_01", VersionInfo(version="v_20240103_01", status="active"))
+        selector.register_version(
+            "v_20240101_01", VersionInfo(version="v_20240101_01", status="active")
+        )
+        selector.register_version(
+            "v_20240102_01", VersionInfo(version="v_20240102_01", status="active")
+        )
+        selector.register_version(
+            "v_20240103_01", VersionInfo(version="v_20240103_01", status="active")
+        )
 
         resolved = selector.resolve()
         assert resolved == "v_20240103_01"

@@ -6,6 +6,8 @@ token management, and request handling.
 """
 
 import json
+import os
+import threading
 import time
 from typing import Any, ClassVar
 
@@ -22,21 +24,28 @@ class LixingerClient:
     """Lixinger API client with token management and retry mechanism."""
 
     _instance: ClassVar["LixingerClient | None"] = None
-    BASE_URL = "https://open.lixinger.com/api/"
+    _instance_lock: ClassVar[threading.Lock] = threading.Lock()
+    _DEFAULT_BASE_URL = "https://open.lixinger.com/api/"
+
+    @property
+    def base_url(self) -> str:
+        return os.environ.get("LIXINGER_BASE_URL", self._DEFAULT_BASE_URL)
 
     def __new__(cls, token: str | None = None) -> "LixingerClient":
         if cls._instance is None:
-            instance = super().__new__(cls)
-            try:
-                resolved_token = token or cls._load_token()
-                object.__setattr__(instance, "_token", resolved_token)
-                object.__setattr__(instance, "_session", cls._create_session())
-                object.__setattr__(instance, "logger", get_logger(__name__))
-                object.__setattr__(instance, "_initialized", True)
-            except Exception:
-                object.__setattr__(instance, "_initialized", False)
-                raise
-            cls._instance = instance
+            with cls._instance_lock:
+                if cls._instance is None:
+                    instance = super().__new__(cls)
+                    try:
+                        resolved_token = token or cls._load_token()
+                        object.__setattr__(instance, "_token", resolved_token)
+                        object.__setattr__(instance, "_session", cls._create_session())
+                        object.__setattr__(instance, "logger", get_logger(__name__))
+                        object.__setattr__(instance, "_initialized", True)
+                    except Exception:
+                        object.__setattr__(instance, "_initialized", False)
+                        raise
+                    cls._instance = instance
         return cls._instance
 
     @classmethod
@@ -52,6 +61,8 @@ class LixingerClient:
             backoff_factor=1,
             status_forcelist=[429, 500, 502, 503, 504],
             allowed_methods=["POST"],
+            connect=3,
+            read=3,
         )
         adapter = HTTPAdapter(max_retries=retry_strategy)
         session.mount("https://", adapter)
@@ -72,7 +83,7 @@ class LixingerClient:
         suffix = api_suffix.replace(".", "/")
         if suffix.startswith("/"):
             suffix = suffix[1:]
-        url = self.BASE_URL + suffix
+        url = self.base_url + suffix
 
         start_time = time.time()
 
@@ -81,7 +92,48 @@ class LixingerClient:
                 url=url, data=json.dumps(params), headers=headers, timeout=timeout
             )
             duration_ms = (time.time() - start_time) * 1000
-            result = response.json()
+
+            if not response.ok:
+                try:
+                    error_body = response.json()
+                    error_msg = error_body.get("msg", response.text[:200])
+                except Exception:
+                    error_msg = response.text[:200]
+                self.logger.error(
+                    f"API HTTP error: {api_suffix} status={response.status_code}",
+                    extra={
+                        "context": {
+                            "log_type": "api_request",
+                            "provider": "lixinger",
+                            "api_suffix": api_suffix,
+                            "duration_ms": round(duration_ms, 2),
+                            "status": "error",
+                            "http_status": response.status_code,
+                            "error_msg": error_msg,
+                        }
+                    },
+                )
+                raise RuntimeError(
+                    f"API request failed with HTTP {response.status_code}: {error_msg}"
+                )
+
+            try:
+                result = response.json()
+            except Exception as e:
+                self.logger.error(
+                    f"API response parse error: {api_suffix}",
+                    extra={
+                        "context": {
+                            "log_type": "api_request",
+                            "provider": "lixinger",
+                            "api_suffix": api_suffix,
+                            "duration_ms": round(duration_ms, 2),
+                            "status": "parse_error",
+                            "error_msg": str(e),
+                        }
+                    },
+                )
+                raise RuntimeError(f"API response parse error: {e}")
 
             if result.get("code") == 1:
                 self.logger.info(

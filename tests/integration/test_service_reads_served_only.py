@@ -27,6 +27,33 @@ from akshare_data.service.missing_data_policy import MissingDataReport
 
 
 @pytest.fixture
+def real_cache_manager(tmp_path):
+    """Real CacheManager with pre-populated test data."""
+    reset_cache_manager()
+    CacheManager.reset_instance()
+    cache = CacheManager(base_dir=str(tmp_path))
+
+    df = pd.DataFrame(
+        {
+            "symbol": ["600519"] * 5,
+            "date": pd.date_range("2024-01-01", periods=5),
+            "open": [1800.0] * 5,
+            "high": [1850.0] * 5,
+            "low": [1780.0] * 5,
+            "close": [1820.0] * 5,
+            "volume": [100000.0] * 5,
+            "amount": [182000000.0] * 5,
+            "adjust": ["qfq"] * 5,
+        }
+    )
+    cache.write("stock_daily", df, storage_layer="daily", partition_by="date")
+
+    yield cache
+    reset_cache_manager()
+    CacheManager.reset_instance()
+
+
+@pytest.fixture
 def mock_cache_manager():
     """Mock CacheManager that returns empty DataFrames."""
     cache = MagicMock()
@@ -48,6 +75,11 @@ def data_service(mock_cache_manager) -> DataService:
     return DataService(cache_manager=mock_cache_manager)
 
 
+@pytest.fixture
+def real_data_service(real_cache_manager) -> DataService:
+    return DataService(cache_manager=real_cache_manager)
+
+
 # ---------------------------------------------------------------------------
 # ServedReader is read-only
 # ---------------------------------------------------------------------------
@@ -59,10 +91,14 @@ class TestServedReaderReadOnly:
     """ServedReader must not have write or source-fetch capabilities."""
 
     def test_no_write_method(self, served_reader: ServedReader):
-        assert not hasattr(served_reader, "write"), "ServedReader must not have write method"
+        assert not hasattr(served_reader, "write"), (
+            "ServedReader must not have write method"
+        )
 
     def test_no_fetch_method(self, served_reader: ServedReader):
-        assert not hasattr(served_reader, "fetch"), "ServedReader must not have fetch method"
+        assert not hasattr(served_reader, "fetch"), (
+            "ServedReader must not have fetch method"
+        )
 
     def test_no_source_method(self, served_reader: ServedReader):
         for attr in dir(served_reader):
@@ -73,16 +109,16 @@ class TestServedReaderReadOnly:
             )
 
     def test_read_returns_empty_on_no_data(self, served_reader: ServedReader):
-        result = served_reader.read("market_quote_daily")
+        result = served_reader.read("trade_calendar")
         assert isinstance(result, pd.DataFrame)
         assert result.empty
 
     def test_read_returns_dataframe_type(self, served_reader: ServedReader):
-        result = served_reader.read("market_quote_daily")
+        result = served_reader.read("trade_calendar")
         assert isinstance(result, pd.DataFrame)
 
     def test_exists_returns_false_on_no_data(self, served_reader: ServedReader):
-        assert served_reader.exists("market_quote_daily") is False
+        assert served_reader.exists("trade_calendar") is False
 
     def test_list_tables_returns_list(self, served_reader: ServedReader):
         tables = served_reader.list_tables()
@@ -101,29 +137,31 @@ class TestServiceReadsServedOnly:
 
     def test_query_does_not_call_source(self, data_service: DataService):
         """query() must not trigger any source adapter call."""
-        result = data_service.query("market_quote_daily")
+        result = data_service.query("trade_calendar")
         assert isinstance(result, QueryResult)
         assert result.has_data is False
 
     def test_query_returns_missing_report_when_empty(self, data_service: DataService):
         """When data is missing, query() returns a MissingDataReport."""
-        result = data_service.query("market_quote_daily")
+        result = data_service.query("trade_calendar")
         assert result.missing_report is not None
         assert isinstance(result.missing_report, MissingDataReport)
 
     def test_query_daily_does_not_call_source(self, data_service: DataService):
         """query_daily() must not trigger any source adapter call."""
         result = data_service.query_daily(
-            "market_quote_daily",
+            "stock_daily",
             symbol="600519",
             start_date="2026-04-01",
             end_date="2026-04-22",
         )
         assert isinstance(result, QueryResult)
 
-    def test_query_daily_returns_missing_report_when_empty(self, data_service: DataService):
+    def test_query_daily_returns_missing_report_when_empty(
+        self, data_service: DataService
+    ):
         result = data_service.query_daily(
-            "market_quote_daily",
+            "stock_daily",
             symbol="600519",
             start_date="2026-04-01",
             end_date="2026-04-22",
@@ -196,6 +234,7 @@ class TestArchitectureDependency:
         """service/ must not import from sources/."""
         service_dir = __import__("akshare_data.service").service.__path__[0]
         import os
+
         for root, dirs, files in os.walk(service_dir):
             for fname in files:
                 if not fname.endswith(".py"):
@@ -211,6 +250,7 @@ class TestArchitectureDependency:
         """service/ must not import from ingestion/."""
         service_dir = __import__("akshare_data.service").service.__path__[0]
         import os
+
         for root, dirs, files in os.walk(service_dir):
             for fname in files:
                 if not fname.endswith(".py"):
@@ -225,6 +265,7 @@ class TestArchitectureDependency:
     def test_reader_module_no_source_import(self):
         """service/reader.py must not import from sources/."""
         from akshare_data.service import reader
+
         source = inspect.getsource(reader)
         assert "sources" not in source or "data_sources" not in source, (
             "ServedReader imports from sources module"
@@ -262,6 +303,7 @@ class TestQueryResultStructure:
 
     def test_query_result_with_missing_report(self):
         from akshare_data.service.missing_data_policy import MissingAction
+
         report = MissingDataReport(
             table="market_quote_daily",
             query_params={"symbol": "600519"},

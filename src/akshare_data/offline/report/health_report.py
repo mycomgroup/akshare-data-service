@@ -48,11 +48,10 @@ class HealthReportGenerator:
             return ""
 
         total = len(df)
-        success = (
-            len(df[df["status"].str.contains("Success", na=False)])
-            if "status" in df.columns
-            else 0
-        )
+        if "status" in df.columns:
+            success = len(df[df["status"].astype(str).str.strip() == "Success"])
+        else:
+            success = 0
         rate = (success / total * 100) if total > 0 else 0
 
         sections = {
@@ -66,17 +65,21 @@ class HealthReportGenerator:
         }
 
         if "exec_time" in df.columns:
-            slowest = df.sort_values("exec_time", ascending=False).head(20)
-            sections["Top 20 Slowest APIs"] = slowest[
-                ["func_name", "exec_time", "status"]
-            ]
+            required_cols = ["func_name", "exec_time", "status"]
+            available_cols = [c for c in required_cols if c in df.columns]
+            if len(available_cols) == len(required_cols):
+                slowest = df.sort_values("exec_time", ascending=False).head(20)
+                sections["Top 20 Slowest APIs"] = slowest[required_cols]
+            elif len(available_cols) > 0:
+                slowest = df.sort_values("exec_time", ascending=False).head(20)
+                sections["Top 20 Slowest APIs"] = slowest[available_cols]
 
         content = self._renderer.render_markdown(sections)
 
         if output_file is None:
             output_file = (
                 self._output_dir
-                / f"health_report_{datetime.now().strftime('%Y%m%d')}.md"
+                / f"health_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
             )
 
         self._renderer.save(content, output_file)

@@ -100,7 +100,9 @@ class PriceAnomalyCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{total_violations} price anomalies detected" if total_violations else "No price anomalies",
+            message=f"{total_violations} price anomalies detected"
+            if total_violations
+            else "No price anomalies",
             failed_count=total_violations,
             total_count=len(df),
             details={
@@ -183,17 +185,21 @@ class NumericRangeAnomalyCheck(BaseCheck):
         if n_outliers > 0:
             outlier_indices = outlier_mask[outlier_mask].index.tolist()[:10]
             for idx in outlier_indices:
-                outlier_values.append({
-                    "index": idx,
-                    "value": float(vals.loc[idx]),
-                })
+                outlier_values.append(
+                    {
+                        "index": idx,
+                        "value": float(vals.loc[idx]),
+                    }
+                )
 
         return RuleResult(
             rule_id=rule.rule_id,
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{n_outliers} outliers detected ({method}: [{lower:.2f}, {upper:.2f}])" if n_outliers else f"All values within {method} bounds",
+            message=f"{n_outliers} outliers detected ({method}: [{lower:.2f}, {upper:.2f}])"
+            if n_outliers
+            else f"All values within {method} bounds",
             failed_count=n_outliers,
             total_count=len(vals),
             details={
@@ -258,8 +264,12 @@ class VolatilityAnomalyCheck(BaseCheck):
             abnormal_indices = abnormal_mask[abnormal_mask].index.tolist()[:10]
             for idx in abnormal_indices:
                 detail = {
-                    "volatility": float(rolling_std.loc[idx]) if pd.notna(rolling_std.loc[idx]) else None,
-                    "threshold": float(threshold.loc[idx]) if pd.notna(threshold.loc[idx]) else None,
+                    "volatility": float(rolling_std.loc[idx])
+                    if pd.notna(rolling_std.loc[idx])
+                    else None,
+                    "threshold": float(threshold.loc[idx])
+                    if pd.notna(threshold.loc[idx])
+                    else None,
                 }
                 if date_col in df.columns:
                     detail["date"] = str(df.loc[idx, date_col])
@@ -270,7 +280,9 @@ class VolatilityAnomalyCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{n_abnormal} periods of abnormal volatility" if n_abnormal else "Volatility within normal range",
+            message=f"{n_abnormal} periods of abnormal volatility"
+            if n_abnormal
+            else "Volatility within normal range",
             failed_count=n_abnormal,
             total_count=len(vals),
             details={

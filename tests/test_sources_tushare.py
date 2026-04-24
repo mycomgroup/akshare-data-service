@@ -9,6 +9,7 @@ from akshare_data.sources.tushare_source import TushareAdapter, set_tushare_toke
 from akshare_data.core.errors import SourceUnavailableError
 
 
+@pytest.mark.unit
 class TestTushareAdapter:
     """Test suite for TushareAdapter class."""
 

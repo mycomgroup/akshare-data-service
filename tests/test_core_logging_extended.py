@@ -24,6 +24,7 @@ from akshare_data.core.logging import (
 )
 
 
+@pytest.mark.unit
 class TestCreateRotatingFileHandlerExtended:
     """Extended tests for create_rotating_file_handler() function."""
 

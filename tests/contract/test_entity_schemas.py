@@ -246,6 +246,8 @@ class TestBusinessFieldContract:
             "turnover_amount",
             "change_pct",
             "turnover_rate",
+            "amplitude",
+            "change",
         },
         "financial_indicator": {
             "security_id",

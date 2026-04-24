@@ -20,11 +20,14 @@ import pandas as pd
 from akshare_data.standardized.normalizer.financial_indicator import (
     FinancialIndicatorNormalizer,
 )
-from akshare_data.standardized.normalizer.macro_indicator import MacroIndicatorNormalizer
+from akshare_data.standardized.normalizer.macro_indicator import (
+    MacroIndicatorNormalizer,
+)
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures" / "standardized_samples"
 
 
+@pytest.mark.unit
 def _load_json(name: str) -> list[dict]:
     """Load a JSON fixture file."""
     with open(name, "r", encoding="utf-8") as f:
@@ -44,17 +47,13 @@ class TestFinancialIndicatorNormalizer:
     @pytest.fixture
     def akshare_em_df(self):
         """Load AkShare EM raw sample."""
-        data = _load_json(
-            FIXTURES_DIR / "financial_indicator" / "akshare_em_raw.json"
-        )
+        data = _load_json(FIXTURES_DIR / "financial_indicator" / "akshare_em_raw.json")
         return pd.DataFrame(data)
 
     @pytest.fixture
     def lixinger_df(self):
         """Load Lixinger raw sample."""
-        data = _load_json(
-            FIXTURES_DIR / "financial_indicator" / "lixinger_raw.json"
-        )
+        data = _load_json(FIXTURES_DIR / "financial_indicator" / "lixinger_raw.json")
         return pd.DataFrame(data)
 
     def test_akshare_em_produces_standard_fields(self, normalizer, akshare_em_df):

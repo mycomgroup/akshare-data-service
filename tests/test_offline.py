@@ -32,6 +32,7 @@ def reset_global_cache():
     reset_cache_manager()
 
 
+@pytest.mark.unit
 @pytest.mark.skip(reason="RateLimiter API changed — use DomainRateLimiter instead")
 class TestRateLimiter:
     """测试限速器 (deprecated — replaced by DomainRateLimiter)"""

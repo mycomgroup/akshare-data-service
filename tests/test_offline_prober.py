@@ -26,6 +26,7 @@ from akshare_data.offline.prober import (
 )
 
 
+@pytest.mark.unit
 @pytest.fixture
 def temp_prober_dirs(tmp_path):
     """创建临时目录结构"""

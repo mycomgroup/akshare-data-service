@@ -27,11 +27,19 @@ VALID_LAYERS = {"raw", "standardized", "served"}
 VALID_SEVERITIES = {"error", "warning", "info"}
 VALID_GATE_ACTIONS = {"block", "alert", "ignore"}
 VALID_RULE_TYPES = {
-    "system_fields_complete", "schema_fingerprint_valid",
-    "request_before_ingest", "record_count_min",
-    "non_null", "unique_key", "range", "enum",
-    "continuity", "freshness", "business_rule",
-    "cross_source_diff", "release_manifest_complete",
+    "system_fields_complete",
+    "schema_fingerprint_valid",
+    "request_before_ingest",
+    "record_count_min",
+    "non_null",
+    "unique_key",
+    "range",
+    "enum",
+    "continuity",
+    "freshness",
+    "business_rule",
+    "cross_source_diff",
+    "release_manifest_complete",
 }
 
 
@@ -112,7 +120,9 @@ class QualityGate:
     def __init__(self, rules: list[QualityRule]):
         self._rules = rules
 
-    def evaluate(self, dataset: str, batch_id: str, layer: str, data: Any = None) -> QualityGateResult:
+    def evaluate(
+        self, dataset: str, batch_id: str, layer: str, data: Any = None
+    ) -> QualityGateResult:
         result = QualityGateResult(dataset, batch_id, layer)
         for rule in self._rules:
             if rule.layer != layer:
@@ -145,7 +155,9 @@ class TestQualityConfigExistence:
     """Quality config files must exist for P0 datasets."""
 
     def test_quality_config_dir_exists(self):
-        assert QUALITY_CONFIG_DIR.exists(), f"Missing quality config dir: {QUALITY_CONFIG_DIR}"
+        assert QUALITY_CONFIG_DIR.exists(), (
+            f"Missing quality config dir: {QUALITY_CONFIG_DIR}"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -227,14 +239,16 @@ class TestGateBlockingBehavior:
 
     def test_error_block_fails_gate(self):
         rules = [
-            QualityRule({
-                "rule_id": "r1",
-                "layer": "standardized",
-                "type": "unique_key",
-                "severity": "error",
-                "gate_action": "block",
-                "fields": ["security_id"],
-            }),
+            QualityRule(
+                {
+                    "rule_id": "r1",
+                    "layer": "standardized",
+                    "type": "unique_key",
+                    "severity": "error",
+                    "gate_action": "block",
+                    "fields": ["security_id"],
+                }
+            ),
         ]
         gate = QualityGate(rules)
         result = gate.evaluate("market_quote_daily", "b1", "standardized")
@@ -242,16 +256,18 @@ class TestGateBlockingBehavior:
 
     def test_warning_alert_does_not_block(self):
         rules = [
-            QualityRule({
-                "rule_id": "r1",
-                "layer": "standardized",
-                "type": "range",
-                "severity": "warning",
-                "gate_action": "alert",
-                "field": "roe_pct",
-                "min": -100,
-                "max": 100,
-            }),
+            QualityRule(
+                {
+                    "rule_id": "r1",
+                    "layer": "standardized",
+                    "type": "range",
+                    "severity": "warning",
+                    "gate_action": "alert",
+                    "field": "roe_pct",
+                    "min": -100,
+                    "max": 100,
+                }
+            ),
         ]
         gate = QualityGate(rules)
         result = gate.evaluate("financial_indicator", "b1", "standardized")
@@ -259,14 +275,16 @@ class TestGateBlockingBehavior:
 
     def test_error_ignore_does_not_block(self):
         rules = [
-            QualityRule({
-                "rule_id": "r1",
-                "layer": "standardized",
-                "type": "non_null",
-                "severity": "error",
-                "gate_action": "ignore",
-                "fields": ["x"],
-            }),
+            QualityRule(
+                {
+                    "rule_id": "r1",
+                    "layer": "standardized",
+                    "type": "non_null",
+                    "severity": "error",
+                    "gate_action": "ignore",
+                    "fields": ["x"],
+                }
+            ),
         ]
         gate = QualityGate(rules)
         result = gate.evaluate("market_quote_daily", "b1", "standardized")
@@ -317,8 +335,19 @@ class TestFieldReferenceContract:
     """Quality rules must reference standard entity fields, not legacy aliases."""
 
     LEGACY_NAMES = {
-        "symbol", "code", "ts_code", "date", "close", "open",
-        "high", "low", "amount", "turnover", "pe", "roe", "vol",
+        "symbol",
+        "code",
+        "ts_code",
+        "date",
+        "close",
+        "open",
+        "high",
+        "low",
+        "amount",
+        "turnover",
+        "pe",
+        "roe",
+        "vol",
     }
 
     def test_rule_fields_no_legacy_names(self):
@@ -360,8 +389,10 @@ class TestLayerRuleBoundary:
     """Raw rules must be technical only; Standardized rules can be business."""
 
     RAW_ONLY_TYPES = {
-        "system_fields_complete", "schema_fingerprint_valid",
-        "request_before_ingest", "record_count_min",
+        "system_fields_complete",
+        "schema_fingerprint_valid",
+        "request_before_ingest",
+        "record_count_min",
     }
 
     def test_raw_rules_are_technical_only(self):
@@ -403,8 +434,13 @@ class TestReleaseManifestCompleteness:
     """Served release manifest must be complete before publishing."""
 
     REQUIRED_RELEASE_FIELDS = {
-        "release_version", "dataset", "batch_id", "publish_time",
-        "record_count", "schema_version", "quality_status",
+        "release_version",
+        "dataset",
+        "batch_id",
+        "publish_time",
+        "record_count",
+        "schema_version",
+        "quality_status",
     }
 
     def test_release_manifest_structure(self):

@@ -658,10 +658,8 @@ class LixingerAdapter(DataSource):
     def get_futures_main_contracts(self) -> pd.DataFrame:
         raise NotImplementedError(f"{self.name} 不支持 get_futures_main_contracts")
 
-
     def get_news_data(self, symbol: str) -> pd.DataFrame:
         raise NotImplementedError(f"{self.name} 不支持 get_news_data")
-
 
     def get_block_deal(
         self, symbol: str, start_date: str, end_date: str

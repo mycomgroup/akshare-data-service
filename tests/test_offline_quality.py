@@ -14,6 +14,7 @@ from akshare_data.offline.quality import (
 )
 
 
+@pytest.mark.unit
 class TestDataQualityChecker:
     """测试 DataQualityChecker 类"""
 

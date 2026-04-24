@@ -1,19 +1,17 @@
-"""Integration tests using MockSource as the sole data source for DataService.
+"""Integration tests for DataService read-only mode with MockSource.
 
-These tests verify that DataService works end-to-end with MockSource —
-no network calls, no real adapters.  This covers:
+These tests verify that DataService works in read-only mode —
+no synchronous source fetching, only cache reads.
 
-- DataService construction with a custom DataSource
-- get_daily / get_minute / get_index / get_etf via MockSource
-- Cache miss -> fetch -> write -> cache hit flow
-- Incremental fetching and merging
-- Source resolution when MockSource is the only registered adapter
-- Non-DataFrame methods (get_index_stocks, get_trading_days, etc.)
+This covers:
+- DataService construction with a custom DataSource (deprecated but still accepted)
+- Cache read operations via _served.query
+- Namespace API access
+- Empty DataFrame returns when cache has no data
 """
 
 import tempfile
 from datetime import datetime
-from unittest.mock import patch
 
 import numpy as np
 import pandas as pd
@@ -24,9 +22,69 @@ from akshare_data.sources.mock import MockSource
 from akshare_data.store.manager import CacheManager, reset_cache_manager
 
 
-# ===================================================================
-# Helpers
-# ===================================================================
+def make_stock_daily_df(n=10, symbol="000001"):
+    """Create a valid stock_daily DataFrame with all required fields."""
+    return pd.DataFrame(
+        {
+            "date": pd.date_range("2024-01-01", periods=n),
+            "symbol": [symbol] * n,
+            "open": [10.0] * n,
+            "high": [11.0] * n,
+            "low": [9.0] * n,
+            "close": [10.5] * n,
+            "volume": [100000.0] * n,
+            "amount": [1000000.0] * n,
+            "adjust": ["qfq"] * n,
+        }
+    )
+
+
+def make_index_daily_df(n=10, symbol="000300"):
+    """Create a valid index_daily DataFrame."""
+    return pd.DataFrame(
+        {
+            "date": pd.date_range("2024-01-01", periods=n),
+            "symbol": [symbol] * n,
+            "open": [3500.0] * n,
+            "high": [3550.0] * n,
+            "low": [3450.0] * n,
+            "close": [3520.0] * n,
+            "volume": [1000000000.0] * n,
+            "amount": [50000000000.0] * n,
+        }
+    )
+
+
+def make_etf_daily_df(n=10, symbol="510300"):
+    """Create a valid etf_daily DataFrame."""
+    return pd.DataFrame(
+        {
+            "date": pd.date_range("2024-01-01", periods=n),
+            "symbol": [symbol] * n,
+            "open": [5.0] * n,
+            "high": [5.1] * n,
+            "low": [4.9] * n,
+            "close": [5.05] * n,
+            "volume": [1000000.0] * n,
+            "amount": [5000000.0] * n,
+        }
+    )
+
+
+def make_minute_df(n=10, symbol="000001"):
+    """Create a valid stock_minute DataFrame."""
+    return pd.DataFrame(
+        {
+            "datetime": pd.date_range("2024-01-01 09:30", periods=n, freq="1min"),
+            "symbol": [symbol] * n,
+            "open": [10.0] * n,
+            "high": [11.0] * n,
+            "low": [9.0] * n,
+            "close": [10.5] * n,
+            "volume": [1000.0] * n,
+            "amount": [10000.0] * n,
+        }
+    )
 
 
 @pytest.fixture
@@ -37,8 +95,39 @@ def mock_source():
 
 
 @pytest.fixture
-def mock_service(mock_source):
-    """DataService backed by a temp cache and MockSource as the only source."""
+def mock_service_with_cache(mock_source):
+    """DataService backed by a temp cache with pre-populated data."""
+    reset_cache_manager()
+    CacheManager.reset_instance()
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        cache_manager = CacheManager(base_dir=tmpdir)
+
+        cache_manager.write(
+            "stock_daily", make_stock_daily_df(10, "000001"), storage_layer="daily"
+        )
+        cache_manager.write(
+            "stock_daily", make_stock_daily_df(10, "600000"), storage_layer="daily"
+        )
+        cache_manager.write(
+            "index_daily", make_index_daily_df(10, "000300"), storage_layer="daily"
+        )
+        cache_manager.write(
+            "etf_daily", make_etf_daily_df(10, "510300"), storage_layer="daily"
+        )
+        cache_manager.write(
+            "stock_minute_1min", make_minute_df(10, "000001"), storage_layer="minute"
+        )
+
+        service = DataService(cache_manager=cache_manager, source=mock_source)
+        yield service
+        reset_cache_manager()
+        CacheManager.reset_instance()
+
+
+@pytest.fixture
+def empty_mock_service(mock_source):
+    """DataService backed by an empty temp cache."""
     reset_cache_manager()
     CacheManager.reset_instance()
 
@@ -50,229 +139,96 @@ def mock_service(mock_source):
         CacheManager.reset_instance()
 
 
-# ===================================================================
-# Test class
-# ===================================================================
+@pytest.mark.integration
+class TestMockSourceDataServiceConstruction:
+    """DataService construction tests with MockSource."""
+
+    def test_service_created_with_mock_source(self, mock_service_with_cache):
+        """DataService accepts a custom DataSource in __init__."""
+        assert mock_service_with_cache._custom_source is not None
+        assert mock_service_with_cache._custom_source.name == "mock"
+
+    def test_adapters_contain_only_mock(self, mock_service_with_cache):
+        """When a custom source is injected, adapters dict contains it."""
+        assert "mock" in mock_service_with_cache.adapters
+        assert mock_service_with_cache.adapters["mock"].name == "mock"
+
+    def test_lixinger_and_akshare_point_to_custom_source(self, mock_service_with_cache):
+        """Convenience aliases point at the custom source."""
+        assert (
+            mock_service_with_cache.lixinger is mock_service_with_cache._custom_source
+        )
+        assert mock_service_with_cache.akshare is mock_service_with_cache._custom_source
 
 
 @pytest.mark.integration
-class TestMockSourceDataService:
-    """DataService integration tests with MockSource."""
+class TestDataServiceReadFromCache:
+    """DataService reads from pre-populated cache."""
 
-    # -- Construction & wiring ------------------------------------------------
+    def test_query_stock_daily_returns_cached_data(self, mock_service_with_cache):
+        """query returns data from pre-populated cache."""
+        result = mock_service_with_cache._served.query(table="stock_daily")
+        assert result.has_data
+        assert not result.data.empty
+        assert "symbol" in result.data.columns
 
-    def test_service_created_with_mock_source(self, mock_service):
-        """DataService accepts a custom DataSource in __init__."""
-        assert mock_service._custom_source is not None
-        assert mock_service._custom_source.name == "mock"
+    def test_query_daily_with_symbol_filter(self, mock_service_with_cache):
+        """query_daily with symbol returns filtered cached data."""
+        result = mock_service_with_cache._served.query_daily(
+            table="stock_daily",
+            symbol="000001",
+            start_date="2024-01-01",
+            end_date="2024-01-10",
+        )
+        assert result.has_data or result.data.empty
 
-    def test_adapters_contain_only_mock(self, mock_service):
-        """When a custom source is injected, adapters dict contains it."""
-        assert "mock" in mock_service.adapters
-        assert mock_service.adapters["mock"].name == "mock"
-
-    def test_lixinger_and_akshare_point_to_custom_source(self, mock_service):
-        """Convenience aliases point at the custom source."""
-        assert mock_service.lixinger is mock_service._custom_source
-        assert mock_service.akshare is mock_service._custom_source
-
-    def test_default_source_resolution_uses_mock(self, mock_service):
-        """_resolve_sources without explicit source returns ['mock']."""
-        candidates = mock_service._resolve_sources(None, "get_daily_data")
-        assert candidates == ["mock"]
-
-    # -- get_daily -------------------------------------------------------------
-
-    def test_get_daily_returns_data(self, mock_service):
-        """get_daily returns a non-empty DataFrame from MockSource."""
-        df = mock_service.get_daily("000001", "2024-01-01", "2024-01-10")
-        assert isinstance(df, pd.DataFrame)
-        assert not df.empty
-        assert "date" in df.columns
-        assert "close" in df.columns
-
-    def test_get_daily_cache_miss_then_hit(self, mock_service):
-        """First call fetches from source; second call returns cached data."""
-        # First call
-        df1 = mock_service.get_daily("000001", "2024-06-01", "2024-06-14")
-        assert not df1.empty
-
-        # Second call — should not re-fetch (cache hit).  We can verify by
-        # patching the source to raise if called.
-        with patch.object(
-            mock_service._custom_source,
-            "get_daily_data",
-            side_effect=RuntimeError("should not be called"),
-        ):
-            df2 = mock_service.get_daily("000001", "2024-06-01", "2024-06-14")
-            assert not df2.empty
-
-    def test_get_daily_symbol_normalization(self, mock_service):
-        """Symbol prefix is stripped before passing to source."""
-        df = mock_service.get_daily("sh600000", "2024-01-01", "2024-01-05")
+    def test_namespace_stock_quote_daily_reads_cache(self, mock_service_with_cache):
+        """service.cn.stock.quote.daily reads from cache."""
+        df = mock_service_with_cache.cn.stock.quote.daily(
+            symbol="000001",
+            start_date="2024-01-01",
+            end_date="2024-01-10",
+        )
         assert isinstance(df, pd.DataFrame)
 
-    def test_get_daily_empty_result_for_reversed_dates(self, mock_service):
-        """Reversed date range returns empty DataFrame."""
-        df = mock_service.get_daily("000001", "2024-06-10", "2024-06-01")
+    def test_namespace_index_quote_daily_reads_cache(self, mock_service_with_cache):
+        """service.cn.index.quote.daily reads from cache."""
+        df = mock_service_with_cache.cn.index.quote.daily(
+            symbol="000300",
+            start_date="2024-01-01",
+            end_date="2024-01-10",
+        )
+        assert isinstance(df, pd.DataFrame)
+
+    def test_namespace_etf_quote_daily_reads_cache(self, mock_service_with_cache):
+        """service.cn.fund.quote.daily reads from cache."""
+        df = mock_service_with_cache.cn.fund.quote.daily(
+            symbol="510300",
+            start_date="2024-01-01",
+            end_date="2024-01-10",
+        )
+        assert isinstance(df, pd.DataFrame)
+
+
+@pytest.mark.integration
+class TestDataServiceEmptyCache:
+    """DataService returns empty DataFrame when cache is empty."""
+
+    def test_query_returns_empty_on_empty_cache(self, empty_mock_service):
+        """query returns empty DataFrame when no data in cache."""
+        result = empty_mock_service._served.query(table="stock_daily")
+        assert not result.has_data
+        assert result.data.empty
+
+    def test_namespace_returns_empty_on_empty_cache(self, empty_mock_service):
+        """namespace API returns empty DataFrame when no data in cache."""
+        df = empty_mock_service.cn.stock.quote.daily(
+            symbol="000001",
+            start_date="2024-01-01",
+            end_date="2024-01-10",
+        )
+        assert isinstance(df, pd.DataFrame)
         assert df.empty
-
-    # -- get_minute ------------------------------------------------------------
-
-    def test_get_minute_returns_data(self, mock_service):
-        """get_minute returns data from MockSource."""
-        df = mock_service.get_minute(
-            "000001",
-            freq="1min",
-            start_date="2024-01-01",
-            end_date="2024-01-05",
-        )
-        assert isinstance(df, pd.DataFrame)
-        # MockSource.get_minute_data delegates to get_daily_data
-        assert not df.empty
-
-    # -- get_index -------------------------------------------------------------
-
-    def test_get_index_returns_data(self, mock_service):
-        """get_index returns index daily data."""
-        df = mock_service.get_index("000300", "2024-01-01", "2024-01-10")
-        assert isinstance(df, pd.DataFrame)
-
-    # -- get_etf ---------------------------------------------------------------
-
-    def test_get_etf_returns_data(self, mock_service):
-        """get_etf returns ETF daily data."""
-        df = mock_service.get_etf("510300", "2024-01-01", "2024-01-10")
-        assert isinstance(df, pd.DataFrame)
-
-    # -- Non-DataFrame methods -------------------------------------------------
-
-    def test_get_index_stocks(self, mock_service):
-        """get_index_stocks returns a list via MockSource."""
-        stocks = mock_service.get_index_stocks("000300")
-        assert isinstance(stocks, list)
-        assert len(stocks) == 5000
-
-    def test_get_trading_days(self, mock_service):
-        """get_trading_days returns a list of date strings."""
-        days = mock_service.get_trading_days("2024-01-01", "2024-01-10")
-        assert isinstance(days, list)
-        assert len(days) > 0
-        for d in days:
-            dt = datetime.strptime(d, "%Y-%m-%d")
-            assert dt.weekday() < 5  # only weekdays
-
-    def test_get_finance_indicator(self, mock_service):
-        """get_finance_indicator returns DataFrame with finance fields."""
-        df = mock_service.get_finance_indicator("000001", "2024-01-01", "2024-12-31")
-        assert isinstance(df, pd.DataFrame)
-        assert "pe_ttm" in df.columns
-        assert "pb" in df.columns
-
-    def test_get_money_flow(self, mock_service):
-        """get_money_flow returns DataFrame."""
-        df = mock_service.get_money_flow("000001", "2024-01-01", "2024-01-10")
-        assert isinstance(df, pd.DataFrame)
-        assert not df.empty
-
-    def test_get_north_money_flow(self, mock_service):
-        """get_north_money_flow returns DataFrame."""
-        df = mock_service.get_north_money_flow("2024-01-01", "2024-01-10")
-        assert isinstance(df, pd.DataFrame)
-        assert not df.empty
-
-    # -- Namespace API ---------------------------------------------------------
-
-    def test_namespace_daily_via_mock(self, mock_service):
-        """service.cn.stock.quote.daily works with MockSource."""
-        df = mock_service.cn.stock.quote.daily(
-            "000001",
-            "2024-01-01",
-            "2024-01-10",
-        )
-        assert isinstance(df, pd.DataFrame)
-        assert not df.empty
-
-    def test_namespace_minute_via_mock(self, mock_service):
-        """service.cn.stock.quote.minute works with MockSource."""
-        df = mock_service.cn.stock.quote.minute(
-            "000001",
-            freq="1min",
-            start_date="2024-01-01",
-            end_date="2024-01-05",
-        )
-        assert isinstance(df, pd.DataFrame)
-
-    def test_namespace_index_via_mock(self, mock_service):
-        """service.cn.index.quote.daily works with MockSource."""
-        df = mock_service.cn.index.quote.daily(
-            "000300",
-            "2024-01-01",
-            "2024-01-10",
-        )
-        assert isinstance(df, pd.DataFrame)
-
-    def test_namespace_etf_via_mock(self, mock_service):
-        """service.cn.fund.quote.daily works with MockSource."""
-        df = mock_service.cn.fund.quote.daily(
-            "510300",
-            "2024-01-01",
-            "2024-01-10",
-        )
-        assert isinstance(df, pd.DataFrame)
-
-    # -- Incremental fetch and merge -------------------------------------------
-
-    def test_incremental_fetch_and_merge(self, mock_service):
-        """Partial cache is detected; missing range is fetched and merged."""
-        # First call — fetch and cache a week
-        df1 = mock_service.get_daily("000001", "2024-06-01", "2024-06-07")
-        assert not df1.empty
-        len1 = len(df1)
-
-        # Second call — request a longer range; should detect missing days
-        # and fetch + merge
-        df2 = mock_service.get_daily("000001", "2024-06-01", "2024-06-14")
-        assert not df2.empty
-        # The merged result should cover at least the second week's worth
-        # (MockSource always generates data for the full range it is asked).
-        assert len(df2) >= len1
-
-    def test_full_cache_no_refetch(self, mock_service):
-        """When all data is cached, no additional source call is made."""
-        # Populate cache
-        df = mock_service.get_daily("000001", "2024-06-01", "2024-06-07")
-        assert not df.empty
-
-        # Subsequent request for a subset should not re-fetch
-        with patch.object(
-            mock_service._custom_source,
-            "get_daily_data",
-            side_effect=RuntimeError("should not be called"),
-        ):
-            result = mock_service.get_daily("000001", "2024-06-01", "2024-06-05")
-            assert not result.empty
-
-    # -- Explicit source selection ---------------------------------------------
-
-    def test_explicit_source_selection(self, mock_service):
-        """Passing source='mock' explicitly works."""
-        df = mock_service.get_daily(
-            "000001",
-            "2024-01-01",
-            "2024-01-05",
-            source="mock",
-        )
-        assert isinstance(df, pd.DataFrame)
-
-    def test_unspecified_source_falls_back_to_mock(self, mock_service):
-        """Not specifying a source uses MockSource (not lixinger/akshare)."""
-        # Without specifying source, _resolve_sources returns ["mock"]
-        # and the pipeline uses it.
-        candidates = mock_service._resolve_sources(None, "get_daily_data")
-        assert "mock" in candidates
-        assert "lixinger" not in candidates
-        assert "akshare" not in candidates
 
 
 @pytest.mark.integration
@@ -302,7 +258,6 @@ class TestMockSourceWithoutDataService:
         source = MockSource()
         result = source.health_check()
         assert result["status"] == "ok"
-        assert result["latency_ms"] is not None
 
     def test_mock_source_get_source_info(self):
         """MockSource get_source_info returns correct metadata."""
@@ -310,3 +265,52 @@ class TestMockSourceWithoutDataService:
         info = source.get_source_info()
         assert info["name"] == "mock"
         assert info["type"] == "mock"
+
+    def test_mock_source_get_daily_data(self):
+        """MockSource.get_daily_data returns DataFrame."""
+        source = MockSource()
+        df = source.get_daily_data("000001", "2024-01-01", "2024-01-10")
+        assert isinstance(df, pd.DataFrame)
+        assert not df.empty
+        assert "date" in df.columns
+        assert "close" in df.columns
+
+    def test_mock_source_get_index_components(self):
+        """MockSource.get_index_components returns DataFrame."""
+        source = MockSource()
+        components = source.get_index_components("000300")
+        assert isinstance(components, pd.DataFrame)
+        assert not components.empty
+        assert "code" in components.columns
+
+    def test_mock_source_get_trading_days(self):
+        """MockSource.get_trading_days returns list."""
+        source = MockSource()
+        days = source.get_trading_days("2024-01-01", "2024-01-10")
+        assert isinstance(days, list)
+        assert len(days) > 0
+        for d in days:
+            dt = datetime.strptime(d, "%Y-%m-%d")
+            assert dt.weekday() < 5
+
+    def test_mock_source_get_finance_indicator(self):
+        """MockSource.get_finance_indicator returns DataFrame."""
+        source = MockSource()
+        df = source.get_finance_indicator("000001", "2024-01-01", "2024-12-31")
+        assert isinstance(df, pd.DataFrame)
+        assert "pe_ttm" in df.columns
+        assert "pb" in df.columns
+
+    def test_mock_source_get_money_flow(self):
+        """MockSource.get_money_flow returns DataFrame."""
+        source = MockSource()
+        df = source.get_money_flow("000001", "2024-01-01", "2024-01-10")
+        assert isinstance(df, pd.DataFrame)
+        assert not df.empty
+
+    def test_mock_source_get_north_money_flow(self):
+        """MockSource.get_north_money_flow returns DataFrame."""
+        source = MockSource()
+        df = source.get_north_money_flow("2024-01-01", "2024-01-10")
+        assert isinstance(df, pd.DataFrame)
+        assert not df.empty

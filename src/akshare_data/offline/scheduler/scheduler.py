@@ -97,7 +97,6 @@ class Scheduler:
         interface = task.get("interface")
         mode = task.get("mode", "incremental")
         days_back = task.get("days_back", 1)
-        task.get("symbols")
 
         if mode == "full":
             self._downloader.download_full(

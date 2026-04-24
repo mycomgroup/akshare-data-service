@@ -5,14 +5,11 @@ from __future__ import annotations
 from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
 import tempfile
-import json
 
 import pytest
-import yaml
 
 from akshare_data.governance.deprecation import (
     DeprecationRegistry,
-    DeprecationRecord,
     DeprecationStatus,
 )
 from akshare_data.governance.ownership import (
@@ -22,7 +19,6 @@ from akshare_data.governance.ownership import (
 )
 from akshare_data.governance.change_log import (
     ChangeLog,
-    SchemaChange,
     ChangeType,
 )
 
@@ -31,10 +27,9 @@ from akshare_data.governance.change_log import (
 def mock_schema_registry():
     """Create a mock SchemaRegistry with registered entities."""
     from unittest.mock import MagicMock
-    from akshare_data.governance.schema_registry import EntitySchema, FieldDef
 
     registry = MagicMock()
-    
+
     mock_entity = MagicMock()
     mock_entity.name = "market_quote_daily"
     mock_entity.version = "v1"
@@ -43,12 +38,16 @@ def mock_schema_registry():
     mock_entity.storage_layer = "daily"
     mock_entity.primary_key = ["symbol", "trade_date"]
     mock_entity.partition_by = ["symbol"]
-    mock_entity.fields = {"close_price": MagicMock(name="close_price", field_type="float")}
+    mock_entity.fields = {
+        "close_price": MagicMock(name="close_price", field_type="float")
+    }
     mock_entity.system_fields = {}
-    
+
     registry.get = MagicMock(return_value=mock_entity)
-    registry.list_all = MagicMock(return_value=["market_quote_daily", "market_quote_minute"])
-    
+    registry.list_all = MagicMock(
+        return_value=["market_quote_daily", "market_quote_minute"]
+    )
+
     return registry
 
 
@@ -166,7 +165,8 @@ class TestDeprecationRegistry:
         """Test impact summary generation."""
         registry = DeprecationRegistry()
         registry.deprecate(
-            "entity1", "field1",
+            "entity1",
+            "field1",
             impact_analysis={"downstream_consumers": 5},
         )
         summary = registry.get_impact_summary("entity1", "field1")
@@ -352,8 +352,12 @@ class TestChangeLog:
     def test_get_latest_version(self, temp_metadata_dir):
         """Test getting latest version from changes."""
         log = ChangeLog(persist_dir=temp_metadata_dir, auto_persist=False)
-        log.record(ChangeType.ADD_FIELD, "entity1", version_before="v1", version_after="v2")
-        log.record(ChangeType.MODIFY_FIELD, "entity1", version_before="v2", version_after="v3")
+        log.record(
+            ChangeType.ADD_FIELD, "entity1", version_before="v1", version_after="v2"
+        )
+        log.record(
+            ChangeType.MODIFY_FIELD, "entity1", version_before="v2", version_after="v3"
+        )
         latest = log.get_latest_version("entity1")
         assert latest == "v3"
 

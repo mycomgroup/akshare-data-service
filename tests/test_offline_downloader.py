@@ -23,6 +23,7 @@ from akshare_data.offline.downloader import (
 RateLimiter = DomainRateLimiter
 
 
+@pytest.mark.unit
 # ---------------------------------------------------------------------------
 # TestRateLimiter — the old RateLimiter class no longer exists.
 # The new DomainRateLimiter delegates to sources.router and has a different
@@ -116,7 +117,9 @@ class TestBatchDownloaderUpdateOne:
 
     def test_update_success_with_data(self, downloader):
         """全部任务成功"""
-        with patch("akshare_data.offline.downloader.executor.TaskExecutor.execute") as m:
+        with patch(
+            "akshare_data.offline.downloader.executor.TaskExecutor.execute"
+        ) as m:
             m.return_value = {"success": True, "rows": 3, "task": "iface1"}
             from akshare_data.offline.downloader.task_builder import DownloadTask
 
@@ -130,11 +133,15 @@ class TestBatchDownloaderUpdateOne:
 
     def test_update_no_data(self, downloader):
         """任务返回空数据/失败计入 failed"""
-        with patch("akshare_data.offline.downloader.executor.TaskExecutor.execute") as m:
+        with patch(
+            "akshare_data.offline.downloader.executor.TaskExecutor.execute"
+        ) as m:
             m.return_value = {"success": False, "error": "Empty data", "task": "iface1"}
             from akshare_data.offline.downloader.task_builder import DownloadTask
 
-            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            tasks = [
+                DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})
+            ]
             result = downloader._execute_tasks(tasks)
         assert result["success_count"] == 0
         assert result["failed_count"] == 1
@@ -148,7 +155,9 @@ class TestBatchDownloaderUpdateOne:
         ):
             from akshare_data.offline.downloader.task_builder import DownloadTask
 
-            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            tasks = [
+                DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})
+            ]
             with pytest.raises(AttributeError):
                 downloader._execute_tasks(tasks)
 
@@ -160,18 +169,24 @@ class TestBatchDownloaderUpdateOne:
         ):
             from akshare_data.offline.downloader.task_builder import DownloadTask
 
-            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            tasks = [
+                DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})
+            ]
             with pytest.raises(RuntimeError, match="boom"):
                 downloader._execute_tasks(tasks)
 
     def test_update_with_progress_callback(self, downloader):
         """progress callback 被调用"""
         cb = MagicMock()
-        with patch("akshare_data.offline.downloader.executor.TaskExecutor.execute") as m:
+        with patch(
+            "akshare_data.offline.downloader.executor.TaskExecutor.execute"
+        ) as m:
             m.return_value = {"success": True, "rows": 1, "task": "iface1"}
             from akshare_data.offline.downloader.task_builder import DownloadTask
 
-            tasks = [DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})]
+            tasks = [
+                DownloadTask(interface="iface1", func="ak.a", table="t", kwargs={})
+            ]
             downloader._execute_tasks(tasks, progress_callback=cb)
         assert cb.call_count >= 1
 

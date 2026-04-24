@@ -342,7 +342,12 @@ class DataQualityChecker:
         - required-field completeness from missing field count
         - anomaly check pass/fail from anomaly count
         """
-        from akshare_data.quality.engine import GateAction, RuleResult, RuleStatus, Severity
+        from akshare_data.quality.engine import (
+            GateAction,
+            RuleResult,
+            RuleStatus,
+            Severity,
+        )
         from akshare_data.quality.scoring import RuleBasedScorer
 
         results: List[RuleResult] = []
@@ -351,39 +356,49 @@ class DataQualityChecker:
         missing_dates = int(completeness.get("missing_dates_count", 0))
         missing_fields = list(completeness.get("missing_fields", []))
 
-        results.append(RuleResult(
-            rule_id="legacy_completeness_check",
-            status=RuleStatus.PASSED if is_complete else RuleStatus.FAILED,
-            severity=Severity.ERROR,
-            gate_action=GateAction.BLOCK,
-            message="Completeness check",
-            failed_count=missing_dates,
-            total_count=max(1, missing_dates + int(completeness.get("total_records", 0))),
-        ))
+        results.append(
+            RuleResult(
+                rule_id="legacy_completeness_check",
+                status=RuleStatus.PASSED if is_complete else RuleStatus.FAILED,
+                severity=Severity.ERROR,
+                gate_action=GateAction.BLOCK,
+                message="Completeness check",
+                failed_count=missing_dates,
+                total_count=max(
+                    1, missing_dates + int(completeness.get("total_records", 0))
+                ),
+            )
+        )
 
-        results.append(RuleResult(
-            rule_id="legacy_required_fields_check",
-            status=RuleStatus.PASSED if not missing_fields else RuleStatus.FAILED,
-            severity=Severity.ERROR,
-            gate_action=GateAction.BLOCK,
-            message=(
-                f"Missing fields: {missing_fields}" if missing_fields else "All required fields present"
-            ),
-            failed_count=len(missing_fields),
-            total_count=max(1, len(missing_fields) + 1),
-        ))
+        results.append(
+            RuleResult(
+                rule_id="legacy_required_fields_check",
+                status=RuleStatus.PASSED if not missing_fields else RuleStatus.FAILED,
+                severity=Severity.ERROR,
+                gate_action=GateAction.BLOCK,
+                message=(
+                    f"Missing fields: {missing_fields}"
+                    if missing_fields
+                    else "All required fields present"
+                ),
+                failed_count=len(missing_fields),
+                total_count=max(1, len(missing_fields) + 1),
+            )
+        )
 
         anomaly_count = int(anomalies.get("anomaly_count", 0))
         total_rows = int(anomalies.get("total_rows", 0))
-        results.append(RuleResult(
-            rule_id="legacy_anomaly_check",
-            status=RuleStatus.PASSED if anomaly_count == 0 else RuleStatus.FAILED,
-            severity=Severity.WARNING,
-            gate_action=GateAction.ALERT,
-            message=f"{anomaly_count} anomalies detected",
-            failed_count=anomaly_count,
-            total_count=max(1, total_rows),
-        ))
+        results.append(
+            RuleResult(
+                rule_id="legacy_anomaly_check",
+                status=RuleStatus.PASSED if anomaly_count == 0 else RuleStatus.FAILED,
+                severity=Severity.WARNING,
+                gate_action=GateAction.ALERT,
+                message=f"{anomaly_count} anomalies detected",
+                failed_count=anomaly_count,
+                total_count=max(1, total_rows),
+            )
+        )
 
         scorer = RuleBasedScorer()
         return scorer.compute_score(results)

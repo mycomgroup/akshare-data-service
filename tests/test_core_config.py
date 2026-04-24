@@ -5,9 +5,12 @@ import os
 import tempfile
 from pathlib import Path
 
+import pytest
+
 from akshare_data.core.config import CacheConfig, TableConfig, DEFAULT_CONFIG
 
 
+@pytest.mark.unit
 class TestCacheConfig:
     def test_cache_config_creation_with_defaults(self):
         cfg = CacheConfig()

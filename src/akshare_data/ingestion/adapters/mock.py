@@ -226,7 +226,10 @@ class MockAdapter(DataSource):
         self, date: Optional[Union[str, date]] = None, top_n: int = 50, **kwargs
     ) -> pd.DataFrame:
         return pd.DataFrame(
-            {"symbol": [f"{i:06d}" for i in range(top_n)], "rank": list(range(1, top_n + 1))}
+            {
+                "symbol": [f"{i:06d}" for i in range(top_n)],
+                "rank": list(range(1, top_n + 1)),
+            }
         )
 
     def get_goodwill_data(
@@ -280,7 +283,10 @@ class MockAdapter(DataSource):
         self, date: Optional[Union[str, date]] = None, top_n: int = 50, **kwargs
     ) -> pd.DataFrame:
         return pd.DataFrame(
-            {"symbol": [f"{i:06d}" for i in range(top_n)], "rank": list(range(1, top_n + 1))}
+            {
+                "symbol": [f"{i:06d}" for i in range(top_n)],
+                "rank": list(range(1, top_n + 1)),
+            }
         )
 
     def get_performance_forecast(
@@ -311,9 +317,7 @@ class MockAdapter(DataSource):
         end_date: Optional[Union[str, date]] = None,
         **kwargs,
     ) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"analyst": ["张三"], "rank": [1], "date": ["2024-01-01"]}
-        )
+        return pd.DataFrame({"analyst": ["张三"], "rank": [1], "date": ["2024-01-01"]})
 
     def get_research_report(
         self,
@@ -326,23 +330,15 @@ class MockAdapter(DataSource):
             {"symbol": ["600000"], "title": ["深度报告"], "date": ["2024-01-01"]}
         )
 
-    def get_chip_distribution(
-        self, symbol: str, **kwargs
-    ) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"price": [10.0, 10.5, 11.0], "ratio": [0.2, 0.5, 0.3]}
-        )
+    def get_chip_distribution(self, symbol: str, **kwargs) -> pd.DataFrame:
+        return pd.DataFrame({"price": [10.0, 10.5, 11.0], "ratio": [0.2, 0.5, 0.3]})
 
-    def get_stock_bonus(
-        self, symbol: str, **kwargs
-    ) -> pd.DataFrame:
+    def get_stock_bonus(self, symbol: str, **kwargs) -> pd.DataFrame:
         return pd.DataFrame(
             {"symbol": [symbol], "bonus_ratio": [0.1], "date": ["2024-01-01"]}
         )
 
-    def get_rights_issue(
-        self, symbol: str, **kwargs
-    ) -> pd.DataFrame:
+    def get_rights_issue(self, symbol: str, **kwargs) -> pd.DataFrame:
         return pd.DataFrame(
             {"symbol": [symbol], "rights_price": [8.0], "date": ["2024-01-01"]}
         )
@@ -354,16 +350,10 @@ class MockAdapter(DataSource):
             {"code": ["600000"], "dividend": [1.0], "date": [date or "2024-01-10"]}
         )
 
-    def get_management_info(
-        self, symbol: str, **kwargs
-    ) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"symbol": [symbol], "name": ["张三"], "position": ["CEO"]}
-        )
+    def get_management_info(self, symbol: str, **kwargs) -> pd.DataFrame:
+        return pd.DataFrame({"symbol": [symbol], "name": ["张三"], "position": ["CEO"]})
 
-    def get_name_history(
-        self, symbol: str, **kwargs
-    ) -> pd.DataFrame:
+    def get_name_history(self, symbol: str, **kwargs) -> pd.DataFrame:
         return pd.DataFrame(
             {"symbol": [symbol], "old_name": ["原名"], "change_date": ["2020-01-01"]}
         )
@@ -374,9 +364,7 @@ class MockAdapter(DataSource):
         end_date: Optional[Union[str, date]] = None,
         **kwargs,
     ) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"date": ["2024-01-01", "2024-01-02"], "rate": [2.0, 2.1]}
-        )
+        return pd.DataFrame({"date": ["2024-01-01", "2024-01-02"], "rate": [2.0, 2.1]})
 
     def get_macro_gdp(
         self,
@@ -384,9 +372,7 @@ class MockAdapter(DataSource):
         end_date: Optional[Union[str, date]] = None,
         **kwargs,
     ) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"quarter": ["2024Q1"], "gdp": [250000.0], "growth": [5.3]}
-        )
+        return pd.DataFrame({"quarter": ["2024Q1"], "gdp": [250000.0], "growth": [5.3]})
 
     def get_social_financing(
         self,
@@ -409,39 +395,28 @@ class MockAdapter(DataSource):
         )
 
     def get_fof_list(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"fund_code": ["FOF001"], "name": ["FOF基金"]}
-        )
+        return pd.DataFrame({"fund_code": ["FOF001"], "name": ["FOF基金"]})
 
     def get_fof_nav(
-        self, fund_code: str,
+        self,
+        fund_code: str,
         start_date: Optional[Union[str, date]] = None,
         end_date: Optional[Union[str, date]] = None,
         **kwargs,
     ) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"date": ["2024-01-01", "2024-01-02"], "nav": [1.2, 1.21]}
-        )
+        return pd.DataFrame({"date": ["2024-01-01", "2024-01-02"], "nav": [1.2, 1.21]})
 
     def get_lof_spot(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"fund_code": ["LOF001"], "name": ["LOF基金"]}
-        )
+        return pd.DataFrame({"fund_code": ["LOF001"], "name": ["LOF基金"]})
 
     def get_lof_nav(self, fund_code: str, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"date": ["2024-01-01", "2024-01-02"], "nav": [1.5, 1.51]}
-        )
+        return pd.DataFrame({"date": ["2024-01-01", "2024-01-02"], "nav": [1.5, 1.51]})
 
     def get_convert_bond_premium(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"bond_code": ["113009"], "premium": [20.0]}
-        )
+        return pd.DataFrame({"bond_code": ["113009"], "premium": [20.0]})
 
     def get_convert_bond_spot(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"bond_code": ["113009"], "price": [120.0]}
-        )
+        return pd.DataFrame({"bond_code": ["113009"], "price": [120.0]})
 
     def get_industry_performance(
         self,
@@ -468,9 +443,7 @@ class MockAdapter(DataSource):
         )
 
     def get_stock_industry(self, symbol: str, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"symbol": [symbol], "industry": ["银行"]}
-        )
+        return pd.DataFrame({"symbol": [symbol], "industry": ["银行"]})
 
     def get_hot_rank(self, **kwargs) -> pd.DataFrame:
         return pd.DataFrame(
@@ -488,19 +461,13 @@ class MockAdapter(DataSource):
         )
 
     def get_realtime_data(self, symbol: str, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"symbol": [symbol], "price": [10.5], "volume": [100000]}
-        )
+        return pd.DataFrame({"symbol": [symbol], "price": [10.5], "volume": [100000]})
 
     def get_hk_stocks(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"stockCode": ["00700", "09988"], "name": ["腾讯", "阿里"]}
-        )
+        return pd.DataFrame({"stockCode": ["00700", "09988"], "name": ["腾讯", "阿里"]})
 
     def get_us_stocks(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"symbol": ["AAPL", "MSFT"], "close": [150.0, 300.0]}
-        )
+        return pd.DataFrame({"symbol": ["AAPL", "MSFT"], "close": [150.0, 300.0]})
 
     def get_northbound_holdings(
         self,
@@ -525,9 +492,7 @@ class MockAdapter(DataSource):
         )
 
     def get_dragon_tiger_list(self, date: Union[str, date], **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"code": ["600000"], "direction": ["买"], "date": [date]}
-        )
+        return pd.DataFrame({"code": ["600000"], "direction": ["买"], "date": [date]})
 
     def get_margin_data(
         self,
@@ -585,9 +550,7 @@ class MockAdapter(DataSource):
         return self.get_daily_data(symbol, start_date, end_date)
 
     def get_basic_info(self, symbol: str, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"symbol": [symbol], "name": ["浦发银行"]}
-        )
+        return pd.DataFrame({"symbol": [symbol], "name": ["浦发银行"]})
 
     def get_stock_valuation(self, symbol: str, **kwargs) -> pd.DataFrame:
         return pd.DataFrame(
@@ -596,7 +559,12 @@ class MockAdapter(DataSource):
 
     def get_index_valuation(self, index_code: str, **kwargs) -> pd.DataFrame:
         return pd.DataFrame(
-            {"index_code": [index_code], "pe": [12.0], "pb": [1.4], "date": ["2024-01-01"]}
+            {
+                "index_code": [index_code],
+                "pe": [12.0],
+                "pb": [1.4],
+                "date": ["2024-01-01"],
+            }
         )
 
     def get_top_shareholders(self, symbol: str, **kwargs) -> pd.DataFrame:
@@ -615,29 +583,19 @@ class MockAdapter(DataSource):
         )
 
     def get_new_stocks(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"code": ["601688"], "name": ["华泰证券"]}
-        )
+        return pd.DataFrame({"code": ["601688"], "name": ["华泰证券"]})
 
     def get_ipo_info(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"code": ["601688"], "issue_price": [12.0]}
-        )
+        return pd.DataFrame({"code": ["601688"], "issue_price": [12.0]})
 
     def get_concept_list(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"concept_code": ["BK0001"], "concept_name": ["人工智能"]}
-        )
+        return pd.DataFrame({"concept_code": ["BK0001"], "concept_name": ["人工智能"]})
 
     def get_concept_components(self, concept_code: str, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"concept_code": [concept_code], "code": ["600000"]}
-        )
+        return pd.DataFrame({"concept_code": [concept_code], "code": ["600000"]})
 
     def get_stock_concepts(self, symbol: str, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"code": [symbol], "concept": ["人工智能"]}
-        )
+        return pd.DataFrame({"code": [symbol], "concept": ["人工智能"]})
 
     def get_sw_index_daily(
         self,
@@ -651,9 +609,7 @@ class MockAdapter(DataSource):
         )
 
     def get_option_list(self, market: str = "sse", **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"option_code": ["10000001"], "name": ["50ETF购1月2.5"]}
-        )
+        return pd.DataFrame({"option_code": ["10000001"], "name": ["50ETF购1月2.5"]})
 
     def get_option_daily(self, symbol: str, **kwargs) -> pd.DataFrame:
         return pd.DataFrame(
@@ -672,14 +628,10 @@ class MockAdapter(DataSource):
         )
 
     def get_futures_spot(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"commodity": ["铜"], "price": [70000.0]}
-        )
+        return pd.DataFrame({"commodity": ["铜"], "price": [70000.0]})
 
     def get_spot_em(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"symbol": ["600000"], "price": [10.5]}
-        )
+        return pd.DataFrame({"symbol": ["600000"], "price": [10.5]})
 
     def get_lof_hist(
         self,
@@ -723,14 +675,13 @@ class MockAdapter(DataSource):
         )
 
     def get_fund_open_nav(
-        self, fund_code: str,
+        self,
+        fund_code: str,
         start_date: Optional[Union[str, date]] = None,
         end_date: Optional[Union[str, date]] = None,
         **kwargs,
     ) -> pd.DataFrame:
-        return pd.DataFrame(
-            {"date": ["2024-01-01", "2024-01-02"], "nav": [1.5, 1.51]}
-        )
+        return pd.DataFrame({"date": ["2024-01-01", "2024-01-02"], "nav": [1.5, 1.51]})
 
     def get_fund_open_info(self, fund_code: str, **kwargs) -> Dict[str, Any]:
         return {"fund_code": fund_code, "name": "测试基金"}

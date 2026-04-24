@@ -155,9 +155,7 @@ class EventBus:
             try:
                 handler(event)
             except Exception as e:
-                logger.error(
-                    "Event handler error for %s: %s", event.event_type, e
-                )
+                logger.error("Event handler error for %s: %s", event.event_type, e)
 
     def get_events(
         self,
@@ -330,6 +328,7 @@ def emit_storage_event(
 # ---------------------------------------------------------------------------
 # Predefined event types
 # ---------------------------------------------------------------------------
+
 
 class IngestionEvents:
     TASK_STARTED = "ingestion.task_started"

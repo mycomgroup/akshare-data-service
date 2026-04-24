@@ -49,6 +49,28 @@ class FieldMappingEntry:
 
 
 @dataclass
+class SubSourceMapping:
+    """All mappings for a single sub-source."""
+
+    description: str = ""
+    entries: Dict[str, FieldMappingEntry] = field(default_factory=dict)
+
+    def to_rename_dict(self, active_only: bool = True) -> Dict[str, str]:
+        """Return a flat {raw_col: standard_col} dict suitable for df.rename()."""
+        return {
+            entry.source_field: entry.standard_field
+            for entry in self.entries.values()
+            if entry.is_active or not active_only
+        }
+
+    def active_fields(self) -> List[str]:
+        """Return list of standard fields that are actively mapped."""
+        return sorted(
+            {entry.standard_field for entry in self.entries.values() if entry.is_active}
+        )
+
+
+@dataclass
 class DatasetMapping:
     """All mappings for a single (dataset, source) pair."""
 
@@ -57,6 +79,7 @@ class DatasetMapping:
     mapping_version: str
     normalize_version: str
     entries: Dict[str, FieldMappingEntry] = field(default_factory=dict)
+    sub_sources: Dict[str, SubSourceMapping] = field(default_factory=dict)
 
     def to_rename_dict(self, active_only: bool = True) -> Dict[str, str]:
         """Return a flat {raw_col: standard_col} dict suitable for df.rename().
@@ -223,12 +246,39 @@ class MappingLoader:
                     status="active",
                 )
 
+        sub_sources: Dict[str, SubSourceMapping] = {}
+        sub_sources_cfg = cfg.get("sub_sources", {})
+        for sub_name, sub_cfg in sub_sources_cfg.items():
+            if not isinstance(sub_cfg, dict):
+                continue
+            sub_entries: Dict[str, FieldMappingEntry] = {}
+            sub_fields = sub_cfg.get("fields", {})
+            for raw_field, spec in sub_fields.items():
+                if isinstance(spec, dict):
+                    sub_entries[raw_field] = FieldMappingEntry(
+                        source_field=raw_field,
+                        standard_field=spec.get("standard_field"),
+                        status=spec.get("status", "active"),
+                        description=spec.get("description", ""),
+                    )
+                elif isinstance(spec, str):
+                    sub_entries[raw_field] = FieldMappingEntry(
+                        source_field=raw_field,
+                        standard_field=spec,
+                        status="active",
+                    )
+            sub_sources[sub_name] = SubSourceMapping(
+                description=sub_cfg.get("description", ""),
+                entries=sub_entries,
+            )
+
         return DatasetMapping(
             dataset=cfg.get("dataset", dataset),
             source=cfg.get("source", source),
             mapping_version=mapping_version,
             normalize_version=normalize_version,
             entries=entries,
+            sub_sources=sub_sources,
         )
 
     def _load_versions(self) -> Dict[str, Any]:

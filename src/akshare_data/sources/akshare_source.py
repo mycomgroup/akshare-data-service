@@ -430,7 +430,6 @@ class AkShareAdapter(DataSource):
                 symbol=symbol,
             )
 
-
         float(kwargs.get("h", 0.01))
         r = float(kwargs.get("r", 0.03))
         S = float(kwargs.get("spot", 0))

@@ -8,6 +8,7 @@
 from unittest.mock import patch, MagicMock
 
 import pandas as pd
+import pytest
 
 from akshare_data.ingestion.router import (
     MultiSourceRouter,
@@ -19,6 +20,8 @@ from akshare_data.ingestion.router import (
 from akshare_data.sources.akshare_source import AkShareAdapter
 
 from akshare_data.core.symbols import normalize_symbol, jq_code_to_ak
+
+pytestmark = pytest.mark.unit
 
 
 class TestAkShareAdapter:

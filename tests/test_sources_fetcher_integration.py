@@ -18,6 +18,7 @@ from akshare_data.sources.akshare.fetcher import (
 from akshare_data.core.errors import SourceUnavailableError
 
 
+@pytest.mark.unit
 # ── _transform_param unit tests ──────────────────────────────────────
 class TestTransformParam:
     def test_yyyymmdd_date_object(self):

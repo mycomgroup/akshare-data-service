@@ -36,11 +36,20 @@ def standardized_sample() -> pd.DataFrame:
     return pd.DataFrame(
         {
             "indicator_code": ["china_cpi", "china_cpi", "china_gdp", "china_pmi"],
-            "indicator_name": ["居民消费价格指数", "居民消费价格指数", "国内生产总值", "采购经理指数"],
+            "indicator_name": [
+                "居民消费价格指数",
+                "居民消费价格指数",
+                "国内生产总值",
+                "采购经理指数",
+            ],
             "frequency": ["M", "M", "Q", "M"],
             "region": ["CN", "CN", "CN", "CN"],
-            "observation_date": pd.to_datetime(["2024-01-31", "2024-02-29", "2024-03-31", "2024-03-31"]).date,
-            "publish_date": pd.to_datetime(["2024-02-10", "2024-03-10", "2024-04-16", "2024-04-01"]).date,
+            "observation_date": pd.to_datetime(
+                ["2024-01-31", "2024-02-29", "2024-03-31", "2024-03-31"]
+            ).date,
+            "publish_date": pd.to_datetime(
+                ["2024-02-10", "2024-03-10", "2024-04-16", "2024-04-01"]
+            ).date,
             "value": [102.5, 103.0, 1260000.0, 50.8],
             "value_yoy_pct": [2.5, 3.0, 5.3, None],
             "value_mom_pct": [0.5, 0.3, None, 0.2],
@@ -48,7 +57,12 @@ def standardized_sample() -> pd.DataFrame:
             "source_org": ["国家统计局", "国家统计局", "国家统计局", "国家统计局"],
             "batch_id": ["b1", "b1", "b1", "b1"],
             "source_name": ["akshare", "akshare", "akshare", "akshare"],
-            "interface_name": ["macro_china_cpi", "macro_china_cpi", "macro_china_gdp", "macro_china_pmi"],
+            "interface_name": [
+                "macro_china_cpi",
+                "macro_china_cpi",
+                "macro_china_gdp",
+                "macro_china_pmi",
+            ],
             "ingest_time": pd.to_datetime(["2024-04-22T10:00:00Z"] * 4),
             "normalize_version": ["v1", "v1", "v1", "v1"],
             "schema_version": ["v1", "v1", "v1", "v1"],

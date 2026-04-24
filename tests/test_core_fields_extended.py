@@ -10,6 +10,7 @@ Coverage gaps filled:
 - standardize_columns_generic() column renaming behavior
 """
 
+import pytest
 import pandas as pd
 from akshare_data.core.fields import (
     get_name_by_code,
@@ -28,6 +29,7 @@ from akshare_data.core.fields import (
 )
 
 
+@pytest.mark.unit
 class TestGetNameByCodeExtended:
     """Extended tests for get_name_by_code() function."""
 

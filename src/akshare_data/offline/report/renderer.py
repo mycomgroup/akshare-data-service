@@ -29,10 +29,13 @@ class ReportRenderer:
                         row_vals.append(
                             datetime.fromtimestamp(v).strftime("%m-%d %H:%M")
                         )
-                    except Exception:
+                    except (ValueError, TypeError, OSError):
                         row_vals.append(str(v))
                 elif "Time" in c or c == "exec_time":
-                    row_vals.append(f"{v:.2f}s")
+                    try:
+                        row_vals.append(f"{float(v):.2f}s")
+                    except (ValueError, TypeError):
+                        row_vals.append(str(v))
                 else:
                     row_vals.append(str(v).replace("\n", " "))
             body.append("|" + "|".join(row_vals) + "|")

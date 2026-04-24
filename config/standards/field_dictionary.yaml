@@ -184,6 +184,12 @@ fields:
     unit: pct
     aliases: []
 
+  change:
+    type: double
+    description: 涨跌额
+    unit: CNY
+    aliases: []
+
   # ---- 估值比率 ----
   pe_ratio_ttm:
     type: double

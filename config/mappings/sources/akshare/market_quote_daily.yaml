@@ -54,16 +54,14 @@ sub_sources:
         standard_field: turnover_amount
         status: active
       振幅:
-        standard_field: null
-        status: pending
-        description: "暂未接入标准实体，保留待扩展"
+        standard_field: amplitude
+        status: active
       涨跌幅:
         standard_field: change_pct
         status: active
       涨跌额:
-        standard_field: null
-        status: pending
-        description: "暂未接入标准实体，保留待扩展"
+        standard_field: change
+        status: active
       换手率:
         standard_field: turnover_rate
         status: active
@@ -147,16 +145,14 @@ fields:
     standard_field: turnover_amount
     status: active
   振幅:
-    standard_field: null
-    status: pending
-    description: "暂未接入标准实体"
+    standard_field: amplitude
+    status: active
   涨跌幅:
     standard_field: change_pct
     status: active
   涨跌额:
-    standard_field: null
-    status: pending
-    description: "暂未接入标准实体"
+    standard_field: change
+    status: active
   换手率:
     standard_field: turnover_rate
     status: active

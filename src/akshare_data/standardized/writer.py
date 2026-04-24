@@ -15,7 +15,6 @@ from __future__ import annotations
 
 import hashlib
 import logging
-import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -328,11 +327,7 @@ class StandardizedWriter:
         parquet_filename = f"part-{file_hash}.parquet"
         parquet_path = part_dir / parquet_filename
 
-        tmp_fd, tmp_path_str = tempfile.mkstemp(
-            suffix=".parquet.tmp", dir=str(part_dir)
-        )
-        tmp_path = Path(tmp_path_str)
-
+        tmp_path = part_dir / f"{parquet_filename}.tmp"
         try:
             df.to_parquet(
                 tmp_path,

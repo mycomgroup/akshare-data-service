@@ -25,13 +25,36 @@ ENTITY_CONFIG_DIR = PROJECT_ROOT / "config" / "standards" / "entities"
 P0_ENTITIES = ["market_quote_daily", "financial_indicator", "macro_indicator"]
 
 LEGACY_NAMES = {
-    "symbol", "code", "ts_code", "date", "datetime",
-    "close", "open", "high", "low",
-    "amount", "turnover", "pe", "roe", "roa", "vol",
-    "adjust", "adjust_flag", "pct_chg", "pct_change",
-    "announce_date", "total_revenue", "net_assets",
-    "debt_ratio", "yoy", "mom", "agency", "publisher",
-    "market", "country", "area",
+    "symbol",
+    "code",
+    "ts_code",
+    "date",
+    "datetime",
+    "close",
+    "open",
+    "high",
+    "low",
+    "amount",
+    "turnover",
+    "pe",
+    "roe",
+    "roa",
+    "vol",
+    "adjust",
+    "adjust_flag",
+    "pct_chg",
+    "pct_change",
+    "announce_date",
+    "total_revenue",
+    "net_assets",
+    "debt_ratio",
+    "yoy",
+    "mom",
+    "agency",
+    "publisher",
+    "market",
+    "country",
+    "area",
 }
 
 
@@ -94,9 +117,15 @@ class TestSystemFieldsConsistency:
     """System fields in dictionary must match entity configs."""
 
     EXPECTED_SYSTEM_FIELDS = {
-        "batch_id", "source_name", "interface_name", "ingest_time",
-        "normalize_version", "schema_version", "quality_status",
-        "publish_time", "release_version",
+        "batch_id",
+        "source_name",
+        "interface_name",
+        "ingest_time",
+        "normalize_version",
+        "schema_version",
+        "quality_status",
+        "publish_time",
+        "release_version",
     }
 
     def test_all_system_fields_present(self, field_dict: dict):
@@ -129,7 +158,9 @@ class TestSystemFieldsConsistency:
 class TestBusinessFieldCoverage:
     """All entity business fields must be in the field dictionary."""
 
-    def test_all_entity_fields_in_dictionary(self, field_dict: dict, schema_registry: SchemaRegistry):
+    def test_all_entity_fields_in_dictionary(
+        self, field_dict: dict, schema_registry: SchemaRegistry
+    ):
         dict_fields = set(field_dict["fields"].keys())
         for entity in P0_ENTITIES:
             schema = schema_registry.get(entity)
@@ -167,7 +198,9 @@ class TestAliasMapIntegrity:
             visited = set()
             current = alias
             while current in alias_map:
-                assert current not in visited, f"Circular alias detected involving '{current}'"
+                assert current not in visited, (
+                    f"Circular alias detected involving '{current}'"
+                )
                 visited.add(current)
                 current = alias_map[current]
 
@@ -195,7 +228,9 @@ class TestAliasMapIntegrity:
 class TestFieldTypeConsistency:
     """Field types must be consistent across dictionary and entity configs."""
 
-    def test_types_match_for_shared_fields(self, field_dict: dict, schema_registry: SchemaRegistry):
+    def test_types_match_for_shared_fields(
+        self, field_dict: dict, schema_registry: SchemaRegistry
+    ):
         dict_fields = field_dict["fields"]
         for entity in P0_ENTITIES:
             schema = schema_registry.get(entity)
@@ -217,7 +252,12 @@ class TestFieldTypeConsistency:
 class TestNoForbiddenNames:
     """New configs must not use forbidden legacy names."""
 
-    FORBIDDEN_DATASET_NAMES = {"stock_daily", "quote_daily", "indicator", "finance_indicator"}
+    FORBIDDEN_DATASET_NAMES = {
+        "stock_daily",
+        "quote_daily",
+        "indicator",
+        "finance_indicator",
+    }
 
     def test_no_forbidden_dataset_names_in_config_files(self):
         for path in sorted(ENTITY_CONFIG_DIR.glob("*.yaml")):

@@ -17,6 +17,7 @@ from akshare_data.store.validator import (
 )
 
 
+@pytest.mark.unit
 @pytest.fixture
 def sample_df():
     """Create a sample DataFrame for testing."""

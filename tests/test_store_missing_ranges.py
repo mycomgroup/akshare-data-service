@@ -3,8 +3,11 @@
 Comprehensive tests for missing_ranges.py
 """
 
+import pytest
 
 from akshare_data.store.missing_ranges import find_missing_ranges
+
+pytestmark = pytest.mark.unit
 
 
 class TestFindMissingRanges:

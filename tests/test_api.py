@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from unittest.mock import patch, MagicMock
 
 import pandas as pd
+import pytest
 
 from akshare_data.api import DataService, get_service
 from akshare_data.core.schema import SCHEMA_REGISTRY, get_table_schema
@@ -20,6 +21,7 @@ from akshare_data.store.manager import (
 )
 
 
+@pytest.mark.integration
 def create_test_daily_df(symbol="600000", start="2024-01-01", end="2024-01-10"):
     dates = pd.date_range(start, end, freq="D")
     return pd.DataFrame(

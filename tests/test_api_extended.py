@@ -10,6 +10,7 @@ and all uncovered DataService public methods.
 from unittest.mock import patch, MagicMock
 
 import pandas as pd
+import pytest
 
 from akshare_data.api import (
     DataService,
@@ -18,6 +19,8 @@ from akshare_data.api import (
     USMarketAPI,
     MacroChinaAPI,
 )
+
+pytestmark = pytest.mark.unit
 
 
 def make_df(columns=None, rows=5):

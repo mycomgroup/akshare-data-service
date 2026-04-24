@@ -3,10 +3,8 @@
 from __future__ import annotations
 
 import threading
-from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest
@@ -20,6 +18,8 @@ from akshare_data.service.missing_data_policy import (
     BackfillRequestRegistry,
 )
 from akshare_data.store.manager import CacheManager, reset_cache_manager
+
+pytestmark = pytest.mark.unit
 
 
 class TestServiceServedReaderBasic:
@@ -128,11 +128,25 @@ class TestServiceServedReaderPartition:
             }
         )
 
-        cache.write("partitioned_table", df1, storage_layer="daily", partition_by="symbol", partition_value="sh600000")
-        cache.write("partitioned_table", df2, storage_layer="daily", partition_by="symbol", partition_value="sh600001")
+        cache.write(
+            "partitioned_table",
+            df1,
+            storage_layer="daily",
+            partition_by="symbol",
+            partition_value="sh600000",
+        )
+        cache.write(
+            "partitioned_table",
+            df2,
+            storage_layer="daily",
+            partition_by="symbol",
+            partition_value="sh600001",
+        )
 
         reader = ServedReader(cache_manager=cache)
-        result = reader.read("partitioned_table", partition_by="symbol", partition_value="sh600000")
+        result = reader.read(
+            "partitioned_table", partition_by="symbol", partition_value="sh600000"
+        )
         assert len(result) == 5
         assert all(result["symbol"] == "sh600000")
 
@@ -150,7 +164,9 @@ class TestServiceServedReaderPartition:
         cache.write("test_table", df, storage_layer="daily")
 
         reader = ServedReader(cache_manager=cache)
-        result = reader.read("test_table", partition_by="wrong_column", partition_value="value")
+        result = reader.read(
+            "test_table", partition_by="wrong_column", partition_value="value"
+        )
         assert not result.empty
 
 
@@ -251,7 +267,9 @@ class TestServiceServedReaderHasDateRange:
         cache.write("test_table", df, storage_layer="daily")
 
         reader = ServedReader(cache_manager=cache)
-        assert reader.has_date_range("test_table", "2024-01-02", "2024-01-06", date_col="trade_date")
+        assert reader.has_date_range(
+            "test_table", "2024-01-02", "2024-01-06", date_col="trade_date"
+        )
 
 
 class TestServiceServedReaderMetadata:
@@ -340,7 +358,9 @@ class TestVersionSelectorComplete:
 
     def test_get_version_info_registered(self):
         selector = VersionSelector()
-        selector.register_version("v1", VersionInfo(version="v1", status="active", publish_time="2024-01-01"))
+        selector.register_version(
+            "v1", VersionInfo(version="v1", status="active", publish_time="2024-01-01")
+        )
         info = selector.get_version_info("v1")
         assert info.version == "v1"
         assert info.status == "active"
@@ -380,7 +400,9 @@ class TestMissingDataPolicy:
             default_action=MissingAction.RAISE_ERROR,
             table_actions={"important_table": MissingAction.REQUEST_BACKFILL},
         )
-        assert policy.resolve_action("important_table") == MissingAction.REQUEST_BACKFILL
+        assert (
+            policy.resolve_action("important_table") == MissingAction.REQUEST_BACKFILL
+        )
         assert policy.resolve_action("other_table") == MissingAction.RAISE_ERROR
 
     def test_set_table_action(self):
@@ -469,7 +491,7 @@ class TestBackfillRequestRegistry:
 
     def test_submit_with_priority(self):
         registry = BackfillRequestRegistry()
-        request_id = registry.submit("test_table", {}, priority="high")
+        registry.submit("test_table", {}, priority="high")
         pending = registry.list_pending()
         assert pending[0]["priority"] == "high"
 

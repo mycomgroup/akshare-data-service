@@ -78,7 +78,7 @@ macro_lpr:
   input: []
 
   output:
-    - {name: "date", type: "date"}
+    - {name: "date", type: "date", desc: "日期"}
     - {name: "one_year", type: "float", desc: "1年期LPR"}
     - {name: "five_year", type: "float", desc: "5年期LPR"}
 
@@ -88,7 +88,14 @@ macro_lpr:
     - name: "akshare_em"
       func: "macro_china_lpr"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        日期: "date"
+        1年: "one_year"
+        5年: "five_year"
+      column_types:
+        date: "date"
+        one_year: "float"
+        five_year: "float"
 
 macro_ppi:
   name: "macro_ppi"
@@ -98,7 +105,7 @@ macro_ppi:
   input: []
 
   output:
-    - {name: "date", type: "date"}
+    - {name: "date", type: "date", desc: "月份"}
     - {name: "ppi", type: "float", desc: "PPI指数"}
 
   rate_limit_key: "em_datacenter"
@@ -107,7 +114,12 @@ macro_ppi:
     - name: "akshare_em"
       func: "macro_china_ppi"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        月份: "date"
+        当月: "ppi"
+      column_types:
+        date: "date"
+        ppi: "float"
 
 macro_m2:
   name: "macro_m2"
@@ -117,8 +129,8 @@ macro_m2:
   input: []
 
   output:
-    - {name: "date", type: "date"}
-    - {name: "m2", type: "float", desc: "M2供应量(亿元)"}
+    - {name: "date", type: "date", desc: "月份"}
+    - {name: "m2", type: "float", desc: "M2供应量"}
 
   rate_limit_key: "em_datacenter"
 
@@ -126,7 +138,12 @@ macro_m2:
     - name: "akshare_em"
       func: "macro_china_m2_yearly"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        月份: "date"
+        货币和准货币(广义货币M2)(亿元): "m2"
+      column_types:
+        date: "date"
+        m2: "float"
 
 macro_shibor:
   name: "macro_shibor"
@@ -135,7 +152,16 @@ macro_shibor:
 
   input: []
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "on", type: "float", desc: "隔夜"}
+    - {name: "1w", type: "float", desc: "1周"}
+    - {name: "2w", type: "float", desc: "2周"}
+    - {name: "1m", type: "float", desc: "1个月"}
+    - {name: "3m", type: "float", desc: "3个月"}
+    - {name: "6m", type: "float", desc: "6个月"}
+    - {name: "9m", type: "float", desc: "9个月"}
+    - {name: "1y", type: "float", desc: "1年"}
 
   rate_limit_key: "em_datacenter"
 
@@ -143,7 +169,26 @@ macro_shibor:
     - name: "akshare_em"
       func: "macro_china_shibor_all"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        日期: "date"
+        隔夜: "on"
+        1周: "1w"
+        2周: "2w"
+        1月: "1m"
+        3月: "3m"
+        6月: "6m"
+        9月: "9m"
+        1年: "1y"
+      column_types:
+        date: "date"
+        on: "float"
+        1w: "float"
+        2w: "float"
+        1m: "float"
+        3m: "float"
+        6m: "float"
+        9m: "float"
+        1y: "float"
 
 macro_social_financing:
   name: "macro_social_financing"
@@ -153,8 +198,8 @@ macro_social_financing:
   input: []
 
   output:
-    - {name: "date", type: "date"}
-    - {name: "social_financing", type: "float", desc: "社会融资规模(亿元)"}
+    - {name: "date", type: "date", desc: "月份"}
+    - {name: "total_amount", type: "float", desc: "社会融资规模"}
 
   rate_limit_key: "em_datacenter"
 
@@ -162,7 +207,12 @@ macro_social_financing:
     - name: "akshare_em"
       func: "macro_china_bank_financing"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        月份: "date"
+        社会融资规模(亿元): "total_amount"
+      column_types:
+        date: "date"
+        total_amount: "float"
 
 macro_exchange_rate:
   name: "macro_exchange_rate"
@@ -171,7 +221,10 @@ macro_exchange_rate:
 
   input: []
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "currency_pair", type: "str", desc: "货币对"}
+    - {name: "rate", type: "float", desc: "汇率"}
 
   rate_limit_key: "default"
 
@@ -179,4 +232,11 @@ macro_exchange_rate:
     - name: "akshare_em"
       func: "forex_spot_em"
       enabled: true
-      output_mapping: {}
+      output_mapping:
+        日期: "date"
+        货币对: "currency_pair"
+        最新价: "rate"
+      column_types:
+        date: "date"
+        currency_pair: "str"
+        rate: "float"

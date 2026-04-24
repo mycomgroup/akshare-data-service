@@ -53,9 +53,13 @@ def standardized_sample() -> pd.DataFrame:
     return pd.DataFrame(
         {
             "security_id": ["600519", "600519", "000001"],
-            "report_date": pd.to_datetime(["2024-03-31", "2024-06-30", "2024-03-31"]).date,
+            "report_date": pd.to_datetime(
+                ["2024-03-31", "2024-06-30", "2024-03-31"]
+            ).date,
             "report_type": ["Q1", "H1", "Q1"],
-            "publish_date": pd.to_datetime(["2024-04-15", "2024-08-15", "2024-04-20"]).date,
+            "publish_date": pd.to_datetime(
+                ["2024-04-15", "2024-08-15", "2024-04-20"]
+            ).date,
             "currency": ["CNY", "CNY", "CNY"],
             "pe_ratio_ttm": [25.5, 26.0, 8.2],
             "pb_ratio": [5.8, 5.9, 0.7],

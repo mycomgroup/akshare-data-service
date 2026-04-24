@@ -10,6 +10,7 @@ from akshare_data.offline.access_logger import AccessLogger
 from akshare_data.offline.analyzer.access_log.stats import CallStatsAnalyzer
 
 
+@pytest.mark.unit
 @pytest.fixture
 def tmp_log_dir(tmp_path):
     return str(tmp_path / "logs")

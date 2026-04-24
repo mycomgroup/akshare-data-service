@@ -6,7 +6,9 @@ from akshare_data.standardized.normalizer.base import (
     load_field_mapping,
     load_entity_schema,
 )
-from akshare_data.standardized.normalizer.market_quote_daily import MarketQuoteDailyNormalizer
+from akshare_data.standardized.normalizer.market_quote_daily import (
+    MarketQuoteDailyNormalizer,
+)
 
 __all__ = [
     "BaseNormalizer",

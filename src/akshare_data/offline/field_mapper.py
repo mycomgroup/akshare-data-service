@@ -104,6 +104,17 @@ EXTENDED_CN_TO_EN = {
     "最高价": "high",
     "最低价": "low",
     "收盘价": "close",
+    "对应值": "change_pct",
+    "指标": "reason",
+    "信用交易日期": "date",
+    "标的证券代码": "symbol",
+    "标的证券简称": "name",
+    "融资余额": "margin_balance",
+    "融资买入额": "margin_buy",
+    "融资偿还额": "margin_repay",
+    "融券余量": "short_remain",
+    "融券卖出量": "short_sell",
+    "融券偿还量": "short_repay",  # 行情类映射
     "开盘价": "open",
     "成交量(手)": "volume",
     "成交额(元)": "amount",
@@ -344,7 +355,8 @@ EXTENDED_CN_TO_EN = {
     "中签号": "lottery_number",
     "中签率": "lottery_rate",
     # === 宏观数据类 ===
-    "指标": "indicator",
+    # 注意: "指标" 在行情类中映射为 "reason" (第108行)
+    # 此处不重复定义，已在上方定义
     "数值": "value",
     "同比增长": "yoy_change",
     "环比增长": "mom_change",

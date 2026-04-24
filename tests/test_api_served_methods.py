@@ -54,7 +54,9 @@ class TestServedDataServiceQuery:
         test_df = create_daily_df()
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             result = service.query("stock_daily")
             assert result.has_data is True
             assert not result.data.empty
@@ -75,7 +77,9 @@ class TestServedDataServiceQuery:
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
         where = {"date": ("2024-01-01", "2024-01-10"), "symbol": "600000"}
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             result = service.query("stock_daily", where=where)
             assert result.has_data is True
             mock_query.assert_called_once()
@@ -88,7 +92,9 @@ class TestServedDataServiceQuery:
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
         columns = ["date", "close"]
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             result = service.query("stock_daily", columns=columns)
             assert "close" in result.data.columns
             mock_query.assert_called_once()
@@ -96,9 +102,13 @@ class TestServedDataServiceQuery:
     def test_query_with_limit(self, service):
         """Test query with limit"""
         test_df = create_daily_df()
-        mock_result = QueryResult(data=test_df.head(5), table="stock_daily", has_data=True)
+        mock_result = QueryResult(
+            data=test_df.head(5), table="stock_daily", has_data=True
+        )
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             result = service.query("stock_daily", limit=5)
             assert len(result.data) <= 5
             mock_query.assert_called_once()
@@ -109,7 +119,9 @@ class TestServedDataServiceQuery:
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
         order_by = ["date"]
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.query("stock_daily", order_by=order_by)
             mock_query.assert_called_once()
             call_kwargs = mock_query.call_args[1]
@@ -120,7 +132,9 @@ class TestServedDataServiceQuery:
         test_df = create_daily_df(symbol="600000")
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             result = service.query(
                 "stock_daily",
                 partition_by="symbol",
@@ -131,7 +145,9 @@ class TestServedDataServiceQuery:
 
     def test_query_empty_result(self, service):
         """Test query returns empty result"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="stock_daily", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="stock_daily", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             result = service.query("stock_daily")
@@ -141,7 +157,9 @@ class TestServedDataServiceQuery:
     def test_query_result_to_dict(self, service):
         """Test QueryResult.to_dict method"""
         test_df = create_daily_df()
-        mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True, version="v1")
+        mock_result = QueryResult(
+            data=test_df, table="stock_daily", has_data=True, version="v1"
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             result = service.query("stock_daily")
@@ -165,7 +183,9 @@ class TestServedDataServiceQueryDaily:
         test_df = create_daily_df()
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
 
-        with patch.object(service._served, "query_daily", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query_daily", return_value=mock_result
+        ) as mock_query:
             result = service._served.query_daily(
                 "stock_daily", "600000", "2024-01-01", "2024-01-10"
             )
@@ -177,7 +197,9 @@ class TestServedDataServiceQueryDaily:
         test_df = create_daily_df()
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             result = service._served.query_daily(
                 "stock_daily", "sh600000", "2024-01-01", "2024-01-10"
             )
@@ -187,7 +209,9 @@ class TestServedDataServiceQueryDaily:
 
     def test_query_daily_empty_result(self, service):
         """Test query_daily returns empty result"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="stock_daily", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="stock_daily", has_data=False
+        )
 
         with patch.object(service._served, "query_daily", return_value=mock_result):
             result = service._served.query_daily(
@@ -220,7 +244,11 @@ class TestBackfillMethods:
     def test_request_backfill_with_params(self, service):
         """Test backfill request with params"""
         mock_request_id = "bf-stock_daily-000001"
-        params = {"symbol": "600000", "start_date": "2024-01-01", "end_date": "2024-01-10"}
+        params = {
+            "symbol": "600000",
+            "start_date": "2024-01-01",
+            "end_date": "2024-01-10",
+        }
 
         with patch.object(
             service._served._backfill_registry,
@@ -306,8 +334,14 @@ class TestMissingActionMethods:
         service.set_missing_action("stock_daily", MissingAction.REQUEST_BACKFILL)
         service.set_missing_action("index_daily", MissingAction.RAISE_ERROR)
 
-        assert service._served._missing_policy.resolve_action("stock_daily") == MissingAction.REQUEST_BACKFILL
-        assert service._served._missing_policy.resolve_action("index_daily") == MissingAction.RAISE_ERROR
+        assert (
+            service._served._missing_policy.resolve_action("stock_daily")
+            == MissingAction.REQUEST_BACKFILL
+        )
+        assert (
+            service._served._missing_policy.resolve_action("index_daily")
+            == MissingAction.RAISE_ERROR
+        )
 
     def test_get_table_info_success(self, service):
         """Test get_table_info returns table metadata"""
@@ -379,7 +413,9 @@ class TestMissingActionMethods:
 
     def test_has_data_for_range_false(self, service):
         """Test has_data_for_range returns False"""
-        with patch.object(service._served._reader, "has_date_range", return_value=False):
+        with patch.object(
+            service._served._reader, "has_date_range", return_value=False
+        ):
             result = service.has_data_for_range(
                 "stock_daily", "600000", "2024-01-01", "2024-01-10"
             )
@@ -412,7 +448,9 @@ class TestGetIndexComponents:
         test_df = create_index_components_df()
         mock_result = QueryResult(data=test_df, table="index_components", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_index_components("000300")
             assert not df.empty
             assert "code" in df.columns
@@ -424,14 +462,18 @@ class TestGetIndexComponents:
         test_df = create_index_components_df()
         mock_result = QueryResult(data=test_df, table="index_components", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.get_index_components("sh000300")
             call_kwargs = mock_query.call_args[1]
             assert call_kwargs["partition_value"] == "000300"
 
     def test_get_index_components_empty(self, service):
         """Test index components returns empty"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="index_components", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="index_components", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.get_index_components("000300")
@@ -466,7 +508,9 @@ class TestGetSecuritiesList:
         )
         mock_result = QueryResult(data=test_df, table="securities", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_securities_list(security_type="stock")
             assert not df.empty
             call_kwargs = mock_query.call_args[1]
@@ -483,14 +527,18 @@ class TestGetSecuritiesList:
         )
         mock_result = QueryResult(data=test_df, table="securities", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.get_securities_list(security_type="etf")
             call_kwargs = mock_query.call_args[1]
             assert call_kwargs["partition_value"] == "etf"
 
     def test_get_securities_list_empty(self, service):
         """Test get_securities_list returns empty"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="securities", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="securities", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.get_securities_list(security_type="bond")
@@ -513,9 +561,13 @@ class TestGetIndustryStocks:
                 "code": ["600000", "600519", "000001"],
             }
         )
-        mock_result = QueryResult(data=test_df, table="industry_components", has_data=True)
+        mock_result = QueryResult(
+            data=test_df, table="industry_components", has_data=True
+        )
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             stocks = service.get_industry_stocks("BK0001")
             assert len(stocks) == 3
             assert "600000" in stocks
@@ -524,7 +576,9 @@ class TestGetIndustryStocks:
 
     def test_get_industry_stocks_empty(self, service):
         """Test industry stocks returns empty list"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="industry_components", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="industry_components", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             stocks = service.get_industry_stocks("BK0001")
@@ -533,7 +587,9 @@ class TestGetIndustryStocks:
     def test_get_industry_stocks_missing_code_column(self, service):
         """Test industry stocks when code column missing"""
         test_df = pd.DataFrame({"industry_code": ["BK0001"]})
-        mock_result = QueryResult(data=test_df, table="industry_components", has_data=True)
+        mock_result = QueryResult(
+            data=test_df, table="industry_components", has_data=True
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             stocks = service.get_industry_stocks("BK0001")
@@ -559,14 +615,18 @@ class TestGetSuspendedStocks:
         )
         mock_result = QueryResult(data=test_df, table="suspended_stocks", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_suspended_stocks()
             assert not df.empty
             mock_query.assert_called_once_with(table="suspended_stocks")
 
     def test_get_suspended_stocks_empty(self, service):
         """Test suspended stocks returns empty"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="suspended_stocks", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="suspended_stocks", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.get_suspended_stocks()
@@ -592,14 +652,18 @@ class TestGetSTStocks:
         )
         mock_result = QueryResult(data=test_df, table="st_stocks", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_st_stocks()
             assert not df.empty
             mock_query.assert_called_once_with(table="st_stocks")
 
     def test_get_st_stocks_empty(self, service):
         """Test ST stocks returns empty"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="st_stocks", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="st_stocks", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.get_st_stocks()
@@ -623,9 +687,13 @@ class TestGetRestrictedReleaseCalendar:
                 "release_amount": [1000.0, 2000.0, 500.0, 800.0, 300.0],
             }
         )
-        mock_result = QueryResult(data=test_df, table="restricted_release_calendar", has_data=True)
+        mock_result = QueryResult(
+            data=test_df, table="restricted_release_calendar", has_data=True
+        )
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_restricted_release_calendar("2024-01-01", "2024-01-05")
             assert not df.empty
             mock_query.assert_called_once()
@@ -638,16 +706,22 @@ class TestGetRestrictedReleaseCalendar:
                 "symbol": ["600000"] * 10,
             }
         )
-        mock_result = QueryResult(data=test_df, table="restricted_release_calendar", has_data=True)
+        mock_result = QueryResult(
+            data=test_df, table="restricted_release_calendar", has_data=True
+        )
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.get_restricted_release_calendar()
             call_kwargs = mock_query.call_args[1]
             assert call_kwargs["where"] is None
 
     def test_get_restricted_release_calendar_empty(self, service):
         """Test restricted release calendar returns empty"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="restricted_release_calendar", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="restricted_release_calendar", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.get_restricted_release_calendar("2024-01-01", "2024-01-05")
@@ -702,7 +776,9 @@ class TestGetStockHist:
         test_df = create_daily_df()
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.get_stock_hist(
                 "sh600000",
                 period="daily",
@@ -748,7 +824,9 @@ class TestGetSpotEm:
         )
         mock_result = QueryResult(data=test_df, table="spot_em", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_spot_em()
             assert not df.empty
             mock_query.assert_called_once_with(table="spot_em")
@@ -782,7 +860,9 @@ class TestGetFuturesDaily:
         )
         mock_result = QueryResult(data=test_df, table="futures_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_futures_daily("IF2401", "2024-01-01", "2024-01-05")
             assert not df.empty
             mock_query.assert_called_once()
@@ -797,7 +877,9 @@ class TestGetFuturesDaily:
         )
         mock_result = QueryResult(data=test_df, table="futures_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.get_futures_daily("IF2401")
             call_kwargs = mock_query.call_args[1]
             assert call_kwargs["where"] is None
@@ -807,14 +889,18 @@ class TestGetFuturesDaily:
         test_df = pd.DataFrame({"date": ["2024-01-01"], "symbol": ["IF2401"]})
         mock_result = QueryResult(data=test_df, table="futures_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.get_futures_daily("IF2401.CCFX", "2024-01-01", "2024-01-05")
             call_kwargs = mock_query.call_args[1]
             assert call_kwargs["partition_value"] == "IF2401"
 
     def test_get_futures_daily_empty(self, service):
         """Test futures daily returns empty"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="futures_daily", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="futures_daily", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.get_futures_daily("IF2401", "2024-01-01", "2024-01-05")
@@ -840,14 +926,18 @@ class TestGetFuturesSpot:
         )
         mock_result = QueryResult(data=test_df, table="futures_spot", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_futures_spot()
             assert not df.empty
             mock_query.assert_called_once_with(table="futures_spot")
 
     def test_get_futures_spot_empty(self, service):
         """Test futures spot returns empty"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="futures_spot", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="futures_spot", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.get_futures_spot()
@@ -871,9 +961,13 @@ class TestGetFuturesMainContracts:
                 "is_main": [True, True, True],
             }
         )
-        mock_result = QueryResult(data=test_df, table="futures_main_contracts", has_data=True)
+        mock_result = QueryResult(
+            data=test_df, table="futures_main_contracts", has_data=True
+        )
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             df = service.get_futures_main_contracts()
             assert not df.empty
             mock_query.assert_called_once_with(table="futures_main_contracts")
@@ -934,7 +1028,9 @@ class TestGetCallAuction:
     def test_get_call_auction_empty(self, service):
         """Test call auction returns empty"""
 
-        with patch.object(service.cn.stock.quote, "call_auction", return_value=pd.DataFrame()):
+        with patch.object(
+            service.cn.stock.quote, "call_auction", return_value=pd.DataFrame()
+        ):
             df = service.get_call_auction("600000", date="2024-01-01")
             assert df.empty
 
@@ -965,7 +1061,9 @@ class TestCachedFetch:
         test_df = create_daily_df()
         mock_result = QueryResult(data=test_df, table="stock_daily", has_data=True)
 
-        with patch.object(service._served, "query", return_value=mock_result) as mock_query:
+        with patch.object(
+            service._served, "query", return_value=mock_result
+        ) as mock_query:
             service.cached_fetch(
                 table="stock_daily",
                 partition_by="symbol",
@@ -975,7 +1073,9 @@ class TestCachedFetch:
 
     def test_cached_fetch_empty_result(self, service):
         """Test cached_fetch returns empty DataFrame"""
-        mock_result = QueryResult(data=pd.DataFrame(), table="stock_daily", has_data=False)
+        mock_result = QueryResult(
+            data=pd.DataFrame(), table="stock_daily", has_data=False
+        )
 
         with patch.object(service._served, "query", return_value=mock_result):
             df = service.cached_fetch(table="stock_daily")

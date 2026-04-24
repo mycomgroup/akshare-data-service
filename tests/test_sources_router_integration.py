@@ -13,6 +13,9 @@ from akshare_data.ingestion.router import (
 from akshare_data.core.errors import SourceUnavailableError
 
 
+pytestmark = pytest.mark.integration
+
+
 class TestDomainRateLimiter:
     """Test DomainRateLimiter with real config."""
 

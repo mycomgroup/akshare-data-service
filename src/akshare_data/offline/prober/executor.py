@@ -31,7 +31,9 @@ class TaskExecutor(Executor[ProbeTask, ValidationResult]):
 
     mode = ExecutionMode.SYNC
 
-    def execute(self, task: ProbeTask, context: ExecutionContext | None = None) -> Optional[ValidationResult]:
+    def execute(
+        self, task: ProbeTask, context: ExecutionContext | None = None
+    ) -> Optional[ValidationResult]:
         """执行探测任务（兼容旧接口）。"""
         if context is None:
             context = ExecutionContext(
@@ -42,16 +44,22 @@ class TaskExecutor(Executor[ProbeTask, ValidationResult]):
             )
 
         result = self.execute_structured(task, context=context)
-        return result.payload if result.ok else ValidationResult(
-            func_name=task.func_name,
-            domain_group=task.func_name.split("_")[0] if "_" in task.func_name else "default",
-            status=f"Failed ({result.error_message})",
-            error_msg=result.error_message or result.error_code or "unknown",
-            exec_time=result.stats.latency_ms / 1000,
-            data_size=0,
-            data=None,
-            last_check=time.time(),
-            check_count=1,
+        return (
+            result.payload
+            if result.ok
+            else ValidationResult(
+                func_name=task.func_name,
+                domain_group=task.func_name.split("_")[0]
+                if "_" in task.func_name
+                else "default",
+                status=f"Failed ({result.error_message})",
+                error_msg=result.error_message or result.error_code or "unknown",
+                exec_time=result.stats.latency_ms / 1000,
+                data_size=0,
+                data=None,
+                last_check=time.time(),
+                check_count=1,
+            )
         )
 
     def execute_structured(

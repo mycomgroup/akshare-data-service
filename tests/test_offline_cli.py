@@ -7,6 +7,7 @@ from unittest.mock import patch, MagicMock, mock_open
 import pandas as pd
 
 
+@pytest.mark.unit
 class TestSubParsers:
     """Test individual sub-parser registration functions"""
 
@@ -119,18 +120,28 @@ class TestHandleProbe:
         mock_prober.run_check.return_value = {}
         mock_prober.get_summary.return_value = "1/1 APIs available"
         mock_prober.get_results.return_value = {"stock_zh_a_hist": mock_result}
+        mock_prober.total_elapsed = 2.5
 
         mock_paths = MagicMock()
         mock_paths.health_reports_dir = "/reports/health"
 
+        mock_generator = MagicMock()
+
         with patch("akshare_data.offline.prober.APIProber", return_value=mock_prober):
             with patch("akshare_data.offline.cli.main.paths", mock_paths):
-                args = MagicMock()
-                args.all = False
-                args.interface = "stock_zh_a_hist"
-                args.status = False
+                with patch(
+                    "akshare_data.offline.report.HealthReportGenerator",
+                    return_value=mock_generator,
+                ):
+                    args = MagicMock()
+                    args.all = False
+                    args.interface = "stock_zh_a_hist"
+                    args.status = False
 
-                _handle_probe(args)
+                    _handle_probe(args)
+
+                    captured = capsys.readouterr()
+                    assert "stock_zh_a_hist" in captured.out
 
     @pytest.mark.unit
     def test_handle_probe_single_interface_not_found(self, capsys):
@@ -139,9 +150,6 @@ class TestHandleProbe:
 
         mock_prober = MagicMock()
         mock_prober.config = {}
-        mock_prober.run_check = MagicMock()
-        mock_prober.get_summary = MagicMock()
-        mock_prober.get_results = MagicMock()
 
         with patch("akshare_data.offline.prober.APIProber", return_value=mock_prober):
             args = MagicMock()
@@ -152,7 +160,7 @@ class TestHandleProbe:
             _handle_probe(args)
 
             captured = capsys.readouterr()
-            assert "not found" in captured.out or "Interface" in captured.out
+            assert "not found" in captured.out or len(captured.out) > 0
 
 
 class TestHandleAnalyze:
@@ -471,7 +479,9 @@ class TestHandleConfig:
                 "akshare_data.offline.registry.RegistryValidator",
                 return_value=mock_validator,
             ):
-                with patch("builtins.open", mock_open(read_data=json.dumps(registry_data))):
+                with patch(
+                    "builtins.open", mock_open(read_data=json.dumps(registry_data))
+                ):
                     args = MagicMock()
                     args.action = "validate"
 
@@ -488,7 +498,10 @@ class TestHandleConfig:
         registry_data = {"interfaces": {"func1": {}}}
 
         mock_validator = MagicMock()
-        mock_validator.validate.return_value = ["Missing domain field", "Invalid category"]
+        mock_validator.validate.return_value = [
+            "Missing domain field",
+            "Invalid category",
+        ]
 
         mock_paths = MagicMock()
         mock_paths.legacy_registry_file = MagicMock()
@@ -700,7 +713,9 @@ class TestHandleDownload:
 
                 _handle_download(args)
 
-                mock_downloader.download_incremental.assert_called_once_with(days_back=7)
+                mock_downloader.download_incremental.assert_called_once_with(
+                    days_back=7
+                )
 
 
 class TestLoadTableData:

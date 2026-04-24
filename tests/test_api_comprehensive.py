@@ -23,6 +23,7 @@ import pandas as pd
 from akshare_data.api import DataService
 
 
+@pytest.mark.unit
 def create_daily_df(symbol="600000", start="2024-01-01", end="2024-01-10", freq="D"):
     dates = pd.date_range(start, end, freq=freq)
     n = len(dates)
@@ -223,9 +224,7 @@ class TestGetMinute:
         with (
             patch.object(service.cache, "read", side_effect=mock_read),
             patch.object(service.cache, "write", return_value=""),
-            patch.object(
-                service.akshare, "get_minute_data", return_value=test_df
-            ),
+            patch.object(service.akshare, "get_minute_data", return_value=test_df),
         ):
             df = service.get_minute("sh600000", freq="1min")
             assert df is not None
@@ -762,9 +761,7 @@ class TestGetTradingDays:
         with (
             patch.object(service.cache, "read", side_effect=mock_read),
             patch.object(service.cache, "write", return_value=""),
-            patch.object(
-                service.akshare, "get_trading_days", return_value=mock_days
-            ),
+            patch.object(service.akshare, "get_trading_days", return_value=mock_days),
         ):
             days = service.get_trading_days()
             assert days == mock_days

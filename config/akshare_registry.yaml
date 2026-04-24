@@ -425,7 +425,7 @@ interfaces:
     probe:
       check_interval: 2592000
       params:
-        date: 2019-06-05&tab=rank&order=DESC&type=DAY#rank
+        date: '2019-06-05'
       skip: false
     rate_limit_key: default
     signature: []
@@ -481,8 +481,9 @@ interfaces:
       check_interval: 2592000
       params:
         end_date: '20260424'
-        period: daily
+        period: "day"
         start_date: '20260421'
+        end_date: '20260424'
       skip: false
     rate_limit_key: default
     signature:
@@ -511,7 +512,7 @@ interfaces:
     probe:
       check_interval: 2592000
       params:
-        date: 2020-03-12&tab=rank&order=DESC&type=DAY#rank
+        date: '2020-03-12'
       skip: false
     rate_limit_key: default
     signature:
@@ -1402,7 +1403,7 @@ interfaces:
       params:
         bondType: CYCC000&reference=1
         end_date: '20260424'
-        period: daily
+        period: "day"
         start_date: '20260421'
         symbol: '000001'
       skip: false

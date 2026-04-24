@@ -152,15 +152,17 @@ class CacheManager:
             return ""
 
         table_schema = get_table_schema(table)
+        skip_schema_validation = schema is None and primary_key is None
         if table_schema is not None:
             if storage_layer is None:
                 storage_layer = table_schema.storage_layer
-            if partition_by is None:
-                partition_by = table_schema.partition_by
-            if schema is None:
-                schema = table_schema.schema
-            if primary_key is None:
-                primary_key = table_schema.primary_key
+            if not skip_schema_validation:
+                if partition_by is None:
+                    partition_by = table_schema.partition_by
+                if schema is None:
+                    schema = table_schema.schema
+                if primary_key is None:
+                    primary_key = table_schema.primary_key
 
         if storage_layer is None:
             storage_layer = "daily"
@@ -173,6 +175,7 @@ class CacheManager:
             partition_value=partition_value,
             schema=schema,
             primary_key=primary_key,
+            skip_validation=schema is None and primary_key is None,
         )
 
         # Writing modifies persisted data; clear potentially stale query-shape keys
@@ -467,7 +470,9 @@ class CacheManager:
         order_hash = hashlib.md5(
             json.dumps(order_by or [], sort_keys=True, default=str).encode()
         ).hexdigest()[:8]
-        limit_hash = hashlib.md5(json.dumps(limit, default=str).encode()).hexdigest()[:8]
+        limit_hash = hashlib.md5(json.dumps(limit, default=str).encode()).hexdigest()[
+            :8
+        ]
         refresh_flag = "fr1" if force_refresh else "fr0"
         return (
             f"{CACHE_KEY_VERSION}:{table}:{storage_layer}:{partition_hash}:"

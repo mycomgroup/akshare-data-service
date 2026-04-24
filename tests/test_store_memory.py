@@ -29,6 +29,7 @@ def cache():
     return MemoryCache(max_items=100, default_ttl_seconds=3600)
 
 
+@pytest.mark.unit
 class TestMemoryCacheInit:
     """Tests for MemoryCache initialization."""
 

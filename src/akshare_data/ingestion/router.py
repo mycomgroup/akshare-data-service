@@ -181,49 +181,53 @@ class SourceHealthMonitor:
 
     def __init__(self):
         self._status: Dict[str, Dict[str, Any]] = {}
+        self._lock = threading.Lock()
 
     def record_result(
         self, source: str, success: bool, error: Optional[str] = None
     ) -> None:
-        if source not in self._status:
-            self._status[source] = {
-                "available": True,
-                "last_error": None,
-                "error_count": 0,
-            }
-        status = self._status[source]
-        if success:
-            status["available"] = True
-            status["error_count"] = 0
-            status["last_error"] = None
-        else:
-            status["error_count"] += 1
-            status["last_error"] = error
-            if status["error_count"] >= self._ERROR_THRESHOLD:
-                status["available"] = False
-                status["disabled_at"] = time.time()
-                logger.warning(
-                    "Source %s temporarily disabled (too many errors)", source
-                )
+        with self._lock:
+            if source not in self._status:
+                self._status[source] = {
+                    "available": True,
+                    "last_error": None,
+                    "error_count": 0,
+                }
+            status = self._status[source]
+            if success:
+                status["available"] = True
+                status["error_count"] = 0
+                status["last_error"] = None
+            else:
+                status["error_count"] += 1
+                status["last_error"] = error
+                if status["error_count"] >= self._ERROR_THRESHOLD:
+                    status["available"] = False
+                    status["disabled_at"] = time.time()
+                    logger.warning(
+                        "Source %s temporarily disabled (too many errors)", source
+                    )
 
     def is_available(self, source: str) -> bool:
-        if source not in self._status:
-            return True
-        status = self._status[source]
-        if not status["available"]:
-            disabled_at = status.get("disabled_at")
-            if disabled_at is not None:
-                elapsed = time.time() - disabled_at
-                if elapsed > self._DISABLE_DURATION:
-                    status["available"] = True
-                    status["error_count"] = 0
-                    logger.info("Source %s recovered", source)
-        return status["available"]
+        with self._lock:
+            if source not in self._status:
+                return True
+            status = self._status[source]
+            if not status["available"]:
+                disabled_at = status.get("disabled_at")
+                if disabled_at is not None:
+                    elapsed = time.time() - disabled_at
+                    if elapsed > self._DISABLE_DURATION:
+                        status["available"] = True
+                        status["error_count"] = 0
+                        logger.info("Source %s recovered", source)
+            return status["available"]
 
     def get_status(self) -> Dict[str, Dict[str, Any]]:
         import copy
 
-        return copy.deepcopy(self._status)
+        with self._lock:
+            return copy.deepcopy(self._status)
 
 
 # ---------------------------------------------------------------------------

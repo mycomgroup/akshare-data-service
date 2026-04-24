@@ -44,7 +44,13 @@ def _write_batch(
     df: pd.DataFrame | None = None,
     schema_fingerprint: str = "sha256:test",
 ) -> Path:
-    batch_dir = base / domain / dataset / f"extract_date={extract_date}" / f"batch_id={batch_id}"
+    batch_dir = (
+        base
+        / domain
+        / dataset
+        / f"extract_date={extract_date}"
+        / f"batch_id={batch_id}"
+    )
     batch_dir.mkdir(parents=True, exist_ok=True)
 
     if df is None:
@@ -80,7 +86,9 @@ def _write_batch(
     )
     manifest.save(batch_dir / MANIFEST_FILENAME)
 
-    schema = [{"name": c, "dtype": str(df_with_sys[c].dtype)} for c in df_with_sys.columns]
+    schema = [
+        {"name": c, "dtype": str(df_with_sys[c].dtype)} for c in df_with_sys.columns
+    ]
     save_schema_snapshot(batch_dir, schema)
 
     return batch_dir
@@ -88,14 +96,38 @@ def _write_batch(
 
 @pytest.fixture
 def raw_tree(tmp_path: Path) -> Path:
-    _write_batch(tmp_path, "cn", "market_quote_daily", "2026-04-20", "20260420_001",
-                 interface_name="stock_zh_a_hist")
-    _write_batch(tmp_path, "cn", "market_quote_daily", "2026-04-21", "20260421_001",
-                 interface_name="stock_zh_a_hist")
-    _write_batch(tmp_path, "cn", "market_quote_daily", "2026-04-22", "20260422_001",
-                 interface_name="stock_zh_a_hist")
-    _write_batch(tmp_path, "cn", "financial_indicator", "2026-04-22", "20260422_001",
-                 interface_name="stock_financial_analysis_indicator")
+    _write_batch(
+        tmp_path,
+        "cn",
+        "market_quote_daily",
+        "2026-04-20",
+        "20260420_001",
+        interface_name="stock_zh_a_hist",
+    )
+    _write_batch(
+        tmp_path,
+        "cn",
+        "market_quote_daily",
+        "2026-04-21",
+        "20260421_001",
+        interface_name="stock_zh_a_hist",
+    )
+    _write_batch(
+        tmp_path,
+        "cn",
+        "market_quote_daily",
+        "2026-04-22",
+        "20260422_001",
+        interface_name="stock_zh_a_hist",
+    )
+    _write_batch(
+        tmp_path,
+        "cn",
+        "financial_indicator",
+        "2026-04-22",
+        "20260422_001",
+        interface_name="stock_financial_analysis_indicator",
+    )
     return tmp_path
 
 
@@ -104,7 +136,9 @@ class TestReplayEngine:
     def test_replay_by_batch_id(self, raw_tree: Path):
         engine = ReplayEngine(base_dir=str(raw_tree))
         result = engine.replay_by_batch_id(
-            "20260422_001", domain="cn", dataset="market_quote_daily",
+            "20260422_001",
+            domain="cn",
+            dataset="market_quote_daily",
         )
         assert result.batch_id == "20260422_001"
         assert result.record_count == 3

@@ -11,6 +11,7 @@ import pandas as pd
 from akshare_data.store.duckdb import DuckDBEngine
 
 
+@pytest.mark.unit
 class TestDuckDBEngineInit:
     """Test DuckDBEngine initialization"""
 

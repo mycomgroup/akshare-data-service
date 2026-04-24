@@ -42,7 +42,13 @@ def _write_batch(
     df: pd.DataFrame | None = None,
 ) -> Path:
     """Write a complete batch directory with parquet, manifest, and schema."""
-    batch_dir = base / domain / dataset / f"extract_date={extract_date}" / f"batch_id={batch_id}"
+    batch_dir = (
+        base
+        / domain
+        / dataset
+        / f"extract_date={extract_date}"
+        / f"batch_id={batch_id}"
+    )
     batch_dir.mkdir(parents=True, exist_ok=True)
 
     if df is None:
@@ -78,7 +84,9 @@ def _write_batch(
     )
     manifest.save(batch_dir / MANIFEST_FILENAME)
 
-    schema = [{"name": c, "dtype": str(df_with_sys[c].dtype)} for c in df_with_sys.columns]
+    schema = [
+        {"name": c, "dtype": str(df_with_sys[c].dtype)} for c in df_with_sys.columns
+    ]
     save_schema_snapshot(batch_dir, schema)
 
     return batch_dir
@@ -87,14 +95,38 @@ def _write_batch(
 @pytest.fixture
 def raw_tree(tmp_path: Path) -> Path:
     """Create a multi-batch raw tree for testing."""
-    _write_batch(tmp_path, "cn", "market_quote_daily", "2026-04-20", "20260420_001",
-                 interface_name="stock_zh_a_hist")
-    _write_batch(tmp_path, "cn", "market_quote_daily", "2026-04-21", "20260421_001",
-                 interface_name="stock_zh_a_hist")
-    _write_batch(tmp_path, "cn", "market_quote_daily", "2026-04-22", "20260422_001",
-                 interface_name="stock_zh_a_hist")
-    _write_batch(tmp_path, "cn", "financial_indicator", "2026-04-22", "20260422_001",
-                 interface_name="stock_financial_analysis_indicator")
+    _write_batch(
+        tmp_path,
+        "cn",
+        "market_quote_daily",
+        "2026-04-20",
+        "20260420_001",
+        interface_name="stock_zh_a_hist",
+    )
+    _write_batch(
+        tmp_path,
+        "cn",
+        "market_quote_daily",
+        "2026-04-21",
+        "20260421_001",
+        interface_name="stock_zh_a_hist",
+    )
+    _write_batch(
+        tmp_path,
+        "cn",
+        "market_quote_daily",
+        "2026-04-22",
+        "20260422_001",
+        interface_name="stock_zh_a_hist",
+    )
+    _write_batch(
+        tmp_path,
+        "cn",
+        "financial_indicator",
+        "2026-04-22",
+        "20260422_001",
+        interface_name="stock_financial_analysis_indicator",
+    )
     return tmp_path
 
 
@@ -102,7 +134,9 @@ def raw_tree(tmp_path: Path) -> Path:
 class TestRawReader:
     def test_read_by_batch_id(self, raw_tree: Path):
         reader = RawReader(base_dir=str(raw_tree))
-        df = reader.read_by_batch_id("20260422_001", domain="cn", dataset="market_quote_daily")
+        df = reader.read_by_batch_id(
+            "20260422_001", domain="cn", dataset="market_quote_daily"
+        )
         assert len(df) == 3
         assert "batch_id" in df.columns
         assert df["batch_id"].iloc[0] == "20260422_001"
@@ -120,21 +154,26 @@ class TestRawReader:
     def test_read_by_dataset_with_extract_date(self, raw_tree: Path):
         reader = RawReader(base_dir=str(raw_tree))
         df = reader.read_by_dataset(
-            "cn", "market_quote_daily", extract_date=date(2026, 4, 21),
+            "cn",
+            "market_quote_daily",
+            extract_date=date(2026, 4, 21),
         )
         assert len(df) == 3
 
     def test_read_by_extract_date(self, raw_tree: Path):
         reader = RawReader(base_dir=str(raw_tree))
         df = reader.read_by_extract_date(
-            "cn", "market_quote_daily", date(2026, 4, 22),
+            "cn",
+            "market_quote_daily",
+            date(2026, 4, 22),
         )
         assert len(df) == 3
 
     def test_read_by_extract_date_range(self, raw_tree: Path):
         reader = RawReader(base_dir=str(raw_tree))
         df = reader.read_by_extract_date_range(
-            "cn", "market_quote_daily",
+            "cn",
+            "market_quote_daily",
             start=date(2026, 4, 20),
             end=date(2026, 4, 21),
         )
@@ -152,7 +191,13 @@ class TestRawReader:
 
     def test_read_batch_direct(self, raw_tree: Path):
         reader = RawReader(base_dir=str(raw_tree))
-        batch_dir = raw_tree / "cn" / "market_quote_daily" / "extract_date=2026-04-22" / "batch_id=20260422_001"
+        batch_dir = (
+            raw_tree
+            / "cn"
+            / "market_quote_daily"
+            / "extract_date=2026-04-22"
+            / "batch_id=20260422_001"
+        )
         df, manifest = reader.read_batch(batch_dir)
         assert len(df) == 3
         assert manifest.batch_id == "20260422_001"
@@ -166,7 +211,13 @@ class TestRawReader:
 
     def test_read_batch_with_partition_filter(self, raw_tree: Path):
         reader = RawReader(base_dir=str(raw_tree))
-        batch_dir = raw_tree / "cn" / "market_quote_daily" / "extract_date=2026-04-22" / "batch_id=20260422_001"
+        batch_dir = (
+            raw_tree
+            / "cn"
+            / "market_quote_daily"
+            / "extract_date=2026-04-22"
+            / "batch_id=20260422_001"
+        )
         df, manifest = reader.read_batch(batch_dir, partitions=["part-000.parquet"])
         assert len(df) == 3
 
@@ -217,7 +268,13 @@ class TestRawReader:
 
     def test_get_schema_snapshot(self, raw_tree: Path):
         reader = RawReader(base_dir=str(raw_tree))
-        batch_dir = raw_tree / "cn" / "market_quote_daily" / "extract_date=2026-04-22" / "batch_id=20260422_001"
+        batch_dir = (
+            raw_tree
+            / "cn"
+            / "market_quote_daily"
+            / "extract_date=2026-04-22"
+            / "batch_id=20260422_001"
+        )
         schema = reader.get_schema_snapshot(batch_dir)
         assert isinstance(schema, list)
         assert len(schema) > 0

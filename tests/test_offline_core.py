@@ -22,6 +22,7 @@ from akshare_data.offline.core import config_loader, data_loader, errors, paths,
 # =============================================================================
 
 
+@pytest.mark.unit
 class TestOfflineErrors:
     """OfflineError 异常类测试"""
 
@@ -517,9 +518,7 @@ class TestConfigLoaderLoadFailover:
         """测试加载切源配置"""
         loader = config_loader.ConfigLoader()
 
-        with patch.object(
-            loader, "load_yaml", return_value={"enabled": True}
-        ):
+        with patch.object(loader, "load_yaml", return_value={"enabled": True}):
             with patch("akshare_data.offline.core.paths.paths") as mock_paths:
                 mock_paths.failover_file = Path("/test/sources/failover.yaml")
                 result = loader.load_failover()
@@ -533,9 +532,7 @@ class TestConfigLoaderLoadPriority:
         """测试加载优先级配置"""
         loader = config_loader.ConfigLoader()
 
-        with patch.object(
-            loader, "load_yaml", return_value={"priority": 1}
-        ):
+        with patch.object(loader, "load_yaml", return_value={"priority": 1}):
             with patch("akshare_data.offline.core.paths.paths") as mock_paths:
                 mock_paths.priority_file = Path("/test/download/priority.yaml")
                 result = loader.load_priority()
@@ -549,9 +546,7 @@ class TestConfigLoaderLoadSchedule:
         """测试加载调度配置"""
         loader = config_loader.ConfigLoader()
 
-        with patch.object(
-            loader, "load_yaml", return_value={"schedule": "daily"}
-        ):
+        with patch.object(loader, "load_yaml", return_value={"schedule": "daily"}):
             with patch("akshare_data.offline.core.paths.paths") as mock_paths:
                 mock_paths.schedule_file = Path("/test/download/schedule.yaml")
                 result = loader.load_schedule()
@@ -565,9 +560,7 @@ class TestConfigLoaderLoadProberConfig:
         """测试加载探测配置"""
         loader = config_loader.ConfigLoader()
 
-        with patch.object(
-            loader, "load_yaml", return_value={"timeout": 30}
-        ):
+        with patch.object(loader, "load_yaml", return_value={"timeout": 30}):
             with patch("akshare_data.offline.core.paths.paths") as mock_paths:
                 mock_paths.prober_config_file = Path("/test/prober/config.yaml")
                 result = loader.load_prober_config()

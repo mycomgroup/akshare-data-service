@@ -33,7 +33,10 @@ class ContinuityCheck(BaseCheck):
                 severity=rule.severity,
                 gate_action=rule.gate_action,
                 message=f"Date field '{date_field}' not found in DataFrame",
-                details={"date_field": date_field, "available_columns": list(df.columns)},
+                details={
+                    "date_field": date_field,
+                    "available_columns": list(df.columns),
+                },
             )
 
         dates = pd.to_datetime(df[date_field]).dropna().sort_values().unique()
@@ -54,7 +57,9 @@ class ContinuityCheck(BaseCheck):
         if use_trade_calendar and trade_calendar:
             expected = set(pd.to_datetime(trade_calendar))
             actual = set(pd.to_datetime(dates))
-            missing = sorted(expected & set(pd.date_range(dates[0], dates[-1])) - actual)
+            missing = sorted(
+                expected & set(pd.date_range(dates[0], dates[-1])) - actual
+            )
             gaps = len(missing)
         else:
             diffs = pd.Series(dates).diff().dt.days.dropna()
@@ -71,7 +76,9 @@ class ContinuityCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{gaps} gaps detected (max_gap={max_gap_days}d)" if gaps else f"No gaps > {max_gap_days} days",
+            message=f"{gaps} gaps detected (max_gap={max_gap_days}d)"
+            if gaps
+            else f"No gaps > {max_gap_days} days",
             failed_count=gaps,
             total_count=len(dates) - 1,
             details={
@@ -135,7 +142,9 @@ class PrimaryKeyCoverageCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"PK coverage below {min_coverage:.0%} for: {failed_fields}" if failed_fields else f"All PK fields >= {min_coverage:.0%} coverage",
+            message=f"PK coverage below {min_coverage:.0%} for: {failed_fields}"
+            if failed_fields
+            else f"All PK fields >= {min_coverage:.0%} coverage",
             failed_count=len(failed_fields),
             total_count=len(pk_fields),
             details={
@@ -185,7 +194,11 @@ class PartitionCoverageCheck(BaseCheck):
         missing = sorted(expected_set - actual_partitions)
         extra = sorted(actual_partitions - expected_set)
 
-        coverage = (len(expected_set) - len(missing)) / len(expected_set) if expected_set else 1.0
+        coverage = (
+            (len(expected_set) - len(missing)) / len(expected_set)
+            if expected_set
+            else 1.0
+        )
         min_coverage = rule.params.get("min_coverage", 1.0)
         status = RuleStatus.FAILED if coverage < min_coverage else RuleStatus.PASSED
 
@@ -194,7 +207,9 @@ class PartitionCoverageCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"Partition coverage {coverage:.1%} (missing {len(missing)})" if coverage < 1.0 else "All expected partitions present",
+            message=f"Partition coverage {coverage:.1%} (missing {len(missing)})"
+            if coverage < 1.0
+            else "All expected partitions present",
             failed_count=len(missing),
             total_count=len(expected_set),
             details={

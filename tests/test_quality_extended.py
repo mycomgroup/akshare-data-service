@@ -41,32 +41,36 @@ from akshare_data.quality.checks.consistency import (
 def sample_quote_df() -> pd.DataFrame:
     """Generate sample market quote data for testing."""
     dates = pd.date_range("2024-01-01", periods=30, freq="B")
-    return pd.DataFrame({
-        "trade_date": dates,
-        "symbol": ["sh600000"] * 30,
-        "open_price": np.random.uniform(10, 15, 30),
-        "high_price": np.random.uniform(15, 18, 30),
-        "low_price": np.random.uniform(8, 10, 30),
-        "close_price": np.random.uniform(10, 15, 30),
-        "change_pct": np.random.uniform(-3, 3, 30),
-        "volume": np.random.uniform(100000, 500000, 30),
-    })
+    return pd.DataFrame(
+        {
+            "trade_date": dates,
+            "symbol": ["sh600000"] * 30,
+            "open_price": np.random.uniform(10, 15, 30),
+            "high_price": np.random.uniform(15, 18, 30),
+            "low_price": np.random.uniform(8, 10, 30),
+            "close_price": np.random.uniform(10, 15, 30),
+            "change_pct": np.random.uniform(-3, 3, 30),
+            "volume": np.random.uniform(100000, 500000, 30),
+        }
+    )
 
 
 @pytest.fixture
 def sample_quote_df_with_anomalies() -> pd.DataFrame:
     """Generate sample data with intentional anomalies."""
     dates = pd.date_range("2024-01-01", periods=10, freq="B")
-    df = pd.DataFrame({
-        "trade_date": dates,
-        "symbol": ["sh600000"] * 10,
-        "open_price": [10.0] * 10,
-        "high_price": [8.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-        "low_price": [12.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
-        "close_price": [10.5] * 10,
-        "change_pct": [5.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 25.0, 2.0],
-        "volume": [100000] * 10,
-    })
+    df = pd.DataFrame(
+        {
+            "trade_date": dates,
+            "symbol": ["sh600000"] * 10,
+            "open_price": [10.0] * 10,
+            "high_price": [8.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+            "low_price": [12.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0],
+            "close_price": [10.5] * 10,
+            "change_pct": [5.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 25.0, 2.0],
+            "volume": [100000] * 10,
+        }
+    )
     return df
 
 
@@ -134,11 +138,13 @@ class TestCompletenessChecks:
     def test_continuity_check_detects_gap(self):
         """Test continuity check detects gaps in time series."""
         dates = pd.to_datetime(["2024-01-01", "2024-01-02", "2024-01-10"])
-        df = pd.DataFrame({
-            "trade_date": dates,
-            "symbol": ["sh600000"] * 3,
-            "close_price": [10.0, 10.5, 11.0],
-        })
+        df = pd.DataFrame(
+            {
+                "trade_date": dates,
+                "symbol": ["sh600000"] * 3,
+                "close_price": [10.0, 10.5, 11.0],
+            }
+        )
         check = ContinuityCheck()
         rule = RuleDef(
             rule_id="test_cont",
@@ -170,10 +176,12 @@ class TestCompletenessChecks:
 
     def test_continuity_check_insufficient_data(self):
         """Test continuity check with fewer than 2 dates."""
-        df = pd.DataFrame({
-            "trade_date": pd.to_datetime(["2024-01-01"]),
-            "symbol": ["sh600000"],
-        })
+        df = pd.DataFrame(
+            {
+                "trade_date": pd.to_datetime(["2024-01-01"]),
+                "symbol": ["sh600000"],
+            }
+        )
         check = ContinuityCheck()
         rule = RuleDef(
             rule_id="test_cont",
@@ -203,10 +211,12 @@ class TestCompletenessChecks:
 
     def test_pk_coverage_check_with_nulls(self):
         """Test primary key coverage with null values."""
-        df = pd.DataFrame({
-            "symbol": ["sh600000", None, "sh600001"],
-            "trade_date": pd.date_range("2024-01-01", periods=3),
-        })
+        df = pd.DataFrame(
+            {
+                "symbol": ["sh600000", None, "sh600001"],
+                "trade_date": pd.date_range("2024-01-01", periods=3),
+            }
+        )
         check = PrimaryKeyCoverageCheck()
         rule = RuleDef(
             rule_id="test_pk",
@@ -222,10 +232,12 @@ class TestCompletenessChecks:
 
     def test_partition_coverage_check_passes(self):
         """Test partition coverage with all expected partitions."""
-        df = pd.DataFrame({
-            "trade_date": ["2024-01-01", "2024-01-02", "2024-01-03"],
-            "symbol": ["sh600000"] * 3,
-        })
+        df = pd.DataFrame(
+            {
+                "trade_date": ["2024-01-01", "2024-01-02", "2024-01-03"],
+                "symbol": ["sh600000"] * 3,
+            }
+        )
         check = PartitionCoverageCheck()
         rule = RuleDef(
             rule_id="test_partition",
@@ -244,10 +256,12 @@ class TestCompletenessChecks:
 
     def test_partition_coverage_check_missing_partitions(self):
         """Test partition coverage with missing partitions."""
-        df = pd.DataFrame({
-            "trade_date": ["2024-01-01", "2024-01-02"],
-            "symbol": ["sh600000"] * 2,
-        })
+        df = pd.DataFrame(
+            {
+                "trade_date": ["2024-01-01", "2024-01-02"],
+                "symbol": ["sh600000"] * 2,
+            }
+        )
         check = PartitionCoverageCheck()
         rule = RuleDef(
             rule_id="test_partition",
@@ -296,7 +310,9 @@ class TestAnomalyChecks:
         )
         result = check.execute(sample_quote_df_with_anomalies, rule)
         assert result.status == RuleStatus.FAILED
-        assert any(v["type"] == "high_lt_low" for v in result.details.get("violations", []))
+        assert any(
+            v["type"] == "high_lt_low" for v in result.details.get("violations", [])
+        )
 
     def test_price_anomaly_check_extreme_change(self, sample_quote_df_with_anomalies):
         """Test price anomaly detects extreme change percentage."""
@@ -314,10 +330,12 @@ class TestAnomalyChecks:
 
     def test_numeric_anomaly_check_iqr_method(self):
         """Test numeric range anomaly using IQR method."""
-        df = pd.DataFrame({
-            "volume": [100, 120, 130, 140, 150, 1000],
-            "trade_date": pd.date_range("2024-01-01", periods=6),
-        })
+        df = pd.DataFrame(
+            {
+                "volume": [100, 120, 130, 140, 150, 1000],
+                "trade_date": pd.date_range("2024-01-01", periods=6),
+            }
+        )
         check = NumericRangeAnomalyCheck()
         rule = RuleDef(
             rule_id="test_numeric",
@@ -334,10 +352,12 @@ class TestAnomalyChecks:
 
     def test_numeric_anomaly_check_zscore_method(self):
         """Test numeric range anomaly using z-score method."""
-        df = pd.DataFrame({
-            "volume": [100, 110, 120, 130, 140, 500],
-            "trade_date": pd.date_range("2024-01-01", periods=6),
-        })
+        df = pd.DataFrame(
+            {
+                "volume": [100, 110, 120, 130, 140, 500],
+                "trade_date": pd.date_range("2024-01-01", periods=6),
+            }
+        )
         check = NumericRangeAnomalyCheck()
         rule = RuleDef(
             rule_id="test_numeric",
@@ -369,10 +389,12 @@ class TestAnomalyChecks:
     def test_volatility_anomaly_check_passes(self):
         """Test volatility anomaly with normal volatility."""
         np.random.seed(42)
-        df = pd.DataFrame({
-            "change_pct": np.random.normal(0, 1, 100),
-            "trade_date": pd.date_range("2024-01-01", periods=100),
-        })
+        df = pd.DataFrame(
+            {
+                "change_pct": np.random.normal(0, 1, 100),
+                "trade_date": pd.date_range("2024-01-01", periods=100),
+            }
+        )
         check = VolatilityAnomalyCheck()
         rule = RuleDef(
             rule_id="test_vol",
@@ -381,7 +403,11 @@ class TestAnomalyChecks:
             severity=Severity.WARNING,
             gate_action=GateAction.ALERT,
             field="change_pct",
-            params={"rolling_window": 10, "baseline_window": 30, "volatility_multiplier": 3.0},
+            params={
+                "rolling_window": 10,
+                "baseline_window": 30,
+                "volatility_multiplier": 3.0,
+            },
         )
         result = check.execute(df, rule)
         assert result.status in (RuleStatus.PASSED, RuleStatus.FAILED)
@@ -408,12 +434,14 @@ class TestConsistencyChecks:
 
     def test_cross_source_diff_passes(self):
         """Test cross source diff with consistent values."""
-        df = pd.DataFrame({
-            "symbol": ["sh600000", "sh600000", "sh600001", "sh600001"],
-            "trade_date": ["2024-01-01", "2024-01-01", "2024-01-01", "2024-01-01"],
-            "close_price": [10.0, 10.01, 15.0, 15.0],
-            "source_name": ["akshare", "lixinger", "akshare", "lixinger"],
-        })
+        df = pd.DataFrame(
+            {
+                "symbol": ["sh600000", "sh600000", "sh600001", "sh600001"],
+                "trade_date": ["2024-01-01", "2024-01-01", "2024-01-01", "2024-01-01"],
+                "close_price": [10.0, 10.01, 15.0, 15.0],
+                "source_name": ["akshare", "lixinger", "akshare", "lixinger"],
+            }
+        )
         check = CrossSourceDiffCheck()
         rule = RuleDef(
             rule_id="test_cross",
@@ -434,12 +462,14 @@ class TestConsistencyChecks:
 
     def test_cross_source_diff_fails(self):
         """Test cross source diff detects inconsistency."""
-        df = pd.DataFrame({
-            "symbol": ["sh600000", "sh600000"],
-            "trade_date": ["2024-01-01", "2024-01-01"],
-            "close_price": [10.0, 15.0],
-            "source_name": ["akshare", "lixinger"],
-        })
+        df = pd.DataFrame(
+            {
+                "symbol": ["sh600000", "sh600000"],
+                "trade_date": ["2024-01-01", "2024-01-01"],
+                "close_price": [10.0, 15.0],
+                "source_name": ["akshare", "lixinger"],
+            }
+        )
         check = CrossSourceDiffCheck()
         rule = RuleDef(
             rule_id="test_cross",
@@ -460,10 +490,12 @@ class TestConsistencyChecks:
 
     def test_cross_source_diff_missing_source_col(self):
         """Test cross source diff with missing source column."""
-        df = pd.DataFrame({
-            "symbol": ["sh600000"],
-            "close_price": [10.0],
-        })
+        df = pd.DataFrame(
+            {
+                "symbol": ["sh600000"],
+                "close_price": [10.0],
+            }
+        )
         check = CrossSourceDiffCheck()
         rule = RuleDef(
             rule_id="test_cross",
@@ -479,16 +511,20 @@ class TestConsistencyChecks:
 
     def test_cross_table_consistency_passes(self):
         """Test cross table consistency with matching data."""
-        df_a = pd.DataFrame({
-            "symbol": ["sh600000", "sh600001"],
-            "trade_date": ["2024-01-01", "2024-01-01"],
-            "close_price": [10.0, 15.0],
-        })
-        df_b = pd.DataFrame({
-            "symbol": ["sh600000", "sh600001"],
-            "trade_date": ["2024-01-01", "2024-01-01"],
-            "close_price": [10.0, 15.0],
-        })
+        df_a = pd.DataFrame(
+            {
+                "symbol": ["sh600000", "sh600001"],
+                "trade_date": ["2024-01-01", "2024-01-01"],
+                "close_price": [10.0, 15.0],
+            }
+        )
+        df_b = pd.DataFrame(
+            {
+                "symbol": ["sh600000", "sh600001"],
+                "trade_date": ["2024-01-01", "2024-01-01"],
+                "close_price": [10.0, 15.0],
+            }
+        )
         check = CrossTableConsistencyCheck()
         rule = RuleDef(
             rule_id="test_cross_table",
@@ -508,16 +544,20 @@ class TestConsistencyChecks:
 
     def test_cross_table_consistency_fails(self):
         """Test cross table consistency detects mismatch."""
-        df_a = pd.DataFrame({
-            "symbol": ["sh600000"],
-            "trade_date": ["2024-01-01"],
-            "close_price": [10.0],
-        })
-        df_b = pd.DataFrame({
-            "symbol": ["sh600000"],
-            "trade_date": ["2024-01-01"],
-            "close_price": [12.0],
-        })
+        df_a = pd.DataFrame(
+            {
+                "symbol": ["sh600000"],
+                "trade_date": ["2024-01-01"],
+                "close_price": [10.0],
+            }
+        )
+        df_b = pd.DataFrame(
+            {
+                "symbol": ["sh600000"],
+                "trade_date": ["2024-01-01"],
+                "close_price": [12.0],
+            }
+        )
         check = CrossTableConsistencyCheck()
         rule = RuleDef(
             rule_id="test_cross_table",
@@ -537,14 +577,18 @@ class TestConsistencyChecks:
 
     def test_cross_layer_consistency_passes(self):
         """Test cross layer consistency with matching counts."""
-        raw_df = pd.DataFrame({
-            "symbol": ["sh600000"] * 100,
-            "trade_date": ["2024-01-01"] * 100,
-        })
-        std_df = pd.DataFrame({
-            "symbol": ["sh600000"] * 95,
-            "trade_date": ["2024-01-01"] * 95,
-        })
+        raw_df = pd.DataFrame(
+            {
+                "symbol": ["sh600000"] * 100,
+                "trade_date": ["2024-01-01"] * 100,
+            }
+        )
+        std_df = pd.DataFrame(
+            {
+                "symbol": ["sh600000"] * 95,
+                "trade_date": ["2024-01-01"] * 95,
+            }
+        )
         check = CrossLayerConsistencyCheck()
         rule = RuleDef(
             rule_id="test_cross_layer",
@@ -563,12 +607,16 @@ class TestConsistencyChecks:
 
     def test_cross_layer_consistency_fails(self):
         """Test cross layer consistency detects excessive loss."""
-        raw_df = pd.DataFrame({
-            "symbol": ["sh600000"] * 100,
-        })
-        std_df = pd.DataFrame({
-            "symbol": ["sh600000"] * 50,
-        })
+        raw_df = pd.DataFrame(
+            {
+                "symbol": ["sh600000"] * 100,
+            }
+        )
+        std_df = pd.DataFrame(
+            {
+                "symbol": ["sh600000"] * 50,
+            }
+        )
         check = CrossLayerConsistencyCheck()
         rule = RuleDef(
             rule_id="test_cross_layer",
@@ -592,16 +640,18 @@ class TestQualityGate:
     def test_gate_passed_all_rules_pass(self, sample_quote_df):
         """Test gate passes when all rules pass."""
         engine = QualityEngine()
-        engine.load_rules([
-            RuleDef(
-                rule_id="rule1",
-                layer=Layer.STANDARDIZED,
-                rule_type="non_null",
-                severity=Severity.ERROR,
-                gate_action=GateAction.BLOCK,
-                fields=["symbol", "close_price"],
-            ),
-        ])
+        engine.load_rules(
+            [
+                RuleDef(
+                    rule_id="rule1",
+                    layer=Layer.STANDARDIZED,
+                    rule_type="non_null",
+                    severity=Severity.ERROR,
+                    gate_action=GateAction.BLOCK,
+                    fields=["symbol", "close_price"],
+                ),
+            ]
+        )
         results = engine.run(sample_quote_df)
         gate = QualityGate()
         gate_result = gate.evaluate(results, dataset="test", batch_id="b1")
@@ -611,16 +661,18 @@ class TestQualityGate:
     def test_gate_blocked_on_error_block_rule(self, sample_quote_df_with_anomalies):
         """Test gate blocks on error+block failure."""
         engine = QualityEngine()
-        engine.load_rules([
-            RuleDef(
-                rule_id="blocking_rule",
-                layer=Layer.STANDARDIZED,
-                rule_type="non_null",
-                severity=Severity.ERROR,
-                gate_action=GateAction.BLOCK,
-                fields=["nonexistent_field"],
-            ),
-        ])
+        engine.load_rules(
+            [
+                RuleDef(
+                    rule_id="blocking_rule",
+                    layer=Layer.STANDARDIZED,
+                    rule_type="non_null",
+                    severity=Severity.ERROR,
+                    gate_action=GateAction.BLOCK,
+                    fields=["nonexistent_field"],
+                ),
+            ]
+        )
         results = engine.run(sample_quote_df_with_anomalies)
         gate = QualityGate()
         gate_result = gate.evaluate(results, dataset="test", batch_id="b1")
@@ -629,21 +681,25 @@ class TestQualityGate:
 
     def test_gate_warning_on_warning_alert_rule(self):
         """Test gate warns on warning+alert failure."""
-        df = pd.DataFrame({
-            "symbol": ["sh600000", None],
-            "close_price": [10.0, 10.5],
-        })
+        df = pd.DataFrame(
+            {
+                "symbol": ["sh600000", None],
+                "close_price": [10.0, 10.5],
+            }
+        )
         engine = QualityEngine()
-        engine.load_rules([
-            RuleDef(
-                rule_id="warning_rule",
-                layer=Layer.STANDARDIZED,
-                rule_type="non_null",
-                severity=Severity.WARNING,
-                gate_action=GateAction.ALERT,
-                fields=["symbol"],
-            ),
-        ])
+        engine.load_rules(
+            [
+                RuleDef(
+                    rule_id="warning_rule",
+                    layer=Layer.STANDARDIZED,
+                    rule_type="non_null",
+                    severity=Severity.WARNING,
+                    gate_action=GateAction.ALERT,
+                    fields=["symbol"],
+                ),
+            ]
+        )
         results = engine.run(df)
         gate = QualityGate()
         gate_result = gate.evaluate(results, dataset="test", batch_id="b1")
@@ -675,7 +731,9 @@ class TestQualityGate:
                 message="OK",
             ),
         ]
-        gate_result = gate.evaluate(results, dataset="test_dataset", batch_id="b1", layer="std")
+        gate_result = gate.evaluate(
+            results, dataset="test_dataset", batch_id="b1", layer="std"
+        )
         d = gate_result.to_dict()
         assert d["decision"] == "passed"
         assert d["dataset"] == "test_dataset"
@@ -686,10 +744,30 @@ class TestQualityGate:
     def test_gate_counts_by_status(self):
         """Test gate correctly counts rule statuses."""
         results = [
-            RuleResult(rule_id="r1", status=RuleStatus.PASSED, severity=Severity.ERROR, gate_action=GateAction.BLOCK),
-            RuleResult(rule_id="r2", status=RuleStatus.FAILED, severity=Severity.WARNING, gate_action=GateAction.ALERT),
-            RuleResult(rule_id="r3", status=RuleStatus.SKIPPED, severity=Severity.INFO, gate_action=GateAction.IGNORE),
-            RuleResult(rule_id="r4", status=RuleStatus.ERROR, severity=Severity.ERROR, gate_action=GateAction.BLOCK),
+            RuleResult(
+                rule_id="r1",
+                status=RuleStatus.PASSED,
+                severity=Severity.ERROR,
+                gate_action=GateAction.BLOCK,
+            ),
+            RuleResult(
+                rule_id="r2",
+                status=RuleStatus.FAILED,
+                severity=Severity.WARNING,
+                gate_action=GateAction.ALERT,
+            ),
+            RuleResult(
+                rule_id="r3",
+                status=RuleStatus.SKIPPED,
+                severity=Severity.INFO,
+                gate_action=GateAction.IGNORE,
+            ),
+            RuleResult(
+                rule_id="r4",
+                status=RuleStatus.ERROR,
+                severity=Severity.ERROR,
+                gate_action=GateAction.BLOCK,
+            ),
         ]
         gate = QualityGate()
         gate_result = gate.evaluate(results)
@@ -702,9 +780,26 @@ class TestQualityGate:
     def test_gate_mixed_blocking_and_warning(self):
         """Test gate with both blocking errors and warnings."""
         results = [
-            RuleResult(rule_id="block1", status=RuleStatus.FAILED, severity=Severity.ERROR, gate_action=GateAction.BLOCK, message="Block error"),
-            RuleResult(rule_id="warn1", status=RuleStatus.FAILED, severity=Severity.WARNING, gate_action=GateAction.ALERT, message="Warning"),
-            RuleResult(rule_id="pass1", status=RuleStatus.PASSED, severity=Severity.INFO, gate_action=GateAction.IGNORE),
+            RuleResult(
+                rule_id="block1",
+                status=RuleStatus.FAILED,
+                severity=Severity.ERROR,
+                gate_action=GateAction.BLOCK,
+                message="Block error",
+            ),
+            RuleResult(
+                rule_id="warn1",
+                status=RuleStatus.FAILED,
+                severity=Severity.WARNING,
+                gate_action=GateAction.ALERT,
+                message="Warning",
+            ),
+            RuleResult(
+                rule_id="pass1",
+                status=RuleStatus.PASSED,
+                severity=Severity.INFO,
+                gate_action=GateAction.IGNORE,
+            ),
         ]
         gate = QualityGate()
         gate_result = gate.evaluate(results)
@@ -759,15 +854,17 @@ class TestQualityEngineIntegration:
 
         engine = QualityEngine()
         engine.register_check(CustomCheck)
-        engine.load_rules([
-            RuleDef(
-                rule_id="custom_rule",
-                layer=Layer.STANDARDIZED,
-                rule_type="custom_check",
-                severity=Severity.INFO,
-                gate_action=GateAction.IGNORE,
-            ),
-        ])
+        engine.load_rules(
+            [
+                RuleDef(
+                    rule_id="custom_rule",
+                    layer=Layer.STANDARDIZED,
+                    rule_type="custom_check",
+                    severity=Severity.INFO,
+                    gate_action=GateAction.IGNORE,
+                ),
+            ]
+        )
         results = engine.run(sample_quote_df)
         assert len(results) == 1
         assert results[0].status == RuleStatus.PASSED

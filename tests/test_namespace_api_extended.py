@@ -28,8 +28,10 @@ from akshare_data.api import (
 )
 
 
+@pytest.mark.unit
 def _mock_query_result(df: pd.DataFrame):
     from akshare_data.service.data_service import QueryResult
+
     return QueryResult(data=df, table="mock_table", has_data=True)
 
 
@@ -75,8 +77,8 @@ class TestCNStockQuoteAPIMinute:
         api.minute(symbol="sh600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "stock_minute_1min"
-        assert call_kwargs.get("partition_by") == "symbol"
-        assert call_kwargs.get("partition_value") == "600000"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
 
     def test_minute_5min_freq(self, mock_service):
         api = CNStockQuoteAPI(mock_service)
@@ -109,7 +111,9 @@ class TestCNStockQuoteAPIMinute:
     def test_minute_with_date_range(self, mock_service):
         api = CNStockQuoteAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
-        api.minute(symbol="600000", freq="5min", start_date="2024-01-02", end_date="2024-01-05")
+        api.minute(
+            symbol="600000", freq="5min", start_date="2024-01-02", end_date="2024-01-05"
+        )
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["where"]["datetime"] == ("2024-01-02", "2024-01-05")
 
@@ -118,7 +122,7 @@ class TestCNStockQuoteAPIMinute:
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.minute(symbol="sh600000.XSHG")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs.get("partition_value") == "600000"
+        assert call_kwargs["partition_value"] == "600000"
 
 
 class TestCNStockQuoteAPIRealtime:
@@ -130,14 +134,15 @@ class TestCNStockQuoteAPIRealtime:
         api.realtime(symbol="sh600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "spot_snapshot"
-        assert call_kwargs["where"] == {"symbol": "600000"}
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
 
     def test_realtime_symbol_normalization(self, mock_service):
         api = CNStockQuoteAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.realtime(symbol="600000.XSHG")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_value"] == "600000"
 
 
 class TestCNStockFinanceAPIIndicators:
@@ -146,10 +151,13 @@ class TestCNStockFinanceAPIIndicators:
     def test_indicators_with_full_date_range(self, mock_service):
         api = CNStockFinanceAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
-        api.indicators(symbol="sh600000", start_date="2024-01-01", end_date="2024-06-30")
+        api.indicators(
+            symbol="sh600000", start_date="2024-01-01", end_date="2024-06-30"
+        )
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "finance_indicator"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
         assert call_kwargs["where"]["report_date"] == ("2024-01-01", "2024-06-30")
 
     def test_indicators_start_date_only(self, mock_service):
@@ -164,14 +172,15 @@ class TestCNStockFinanceAPIIndicators:
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.indicators(symbol="600000")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_value"] == "600000"
+        assert call_kwargs["where"] is None
 
     def test_indicators_symbol_normalization(self, mock_service):
         api = CNStockFinanceAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.indicators(symbol="sz000001.XSHE")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "000001"
+        assert call_kwargs["partition_value"] == "000001"
 
 
 class TestCNStockFinanceAPIBalanceSheet:
@@ -183,14 +192,15 @@ class TestCNStockFinanceAPIBalanceSheet:
         api.balance_sheet(symbol="sh600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "balance_sheet"
-        assert call_kwargs["where"] == {"symbol": "600000"}
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
 
     def test_balance_sheet_symbol_normalization(self, mock_service):
         api = CNStockFinanceAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.balance_sheet(symbol="600519.XSHG")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "600519"
+        assert call_kwargs["partition_value"] == "600519"
 
 
 class TestCNStockFinanceAPIIncomeStatement:
@@ -202,7 +212,7 @@ class TestCNStockFinanceAPIIncomeStatement:
         api.income_statement(symbol="600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "income_statement"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_value"] == "600000"
 
 
 class TestCNStockFinanceAPICashFlow:
@@ -214,7 +224,7 @@ class TestCNStockFinanceAPICashFlow:
         api.cash_flow(symbol="600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "cash_flow"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_value"] == "600000"
 
 
 class TestCNStockCapitalAPIMoneyFlow:
@@ -223,10 +233,13 @@ class TestCNStockCapitalAPIMoneyFlow:
     def test_money_flow_with_dates(self, mock_service):
         api = CNStockCapitalAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
-        api.money_flow(symbol="sh600000", start_date="2024-01-02", end_date="2024-01-10")
+        api.money_flow(
+            symbol="sh600000", start_date="2024-01-02", end_date="2024-01-10"
+        )
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "money_flow"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
         assert call_kwargs["where"]["date"] == ("2024-01-02", "2024-01-10")
 
     def test_money_flow_no_dates(self, mock_service):
@@ -234,14 +247,15 @@ class TestCNStockCapitalAPIMoneyFlow:
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.money_flow(symbol="600000")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_value"] == "600000"
+        assert call_kwargs["where"] is None
 
     def test_money_flow_symbol_normalization(self, mock_service):
         api = CNStockCapitalAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.money_flow(symbol="sz000001")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "000001"
+        assert call_kwargs["partition_value"] == "000001"
 
 
 class TestCNStockCapitalAPINorthboundHoldings:
@@ -250,18 +264,23 @@ class TestCNStockCapitalAPINorthboundHoldings:
     def test_northbound_holdings_basic(self, mock_service):
         api = CNStockCapitalAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
-        api.northbound_holdings(symbol="sh600000", start_date="2024-01-02", end_date="2024-01-10")
+        api.northbound_holdings(
+            symbol="sh600000", start_date="2024-01-02", end_date="2024-01-10"
+        )
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "northbound_holdings"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
         assert call_kwargs["where"]["date"] == ("2024-01-02", "2024-01-10")
 
     def test_northbound_holdings_symbol_normalization(self, mock_service):
         api = CNStockCapitalAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
-        api.northbound_holdings(symbol="600519.XSHG", start_date="2024-01-01", end_date="2024-01-10")
+        api.northbound_holdings(
+            symbol="600519.XSHG", start_date="2024-01-01", end_date="2024-01-10"
+        )
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "600519"
+        assert call_kwargs["partition_value"] == "600519"
 
 
 class TestCNStockCapitalAPIBlockDeal:
@@ -273,7 +292,8 @@ class TestCNStockCapitalAPIBlockDeal:
         api.block_deal(symbol="sh600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "block_deal"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
 
     def test_block_deal_without_symbol(self, mock_service):
         api = CNStockCapitalAPI(mock_service)
@@ -318,7 +338,8 @@ class TestCNStockCapitalAPIMargin:
         api.margin(symbol="sh600000", start_date="2024-01-02", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "margin_detail"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
         assert call_kwargs["where"]["date"] == ("2024-01-02", "2024-01-10")
 
     def test_margin_symbol_normalization(self, mock_service):
@@ -326,7 +347,7 @@ class TestCNStockCapitalAPIMargin:
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.margin(symbol="sz000001", start_date="2024-01-01", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "000001"
+        assert call_kwargs["partition_value"] == "000001"
 
 
 class TestCNStockCapitalAPINorth:
@@ -357,14 +378,15 @@ class TestCNStockEventAPIDividend:
         api.dividend(symbol="sh600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "dividend"
-        assert call_kwargs["where"] == {"symbol": "600000"}
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
 
     def test_dividend_symbol_normalization(self, mock_service):
         api = CNStockEventAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.dividend(symbol="600519.XSHG")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "600519"
+        assert call_kwargs["partition_value"] == "600519"
 
 
 class TestCNStockEventAPIRestrictedRelease:
@@ -376,7 +398,8 @@ class TestCNStockEventAPIRestrictedRelease:
         api.restricted_release(symbol="sh600000")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "restricted_release"
-        assert call_kwargs["where"]["symbol"] == "600000"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "600000"
 
     def test_restricted_release_without_symbol(self, mock_service):
         api = CNStockEventAPI(mock_service)
@@ -388,17 +411,24 @@ class TestCNStockEventAPIRestrictedRelease:
     def test_restricted_release_with_dates(self, mock_service):
         api = CNStockEventAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
-        api.restricted_release(symbol="600000", start_date="2024-01-01", end_date="2024-01-31")
+        api.restricted_release(
+            symbol="600000", start_date="2024-01-01", end_date="2024-01-31"
+        )
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["release_date"] == ("2024-01-01", "2024-01-31")
+        assert call_kwargs["where"]["date"] == ("2024-01-01", "2024-01-31")
 
     def test_restricted_release_all_params(self, mock_service):
         api = CNStockEventAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
-        api.restricted_release(symbol="600000", start_date="2024-01-01", end_date="2024-12-31", source="akshare")
+        api.restricted_release(
+            symbol="600000",
+            start_date="2024-01-01",
+            end_date="2024-12-31",
+            source="akshare",
+        )
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "600000"
-        assert call_kwargs["where"]["release_date"] == ("2024-01-01", "2024-12-31")
+        assert call_kwargs["partition_value"] == "600000"
+        assert call_kwargs["where"]["date"] == ("2024-01-01", "2024-12-31")
 
 
 class TestCNIndexQuoteAPIDaily:
@@ -410,7 +440,8 @@ class TestCNIndexQuoteAPIDaily:
         api.daily(symbol="000300", start_date="2024-01-02", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "index_daily"
-        assert call_kwargs["where"]["symbol"] == "000300"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "000300"
         assert call_kwargs["where"]["date"] == ("2024-01-02", "2024-01-10")
 
     def test_index_daily_long_range(self, mock_service):
@@ -425,7 +456,7 @@ class TestCNIndexQuoteAPIDaily:
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.daily(symbol="sh000300", start_date="2024-01-01", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "000300"
+        assert call_kwargs["partition_value"] == "000300"
 
 
 class TestCNIndexMetaAPIComponents:
@@ -433,14 +464,16 @@ class TestCNIndexMetaAPIComponents:
 
     def test_components_returns_dataframe(self, mock_service):
         api = CNIndexMetaAPI(mock_service)
-        comp_df = pd.DataFrame({"index_code": ["000300"] * 3, "code": ["600000", "600519", "000001"]})
+        comp_df = pd.DataFrame(
+            {"index_code": ["000300"] * 3, "code": ["600000", "600519", "000001"]}
+        )
         mock_service._served.query.return_value = _mock_query_result(comp_df)
         result = api.components(index_code="000300")
         assert isinstance(result, pd.DataFrame)
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "index_components"
-        assert call_kwargs.get("partition_by") == "index_code"
-        assert call_kwargs.get("partition_value") == "000300"
+        assert call_kwargs["partition_by"] == "index_code"
+        assert call_kwargs["partition_value"] == "000300"
 
     def test_components_empty_result(self, mock_service):
         api = CNIndexMetaAPI(mock_service)
@@ -453,7 +486,7 @@ class TestCNIndexMetaAPIComponents:
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.components(index_code="sh000300")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs.get("partition_value") == "000300"
+        assert call_kwargs["partition_value"] == "000300"
 
 
 class TestCNETFQuoteAPIDaily:
@@ -465,7 +498,8 @@ class TestCNETFQuoteAPIDaily:
         api.daily(symbol="510300", start_date="2024-01-02", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
         assert call_kwargs["table"] == "etf_daily"
-        assert call_kwargs["where"]["symbol"] == "510300"
+        assert call_kwargs["partition_by"] == "symbol"
+        assert call_kwargs["partition_value"] == "510300"
         assert call_kwargs["where"]["date"] == ("2024-01-02", "2024-01-10")
 
     def test_etf_daily_symbol_normalization(self, mock_service):
@@ -473,7 +507,7 @@ class TestCNETFQuoteAPIDaily:
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.daily(symbol="sh510300", start_date="2024-01-01", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "510300"
+        assert call_kwargs["partition_value"] == "510300"
 
 
 class TestHKMarketAPI:
@@ -490,7 +524,9 @@ class TestHKMarketAPI:
 
     def test_hk_daily_with_symbol_filter(self, mock_service):
         api = HKMarketAPI(mock_service)
-        hk_df = pd.DataFrame({"stockCode": ["00700", "00941", "02318"], "close": [350.0, 70.0, 100.0]})
+        hk_df = pd.DataFrame(
+            {"stockCode": ["00700", "00941", "02318"], "close": [350.0, 70.0, 100.0]}
+        )
         mock_service._served.query.return_value = _mock_query_result(hk_df)
         result = api.stock.quote.daily(symbol="00700")
         assert len(result) == 1
@@ -517,7 +553,9 @@ class TestUSMarketAPI:
 
     def test_us_daily_with_symbol_filter(self, mock_service):
         api = USMarketAPI(mock_service)
-        us_df = pd.DataFrame({"symbol": ["AAPL", "GOOGL", "MSFT"], "close": [180.0, 140.0, 400.0]})
+        us_df = pd.DataFrame(
+            {"symbol": ["AAPL", "GOOGL", "MSFT"], "close": [180.0, 140.0, 400.0]}
+        )
         mock_service._served.query.return_value = _mock_query_result(us_df)
         result = api.stock.quote.daily(symbol="AAPL")
         assert len(result) == 1
@@ -580,7 +618,9 @@ class TestNamespaceSymbolNormalizationConsistency:
 
     def test_stock_quote_daily_normalizes(self, mock_service):
         api = CNStockQuoteAPI(mock_service)
-        mock_service._served.query_daily.return_value = _mock_query_result(pd.DataFrame())
+        mock_service._served.query_daily.return_value = _mock_query_result(
+            pd.DataFrame()
+        )
         for sym in ["sh600000", "600000.XSHG", "sh.600000", "600000"]:
             mock_service._served.query_daily.reset_mock()
             api.daily(symbol=sym, start_date="2024-01-01", end_date="2024-01-10")
@@ -594,7 +634,7 @@ class TestNamespaceSymbolNormalizationConsistency:
             mock_service._served.query.reset_mock()
             api.balance_sheet(symbol=sym)
             call_kwargs = mock_service._served.query.call_args[1]
-            assert call_kwargs["where"]["symbol"] == "000001"
+            assert call_kwargs["partition_value"] == "000001"
 
     def test_stock_capital_normalizes(self, mock_service):
         api = CNStockCapitalAPI(mock_service)
@@ -603,21 +643,21 @@ class TestNamespaceSymbolNormalizationConsistency:
             mock_service._served.query.reset_mock()
             api.money_flow(symbol=sym)
             call_kwargs = mock_service._served.query.call_args[1]
-            assert call_kwargs["where"]["symbol"] == "600519"
+            assert call_kwargs["partition_value"] == "600519"
 
     def test_index_quote_normalizes(self, mock_service):
         api = CNIndexQuoteAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.daily(symbol="sh000300", start_date="2024-01-01", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "000300"
+        assert call_kwargs["partition_value"] == "000300"
 
     def test_etf_quote_normalizes(self, mock_service):
         api = CNETFQuoteAPI(mock_service)
         mock_service._served.query.return_value = _mock_query_result(pd.DataFrame())
         api.daily(symbol="sh510500", start_date="2024-01-01", end_date="2024-01-10")
         call_kwargs = mock_service._served.query.call_args[1]
-        assert call_kwargs["where"]["symbol"] == "510500"
+        assert call_kwargs["partition_value"] == "510500"
 
 
 class TestCNStockQuoteAPIDaily:
@@ -625,7 +665,9 @@ class TestCNStockQuoteAPIDaily:
 
     def test_daily_calls_query_daily(self, mock_service):
         api = CNStockQuoteAPI(mock_service)
-        mock_service._served.query_daily.return_value = _mock_query_result(pd.DataFrame())
+        mock_service._served.query_daily.return_value = _mock_query_result(
+            pd.DataFrame()
+        )
         api.daily(symbol="sh600000", start_date="2024-01-02", end_date="2024-01-10")
         mock_service._served.query_daily.assert_called_once()
         call_kwargs = mock_service._served.query_daily.call_args[1]
@@ -636,6 +678,13 @@ class TestCNStockQuoteAPIDaily:
 
     def test_daily_with_adjust_param(self, mock_service):
         api = CNStockQuoteAPI(mock_service)
-        mock_service._served.query_daily.return_value = _mock_query_result(pd.DataFrame())
-        api.daily(symbol="600000", start_date="2024-01-01", end_date="2024-01-10", adjust="hfq")
+        mock_service._served.query_daily.return_value = _mock_query_result(
+            pd.DataFrame()
+        )
+        api.daily(
+            symbol="600000",
+            start_date="2024-01-01",
+            end_date="2024-01-10",
+            adjust="hfq",
+        )
         mock_service._served.query_daily.assert_called_once()

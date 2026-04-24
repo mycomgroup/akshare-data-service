@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from datetime import date, datetime, timezone
-from unittest.mock import MagicMock, patch
 
 import pytest
 import pandas as pd
@@ -12,7 +11,6 @@ from akshare_data.ingestion.executor.base import (
     BaseTaskExecutor,
     ExecutorContext,
     ExecutorStats,
-    ExecutionMode,
     ExecutionContext,
     TaskExecutionResult,
     ExecutionResult,
@@ -412,6 +410,7 @@ class TestExecutorBase:
 
     def test_offline_executor_success(self, monkeypatch):
         """Test TaskExecutor run success."""
+
         class FakeRateLimiter:
             def wait(self, key):
                 return None
@@ -443,6 +442,7 @@ class TestExecutorBase:
 
     def test_offline_executor_empty_data(self, monkeypatch):
         """Test TaskExecutor handles empty data."""
+
         class FakeRateLimiter:
             def wait(self, key):
                 return None
@@ -463,6 +463,7 @@ class TestExecutorBase:
 
     def test_offline_executor_legacy_execute(self, monkeypatch):
         """Test TaskExecutor legacy execute method."""
+
         class FakeRateLimiter:
             def wait(self, key):
                 return None
@@ -640,6 +641,7 @@ class TestIngestionIntegration:
 
     def test_task_execution_with_context(self):
         """Test task execution with ExecutionContext."""
+
         class SimpleExecutor(BaseTaskExecutor[str, pd.DataFrame]):
             def run(self, task, *, context=None):
                 df = pd.DataFrame({"col": [1, 2, 3]})

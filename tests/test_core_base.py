@@ -14,6 +14,7 @@ from abc import ABC
 from akshare_data.core.base import DataSource
 
 
+@pytest.mark.unit
 class TestDataSourceIsAbstract:
     """Test that DataSource is an abstract class."""
 

@@ -15,6 +15,7 @@ from akshare_data.core.logging import (
 )
 
 
+@pytest.mark.unit
 class TestStatsCollector:
     """Test StatsCollector class."""
 

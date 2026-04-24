@@ -76,7 +76,9 @@ class BatchContext:
         metadata: Optional[Dict[str, Any]] = None,
     ) -> BatchContext:
         """Create a batch with an auto-generated ID."""
-        batch_id = datetime.now(timezone.utc).strftime("%Y%m%d") + f"_{uuid.uuid4().hex[:6]}"
+        batch_id = (
+            datetime.now(timezone.utc).strftime("%Y%m%d") + f"_{uuid.uuid4().hex[:6]}"
+        )
         if not domain and tasks:
             domain = tasks[0].domain
         return cls(

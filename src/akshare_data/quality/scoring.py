@@ -143,7 +143,11 @@ class RuleBasedScorer:
                 "total_count": r.total_count,
             }
 
-        score = (weighted_pass_sum / weighted_total_sum * 100) if weighted_total_sum > 0 else 100.0
+        score = (
+            (weighted_pass_sum / weighted_total_sum * 100)
+            if weighted_total_sum > 0
+            else 100.0
+        )
 
         summary = {
             "total_rules": total_rules,

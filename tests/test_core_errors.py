@@ -8,6 +8,8 @@ Covers:
 - Exception to_dict() serialization
 """
 
+import pytest
+
 from akshare_data.core.errors import (
     ErrorCode,
     DataAccessException,
@@ -26,6 +28,7 @@ from akshare_data.core.errors import (
 )
 
 
+@pytest.mark.unit
 class TestErrorCodeValues:
     """Test ErrorCode enum values exist and have correct format."""
 

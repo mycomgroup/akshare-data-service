@@ -20,6 +20,7 @@ from akshare_data.offline.registry.merger import RegistryMerger
 from akshare_data.offline.registry.validator import RegistryValidator
 
 
+@pytest.mark.unit
 class TestLoadRateLimits:
     """_load_rate_limits() 函数测试"""
 

@@ -7,6 +7,7 @@ Supports pluggable check implementations registered by rule type.
 from __future__ import annotations
 
 import logging
+import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field as dc_field
 from enum import Enum
@@ -248,7 +249,9 @@ class QualityEngine:
             self._entity,
         )
 
-    def load_rules(self, rules: List[RuleDef], dataset: str = "", entity: str = "") -> None:
+    def load_rules(
+        self, rules: List[RuleDef], dataset: str = "", entity: str = ""
+    ) -> None:
         """Load rules programmatically (for testing or dynamic config)."""
         self._rules = rules
         self._dataset = dataset
@@ -369,7 +372,9 @@ class NonNullCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"Null counts: {null_counts}" if total_failed else "All fields non-null",
+            message=f"Null counts: {null_counts}"
+            if total_failed
+            else "All fields non-null",
             failed_count=total_failed,
             total_count=len(df) * len(fields),
             details={"null_counts": null_counts},
@@ -411,7 +416,9 @@ class UniqueKeyCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{dupes} duplicate rows on key {fields}" if dupes else "All keys unique",
+            message=f"{dupes} duplicate rows on key {fields}"
+            if dupes
+            else "All keys unique",
             failed_count=dupes,
             total_count=len(df),
             details={"duplicate_count": dupes, "key_fields": fields},
@@ -460,7 +467,9 @@ class RangeCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{failed} values out of range {bounds} for '{field_name}'" if failed else f"All values in range {bounds}",
+            message=f"{failed} values out of range {bounds} for '{field_name}'"
+            if failed
+            else f"All values in range {bounds}",
             failed_count=failed,
             total_count=len(series),
             details={"field": field_name, "min": rule.min, "max": rule.max},
@@ -503,7 +512,9 @@ class EnumCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{failed} values not in {allowed}" if failed else f"All values in {allowed}",
+            message=f"{failed} values not in {allowed}"
+            if failed
+            else f"All values in {allowed}",
             failed_count=failed,
             total_count=len(series),
             details={"field": field_name, "allowed_values": allowed},
@@ -513,8 +524,13 @@ class EnumCheck(BaseCheck):
 class BusinessRuleCheck(BaseCheck):
     """Evaluate a boolean expression over the DataFrame.
 
-    Uses ``df.eval()`` for expression evaluation.
+    Uses ``df.eval()`` for expression evaluation with input validation
+    to prevent arbitrary code execution.
     """
+
+    _SAFE_EXPR_PATTERN = re.compile(
+        r"^[\w\s\.\'\"/\-\+\*\/\(\)\[\]\{\}\,\.\:\=]+$"
+    )
 
     @property
     def rule_type(self) -> str:
@@ -531,8 +547,18 @@ class BusinessRuleCheck(BaseCheck):
                 message="No expression specified",
             )
 
+        if not self._SAFE_EXPR_PATTERN.match(expr):
+            return RuleResult(
+                rule_id=rule.rule_id,
+                status=RuleStatus.ERROR,
+                severity=rule.severity,
+                gate_action=rule.gate_action,
+                message=f"Expression contains potentially unsafe characters: {expr}",
+            )
+
         try:
-            mask = df.eval(expr)
+            local_vars = {col: df[col].values for col in df.columns}
+            mask = df.eval(expr, local_dict=local_vars)
         except Exception as exc:
             return RuleResult(
                 rule_id=rule.rule_id,
@@ -549,7 +575,9 @@ class BusinessRuleCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{failed} rows violate '{expr}'" if failed else f"All rows satisfy '{expr}'",
+            message=f"{failed} rows violate '{expr}'"
+            if failed
+            else f"All rows satisfy '{expr}'",
             failed_count=failed,
             total_count=len(df),
             details={"expression": expr},
@@ -564,9 +592,15 @@ class SystemFieldsCompleteCheck(BaseCheck):
         return "system_fields_complete"
 
     def execute(self, df: pd.DataFrame, rule: RuleDef) -> RuleResult:
-        required = rule.params.get("system_fields", [
-            "batch_id", "source_name", "interface_name", "ingest_time",
-        ])
+        required = rule.params.get(
+            "system_fields",
+            [
+                "batch_id",
+                "source_name",
+                "interface_name",
+                "ingest_time",
+            ],
+        )
         missing = [f for f in required if f not in df.columns]
         status = RuleStatus.FAILED if missing else RuleStatus.PASSED
         return RuleResult(
@@ -574,7 +608,9 @@ class SystemFieldsCompleteCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"Missing system fields: {missing}" if missing else "All system fields present",
+            message=f"Missing system fields: {missing}"
+            if missing
+            else "All system fields present",
             failed_count=len(missing),
             total_count=len(required),
             details={"missing_fields": missing},
@@ -605,7 +641,9 @@ class SchemaFingerprintValidCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"Fingerprint mismatch: expected={expected}, actual={actual}" if status == RuleStatus.FAILED else "Fingerprint valid",
+            message=f"Fingerprint mismatch: expected={expected}, actual={actual}"
+            if status == RuleStatus.FAILED
+            else "Fingerprint valid",
             details={"expected": expected, "actual": actual},
         )
 
@@ -628,14 +666,18 @@ class RequestBeforeIngestCheck(BaseCheck):
                 gate_action=rule.gate_action,
                 message=f"Required columns not found: {req_col}, {ing_col}",
             )
-        violations = int((pd.to_datetime(df[req_col]) > pd.to_datetime(df[ing_col])).sum())
+        violations = int(
+            (pd.to_datetime(df[req_col]) > pd.to_datetime(df[ing_col])).sum()
+        )
         status = RuleStatus.FAILED if violations > 0 else RuleStatus.PASSED
         return RuleResult(
             rule_id=rule.rule_id,
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{violations} rows with request_time > ingest_time" if violations else "All request_time <= ingest_time",
+            message=f"{violations} rows with request_time > ingest_time"
+            if violations
+            else "All request_time <= ingest_time",
             failed_count=violations,
             total_count=len(df),
         )
@@ -657,7 +699,9 @@ class RecordCountMinCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"Record count {actual} < minimum {min_count}" if status == RuleStatus.FAILED else f"Record count {actual} >= minimum {min_count}",
+            message=f"Record count {actual} < minimum {min_count}"
+            if status == RuleStatus.FAILED
+            else f"Record count {actual} >= minimum {min_count}",
             failed_count=max(0, min_count - actual),
             total_count=actual,
             details={"actual": actual, "min_count": min_count},
@@ -699,7 +743,9 @@ class ContinuityCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"{large_gaps} gaps > {gaps} days" if large_gaps else f"No gaps > {gaps} days",
+            message=f"{large_gaps} gaps > {gaps} days"
+            if large_gaps
+            else f"No gaps > {gaps} days",
             failed_count=large_gaps,
             details={"max_gap_days": gaps, "date_field": date_field},
         )
@@ -740,8 +786,14 @@ class FreshnessCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"Data age {age} days > max {max_age_days}" if status == RuleStatus.FAILED else f"Data age {age} days within limit",
-            details={"max_date": str(max_date), "age_days": age, "max_age_days": max_age_days},
+            message=f"Data age {age} days > max {max_age_days}"
+            if status == RuleStatus.FAILED
+            else f"Data age {age} days within limit",
+            details={
+                "max_date": str(max_date),
+                "age_days": age,
+                "max_age_days": max_age_days,
+            },
         )
 
 
@@ -797,7 +849,9 @@ class ReleaseManifestCompleteCheck(BaseCheck):
                 gate_action=rule.gate_action,
                 message="No manifest provided in rule params",
             )
-        required_keys = rule.params.get("required_keys", ["dataset", "version", "record_count"])
+        required_keys = rule.params.get(
+            "required_keys", ["dataset", "version", "record_count"]
+        )
         missing = [k for k in required_keys if k not in manifest]
         status = RuleStatus.FAILED if missing else RuleStatus.PASSED
         return RuleResult(
@@ -805,6 +859,8 @@ class ReleaseManifestCompleteCheck(BaseCheck):
             status=status,
             severity=rule.severity,
             gate_action=rule.gate_action,
-            message=f"Manifest missing keys: {missing}" if missing else "Manifest complete",
+            message=f"Manifest missing keys: {missing}"
+            if missing
+            else "Manifest complete",
             details={"manifest": manifest},
         )

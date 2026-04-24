@@ -77,14 +77,13 @@ class Reporter:
         lines.append("# Akshare Health Audit Report")
         lines.append("")
         lines.append(f"**Total APIs:** {total}")
-        lines.append(
-            f"**Available APIs:** {available} ({available / total * 100:.2f}% if total > 0 else 0%)"
-        )
+        pct = available / total * 100 if total > 0 else 0
+        lines.append(f"**Available APIs:** {available} ({pct:.2f}%)")
         lines.append("")
 
         slow_apis = sorted(
             [r for r in records if r.get("exec_time")],
-            key=lambda x: x.get("exec_time", 0),
+            key=lambda x: float(x.get("exec_time", 0)),
             reverse=True,
         )[:20]
 
@@ -93,7 +92,7 @@ class Reporter:
             lines.append("")
             for r in slow_apis:
                 func_name = r.get("func_name", "unknown")
-                exec_time = r.get("exec_time", 0)
+                exec_time = float(r.get("exec_time", 0))
                 domain = r.get("domain_group", "unknown")
                 status = r.get("status", "unknown")
                 lines.append(
@@ -131,7 +130,6 @@ class Reporter:
                 "crypto": "Crypto",
             }
 
-
             categories = df["分类"].value_counts()
             if not categories.empty:
                 lines.append("### Categories")
@@ -166,11 +164,12 @@ class Reporter:
 
         lines.append(f"**Total Interfaces:** {len(df)}")
         lines.append(f"**Total Rows:** {total_rows:,}")
-        lines.append(f"**Total Memory:** {total_memory:.1f} KB")
-        if total_memory >= 1024:
-            lines.append(f" ({total_memory / 1024:.2f} MB)")
         if total_memory >= 1024 * 1024:
-            lines.append(f" ({total_memory / (1024 * 1024):.2f} GB)")
+            lines.append(f"**Total Memory:** {total_memory / (1024 * 1024):.2f} GB")
+        elif total_memory >= 1024:
+            lines.append(f"**Total Memory:** {total_memory / 1024:.2f} MB")
+        else:
+            lines.append(f"**Total Memory:** {total_memory:.1f} KB")
         lines.append("")
 
         if "分类" in df.columns:
@@ -195,20 +194,25 @@ class Reporter:
                     lines.append("")
 
         if "内存占用_KB" in df.columns:
-            top20 = df.nlargest(20, "内存占用_KB")
+            df_clean = df.dropna(subset=["内存占用_KB"])
+            top20 = df_clean.nlargest(20, "内存占用_KB")
             if not top20.empty:
                 lines.append("### Top 20 Largest Data Interfaces")
                 lines.append("")
                 for _, row in top20.iterrows():
                     name = row.get("接口名称", "unknown")
                     mem = row.get("内存占用_KB", 0)
-                    rows = row.get("数据行数", 0)
+                    if pd.isna(mem):
+                        mem = 0
+                    rows = row.get("数据行数", 0) or 0
                     lines.append(f"- **{name}**: {mem:.1f} KB ({rows:,} rows)")
                 lines.append("")
 
-            large = df[df["内存占用_KB"] > 1000]
-            medium = df[(df["内存占用_KB"] >= 100) & (df["内存占用_KB"] <= 1000)]
-            small = df[df["内存占用_KB"] < 100]
+            large = df_clean[df_clean["内存占用_KB"] > 1000]
+            medium = df_clean[
+                (df_clean["内存占用_KB"] >= 100) & (df_clean["内存占用_KB"] <= 1000)
+            ]
+            small = df_clean[df_clean["内存占用_KB"] < 100]
 
             lines.append("### Cache Strategy by Size")
             lines.append("")
@@ -273,8 +277,14 @@ class Reporter:
                 if "Interface Health Audit:" in line:
                     in_health_section = True
                     continue
-                if in_health_section and line.startswith("Overall Statistics:"):
+                if in_health_section and (
+                    line.startswith("Overall Statistics:")
+                    or (line.strip() == "" and in_health_section)
+                ):
                     in_health_section = False
+                    if line.strip() != "":
+                        new_content_lines.append(line)
+                    continue
                 if not in_health_section:
                     new_content_lines.append(line)
         else:

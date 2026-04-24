@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 
+
 def _load_lineage_tracker_class() -> type:
     lineage_path = (
         Path(__file__).resolve().parents[2]

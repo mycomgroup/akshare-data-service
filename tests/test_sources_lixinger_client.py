@@ -8,6 +8,7 @@ from unittest.mock import patch, MagicMock
 from akshare_data.sources.lixinger_client import LixingerClient, get_lixinger_client
 
 
+@pytest.mark.unit
 class TestLixingerClient:
     """Test suite for LixingerClient class."""
 

@@ -9,6 +9,8 @@ import inspect
 from datetime import datetime, timedelta
 from unittest.mock import patch, MagicMock
 
+import pytest
+
 from akshare_data.offline.scanner.akshare_scanner import (
     AkShareScanner,
     SKIP_FUNCTIONS,
@@ -21,6 +23,7 @@ from akshare_data.offline.scanner.domain_extractor import DomainExtractor
 from akshare_data.offline.scanner.param_inferrer import ParamInferrer
 
 
+@pytest.mark.unit
 class TestAkShareScanner:
     """测试 AkShareScanner"""
 
@@ -690,6 +693,7 @@ class TestScannerEdgeCases:
 
         def lam(x):
             return x
+
         result = extractor.extract(lam)
         assert result == []
 

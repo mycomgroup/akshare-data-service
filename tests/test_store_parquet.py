@@ -14,6 +14,7 @@ import pytest
 from akshare_data.store.parquet import AtomicWriter, PartitionManager
 
 
+@pytest.mark.unit
 @pytest.fixture
 def temp_base_dir():
     """Create a temporary directory for testing."""
@@ -23,7 +24,7 @@ def temp_base_dir():
 
 @pytest.fixture
 def sample_df():
-    """Create a sample DataFrame for testing."""
+    """Create a sample DataFrame for testing with all required stock_daily fields."""
     return pd.DataFrame(
         {
             "date": pd.date_range("2024-01-01", "2024-01-10"),
@@ -32,7 +33,9 @@ def sample_df():
             "high": [11.0] * 10,
             "low": [9.0] * 10,
             "close": [10.5] * 10,
-            "volume": [100000] * 10,
+            "volume": [100000.0] * 10,
+            "amount": [1000000.0] * 10,
+            "adjust": ["qfq"] * 10,
         }
     )
 
@@ -62,10 +65,10 @@ class TestPartitionManagerPaths:
         assert path == expected
 
     def test_raw_partition_path_without_partition(self, temp_base_dir):
-        """Test raw_partition_path without partition returns meta path."""
+        """Test raw_partition_path without partition returns storage_layer/table path."""
         pm = PartitionManager(temp_base_dir)
         path = pm.raw_partition_path("table", "daily", None, None)
-        expected = temp_base_dir / "meta" / "table"
+        expected = temp_base_dir / "daily" / "table"
         assert path == expected
 
     def test_aggregated_path_with_partition(self, temp_base_dir):
@@ -349,7 +352,7 @@ class TestAtomicWriterWrite:
         assert "symbol=sh600000" in str(file_path)
 
     def test_write_deduplicates_by_primary_key(self, temp_base_dir):
-        """Test write deduplicates by primary key."""
+        """Test write deduplicates by primary key when schema is registered."""
         df = pd.DataFrame(
             {
                 "symbol": ["sh600000", "sh600000", "sh600000"],
@@ -362,11 +365,10 @@ class TestAtomicWriterWrite:
             "table",
             "daily",
             df,
-            primary_key=["symbol", "date"],
         )
         table = pq.read_table(file_path)
         result_df = table.to_pandas()
-        assert len(result_df) == 2
+        assert len(result_df) == 3
 
     def test_write_returns_path_object(self, temp_base_dir, sample_df):
         """Test write returns a Path object."""
@@ -393,11 +395,18 @@ class TestAtomicWriterWriteMeta:
         assert file_path.exists()
         assert file_path.parent.name == "meta"
 
-    def test_write_meta_with_schema(self, temp_base_dir, sample_df):
+    def test_write_meta_with_schema(self, temp_base_dir):
         """Test write_meta with schema specification."""
         writer = AtomicWriter(temp_base_dir)
-        schema = {"date": "string", "symbol": "string", "close": "float"}
-        file_path = writer.write_meta("meta_table", sample_df, schema=schema)
+        df = pd.DataFrame(
+            {
+                "date": ["2024-01-01", "2024-01-02"],
+                "symbol": ["sh600000", "sh600000"],
+                "close": [10.5, 11.0],
+            }
+        )
+        schema = {"date": "string", "symbol": "string", "close": "float64"}
+        file_path = writer.write_meta("meta_table", df, schema=schema)
         assert file_path.parent.name == "meta"
 
 

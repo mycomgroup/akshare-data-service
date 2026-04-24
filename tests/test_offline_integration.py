@@ -12,6 +12,9 @@ from akshare_data.offline.source_manager.health_tracker import HealthTracker
 from akshare_data.offline.source_manager.failover import FailoverManager
 
 
+pytestmark = pytest.mark.integration
+
+
 class TestAkShareProberReal:
     """Test prober with real akshare interfaces."""
 

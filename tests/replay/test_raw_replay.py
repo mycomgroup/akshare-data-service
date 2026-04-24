@@ -93,9 +93,19 @@ class TestManifestContract:
     """Manifest structure must conform to 20-raw-spec.md §6."""
 
     REQUIRED_KEYS = {
-        "manifest_version", "dataset", "domain", "batch_id", "extract_date",
-        "source_name", "interface_name", "request_params", "record_count",
-        "file_count", "schema_fingerprint", "extract_version", "status",
+        "manifest_version",
+        "dataset",
+        "domain",
+        "batch_id",
+        "extract_date",
+        "source_name",
+        "interface_name",
+        "request_params",
+        "record_count",
+        "file_count",
+        "schema_fingerprint",
+        "extract_version",
+        "status",
     }
 
     def test_manifest_create_roundtrip(self, sample_manifest_data: dict):
@@ -162,9 +172,16 @@ class TestRawSystemFields:
     """Raw system fields must conform to 20-raw-spec.md §4."""
 
     EXPECTED_RAW_SYSTEM_FIELDS = {
-        "batch_id", "source_name", "interface_name", "request_params_json",
-        "request_time", "ingest_time", "extract_date", "extract_version",
-        "source_schema_fingerprint", "raw_record_hash",
+        "batch_id",
+        "source_name",
+        "interface_name",
+        "request_params_json",
+        "request_time",
+        "ingest_time",
+        "extract_date",
+        "extract_version",
+        "source_schema_fingerprint",
+        "raw_record_hash",
     }
 
     def test_system_field_names_complete(self):
@@ -195,9 +212,15 @@ class TestRawSystemFields:
                 f"{field} type mismatch: got {actual[field]}, expected {expected_type}"
             )
 
-    @pytest.mark.parametrize("field", [
-        "batch_id", "source_name", "ingest_time", "raw_record_hash",
-    ])
+    @pytest.mark.parametrize(
+        "field",
+        [
+            "batch_id",
+            "source_name",
+            "ingest_time",
+            "raw_record_hash",
+        ],
+    )
     def test_system_field_is_recognized(self, field: str):
         assert is_system_field(field)
 
@@ -233,7 +256,9 @@ class TestSchemaFingerprint:
         assert fp.startswith("sha256:")
         assert len(fp) == len("sha256:") + 64
 
-    def test_fingerprint_excludes_system_columns(self, sample_business_df: pd.DataFrame):
+    def test_fingerprint_excludes_system_columns(
+        self, sample_business_df: pd.DataFrame
+    ):
         df_with_sys = sample_business_df.copy()
         df_with_sys["batch_id"] = "b1"
         df_with_sys["ingest_time"] = datetime.now(timezone.utc)
@@ -241,9 +266,7 @@ class TestSchemaFingerprint:
         fp_without_sys = compute_schema_fingerprint(
             df_with_sys, exclude_columns=["batch_id", "ingest_time"]
         )
-        fp_without_sys2 = compute_schema_fingerprint(
-            sample_business_df
-        )
+        fp_without_sys2 = compute_schema_fingerprint(sample_business_df)
         assert fp_without_sys == fp_without_sys2
 
     def test_fingerprint_changes_on_column_add(self, sample_business_df: pd.DataFrame):
@@ -285,7 +308,9 @@ class TestSchemaFingerprint:
 class TestSchemaSnapshot:
     """_schema.json must be readable and well-formed."""
 
-    def test_save_and_load_schema_snapshot(self, sample_business_df: pd.DataFrame, tmp_path: Path):
+    def test_save_and_load_schema_snapshot(
+        self, sample_business_df: pd.DataFrame, tmp_path: Path
+    ):
         schema = describe_schema(sample_business_df)
         save_schema_snapshot(tmp_path, schema)
         schema_file = tmp_path / SCHEMA_FILENAME
@@ -320,7 +345,10 @@ class TestBatchDirectoryStructure:
         batch_id = "20260422_001"
 
         expected_parts = [
-            "data", "raw", domain, dataset,
+            "data",
+            "raw",
+            domain,
+            dataset,
             f"extract_date={extract_date}",
             f"batch_id={batch_id}",
         ]
@@ -328,8 +356,16 @@ class TestBatchDirectoryStructure:
         assert "extract_date=" in str(path)
         assert "batch_id=" in str(path)
 
-    def test_batch_dir_contains_manifest(self, sample_manifest_data: dict, tmp_path: Path):
-        batch_dir = tmp_path / "cn" / "market_quote_daily" / "extract_date=2026-04-22" / "batch_id=20260422_001"
+    def test_batch_dir_contains_manifest(
+        self, sample_manifest_data: dict, tmp_path: Path
+    ):
+        batch_dir = (
+            tmp_path
+            / "cn"
+            / "market_quote_daily"
+            / "extract_date=2026-04-22"
+            / "batch_id=20260422_001"
+        )
         batch_dir.mkdir(parents=True)
 
         m = Manifest.from_dict(sample_manifest_data)
@@ -340,8 +376,16 @@ class TestBatchDirectoryStructure:
         assert loaded.dataset == "market_quote_daily"
         assert loaded.domain == "cn"
 
-    def test_batch_dir_contains_schema_snapshot(self, sample_business_df: pd.DataFrame, tmp_path: Path):
-        batch_dir = tmp_path / "cn" / "market_quote_daily" / "extract_date=2026-04-22" / "batch_id=20260422_001"
+    def test_batch_dir_contains_schema_snapshot(
+        self, sample_business_df: pd.DataFrame, tmp_path: Path
+    ):
+        batch_dir = (
+            tmp_path
+            / "cn"
+            / "market_quote_daily"
+            / "extract_date=2026-04-22"
+            / "batch_id=20260422_001"
+        )
         batch_dir.mkdir(parents=True)
 
         schema = describe_schema(sample_business_df)
@@ -369,7 +413,9 @@ class TestReplaySemantics:
         assert m.extract_date
         assert m.dataset
 
-    def test_manifest_is_extraction_event_not_business_snapshot(self, sample_manifest_data: dict):
+    def test_manifest_is_extraction_event_not_business_snapshot(
+        self, sample_manifest_data: dict
+    ):
         """Manifest records the extraction event, not a business-date snapshot."""
         m = Manifest.from_dict(sample_manifest_data)
         assert m.extract_date
@@ -378,7 +424,13 @@ class TestReplaySemantics:
         assert m.interface_name
 
     def test_replay_by_batch_id(self, sample_manifest_data: dict, tmp_path: Path):
-        batch_dir = tmp_path / "cn" / "market_quote_daily" / "extract_date=2026-04-22" / "batch_id=20260422_001"
+        batch_dir = (
+            tmp_path
+            / "cn"
+            / "market_quote_daily"
+            / "extract_date=2026-04-22"
+            / "batch_id=20260422_001"
+        )
         batch_dir.mkdir(parents=True)
 
         m = Manifest.from_dict(sample_manifest_data)

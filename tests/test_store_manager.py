@@ -51,6 +51,7 @@ def reset_singletons():
     CacheManager.reset_instance()
 
 
+@pytest.mark.unit
 class TestCacheConfig:
     """Tests for CacheConfig class."""
 
@@ -153,7 +154,7 @@ class TestCacheManagerRead:
         """Test reading a non-existent table returns empty DataFrame."""
         manager = CacheManager(base_dir=temp_cache_dir)
         result = manager.read("nonexistent_table", storage_layer="daily")
-        assert result.empty or result is None
+        assert result is None or result.empty
 
     def test_read_with_force_refresh(self, temp_cache_dir, sample_df):
         """Test read with force_refresh bypasses cache."""
@@ -279,7 +280,9 @@ class TestCacheManagerWrite:
         """Test that write updates memory cache."""
         manager = CacheManager(base_dir=temp_cache_dir)
         manager.write("test_table", sample_df, storage_layer="daily")
-        cache_key = manager._make_cache_key("test_table", "daily", None, None, None, None)
+        cache_key = manager._make_cache_key(
+            "test_table", "daily", None, None, None, None
+        )
         assert manager.memory_cache.get(cache_key) is not None
 
 
@@ -296,7 +299,7 @@ class TestCacheManagerExists:
         manager = CacheManager(base_dir=temp_cache_dir)
         manager.write("test_table", sample_df, storage_layer="daily")
         result = manager.exists("test_table", storage_layer="daily")
-        assert result is True or result is False
+        assert isinstance(result, bool)
 
 
 class TestCacheManagerHasRange:
@@ -323,7 +326,7 @@ class TestCacheManagerHasRange:
             start="2024-01-01",
             end="2024-01-05",
         )
-        assert result is True or result is False
+        assert isinstance(result, bool)
 
     def test_has_range_false_when_data_insufficient(self, temp_cache_dir, sample_df):
         """Test has_range returns False when data doesn't cover range."""
@@ -367,7 +370,9 @@ class TestCacheManagerInvalidate:
         """Test invalidate removes data from memory cache."""
         manager = CacheManager(base_dir=temp_cache_dir)
         manager.write("test_table", sample_df, storage_layer="daily")
-        cache_key = manager._make_cache_key("test_table", "daily", None, None, None, None)
+        cache_key = manager._make_cache_key(
+            "test_table", "daily", None, None, None, None
+        )
         assert manager.memory_cache.get(cache_key) is not None
         manager.invalidate("test_table", storage_layer="daily")
         assert manager.memory_cache.get(cache_key) is None
@@ -546,8 +551,12 @@ class TestCacheManagerMakeCacheKey:
     def test_cache_key_with_where(self, temp_cache_dir):
         """Test cache key includes where clause."""
         manager = CacheManager(base_dir=temp_cache_dir)
-        key1 = manager._make_cache_key("table", "daily", None, None, {"col": "val"}, None)
-        key2 = manager._make_cache_key("table", "daily", None, None, {"col": "val2"}, None)
+        key1 = manager._make_cache_key(
+            "table", "daily", None, None, {"col": "val"}, None
+        )
+        key2 = manager._make_cache_key(
+            "table", "daily", None, None, {"col": "val2"}, None
+        )
         assert key1 != key2
 
     def test_cache_key_with_columns(self, temp_cache_dir):

@@ -15,6 +15,7 @@ from akshare_data.sources.mock import MockSource
 from akshare_data.core.base import DataSource
 
 
+@pytest.mark.unit
 class TestMockSource:
     """Test suite for MockSource class."""
 

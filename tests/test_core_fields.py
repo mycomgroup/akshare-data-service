@@ -11,6 +11,7 @@ Covers:
 - Column standardization functions
 """
 
+import pytest
 import pandas as pd
 from akshare_data.core.fields import (
     FLOAT_FIELDS,
@@ -39,6 +40,7 @@ from akshare_data.core.fields import (
 )
 
 
+@pytest.mark.unit
 class TestFieldTypeConstants:
     """Test field type constant sets."""
 

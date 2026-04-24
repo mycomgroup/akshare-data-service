@@ -24,10 +24,13 @@ class QualityReportGenerator:
 
     def generate(
         self,
-        quality_results: Dict[str, Any],
+        quality_results: Optional[Dict[str, Any]] = None,
         output_file: Optional[Path] = None,
     ) -> str:
         """生成质量报告"""
+        if not quality_results or not isinstance(quality_results, dict):
+            return ""
+
         sections = {
             "Data Quality Report": {
                 "Report Time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -41,10 +44,12 @@ class QualityReportGenerator:
             sections["Completeness Check"] = checks["completeness"]
 
         if "anomalies" in checks:
-            sections["Anomaly Detection"] = {
-                "Total Anomalies": checks["anomalies"].get("anomaly_count", 0),
-                "Details": checks["anomalies"].get("anomalies", [])[:20],
-            }
+            anomalies_data = checks["anomalies"]
+            if isinstance(anomalies_data, dict):
+                sections["Anomaly Detection"] = {
+                    "Total Anomalies": anomalies_data.get("anomaly_count", 0),
+                    "Details": anomalies_data.get("anomalies", [])[:20],
+                }
 
         summary = quality_results.get("summary", {})
         if summary:
@@ -55,7 +60,7 @@ class QualityReportGenerator:
         if output_file is None:
             output_file = (
                 self._output_dir
-                / f"quality_report_{datetime.now().strftime('%Y%m%d')}.md"
+                / f"quality_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
             )
 
         self._renderer.save(content, output_file)

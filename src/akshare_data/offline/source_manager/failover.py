@@ -81,7 +81,6 @@ class FailoverManager:
 
     def should_failover(self, source: str) -> bool:
         """检查是否应切换源"""
-        self._failover_config.get("failure_threshold", 3)
         score = self._health.get_health_score(source)
 
         if score < 50:

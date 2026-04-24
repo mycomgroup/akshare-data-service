@@ -332,7 +332,9 @@ class NormalizerBase(ABC):
         return df
 
     def _select_output_columns(self, df: pd.DataFrame) -> pd.DataFrame:
-        all_needed = set(self._required_standard_fields) | set(self._DEFAULT_SYSTEM_FIELDS)
+        all_needed = set(self._required_standard_fields) | set(
+            self._DEFAULT_SYSTEM_FIELDS
+        )
         all_needed |= set(self._extra_system_fields())
         available = [c for c in all_needed if c in df.columns]
         return df[available].copy()

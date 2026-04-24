@@ -135,6 +135,12 @@ fields:
     unit: pct
     required: false
 
+  change:
+    type: double
+    description: 涨跌额
+    unit: CNY
+    required: false
+
 # ---------------------------------------------------------------------------
 # 系统字段（所有 Standardized / Served 数据集统一）
 # ---------------------------------------------------------------------------

@@ -22,4 +22,10 @@ from akshare_data.common.config import (
     _SOURCE_CFG_KEYS,
 )
 
-__all__ = ["TokenManager", "get_token", "set_token", "_SOURCE_ENV_MAP", "_SOURCE_CFG_KEYS"]
+__all__ = [
+    "TokenManager",
+    "get_token",
+    "set_token",
+    "_SOURCE_ENV_MAP",
+    "_SOURCE_CFG_KEYS",
+]

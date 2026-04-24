@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import math
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -45,7 +45,7 @@ class CallStatsAnalyzer:
     def _read_logs(self, window_days: int) -> List[Dict]:
         """读取最近 N 天的日志文件"""
         entries = []
-        cutoff = datetime.now() - timedelta(days=window_days)
+        cutoff = datetime.now(timezone.utc) - timedelta(days=window_days)
 
         log_files = list(self._log_dir.glob("access.log*"))
         for log_file in log_files:
@@ -53,7 +53,9 @@ class CallStatsAnalyzer:
                 if log_file.name != "access.log":
                     date_str = log_file.name.replace("access.log.", "")
                     try:
-                        file_date = datetime.strptime(date_str, "%Y-%m-%d")
+                        file_date = datetime.strptime(date_str, "%Y-%m-%d").replace(
+                            tzinfo=timezone.utc
+                        )
                         if file_date < cutoff:
                             continue
                     except ValueError:
@@ -67,6 +69,8 @@ class CallStatsAnalyzer:
                         try:
                             entry = json.loads(line)
                             entry_ts = datetime.fromisoformat(entry.get("ts", ""))
+                            if entry_ts.tzinfo is None:
+                                entry_ts = entry_ts.replace(tzinfo=timezone.utc)
                             if entry_ts >= cutoff:
                                 entries.append(entry)
                         except (json.JSONDecodeError, ValueError):
@@ -98,9 +102,12 @@ class CallStatsAnalyzer:
             agg["call_count"] += 1
             if not entry.get("cache_hit", False):
                 agg["miss_count"] += 1
-            agg["total_latency"] += entry.get("latency_ms", 0)
+            agg["total_latency"] += float(entry.get("latency_ms", 0))
             try:
-                agg["timestamps"].append(datetime.fromisoformat(entry["ts"]))
+                ts = datetime.fromisoformat(entry["ts"])
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+                agg["timestamps"].append(ts)
             except (ValueError, KeyError):
                 pass
 
@@ -140,10 +147,12 @@ class CallStatsAnalyzer:
         if not timestamps:
             return 0.0
 
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         decay_sum = 0.0
         for ts in timestamps:
-            days_ago = (now - ts).total_seconds() / 86400
+            if ts.tzinfo is None:
+                ts = ts.replace(tzinfo=timezone.utc)
+            days_ago = max(0, (now - ts).total_seconds() / 86400)
             decay_sum += math.exp(-0.5 * days_ago)
 
         return decay_sum / len(timestamps)

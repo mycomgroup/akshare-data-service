@@ -173,40 +173,32 @@ class TestCachePipeline:
         2. Verify memory cache hit immediately
         3. Wait for TTL to expire
         4. Verify memory cache returns None (TTL expired)
-        5. Read falls through to DuckDB layer (disk)
-        6. Memory cache remains empty after disk read returns no data
-           (disk path uses different directory than write path)
+        5. Read falls through to disk layer and returns data from parquet
+        6. Memory cache is repopulated after disk read
         """
         manager = CacheManager(base_dir=temp_cache_dir)
         manager.memory_cache._default_ttl_seconds = 1
         table = "ttl_expired_test"
 
-        # Write data to parquet and memory cache
         manager.write(table, sample_stock_data, storage_layer="daily")
         cache_key = manager._make_cache_key(table, "daily", None, None, None, None)
 
-        # Verify memory cache hit right after write
         assert manager.memory_cache.get(cache_key) is not None
 
-        # Verify parquet files exist on disk
         parquet_files = list(manager.partition_manager.base_dir.rglob("*.parquet"))
         assert len(parquet_files) >= 1
 
-        # Wait for TTL to expire
         time.sleep(1.5)
 
-        # Memory cache should now return None (TTL expired)
         assert manager.memory_cache.get(cache_key) is None, (
             "Expected memory cache miss after TTL expiry"
         )
 
-        # Read falls through to DuckDB layer
         result = manager.read(table, storage_layer="daily")
-        # Due to storage-layer directory mismatch, engine returns empty
-        assert result.empty
+        assert not result.empty
+        assert len(result) == len(sample_stock_data)
 
-        # Memory cache is not repopulated (engine returned empty)
-        assert manager.memory_cache.get(cache_key) is None
+        assert manager.memory_cache.get(cache_key) is not None
 
         # But parquet files still exist on disk (data was persisted)
         parquet_files_after = list(
@@ -312,29 +304,34 @@ class TestCachePipeline:
             }
         )
 
-        # Write both datasets (each write overwrites memory cache)
+        # Write both datasets (each write overwrites memory cache for the full read key)
         manager.write(table, df_a, storage_layer="daily")
         manager.write(table, df_b, storage_layer="daily")
 
-        # Query with where clause for symbol A -- different cache key
+        # Query with where clause for symbol A -- DuckDB correctly filters
         result_a = manager.read(
             table,
             storage_layer="daily",
             where={"symbol": "sh600000"},
         )
-        # Memory miss (different cache key) -> falls to engine -> empty
-        # because engine looks in wrong directory
-        assert result_a.empty
+        # DuckDB query with WHERE clause correctly returns df_a's data
+        assert not result_a.empty
+        assert len(result_a) == 4
+        assert (result_a["symbol"] == "sh600000").all()
+        assert list(result_a["close"]) == [10.0, 10.1, 10.2, 10.3]
 
-        # Query for symbol B -- also a different cache key
+        # Query for symbol B -- also works correctly
         result_b = manager.read(
             table,
             storage_layer="daily",
             where={"symbol": "sz000001"},
         )
-        assert result_b.empty
+        assert not result_b.empty
+        assert len(result_b) == 4
+        assert (result_b["symbol"] == "sz000001").all()
+        assert list(result_b["close"]) == [20.0, 20.1, 20.2, 20.3]
 
-        # Read without filter -- memory hit, gets last written data (df_b)
+        # Read without filter -- gets last written data (df_b) from memory cache
         result_all = manager.read(table, storage_layer="daily")
         assert len(result_all) == 4
         assert (result_all["symbol"] == "sz000001").all()

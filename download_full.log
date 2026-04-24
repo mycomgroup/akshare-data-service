@@ -1,0 +1,369 @@
+  0%|          | 0/5 [00:00<?, ?it/s] 40%|████      | 2/5 [00:00<00:00, 16.22it/s]100%|██████████| 5/5 [00:00<00:00, 19.95it/s]                                             2026-04-24 11:15:14,501 - [INFO] - Wrote table=convert_bond_spot to cache/duckdb/convert_bond_spot/part_51773_b9bc5aa9.parquet
+  0%|          | 0/3 [00:00<?, ?it/s]2026-04-24 11:15:15,132 - [ERROR] - Schema validation failed for table=conversion_bond_daily: Schema validation failed for 'conversion_bond_daily': Missing column: 'symbol'; Missing column: 'amount'. Falling back to legacy type coercion — data may be inconsistent.
+2026-04-24 11:15:15,288 - [INFO] - Wrote table=bond_zh_cov_daily to cache/duckdb/bond_zh_cov_daily/part_51773_ff147d1a.parquet
+2026-04-24 11:15:15,326 - [WARNING] - Attempt 1/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+ 33%|███▎      | 1/3 [00:00<00:01,  1.61it/s]2026-04-24 11:15:15,816 - [WARNING] - Attempt 1/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+  0%|          | 0/3 [00:00<?, ?it/s][A/Users/fengzhi/.pyenv/versions/3.12.0/lib/python3.12/site-packages/akshare/bond/bond_zh_cov.py:342: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)
+ 67%|██████▋   | 2/3 [00:01<00:00,  1.20it/s]100%|██████████| 3/3 [00:01<00:00,  1.95it/s]                                             2026-04-24 11:15:16,654 - [ERROR] - Schema validation failed for table=convert_bond_premium: Schema validation failed for 'convert_bond_premium': Missing column: 'bond_code'; Missing column: 'bond_name'; Missing column: 'stock_code'; Missing column: 'bond_price'; Missing column: 'conversion_value'; Missing column: 'premium_rate'; Missing column: 'date'. Falling back to legacy type coercion — data may be inconsistent.
+2026-04-24 11:15:16,805 - [WARNING] - Attempt 1/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:16,927 - [WARNING] - Attempt 2/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+ 33%|███▎      | 1/3 [00:00<00:01,  1.28it/s][A2026-04-24 11:15:17,917 - [WARNING] - Attempt 2/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:17,933 - [WARNING] - Attempt 2/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:18,052 - [ERROR] - Task equity_daily failed: Function _call_akshare failed after 2 retries
+2026-04-24 11:15:18,163 - [WARNING] - Attempt 1/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:19,055 - [ERROR] - Task equity_daily failed: Function _call_akshare failed after 2 retries
+2026-04-24 11:15:19,056 - [ERROR] - Task equity_daily failed: Function _call_akshare failed after 2 retries
+2026-04-24 11:15:19,172 - [WARNING] - Attempt 1/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:19,281 - [WARNING] - Attempt 2/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:19,669 - [WARNING] - Attempt 1/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+/Users/fengzhi/.pyenv/versions/3.12.0/lib/python3.12/site-packages/akshare/bond/bond_zh_cov.py:342: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)
+
+ 67%|██████▋   | 2/3 [00:03<00:01,  1.86s/it][A
+100%|██████████| 3/3 [00:03<00:00,  1.07s/it][A
+                                             [A2026-04-24 11:15:19,811 - [INFO] - Wrote table=bond_zh_cov to cache/duckdb/bond_zh_cov/part_51773_9dc4a145.parquet
+2026-04-24 11:15:20,286 - [WARNING] - Attempt 2/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:20,410 - [ERROR] - Task equity_minute failed: Function _call_akshare failed after 2 retries
+2026-04-24 11:15:20,794 - [WARNING] - Attempt 2/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-24 11:15:21,399 - [ERROR] - Task equity_minute failed: Function _call_akshare failed after 2 retries
+  0%|          | 0/100 [00:00<?, ?it/s]  1%|          | 1/100 [00:00<00:28,  3.45it/s]2026-04-24 11:15:21,913 - [ERROR] - Task equity_minute failed: Function _call_akshare failed after 2 retries
+  3%|▎         | 3/100 [00:00<00:15,  6.27it/s]2026-04-24 11:15:22,108 - [ERROR] - Schema validation failed for table=dragon_tiger_list: Schema validation failed for 'dragon_tiger_list': Missing column: 'symbol'; Missing column: 'name'; Missing column: 'date'; Missing column: 'change_pct'; Missing column: 'turnover'; Missing column: 'reason'; Missing column: 'net_buy'; Missing column: 'buy_amount'; Missing column: 'sell_amount'. Falling back to legacy type coercion — data may be inconsistent.
+  4%|▍         | 4/100 [00:00<00:14,  6.81it/s]  6%|▌         | 6/100 [00:00<00:11,  8.36it/s]
+  0%|          | 0/228 [00:00<?, ?it/s][A  8%|▊         | 8/100 [00:01<00:10,  8.93it/s]
+  0%|          | 1/228 [00:00<00:46,  4.91it/s][A  9%|▉         | 9/100 [00:01<00:10,  8.96it/s] 10%|█         | 10/100 [00:01<00:09,  9.12it/s] 11%|█         | 11/100 [00:01<00:09,  9.12it/s]
+  1%|          | 2/228 [00:00<00:59,  3.80it/s][A 12%|█▏        | 12/100 [00:01<00:10,  8.21it/s] 13%|█▎        | 13/100 [00:01<00:13,  6.21it/s]
+  1%|▏         | 3/228 [00:00<01:12,  3.11it/s][A 14%|█▍        | 14/100 [00:01<00:12,  6.89it/s] 15%|█▌        | 15/100 [00:02<00:14,  6.02it/s]
+  2%|▏         | 4/228 [00:01<01:09,  3.22it/s][A 16%|█▌        | 16/100 [00:02<00:12,  6.79it/s] 18%|█▊        | 18/100 [00:02<00:10,  7.86it/s]
+  2%|▏         | 5/228 [00:01<01:08,  3.26it/s][A 19%|█▉        | 19/100 [00:02<00:12,  6.66it/s]
+  3%|▎         | 6/228 [00:01<01:05,  3.38it/s][A 21%|██        | 21/100 [00:02<00:09,  7.97it/s]
+
+  0%|          | 0/16 [00:00<?, ?it/s][A[A 22%|██▏       | 22/100 [00:02<00:09,  8.31it/s]
+  3%|▎         | 7/228 [00:02<01:02,  3.53it/s][A 23%|██▎       | 23/100 [00:03<00:09,  8.55it/s]
+
+  6%|▋         | 1/16 [00:00<00:03,  4.43it/s][A[A 24%|██▍       | 24/100 [00:03<00:08,  8.58it/s]2026-04-24 11:15:24,738 - [WARNING] - Attempt 1/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+ 25%|██▌       | 25/100 [00:03<00:08,  8.83it/s]
+
+ 12%|█▎        | 2/16 [00:00<00:02,  4.72it/s][A[A
+  4%|▎         | 8/228 [00:02<01:09,  3.19it/s][A 26%|██▌       | 26/100 [00:03<00:08,  8.86it/s]
+
+ 19%|█▉        | 3/16 [00:00<00:02,  4.68it/s][A[A
+  4%|▍         | 9/228 [00:02<01:07,  3.25it/s][A
+
+ 25%|██▌       | 4/16 [00:00<00:02,  4.77it/s][A[A 28%|██▊       | 28/100 [00:03<00:10,  6.86it/s]
+
+ 31%|███▏      | 5/16 [00:01<00:02,  5.07it/s][A[A 30%|███       | 30/100 [00:03<00:08,  8.01it/s]
+  4%|▍         | 10/228 [00:02<01:05,  3.33it/s][A 31%|███       | 31/100 [00:04<00:08,  8.23it/s]
+
+ 38%|███▊      | 6/16 [00:01<00:01,  5.22it/s][A[A
+
+ 44%|████▍     | 7/16 [00:01<00:01,  5.61it/s][A[A
+  5%|▍         | 11/228 [00:03<01:07,  3.21it/s][A 32%|███▏      | 32/100 [00:04<00:10,  6.60it/s] 33%|███▎      | 33/100 [00:04<00:09,  7.18it/s]
+
+ 50%|█████     | 8/16 [00:01<00:01,  5.21it/s][A[A 34%|███▍      | 34/100 [00:04<00:08,  7.68it/s]
+
+ 56%|█████▋    | 9/16 [00:01<00:01,  5.26it/s][A[A
+  5%|▌         | 12/228 [00:03<01:09,  3.10it/s][A 36%|███▌      | 36/100 [00:04<00:07,  8.69it/s]
+
+ 62%|██████▎   | 10/16 [00:01<00:01,  5.47it/s][A[A 37%|███▋      | 37/100 [00:04<00:07,  8.68it/s]
+  6%|▌         | 13/228 [00:03<01:08,  3.14it/s][A
+
+ 69%|██████▉   | 11/16 [00:02<00:00,  5.24it/s][A[A 38%|███▊      | 38/100 [00:05<00:08,  6.91it/s] 39%|███▉      | 39/100 [00:05<00:08,  7.50it/s]
+
+ 75%|███████▌  | 12/16 [00:02<00:00,  5.16it/s][A[A 40%|████      | 40/100 [00:05<00:07,  7.97it/s]
+  6%|▌         | 14/228 [00:04<01:11,  2.98it/s][A
+
+ 81%|████████▏ | 13/16 [00:02<00:00,  4.90it/s][A[A 42%|████▏     | 42/100 [00:05<00:06,  8.87it/s]
+  7%|▋         | 15/228 [00:04<01:06,  3.19it/s][A
+
+ 88%|████████▊ | 14/16 [00:02<00:00,  5.01it/s][A[A
+
+ 94%|█████████▍| 15/16 [00:02<00:00,  4.86it/s][A[A
+  7%|▋         | 16/228 [00:05<01:11,  2.98it/s][A 43%|████▎     | 43/100 [00:05<00:12,  4.69it/s]
+
+100%|██████████| 16/16 [00:03<00:00,  4.81it/s][A[A
+
+                                               [A[A2026-04-24 11:15:27,542 - [INFO] - Wrote table=securities_list to cache/duckdb/securities_list/part_51773_da2f4da8.parquet
+ 44%|████▍     | 44/100 [00:06<00:10,  5.36it/s]
+  7%|▋         | 17/228 [00:05<01:06,  3.15it/s][A2026-04-24 11:15:28,046 - [WARNING] - Attempt 1/2 failed for _call_akshare: 跌停股池只能获取最近 30 个交易日的数据
+
+  8%|▊         | 18/228 [00:05<01:07,  3.10it/s][A
+  8%|▊         | 19/228 [00:06<01:18,  2.66it/s][A
+  9%|▉         | 20/228 [00:06<01:14,  2.78it/s][A2026-04-24 11:15:29,051 - [WARNING] - Attempt 2/2 failed for _call_akshare: 跌停股池只能获取最近 30 个交易日的数据
+ 45%|████▌     | 45/100 [00:07<00:30,  1.78it/s] 46%|████▌     | 46/100 [00:07<00:24,  2.20it/s] 47%|████▋     | 47/100 [00:07<00:18,  2.80it/s]
+  9%|▉         | 21/228 [00:07<01:29,  2.30it/s][A 48%|████▊     | 48/100 [00:08<00:14,  3.52it/s] 49%|████▉     | 49/100 [00:08<00:11,  4.30it/s]
+ 10%|▉         | 22/228 [00:07<01:19,  2.58it/s][A 50%|█████     | 50/100 [00:08<00:09,  5.05it/s] 51%|█████     | 51/100 [00:08<00:09,  5.31it/s]2026-04-24 11:15:30,055 - [ERROR] - Task limit_down_pool failed: Function _call_akshare failed after 2 retries
+ 52%|█████▏    | 52/100 [00:08<00:08,  5.78it/s]
+ 10%|█         | 23/228 [00:07<01:14,  2.74it/s][A 53%|█████▎    | 53/100 [00:08<00:07,  6.07it/s] 54%|█████▍    | 54/100 [00:08<00:08,  5.60it/s] 56%|█████▌    | 56/100 [00:09<00:06,  7.02it/s]2026-04-24 11:15:30,692 - [WARNING] - Attempt 2/2 failed for _call_akshare: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+ 11%|█         | 24/228 [00:08<01:29,  2.28it/s][A 57%|█████▋    | 57/100 [00:09<00:05,  7.47it/s] 58%|█████▊    | 58/100 [00:09<00:05,  7.62it/s]2026-04-24 11:15:30,866 - [INFO] - Wrote table=margin_data to cache/duckdb/margin_data/part_51773_cbce2bdc.parquet
+
+ 11%|█         | 25/228 [00:08<01:18,  2.57it/s][A 59%|█████▉    | 59/100 [00:09<00:05,  8.07it/s] 61%|██████    | 61/100 [00:09<00:04,  8.80it/s] 62%|██████▏   | 62/100 [00:09<00:04,  8.67it/s]
+ 11%|█▏        | 26/228 [00:08<01:18,  2.57it/s][A2026-04-24 11:15:31,359 - [INFO] - Wrote table=margin_summary to cache/duckdb/margin_summary/part_51773_cd6d685f.parquet
+ 63%|██████▎   | 63/100 [00:09<00:04,  8.42it/s] 64%|██████▍   | 64/100 [00:09<00:04,  8.72it/s] 65%|██████▌   | 65/100 [00:10<00:03,  8.90it/s]
+ 12%|█▏        | 27/228 [00:09<01:13,  2.72it/s][A 66%|██████▌   | 66/100 [00:10<00:03,  8.91it/s]
+ 12%|█▏        | 28/228 [00:09<01:08,  2.93it/s][A 67%|██████▋   | 67/100 [00:10<00:04,  6.94it/s]2026-04-24 11:15:31,993 - [ERROR] - Schema validation failed for table=suspended_stocks: Schema validation failed for 'suspended_stocks': Missing column: 'symbol'; Missing column: 'name'; Missing column: 'suspend_date'; Missing column: 'reason'. Falling back to legacy type coercion — data may be inconsistent.
+ 68%|██████▊   | 68/100 [00:10<00:04,  6.58it/s]
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+ 13%|█▎        | 29/228 [00:09<01:10,  2.83it/s][A 70%|███████   | 70/100 [00:10<00:03,  7.67it/s] 72%|███████▏  | 72/100 [00:11<00:03,  8.47it/s] 73%|███████▎  | 73/100 [00:11<00:03,  7.16it/s]
+ 13%|█▎        | 30/228 [00:10<01:16,  2.59it/s][A 74%|███████▍  | 74/100 [00:11<00:03,  7.52it/s]
+ 14%|█▎        | 31/228 [00:10<01:08,  2.86it/s][A
+
+100%|██████████| 1/1 [00:00<00:00,  1.27it/s][A[A
+
+                                             [A[A2026-04-24 11:15:33,090 - [ERROR] - Schema validation failed for table=st_stocks: Schema validation failed for 'st_stocks': Missing column: 'symbol'; Missing column: 'name'; Missing column: 'st_type'; Missing column: 'st_date'. Falling back to legacy type coercion — data may be inconsistent.
+ 75%|███████▌  | 75/100 [00:11<00:03,  6.31it/s] 76%|███████▌  | 76/100 [00:11<00:03,  6.76it/s] 77%|███████▋  | 77/100 [00:11<00:03,  7.38it/s]
+ 14%|█▍        | 32/228 [00:10<01:08,  2.87it/s][A
+ 14%|█▍        | 33/228 [00:11<01:02,  3.12it/s][A 78%|███████▊  | 78/100 [00:12<00:04,  4.78it/s] 80%|████████  | 80/100 [00:12<00:03,  6.21it/s]
+ 15%|█▍        | 34/228 [00:11<01:00,  3.19it/s][A 81%|████████  | 81/100 [00:12<00:02,  6.75it/s]
+
+  0%|          | 0/58 [00:00<?, ?it/s][A[A 82%|████████▏ | 82/100 [00:12<00:03,  5.97it/s]
+ 15%|█▌        | 35/228 [00:11<01:02,  3.11it/s][A 83%|████████▎ | 83/100 [00:12<00:02,  6.59it/s] 84%|████████▍ | 84/100 [00:12<00:02,  6.98it/s]
+ 16%|█▌        | 36/228 [00:12<01:01,  3.10it/s][A 85%|████████▌ | 85/100 [00:13<00:02,  5.80it/s] 86%|████████▌ | 86/100 [00:13<00:02,  6.59it/s]
+ 16%|█▌        | 37/228 [00:12<00:59,  3.23it/s][A 87%|████████▋ | 87/100 [00:13<00:02,  5.53it/s]
+ 17%|█▋        | 38/228 [00:12<00:55,  3.41it/s][A 88%|████████▊ | 88/100 [00:13<00:01,  6.35it/s] 89%|████████▉ | 89/100 [00:13<00:01,  6.98it/s]
+
+  2%|▏         | 1/58 [00:01<01:09,  1.22s/it][A[A 90%|█████████ | 90/100 [00:13<00:01,  7.49it/s]
+ 17%|█▋        | 39/228 [00:13<00:55,  3.40it/s][A 91%|█████████ | 91/100 [00:14<00:01,  7.46it/s]
+ 18%|█▊        | 40/228 [00:13<00:56,  3.35it/s][A 92%|█████████▏| 92/100 [00:14<00:01,  5.70it/s] 94%|█████████▍| 94/100 [00:14<00:00,  7.10it/s]
+ 18%|█▊        | 41/228 [00:13<00:53,  3.48it/s][A 95%|█████████▌| 95/100 [00:14<00:00,  7.50it/s] 96%|█████████▌| 96/100 [00:14<00:00,  8.01it/s]
+ 18%|█▊        | 42/228 [00:13<00:54,  3.40it/s][A 97%|█████████▋| 97/100 [00:14<00:00,  8.14it/s] 98%|█████████▊| 98/100 [00:14<00:00,  8.21it/s] 99%|█████████▉| 99/100 [00:15<00:00,  8.33it/s]100%|██████████| 100/100 [00:15<00:00,  8.55it/s]                                                 2026-04-24 11:15:36,698 - [ERROR] - Schema validation failed for table=block_deal: Schema validation failed for 'block_deal': Missing column: 'symbol'; Missing column: 'date'; Missing column: 'deal_price'; Missing column: 'deal_volume'; Missing column: 'deal_amount'; Missing column: 'buyer'; Missing column: 'seller'; Missing column: 'premium_ratio'. Falling back to legacy type coercion — data may be inconsistent.
+
+ 19%|█▉        | 43/228 [00:14<00:58,  3.17it/s][A
+ 19%|█▉        | 44/228 [00:14<01:00,  3.05it/s][A
+ 20%|█▉        | 45/228 [00:14<01:01,  2.97it/s][A
+ 20%|██        | 46/228 [00:15<00:58,  3.12it/s][A
+ 21%|██        | 47/228 [00:15<00:57,  3.16it/s][A
+ 21%|██        | 48/228 [00:16<01:07,  2.66it/s][A
+ 21%|██▏       | 49/228 [00:16<01:03,  2.83it/s][A
+ 22%|██▏       | 50/228 [00:16<01:11,  2.49it/s][A
+ 22%|██▏       | 51/228 [00:17<01:05,  2.68it/s][A
+ 23%|██▎       | 52/228 [00:17<01:01,  2.87it/s][A
+ 23%|██▎       | 53/228 [00:17<00:58,  2.97it/s][A
+ 24%|██▎       | 54/228 [00:18<00:56,  3.05it/s][A
+ 24%|██▍       | 55/228 [00:18<00:56,  3.07it/s][A
+ 25%|██▍       | 56/228 [00:18<01:08,  2.52it/s][A
+ 25%|██▌       | 57/228 [00:19<01:02,  2.75it/s][A
+ 25%|██▌       | 58/228 [00:19<01:01,  2.78it/s][A
+
+                                              [A[A2026-04-24 11:15:42,181 - [ERROR] - Task equity_realtime failed: Function _call_akshare failed after 2 retries
+
+ 26%|██▌       | 59/228 [00:19<00:57,  2.92it/s][A
+ 26%|██▋       | 60/228 [00:20<01:07,  2.49it/s][A
+ 27%|██▋       | 61/228 [00:20<01:00,  2.77it/s][A
+ 27%|██▋       | 62/228 [00:21<00:55,  2.98it/s][A
+ 28%|██▊       | 63/228 [00:21<00:53,  3.10it/s][A
+ 28%|██▊       | 64/228 [00:21<00:53,  3.07it/s][A
+ 29%|██▊       | 65/228 [00:21<00:54,  3.02it/s][A
+ 29%|██▉       | 66/228 [00:22<00:59,  2.75it/s][A
+ 29%|██▉       | 67/228 [00:22<00:54,  2.97it/s][A
+ 30%|██▉       | 68/228 [00:23<00:53,  3.02it/s][A
+ 30%|███       | 69/228 [00:23<00:59,  2.69it/s][A
+ 31%|███       | 70/228 [00:23<00:56,  2.79it/s][A
+ 31%|███       | 71/228 [00:24<00:54,  2.89it/s][A
+ 32%|███▏      | 72/228 [00:24<00:51,  3.01it/s][A
+ 32%|███▏      | 73/228 [00:24<00:58,  2.64it/s][A
+ 32%|███▏      | 74/228 [00:25<00:55,  2.79it/s][A
+ 33%|███▎      | 75/228 [00:25<00:50,  3.02it/s][A
+ 33%|███▎      | 76/228 [00:25<00:48,  3.11it/s][A
+ 34%|███▍      | 77/228 [00:26<00:48,  3.09it/s][A
+ 34%|███▍      | 78/228 [00:26<00:53,  2.79it/s][A
+ 35%|███▍      | 79/228 [00:26<00:49,  3.04it/s][A
+ 35%|███▌      | 80/228 [00:27<00:52,  2.83it/s][A
+ 36%|███▌      | 81/228 [00:27<00:49,  2.96it/s][A
+ 36%|███▌      | 82/228 [00:28<00:56,  2.59it/s][A
+ 36%|███▋      | 83/228 [00:28<00:52,  2.75it/s][A
+ 37%|███▋      | 84/228 [00:28<00:54,  2.66it/s][A
+ 37%|███▋      | 85/228 [00:29<00:58,  2.46it/s][A
+ 38%|███▊      | 86/228 [00:29<00:57,  2.45it/s][A
+ 38%|███▊      | 87/228 [00:30<00:58,  2.40it/s][A/Users/fengzhi/.pyenv/versions/3.12.0/lib/python3.12/site-packages/akshare/stock_feature/stock_lhb_em.py:58: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  big_df = pd.concat([big_df, temp_df], ignore_index=True)
+
+ 39%|███▊      | 88/228 [00:30<00:53,  2.60it/s][A
+ 39%|███▉      | 89/228 [00:30<00:55,  2.50it/s][A
+ 39%|███▉      | 90/228 [00:31<00:50,  2.71it/s][A
+ 40%|███▉      | 91/228 [00:31<00:47,  2.89it/s][A
+ 40%|████      | 92/228 [00:31<00:51,  2.62it/s][A
+ 41%|████      | 93/228 [00:32<00:51,  2.63it/s][A
+ 41%|████      | 94/228 [00:32<00:53,  2.50it/s][A
+ 42%|████▏     | 95/228 [00:33<00:51,  2.60it/s][A
+ 42%|████▏     | 96/228 [00:33<00:50,  2.59it/s][A
+ 43%|████▎     | 97/228 [00:33<00:46,  2.82it/s][A
+ 43%|████▎     | 98/228 [00:34<00:50,  2.55it/s][A
+ 43%|████▎     | 99/228 [00:34<00:46,  2.76it/s][A
+ 44%|████▍     | 100/228 [00:34<00:50,  2.55it/s][A
+ 44%|████▍     | 101/228 [00:35<00:45,  2.78it/s][A
+ 45%|████▍     | 102/228 [00:35<00:43,  2.90it/s][A
+ 45%|████▌     | 103/228 [00:35<00:41,  3.02it/s][A
+ 46%|████▌     | 104/228 [00:36<00:40,  3.08it/s][A
+ 46%|████▌     | 105/228 [00:36<00:39,  3.15it/s][A
+ 46%|████▋     | 106/228 [00:36<00:42,  2.86it/s][A
+ 47%|████▋     | 107/228 [00:37<00:40,  2.99it/s][A
+ 47%|████▋     | 108/228 [00:37<00:40,  2.99it/s][A
+ 48%|████▊     | 109/228 [00:37<00:39,  3.00it/s][A
+ 48%|████▊     | 110/228 [00:38<00:40,  2.91it/s][A
+ 49%|████▊     | 111/228 [00:38<00:40,  2.89it/s][A
+ 49%|████▉     | 112/228 [00:39<00:52,  2.20it/s][A
+ 50%|████▉     | 113/228 [00:40<01:07,  1.71it/s][A
+ 50%|█████     | 114/228 [00:40<00:57,  1.97it/s][A
+ 50%|█████     | 115/228 [00:40<00:54,  2.09it/s][A
+ 51%|█████     | 116/228 [00:41<00:46,  2.41it/s][A
+ 51%|█████▏    | 117/228 [00:41<00:42,  2.60it/s][A
+ 52%|█████▏    | 118/228 [00:41<00:44,  2.47it/s][A
+ 52%|█████▏    | 119/228 [00:42<00:45,  2.41it/s][A
+ 53%|█████▎    | 120/228 [00:42<00:40,  2.64it/s][A
+ 53%|█████▎    | 121/228 [00:42<00:37,  2.83it/s][A
+ 54%|█████▎    | 122/228 [00:43<00:34,  3.03it/s][A
+ 54%|█████▍    | 123/228 [00:43<00:33,  3.11it/s][A
+ 54%|█████▍    | 124/228 [00:43<00:33,  3.11it/s][A
+ 55%|█████▍    | 125/228 [00:44<00:36,  2.83it/s][A
+ 55%|█████▌    | 126/228 [00:44<00:34,  2.96it/s][A
+ 56%|█████▌    | 127/228 [00:45<00:37,  2.71it/s][A
+ 56%|█████▌    | 128/228 [00:45<00:35,  2.83it/s][A
+ 57%|█████▋    | 129/228 [00:45<00:42,  2.35it/s][A
+ 57%|█████▋    | 130/228 [00:46<00:37,  2.63it/s][A
+ 57%|█████▋    | 131/228 [00:46<00:34,  2.77it/s][A
+ 58%|█████▊    | 132/228 [00:46<00:36,  2.61it/s][A
+ 58%|█████▊    | 133/228 [00:47<00:42,  2.22it/s][A
+ 59%|█████▉    | 134/228 [00:47<00:38,  2.47it/s][A
+ 59%|█████▉    | 135/228 [00:48<00:39,  2.38it/s][A
+ 60%|█████▉    | 136/228 [00:48<00:42,  2.18it/s][A
+ 60%|██████    | 137/228 [00:49<00:50,  1.80it/s][A
+ 61%|██████    | 138/228 [00:49<00:42,  2.11it/s][A
+ 61%|██████    | 139/228 [00:50<00:38,  2.30it/s][A
+ 61%|██████▏   | 140/228 [00:50<00:37,  2.37it/s][A
+ 62%|██████▏   | 141/228 [00:50<00:34,  2.55it/s][A
+ 62%|██████▏   | 142/228 [00:51<00:30,  2.82it/s][A
+ 63%|██████▎   | 143/228 [00:51<00:28,  2.98it/s][A
+ 63%|██████▎   | 144/228 [00:51<00:29,  2.89it/s][A
+ 64%|██████▎   | 145/228 [00:52<00:29,  2.78it/s][A
+ 64%|██████▍   | 146/228 [00:52<00:26,  3.07it/s][A
+ 64%|██████▍   | 147/228 [00:52<00:25,  3.17it/s][A
+ 65%|██████▍   | 148/228 [00:53<00:24,  3.21it/s][A
+ 65%|██████▌   | 149/228 [00:53<00:24,  3.29it/s][A
+ 66%|██████▌   | 150/228 [00:53<00:27,  2.79it/s][A
+ 66%|██████▌   | 151/228 [00:54<00:26,  2.91it/s][A
+ 67%|██████▋   | 152/228 [00:54<00:27,  2.80it/s][A
+ 67%|██████▋   | 153/228 [00:54<00:24,  3.05it/s][A
+ 68%|██████▊   | 154/228 [00:55<00:24,  3.05it/s][A
+ 68%|██████▊   | 155/228 [00:55<00:23,  3.07it/s][A
+ 68%|██████▊   | 156/228 [00:56<00:29,  2.44it/s][A
+ 69%|██████▉   | 157/228 [00:56<00:26,  2.63it/s][A
+ 69%|██████▉   | 158/228 [00:56<00:24,  2.89it/s][A
+ 70%|██████▉   | 159/228 [00:56<00:22,  3.05it/s][A
+ 70%|███████   | 160/228 [00:57<00:21,  3.17it/s][A
+ 71%|███████   | 161/228 [00:57<00:20,  3.27it/s][A
+ 71%|███████   | 162/228 [00:57<00:20,  3.23it/s][A
+ 71%|███████▏  | 163/228 [00:58<00:20,  3.25it/s][A
+ 72%|███████▏  | 164/228 [00:58<00:18,  3.41it/s][A
+ 72%|███████▏  | 165/228 [00:58<00:18,  3.34it/s][A
+ 73%|███████▎  | 166/228 [00:59<00:21,  2.92it/s][A
+ 73%|███████▎  | 167/228 [00:59<00:20,  3.02it/s][A
+ 74%|███████▎  | 168/228 [01:00<00:25,  2.35it/s][A
+ 74%|███████▍  | 169/228 [01:00<00:28,  2.07it/s][A
+ 75%|███████▍  | 170/228 [01:01<00:23,  2.43it/s][A
+ 75%|███████▌  | 171/228 [01:01<00:22,  2.58it/s][A
+ 75%|███████▌  | 172/228 [01:01<00:20,  2.74it/s][A
+ 76%|███████▌  | 173/228 [01:02<00:22,  2.41it/s][A
+ 76%|███████▋  | 174/228 [01:02<00:25,  2.13it/s][A
+ 77%|███████▋  | 175/228 [01:03<00:24,  2.20it/s][A
+ 77%|███████▋  | 176/228 [01:03<00:22,  2.30it/s][A
+ 78%|███████▊  | 177/228 [01:03<00:20,  2.46it/s][A
+ 78%|███████▊  | 178/228 [01:04<00:20,  2.38it/s][A
+ 79%|███████▊  | 179/228 [01:04<00:19,  2.57it/s][A
+ 79%|███████▉  | 180/228 [01:05<00:17,  2.68it/s][A
+ 79%|███████▉  | 181/228 [01:05<00:16,  2.83it/s][A
+ 80%|███████▉  | 182/228 [01:05<00:17,  2.69it/s][A
+ 80%|████████  | 183/228 [01:06<00:16,  2.71it/s][A
+ 81%|████████  | 184/228 [01:06<00:14,  2.96it/s][A
+ 81%|████████  | 185/228 [01:06<00:13,  3.08it/s][A
+ 82%|████████▏ | 186/228 [01:07<00:15,  2.79it/s][A
+ 82%|████████▏ | 187/228 [01:07<00:14,  2.83it/s][A
+ 82%|████████▏ | 188/228 [01:07<00:14,  2.80it/s][A
+ 83%|████████▎ | 189/228 [01:08<00:13,  2.91it/s][A
+ 83%|████████▎ | 190/228 [01:08<00:16,  2.36it/s][A
+ 84%|████████▍ | 191/228 [01:09<00:16,  2.23it/s][A
+ 84%|████████▍ | 192/228 [01:09<00:14,  2.50it/s][A
+ 85%|████████▍ | 193/228 [01:09<00:12,  2.72it/s][A
+ 85%|████████▌ | 194/228 [01:10<00:12,  2.77it/s][A
+ 86%|████████▌ | 195/228 [01:10<00:11,  2.94it/s][A
+ 86%|████████▌ | 196/228 [01:10<00:11,  2.91it/s][A
+ 86%|████████▋ | 197/228 [01:11<00:10,  3.06it/s][A
+ 87%|████████▋ | 198/228 [01:11<00:09,  3.16it/s][A
+ 87%|████████▋ | 199/228 [01:11<00:09,  3.05it/s][A
+ 88%|████████▊ | 200/228 [01:12<00:09,  3.04it/s][A
+ 88%|████████▊ | 201/228 [01:12<00:08,  3.02it/s][A
+ 89%|████████▊ | 202/228 [01:12<00:09,  2.86it/s][A
+ 89%|████████▉ | 203/228 [01:13<00:10,  2.44it/s][A
+ 89%|████████▉ | 204/228 [01:13<00:09,  2.56it/s][A
+ 90%|████████▉ | 205/228 [01:14<00:08,  2.72it/s][A
+ 90%|█████████ | 206/228 [01:14<00:07,  2.89it/s][A
+ 91%|█████████ | 207/228 [01:14<00:07,  2.97it/s][A
+ 91%|█████████ | 208/228 [01:15<00:07,  2.77it/s][A
+ 92%|█████████▏| 209/228 [01:15<00:06,  2.95it/s][A
+ 92%|█████████▏| 210/228 [01:15<00:06,  2.96it/s][A
+ 93%|█████████▎| 211/228 [01:16<00:06,  2.77it/s][A
+ 93%|█████████▎| 212/228 [01:16<00:05,  2.71it/s][A
+ 93%|█████████▎| 213/228 [01:16<00:05,  2.84it/s][A
+ 94%|█████████▍| 214/228 [01:17<00:04,  2.89it/s][A
+ 94%|█████████▍| 215/228 [01:17<00:04,  3.00it/s][A
+ 95%|█████████▍| 216/228 [01:17<00:03,  3.08it/s][A
+ 95%|█████████▌| 217/228 [01:18<00:03,  2.77it/s][A
+ 96%|█████████▌| 218/228 [01:18<00:03,  2.84it/s][A
+ 96%|█████████▌| 219/228 [01:18<00:03,  2.89it/s][A
+ 96%|█████████▋| 220/228 [01:19<00:02,  3.03it/s][A
+ 97%|█████████▋| 221/228 [01:19<00:02,  2.84it/s][A
+ 97%|█████████▋| 222/228 [01:19<00:02,  2.98it/s][A
+ 98%|█████████▊| 223/228 [01:20<00:01,  2.60it/s][A
+ 98%|█████████▊| 224/228 [01:20<00:01,  2.53it/s][A
+ 99%|█████████▊| 225/228 [01:21<00:01,  2.50it/s][A
+ 99%|█████████▉| 226/228 [01:21<00:00,  2.40it/s][A
+100%|█████████▉| 227/228 [01:21<00:00,  2.58it/s][A
+100%|██████████| 228/228 [01:22<00:00,  2.34it/s][A
+                                                 [A2026-04-24 11:16:45,111 - [INFO] - Wrote table=dragon_tiger_summary to cache/duckdb/dragon_tiger_summary/part_51773_26ee4781.parquet
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/cli/__main__.py", line 6, in <module>
+    main()
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/cli/main.py", line 43, in main
+    _handle_download(args)
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/cli/main.py", line 121, in _handle_download
+    result = downloader.download_full(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/downloader/downloader.py", line 127, in download_full
+    return self._execute_tasks(tasks, progress_callback)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/downloader/downloader.py", line 145, in _execute_tasks
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/.pyenv/versions/3.12.0/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/.pyenv/versions/3.12.0/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/fengzhi/.pyenv/versions/3.12.0/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/downloader/executor.py", line 63, in execute
+    result = self.run(task, context=legacy_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/downloader/executor.py", line 134, in run
+    self._write_to_cache(task, df)
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/offline/downloader/executor.py", line 186, in _write_to_cache
+    self._cache_manager.write(
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/store/manager.py", line 168, in write
+    file_path = self.writer.write(
+                ^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/store/parquet.py", line 195, in write
+    prepared_data = self._validate_and_prepare(table, data, schema, primary_key)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/store/parquet.py", line 236, in _validate_and_prepare
+    result = validator.validate_and_cast(data, primary_key=effective_pk)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fengzhi/Downloads/git2/akshare-data-service/src/akshare_data/store/validator.py", line 49, in validate_and_cast
+    raise SchemaValidationError(self.table, errors)
+akshare_data.store.validator.SchemaValidationError: Schema validation failed for 'conversion_bond_daily': Missing column: 'symbol'; Missing column: 'amount'

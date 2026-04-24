@@ -254,7 +254,13 @@ class TestParquetAtomicWrite:
             {
                 "date": pd.date_range("2024-01-01", periods=5),
                 "symbol": ["sh600000"] * 5,
-                "close": [10.0, 10.1, 10.2, 10.3, 10.4],
+                "open": [10.0] * 5,
+                "high": [11.0] * 5,
+                "low": [9.0] * 5,
+                "close": [10.5] * 5,
+                "volume": [100000.0] * 5,
+                "amount": [1000000.0] * 5,
+                "adjust": ["qfq"] * 5,
             }
         )
 
@@ -278,7 +284,13 @@ class TestParquetAtomicWrite:
             {
                 "date": pd.date_range("2024-01-01", periods=5),
                 "symbol": ["sh600000"] * 5,
-                "close": [10.0, 10.1, 10.2, 10.3, 10.4],
+                "open": [10.0] * 5,
+                "high": [11.0] * 5,
+                "low": [9.0] * 5,
+                "close": [10.5] * 5,
+                "volume": [100000.0] * 5,
+                "amount": [1000000.0] * 5,
+                "adjust": ["qfq"] * 5,
             }
         )
 
@@ -332,14 +344,26 @@ class TestParquetPartitioning:
             {
                 "symbol": ["sh600000"] * 3,
                 "date": pd.date_range("2024-01-01", periods=3),
-                "close": [10.0, 10.1, 10.2],
+                "open": [10.0] * 3,
+                "high": [11.0] * 3,
+                "low": [9.0] * 3,
+                "close": [10.5] * 3,
+                "volume": [100000.0] * 3,
+                "amount": [1000000.0] * 3,
+                "adjust": ["qfq"] * 3,
             }
         )
         df_b = pd.DataFrame(
             {
                 "symbol": ["sz000001"] * 2,
                 "date": pd.date_range("2024-01-01", periods=2),
-                "close": [5.0, 5.1],
+                "open": [5.0] * 2,
+                "high": [5.5] * 2,
+                "low": [4.5] * 2,
+                "close": [5.05] * 2,
+                "volume": [50000.0] * 2,
+                "amount": [250000.0] * 2,
+                "adjust": ["qfq"] * 2,
             }
         )
 
@@ -381,7 +405,13 @@ class TestParquetPartitioning:
                 {
                     "symbol": [symbol],
                     "date": [date(2024, 1, 2)],
-                    "close": [10.0],
+                    "open": [10.0],
+                    "high": [11.0],
+                    "low": [9.0],
+                    "close": [10.5],
+                    "volume": [100000.0],
+                    "amount": [1000000.0],
+                    "adjust": ["qfq"],
                 }
             )
             writer.write(

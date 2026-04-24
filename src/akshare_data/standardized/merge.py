@@ -11,6 +11,7 @@ from __future__ import annotations
 import logging
 from typing import List
 
+import numpy as np
 import pandas as pd
 
 logger = logging.getLogger(__name__)
@@ -136,12 +137,12 @@ class MergeEngine:
         existing: pd.DataFrame,
         incoming: pd.DataFrame,
     ) -> pd.DataFrame:
-        """Resolve conflicts for overlapping primary keys.
+        """Resolve conflicts for overlapping primary keys using vectorized operations.
 
         Priority:
         1. Higher normalize_version wins
         2. If versions equal, later ingest_time wins
-        3. If both equal, incoming wins (latest write)
+        3. If both equal, incoming wins
         """
         merged = existing.merge(
             incoming,
@@ -151,41 +152,47 @@ class MergeEngine:
             indicator=True,
         )
 
-        result_rows = []
+        norm_exist_col = "normalize_version_existing"
+        norm_income_col = "normalize_version_incoming"
+        ingest_exist_col = "ingest_time_existing"
+        ingest_income_col = "ingest_time_incoming"
 
-        for _, row in merged.iterrows():
-            if row["_merge_key"] is None:
-                continue
-
-            existing_norm = row.get("normalize_version_existing")
-            incoming_norm = row.get("normalize_version_incoming")
-            existing_ingest = row.get("ingest_time_existing")
-            incoming_ingest = row.get("ingest_time_incoming")
-
-            use_incoming = True
-
-            if existing_norm is not None and incoming_norm is not None:
-                if _compare_version(str(incoming_norm), str(existing_norm)) < 0:
-                    use_incoming = False
-                elif _compare_version(str(incoming_norm), str(existing_norm)) == 0:
-                    if existing_ingest is not None and incoming_ingest is not None:
-                        try:
-                            existing_dt = pd.to_datetime(existing_ingest)
-                            incoming_dt = pd.to_datetime(incoming_ingest)
-                            if incoming_dt <= existing_dt:
-                                use_incoming = False
-                        except (ValueError, TypeError):
-                            pass
-
-            if use_incoming:
-                result_rows.append(_pick_row(row, "incoming"))
-            else:
-                result_rows.append(_pick_row(row, "existing"))
-
-        if not result_rows:
+        if norm_exist_col not in merged.columns or norm_income_col not in merged.columns:
             return pd.DataFrame()
 
-        return pd.DataFrame(result_rows)
+        norm_exist = merged[norm_exist_col].astype(str)
+        norm_income = merged[norm_income_col].astype(str)
+        ingest_exist = pd.to_datetime(merged[ingest_exist_col], errors="coerce")
+        ingest_income = pd.to_datetime(merged[ingest_income_col], errors="coerce")
+
+        incoming_version_lower = norm_income.str.lt(norm_exist) & norm_exist.notna() & norm_income.notna()
+        version_equal = norm_income == norm_exist
+        incoming_time_le = version_equal & ingest_income.notna() & ingest_exist.notna() & ingest_income.le(ingest_exist)
+        use_existing = incoming_version_lower | incoming_time_le
+
+        base_cols = [c for c in merged.columns if not c.endswith(("_existing", "_incoming", "_merge_key", "_merge"))]
+        result_parts = []
+
+        for col in base_cols:
+            existing_col = f"{col}_existing"
+            incoming_col = f"{col}_incoming"
+            if existing_col in merged.columns and incoming_col in merged.columns:
+                result_parts.append(
+                    pd.Series(
+                        np.where(use_existing, merged[existing_col], merged[incoming_col]),
+                        index=merged.index,
+                        name=col,
+                    )
+                )
+            elif existing_col in merged.columns:
+                result_parts.append(merged[existing_col].rename(col))
+            elif incoming_col in merged.columns:
+                result_parts.append(merged[incoming_col].rename(col))
+
+        if not result_parts:
+            return pd.DataFrame()
+
+        return pd.concat(result_parts, axis=1)
 
     def merge_late_arriving(
         self,

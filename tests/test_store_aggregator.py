@@ -37,7 +37,7 @@ def mock_table_schema():
 
 
 @pytest.fixture
-def sample_df():
+def     sample_df():
     """Create a sample DataFrame."""
     return pd.DataFrame(
         {
@@ -48,6 +48,7 @@ def sample_df():
     )
 
 
+@pytest.mark.unit
 class TestAggregatorInit:
     """Tests for Aggregator initialization."""
 
@@ -370,13 +371,7 @@ class TestAggregatorWriteAggregated:
     ):
         """Test _write_aggregated creates parent directory."""
         mock_get_schema.return_value = mock_table_schema
-        (
-            temp_base_dir
-            / "aggregated"
-            / "test_table"
-            / "date=2024-01"
-            / "data.parquet"
-        )
+        (temp_base_dir / "aggregated" / "test_table" / "date=2024-01" / "data.parquet")
         aggregator = Aggregator(temp_base_dir)
         result = aggregator._write_aggregated(mock_table_schema, "2024-01", sample_df)
         assert result.parent.exists()

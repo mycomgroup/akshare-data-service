@@ -14,6 +14,7 @@ from akshare_data.offline.field_mapper import (
 )
 
 
+@pytest.mark.unit
 class TestColumnInfo:
     """Test ColumnInfo dataclass"""
 

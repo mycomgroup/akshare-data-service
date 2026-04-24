@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
+
+logger = logging.getLogger("akshare_data")
 
 
 @dataclass
@@ -17,6 +20,7 @@ class DownloadTask:
     rate_limit_key: str = "default"
     primary_key: Optional[List[str]] = None
     output_mapping: Dict[str, str] = field(default_factory=dict)
+    use_multi_source: bool = False
 
 
 class TaskBuilder:
@@ -39,7 +43,23 @@ class TaskBuilder:
                 continue
 
             category = iface_def.get("category", "other")
-            func_name = iface_def.get("func", interface)
+            func_name = iface_def.get("func")
+            use_multi_source = False
+            if not func_name:
+                sources = iface_def.get("sources", [])
+                enabled_source = None
+                for src in sources:
+                    if isinstance(src, dict) and src.get("enabled", True):
+                        enabled_source = src
+                        break
+                if enabled_source:
+                    func_name = enabled_source.get("func")
+                    use_multi_source = True
+                else:
+                    logger.debug("Skipping %s: no enabled sources", interface)
+                    continue
+            if not func_name:
+                func_name = interface
             table = f"{interface}"
             rate_limit_key = iface_def.get("rate_limit_key", "default")
             signature = iface_def.get("signature", []) or []
@@ -54,6 +74,7 @@ class TaskBuilder:
                         start_date,
                         end_date,
                         signature,
+                        use_multi_source=use_multi_source,
                     )
                 )
             elif category in ("index", "fund", "futures"):
@@ -76,10 +97,11 @@ class TaskBuilder:
                 tasks.append(
                     DownloadTask(
                         interface=interface,
-                        func=func_name,
+                        func=interface if use_multi_source else func_name,
                         table=table,
                         kwargs=kwargs,
                         rate_limit_key=rate_limit_key,
+                        use_multi_source=use_multi_source,
                     )
                 )
 
@@ -124,18 +146,35 @@ class TaskBuilder:
         sig_set = set(signature) if signature else set()
 
         kwargs = {}
-        for dp in self.DATE_PARAMS:
-            if dp in param_names and (not sig_set or dp in sig_set):
-                if dp in ("start_date", "start", "begin"):
-                    kwargs[dp] = start_date.replace("-", "")
-                elif dp in ("end_date", "end", "finish"):
-                    kwargs[dp] = end_date.replace("-", "")
+
+        has_date = "date" in param_names and (not sig_set or "date" in sig_set)
+        has_start = (
+            "start_date" in param_names
+            or "start" in param_names
+            or "begin" in param_names
+        ) and (not sig_set or bool(sig_set & {"start_date", "start", "begin"}))
+        has_end = (
+            "end_date" in param_names or "end" in param_names or "finish" in param_names
+        ) and (not sig_set or bool(sig_set & {"end_date", "end", "finish"}))
+
+        if has_date and not has_start and not has_end:
+            kwargs["date"] = end_date.replace("-", "")
+        else:
+            for dp in self.DATE_PARAMS:
+                if dp in param_names and (not sig_set or dp in sig_set):
+                    if dp in ("start_date", "start", "begin"):
+                        kwargs[dp] = start_date.replace("-", "")
+                    elif dp in ("end_date", "end", "finish"):
+                        kwargs[dp] = end_date.replace("-", "")
 
         if "period" in param_names and (not sig_set or "period" in sig_set):
             kwargs["period"] = "daily"
 
         if "adjust" in param_names and (not sig_set or "adjust" in sig_set):
             kwargs["adjust"] = "qfq"
+
+        if "year" in param_names and (not sig_set or "year" in sig_set):
+            kwargs["year"] = start_date[:4]
 
         return kwargs
 
@@ -148,8 +187,36 @@ class TaskBuilder:
         start_date,
         end_date,
         signature,
+        use_multi_source: bool = False,
     ) -> List[DownloadTask]:
         """构建股票类任务（需要股票列表）"""
+        import akshare as ak
+        import inspect
+
+        ak_func = getattr(ak, func_name, None)
+        accepts_symbol = False
+        if ak_func is not None:
+            try:
+                sig = inspect.signature(ak_func)
+                accepts_symbol = "symbol" in sig.parameters
+            except (ValueError, TypeError):
+                pass
+
+        if not accepts_symbol:
+            base_kwargs = self._build_kwargs_for_interface(
+                func_name, start_date, end_date, signature
+            )
+            return [
+                DownloadTask(
+                    interface=interface,
+                    func=interface if use_multi_source else func_name,
+                    table=table,
+                    kwargs=base_kwargs,
+                    rate_limit_key=rate_limit_key,
+                    use_multi_source=use_multi_source,
+                )
+            ]
+
         from akshare_data.offline.downloader.downloader import BatchDownloader
 
         stock_list = BatchDownloader._get_stock_list_static()
@@ -165,10 +232,11 @@ class TaskBuilder:
             tasks.append(
                 DownloadTask(
                     interface=interface,
-                    func=func_name,
+                    func=interface if use_multi_source else func_name,
                     table=table,
                     kwargs=kwargs,
                     rate_limit_key=rate_limit_key,
+                    use_multi_source=use_multi_source,
                 )
             )
         return tasks

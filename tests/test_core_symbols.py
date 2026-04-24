@@ -17,6 +17,8 @@ Covers:
 - ts_code_to_jq() function
 """
 
+import pytest
+
 from akshare_data.core.symbols import (
     format_stock_symbol,
     jq_code_to_ak,
@@ -35,6 +37,8 @@ from akshare_data.core.symbols import (
     ts_code_to_jq,
     format_stock_symbol_for_akshare,
 )
+
+pytestmark = pytest.mark.unit
 
 
 class TestFormatStockSymbol:

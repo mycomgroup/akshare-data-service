@@ -114,7 +114,9 @@ class QualityGate:
                 if r.severity == Severity.ERROR and r.gate_action == GateAction.BLOCK:
                     blocking.append(r.rule_id)
                     messages.append(f"BLOCK: {r.rule_id} - {r.message}")
-                elif r.severity == Severity.WARNING and r.gate_action == GateAction.ALERT:
+                elif (
+                    r.severity == Severity.WARNING and r.gate_action == GateAction.ALERT
+                ):
                     warning_cnt += 1
                     warnings.append(r.rule_id)
                     messages.append(f"WARN: {r.rule_id} - {r.message}")

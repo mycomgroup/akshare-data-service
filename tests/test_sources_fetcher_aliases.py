@@ -29,6 +29,7 @@ from akshare_data.sources.akshare.fetcher import (
 )
 
 
+@pytest.mark.unit
 class TestFetchDailyData:
     """Test fetch_daily_data with mocked akshare."""
 

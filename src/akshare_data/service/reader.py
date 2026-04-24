@@ -14,6 +14,7 @@ import pandas as pd
 
 from akshare_data.store.manager import CacheManager, get_cache_manager
 from akshare_data.core.schema import get_table_schema
+from akshare_data.core.param_validator import validate_query
 
 logger = logging.getLogger(__name__)
 
@@ -43,13 +44,21 @@ class ServedReader:
         """Read data from Served layer.
 
         Returns empty DataFrame if no data found (never fetches from source).
-        
+
         When partition_by mismatches schema, converts partition_value to where clause.
+
+        Raises:
+            InvalidTableError: Table not found in registry.
+            InvalidPartitionError: partition_by does not match schema.
+            InvalidColumnError: where/columns/order_by contain invalid columns.
         """
         storage_layer = self._resolve_storage_layer(table)
-        
-        resolved_partition_by, effective_partition_value, effective_where = \
+
+        resolved_partition_by, effective_partition_value, effective_where = (
             self._resolve_partition_params(table, partition_by, partition_value, where)
+        )
+
+        validate_query(table, resolved_partition_by, effective_partition_value, effective_where, columns, order_by)
 
         try:
             result = self._cache.read(
@@ -77,9 +86,10 @@ class ServedReader:
     ) -> bool:
         """Check if data exists in Served layer."""
         storage_layer = self._resolve_storage_layer(table)
-        
-        resolved_partition_by, effective_partition_value, effective_where = \
+
+        resolved_partition_by, effective_partition_value, effective_where = (
             self._resolve_partition_params(table, partition_by, partition_value, where)
+        )
 
         try:
             return self._cache.exists(
@@ -104,9 +114,10 @@ class ServedReader:
     ) -> bool:
         """Check if Served has data covering the given date range."""
         storage_layer = self._resolve_storage_layer(table)
-        
-        resolved_partition_by, effective_partition_value, effective_where = \
+
+        resolved_partition_by, effective_partition_value, effective_where = (
             self._resolve_partition_params(table, partition_by, partition_value, where)
+        )
 
         try:
             return self._cache.has_range(
@@ -161,7 +172,7 @@ class ServedReader:
         """Resolve partition parameters with schema contract.
 
         When user-provided partition_by mismatches schema:
-        - Convert partition_value to where clause
+        - Convert partition_value to where clause using the expected partition key
         - Use schema's partition_by instead
         - Clear partition_value (already moved to where)
 
@@ -169,13 +180,13 @@ class ServedReader:
             (resolved_partition_by, effective_partition_value, effective_where)
         """
         expected = self._resolve_partition_by(table)
-        
+
         if partition_by is None:
             return expected, None, where
-        
+
         if expected is None or partition_by == expected:
             return partition_by, partition_value, where
-        
+
         logger.warning(
             "ServedReader partition_by mismatch for table=%s: got=%s expected=%s; "
             "converting partition_value to where clause",
@@ -183,10 +194,10 @@ class ServedReader:
             partition_by,
             expected,
         )
-        
+
         effective_where = where.copy() if where else {}
-        effective_where[partition_by] = partition_value
-        
+        effective_where[expected] = partition_value
+
         return expected, None, effective_where
 
     def _validate_partition_by(

@@ -57,6 +57,7 @@ from akshare_data.core.logging import (
 )
 
 
+@pytest.mark.unit
 class TestFormatConstants:
     """Test format string constants."""
 

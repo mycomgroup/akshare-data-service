@@ -11,6 +11,7 @@ from akshare_data.offline.scheduler.scheduler import Scheduler
 from akshare_data.offline.core.errors import ConfigError
 
 
+@pytest.mark.unit
 class TestSchedulerInit:
     """测试Scheduler初始化"""
 

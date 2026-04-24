@@ -79,7 +79,9 @@ class QuarantineBatch:
         }
 
     def to_json(self, indent: int = 2) -> str:
-        return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False, cls=_QuarantineEncoder)
+        return json.dumps(
+            self.to_dict(), indent=indent, ensure_ascii=False, cls=_QuarantineEncoder
+        )
 
 
 class QuarantineStore:
@@ -125,15 +127,16 @@ class QuarantineStore:
             QuarantineBatch describing what was stored.
         """
         records: List[QuarantineRecord] = []
-        for idx, row in failed_df.iterrows():
+        records_data = failed_df.to_dict(orient="records")
+        for i, row_data in enumerate(records_data):
             records.append(
                 QuarantineRecord(
                     dataset=dataset,
                     batch_id=batch_id,
                     layer=layer,
                     rule_id=rule_id,
-                    record_index=int(idx) if not isinstance(idx, int) else idx,
-                    record_data=row.to_dict(),
+                    record_index=i,
+                    record_data=row_data,
                     reason=reason,
                 )
             )
@@ -230,12 +233,14 @@ class QuarantineStore:
                     continue
                 qfile = layer_dir / "quarantine.json"
                 if qfile.exists():
-                    batches.append({
-                        "dataset": dataset,
-                        "batch_id": batch_dir.name,
-                        "layer": layer_dir.name,
-                        "path": str(qfile),
-                    })
+                    batches.append(
+                        {
+                            "dataset": dataset,
+                            "batch_id": batch_dir.name,
+                            "layer": layer_dir.name,
+                            "path": str(qfile),
+                        }
+                    )
         return batches
 
     def _batch_dir(self, dataset: str, batch_id: str, layer: str) -> Path:
@@ -251,7 +256,12 @@ class QuarantineStore:
         tmp_path = dest / "quarantine.json.tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
             f.write(batch.to_json())
-        tmp_path.rename(meta_path)
+        try:
+            tmp_path.rename(meta_path)
+        except Exception:
+            if tmp_path.exists():
+                tmp_path.unlink()
+            raise
 
         # Write failed records as Parquet
         if batch.records:
@@ -262,5 +272,10 @@ class QuarantineStore:
 
             parquet_path = dest / "failed_records.parquet"
             tmp_parquet = dest / "failed_records.parquet.tmp"
-            records_df.to_parquet(tmp_parquet, index=False)
-            tmp_parquet.rename(parquet_path)
+            try:
+                records_df.to_parquet(tmp_parquet, index=False)
+                tmp_parquet.rename(parquet_path)
+            except Exception:
+                if tmp_parquet.exists():
+                    tmp_parquet.unlink()
+                raise

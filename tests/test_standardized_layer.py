@@ -28,11 +28,14 @@ from akshare_data.standardized.merge import MergeEngine
 from akshare_data.standardized.normalizer.financial_indicator import (
     FinancialIndicatorNormalizer,
 )
-from akshare_data.standardized.normalizer.macro_indicator import MacroIndicatorNormalizer
+from akshare_data.standardized.normalizer.macro_indicator import (
+    MacroIndicatorNormalizer,
+)
 from akshare_data.standardized.reader import StandardizedReader
 from akshare_data.standardized.writer import StandardizedWriter
 
 
+@pytest.mark.unit
 # ---------------------------------------------------------------------------
 # Helper functions to create test DataFrames
 # ---------------------------------------------------------------------------
@@ -372,6 +375,7 @@ class TestCompactionJob:
 
     def teardown_method(self):
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def _write_partition_files(
@@ -383,18 +387,22 @@ class TestCompactionJob:
         num_files: int,
     ) -> List[Path]:
         """Write test parquet files to a partition."""
-        part_dir = self.base_dir / domain / dataset / f"{partition_key}={partition_value}"
+        part_dir = (
+            self.base_dir / domain / dataset / f"{partition_key}={partition_value}"
+        )
         part_dir.mkdir(parents=True, exist_ok=True)
 
         files = []
         for i in range(num_files):
-            df = pd.DataFrame({
-                "security_id": ["600519", "000001"],
-                "trade_date": [partition_value, partition_value],
-                "open_price": [10.0 + i, 20.0 + i],
-                "close_price": [10.5 + i, 20.5 + i],
-                "batch_id": [f"batch_{i}", f"batch_{i}"],
-            })
+            df = pd.DataFrame(
+                {
+                    "security_id": ["600519", "000001"],
+                    "trade_date": [partition_value, partition_value],
+                    "open_price": [10.0 + i, 20.0 + i],
+                    "close_price": [10.5 + i, 20.5 + i],
+                    "batch_id": [f"batch_{i}", f"batch_{i}"],
+                }
+            )
             path = part_dir / f"part-{i:04d}.parquet"
             df.to_parquet(path, index=False)
             files.append(path)
@@ -426,7 +434,7 @@ class TestCompactionJob:
 
     def test_run_compaction(self):
         """Should compact multiple files into one."""
-        files = self._write_partition_files(
+        self._write_partition_files(
             "market", "quote_daily", "trade_date", "2024-01-01", 3
         )
         manifest = self.job.run(
@@ -473,12 +481,14 @@ class TestCompactionJob:
         part_dir.mkdir(parents=True, exist_ok=True)
 
         for i in range(3):
-            df = pd.DataFrame({
-                "security_id": ["600519"],
-                "trade_date": ["2024-01-01"],
-                "open_price": [10.0 + i],
-                "batch_id": [f"batch_{i}"],
-            })
+            df = pd.DataFrame(
+                {
+                    "security_id": ["600519"],
+                    "trade_date": ["2024-01-01"],
+                    "open_price": [10.0 + i],
+                    "batch_id": [f"batch_{i}"],
+                }
+            )
             path = part_dir / f"part-{i:04d}.parquet"
             df.to_parquet(path, index=False)
 
@@ -579,18 +589,20 @@ class TestCompactionManifest:
 
     def test_manifest_from_json(self):
         """Should deserialize from JSON."""
-        json_str = json.dumps({
-            "compaction_id": "comp-001",
-            "dataset": "test",
-            "domain": "test",
-            "partition_key": "date",
-            "partition_value": "2024-01-01",
-            "source_files": ["file.parquet"],
-            "compacted_file": "comp.parquet",
-            "record_count": 10,
-            "compacted_at": "2024-01-01T00:00:00Z",
-            "source_batches": ["b1"],
-        })
+        json_str = json.dumps(
+            {
+                "compaction_id": "comp-001",
+                "dataset": "test",
+                "domain": "test",
+                "partition_key": "date",
+                "partition_value": "2024-01-01",
+                "source_files": ["file.parquet"],
+                "compacted_file": "comp.parquet",
+                "record_count": 10,
+                "compacted_at": "2024-01-01T00:00:00Z",
+                "source_batches": ["b1"],
+            }
+        )
         manifest = CompactionManifest.from_json(json_str)
         assert manifest.dataset == "test"
         assert manifest.record_count == 10
@@ -631,6 +643,7 @@ class TestStandardizedReader:
 
     def teardown_method(self):
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def _write_test_data(
@@ -643,26 +656,28 @@ class TestStandardizedReader:
         """Write test data to multiple partitions."""
         rows = []
         for partition_date in partition_dates:
-            rows.extend([
-                {
-                    "security_id": "600519",
-                    "trade_date": partition_date,
-                    "adjust_type": "none",
-                    "open_price": 10.0,
-                    "close_price": 10.5,
-                    "volume": 1000,
-                    "turnover_amount": 10500.0,
-                },
-                {
-                    "security_id": "000001",
-                    "trade_date": partition_date,
-                    "adjust_type": "none",
-                    "open_price": 20.0,
-                    "close_price": 20.5,
-                    "volume": 2000,
-                    "turnover_amount": 41000.0,
-                },
-            ])
+            rows.extend(
+                [
+                    {
+                        "security_id": "600519",
+                        "trade_date": partition_date,
+                        "adjust_type": "none",
+                        "open_price": 10.0,
+                        "close_price": 10.5,
+                        "volume": 1000,
+                        "turnover_amount": 10500.0,
+                    },
+                    {
+                        "security_id": "000001",
+                        "trade_date": partition_date,
+                        "adjust_type": "none",
+                        "open_price": 20.0,
+                        "close_price": 20.5,
+                        "volume": 2000,
+                        "turnover_amount": 41000.0,
+                    },
+                ]
+            )
         df = pd.DataFrame(rows)
         self.writer.write(
             df=df,
@@ -712,8 +727,12 @@ class TestStandardizedReader:
 
     def test_read_with_batch_id_filter(self):
         """Should filter by batch_id."""
-        self._write_test_data("market", "quote_daily", ["2024-01-01"], batch_id="batch1")
-        self._write_test_data("market", "quote_daily", ["2024-01-01"], batch_id="batch2")
+        self._write_test_data(
+            "market", "quote_daily", ["2024-01-01"], batch_id="batch1"
+        )
+        self._write_test_data(
+            "market", "quote_daily", ["2024-01-01"], batch_id="batch2"
+        )
         result = self.reader.read(
             dataset="quote_daily",
             domain="market",
@@ -729,17 +748,19 @@ class TestStandardizedReader:
 
         part_dir = self.base_dir / "market" / "quote_daily" / "trade_date=2024-01-01"
         part_dir.mkdir(parents=True, exist_ok=True)
-        df_v2 = pd.DataFrame({
-            "security_id": ["600519"],
-            "trade_date": ["2024-01-01"],
-            "open_price": [15.0],
-            "batch_id": ["batch_v2"],
-            "source_name": ["akshare"],
-            "interface_name": ["test"],
-            "ingest_time": [datetime.now(timezone.utc)],
-            "normalize_version": ["v2"],
-            "schema_version": ["v1"],
-        })
+        df_v2 = pd.DataFrame(
+            {
+                "security_id": ["600519"],
+                "trade_date": ["2024-01-01"],
+                "open_price": [15.0],
+                "batch_id": ["batch_v2"],
+                "source_name": ["akshare"],
+                "interface_name": ["test"],
+                "ingest_time": [datetime.now(timezone.utc)],
+                "normalize_version": ["v2"],
+                "schema_version": ["v1"],
+            }
+        )
         df_v2.to_parquet(part_dir / "part-v2.parquet", index=False)
 
         result = self.reader.read(
@@ -781,17 +802,19 @@ class TestStandardizedReader:
 
         part_dir = self.base_dir / "market" / "quote_daily" / "trade_date=2024-01-01"
         for i in range(3):
-            df = pd.DataFrame({
-                "security_id": ["600519"],
-                "trade_date": ["2024-01-01"],
-                "open_price": [10.0 + i],
-                "batch_id": [f"batch_{i}"],
-                "source_name": ["akshare"],
-                "interface_name": ["test"],
-                "ingest_time": [datetime.now(timezone.utc)],
-                "normalize_version": ["v1"],
-                "schema_version": ["v1"],
-            })
+            df = pd.DataFrame(
+                {
+                    "security_id": ["600519"],
+                    "trade_date": ["2024-01-01"],
+                    "open_price": [10.0 + i],
+                    "batch_id": [f"batch_{i}"],
+                    "source_name": ["akshare"],
+                    "interface_name": ["test"],
+                    "ingest_time": [datetime.now(timezone.utc)],
+                    "normalize_version": ["v1"],
+                    "schema_version": ["v1"],
+                }
+            )
             df.to_parquet(part_dir / f"part-{i:04d}.parquet", index=False)
 
         job = CompactionJob(base_dir=str(self.base_dir), compaction_threshold=2)
@@ -855,6 +878,7 @@ class TestMappingLoader:
 
     def teardown_method(self):
         import shutil
+
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def _write_mapping_yaml(
@@ -877,6 +901,7 @@ class TestMappingLoader:
             "fields": fields,
         }
         import yaml
+
         with open(source_dir / f"{dataset}.yaml", "w", encoding="utf-8") as f:
             yaml.dump(content, f)
 
@@ -888,6 +913,7 @@ class TestMappingLoader:
 
         content = {"datasets": datasets}
         import yaml
+
         with open(self.versions_path, "w", encoding="utf-8") as f:
             yaml.dump(content, f)
 
@@ -935,7 +961,10 @@ class TestMappingLoader:
             "test_dataset",
             {
                 "active_field": {"standard_field": "std_active", "status": "active"},
-                "deprecated_field": {"standard_field": "std_deprecated", "status": "deprecated"},
+                "deprecated_field": {
+                    "standard_field": "std_deprecated",
+                    "status": "deprecated",
+                },
                 "pending_field": {"standard_field": "std_pending", "status": "pending"},
             },
         )
@@ -950,7 +979,10 @@ class TestMappingLoader:
             "test_dataset",
             {
                 "active_field": {"standard_field": "std_active", "status": "active"},
-                "deprecated_field": {"standard_field": "std_deprecated", "status": "deprecated"},
+                "deprecated_field": {
+                    "standard_field": "std_deprecated",
+                    "status": "deprecated",
+                },
             },
         )
         mapping = self.loader.get_mapping("test_dataset", "akshare")
@@ -959,13 +991,15 @@ class TestMappingLoader:
 
     def test_get_normalize_version(self):
         """Should resolve normalize version from registry."""
-        self._write_versions_yaml({
-            "market_quote_daily": {
-                "sources": {
-                    "akshare": {"current_version": "v2"},
+        self._write_versions_yaml(
+            {
+                "market_quote_daily": {
+                    "sources": {
+                        "akshare": {"current_version": "v2"},
+                    }
                 }
             }
-        })
+        )
         version = self.loader.get_normalize_version("market_quote_daily", "akshare")
         assert version == "v2"
 
@@ -1089,10 +1123,12 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_normalize_gdp_data(self):
         """Should normalize GDP raw data correctly."""
-        df = _make_macro_indicator_raw([
-            {"季度": "2024-Q1", "国内生产总值绝对额(亿元)": 296299},
-            {"季度": "2024-Q2", "国内生产总值绝对额(亿元)": 320129},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"季度": "2024-Q1", "国内生产总值绝对额(亿元)": 296299},
+                {"季度": "2024-Q2", "国内生产总值绝对额(亿元)": 320129},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1109,10 +1145,12 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_normalize_cpi_data(self):
         """Should normalize CPI raw data correctly."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "全国居民消费价格指数(CPI)上年同月=100": 100.3},
-            {"月份": "2024-02", "全国居民消费价格指数(CPI)上年同月=100": 100.9},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "全国居民消费价格指数(CPI)上年同月=100": 100.3},
+                {"月份": "2024-02", "全国居民消费价格指数(CPI)上年同月=100": 100.9},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1127,10 +1165,12 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_normalize_pmi_data(self):
         """Should normalize PMI raw data correctly."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "制造业PMI": 49.2},
-            {"月份": "2024-02", "制造业PMI": 50.1},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "制造业PMI": 49.2},
+                {"月份": "2024-02", "制造业PMI": 50.1},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1143,9 +1183,11 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_normalize_ppi_data(self):
         """Should normalize PPI raw data correctly."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "工业生产者出厂价格指数": 97.5},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "工业生产者出厂价格指数": 97.5},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1156,9 +1198,11 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_normalize_m2_data(self):
         """Should normalize M2 raw data correctly."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "M2供应量(亿元)": 292000},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "M2供应量(亿元)": 292000},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1170,14 +1214,16 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_normalize_with_yoy_mom_fields(self):
         """Should map YoY/MoM fields correctly."""
-        df = _make_macro_indicator_raw([
-            {
-                "月份": "2024-01",
-                "CPI指数": 100.3,
-                "同比": 0.7,
-                "环比": 0.5,
-            }
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {
+                    "月份": "2024-01",
+                    "CPI指数": 100.3,
+                    "同比": 0.7,
+                    "环比": 0.5,
+                }
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1190,9 +1236,11 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_normalize_with_explicit_indicator_code(self):
         """Should use explicit indicator_code override."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "custom_value": 123},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "custom_value": 123},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="custom",
@@ -1226,9 +1274,11 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_system_fields_present(self):
         """Should inject all system fields."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "CPI指数": 100.3},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "CPI指数": 100.3},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1247,9 +1297,11 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_region_and_source_org_defaults(self):
         """Should set default region and source_org."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "CPI指数": 100.3},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "CPI指数": 100.3},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1261,9 +1313,11 @@ class TestMacroIndicatorNormalizerDetailed:
 
     def test_primary_keys_order(self):
         """Primary keys should appear first in output."""
-        df = _make_macro_indicator_raw([
-            {"月份": "2024-01", "CPI指数": 100.3},
-        ])
+        df = _make_macro_indicator_raw(
+            [
+                {"月份": "2024-01", "CPI指数": 100.3},
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare",
@@ -1289,19 +1343,21 @@ class TestFinancialIndicatorNormalizerDetailed:
 
     def test_normalize_akshare_em_basic(self):
         """Should normalize AkShare EM financial indicator data."""
-        df = _make_financial_indicator_raw([
-            {
-                "symbol": "600519",
-                "报告日期": "2024-03-31",
-                "基本每股收益": 1.52,
-                "加权净资产收益率": 15.3,
-                "销售净利率": 22.5,
-                "销售毛利率": 45.2,
-                "资产负债率": 35.8,
-                "营业总收入": 50000000000,
-                "净利润": 11250000000,
-            }
-        ])
+        df = _make_financial_indicator_raw(
+            [
+                {
+                    "symbol": "600519",
+                    "报告日期": "2024-03-31",
+                    "基本每股收益": 1.52,
+                    "加权净资产收益率": 15.3,
+                    "销售净利率": 22.5,
+                    "销售毛利率": 45.2,
+                    "资产负债率": 35.8,
+                    "营业总收入": 50000000000,
+                    "净利润": 11250000000,
+                }
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare_em",
@@ -1319,24 +1375,26 @@ class TestFinancialIndicatorNormalizerDetailed:
 
     def test_normalize_lixinger_basic(self):
         """Should normalize Lixinger financial indicator data."""
-        df = _make_financial_indicator_raw([
-            {
-                "symbol": "600519",
-                "report_date": "2024-03-31",
-                "pe": 25.0,
-                "pb": 10.0,
-                "ps": 5.0,
-                "roe": 15.3,
-                "roa": 8.5,
-                "net_profit": 11250000000,
-                "revenue": 50000000000,
-                "total_assets": 200000000000,
-                "total_equity": 100000000000,
-                "debt_ratio": 35.8,
-                "gross_margin": 45.2,
-                "net_margin": 22.5,
-            }
-        ])
+        df = _make_financial_indicator_raw(
+            [
+                {
+                    "symbol": "600519",
+                    "report_date": "2024-03-31",
+                    "pe": 25.0,
+                    "pb": 10.0,
+                    "ps": 5.0,
+                    "roe": 15.3,
+                    "roa": 8.5,
+                    "net_profit": 11250000000,
+                    "revenue": 50000000000,
+                    "total_assets": 200000000000,
+                    "total_equity": 100000000000,
+                    "debt_ratio": 35.8,
+                    "gross_margin": 45.2,
+                    "net_margin": 22.5,
+                }
+            ]
+        )
         result = self.normalizer.normalize(
             df,
             source="lixinger",
@@ -1353,62 +1411,73 @@ class TestFinancialIndicatorNormalizerDetailed:
 
     def test_ratio_fields_have_pct_suffix(self):
         """All ratio fields should have _pct suffix."""
-        df = _make_financial_indicator_raw([
-            {
-                "symbol": "600519",
-                "报告日期": "2024-03-31",
-                "加权净资产收益率": 15.3,
-                "销售净利率": 22.5,
-                "销售毛利率": 45.2,
-                "资产负债率": 35.8,
-            }
-        ])
+        df = _make_financial_indicator_raw(
+            [
+                {
+                    "symbol": "600519",
+                    "报告日期": "2024-03-31",
+                    "加权净资产收益率": 15.3,
+                    "销售净利率": 22.5,
+                    "销售毛利率": 45.2,
+                    "资产负债率": 35.8,
+                }
+            ]
+        )
         result = self.normalizer.normalize(df, source="akshare_em")
-        ratio_fields = ["roe_pct", "net_margin_pct", "gross_margin_pct", "debt_ratio_pct"]
+        ratio_fields = [
+            "roe_pct",
+            "net_margin_pct",
+            "gross_margin_pct",
+            "debt_ratio_pct",
+        ]
         for field in ratio_fields:
             if field in result.columns:
                 assert field.endswith("_pct")
 
     def test_date_field_conversion(self):
         """Should convert date fields to datetime."""
-        df = _make_financial_indicator_raw([
-            {
-                "symbol": "600519",
-                "报告日期": "2024-03-31",
-                "净利润": 10000000000,
-            }
-        ])
+        df = _make_financial_indicator_raw(
+            [
+                {
+                    "symbol": "600519",
+                    "报告日期": "2024-03-31",
+                    "净利润": 10000000000,
+                }
+            ]
+        )
         result = self.normalizer.normalize(df, source="akshare_em")
         assert pd.api.types.is_datetime64_any_dtype(result["report_date"])
 
     def test_numeric_coercion(self):
         """Should coerce numeric fields properly."""
-        df = _make_financial_indicator_raw([
-            {
-                "symbol": "600519",
-                "报告日期": "2024-03-31",
-                "基本每股收益": "1.52",
-                "净利润": "10000000000",
-            }
-        ])
+        df = _make_financial_indicator_raw(
+            [
+                {
+                    "symbol": "600519",
+                    "报告日期": "2024-03-31",
+                    "基本每股收益": "1.52",
+                    "净利润": "10000000000",
+                }
+            ]
+        )
         result = self.normalizer.normalize(df, source="akshare_em")
         assert pd.api.types.is_numeric_dtype(result["basic_eps"])
         assert pd.api.types.is_numeric_dtype(result["net_profit"])
 
     def test_default_report_type(self):
         """Should set default report_type when not provided."""
-        df = _make_financial_indicator_raw([
-            {"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}
-        ])
+        df = _make_financial_indicator_raw(
+            [{"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}]
+        )
         result = self.normalizer.normalize(df, source="akshare_em")
         assert "report_type" in result.columns
         assert result["report_type"].iloc[0] == "Q"
 
     def test_custom_report_type(self):
         """Should accept custom report_type via extra_fields."""
-        df = _make_financial_indicator_raw([
-            {"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}
-        ])
+        df = _make_financial_indicator_raw(
+            [{"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare_em",
@@ -1418,9 +1487,9 @@ class TestFinancialIndicatorNormalizerDetailed:
 
     def test_system_fields_present(self):
         """Should inject all system fields."""
-        df = _make_financial_indicator_raw([
-            {"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}
-        ])
+        df = _make_financial_indicator_raw(
+            [{"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}]
+        )
         result = self.normalizer.normalize(
             df,
             source="akshare_em",
@@ -1449,9 +1518,9 @@ class TestFinancialIndicatorNormalizerDetailed:
 
     def test_primary_keys_order(self):
         """Primary keys should appear first in output."""
-        df = _make_financial_indicator_raw([
-            {"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}
-        ])
+        df = _make_financial_indicator_raw(
+            [{"symbol": "600519", "报告日期": "2024-03-31", "净利润": 10000000000}]
+        )
         result = self.normalizer.normalize(df, source="akshare_em")
         cols = result.columns.tolist()
         pk_indices = [
@@ -1461,10 +1530,16 @@ class TestFinancialIndicatorNormalizerDetailed:
 
     def test_symbol_normalization_various_formats(self):
         """Should normalize various symbol formats."""
-        df = _make_financial_indicator_raw([
-            {"symbol": "sh600519", "报告日期": "2024-03-31", "净利润": 10000000000},
-            {"ts_code": "000001.SZ", "报告日期": "2024-03-31", "净利润": 5000000000},
-            {"code": "sz.000002", "报告日期": "2024-03-31", "净利润": 3000000000},
-        ])
+        df = _make_financial_indicator_raw(
+            [
+                {"symbol": "sh600519", "报告日期": "2024-03-31", "净利润": 10000000000},
+                {
+                    "ts_code": "000001.SZ",
+                    "报告日期": "2024-03-31",
+                    "净利润": 5000000000,
+                },
+                {"code": "sz.000002", "报告日期": "2024-03-31", "净利润": 3000000000},
+            ]
+        )
         result = self.normalizer.normalize(df, source="akshare_em")
         assert "security_id" in result.columns

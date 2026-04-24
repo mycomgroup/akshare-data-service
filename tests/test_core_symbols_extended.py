@@ -5,9 +5,13 @@ Coverage gaps filled:
 - ts_code_to_jq with unknown format branches (additional edge cases)
 """
 
+import pytest
+
 from akshare_data.core.symbols import (
     ts_code_to_jq,
 )
+
+pytestmark = pytest.mark.unit
 
 
 class TestTsCodeToJqExtended:

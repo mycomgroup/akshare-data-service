@@ -9,6 +9,26 @@ from akshare_data.store.aggregator import Aggregator
 from akshare_data.store.manager import CacheManager, reset_cache_manager
 
 
+pytestmark = pytest.mark.integration
+
+
+def make_stock_daily_df():
+    """Create a valid stock_daily DataFrame."""
+    return pd.DataFrame(
+        {
+            "symbol": ["000001", "000001"],
+            "date": pd.to_datetime(["2024-01-01", "2024-01-02"]),
+            "open": [10.0, 10.3],
+            "high": [11.0, 11.3],
+            "low": [9.0, 9.3],
+            "close": [10.5, 10.8],
+            "volume": [100000.0, 110000.0],
+            "amount": [1000000.0, 1100000.0],
+            "adjust": ["qfq", "qfq"],
+        }
+    )
+
+
 class TestDuckDBEngineRealData:
     """Test DuckDB engine operations."""
 
@@ -34,15 +54,9 @@ class TestPartitionManagerRealData:
         return PartitionManager(base_dir=str(tmp_path / "parquet"))
 
     def test_write_and_read(self, partition_mgr):
-        df = pd.DataFrame(
-            {
-                "symbol": ["000001", "000001"],
-                "date": pd.to_datetime(["2024-01-01", "2024-01-02"]),
-                "close": [10.5, 10.8],
-            }
-        )
+        df = make_stock_daily_df()
         writer = AtomicWriter(base_dir=str(partition_mgr.base_dir))
-        writer.write("stock_daily", "parquet", df, partition_by="symbol")
+        writer.write("stock_daily", "daily", df, partition_by="symbol")
         files = list(partition_mgr.base_dir.rglob("*.parquet"))
         assert len(files) >= 1
 

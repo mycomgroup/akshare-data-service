@@ -27,6 +27,7 @@ from akshare_data.core.tokens import (
 )
 
 
+@pytest.mark.unit
 @pytest.fixture(autouse=True)
 def _reset_token_manager():
     """Reset the TokenManager singleton before and after each test."""

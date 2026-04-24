@@ -8,7 +8,6 @@ import threading
 import time
 import tempfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -17,6 +16,7 @@ import pytest
 from akshare_data.store.manager import CacheManager, reset_cache_manager
 
 
+@pytest.mark.system
 @pytest.fixture
 def large_cache_dir():
     """Create temporary cache directory for large data tests."""
@@ -35,26 +35,35 @@ def cache_manager_for_system_tests(large_cache_dir):
     CacheManager.reset_instance()
 
 
-def generate_large_dataframe(rows: int, columns: int = 10) -> pd.DataFrame:
-    """Generate large DataFrame for testing."""
-    data = {}
-    for i in range(columns):
-        if i == 0:
-            data["date"] = pd.date_range("2024-01-01", periods=rows, freq="B")
-        elif i == 1:
-            data["symbol"] = ["sh600000"] * rows
-        elif i < 4:
-            data[f"price_{i}"] = np.random.uniform(10, 100, rows)
-        elif i < 7:
-            data[f"volume_{i}"] = np.random.randint(1000, 1000000, rows)
-        else:
-            data[f"metric_{i}"] = np.random.randn(rows)
+def generate_large_dataframe(rows: int) -> pd.DataFrame:
+    """Generate large DataFrame for testing with valid stock_daily schema.
+
+    Uses repeating dates to avoid OutOfBoundsTimedelta error for large row counts.
+    """
+    base_dates = pd.date_range("2020-01-01", periods=250, freq="B")
+    dates = list(base_dates)
+    while len(dates) < rows:
+        dates.extend(list(base_dates))
+    dates = dates[:rows]
+
+    data = {
+        "date": dates,
+        "symbol": ["sh600000"] * rows,
+        "open": np.random.uniform(10, 100, rows),
+        "high": np.random.uniform(10, 100, rows),
+        "low": np.random.uniform(10, 100, rows),
+        "close": np.random.uniform(10, 100, rows),
+        "volume": np.random.uniform(1000, 1000000, rows),
+        "amount": np.random.uniform(1000000, 100000000, rows),
+        "adjust": ["qfq"] * rows,
+    }
     return pd.DataFrame(data)
 
 
 def get_memory_usage_mb() -> float:
     """Get current process memory usage in MB."""
     import psutil
+
     process = psutil.Process(os.getpid())
     return process.memory_info().rss / (1024 * 1024)
 
@@ -157,8 +166,10 @@ class TestMemoryPressure:
         dfs.clear()
         gc.collect()
 
-        after_mem = get_memory_usage_mb()
-        assert mem_increase < 500, f"Memory increased {mem_increase}MB, expected < 500MB"
+        get_memory_usage_mb()  # 触发内存回收检查
+        assert mem_increase < 500, (
+            f"Memory increased {mem_increase}MB, expected < 500MB"
+        )
 
     @pytest.mark.slow
     def test_memory_cleanup_after_read(self, cache_manager_for_system_tests):
@@ -225,15 +236,20 @@ class TestConcurrentWrites:
         assert len(results) == 10
 
     @pytest.mark.slow
-    def test_concurrent_writes_same_table_different_partitions(self, cache_manager_for_system_tests):
+    def test_concurrent_writes_same_table_different_partitions(
+        self, cache_manager_for_system_tests
+    ):
         """Test concurrent writes to same table different partitions."""
         results = []
         errors = []
 
         def write_partition(idx):
             try:
-                df = generate_large_dataframe(5000)
-                df["date"] = pd.date_range(f"2024-01-{idx*10+1:02d}", periods=5000, freq="B")
+                df = generate_large_dataframe(1000)
+                start_month = idx + 1
+                df["date"] = pd.date_range(
+                    f"2024-{start_month:02d}-01", periods=1000, freq="B"
+                )
                 path = cache_manager_for_system_tests.write(
                     table="concurrent_partition_test",
                     data=df,
@@ -261,6 +277,7 @@ class TestConcurrentWrites:
     @pytest.mark.slow
     def test_concurrent_writes_with_threadpool(self, cache_manager_for_system_tests):
         """Test concurrent writes using ThreadPoolExecutor."""
+
         def write_task(idx):
             df = generate_large_dataframe(8000)
             return cache_manager_for_system_tests.write(
@@ -446,15 +463,17 @@ class TestDataConsistency:
     @pytest.mark.slow
     def test_schema_preservation(self, cache_manager_for_system_tests):
         """Test schema is preserved across writes."""
-        df = pd.DataFrame({
-            "date": pd.date_range("2024-01-01", periods=100),
-            "symbol": ["sh600000"] * 100,
-            "open": np.random.uniform(10, 20, 100),
-            "high": np.random.uniform(20, 30, 100),
-            "low": np.random.uniform(5, 10, 100),
-            "close": np.random.uniform(10, 20, 100),
-            "volume": np.random.randint(1000, 100000, 100),
-        })
+        df = pd.DataFrame(
+            {
+                "date": pd.date_range("2024-01-01", periods=100),
+                "symbol": ["sh600000"] * 100,
+                "open": np.random.uniform(10, 20, 100),
+                "high": np.random.uniform(20, 30, 100),
+                "low": np.random.uniform(5, 10, 100),
+                "close": np.random.uniform(10, 20, 100),
+                "volume": np.random.randint(1000, 100000, 100),
+            }
+        )
 
         original_dtypes = df.dtypes.to_dict()
 
@@ -474,7 +493,9 @@ class TestDataConsistency:
             if original_dtype.kind == "f":
                 assert read_dtype.kind == "f", f"Column {col} lost float type"
             elif original_dtype.kind == "i":
-                assert read_dtype.kind in ("i", "f"), f"Column {col} type changed unexpectedly"
+                assert read_dtype.kind in ("i", "f"), (
+                    f"Column {col} type changed unexpectedly"
+                )
 
     @pytest.mark.slow
     def test_partition_consistency(self, cache_manager_for_system_tests):
@@ -599,6 +620,8 @@ class TestCacheManagerStats:
             )
             written_tables.add(table_name)
 
-        listed_tables = cache_manager_for_system_tests.list_tables(storage_layer="daily")
+        listed_tables = cache_manager_for_system_tests.list_tables(
+            storage_layer="daily"
+        )
         for table in written_tables:
             assert table in listed_tables, f"Table {table} missing from list"

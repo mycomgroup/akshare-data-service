@@ -7,6 +7,7 @@ from unittest.mock import MagicMock
 from akshare_data.sources.lixinger_source import LixingerAdapter
 
 
+@pytest.mark.integration
 @pytest.fixture(scope="module")
 def adapter():
     return LixingerAdapter()

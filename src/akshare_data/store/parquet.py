@@ -186,13 +186,16 @@ class AtomicWriter:
         partition_value: str | None = None,
         schema: dict[str, str] | None = None,
         primary_key: list[str] | None = None,
+        skip_validation: bool = False,
     ) -> Path:
         partition_path = self.partition_manager.raw_partition_path(
             table, storage_layer, partition_by, partition_value
         )
         self.partition_manager.ensure_dir(partition_path)
 
-        prepared_data = self._validate_and_prepare(table, data, schema, primary_key)
+        prepared_data = self._validate_and_prepare(
+            table, data, schema, primary_key, skip_validation=skip_validation
+        )
 
         filename = self.partition_manager.generate_filename(partition_value)
         target_path = partition_path / filename
@@ -209,7 +212,9 @@ class AtomicWriter:
         meta_path = self.base_dir / "meta"
         self.partition_manager.ensure_dir(meta_path)
 
-        prepared_data = self._validate_and_prepare(table, data, schema, primary_key)
+        prepared_data = self._validate_and_prepare(
+            table, data, schema, primary_key, skip_validation=True
+        )
 
         target_path = meta_path / f"{table}.parquet"
         return self._write_atomic(prepared_data, target_path)
@@ -220,35 +225,46 @@ class AtomicWriter:
         data: pd.DataFrame,
         schema: dict[str, str] | None,
         primary_key: list[str] | None,
+        skip_validation: bool = False,
     ) -> pd.DataFrame:
-        table_schema = get_table_schema(table)
-        effective_schema = schema
-        if effective_schema is None and table_schema is not None:
-            effective_schema = table_schema.schema
-
-        effective_pk = primary_key
-        if effective_pk is None and table_schema is not None:
-            effective_pk = table_schema.primary_key
-
-        if effective_schema is not None:
-            validator = SchemaValidator(table, effective_schema)
-            try:
-                result = validator.validate_and_cast(data, primary_key=effective_pk)
-            except SchemaValidationError as e:
-                logger.error(
-                    "Schema validation failed for table=%s: %s. "
-                    "Falling back to legacy type coercion — data may be inconsistent.",
-                    table,
-                    e,
-                )
-                if self.strict_schema:
-                    raise
-                result = self._coerce_columns(data, effective_schema)
-        else:
+        if skip_validation:
             result = data
+        else:
+            table_schema = get_table_schema(table)
+            effective_schema = schema
+            if effective_schema is None and table_schema is not None:
+                effective_schema = table_schema.schema
 
-        if effective_pk is not None:
-            pk_cols = [c for c in effective_pk if c in result.columns]
+            effective_pk = primary_key
+            if effective_pk is None and table_schema is not None:
+                effective_pk = table_schema.primary_key
+
+            if effective_schema is not None:
+                validator = SchemaValidator(table, effective_schema)
+                try:
+                    result = validator.validate_and_cast(data, primary_key=effective_pk)
+                except SchemaValidationError as e:
+                    logger.error(
+                        "Schema validation failed for table=%s: %s. "
+                        "Falling back to legacy type coercion — data may be inconsistent.",
+                        table,
+                        e,
+                    )
+                    if self.strict_schema:
+                        raise
+                    result = self._coerce_columns(data, effective_schema)
+            else:
+                result = data
+
+        if result is not data:
+            effective_pk = primary_key
+            if effective_pk is None:
+                table_schema = get_table_schema(table)
+                if table_schema is not None:
+                    effective_pk = table_schema.primary_key
+
+            if effective_pk is not None:
+                pk_cols = [c for c in effective_pk if c in result.columns]
             if pk_cols:
                 result = self._deduplicate_by_key(result, pk_cols)
 
@@ -258,6 +274,13 @@ class AtomicWriter:
         result = df.copy()
         for col, dtype_str in schema.items():
             if col not in result.columns:
+                target_type = _TYPE_MAP.get(dtype_str)
+                if target_type is None:
+                    continue
+                if dtype_str in ("date", "timestamp"):
+                    result[col] = pd.NaT
+                else:
+                    result[col] = None
                 continue
             target_type = _TYPE_MAP.get(dtype_str)
             if target_type is None:

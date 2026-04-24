@@ -132,7 +132,17 @@ futures_spot:
 
   input: []
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "期货代码"}
+    - {name: "price", type: "float", desc: "最新价"}
+    - {name: "open", type: "float", desc: "开盘价"}
+    - {name: "high", type: "float", desc: "最高价"}
+    - {name: "low", type: "float", desc: "最低价"}
+    - {name: "prev_close", type: "float", desc: "昨结算"}
+    - {name: "volume", type: "float", desc: "成交量"}
+    - {name: "open_interest", type: "float", desc: "持仓量"}
+    - {name: "change", type: "float", desc: "涨跌额"}
+    - {name: "pct_change", type: "float", desc: "涨跌幅%"}
 
   rate_limit_key: "default"
 
@@ -141,7 +151,30 @@ futures_spot:
       func: "futures_zh_spot"
       enabled: true
       input_mapping: {}
-      output_mapping: {}
+      output_mapping:
+        symbol: "symbol"
+        name: "name"
+        price: "price"
+        open: "open"
+        high: "high"
+        low: "low"
+        yesterday: "prev_close"
+        volume: "volume"
+        open_interest: "open_interest"
+        change: "change"
+        pct_change: "pct_change"
+      column_types:
+        symbol: "str"
+        name: "str"
+        price: "float"
+        open: "float"
+        high: "float"
+        low: "float"
+        prev_close: "float"
+        volume: "float"
+        open_interest: "float"
+        change: "float"
+        pct_change: "float"
 
 futures_main_contracts:
   name: "futures_main_contracts"
