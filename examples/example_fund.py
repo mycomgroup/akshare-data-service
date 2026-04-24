@@ -8,14 +8,17 @@
 
 使用方式:
   from akshare_data import get_service
-  service = get_service()
 """
 
 import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import logging
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
+from datetime import date, timedelta
 
 import pandas as pd
-
-warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 from akshare_data import get_service
 
@@ -53,6 +56,13 @@ def _mock_lof_list() -> pd.DataFrame:
     })
 
 
+def _recent_date_range(days: int = 180) -> tuple[str, str]:
+    """生成合理的日期范围，避免使用未来日期"""
+    end = date.today() - timedelta(days=1)
+    start = end - timedelta(days=days)
+    return start.isoformat(), end.isoformat()
+
+
 def _safe_call(fetch_fn) -> pd.DataFrame:
     try:
         df = fetch_fn()
@@ -82,9 +92,17 @@ def example_fund_net_value_basic():
     print("=" * 60)
 
     service = get_service()
+    start_date, end_date = _recent_date_range(days=120)
 
     try:
-        df = _safe_call(lambda: service.get_fund_open_nav(fund_code="110011"))
+        df = _as_dataframe(
+            service.get_fund_open_nav(
+                fund_code="110011",
+                start_date=start_date,
+                end_date=end_date,
+            ),
+            "示例1",
+        )
         if df.empty:
             print("  无真实缓存数据，使用演示数据")
             df = _mock_fund_nav()
@@ -93,10 +111,10 @@ def example_fund_net_value_basic():
         print(f"字段列表: {list(df.columns)}")
 
         print("\n前5行数据:")
-        print(df.head())
+        print(df.head().to_string(index=False))
 
         print("\n后5行数据:")
-        print(df.tail())
+        print(df.tail().to_string(index=False))
 
     except Exception as e:
         print(f"获取基金净值失败: {e}")
@@ -112,6 +130,7 @@ def example_fund_net_value_types():
     print("=" * 60)
 
     service = get_service()
+    start_date, end_date = _recent_date_range(days=30)
 
     funds = [
         ("110011", "易方达蓝筹精选", "混合型"),
@@ -122,9 +141,16 @@ def example_fund_net_value_types():
 
     for code, name, fund_type in funds:
         try:
-            df = _safe_call(lambda c=code: service.get_fund_open_nav(fund_code=c))
+            df = _as_dataframe(
+                service.get_fund_open_nav(
+                    fund_code=code,
+                    start_date=start_date,
+                    end_date=end_date,
+                ),
+                f"示例2-{code}",
+            )
             if df.empty:
-                print(f"\n{name} ({code}) - 无缓存数据 (演示模式)")
+                print(f"\n{name} ({code}) - 无数据")
                 continue
 
             print(f"\n{name} ({code}) - {fund_type}")
@@ -150,20 +176,28 @@ def example_fund_net_value_types():
 def example_fund_net_value_long_term():
     """获取基金长期净值数据，用于分析年度收益"""
     print("\n" + "=" * 60)
-    print("示例 3: 获取基金长期净值数据 (2023全年)")
+    print("示例 3: 获取基金长期净值数据 (近一年)")
     print("=" * 60)
 
     service = get_service()
+    start_date, end_date = _recent_date_range(days=365)
 
     try:
-        df = _safe_call(lambda: service.get_fund_open_nav(fund_code="110011"))
+        df = _as_dataframe(
+            service.get_fund_open_nav(
+                fund_code="110011",
+                start_date=start_date,
+                end_date=end_date,
+            ),
+            "示例3",
+        )
         if df.empty:
             print("  无真实缓存数据，使用演示数据")
             df = _mock_fund_nav()
 
         print("易方达蓝筹精选净值数据")
         print(f"数据形状: {df.shape}")
-        print(f"全年净值更新天数: {len(df)}")
+        print(f"净值数据天数: {len(df)}")
 
         nav_col = None
         for col in ["单位净值", "累计净值", "nav", "net_value", "close"]:
@@ -179,7 +213,7 @@ def example_fund_net_value_long_term():
             print(f"区间起点净值: {nav.iloc[0]:.4f}")
             print(f"区间终点净值: {nav.iloc[-1]:.4f}")
             yearly_return = ((nav.iloc[-1] - nav.iloc[0]) / nav.iloc[0] * 100)
-            print(f"年度收益率: {yearly_return:.2f}%")
+            print(f"区间收益率: {yearly_return:.2f}%")
 
     except Exception as e:
         print(f"获取数据失败: {e}")
@@ -329,10 +363,18 @@ def example_fund_combined_analysis():
 
     service = get_service()
     fund_code = "110011"
+    start_date, end_date = _recent_date_range(days=90)
 
     try:
         print(f"--- 基金 {fund_code} 净值数据 ---")
-        nav_df = _safe_call(lambda: service.get_fund_open_nav(fund_code=fund_code))
+        nav_df = _as_dataframe(
+            service.get_fund_open_nav(
+                fund_code=fund_code,
+                start_date=start_date,
+                end_date=end_date,
+            ),
+            f"示例8-净值-{fund_code}",
+        )
         if nav_df.empty:
             print("  无真实缓存数据，使用演示数据")
             nav_df = _mock_fund_nav()

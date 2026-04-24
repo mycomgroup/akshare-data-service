@@ -5,6 +5,7 @@ get_futures_spot() 接口示例
 
 接口说明:
   - 无需参数，返回全市场期货合约的实时行情快照
+  - 注意: futures_spot 接口依赖 AkShare 的 futures_zh_spot()，该接口目前存在兼容性问题
 
 返回字段: 包含合约代码、最新价、涨跌幅、成交量、持仓量等实时数据
 
@@ -16,25 +17,58 @@ get_futures_spot() 接口示例
 注意: 实时行情数据为快照数据，每次调用获取最新市场状态。
 """
 
+import logging
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
 import pandas as pd
+
 from akshare_data import get_service
 
 
+_FUTURES_SYMBOLS = [
+    "rb0", "RB0",
+    "hc0", "HC0",
+    "i0", "I0",
+    "j0", "J0",
+    "cu0", "CU0",
+    "au0", "AU0",
+]
+
+
+def _fetch_futures_daily_sample(service):
+    """使用期货日线数据作为备选数据源"""
+    for symbol in _FUTURES_SYMBOLS:
+        try:
+            df = service.get_futures_daily(symbol=symbol)
+            if df is not None and not df.empty:
+                return df, symbol
+        except Exception:
+            continue
+    return pd.DataFrame(), None
+
+
 def _fetch_futures_spot(service):
+    """尝试获取实时行情，失败则回退到日线数据"""
     try:
         df = service.get_futures_spot()
         if df is not None and not df.empty:
-            return df
+            return df, "spot"
     except Exception:
         pass
-    # 回退主力合约列表，至少给出有效样本结构
     try:
         df = service.get_futures_main_contracts()
         if df is not None and not df.empty:
-            return df
+            return df, "main_contracts"
     except Exception:
         pass
-    return pd.DataFrame()
+    df, symbol = _fetch_futures_daily_sample(service)
+    if df is not None and not df.empty:
+        return df, f"daily:{symbol}"
+    return pd.DataFrame(), None
 
 
 # ============================================================
@@ -49,23 +83,20 @@ def example_futures_spot_basic():
     service = get_service()
 
     try:
-        # 无需参数，获取全市场期货实时行情
-        df = _fetch_futures_spot(service)
+        df, source = _fetch_futures_spot(service)
 
         if df is None or df.empty:
-            print("无数据 (接口可能未实现)")
+            print("无数据 (接口可能未实现或网络问题)")
             _show_mock_futures_spot()
             return
 
-        # 打印数据形状
+        print(f"数据来源: {source}")
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 打印前5行
         print("\n前5行数据:")
         print(df.head())
 
-        # 打印后5行
         print("\n后5行数据:")
         print(df.tail())
 
@@ -101,20 +132,20 @@ def example_futures_spot_filter_by_variety():
     service = get_service()
 
     try:
-        df = _fetch_futures_spot(service)
+        df, source = _fetch_futures_spot(service)
 
         if df is None or df.empty:
-            print("无数据")
+            print("无数据，展示样本数据")
+            _show_mock_futures_spot()
             return
 
-        print(f"全市场期货合约数量: {len(df)}")
+        print(f"数据来源: {source}")
+        print(f"数据行数: {len(df)}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 尝试按品种名称筛选
-        # 常见列名: "name", "品种", "variety", "symbol"
         name_cols = [
             col for col in df.columns
-            if any(keyword in col.lower() for keyword in ["name", "品种", "variety"])
+            if any(keyword in col.lower() for keyword in ["name", "品种", "variety", "symbol"])
         ]
 
         if name_cols:
@@ -128,6 +159,7 @@ def example_futures_spot_filter_by_variety():
 
     except Exception as e:
         print(f"获取数据失败: {e}")
+        _show_mock_futures_spot()
 
 
 # ============================================================
@@ -142,13 +174,15 @@ def example_futures_spot_top_gainers_losers():
     service = get_service()
 
     try:
-        df = _fetch_futures_spot(service)
+        df, source = _fetch_futures_spot(service)
 
         if df is None or df.empty:
-            print("无数据")
+            print("无数据，展示样本数据")
+            _show_mock_futures_spot()
             return
 
-        # 找到涨跌幅列
+        print(f"数据来源: {source}")
+
         change_cols = [
             col for col in df.columns
             if any(keyword in col.lower() for keyword in ["change", "涨跌幅", "pct", "percent"])
@@ -156,22 +190,21 @@ def example_futures_spot_top_gainers_losers():
 
         if not change_cols:
             print(f"未找到涨跌幅列，可用列: {list(df.columns)}")
+            print("展示前5行数据:")
+            print(df.head().to_string(index=False))
             return
 
         change_col = change_cols[0]
         print(f"使用列 '{change_col}' 进行排序")
 
-        # 确保涨跌幅为数值类型
         df[change_col] = pd.to_numeric(df[change_col], errors="coerce")
 
-        # 涨幅榜 Top 10
         print("\n涨幅榜 Top 10:")
         gainers = df.nlargest(10, change_col)
-        display_cols = [col for col in ["symbol", "name", change_col, "last_price", "volume"]
+        display_cols = [col for col in ["symbol", "name", change_col, "last_price", "volume", "close"]
                         if col in df.columns]
         print(gainers[display_cols].to_string(index=False))
 
-        # 跌幅榜 Top 10
         print("\n跌幅榜 Top 10:")
         losers = df.nsmallest(10, change_col)
         print(losers[display_cols].to_string(index=False))
@@ -192,13 +225,15 @@ def example_futures_spot_by_exchange():
     service = get_service()
 
     try:
-        df = _fetch_futures_spot(service)
+        df, source = _fetch_futures_spot(service)
 
         if df is None or df.empty:
-            print("无数据")
+            print("无数据，展示样本数据")
+            _show_mock_futures_spot()
             return
 
-        # 尝试找到交易所相关列
+        print(f"数据来源: {source}")
+
         exchange_cols = [
             col for col in df.columns
             if any(keyword in col.lower() for keyword in ["exchange", "交易所", "market"])
@@ -210,20 +245,21 @@ def example_futures_spot_by_exchange():
             exchange_counts = df[col].value_counts()
             print(exchange_counts.to_string())
 
-            # 分别展示各交易所的前5个合约
             for exchange in exchange_counts.index[:4]:
                 print(f"\n{exchange} 交易所前5合约:")
                 exchange_df = df[df[col] == exchange].head(5)
-                display_cols = [c for c in ["symbol", "name", "last_price", "change_pct"]
+                display_cols = [c for c in ["symbol", "name", "last_price", "change_pct", "close"]
                                 if c in df.columns]
                 print(exchange_df[display_cols].to_string(index=False))
         else:
             print("交易所列未找到，尝试按合约代码前缀推断:")
-            # 常见期货代码前缀对应交易所
             if "symbol" in df.columns:
                 df["exchange"] = df["symbol"].apply(_infer_exchange)
                 exchange_counts = df["exchange"].value_counts()
                 print(exchange_counts.to_string())
+            else:
+                print("展示前10行数据:")
+                print(df.head(10).to_string(index=False))
 
     except Exception as e:
         print(f"获取数据失败: {e}")
@@ -258,15 +294,16 @@ def example_futures_spot_volume_oi_analysis():
     service = get_service()
 
     try:
-        df = _fetch_futures_spot(service)
+        df, source = _fetch_futures_spot(service)
 
         if df is None or df.empty:
-            print("无数据")
+            print("无数据，展示样本数据")
+            _show_mock_futures_spot()
             return
 
-        print(f"全市场期货合约数量: {len(df)}")
+        print(f"数据来源: {source}")
+        print(f"数据行数: {len(df)}")
 
-        # 成交量分析
         volume_cols = [
             col for col in df.columns
             if any(keyword in col.lower() for keyword in ["volume", "成交量", "vol"])
@@ -277,14 +314,13 @@ def example_futures_spot_volume_oi_analysis():
             df[vol_col] = pd.to_numeric(df[vol_col], errors="coerce")
             print(f"\n成交量 Top 10 (使用列 '{vol_col}'):")
             top_volume = df.nlargest(10, vol_col)
-            display_cols = [c for c in ["symbol", "name", vol_col, "last_price"]
+            display_cols = [c for c in ["symbol", "name", vol_col, "last_price", "close"]
                             if c in df.columns]
             print(top_volume[display_cols].to_string(index=False))
 
-        # 持仓量分析
         oi_cols = [
             col for col in df.columns
-            if any(keyword in col.lower() for keyword in ["open_interest", "持仓量", "oi"])
+            if any(keyword in col.lower() for keyword in ["open_interest", "持仓量", "oi", "hold"])
         ]
 
         if oi_cols:
@@ -292,7 +328,7 @@ def example_futures_spot_volume_oi_analysis():
             df[oi_col] = pd.to_numeric(df[oi_col], errors="coerce")
             print(f"\n持仓量 Top 10 (使用列 '{oi_col}'):")
             top_oi = df.nlargest(10, oi_col)
-            display_cols = [c for c in ["symbol", "name", oi_col, "last_price"]
+            display_cols = [c for c in ["symbol", "name", oi_col, "last_price", "close"]
                             if c in df.columns]
             print(top_oi[display_cols].to_string(index=False))
 
@@ -312,16 +348,17 @@ def example_futures_spot_market_overview():
     service = get_service()
 
     try:
-        df = _fetch_futures_spot(service)
+        df, source = _fetch_futures_spot(service)
 
         if df is None or df.empty:
-            print("无数据")
+            print("无数据，展示样本数据")
+            _show_mock_futures_spot()
             return
 
-        print("\n市场总览:")
-        print(f"  合约总数: {len(df)}")
+        print(f"数据来源: {source}")
+        print(f"\n市场总览:")
+        print(f"  数据行数: {len(df)}")
 
-        # 找到关键列
         change_cols = [col for col in df.columns if "change" in col.lower() or "涨跌幅" in col]
         if change_cols:
             change_col = change_cols[0]
@@ -333,8 +370,7 @@ def example_futures_spot_market_overview():
             print(f"  下跌合约: {down_count}")
             print(f"  平盘合约: {flat_count}")
 
-        # 价格范围
-        price_cols = [col for col in df.columns if "price" in col.lower() or "价" in col]
+        price_cols = [col for col in df.columns if "price" in col.lower() or "价" in col or "close" in col.lower()]
         if price_cols:
             price_col = price_cols[0]
             df[price_col] = pd.to_numeric(df[price_col], errors="coerce")
@@ -343,7 +379,6 @@ def example_futures_spot_market_overview():
             print(f"  最低价格: {df[price_col].min():.2f}")
             print(f"  平均价格: {df[price_col].mean():.2f}")
 
-        # 成交量统计
         vol_cols = [col for col in df.columns if "volume" in col.lower() or "成交量" in col]
         if vol_cols:
             vol_col = vol_cols[0]
@@ -371,28 +406,30 @@ def example_futures_spot_refresh():
     try:
         import time
 
-        # 第一次获取
         print("\n第一次获取:")
-        df1 = _fetch_futures_spot(service)
+        df1, source1 = _fetch_futures_spot(service)
         if df1 is None or df1.empty:
-            print("  结果: 返回 None (接口可能未实现)")
+            print("  结果: 无数据，展示样本")
+            _show_mock_futures_spot()
             return
-        print(f"  合约数量: {len(df1)}")
-        if not df1.empty and "last_price" in df1.columns:
-            print(f"  示例合约价格: {df1['last_price'].iloc[0]}")
+        print(f"  数据来源: {source1}")
+        print(f"  数据行数: {len(df1)}")
+        price_cols = [c for c in df1.columns if "price" in c.lower() or "close" in c.lower()]
+        if price_cols:
+            print(f"  最新价格列 '{price_cols[0]}': {df1[price_cols[0]].iloc[-1]}")
 
-        # 模拟等待后再次获取
         print("\n等待 2 秒后再次获取...")
         time.sleep(2)
 
         print("\n第二次获取:")
-        df2 = _fetch_futures_spot(service)
+        df2, source2 = _fetch_futures_spot(service)
         if df2 is None or df2.empty:
-            print("  结果: 返回 None")
+            print("  结果: 无数据")
             return
-        print(f"  合约数量: {len(df2)}")
-        if not df2.empty and "last_price" in df2.columns:
-            print(f"  示例合约价格: {df2['last_price'].iloc[0]}")
+        print(f"  数据来源: {source2}")
+        print(f"  数据行数: {len(df2)}")
+        if price_cols and price_cols[0] in df2.columns:
+            print(f"  最新价格列 '{price_cols[0]}': {df2[price_cols[0]].iloc[-1]}")
 
         print("\n注意: 实时行情数据可能因市场状态而变化。")
 
@@ -411,16 +448,18 @@ def example_futures_spot_error_handling():
 
     service = get_service()
 
-    # 正常调用 (无需参数)
     print("\n测试: 正常调用")
     try:
-        df = _fetch_futures_spot(service)
+        df, source = _fetch_futures_spot(service)
         if df is None or df.empty:
-            print("  结果: 返回 None (接口可能未实现)")
+            print("  结果: 无数据，展示样本")
+            _show_mock_futures_spot()
         else:
-            print(f"  结果: 获取到 {len(df)} 行数据")
+            print(f"  结果: 数据来源 {source}，获取到 {len(df)} 行数据")
+            print(f"  字段列表: {list(df.columns)}")
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
+        _show_mock_futures_spot()
 
 
 if __name__ == "__main__":

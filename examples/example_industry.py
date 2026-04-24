@@ -1,6 +1,12 @@
 """行业映射示例：含 symbol 回退与空结果重试。"""
 
+import logging
 import time
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
 from akshare_data import get_industry_mapping, get_industry_stocks
 
 

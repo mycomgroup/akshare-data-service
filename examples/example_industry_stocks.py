@@ -1,6 +1,12 @@
 """get_industry_stocks 示例：industry_code 回退 + 空数据重试。"""
 
+import logging
 import time
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
 from akshare_data import get_service
 
 

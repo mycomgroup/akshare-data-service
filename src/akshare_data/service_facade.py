@@ -72,25 +72,60 @@ class DataService:
     @property
     def akshare(self):
         """Deprecated: access legacy akshare adapter via self._legacy."""
+        warnings.warn(
+            "service.akshare is deprecated since 0.3.0. "
+            "Use the offline downloader to populate data, then query via DataService.query(). "
+            "Will be removed in 0.4.0.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         return self._legacy.akshare
 
     @property
     def lixinger(self):
         """Deprecated: access legacy lixinger adapter via self._legacy."""
+        warnings.warn(
+            "service.lixinger is deprecated since 0.3.0. "
+            "Use the offline downloader to populate data, then query via DataService.query(). "
+            "Will be removed in 0.4.0.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         return self._legacy.lixinger
 
     @property
     def adapters(self):
         """Deprecated: access legacy adapters dict via self._legacy."""
+        warnings.warn(
+            "service.adapters is deprecated since 0.3.0. "
+            "Use the offline downloader to populate data, then query via DataService.query(). "
+            "Will be removed in 0.4.0.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         return self._legacy.adapters
 
     @property
     def router(self):
         """Deprecated: access legacy router via self._legacy."""
+        warnings.warn(
+            "service.router is deprecated since 0.3.0. "
+            "Use the offline downloader to populate data, then query via DataService.query(). "
+            "Will be removed in 0.4.0.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         return self._legacy.router
 
     @router.setter
     def router(self, value):
+        warnings.warn(
+            "service.router is deprecated since 0.3.0. "
+            "Use the offline downloader to populate data, then query via DataService.query(). "
+            "Will be removed in 0.4.0.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         self._legacy.router = value
 
     def _get_source(self, requested_source=None):

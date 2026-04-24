@@ -12,6 +12,7 @@ Fixture categories:
 """
 
 import tempfile
+import warnings
 from pathlib import Path
 from unittest.mock import MagicMock
 from typing import Generator
@@ -21,6 +22,19 @@ import pytest
 
 from akshare_data import DataService
 from akshare_data.store.manager import CacheManager, reset_cache_manager
+
+
+@pytest.fixture(autouse=True)
+def _suppress_deprecation_warnings():
+    """Suppress DeprecationWarning from legacy adapter during tests.
+
+    The DataService constructor and legacy property accessors
+    (service.akshare, service.lixinger, etc.) emit DeprecationWarning.
+    Tests that exercise these paths should not fail due to warnings.
+    """
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", DeprecationWarning)
+        yield
 
 
 # ---------------------------------------------------------------------------

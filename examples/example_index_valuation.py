@@ -20,6 +20,12 @@ get_index_valuation() 接口示例
   - pb: 指数市净率
 """
 
+import logging
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
 from akshare_data import get_service
 def _first_non_empty_index(service, codes):
     for code in codes:

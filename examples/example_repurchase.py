@@ -9,6 +9,12 @@ get_repurchase_data() 接口示例
 返回字段: 包含股票代码、回购价格、回购数量、回购金额等
 """
 
+import logging
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
 from akshare_data import get_service
 
 

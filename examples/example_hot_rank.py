@@ -1,9 +1,14 @@
 """get_hot_rank 接口示例（带重试与降级）。"""
 
+import logging
 import time
+import warnings
 from typing import Callable, Optional
 
 import pandas as pd
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 from akshare_data import get_service
 

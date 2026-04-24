@@ -9,7 +9,13 @@ get_ipo_info() 接口示例
 返回字段: 包含股票代码、名称、发行价、市盈率、申购日期等信息
 """
 
+import logging
+import warnings
 import pandas as pd
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
 from akshare_data import get_service
 
 

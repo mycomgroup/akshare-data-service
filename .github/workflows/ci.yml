@@ -46,6 +46,18 @@ jobs:
             exit 1
           fi
           echo "OK: No direct legacy source access found in service layer."
+      - name: Forbid self._legacy access outside service_facade.py
+        run: |
+          # self._legacy is only allowed in service_facade.py (it owns the handle)
+          # Scan service layer files and namespace_assembly.py, excluding service_facade.py
+          if grep -rn 'self\._legacy\b' \
+              src/akshare_data/service/ \
+              src/akshare_data/namespace_assembly.py 2>/dev/null; then
+            echo "ERROR: Found forbidden self._legacy access outside service_facade.py!"
+            echo "Only service_facade.py may access self._legacy."
+            exit 1
+          fi
+          echo "OK: No self._legacy access outside service_facade.py."
 
   validate-config:
     name: Validate Config Files

@@ -19,7 +19,12 @@ get_lof_spot() 接口示例
 - 实时数据不走缓存，每次调用都会获取最新数据
 """
 
+import logging
+import warnings
 import pandas as pd
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 from akshare_data import get_service
 

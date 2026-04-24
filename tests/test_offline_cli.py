@@ -646,6 +646,7 @@ class TestHandleDownload:
                         args.start = None
                         args.end = None
                         args.workers = 4
+                        args.pipeline = False
 
                         _handle_download(args)
 
@@ -679,6 +680,7 @@ class TestHandleDownload:
                 args.end = "2024-01-31"
                 args.days = 1
                 args.workers = 4
+                args.pipeline = False
 
                 _handle_download(args)
 
@@ -710,6 +712,7 @@ class TestHandleDownload:
                 args.start = None
                 args.end = None
                 args.workers = 8
+                args.pipeline = False
 
                 _handle_download(args)
 

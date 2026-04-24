@@ -25,6 +25,7 @@ def main():
     _add_analyze_parser(subparsers)
     _add_report_parser(subparsers)
     _add_config_parser(subparsers)
+    _add_backfill_parser(subparsers)
 
     args = parser.parse_args()
 
@@ -49,6 +50,8 @@ def main():
         _handle_report(args)
     elif args.command == "config":
         _handle_config(args)
+    elif args.command == "backfill":
+        _handle_backfill(args)
 
 
 def _add_download_parser(subparsers):
@@ -62,6 +65,10 @@ def _add_download_parser(subparsers):
     parser.add_argument("--end", type=str, help="End date YYYY-MM-DD")
     parser.add_argument("--workers", type=int, default=4, help="Max workers")
     parser.add_argument("--schedule", action="store_true", help="Start scheduler")
+    parser.add_argument("--pipeline", action="store_true", help="Use ingestion pipeline")
+    parser.add_argument(
+        "--domain", type=str, default=None, help="Domain filter (pipeline mode)"
+    )
 
 
 def _add_probe_parser(subparsers):
@@ -90,8 +97,18 @@ def _add_config_parser(subparsers):
     parser.add_argument("action", choices=["generate", "validate", "merge"])
 
 
+def _add_backfill_parser(subparsers):
+    parser = subparsers.add_parser("backfill", help="Process pending backfill requests")
+    parser.add_argument("--status", action="store_true", help="Show backfill status")
+    parser.add_argument("--dataset", type=str, help="Filter by dataset")
+
+
 def _handle_download(args):
     """处理下载命令"""
+    if args.pipeline:
+        _handle_download_pipeline(args)
+        return
+
     from akshare_data.offline.downloader import BatchDownloader
     from akshare_data.offline.core.data_loader import get_cache_manager_instance
 
@@ -125,6 +142,159 @@ def _handle_download(args):
         )
 
     print(f"Download completed: {result}")
+
+
+def _handle_download_pipeline(args):
+    """Handle download using the ingestion pipeline (--pipeline flag)."""
+    from datetime import date, timedelta
+
+    from akshare_data.ingestion.pipeline_executor import PipelineExecutor
+    from akshare_data.ingestion.scheduler import Scheduler
+
+    extract_date = date.today()
+    if args.days and args.days > 1:
+        start_date = extract_date - timedelta(days=args.days)
+        scheduler = Scheduler()
+        batch = scheduler.generate_backfill_tasks(
+            start_date=start_date,
+            end_date=extract_date,
+            domain_filter=args.domain,
+        )
+    else:
+        scheduler = Scheduler()
+        batch = scheduler.generate_batch(
+            extract_date=extract_date,
+            domain_filter=args.domain,
+        )
+
+    if not batch.tasks:
+        print("No tasks generated for the given date/filter.")
+        return
+
+    print(f"Pipeline mode: batch_id={batch.batch_id}, tasks={len(batch.tasks)}")
+
+    executor = PipelineExecutor()
+    result = executor.execute_batch(batch)
+
+    print(
+        f"Pipeline completed: "
+        f"groups={result.total_groups}, "
+        f"published={result.total_published}, "
+        f"errors={result.total_errors}, "
+        f"duration={result.duration_ms:.0f}ms"
+    )
+
+    for pr in result.pipeline_results:
+        status = "OK" if pr.published else "FAILED"
+        print(
+            f"  [{status}] dataset={pr.dataset} batch={pr.batch_id} "
+            f"partitions={len(pr.standardized_paths)} errors={len(pr.errors)}"
+        )
+        for err in pr.errors:
+            print(f"    - {err}")
+
+
+def _handle_backfill(args):
+    """Handle backfill consumer command."""
+    from akshare_data.ingestion.backfill_request import (
+        get_backfill_registry,
+    )
+
+    registry = get_backfill_registry()
+
+    if args.status:
+        all_reqs = registry.list_all()
+        if not all_reqs:
+            print("No backfill requests.")
+            return
+        by_status = {}
+        for r in all_reqs:
+            by_status.setdefault(r.status.value, []).append(r)
+        for status, reqs in sorted(by_status.items()):
+            print(f"{status}: {len(reqs)} request(s)")
+            for r in reqs[:5]:
+                print(
+                    f"  - {r.request_id} dataset={r.dataset} "
+                    f"{r.start_date}..{r.end_date} by={r.requested_by}"
+                )
+            if len(reqs) > 5:
+                print(f"  ... and {len(reqs) - 5} more")
+        return
+
+    pending = registry.get_by_dataset(args.dataset) if args.dataset else registry.get_pending()
+
+    if not pending:
+        print("No pending backfill requests.")
+        return
+
+    _execute_backfill_requests(pending, registry)
+
+
+def _execute_backfill_requests(pending, registry):
+    """Execute a list of backfill requests through the pipeline."""
+    from datetime import timedelta
+
+    from akshare_data.ingestion.backfill_request import BackfillStatus
+    from akshare_data.ingestion.models import BatchContext, ExtractTask
+    from akshare_data.ingestion.pipeline_executor import PipelineExecutor
+
+    print(f"Processing {len(pending)} pending backfill request(s)...")
+
+    all_tasks = []
+    for req in pending:
+        registry.update_status(req.request_id, BackfillStatus.QUEUED)
+        current = req.start_date
+        while current <= req.end_date:
+            if req.partitions:
+                for partition in req.partitions:
+                    params = dict(req.params)
+                    params["symbol"] = partition
+                    task = ExtractTask.new(
+                        batch_id="",
+                        dataset=req.dataset,
+                        domain=req.domain,
+                        source_name=req.source_name,
+                        interface_name=req.interface_name,
+                        params=params,
+                        extract_date=current,
+                    )
+                    all_tasks.append(task)
+            else:
+                task = ExtractTask.new(
+                    batch_id="",
+                    dataset=req.dataset,
+                    domain=req.domain,
+                    source_name=req.source_name,
+                    interface_name=req.interface_name,
+                    params=req.params,
+                    extract_date=current,
+                )
+                all_tasks.append(task)
+            current += timedelta(days=1)
+
+    if not all_tasks:
+        print("No tasks generated from backfill requests.")
+        return
+
+    batch = BatchContext.new(tasks=all_tasks, domain=all_tasks[0].domain)
+    print(f"Backfill batch: batch_id={batch.batch_id}, tasks={len(batch.tasks)}")
+
+    executor = PipelineExecutor()
+    result = executor.execute_batch(batch)
+
+    for req in pending:
+        if result.total_errors == 0:
+            registry.update_status(req.request_id, BackfillStatus.SUCCEEDED)
+        else:
+            registry.update_status(req.request_id, BackfillStatus.PARTIAL)
+
+    print(
+        f"Backfill completed: "
+        f"groups={result.total_groups}, "
+        f"published={result.total_published}, "
+        f"errors={result.total_errors}, "
+        f"duration={result.duration_ms:.0f}ms"
+    )
 
 
 def _handle_probe(args):

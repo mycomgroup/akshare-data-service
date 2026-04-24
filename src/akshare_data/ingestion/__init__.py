@@ -41,6 +41,7 @@ from .executor.base import (
     ExecutorStats,
 )
 from .executor import BaseTaskExecutor, ExecutorContext, TaskExecutionResult
+from .pipeline_executor import PipelineExecutor, PipelineExecutorResult
 
 __all__ = [
     "ExtractTask",
@@ -82,4 +83,6 @@ __all__ = [
     "BaseTaskExecutor",
     "TaskExecutionResult",
     "ExecutorContext",
+    "PipelineExecutor",
+    "PipelineExecutorResult",
 ]
