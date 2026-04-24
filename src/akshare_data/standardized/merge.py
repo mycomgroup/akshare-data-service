@@ -165,14 +165,32 @@ class MergeEngine:
         ingest_exist = pd.to_datetime(merged[ingest_exist_col], errors="coerce")
         ingest_income = pd.to_datetime(merged[ingest_income_col], errors="coerce")
 
-        incoming_version_lower = norm_income.str.lt(norm_exist) & norm_exist.notna() & norm_income.notna()
+        incoming_version_lower = norm_income.lt(norm_exist) & norm_exist.notna() & norm_income.notna()
         version_equal = norm_income == norm_exist
         incoming_time_le = version_equal & ingest_income.notna() & ingest_exist.notna() & ingest_income.le(ingest_exist)
         use_existing = incoming_version_lower | incoming_time_le
 
-        base_cols = [c for c in merged.columns if not c.endswith(("_existing", "_incoming", "_merge_key", "_merge"))]
-        result_parts = []
+        # Derive the set of original (unsuffixed) column names by stripping
+        # the ``_existing`` / ``_incoming`` suffixes that the outer-merge has
+        # introduced. Columns that appear only on one side (i.e. existed in
+        # one of the two frames without a counterpart) are kept as-is.
+        base_cols: List[str] = []
+        seen: set[str] = set()
+        reserved = {"_merge_key", "_merge"}
+        for c in merged.columns:
+            if c in reserved:
+                continue
+            if c.endswith("_existing"):
+                base = c[: -len("_existing")]
+            elif c.endswith("_incoming"):
+                base = c[: -len("_incoming")]
+            else:
+                base = c
+            if base and base not in seen:
+                seen.add(base)
+                base_cols.append(base)
 
+        result_parts = []
         for col in base_cols:
             existing_col = f"{col}_existing"
             incoming_col = f"{col}_incoming"
@@ -188,6 +206,8 @@ class MergeEngine:
                 result_parts.append(merged[existing_col].rename(col))
             elif incoming_col in merged.columns:
                 result_parts.append(merged[incoming_col].rename(col))
+            elif col in merged.columns:
+                result_parts.append(merged[col].rename(col))
 
         if not result_parts:
             return pd.DataFrame()

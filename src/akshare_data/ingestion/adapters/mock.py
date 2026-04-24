@@ -630,9 +630,6 @@ class MockAdapter(DataSource):
     def get_futures_spot(self, **kwargs) -> pd.DataFrame:
         return pd.DataFrame({"commodity": ["铜"], "price": [70000.0]})
 
-    def get_spot_em(self, **kwargs) -> pd.DataFrame:
-        return pd.DataFrame({"symbol": ["600000"], "price": [10.5]})
-
     def get_lof_hist(
         self,
         symbol: str,
