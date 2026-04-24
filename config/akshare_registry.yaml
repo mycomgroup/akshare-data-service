@@ -408,7 +408,7 @@ domains:
     rate_limit_key: default
   zs.zjpwq.net:
     rate_limit_key: default
-generated_at: '2026-04-24T01:23:10.523980'
+generated_at: '2026-04-24T20:44:31.992618'
 interfaces:
   air_city_table:
     category: other
@@ -425,7 +425,7 @@ interfaces:
     probe:
       check_interval: 2592000
       params:
-        date: '2019-06-05'
+        date: 2019-06-05&tab=rank&order=DESC&type=DAY#rank
       skip: false
     rate_limit_key: default
     signature: []
@@ -481,9 +481,8 @@ interfaces:
       check_interval: 2592000
       params:
         end_date: '20260424'
-        period: "day"
+        period: daily
         start_date: '20260421'
-        end_date: '20260424'
       skip: false
     rate_limit_key: default
     signature:
@@ -512,7 +511,7 @@ interfaces:
     probe:
       check_interval: 2592000
       params:
-        date: '2020-03-12'
+        date: 2020-03-12&tab=rank&order=DESC&type=DAY#rank
       skip: false
     rate_limit_key: default
     signature:
@@ -1196,8 +1195,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: bond_buy_back_hist_em
     probe:
       check_interval: 2592000
@@ -1222,8 +1221,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - query.sse.com.cn
     - bond.sse.com.cn
+    - query.sse.com.cn
     name: bond_cash_summary_sse
     probe:
       check_interval: 2592000
@@ -1403,7 +1402,7 @@ interfaces:
       params:
         bondType: CYCC000&reference=1
         end_date: '20260424'
-        period: "day"
+        period: daily
         start_date: '20260421'
         symbol: '000001'
       skip: false
@@ -1436,8 +1435,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - yield.chinabond.com.cn
     - www.chinabond.com.cn
+    - yield.chinabond.com.cn
     name: bond_china_yield
     probe:
       check_interval: 2592000
@@ -1529,8 +1528,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 16.push2.eastmoney.com
+    - quote.eastmoney.com
     name: bond_cov_comparison
     probe:
       check_interval: 2592000
@@ -1603,8 +1602,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - query.sse.com.cn
     - bond.sse.com.cn
+    - query.sse.com.cn
     name: bond_deal_summary_sse
     probe:
       check_interval: 2592000
@@ -1809,8 +1808,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: bond_sh_buy_back_em
     probe:
       check_interval: 2592000
@@ -1867,8 +1866,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: bond_sz_buy_back_em
     probe:
       check_interval: 2592000
@@ -1951,8 +1950,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: bond_zh_cov
     probe:
       check_interval: 2592000
@@ -1979,8 +1978,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: bond_zh_cov_info
     probe:
       check_interval: 2592000
@@ -2025,8 +2024,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: bond_zh_cov_value_analysis
     probe:
       check_interval: 2592000
@@ -2092,9 +2091,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
-    - push2.eastmoney.com
     - push2his.eastmoney.com
+    - push2.eastmoney.com
+    - quote.eastmoney.com
     name: bond_zh_hs_cov_min
     probe:
       check_interval: 2592000
@@ -2104,7 +2103,7 @@ interfaces:
         start_date: '20260421'
         symbol: '000001'
       skip: false
-    rate_limit_key: em_push2
+    rate_limit_key: em_push2his
     signature:
     - symbol
     - period
@@ -2126,8 +2125,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: bond_zh_hs_cov_pre_min
     probe:
       check_interval: 2592000
@@ -2225,8 +2224,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter.eastmoney.com
     - data.eastmoney.com
+    - datacenter.eastmoney.com
     name: bond_zh_us_rate
     probe:
       check_interval: 2592000
@@ -2962,8 +2961,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: energy_oil_detail
     probe:
       check_interval: 2592000
@@ -2983,8 +2982,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: energy_oil_hist
     probe:
       check_interval: 2592000
@@ -3034,8 +3033,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: forex_hist_em
     probe:
       check_interval: 2592000
@@ -3056,8 +3055,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: forex_spot_em
     probe:
       check_interval: 2592000
@@ -3131,8 +3130,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_announcement_dividend_em
     probe:
       check_interval: 2592000
@@ -3157,8 +3156,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_announcement_personnel_em
     probe:
       check_interval: 2592000
@@ -3183,8 +3182,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_announcement_report_em
     probe:
       check_interval: 2592000
@@ -3451,8 +3450,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_etf_fund_info_em
     probe:
       check_interval: 2592000
@@ -3496,8 +3495,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: fund_etf_hist_em
     probe:
       check_interval: 2592000
@@ -3545,8 +3544,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: fund_etf_hist_min_em
     probe:
       check_interval: 2592000
@@ -3643,8 +3642,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 88.push2.eastmoney.com
+    - quote.eastmoney.com
     name: fund_etf_spot_em
     probe:
       check_interval: 2592000
@@ -3814,8 +3813,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fund.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_financial_fund_daily_em
     probe:
       check_interval: 2592000
@@ -3838,8 +3837,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_financial_fund_info_em
     probe:
       check_interval: 2592000
@@ -3883,8 +3882,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_graded_fund_info_em
     probe:
       check_interval: 2592000
@@ -3935,8 +3934,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - overseas.1234567.com.cn
     - fund.eastmoney.com
+    - overseas.1234567.com.cn
     name: fund_hk_rank_em
     probe:
       check_interval: 2592000
@@ -4169,8 +4168,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fund.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_info_index_em
     probe:
       check_interval: 2592000
@@ -4194,8 +4193,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fund.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_lcx_rank_em
     probe:
       check_interval: 2592000
@@ -4253,8 +4252,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: fund_lof_hist_em
     probe:
       check_interval: 2592000
@@ -4302,8 +4301,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: fund_lof_hist_min_em
     probe:
       check_interval: 2592000
@@ -4331,8 +4330,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 88.push2.eastmoney.com
+    - quote.eastmoney.com
     name: fund_lof_spot_em
     probe:
       check_interval: 2592000
@@ -4393,8 +4392,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_money_fund_info_em
     probe:
       check_interval: 2592000
@@ -4415,8 +4414,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fund.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_money_rank_em
     probe:
       check_interval: 2592000
@@ -4530,9 +4529,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
-    - fund.eastmoney.com
     - fundf10.eastmoney.com
+    - fund.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_open_fund_info_em
     probe:
       check_interval: 2592000
@@ -4709,8 +4708,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_portfolio_industry_allocation_em
     probe:
       check_interval: 2592000
@@ -5039,8 +5038,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fund.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_value_estimation_em
     probe:
       check_interval: 2592000
@@ -5065,8 +5064,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: futures_comex_inventory
     probe:
       check_interval: 2592000
@@ -5305,8 +5304,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.shfe.com.cn
     - tsite.shfe.com.cn
+    - www.shfe.com.cn
     name: futures_contract_info_shfe
     probe:
       check_interval: 2592000
@@ -5545,8 +5544,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - hq.sinajs.cn
+    - finance.sina.com.cn
     name: futures_foreign_commodity_realtime
     probe:
       check_interval: 2592000
@@ -5615,8 +5614,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - stock2.finance.sina.com.cn
+    - finance.sina.com.cn
     name: futures_foreign_hist
     probe:
       check_interval: 2592000
@@ -5694,8 +5693,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: futures_global_hist_em
     probe:
       check_interval: 2592000
@@ -5716,8 +5715,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - futsseapi.eastmoney.com
+    - quote.eastmoney.com
     name: futures_global_spot_em
     probe:
       check_interval: 2592000
@@ -6013,8 +6012,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: futures_inventory_em
     probe:
       check_interval: 2592000
@@ -6047,8 +6046,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - stock2.finance.sina.com.cn
+    - vip.stock.finance.sina.com.cn
     name: futures_main_sina
     probe:
       check_interval: 2592000
@@ -6274,8 +6273,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - links.sgx.com
     - www.sgx.com
+    - links.sgx.com
     name: futures_settlement_price_sgx
     probe:
       check_interval: 2592000
@@ -6299,8 +6298,8 @@ interfaces:
 
       :rtype: dict'
     domains:
-    - www.shfe.com.cn
     - tsite.shfe.com.cn
+    - www.shfe.com.cn
     name: futures_shfe_warehouse_receipt
     probe:
       check_interval: 2592000
@@ -6654,8 +6653,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - stock2.finance.sina.com.cn
+    - finance.sina.com.cn
     name: futures_zh_daily_sina
     probe:
       check_interval: 2592000
@@ -6685,8 +6684,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - stock2.finance.sina.com.cn
+    - vip.stock.finance.sina.com.cn
     name: futures_zh_minute_sina
     probe:
       check_interval: 2592000
@@ -6746,15 +6745,15 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - hq.sinajs.cn
+    - vip.stock.finance.sina.com.cn
     name: futures_zh_spot
     probe:
       check_interval: 2592000
       params:
         symbol: '000001'
       skip: false
-    rate_limit_key: sina_vip
+    rate_limit_key: sina_hq
     signature:
     - symbol
     - market
@@ -7676,8 +7675,8 @@ interfaces:
 
       date                        日期                        string YYYYMMDD'
     domains:
-    - www.shfe.com.cn
     - tsite.shfe.com.cn
+    - www.shfe.com.cn
     name: get_shfe_rank_table
     probe:
       check_interval: 2592000
@@ -8262,8 +8261,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: index_global_hist_em
     probe:
       check_interval: 2592000
@@ -8288,8 +8287,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - gi.finance.sina.com.cn
+    - finance.sina.com.cn
     name: index_global_hist_sina
     probe:
       check_interval: 2592000
@@ -8329,8 +8328,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: index_global_spot_em
     probe:
       check_interval: 2592000
@@ -8515,8 +8514,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - ss.kqindex.cn
     - api.idx365.com
+    - ss.kqindex.cn
     name: index_kq_fashion
     probe:
       check_interval: 2592000
@@ -9244,8 +9243,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - oss-ch.csindex.com.cn
     - www.csindex.com.cn
+    - oss-ch.csindex.com.cn
     name: index_stock_cons_csindex
     probe:
       check_interval: 2592000
@@ -9295,8 +9294,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - oss-ch.csindex.com.cn
     - www.csindex.com.cn
+    - oss-ch.csindex.com.cn
     name: index_stock_cons_weight_csindex
     probe:
       check_interval: 2592000
@@ -9378,8 +9377,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - stock.finance.sina.com.cn
+    - finance.sina.com.cn
     name: index_us_stock_sina
     probe:
       check_interval: 2592000
@@ -9467,8 +9466,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: index_zh_a_hist
     probe:
       check_interval: 2592000
@@ -9511,8 +9510,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: index_zh_a_hist_min_em
     probe:
       check_interval: 2592000
@@ -9539,8 +9538,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_australia_bank_rate
     probe:
       check_interval: 2592000
@@ -9559,8 +9558,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_australia_cpi_quarterly
     probe:
       check_interval: 2592000
@@ -9579,8 +9578,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_australia_cpi_yearly
     probe:
       check_interval: 2592000
@@ -9599,8 +9598,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_australia_ppi_quarterly
     probe:
       check_interval: 2592000
@@ -9619,8 +9618,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_australia_retail_rate_monthly
     probe:
       check_interval: 2592000
@@ -9639,8 +9638,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_australia_trade
     probe:
       check_interval: 2592000
@@ -9659,8 +9658,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_australia_unemployment_rate
     probe:
       check_interval: 2592000
@@ -9928,8 +9927,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_bank_rate
     probe:
       check_interval: 2592000
@@ -9948,8 +9947,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_core_cpi_monthly
     probe:
       check_interval: 2592000
@@ -9968,8 +9967,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_core_cpi_yearly
     probe:
       check_interval: 2592000
@@ -9988,8 +9987,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_cpi_monthly
     probe:
       check_interval: 2592000
@@ -10008,8 +10007,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_cpi_yearly
     probe:
       check_interval: 2592000
@@ -10028,8 +10027,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_gdp_monthly
     probe:
       check_interval: 2592000
@@ -10048,8 +10047,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_new_house_rate
     probe:
       check_interval: 2592000
@@ -10068,8 +10067,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_retail_rate_monthly
     probe:
       check_interval: 2592000
@@ -10088,8 +10087,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_trade
     probe:
       check_interval: 2592000
@@ -10108,8 +10107,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_canada_unemployment_rate
     probe:
       check_interval: 2592000
@@ -10128,8 +10127,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_agricultural_index
     probe:
       check_interval: 2592000
@@ -10148,8 +10147,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_agricultural_product
     probe:
       check_interval: 2592000
@@ -10186,8 +10185,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_bank_financing
     probe:
       check_interval: 2592000
@@ -10206,8 +10205,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_bdti_index
     probe:
       check_interval: 2592000
@@ -10245,8 +10244,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_bsi_index
     probe:
       check_interval: 2592000
@@ -10285,8 +10284,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_commodity_price_index
     probe:
       check_interval: 2592000
@@ -10305,8 +10304,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_construction_index
     probe:
       check_interval: 2592000
@@ -10325,8 +10324,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_construction_price_index
     probe:
       check_interval: 2592000
@@ -10345,8 +10344,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_consumer_goods_retail
     probe:
       check_interval: 2592000
@@ -10365,8 +10364,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_cpi
     probe:
       check_interval: 2592000
@@ -10463,8 +10462,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_czsr
     probe:
       check_interval: 2592000
@@ -10500,8 +10499,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_energy_index
     probe:
       check_interval: 2592000
@@ -10520,8 +10519,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_enterprise_boom_index
     probe:
       check_interval: 2592000
@@ -10559,8 +10558,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_fdi
     probe:
       check_interval: 2592000
@@ -10619,8 +10618,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_fx_gold
     probe:
       check_interval: 2592000
@@ -10658,8 +10657,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_gdp
     probe:
       check_interval: 2592000
@@ -10697,8 +10696,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_gdzctz
     probe:
       check_interval: 2592000
@@ -10717,8 +10716,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_gyzjz
     probe:
       check_interval: 2592000
@@ -10737,8 +10736,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_hgjck
     probe:
       check_interval: 2592000
@@ -11017,8 +11016,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_insurance_income
     probe:
       check_interval: 2592000
@@ -11057,8 +11056,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_lpi_index
     probe:
       check_interval: 2592000
@@ -11077,8 +11076,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_lpr
     probe:
       check_interval: 2592000
@@ -11152,8 +11151,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_mobile_number
     probe:
       check_interval: 2592000
@@ -11172,8 +11171,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_money_supply
     probe:
       check_interval: 2592000
@@ -11192,8 +11191,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_national_tax_receipts
     probe:
       check_interval: 2592000
@@ -11276,8 +11275,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_new_financial_credit
     probe:
       check_interval: 2592000
@@ -11304,8 +11303,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_new_house_price
     probe:
       check_interval: 2592000
@@ -11365,8 +11364,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_pmi
     probe:
       check_interval: 2592000
@@ -11424,8 +11423,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_ppi
     probe:
       check_interval: 2592000
@@ -11463,8 +11462,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_qyspjg
     probe:
       check_interval: 2592000
@@ -11483,8 +11482,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_real_estate
     probe:
       check_interval: 2592000
@@ -11503,8 +11502,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_reserve_requirement_ratio
     probe:
       check_interval: 2592000
@@ -11645,8 +11644,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_stock_market_cap
     probe:
       check_interval: 2592000
@@ -11759,8 +11758,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_vegetable_basket
     probe:
       check_interval: 2592000
@@ -11779,8 +11778,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_wbck
     probe:
       check_interval: 2592000
@@ -11799,8 +11798,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_whxd
     probe:
       check_interval: 2592000
@@ -11819,8 +11818,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_xfzxx
     probe:
       check_interval: 2592000
@@ -11839,8 +11838,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_china_yw_electronic_index
     probe:
       check_interval: 2592000
@@ -11945,8 +11944,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_cpi_mom
     probe:
@@ -11969,8 +11968,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_cpi_yoy
     probe:
@@ -11993,8 +11992,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_current_account_mom
     probe:
@@ -12017,8 +12016,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_employment_change_qoq
     probe:
@@ -12061,8 +12060,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_industrial_production_mom
     probe:
@@ -12131,8 +12130,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_manufacturing_pmi
     probe:
@@ -12155,8 +12154,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_ppi_mom
     probe:
@@ -12179,8 +12178,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_retail_sales_mom
     probe:
@@ -12203,8 +12202,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_sentix_investor_confidence
     probe:
@@ -12227,8 +12226,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_services_pmi
     probe:
@@ -12251,8 +12250,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_trade_balance
     probe:
@@ -12275,8 +12274,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_unemployment_rate_mom
     probe:
@@ -12299,8 +12298,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter-api.jin10.com
+    - cdn.jin10.com
     - datacenter.jin10.com
     name: macro_euro_zew_economic_sentiment
     probe:
@@ -12498,8 +12497,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_global_sox_index
     probe:
       check_interval: 2592000
@@ -13445,8 +13444,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_usa_cpi_yoy
     probe:
       check_interval: 2592000
@@ -13926,8 +13925,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: macro_usa_phs
     probe:
       check_interval: 2592000
@@ -14412,8 +14411,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cctv.cntv.cn
     - tv.cctv.com
+    - cctv.cntv.cn
     name: news_cctv
     probe:
       check_interval: 2592000
@@ -14914,8 +14913,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - openctp.cn
     - dict.openctp.cn
+    - openctp.cn
     name: option_contract_info_ctp
     probe:
       check_interval: 2592000
@@ -14973,8 +14972,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 23.push2.eastmoney.com
+    - quote.eastmoney.com
     name: option_current_em
     probe:
       check_interval: 2592000
@@ -15063,8 +15062,8 @@ interfaces:
       :rtype: pandas.DataFrame'
     domains:
     - www.cffex.com.cn
-    - www.sse.com.cn
     - www.szse.cn
+    - www.sse.com.cn
     name: option_finance_board
     probe:
       check_interval: 2592000
@@ -15320,8 +15319,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: option_lhb_em
     probe:
       check_interval: 2592000
@@ -15370,8 +15369,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - wap.eastmoney.com
+    - push2.eastmoney.com
     name: option_minute_em
     probe:
       check_interval: 2592000
@@ -15392,8 +15391,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: option_premium_analysis_em
     probe:
       check_interval: 2592000
@@ -15412,8 +15411,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: option_risk_analysis_em
     probe:
       check_interval: 2592000
@@ -15550,15 +15549,15 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - hq.sinajs.cn
+    - vip.stock.finance.sina.com.cn
     name: option_sse_greeks_sina
     probe:
       check_interval: 2592000
       params:
         symbol: '000001'
       skip: false
-    rate_limit_key: sina_vip
+    rate_limit_key: sina_hq
     signature:
     - symbol
     sources: []
@@ -15653,15 +15652,15 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - hq.sinajs.cn
+    - vip.stock.finance.sina.com.cn
     name: option_sse_underlying_spot_price_sina
     probe:
       check_interval: 2592000
       params:
         symbol: '000001'
       skip: false
-    rate_limit_key: sina_vip
+    rate_limit_key: sina_hq
     signature:
     - symbol
     sources: []
@@ -15675,8 +15674,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: option_value_analysis_em
     probe:
       check_interval: 2592000
@@ -15935,8 +15934,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: rate_interbank
     probe:
       check_interval: 2592000
@@ -15964,8 +15963,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: reits_hist_em
     probe:
       check_interval: 2592000
@@ -15990,8 +15989,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: reits_hist_min_em
     probe:
       check_interval: 2592000
@@ -16012,8 +16011,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 95.push2.eastmoney.com
+    - quote.eastmoney.com
     name: reits_realtime_em
     probe:
       check_interval: 2592000
@@ -16223,8 +16222,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - stock.finance.sina.com.cn
+    - finance.sina.com.cn
     name: spot_goods
     probe:
       check_interval: 2592000
@@ -16549,8 +16548,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - legulegu.com
     - www.legulegu.com
+    - legulegu.com
     name: stock_a_below_net_asset_statistics
     probe:
       check_interval: 2592000
@@ -16660,8 +16659,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - legulegu.com
     - www.legulegu.com
+    - legulegu.com
     name: stock_a_ttm_lyr
     probe:
       check_interval: 2592000
@@ -16680,8 +16679,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_account_statistics_em
     probe:
       check_interval: 2592000
@@ -16770,8 +16769,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter.eastmoney.com
     - data.eastmoney.com
+    - datacenter.eastmoney.com
     name: stock_analyst_detail_em
     probe:
       check_interval: 2592000
@@ -16897,8 +16896,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_bid_ask_em
     probe:
       check_interval: 2592000
@@ -16919,8 +16918,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_bj_a_spot_em
     probe:
       check_interval: 2592000
@@ -16939,8 +16938,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_board_change_em
     probe:
       check_interval: 2592000
@@ -16963,8 +16962,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 29.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_board_concept_cons_em
     probe:
       check_interval: 2592000
@@ -17042,9 +17041,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - push2his.eastmoney.com
     - 91.push2his.eastmoney.com
     - quote.eastmoney.com
-    - push2his.eastmoney.com
     name: stock_board_concept_hist_min_em
     probe:
       check_interval: 2592000
@@ -17260,8 +17259,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 7.push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_board_industry_hist_em
     probe:
       check_interval: 2592000
@@ -17297,9 +17296,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - push2his.eastmoney.com
     - 7.push2his.eastmoney.com
     - quote.eastmoney.com
-    - push2his.eastmoney.com
     name: stock_board_industry_hist_min_em
     probe:
       check_interval: 2592000
@@ -17697,8 +17696,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_changes_em
     probe:
       check_interval: 2592000
@@ -17775,8 +17774,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_comment_detail_scrd_desire_em
     probe:
       check_interval: 2592000
@@ -17801,8 +17800,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_comment_detail_scrd_focus_em
     probe:
       check_interval: 2592000
@@ -17827,8 +17826,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_comment_detail_zhpj_lspf_em
     probe:
       check_interval: 2592000
@@ -17853,8 +17852,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_comment_detail_zlkp_jgcyd_em
     probe:
       check_interval: 2592000
@@ -17875,8 +17874,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_comment_em
     probe:
       check_interval: 2592000
@@ -17924,8 +17923,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2his.eastmoney.com
     - data.eastmoney.com
+    - push2his.eastmoney.com
     name: stock_concept_fund_flow_hist
     probe:
       check_interval: 2592000
@@ -17946,8 +17945,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 7.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_cy_a_spot_em
     probe:
       check_interval: 2592000
@@ -17974,8 +17973,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_cyq_em
     probe:
       check_interval: 2592000
@@ -18023,8 +18022,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_dxsyl_em
     probe:
       check_interval: 2592000
@@ -18047,8 +18046,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_dzjy_hygtj
     probe:
       check_interval: 2592000
@@ -18073,8 +18072,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_dzjy_hyyybtj
     probe:
       check_interval: 2592000
@@ -18107,8 +18106,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_dzjy_mrmx
     probe:
       check_interval: 2592000
@@ -18141,8 +18140,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_dzjy_mrtj
     probe:
       check_interval: 2592000
@@ -18165,8 +18164,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_dzjy_sctj
     probe:
       check_interval: 2592000
@@ -18189,8 +18188,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_dzjy_yybph
     probe:
       check_interval: 2592000
@@ -18334,8 +18333,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_fhps_detail_em
     probe:
       check_interval: 2592000
@@ -18385,8 +18384,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_fhps_em
     probe:
       check_interval: 2592000
@@ -18410,8 +18409,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - quotes.sina.cn
+    - vip.stock.finance.sina.com.cn
     name: stock_financial_abstract
     probe:
       check_interval: 2592000
@@ -18817,8 +18816,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - quotes.sina.cn
+    - vip.stock.finance.sina.com.cn
     name: stock_financial_report_sina
     probe:
       check_interval: 2592000
@@ -19032,8 +19031,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gddh_em
     probe:
       check_interval: 2592000
@@ -19056,8 +19055,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_free_holding_analyse_em
     probe:
       check_interval: 2592000
@@ -19081,8 +19080,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_free_holding_change_em
     probe:
       check_interval: 2592000
@@ -19106,8 +19105,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_free_holding_detail_em
     probe:
       check_interval: 2592000
@@ -19131,8 +19130,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_free_holding_statistics_em
     probe:
       check_interval: 2592000
@@ -19156,8 +19155,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_free_holding_teamwork_em
     probe:
       check_interval: 2592000
@@ -19212,8 +19211,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_holding_analyse_em
     probe:
       check_interval: 2592000
@@ -19237,8 +19236,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_holding_change_em
     probe:
       check_interval: 2592000
@@ -19270,8 +19269,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_holding_detail_em
     probe:
       check_interval: 2592000
@@ -19298,8 +19297,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_holding_statistics_em
     probe:
       check_interval: 2592000
@@ -19323,8 +19322,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gdfx_holding_teamwork_em
     probe:
       check_interval: 2592000
@@ -19379,8 +19378,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_ggcg_em
     probe:
       check_interval: 2592000
@@ -19401,8 +19400,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gpzy_distribute_statistics_bank_em
     probe:
       check_interval: 2592000
@@ -19421,8 +19420,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gpzy_distribute_statistics_company_em
     probe:
       check_interval: 2592000
@@ -19453,8 +19452,8 @@ interfaces:
 
       :return: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gpzy_industry_data_em
     probe:
       check_interval: 2592000
@@ -19489,8 +19488,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gpzy_pledge_ratio_em
     probe:
       check_interval: 2592000
@@ -19510,8 +19509,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gpzy_profile_em
     probe:
       check_interval: 2592000
@@ -19534,8 +19533,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_gsrl_gsdt_em
     probe:
       check_interval: 2592000
@@ -19693,8 +19692,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 69.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hk_famous_spot_em
     probe:
       check_interval: 2592000
@@ -19766,8 +19765,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 33.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hk_ggt_components_em
     probe:
       check_interval: 2592000
@@ -19901,8 +19900,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hk_hist_min_em
     probe:
       check_interval: 2592000
@@ -19934,8 +19933,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hk_hot_rank_detail_em
     probe:
       check_interval: 2592000
@@ -19961,8 +19960,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hk_hot_rank_detail_realtime_em
     probe:
       check_interval: 2592000
@@ -19984,8 +19983,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     - push2.eastmoney.com
     name: stock_hk_hot_rank_em
     probe:
@@ -20009,8 +20008,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hk_hot_rank_latest_em
     probe:
       check_interval: 2592000
@@ -20036,8 +20035,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hk_index_daily_em
     probe:
       check_interval: 2592000
@@ -20062,8 +20061,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - stock.finance.sina.com.cn
+    - finance.sina.com.cn
     name: stock_hk_index_daily_sina
     probe:
       check_interval: 2592000
@@ -20106,14 +20105,14 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - hq.sinajs.cn
+    - vip.stock.finance.sina.com.cn
     name: stock_hk_index_spot_sina
     probe:
       check_interval: 2592000
       params: {}
       skip: false
-    rate_limit_key: sina_vip
+    rate_limit_key: sina_hq
     signature: []
     sources: []
   stock_hk_indicator_eniu:
@@ -20156,8 +20155,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 81.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hk_main_board_spot_em
     probe:
       check_interval: 2592000
@@ -20438,8 +20437,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hold_management_detail_em
     probe:
       check_interval: 2592000
@@ -20466,8 +20465,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hold_management_person_em
     probe:
       check_interval: 2592000
@@ -20569,8 +20568,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hot_keyword_em
     probe:
       check_interval: 2592000
@@ -20596,8 +20595,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hot_rank_detail_em
     probe:
       check_interval: 2592000
@@ -20623,8 +20622,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hot_rank_detail_realtime_em
     probe:
       check_interval: 2592000
@@ -20646,8 +20645,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     - push2.eastmoney.com
     name: stock_hot_rank_em
     probe:
@@ -20671,8 +20670,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hot_rank_latest_em
     probe:
       check_interval: 2592000
@@ -20698,8 +20697,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     name: stock_hot_rank_relate_em
     probe:
       check_interval: 2592000
@@ -20784,8 +20783,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emappdata.eastmoney.com
     - guba.eastmoney.com
+    - emappdata.eastmoney.com
     - push2.eastmoney.com
     name: stock_hot_up_em
     probe:
@@ -20813,8 +20812,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hsgt_board_rank_em
     probe:
       check_interval: 2592000
@@ -20836,8 +20835,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hsgt_fund_flow_summary_em
     probe:
       check_interval: 2592000
@@ -20860,8 +20859,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: stock_hsgt_fund_min_em
     probe:
       check_interval: 2592000
@@ -20886,8 +20885,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hsgt_hist_em
     probe:
       check_interval: 2592000
@@ -20917,8 +20916,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hsgt_hold_stock_em
     probe:
       check_interval: 2592000
@@ -20951,8 +20950,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hsgt_individual_detail_em
     probe:
       check_interval: 2592000
@@ -21014,8 +21013,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hsgt_institution_statistics_em
     probe:
       check_interval: 2592000
@@ -21039,8 +21038,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hsgt_sh_hk_spot_em
     probe:
       check_interval: 2592000
@@ -21075,8 +21074,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_hsgt_stock_statistics_em
     probe:
       check_interval: 2592000
@@ -21166,8 +21165,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - stock.xueqiu.com
     - xueqiu.com
+    - stock.xueqiu.com
     name: stock_individual_basic_info_hk_xq
     probe:
       check_interval: 2592000
@@ -21202,8 +21201,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - stock.xueqiu.com
     - xueqiu.com
+    - stock.xueqiu.com
     name: stock_individual_basic_info_us_xq
     probe:
       check_interval: 2592000
@@ -21238,8 +21237,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - stock.xueqiu.com
     - xueqiu.com
+    - stock.xueqiu.com
     name: stock_individual_basic_info_xq
     probe:
       check_interval: 2592000
@@ -21270,8 +21269,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2his.eastmoney.com
     - data.eastmoney.com
+    - push2his.eastmoney.com
     name: stock_individual_fund_flow
     probe:
       check_interval: 2592000
@@ -21296,8 +21295,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: stock_individual_fund_flow_rank
     probe:
       check_interval: 2592000
@@ -21325,8 +21324,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_individual_info_em
     probe:
       check_interval: 2592000
@@ -21403,8 +21402,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - stock.xueqiu.com
     - xueqiu.com
+    - stock.xueqiu.com
     name: stock_individual_spot_xq
     probe:
       check_interval: 2592000
@@ -21569,8 +21568,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - np-listapi.eastmoney.com
     - stock.eastmoney.com
+    - np-listapi.eastmoney.com
     name: stock_info_cjzc_em
     probe:
       check_interval: 2592000
@@ -21614,9 +21613,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - np-weblist.eastmoney.com
     - finance.eastmoney.com
     - kuaixun.eastmoney.com
-    - np-weblist.eastmoney.com
     name: stock_info_global_em
     probe:
       check_interval: 2592000
@@ -21654,8 +21653,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - zhibo.sina.com.cn
+    - finance.sina.com.cn
     name: stock_info_global_sina
     probe:
       check_interval: 2592000
@@ -21899,8 +21898,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 70.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_intraday_em
     probe:
       check_interval: 2592000
@@ -21971,9 +21970,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - pdf.dfcfw.com
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
+    - pdf.dfcfw.com
     name: stock_ipo_declare_em
     probe:
       check_interval: 2592000
@@ -22035,8 +22034,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_ipo_review_em
     probe:
       check_interval: 2592000
@@ -22105,8 +22104,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_ipo_tutor_em
     probe:
       check_interval: 2592000
@@ -22181,8 +22180,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_jgdy_detail_em
     probe:
       check_interval: 2592000
@@ -22206,8 +22205,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_jgdy_tj_em
     probe:
       check_interval: 2592000
@@ -22271,8 +22270,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 7.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_kc_a_spot_em
     probe:
       check_interval: 2592000
@@ -22380,8 +22379,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_detail_em
     probe:
       check_interval: 2592000
@@ -22438,8 +22437,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_hyyyb_em
     probe:
       check_interval: 2592000
@@ -22470,8 +22469,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_jgmmtj_em
     probe:
       check_interval: 2592000
@@ -22517,8 +22516,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_jgstatistic_em
     probe:
       check_interval: 2592000
@@ -22569,8 +22568,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_stock_detail_date_em
     probe:
       check_interval: 2592000
@@ -22603,8 +22602,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_stock_detail_em
     probe:
       check_interval: 2592000
@@ -22631,8 +22630,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_stock_statistic_em
     probe:
       check_interval: 2592000
@@ -22657,8 +22656,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_traderstatistic_em
     probe:
       check_interval: 2592000
@@ -22683,8 +22682,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_yyb_detail_em
     probe:
       check_interval: 2592000
@@ -22709,8 +22708,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lhb_yybph_em
     probe:
       check_interval: 2592000
@@ -22762,8 +22761,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_lrb_em
     probe:
       check_interval: 2592000
@@ -22788,8 +22787,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: stock_main_fund_flow
     probe:
       check_interval: 2592000
@@ -22861,8 +22860,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_margin_account_info
     probe:
       check_interval: 2592000
@@ -23041,8 +23040,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - legulegu.com
     - www.legulegu.com
+    - legulegu.com
     name: stock_market_activity_legu
     probe:
       check_interval: 2592000
@@ -23061,8 +23060,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2his.eastmoney.com
     - data.eastmoney.com
+    - push2his.eastmoney.com
     name: stock_market_fund_flow
     probe:
       check_interval: 2592000
@@ -23131,8 +23130,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_new_a_spot_em
     probe:
       check_interval: 2592000
@@ -23193,9 +23192,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - so.eastmoney.com
-    - finance.eastmoney.com
     - search-api-web.eastmoney.com
+    - finance.eastmoney.com
+    - so.eastmoney.com
     name: stock_news_em
     probe:
       check_interval: 2592000
@@ -23267,8 +23266,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_pg_em
     probe:
       check_interval: 2592000
@@ -23291,8 +23290,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.ushknews.com
     - calendar-api.ushknews.com
+    - www.ushknews.com
     name: stock_price_js
     probe:
       check_interval: 2592000
@@ -23346,8 +23345,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_profit_forecast_em
     probe:
       check_interval: 2592000
@@ -23499,8 +23498,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_qbzf_em
     probe:
       check_interval: 2592000
@@ -23523,8 +23522,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_qsjy_em
     probe:
       check_interval: 2592000
@@ -23804,9 +23803,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - pdf.dfcfw.com
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
+    - pdf.dfcfw.com
     name: stock_register_all_em
     probe:
       check_interval: 2592000
@@ -23825,9 +23824,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - pdf.dfcfw.com
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
+    - pdf.dfcfw.com
     name: stock_register_bj
     probe:
       check_interval: 2592000
@@ -23846,9 +23845,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - pdf.dfcfw.com
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
+    - pdf.dfcfw.com
     name: stock_register_cyb
     probe:
       check_interval: 2592000
@@ -23867,8 +23866,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_register_db
     probe:
       check_interval: 2592000
@@ -23887,9 +23886,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - pdf.dfcfw.com
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
+    - pdf.dfcfw.com
     name: stock_register_kcb
     probe:
       check_interval: 2592000
@@ -23908,9 +23907,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - pdf.dfcfw.com
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
+    - pdf.dfcfw.com
     name: stock_register_sh
     probe:
       check_interval: 2592000
@@ -23929,9 +23928,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - pdf.dfcfw.com
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
+    - pdf.dfcfw.com
     name: stock_register_sz
     probe:
       check_interval: 2592000
@@ -24021,8 +24020,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_report_fund_hold_detail
     probe:
       check_interval: 2592000
@@ -24044,8 +24043,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_repurchase_em
     probe:
       check_interval: 2592000
@@ -24068,9 +24067,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - data.eastmoney.com
     - pdf.dfcfw.com
     - reportapi.eastmoney.com
-    - data.eastmoney.com
     name: stock_research_report_em
     probe:
       check_interval: 2592000
@@ -24099,8 +24098,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_restricted_release_detail_em
     probe:
       check_interval: 2592000
@@ -24127,8 +24126,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_restricted_release_queue_em
     probe:
       check_interval: 2592000
@@ -24182,8 +24181,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_restricted_release_stockholder_em
     probe:
       check_interval: 2592000
@@ -24217,8 +24216,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_restricted_release_summary_em
     probe:
       check_interval: 2592000
@@ -24273,8 +24272,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2his.eastmoney.com
     - data.eastmoney.com
+    - push2his.eastmoney.com
     name: stock_sector_fund_flow_hist
     probe:
       check_interval: 2592000
@@ -24303,8 +24302,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: stock_sector_fund_flow_rank
     probe:
       check_interval: 2592000
@@ -24333,8 +24332,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2.eastmoney.com
     - data.eastmoney.com
+    - push2.eastmoney.com
     name: stock_sector_fund_flow_summary
     probe:
       check_interval: 2592000
@@ -24360,8 +24359,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - vip.stock.finance.sina.com.cn
     - biz.finance.sina.com.cn
+    - vip.stock.finance.sina.com.cn
     - money.finance.sina.com.cn
     - finance.sina.com.cn
     name: stock_sector_spot
@@ -24461,8 +24460,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_sh_a_spot_em
     probe:
       check_interval: 2592000
@@ -24692,8 +24691,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 5.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_staq_net_stop
     probe:
       check_interval: 2592000
@@ -24716,8 +24715,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_sy_em
     probe:
       check_interval: 2592000
@@ -24741,8 +24740,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_sy_hy_em
     probe:
       check_interval: 2592000
@@ -24766,8 +24765,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_sy_jz_em
     probe:
       check_interval: 2592000
@@ -24787,8 +24786,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_sy_profile_em
     probe:
       check_interval: 2592000
@@ -24811,8 +24810,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_sy_yq_em
     probe:
       check_interval: 2592000
@@ -24832,8 +24831,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_sz_a_spot_em
     probe:
       check_interval: 2592000
@@ -24935,8 +24934,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_tfp_em
     probe:
       check_interval: 2592000
@@ -24996,8 +24995,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 69.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_us_famous_spot_em
     probe:
       check_interval: 2592000
@@ -25079,8 +25078,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_us_hist_min_em
     probe:
       check_interval: 2592000
@@ -25105,8 +25104,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 23.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_us_pink_spot_em
     probe:
       check_interval: 2592000
@@ -25204,8 +25203,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_value_em
     probe:
       check_interval: 2592000
@@ -25230,8 +25229,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_xgsglb_em
     probe:
       check_interval: 2592000
@@ -25276,8 +25275,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_xjll_em
     probe:
       check_interval: 2592000
@@ -25301,8 +25300,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_yjbb_em
     probe:
       check_interval: 2592000
@@ -25327,8 +25326,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter.eastmoney.com
     - data.eastmoney.com
+    - datacenter.eastmoney.com
     name: stock_yjkb_em
     probe:
       check_interval: 2592000
@@ -25353,8 +25352,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter.eastmoney.com
     - data.eastmoney.com
+    - datacenter.eastmoney.com
     name: stock_yjyg_em
     probe:
       check_interval: 2592000
@@ -25383,8 +25382,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_yysj_em
     probe:
       check_interval: 2592000
@@ -25410,8 +25409,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter.eastmoney.com
     - data.eastmoney.com
+    - datacenter.eastmoney.com
     name: stock_yzxdr_em
     probe:
       check_interval: 2592000
@@ -25436,8 +25435,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_zcfz_bj_em
     probe:
       check_interval: 2592000
@@ -25462,8 +25461,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_zcfz_em
     probe:
       check_interval: 2592000
@@ -25491,8 +25490,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_zdhtmx_em
     probe:
       check_interval: 2592000
@@ -25699,8 +25698,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_zh_a_gdhs
     probe:
       check_interval: 2592000
@@ -25725,8 +25724,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-web.eastmoney.com
     - data.eastmoney.com
+    - datacenter-web.eastmoney.com
     name: stock_zh_a_gdhs_detail_em
     probe:
       check_interval: 2592000
@@ -25771,8 +25770,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_a_hist
     probe:
       check_interval: 2592000
@@ -25822,8 +25821,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_a_hist_min_em
     probe:
       check_interval: 2592000
@@ -25864,8 +25863,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_a_hist_pre_min_em
     probe:
       check_interval: 2592000
@@ -26032,8 +26031,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_a_spot_em
     probe:
       check_interval: 2592000
@@ -26096,8 +26095,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - gu.qq.com
     - stock.gtimg.cn
+    - gu.qq.com
     name: stock_zh_a_tick_tx_js
     probe:
       check_interval: 2592000
@@ -26118,8 +26117,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_ab_comparison_em
     probe:
       check_interval: 2592000
@@ -26154,8 +26153,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - web.ifzq.gtimg.cn
     - gu.qq.com
+    - web.ifzq.gtimg.cn
     name: stock_zh_ah_daily
     probe:
       check_interval: 2592000
@@ -26219,8 +26218,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_ah_spot_em
     probe:
       check_interval: 2592000
@@ -26447,8 +26446,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2his.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_index_daily_em
     probe:
       check_interval: 2592000
@@ -26547,8 +26546,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 48.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_index_spot_em
     probe:
       check_interval: 2592000
@@ -26594,8 +26593,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - oss-ch.csindex.com.cn
     - www.csindex.com.cn
+    - oss-ch.csindex.com.cn
     name: stock_zh_index_value_csindex
     probe:
       check_interval: 2592000
@@ -26656,8 +26655,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - np-anotice-stock.eastmoney.com
     - data.eastmoney.com
+    - np-anotice-stock.eastmoney.com
     name: stock_zh_kcb_report_em
     probe:
       check_interval: 2592000
@@ -26818,8 +26817,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zt_pool_dtgc_em
     probe:
       check_interval: 2592000
@@ -26843,8 +26842,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zt_pool_em
     probe:
       check_interval: 2592000
@@ -26868,8 +26867,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zt_pool_previous_em
     probe:
       check_interval: 2592000
@@ -26893,8 +26892,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zt_pool_strong_em
     probe:
       check_interval: 2592000
@@ -26918,8 +26917,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zt_pool_sub_new_em
     probe:
       check_interval: 2592000
@@ -26943,8 +26942,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - push2ex.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zt_pool_zbgc_em
     probe:
       check_interval: 2592000
