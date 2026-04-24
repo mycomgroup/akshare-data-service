@@ -121,7 +121,7 @@ def example_filter_by_symbol():
             # 筛选平安银行
             filtered = df[df[symbol_col].astype(str).str.contains("000001", na=False)]
             if not filtered.empty:
-                print(f"平安银行分红数据:")
+                print("平安银行分红数据:")
                 print(filtered.to_string(index=False))
             else:
                 print("未找到平安银行的分红数据")
@@ -180,7 +180,7 @@ def example_error_handling():
         print("\n测试 1: 无效日期格式")
         df = service.get_dividend_by_date(date="invalid-date")
         if df is None:
-            print(f"  结果: None (数据不可用)")
+            print("  结果: None (数据不可用)")
         else:
             print(f"  结果: {len(df)} 行数据")
     except Exception as e:
@@ -193,7 +193,7 @@ def example_error_handling():
         df = service.get_dividend_by_date(date=query_date)
         print(f"  使用日期: {query_date}")
         if df is None:
-            print(f"  结果: None (数据不可用)")
+            print("  结果: None (数据不可用)")
         else:
             print(f"  结果: {len(df)} 行数据")
     except Exception as e:

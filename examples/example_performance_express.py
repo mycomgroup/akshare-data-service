@@ -167,7 +167,7 @@ def example_analysis():
         # 数值列统计
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计:")
+            print("\n数值字段统计:")
             print(df[numeric_cols].describe())
 
     except Exception as e:
@@ -195,7 +195,7 @@ def example_error_handling():
             window_days=365,
         )
         if df is None:
-            print(f"  结果: 无数据（接口暂无可用数据源）")
+            print("  结果: 无数据（接口暂无可用数据源）")
         else:
             print(f"  结果: {len(df)} 行数据 (回退结束日期: {used_end})")
     except Exception as e:
@@ -211,7 +211,7 @@ def example_error_handling():
             window_days=365,
         )
         if df is None:
-            print(f"  结果: 无数据（接口暂无可用数据源）")
+            print("  结果: 无数据（接口暂无可用数据源）")
         else:
             print(f"  结果: {len(df)} 行数据 (回退结束日期: {used_end})")
     except Exception as e:

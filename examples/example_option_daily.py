@@ -213,21 +213,21 @@ def example_option_daily_analysis():
 
         # 基本统计
         if "close" in df.columns:
-            print(f"\n收盘价统计:")
+            print("\n收盘价统计:")
             print(f"  最高价: {df['high'].max():.4f}")
             print(f"  最低价: {df['low'].min():.4f}")
             print(f"  平均收盘价: {df['close'].mean():.4f}")
             print(f"  收盘价标准差: {df['close'].std():.4f}")
 
         if "volume" in df.columns:
-            print(f"\n成交量统计:")
+            print("\n成交量统计:")
             print(f"  最大成交量: {df['volume'].max()}")
             print(f"  平均成交量: {df['volume'].mean():.0f}")
 
         # 计算日收益率
         if "close" in df.columns and len(df) > 1:
             df["daily_return"] = df["close"].pct_change() * 100
-            print(f"\n日收益率统计:")
+            print("\n日收益率统计:")
             print(f"  最大涨幅: {df['daily_return'].max():.2f}%")
             print(f"  最大跌幅: {df['daily_return'].min():.2f}%")
             print(f"  平均日收益率: {df['daily_return'].mean():.2f}%")

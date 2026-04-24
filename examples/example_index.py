@@ -150,13 +150,13 @@ def example_default_dates():
         df = _get_index("000001", start, end)
 
         if not df.empty:
-            print(f"上证指数全部历史数据")
+            print("上证指数全部历史数据")
             print(f"数据形状: {df.shape}")
             print(f"时间范围: {df['date'].min()} ~ {df['date'].max()}")
             print(f"总交易日数: {len(df)}")
-            print(f"\n最早5个交易日:")
+            print("\n最早5个交易日:")
             print(df.head())
-            print(f"\n最近5个交易日:")
+            print("\n最近5个交易日:")
             print(df.tail())
         else:
             print("无数据")
@@ -221,11 +221,11 @@ def example_analysis():
         # 计算日收益率
         df["pct_change"] = df["close"].pct_change() * 100
 
-        print(f"沪深300 2024年日线数据 (含均线)")
+        print("沪深300 2024年日线数据 (含均线)")
         print(f"数据形状: {df.shape}")
 
         # 统计信息
-        print(f"\n2024年统计:")
+        print("\n2024年统计:")
         print(
             f"  最高收盘: {df['close'].max():.2f} ({df.loc[df['close'].idxmax(), 'date']})"
         )
@@ -235,7 +235,7 @@ def example_analysis():
         print(f"  年化波动: {df['pct_change'].std() * (252**0.5):.2f}%")
 
         # 最新数据
-        print(f"\n最新10行数据:")
+        print("\n最新10行数据:")
         cols = ["date", "close", "ma5", "ma10", "ma20", "ma60", "pct_change"]
         available_cols = [c for c in cols if c in df.columns]
         print(df[available_cols].tail(10).to_string(index=False))

@@ -59,7 +59,7 @@ def example_basic_limit_up():
             print(f"数据形状: {df.shape}")
             print(f"涨停股票数量: {len(df)}")
             print(f"列名: {df.columns.tolist()}")
-            print(f"\n前5行数据:")
+            print("\n前5行数据:")
             print(df.head())
         else:
             print("该日期无涨停数据（重试后仍为空）")
@@ -86,7 +86,7 @@ def example_basic_limit_down():
             print(f"数据形状: {df.shape}")
             print(f"跌停股票数量: {len(df)}")
             print(f"列名: {df.columns.tolist()}")
-            print(f"\n前5行数据:")
+            print("\n前5行数据:")
             print(df.head())
         else:
             print("该日期无跌停数据（重试后仍为空）")
@@ -125,7 +125,7 @@ def example_compare_limit_up_down():
                 f"get_limit_down_pool({date})",
             )
             print(f"{date:<12} {len(up_df) if up_df is not None else 0:>8} {len(down_df) if down_df is not None else 0:>8}")
-        except Exception as e:
+        except Exception:
             print(f"{date:<12} {'获取失败':>8}")
 
 
@@ -150,12 +150,12 @@ def example_limit_up_analysis():
             print(f"共 {len(df)} 只股票涨停")
 
             # 打印所有列名，方便了解数据结构
-            print(f"\n数据列:")
+            print("\n数据列:")
             for i, col in enumerate(df.columns):
                 print(f"  {i + 1}. {col}")
 
             # 查看前10行详细数据
-            print(f"\n前10行详细数据:")
+            print("\n前10行详细数据:")
             print(df.head(10))
 
             # 如果有连板天数字段，进行统计
@@ -195,10 +195,10 @@ def example_limit_down_analysis():
             print("该日期无跌停数据（市场情绪较好）")
         else:
             print(f"共 {len(df)} 只股票跌停")
-            print(f"\n数据列:")
+            print("\n数据列:")
             for col in df.columns:
                 print(f"  - {col}")
-            print(f"\n详细数据:")
+            print("\n详细数据:")
             print(df)
     except Exception as e:
         print(f"获取跌停池数据失败: {e}")
@@ -302,7 +302,7 @@ def example_market_sentiment():
             print(
                 f"{date:<12} {up_count:>6} {down_count:>6} {ratio_str:>8} {sentiment:>8}"
             )
-        except Exception as e:
+        except Exception:
             print(f"{date:<12} {'获取失败':>6}")
 
 

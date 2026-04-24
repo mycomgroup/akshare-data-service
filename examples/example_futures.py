@@ -171,7 +171,7 @@ def example_futures_daily_analysis():
         print(f"交易日数: {len(df)}")
 
         if "close" in df.columns:
-            print(f"\n价格统计:")
+            print("\n价格统计:")
             print(f"  最高价: {df['high'].max():.2f}")
             print(f"  最低价: {df['low'].min():.2f}")
             print(f"  最新收盘价: {df.iloc[-1]['close']:.2f}")
@@ -184,7 +184,7 @@ def example_futures_daily_analysis():
                 print(f"  区间涨跌幅: {change_pct:.2f}%")
 
         if "volume" in df.columns:
-            print(f"\n成交量统计:")
+            print("\n成交量统计:")
             print(f"  平均日成交量: {df['volume'].mean():,.0f}")
             print(f"  最大日成交量: {df['volume'].max():,.0f}")
 

@@ -74,10 +74,10 @@ def example_dragon_tiger_list_recent():
         else:
             print(f"命中日期: {hit_date}")
             print(f"共 {df.shape[0]} 条龙虎榜记录")
-            print(f"\n数据列:")
+            print("\n数据列:")
             for col in df.columns:
                 print(f"  - {col}")
-            print(f"\n前10行数据:")
+            print("\n前10行数据:")
             print(df.head(10))
     except Exception as e:
         print(f"获取龙虎榜数据失败: {e}")
@@ -101,7 +101,7 @@ def example_dragon_tiger_summary_basic():
 
         print(f"数据形状: {df.shape}")
         print(f"列名: {df.columns.tolist()}")
-        print(f"\n前5行数据:")
+        print("\n前5行数据:")
         print(df.head())
     except Exception as e:
         print(f"获取龙虎榜汇总数据失败: {e}")
@@ -132,14 +132,14 @@ def example_dragon_tiger_summary_full_month():
             )
 
             # 打印完整的列名
-            print(f"\n数据列:")
+            print("\n数据列:")
             for col in df.columns:
                 print(f"  - {col}")
 
             # 查看前几行和后几行数据
-            print(f"\n前5行数据:")
+            print("\n前5行数据:")
             print(df.head())
-            print(f"\n后5行数据:")
+            print("\n后5行数据:")
             print(df.tail())
     except Exception as e:
         print(f"获取龙虎榜汇总数据失败: {e}")

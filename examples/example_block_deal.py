@@ -58,7 +58,7 @@ def example_basic_block_deal():
             print(f"数据形状: {df.shape}")
             print(f"大宗交易笔数: {len(df)}")
             print(f"列名: {df.columns.tolist()}")
-            print(f"\n前5行数据:")
+            print("\n前5行数据:")
             print(df.head())
     except Exception as e:
         print(f"获取大宗交易数据失败: {e}")
@@ -82,12 +82,12 @@ def example_block_deal_recent():
             print(f"共 {len(df)} 笔大宗交易")
 
             # 打印数据结构
-            print(f"\n数据列说明:")
+            print("\n数据列说明:")
             for i, col in enumerate(df.columns):
                 print(f"  {i + 1}. {col}")
 
             # 查看前10行数据
-            print(f"\n前10行数据:")
+            print("\n前10行数据:")
             print(df.head(10))
     except Exception as e:
         print(f"获取大宗交易数据失败: {e}")
@@ -183,12 +183,12 @@ def example_block_deal_premium_analysis():
                 print(f"  平价交易: {flat_count} 笔")
             else:
                 print("\n未找到溢价率字段，显示原始数据:")
-                print(f"\n数据列:")
+                print("\n数据列:")
                 for col in df.columns:
                     print(f"  - {col}")
 
             # 显示详细数据
-            print(f"\n前10行详细数据:")
+            print("\n前10行详细数据:")
             print(df.head(10))
     except Exception as e:
         print(f"获取大宗交易数据失败: {e}")
@@ -237,7 +237,7 @@ def example_block_deal_combined_analysis():
         print(f"  交易笔数: {len(detail_df)}")
 
         if not detail_df.empty:
-            print(f"\n明细数据列:")
+            print("\n明细数据列:")
             for col in detail_df.columns:
                 print(f"  - {col}")
 

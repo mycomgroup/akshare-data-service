@@ -78,7 +78,7 @@ def example_overview():
         # 数值列统计
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计:")
+            print("\n数值字段统计:")
             print(df[numeric_cols].describe())
 
     except Exception as e:
@@ -110,7 +110,7 @@ def example_recent():
 
         if date_col:
             # 显示最新的10只新股
-            print(f"最新的10只新股:")
+            print("最新的10只新股:")
             print(df.head(10).to_string(index=False))
         else:
             print(f"字段列表: {list(df.columns)}")

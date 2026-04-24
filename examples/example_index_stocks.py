@@ -146,7 +146,7 @@ def example_components_without_weights():
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
-        print(f"\n前20只成分股:")
+        print("\n前20只成分股:")
         print(df.head(20).to_string(index=False))
 
     except Exception as e:
@@ -173,14 +173,14 @@ def example_compare_stocks_vs_components():
         print(f"  返回类型: {type(components_df).__name__}")
         print(f"  数量: {len(components_df)}")
         print(f"  字段: {list(components_df.columns)}")
-        print(f"  前5行:")
+        print("  前5行:")
         print(components_df.head().to_string())
 
         if "code" in components_df.columns:
             codes_from_df = set(components_df["code"].tolist())
             codes_from_list = set(stocks_list)
 
-            print(f"\n对比验证:")
+            print("\n对比验证:")
             print(f"  get_index_stocks 返回的股票数: {len(codes_from_list)}")
             print(f"  get_index_components 返回的股票数: {len(codes_from_df)}")
             print(f"  两者是否一致: {codes_from_list == codes_from_df}")
@@ -219,7 +219,7 @@ def example_filter_by_weight():
             )
 
         # 权重分布统计
-        print(f"\n权重分布统计:")
+        print("\n权重分布统计:")
         print(f"  最大权重: {df['weight'].max():.2f}%")
         print(f"  最小权重: {df['weight'].min():.2f}%")
         print(f"  平均权重: {df['weight'].mean():.2f}%")

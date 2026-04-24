@@ -10,9 +10,9 @@
 import logging
 from datetime import date, timedelta
 
-logging.getLogger("akshare_data").setLevel(logging.ERROR)
-
 from akshare_data import get_call_auction
+
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 
 def _candidate_fallback_dates(count: int = 5) -> list[str]:

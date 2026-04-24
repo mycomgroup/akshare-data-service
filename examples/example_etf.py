@@ -169,34 +169,34 @@ def example_data_analysis():
             print("无数据 (数据源未返回结果)")
             return
 
-        print(f"\n沪深300ETF (510300) 2024年度统计:")
+        print("\n沪深300ETF (510300) 2024年度统计:")
         print(f"  交易日总数: {len(df)}")
         if "date" in df.columns:
             print(f"  日期范围: {df['date'].min()} ~ {df['date'].max()}")
 
         # 价格统计
         if "close" in df.columns:
-            print(f"\n  收盘价统计:")
+            print("\n  收盘价统计:")
             print(f"    最高收盘价: {df['close'].max():.4f}")
             print(f"    最低收盘价: {df['close'].min():.4f}")
             print(f"    平均收盘价: {df['close'].mean():.4f}")
 
         # 成交量统计
         if "volume" in df.columns:
-            print(f"\n  成交量统计:")
+            print("\n  成交量统计:")
             print(f"    总成交量: {df['volume'].sum():,.0f}")
             print(f"    日均成交量: {df['volume'].mean():,.0f}")
 
         # 成交额统计
         if "amount" in df.columns:
-            print(f"\n  成交额统计:")
+            print("\n  成交额统计:")
             print(f"    总成交额: {df['amount'].sum():,.0f}")
             print(f"    日均成交额: {df['amount'].mean():,.0f}")
 
         # 计算涨跌幅
         if "close" in df.columns:
             df["pct_change"] = df["close"].pct_change() * 100
-            print(f"\n  涨跌幅统计:")
+            print("\n  涨跌幅统计:")
             print(f"    最大单日涨幅: {df['pct_change'].max():.2f}%")
             print(f"    最大单日跌幅: {df['pct_change'].min():.2f}%")
             print(f"    平均日涨跌幅: {df['pct_change'].mean():.2f}%")
@@ -219,7 +219,7 @@ def example_short_period():
         if not _print_empty_or_data("上证50ETF(510050)", df):
             return
 
-        print(f"上证50ETF (510050) 2024年11月数据:")
+        print("上证50ETF (510050) 2024年11月数据:")
         print(f"数据形状: {df.shape}")
         print("\n完整数据:")
         print(df.to_string())

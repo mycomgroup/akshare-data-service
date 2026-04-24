@@ -152,7 +152,7 @@ def example_weight_analysis():
             return
 
         print(f"成分股数量: {len(df)}")
-        print(f"\n权重统计:")
+        print("\n权重统计:")
         print(df["weight"].describe())
 
         if "name" in df.columns:
@@ -160,10 +160,10 @@ def example_weight_analysis():
         else:
             top10 = df.nlargest(10, "weight")
 
-        print(f"\n前10大权重股:")
+        print("\n前10大权重股:")
         print(top10.to_string(index=False))
 
-        print(f"\n权重分布:")
+        print("\n权重分布:")
         ranges = [
             (0, 1),
             (1, 3),

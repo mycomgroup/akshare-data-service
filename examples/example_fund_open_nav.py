@@ -170,7 +170,7 @@ def example_long_term_trend():
         if df.empty:
             return
 
-        print(f"易方达蓝筹精选 最近一年净值数据")
+        print("易方达蓝筹精选 最近一年净值数据")
         print(f"数据形状: {df.shape}")
         print(f"全年净值更新天数: {len(df)}")
 
@@ -235,7 +235,7 @@ def example_volatility_analysis():
             nav_series = _to_numeric_series(df, nav_col)
             df["daily_return"] = nav_series.pct_change() * 100
 
-            print(f"\n日收益率统计:")
+            print("\n日收益率统计:")
             print(f"  平均日收益率: {df['daily_return'].mean():.4f}%")
             print(f"  日收益率标准差: {df['daily_return'].std():.4f}%")
             print(f"  最大单日涨幅: {df['daily_return'].max():.2f}%")

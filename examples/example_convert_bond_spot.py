@@ -178,7 +178,7 @@ def example_price_range():
             labels = ["<100", "100-110", "110-120", "120-130", "130-150", ">150"]
             df["price_range"] = pd.cut(df["current_price"], bins=bins, labels=labels)
 
-            print(f"\n全市场可转债价格分布:")
+            print("\n全市场可转债价格分布:")
             distribution = df["price_range"].value_counts().sort_index()
             for range_label, count in distribution.items():
                 percentage = count / len(df) * 100
@@ -186,7 +186,7 @@ def example_price_range():
                 print(f"  {range_label:8s}: {count:4d} 只 ({percentage:5.1f}%) {bar}")
 
             # 统计信息
-            print(f"\n价格统计:")
+            print("\n价格统计:")
             print(f"  平均价格: {df['current_price'].mean():.2f}")
             print(f"  中位数: {df['current_price'].median():.2f}")
             print(f"  最低: {df['current_price'].min():.2f}")
@@ -230,7 +230,7 @@ def example_find_bond():
                     change = float(bond["change_percent"].iloc[0])
                     premium = float(bond["premium_rate"].iloc[0])
 
-                    print(f"\n分析:")
+                    print("\n分析:")
                     print(f"  今日涨跌: {change:+.2f}%")
                     print(f"  当前溢价率: {premium:.2f}%")
 
@@ -288,7 +288,7 @@ def example_comprehensive_filter():
         # 按成交量排序
         candidates = candidates.sort_values("volume", ascending=False)
 
-        print(f"\n筛选条件: 价格100-120, 成交量>40000, 溢价率<20%")
+        print("\n筛选条件: 价格100-120, 成交量>40000, 溢价率<20%")
         print(f"符合条件可转债: {len(candidates)} 只")
 
         if not candidates.empty:

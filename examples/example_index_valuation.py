@@ -170,11 +170,11 @@ def example_valuation_analysis():
                 print(f"  市盈率(PE-TTM): {pe}")
                 # 简单判断估值分位 (仅为示例，非真实历史分位)
                 if pe < 15:
-                    print(f"  估值判断: 偏低")
+                    print("  估值判断: 偏低")
                 elif pe < 25:
-                    print(f"  估值判断: 适中")
+                    print("  估值判断: 适中")
                 else:
-                    print(f"  估值判断: 偏高")
+                    print("  估值判断: 偏高")
 
             if "pb" in df.columns:
                 pb = df["pb"].iloc[0]

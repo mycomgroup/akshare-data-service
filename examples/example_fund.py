@@ -306,7 +306,7 @@ def example_fund_combined_analysis():
             print(f"净值数据行数: {len(nav_df)}")
 
         # 获取经理信息 (全局列表，然后筛选)
-        print(f"\n--- 基金经理信息 (全部) ---")
+        print("\n--- 基金经理信息 (全部) ---")
         manager_df = _as_dataframe(service.akshare.get_fund_manager_info(), "示例8-经理")
         if manager_df.empty:
             print("经理信息: 无数据")

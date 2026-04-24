@@ -130,7 +130,7 @@ def example_no_dates():
         if df is not None and not df.empty:
             print(f"数据形状: {df.shape}")
             print(f"时间范围: {df['datetime'].min()} ~ {df['datetime'].max()}")
-            print(f"\n前5行:")
+            print("\n前5行:")
             print(df.head())
         else:
             print("无数据（指定范围内未返回分钟线）")
@@ -155,7 +155,7 @@ def example_sz_stock():
 
         if not df.empty:
             print(f"数据形状: {df.shape}")
-            print(f"\n基本统计信息:")
+            print("\n基本统计信息:")
             print(df[["open", "high", "low", "close", "volume"]].describe())
         else:
             print("无数据")
@@ -187,9 +187,9 @@ def example_analysis():
         # 按时间统计平均成交量
         time_volume = df.groupby("time")["volume"].mean().sort_index()
 
-        print(f"招商银行 2024-06-03 5分钟线")
+        print("招商银行 2024-06-03 5分钟线")
         print(f"数据行数: {len(df)}")
-        print(f"\n各时段平均成交量:")
+        print("\n各时段平均成交量:")
         print(time_volume.to_string())
 
         # 找出成交量最大的时段

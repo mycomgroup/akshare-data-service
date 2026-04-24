@@ -164,7 +164,7 @@ def example_long_term_trend():
                 break
 
         if close_col and close_col in df.columns:
-            print(f"\n价格统计:")
+            print("\n价格统计:")
             print(f"  年初收盘价: {df.iloc[0][close_col]:.3f}")
             print(f"  年末收盘价: {df.iloc[-1][close_col]:.3f}")
             yearly_return = (df.iloc[-1][close_col] - df.iloc[0][close_col]) / df.iloc[0][close_col] * 100
@@ -281,7 +281,7 @@ def example_volume_analysis():
 
             # 成交量最大的5天
             top_vol_days = df.nlargest(5, volume_col)
-            print(f"\n成交量最大的5个交易日:")
+            print("\n成交量最大的5个交易日:")
             display_cols = [col for col in ["date", "日期", volume_col] if col in df.columns]
             if display_cols:
                 print(top_vol_days[display_cols].to_string(index=False))

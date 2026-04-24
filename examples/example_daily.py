@@ -164,7 +164,7 @@ def example_sz_stock():
             return
 
         print(f"数据形状: {df.shape}")
-        print(f"\n基本统计信息:")
+        print("\n基本统计信息:")
         print(df[["open", "high", "low", "close", "volume"]].describe())
 
     except Exception as e:
@@ -197,7 +197,7 @@ def example_analysis():
         df["ma5"] = df["close"].rolling(window=5).mean()
         df["ma20"] = df["close"].rolling(window=20).mean()
 
-        print(f"招商银行 2024上半年日线数据 (含MA5/MA20)")
+        print("招商银行 2024上半年日线数据 (含MA5/MA20)")
         print(f"数据形状: {df.shape}")
         print("\n最新10行数据:")
         print(
@@ -227,7 +227,7 @@ def example_no_adjust():
             _print_empty_hint("000001", start, end)
             return
 
-        print(f"平安银行 2023年不复权日线数据")
+        print("平安银行 2023年不复权日线数据")
         print(f"数据形状: {df.shape}")
         print(f"全年交易日数: {len(df)}")
         print(f"年初收盘价: {df.iloc[0]['close']:.2f}")

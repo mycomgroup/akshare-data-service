@@ -112,7 +112,7 @@ def example_filter_by_size():
                 print(small[available_cols].head(10).to_string(index=False))
 
             # 发行规模统计
-            print(f"\n发行规模统计:")
+            print("\n发行规模统计:")
             print(f"  总规模: {df['issue_size'].sum():.2f} 亿元")
             print(f"  平均规模: {df['issue_size'].mean():.2f} 亿元")
             print(f"  最大规模: {df['issue_size'].max():.2f} 亿元")
@@ -290,7 +290,7 @@ def example_comprehensive_report():
         print("=" * 50)
 
         # 基础统计
-        print(f"\n1. 市场规模")
+        print("\n1. 市场规模")
         print(f"   可转债总数: {len(df)} 只")
 
         if "issue_size" in df.columns:
@@ -300,7 +300,7 @@ def example_comprehensive_report():
 
         # 评级分布
         if "credit_rating" in df.columns:
-            print(f"\n2. 信用评级分布")
+            print("\n2. 信用评级分布")
             rating_counts = df["credit_rating"].value_counts().sort_index(ascending=False)
             for rating, count in rating_counts.head(5).items():
                 print(f"   {rating}: {count} 只")

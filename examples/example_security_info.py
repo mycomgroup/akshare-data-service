@@ -16,10 +16,10 @@ get_security_info() 接口使用示例
 
 import logging
 
-logging.getLogger("akshare_data").setLevel(logging.ERROR)
-
 from akshare_data import get_security_info
 from _example_utils import fetch_with_retry, normalize_symbol_input
+
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 
 def _safe_security_info(symbol: str):

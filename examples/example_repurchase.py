@@ -104,7 +104,7 @@ def example_statistics():
 
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计:")
+            print("\n数值字段统计:")
             print(df[numeric_cols].describe())
 
     except Exception as e:

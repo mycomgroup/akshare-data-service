@@ -74,7 +74,7 @@ def example_basic_usage():
 
     print(f"数据形状: {df.shape}")
     print(f"列名: {df.columns.tolist()}")
-    print(f"\n前5行数据:")
+    print("\n前5行数据:")
     print(df.head())
 
 
@@ -93,9 +93,9 @@ def example_latest_data():
     if not df.empty:
         print(f"最早日期: {df['日期'].iloc[0]}")
         print(f"最晚日期: {df['日期'].iloc[-1]}")
-        print(f"\n前5行数据:")
+        print("\n前5行数据:")
         print(df.head())
-        print(f"\n后5行数据:")
+        print("\n后5行数据:")
         print(df.tail())
 
 
@@ -136,7 +136,7 @@ def example_analyze_net_inflow():
     col = "主力净流入-净额"
     if col in df.columns:
         df[col] = pd.to_numeric(df[col], errors="coerce")
-        print(f"\n主力净流入统计（单位：元）:")
+        print("\n主力净流入统计（单位：元）:")
         print(f"  平均值: {df[col].mean():.2f}")
         print(f"  最大值: {df[col].max():.2f}")
         print(f"  最小值: {df[col].min():.2f}")
@@ -186,7 +186,7 @@ def example_compare_flow_sizes():
             total = df[col].sum()
             print(f"  {col}: {total:,.2f}")
 
-        print(f"\n前5行详细数据:")
+        print("\n前5行详细数据:")
         print(df.head())
     else:
         print(f"未找到资金流向列，可用列: {df.columns.tolist()}")

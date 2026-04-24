@@ -238,7 +238,7 @@ def example_margin_analysis():
         # 打印基本统计信息 (如果存在相关数值列)
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计信息:")
+            print("\n数值字段统计信息:")
             print(df[numeric_cols].describe())
 
         # 打印最新5天数据

@@ -186,17 +186,17 @@ def example_trend_analysis():
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         
         if numeric_cols:
-            print(f"\n数值字段统计:")
+            print("\n数值字段统计:")
             print(df[numeric_cols].describe())
 
         # 显示首尾对比
         print("\n月初 vs 月末持股数据:")
-        print(f"  年初第一天:")
+        print("  年初第一天:")
         first_row = df.iloc[0]
         for col in numeric_cols[:4]:  # 只显示前4个数值列
             print(f"    {col}: {first_row[col]}")
 
-        print(f"  年中最后一天:")
+        print("  年中最后一天:")
         last_row = df.iloc[-1]
         for col in numeric_cols[:4]:
             print(f"    {col}: {last_row[col]}")
@@ -272,14 +272,14 @@ def example_sz_stocks():
             print("无数据")
             return
 
-        print(f"平安银行 2024年5月北向持股数据")
+        print("平安银行 2024年5月北向持股数据")
         print(f"数据形状: {df.shape}")
 
         # 计算月度变化
         if len(df) >= 2:
             first = df.iloc[0]
             last = df.iloc[-1]
-            print(f"\n月度变化:")
+            print("\n月度变化:")
             numeric_cols = df.select_dtypes(include=["number"]).columns[:3]
             for col in numeric_cols:
                 change = last[col] - first[col]
@@ -316,7 +316,7 @@ def example_namespace_call():
             print("无数据")
             return
 
-        print(f"招商银行 (600036) 2024年4月北向持股")
+        print("招商银行 (600036) 2024年4月北向持股")
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
@@ -360,7 +360,7 @@ def example_filter_and_export():
         
         if available_cols:
             filtered_df = df[available_cols]
-            print(f"\n筛选后的数据 (前5行):")
+            print("\n筛选后的数据 (前5行):")
             print(filtered_df.head())
 
             # 保存到CSV示例（注释掉，实际使用时可取消）

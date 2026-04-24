@@ -62,7 +62,7 @@ def example_basic_usage():
 
     print(f"数据形状: {df.shape}")
     print(f"列名: {df.columns.tolist()}")
-    print(f"\n完整数据:")
+    print("\n完整数据:")
     print(df)
 
 
@@ -92,7 +92,7 @@ def example_analyze_net_flow():
 
     if net_flow_col:
         df[net_flow_col] = pd.to_numeric(df[net_flow_col], errors="coerce")
-        print(f"\n各通道当日净流入统计（单位：亿元）:")
+        print("\n各通道当日净流入统计（单位：亿元）:")
         name_col = df.columns[0] if len(df.columns) > 0 else "名称"
         if name_col not in df.columns:
             name_col = df.columns[0]

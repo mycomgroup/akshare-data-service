@@ -9,10 +9,10 @@
 """
 
 import logging
-logging.getLogger("akshare_data").setLevel(logging.ERROR)
-
 from akshare_data import get_service
 from _example_utils import first_non_empty_by_symbol
+
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 
 def example_basic():

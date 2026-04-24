@@ -130,18 +130,15 @@ def example_nav_trend():
         if df.empty:
             return
 
-        print(f"景顺长城鼎益 (162605) 净值数据")
+        print("景顺长城鼎益 (162605) 净值数据")
         print(f"数据形状: {df.shape}")
 
-        # 查找净值列和日期列
+        # 查找净值列
         nav_col = None
-        date_col = None
 
         for col in df.columns:
             if "净值" in str(col) or "nav" in str(col).lower():
                 nav_col = col
-            if "日期" in str(col) or "date" in str(col).lower() or "时间" in str(col):
-                date_col = col
 
         if nav_col and nav_col in df.columns:
             nav = pd.to_numeric(df[nav_col], errors="coerce").dropna()

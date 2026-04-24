@@ -69,7 +69,7 @@ def example_basic():
         # 注意: 该接口仅接受 symbol 参数，返回全部历史数据
         symbol = normalize_symbol_input("127045")
 
-        print(f"\n查询参数:")
+        print("\n查询参数:")
         print(f"  代码: {symbol}")
 
         df = fetch_with_retry(lambda: service.get_conversion_bond_daily(symbol=symbol), retries=2)
@@ -113,7 +113,7 @@ def example_symbol_formats():
             )
 
             if df.empty:
-                print(f"  结果: 无数据")
+                print("  结果: 无数据")
             else:
                 print(f"  结果: 获取到 {len(df)} 条记录")
                 if "date" in df.columns:
@@ -150,7 +150,7 @@ def example_technical_analysis():
             if col in df.columns:
                 df[col] = pd.to_numeric(df[col], errors="coerce")
 
-        print(f"\n基础统计:")
+        print("\n基础统计:")
         print(f"  交易日数: {len(df)}")
         print(f"  价格范围: {df['low'].min():.2f} - {df['high'].max():.2f}")
         print(f"  平均收盘价: {df['close'].mean():.2f}")
@@ -168,7 +168,7 @@ def example_technical_analysis():
         print(f"年化波动率: {volatility:.2f}%")
 
         # 显示最新10天数据
-        print(f"\n最新10个交易日:")
+        print("\n最新10个交易日:")
         display_cols = ["date", "close", "ma5", "ma20", "volume"]
         available_cols = [c for c in display_cols if c in df.columns]
         print(df[available_cols].tail(10).to_string(index=False))
@@ -267,7 +267,7 @@ def example_volume_analysis():
         if "volume" in df.columns:
             df["volume"] = pd.to_numeric(df["volume"], errors="coerce")
 
-            print(f"\n成交量统计:")
+            print("\n成交量统计:")
             print(f"  平均成交量: {df['volume'].mean():.0f}")
             print(f"  最大成交量: {df['volume'].max():.0f}")
             print(f"  最小成交量: {df['volume'].min():.0f}")

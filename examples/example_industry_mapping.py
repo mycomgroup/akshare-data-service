@@ -66,7 +66,7 @@ def example_basic():
         # level: 行业级别，默认 1
         industry_code = _fetch_industry_mapping(service, symbol="600519", level=1)
 
-        print(f"股票代码: 600519")
+        print("股票代码: 600519")
         print(f"一级行业代码: {industry_code}")
 
     except Exception as e:

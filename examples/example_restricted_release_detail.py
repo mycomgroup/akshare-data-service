@@ -83,7 +83,7 @@ def example_no_date():
         if df.empty:
             print(f"数据形状: {df.shape}")
             print(f"字段列表: {list(df.columns)}")
-            print(f"\n前5行数据:")
+            print("\n前5行数据:")
             print(df.head())
         else:
             print("无数据")
@@ -177,7 +177,7 @@ def example_error_handling():
         end_date = date.today().strftime("%Y-%m-%d")
         df = service.get_restricted_release_detail(start_date="invalid", end_date=end_date)
         if df is None:
-            print(f"  结果: 无数据（接口暂无可用数据源）")
+            print("  结果: 无数据（接口暂无可用数据源）")
         else:
             print(f"  结果: {len(df)} 行数据")
     except Exception as e:
@@ -188,7 +188,7 @@ def example_error_handling():
         start_date, end_date = _recent_window(90)
         df = service.get_restricted_release_detail(start_date=start_date, end_date=end_date)
         if df is None:
-            print(f"  结果: 无数据（接口暂无可用数据源）")
+            print("  结果: 无数据（接口暂无可用数据源）")
         else:
             print(f"  结果: {len(df)} 行数据")
     except Exception as e:

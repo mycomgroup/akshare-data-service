@@ -164,7 +164,7 @@ def example_pmi_analysis():
         # 打印基本统计信息
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计信息:")
+            print("\n数值字段统计信息:")
             print(df[numeric_cols].describe())
 
         # 打印最新数据
@@ -351,7 +351,7 @@ def example_m2_analysis():
         # 打印基本统计信息
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计信息:")
+            print("\n数值字段统计信息:")
             print(df[numeric_cols].describe())
 
         # 打印最新数据
@@ -398,7 +398,7 @@ def example_all_macro():
                 print(f"\n{name}:")
                 print(f"  数据形状: {df.shape}")
                 print(f"  字段列表: {list(df.columns)}")
-                print(f"  前3行:")
+                print("  前3行:")
                 print(df.head(3).to_string(index=False))
         except Exception as e:
             print(f"\n{name}: 获取失败 - {e}")

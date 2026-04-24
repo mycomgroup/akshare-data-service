@@ -111,7 +111,7 @@ def example_analysis():
 
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计信息:")
+            print("\n数值字段统计信息:")
             print(df[numeric_cols].describe())
 
         print("\n最新数据:")

@@ -165,7 +165,7 @@ def example_analysis():
         # 找出数值列进行统计
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计:")
+            print("\n数值字段统计:")
             print(df[numeric_cols].describe())
 
         # 如果有关键字段，展示排名
@@ -260,13 +260,13 @@ def example_filter_stocks():
         # 条件2: 净买入额较大的股票
         if "净买入额" in df.columns:
             big_buy = df.nlargest(5, "净买入额")
-            print(f"\n净买入额前五:")
+            print("\n净买入额前五:")
             print(big_buy[["代码", "名称", "净买入额"]].to_string(index=False))
 
         # 条件3: 成交额较大的股票
         if "龙虎榜成交额" in df.columns:
             big_volume = df.nlargest(5, "龙虎榜成交额")
-            print(f"\n龙虎榜成交额前五:")
+            print("\n龙虎榜成交额前五:")
             print(big_volume[["代码", "名称", "龙虎榜成交额"]].to_string(index=False))
 
     except Exception as e:
@@ -295,7 +295,7 @@ def example_specify_source():
             df = service.get_dragon_tiger_list(date=date, source=source)
 
             if df.empty:
-                print(f"  结果: 无数据（数据源可能不支持此接口）")
+                print("  结果: 无数据（数据源可能不支持此接口）")
             else:
                 print(f"  结果: 获取到 {df.shape[0]} 条记录，{df.shape[1]} 个字段")
 
@@ -329,7 +329,7 @@ def example_error_handling():
         try:
             df = service.get_dragon_tiger_list(date=date)
             if df.empty:
-                print(f"  结果: 返回空DataFrame")
+                print("  结果: 返回空DataFrame")
             else:
                 print(f"  结果: 获取到 {len(df)} 条记录")
         except Exception as e:

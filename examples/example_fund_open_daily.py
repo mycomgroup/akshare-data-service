@@ -95,7 +95,7 @@ def example_filter_by_type():
                 break
 
         if type_col:
-            print(f"\n基金类型分布:")
+            print("\n基金类型分布:")
             print(df[type_col].value_counts().head(10))
         else:
             print("\n当前数据源返回的字段中未发现基金类型列")
@@ -136,7 +136,7 @@ def example_find_specific_fund():
         if code_col:
             matched = df[df[code_col].astype(str).str.contains(target_code, na=False)]
             if not matched.empty:
-                print(f"\n找到匹配基金:")
+                print("\n找到匹配基金:")
                 print(matched.to_string(index=False))
             else:
                 print(f"\n未找到代码为 {target_code} 的基金")
@@ -180,14 +180,14 @@ def example_nav_statistics():
                 print(f"{nav_col} 无有效数值")
                 return
             print(f"使用净值列: {nav_col}")
-            print(f"\n净值统计:")
+            print("\n净值统计:")
             print(f"  平均值: {nav.mean():.4f}")
             print(f"  中位数: {nav.median():.4f}")
             print(f"  最大值: {nav.max():.4f}")
             print(f"  最小值: {nav.min():.4f}")
 
             # 净值分布
-            print(f"\n净值分布 (分位数):")
+            print("\n净值分布 (分位数):")
             print(nav.quantile([0.1, 0.25, 0.5, 0.75, 0.9]).to_string())
         else:
             print("当前数据中未发现数值型净值字段")

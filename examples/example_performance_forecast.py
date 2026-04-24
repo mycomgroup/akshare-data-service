@@ -128,7 +128,7 @@ def example_type_statistics():
                 break
 
         if type_col:
-            print(f"\n预告类型分布:")
+            print("\n预告类型分布:")
             print(df[type_col].value_counts().head(10))
         else:
             print(f"\n字段列表: {list(df.columns)}")
@@ -203,7 +203,7 @@ def example_error_handling():
             window_days=365,
         )
         if df is None:
-            print(f"  结果: 无数据（接口暂无可用数据源）")
+            print("  结果: 无数据（接口暂无可用数据源）")
         else:
             print(f"  结果: {len(df)} 行数据 (回退结束日期: {used_end})")
     except Exception as e:
@@ -218,7 +218,7 @@ def example_error_handling():
             window_days=730,
         )
         if df is None:
-            print(f"  结果: 无数据（接口暂无可用数据源）")
+            print("  结果: 无数据（接口暂无可用数据源）")
         else:
             print(f"  结果: {len(df)} 行数据 (回退结束日期: {used_end})")
     except Exception as e:

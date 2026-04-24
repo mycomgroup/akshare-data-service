@@ -167,7 +167,7 @@ def example_analysis():
         # 打印基本统计信息
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
-            print(f"\n数值字段统计信息:")
+            print("\n数值字段统计信息:")
             print(df[numeric_cols].describe())
 
         print("\n完整数据:")

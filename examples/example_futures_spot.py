@@ -318,7 +318,7 @@ def example_futures_spot_market_overview():
             print("无数据")
             return
 
-        print(f"\n市场总览:")
+        print("\n市场总览:")
         print(f"  合约总数: {len(df)}")
 
         # 找到关键列
@@ -349,7 +349,7 @@ def example_futures_spot_market_overview():
             vol_col = vol_cols[0]
             df[vol_col] = pd.to_numeric(df[vol_col], errors="coerce")
             total_volume = df[vol_col].sum()
-            print(f"\n成交量统计:")
+            print("\n成交量统计:")
             print(f"  总成交量: {total_volume:,.0f}")
             print(f"  平均单合约成交量: {df[vol_col].mean():,.0f}")
 

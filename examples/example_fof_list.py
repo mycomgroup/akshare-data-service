@@ -94,7 +94,7 @@ def example_fof_type_analysis():
                 break
 
         if type_col:
-            print(f"\nFOF基金类型分布:")
+            print("\nFOF基金类型分布:")
             print(df[type_col].value_counts().to_string())
         else:
             print("\n当前数据中未发现基金类型字段")
@@ -107,7 +107,7 @@ def example_fof_type_analysis():
                 break
 
         if strategy_col:
-            print(f"\nFOF策略分布:")
+            print("\nFOF策略分布:")
             print(df[strategy_col].value_counts().head(10).to_string())
 
     except Exception as e:

@@ -98,19 +98,19 @@ def example_price_change():
             # 转换为数值类型
             df[change_col] = pd.to_numeric(df[change_col], errors="coerce")
 
-            print(f"\n涨跌幅统计:")
+            print("\n涨跌幅统计:")
             print(f"  平均涨跌幅: {df[change_col].mean():.2f}%")
             print(f"  最大涨幅: {df[change_col].max():.2f}%")
             print(f"  最大跌幅: {df[change_col].min():.2f}%")
 
             # 涨幅前5
             top_gainers = df.nlargest(5, change_col)
-            print(f"\n涨幅前5:")
+            print("\n涨幅前5:")
             print(top_gainers[[col for col in df.columns if col in ["代码", "名称", "最新价", change_col]]].to_string(index=False))
 
             # 跌幅前5
             top_losers = df.nsmallest(5, change_col)
-            print(f"\n跌幅前5:")
+            print("\n跌幅前5:")
             print(top_losers[[col for col in df.columns if col in ["代码", "名称", "最新价", change_col]]].to_string(index=False))
         else:
             print("未找到涨跌幅字段")
@@ -200,7 +200,7 @@ def example_volume_analysis():
 
             # 成交量前10
             top_volume = df.nlargest(10, volume_col)
-            print(f"\n成交量前10:")
+            print("\n成交量前10:")
             display_cols = [col for col in df.columns if col in ["代码", "名称", "最新价", volume_col]]
             print(top_volume[display_cols].to_string(index=False))
         else:
@@ -247,7 +247,7 @@ def example_price_distribution():
             bins = [0, 1, 2, 5, 10, float("inf")]
             labels = ["<1", "1-2", "2-5", "5-10", ">10"]
             df["price_range"] = pd.cut(df[price_col], bins=bins, labels=labels)
-            print(f"\n价格区间分布:")
+            print("\n价格区间分布:")
             print(df["price_range"].value_counts().sort_index().to_string())
         else:
             print("未找到价格字段")

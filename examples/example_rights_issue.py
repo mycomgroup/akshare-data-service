@@ -132,10 +132,10 @@ def example_chronological():
 
         if date_col:
             df_sorted = df.sort_values(by=date_col)
-            print(f"浦发银行配股记录 (按时间排序):")
+            print("浦发银行配股记录 (按时间排序):")
             print(df_sorted.to_string(index=False))
         else:
-            print(f"浦发银行配股记录:")
+            print("浦发银行配股记录:")
             print(df.to_string(index=False))
 
     except Exception as e:

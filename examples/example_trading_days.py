@@ -133,9 +133,9 @@ def example_check_if_trading_day():
             (date.today() - timedelta(days=2)).strftime("%Y-%m-%d"),
             start_date,
         ]
-        for date in test_dates:
-            is_trading = date in str_days
-            print(f"{date} {'是' if is_trading else '不是'}交易日")
+        for test_date in test_dates:
+            is_trading = test_date in str_days
+            print(f"{test_date} {'是' if is_trading else '不是'}交易日")
     except Exception as e:
         print(f"获取交易日失败: {e}")
 

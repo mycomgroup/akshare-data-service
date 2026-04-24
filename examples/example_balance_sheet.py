@@ -271,7 +271,7 @@ def example_data_source_comparison():
     # 默认数据源 (通常是 akshare)
     try:
         df = service.get_balance_sheet(symbol="300750")
-        print(f"默认数据源:")
+        print("默认数据源:")
         print(f"  数据形状: {df.shape}")
         print(f"  字段数量: {len(df.columns)}")
         if df is not None and not df.empty:

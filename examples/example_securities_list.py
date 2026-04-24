@@ -20,10 +20,10 @@ get_securities_list() 接口示例
 """
 
 import logging
-logging.getLogger("akshare_data").setLevel(logging.ERROR)
-
 import pandas as pd
 from akshare_data import get_securities_list
+
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 
 def _fetch_securities(security_type: str):

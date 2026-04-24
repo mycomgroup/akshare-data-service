@@ -9,7 +9,6 @@
 导入方式: from akshare_data import get_finance_indicator
 """
 
-import pandas as pd
 from akshare_data import get_service
 
 from _example_utils import call_with_date_range_fallback
@@ -110,7 +109,7 @@ def example_multiple_stocks():
             print(f"  {symbol}: 无数据")
         else:
             print(f"  数据形状: {df.shape} (回退结束日期: {used_end})")
-            print(f"  最新数据:")
+            print("  最新数据:")
             print(df.tail(1).to_string(index=False))
 
 

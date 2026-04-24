@@ -218,7 +218,7 @@ def example_volatility():
         if nav_col and nav_col in df.columns:
             df["daily_return"] = pd.to_numeric(df[nav_col], errors="coerce").pct_change() * 100
 
-            print(f"\n日收益率统计:")
+            print("\n日收益率统计:")
             print(f"  平均日收益率: {df['daily_return'].mean():.4f}%")
             print(f"  收益率标准差: {df['daily_return'].std():.4f}%")
             print(f"  最大单日涨幅: {df['daily_return'].max():.2f}%")
