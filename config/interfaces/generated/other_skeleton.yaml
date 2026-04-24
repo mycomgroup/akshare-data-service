@@ -1,7 +1,7 @@
 air_city_table:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -38,19 +38,24 @@ air_city_table:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: air_city_table
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      AQI: AQI
+      PM2.5浓度: PM2.5浓度
       城市: city
+      序号: 序号
       省份: province
+      空气质量: 空气质量
+      首要污染物: 首要污染物
     param_transforms: {}
 air_quality_hebei:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -75,7 +80,7 @@ air_quality_hebei:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: air_quality_hebei
     input_mapping: {}
@@ -121,7 +126,7 @@ air_quality_hist:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: air_quality_hist
     input_mapping:
@@ -131,8 +136,15 @@ air_quality_hist:
       start_date: start_date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 air_quality_rank:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: '真气网-168 城市 AQI 排行榜
 
@@ -148,17 +160,46 @@ air_quality_rank:
     required: true
     type: str
   name: air_quality_rank
-  output: []
+  output:
+  - desc: 降序 field
+    name: 降序
+    type: float
+  - desc: province field
+    name: province
+    type: str
+  - desc: city field
+    name: city
+    type: str
+  - desc: AQI field
+    name: AQI
+    type: float
+  - desc: 空气质量 field
+    name: 空气质量
+    type: str
+  - desc: PM2.5浓度 field
+    name: PM2.5浓度
+    type: str
+  - desc: 首要污染物 field
+    name: 首要污染物
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: air_quality_rank
     input_mapping:
       date: date
     name: akshare_em
-    output_mapping: {}
-    param_transforms: {}
+    output_mapping:
+      AQI: AQI
+      PM2.5浓度: PM2.5浓度
+      城市: city
+      省份: province
+      空气质量: 空气质量
+      降序: 降序
+      首要污染物: 首要污染物
+    param_transforms:
+      date: YYYYMMDD
 air_quality_watch_point:
   category: other
   description: '真气网-监测点空气质量-细化到具体城市的每个监测点
@@ -193,7 +234,7 @@ air_quality_watch_point:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: air_quality_watch_point
     input_mapping:
@@ -202,11 +243,13 @@ air_quality_watch_point:
       start_date: start_date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 amac_aoin_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -237,19 +280,22 @@ amac_aoin_info:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_aoin_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
       产品名称: name
+      产品编码: 产品编码
+      直投子公司: 直投子公司
+      管理机构: 管理机构
       设立日期: date
     param_transforms: {}
 amac_fund_abs:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -266,9 +312,6 @@ amac_fund_abs:
   - desc: num field
     name: num
     type: int
-  - desc: _ field
-    name: _
-    type: str
   - desc: 专项计划全称 field
     name: 专项计划全称
     type: str
@@ -292,22 +335,25 @@ amac_fund_abs:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_fund_abs
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      专项计划全称: 专项计划全称
       备案编号: num
       备案通过时间: time
       成立日期: date
+      托管人: 托管人
+      管理人: 管理人
       编号: num
       预期到期时间: time
     param_transforms: {}
 amac_fund_account_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -335,20 +381,21 @@ amac_fund_account_info:
     type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_fund_account_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
       产品名称: name
+      产品编码: 产品编码
       成立日期: date
       管理人名称: name
     param_transforms: {}
 amac_fund_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -416,7 +463,7 @@ amac_fund_info:
 amac_fund_sub_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -450,13 +497,14 @@ amac_fund_sub_info:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_fund_sub_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
       产品名称: name
+      产品编码: 产品编码
       备案日期: date
       成立日期: date
       托管人名称: name
@@ -465,7 +513,7 @@ amac_fund_sub_info:
 amac_futures_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -511,25 +559,27 @@ amac_futures_info:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_futures_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
       产品名称: name
+      产品编码: 产品编码
       到期日: maturity_date
       备案日期: date
       成立日期: date
       托管人名称: name
       投资类型: type
+      是否分级: 是否分级
       管理人名称: name
       运作状态: status
     param_transforms: {}
 amac_manager_cancelled_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -581,7 +631,7 @@ amac_manager_cancelled_info:
 amac_manager_classify_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -633,16 +683,21 @@ amac_manager_classify_info:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_manager_classify_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
       会员类型: type
+      办公地: 办公地
       在管基金数量: quantity
       成立时间: time
+      是否有提示信息: 是否有提示信息
+      是否有诚信信息: 是否有诚信信息
       机构类型: type
+      法定代表人/执行事务合伙人(委派代表)姓名: 法定代表人/执行事务合伙人(委派代表)姓名
+      注册地: 注册地
       登记时间: time
       登记编号: num
       私募基金管理人名称: name
@@ -650,7 +705,7 @@ amac_manager_classify_info:
 amac_manager_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -687,7 +742,7 @@ amac_manager_info:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_manager_info
     input_mapping: {}
@@ -695,6 +750,8 @@ amac_manager_info:
     output_mapping:
       成立时间: time
       机构类型: type
+      法定代表人/执行事务合伙人(委派代表)姓名: 法定代表人/执行事务合伙人(委派代表)姓名
+      注册地: 注册地
       登记时间: time
       登记编号: num
       私募基金管理人名称: name
@@ -702,7 +759,7 @@ amac_manager_info:
 amac_member_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -739,22 +796,24 @@ amac_member_info:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_member_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      会员代表: 会员代表
       会员类型: type
       会员编号: num
       入会时间: time
+      是否星标: 是否星标
       机构类型: type
       机构（会员）名称: name
     param_transforms: {}
 amac_member_sub_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -788,12 +847,13 @@ amac_member_sub_info:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_member_sub_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      会员代表: 会员代表
       会员类型: type
       会员编号: num
       入会时间: time
@@ -803,7 +863,7 @@ amac_member_sub_info:
 amac_person_bond_org_list:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -820,9 +880,6 @@ amac_person_bond_org_list:
   - desc: 序号 field
     name: 序号
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: name field
     name: name
     type: str
@@ -834,19 +891,21 @@ amac_person_bond_org_list:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_person_bond_org_list
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      公示网址: 公示网址
+      序号: 序号
       机构名称: name
       机构类型: type
     param_transforms: {}
 amac_person_fund_org_list:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -890,20 +949,26 @@ amac_person_fund_org_list:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_person_fund_org_list
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      员工人数: 员工人数
+      基金从业资格: 基金从业资格
+      基金经理: 基金经理
+      基金销售业务资格: 基金销售业务资格
+      序号: 序号
+      投资经理: 投资经理
       机构名称: name
       机构类型: type
     param_transforms: {}
 amac_securities_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -949,22 +1014,29 @@ amac_securities_info:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: amac_securities_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
       产品名称: name
+      产品编码: 产品编码
       到期时间: maturity_date
       备案日期: date
       成立日期: date
       托管人名称: name
       投资类型: type
+      是否分级: 是否分级
       管理人名称: name
       运作状态: status
     param_transforms: {}
 article_epu_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: '经济政策不确定性指数
 
@@ -983,21 +1055,33 @@ article_epu_index:
     required: true
     type: str
   name: article_epu_index
-  output: []
+  output:
+  - desc: year field
+    name: year
+    type: int
+  - desc: month field
+    name: month
+    type: int
+  - desc: China_Policy_Index field
+    name: China_Policy_Index
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: article_epu_index
     input_mapping:
       symbol: symbol
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      China_Policy_Index: China_Policy_Index
+      month: month
+      year: year
     param_transforms: {}
 article_ff_crr:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1017,18 +1101,14 @@ article_ff_crr:
   - desc: item field
     name: item
     type: str
-  - desc: 'from :return: docstring'
-    name: '4'
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: article_ff_crr
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      '4': '4'
       index: index
       item: item
     param_transforms: {}
@@ -1052,7 +1132,7 @@ article_oman_rv:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: article_oman_rv
     input_mapping:
@@ -1076,7 +1156,7 @@ article_oman_rv_short:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: article_oman_rv_short
     input_mapping:
@@ -1112,7 +1192,7 @@ article_rlab_rv:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: article_rlab_rv
     input_mapping:
@@ -1123,7 +1203,7 @@ article_rlab_rv:
 bank_fjcf_table_detail:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1194,7 +1274,7 @@ bank_fjcf_table_detail:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bank_fjcf_table_detail
     input_mapping:
@@ -1203,17 +1283,24 @@ bank_fjcf_table_detail:
       page: page
     name: akshare_em
     output_mapping:
+      主要负责人姓名: 主要负责人姓名
+      主要违法违规事实（案由）: 主要违法违规事实（案由）
       作出处罚决定的日期: date
       作出处罚决定的机关名称: name
       内容: content
       单位: unit
       单位名称: name
+      处罚ID: 处罚ID
       处罚公布日期: date
+      姓名: 姓名
+      行政处罚依据: 行政处罚依据
+      行政处罚决定: 行政处罚决定
+      行政处罚决定书文号: 行政处罚决定书文号
     param_transforms: {}
 business_value_artist:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1230,9 +1317,6 @@ business_value_artist:
   - desc: 排名 field
     name: 排名
     type: int
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: 艺人 field
     name: 艺人
     type: int
@@ -1253,13 +1337,12 @@ business_value_artist:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: business_value_artist
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      '-': '-'
       专业热度: 专业热度
       关注热度: 关注热度
       商业价值: 商业价值
@@ -1296,7 +1379,7 @@ car_market_cate_cpca:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: car_market_cate_cpca
     input_mapping:
@@ -1308,7 +1391,7 @@ car_market_cate_cpca:
 car_market_country_cpca:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1321,24 +1404,20 @@ car_market_country_cpca:
     :rtype: pandas.DataFrame'
   input: []
   name: car_market_country_cpca
-  output:
-  - desc: 'from :return: docstring'
-    name: '1:'
-    type: str
+  output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: car_market_country_cpca
     input_mapping: {}
     name: akshare_em
-    output_mapping:
-      '1:': '1:'
+    output_mapping: {}
     param_transforms: {}
 car_market_fuel_cpca:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1360,19 +1439,27 @@ car_market_fuel_cpca:
     type: str
   name: car_market_fuel_cpca
   output:
-  - desc: 'from :return: docstring'
-    name: '2'
+  - desc: month field
+    name: month
     type: str
+  - desc: NEV field
+    name: NEV
+    type: float
+  - desc: ICE field
+    name: ICE
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: car_market_fuel_cpca
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
-      '2': '2'
+      ICE: ICE
+      NEV: NEV
+      月份: month
     param_transforms: {}
 car_market_man_rank_cpca:
   category: other
@@ -1400,7 +1487,7 @@ car_market_man_rank_cpca:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: car_market_man_rank_cpca
     input_mapping:
@@ -1412,7 +1499,7 @@ car_market_man_rank_cpca:
 car_market_segment_cpca:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1433,25 +1520,21 @@ car_market_segment_cpca:
     required: true
     type: str
   name: car_market_segment_cpca
-  output:
-  - desc: 'from :return: docstring'
-    name: '1:'
-    type: str
+  output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: car_market_segment_cpca
     input_mapping:
       symbol: symbol
     name: akshare_em
-    output_mapping:
-      '1:': '1:'
+    output_mapping: {}
     param_transforms: {}
 car_market_total_cpca:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1479,12 +1562,18 @@ car_market_total_cpca:
     type: str
   name: car_market_total_cpca
   output:
-  - desc: 'from :return: docstring'
-    name: '2'
+  - desc: month field
+    name: month
     type: str
+  - desc: 2025年 field
+    name: 2025年
+    type: float
+  - desc: 2026年 field
+    name: 2026年
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: car_market_total_cpca
     input_mapping:
@@ -1492,7 +1581,9 @@ car_market_total_cpca:
       symbol: symbol
     name: akshare_em
     output_mapping:
-      '2': '2'
+      2025年: 2025年
+      2026年: 2026年
+      月份: month
     param_transforms: {}
 car_sale_rank_gasgoo:
   category: other
@@ -1524,7 +1615,7 @@ car_sale_rank_gasgoo:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: car_sale_rank_gasgoo
     input_mapping:
@@ -1532,11 +1623,12 @@ car_sale_rank_gasgoo:
       symbol: symbol
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 crypto_bitcoin_cme:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1563,7 +1655,7 @@ crypto_bitcoin_cme:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: crypto_bitcoin_cme
     input_mapping:
@@ -1571,11 +1663,12 @@ crypto_bitcoin_cme:
     name: akshare_em
     output_mapping:
       item[name: item[name
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 crypto_bitcoin_hold_report:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1595,8 +1688,8 @@ crypto_bitcoin_hold_report:
   - desc: name field
     name: name
     type: str
-  - desc: country field
-    name: country
+  - desc: 国家/地区 field
+    name: 国家/地区
     type: str
   - desc: market_cap field
     name: market_cap
@@ -1622,9 +1715,6 @@ crypto_bitcoin_hold_report:
   - desc: url field
     name: url
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: 分类 field
     name: 分类
     type: str
@@ -1636,17 +1726,19 @@ crypto_bitcoin_hold_report:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: crypto_bitcoin_hold_report
     input_mapping: {}
     name: akshare_em
     output_mapping:
       代码: code
+      倍数: 倍数
       公司名称-中文: name
       公司名称-英文: name
       公告链接: url
-      国家/地区: country
+      分类: 分类
+      国家/地区: 国家/地区
       市值: market_cap
       当日持仓市值: day
       持仓占比: position
@@ -1658,7 +1750,7 @@ crypto_bitcoin_hold_report:
 crypto_js_spot:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1699,7 +1791,7 @@ crypto_js_spot:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: crypto_js_spot
     input_mapping: {}
@@ -1708,15 +1800,17 @@ crypto_js_spot:
       24小时成交量: volume
       24小时最低: low
       24小时最高: high
+      交易品种: 交易品种
       市场: market
       更新时间: time
+      最近报价: 最近报价
       涨跌幅: pct_change
       涨跌额: change
     param_transforms: {}
 drewry_wci_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1743,7 +1837,7 @@ drewry_wci_index:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: drewry_wci_index
     input_mapping:
@@ -1756,7 +1850,7 @@ drewry_wci_index:
 energy_carbon_bj:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1784,12 +1878,13 @@ energy_carbon_bj:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: energy_carbon_bj
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      成交均价: 成交均价
       成交量: volume
       成交额: amount
       日期: date
@@ -1797,7 +1892,7 @@ energy_carbon_bj:
 energy_carbon_domestic:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1823,9 +1918,6 @@ energy_carbon_domestic:
   - desc: price field
     name: price
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: volume field
     name: volume
     type: float
@@ -1840,13 +1932,14 @@ energy_carbon_domestic:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: energy_carbon_domestic
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      地点: 地点
       成交价: price
       成交量: volume
       成交额: amount
@@ -1866,7 +1959,7 @@ energy_carbon_eu:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: energy_carbon_eu
     input_mapping: {}
@@ -1876,7 +1969,7 @@ energy_carbon_eu:
 energy_carbon_gz:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1922,12 +2015,13 @@ energy_carbon_gz:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: energy_carbon_gz
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      品种: 品种
       开盘价: open
       成交数量: quantity
       成交金额: amount
@@ -1941,7 +2035,7 @@ energy_carbon_gz:
 energy_carbon_hb:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -1955,9 +2049,6 @@ energy_carbon_hb:
   input: []
   name: energy_carbon_hb
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: date
     type: datetime
@@ -1973,17 +2064,30 @@ energy_carbon_hb:
   - desc: 'from :return: docstring'
     name: change
     type: float
+  - desc: riqi field
+    name: riqi
+    type: str
+  - desc: cjj field
+    name: cjj
+    type: str
+  - desc: cjl field
+    name: cjl
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: energy_carbon_hb
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      cjj: cjj
+      cjl: cjl
+      riqi: riqi
       成交价: price
       成交量: volume
       日期: date
+      最新: 最新
       涨跌: change
     param_transforms: {}
 energy_carbon_sz:
@@ -2000,7 +2104,7 @@ energy_carbon_sz:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: energy_carbon_sz
     input_mapping: {}
@@ -2010,7 +2114,7 @@ energy_carbon_sz:
 energy_oil_detail:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2077,24 +2181,36 @@ energy_oil_detail:
   - desc: 首字母 field
     name: 首字母
     type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: energy_oil_detail
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      QE_0: QE_0
+      QE_89: QE_89
+      QE_92: QE_92
+      QE_95: QE_95
+      V_0: V_0
+      V_89: V_89
+      V_92: V_92
+      V_95: V_95
+      ZDE_0: ZDE_0
+      ZDE_89: ZDE_89
+      ZDE_92: ZDE_92
+      ZDE_95: ZDE_95
+      地区: 地区
       日期: date
-    param_transforms: {}
+      首字母: 首字母
+    param_transforms:
+      date: YYYYMMDD
 energy_oil_hist:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2123,22 +2239,26 @@ energy_oil_hist:
   - desc: change field
     name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: energy_oil_hist
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      柴油价格: 柴油价格
       柴油涨跌: change
+      汽油价格: 汽油价格
       汽油涨跌: change
       调整日期: date
     param_transforms: {}
 forbes_rank:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: '福布斯中国-榜单
 
@@ -2159,21 +2279,37 @@ forbes_rank:
     required: true
     type: str
   name: forbes_rank
-  output: []
+  output:
+  - desc: 沈南鹏 field
+    name: 沈南鹏
+    type: str
+  - desc: 男 field
+    name: 男
+    type: str
+  - desc: 红杉中国 field
+    name: 红杉中国
+    type: str
+  - desc: 创始及执行合伙人 field
+    name: 创始及执行合伙人
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: forbes_rank
     input_mapping:
       symbol: symbol
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      创始及执行合伙人: 创始及执行合伙人
+      沈南鹏: 沈南鹏
+      男: 男
+      红杉中国: 红杉中国
     param_transforms: {}
 forex_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2201,8 +2337,8 @@ forex_hist_em:
   - desc: open field
     name: open
     type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: high field
     name: high
@@ -2210,9 +2346,6 @@ forex_hist_em:
   - desc: low field
     name: low
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: amplitude field
     name: amplitude
     type: str
@@ -2237,13 +2370,13 @@ forex_hist_em:
       振幅: amplitude
       日期: date
       最低: low
-      最新价: last
+      最新价: price
       最高: high
     param_transforms: {}
 forex_spot_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2258,9 +2391,6 @@ forex_spot_em:
   name: forex_spot_em
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -2270,7 +2400,7 @@ forex_spot_em:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: last
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: change
@@ -2290,20 +2420,49 @@ forex_spot_em:
   - desc: 'from :return: docstring'
     name: prev_close
     type: str
+  - desc: index field
+    name: index
+    type: float
+  - desc: f12 field
+    name: f12
+    type: str
+  - desc: f14 field
+    name: f14
+    type: str
+  - desc: f17 field
+    name: f17
+    type: str
+  - desc: f15 field
+    name: f15
+    type: str
+  - desc: f16 field
+    name: f16
+    type: str
+  - desc: f18 field
+    name: f18
+    type: str
   rate_limit_key: em_push2
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: forex_spot_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      f12: f12
+      f14: f14
+      f15: f15
+      f16: f16
+      f17: f17
+      f18: f18
+      index: index
       今开: open
       代码: code
       名称: name
+      序号: 序号
       昨收: prev_close
       最低: low
-      最新价: last
+      最新价: price
       最高: high
       涨跌幅: pct_change
       涨跌额: change
@@ -2322,14 +2481,15 @@ fred_md:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fred_md
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 fred_qd:
   category: other
   description: FRED-QD is a quarterly frequency companion to FRED-MD. It is designed
@@ -2344,18 +2504,19 @@ fred_qd:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fred_qd
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 fx_c_swap_cm:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2369,9 +2530,6 @@ fx_c_swap_cm:
   input: []
   name: fx_c_swap_cm
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: date
     type: datetime
@@ -2387,22 +2545,44 @@ fx_c_swap_cm:
   - desc: 'from :return: docstring'
     name: exchange_rate
     type: float
+  - desc: curveTime field
+    name: curveTime
+    type: datetime
+  - desc: tenor field
+    name: tenor
+    type: str
+  - desc: swapPnt field
+    name: swapPnt
+    type: str
+  - desc: dataSource field
+    name: dataSource
+    type: str
+  - desc: swapAllPrc field
+    name: swapAllPrc
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fx_c_swap_cm
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      curveTime: curveTime
+      dataSource: dataSource
+      swapAllPrc: swapAllPrc
+      swapPnt: swapPnt
+      tenor: tenor
       全价汇率: exchange_rate
+      掉期点(Pips): 掉期点(Pips)
+      掉期点数据源: 掉期点数据源
       日期时间: date
       期限品种: term
     param_transforms: {}
 fx_pair_quote:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2425,23 +2605,42 @@ fx_pair_quote:
   - desc: 卖报价 field
     name: 卖报价
     type: float
-  - desc: '- field'
-    name: '-'
+  - desc: ccyPair field
+    name: ccyPair
     type: str
+  - desc: bidPrc field
+    name: bidPrc
+    type: float
+  - desc: askPrc field
+    name: askPrc
+    type: float
+  - desc: midprice field
+    name: midprice
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fx_pair_quote
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      askPrc: askPrc
+      bidPrc: bidPrc
+      ccyPair: ccyPair
+      midprice: midprice
+      time: time
+      买报价: 买报价
+      卖报价: 卖报价
       货币对: currency
     param_transforms: {}
 fx_quote_baidu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2469,8 +2668,8 @@ fx_quote_baidu:
   - desc: name field
     name: name
     type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: change field
     name: change
@@ -2478,12 +2677,6 @@ fx_quote_baidu:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: 'from :return: docstring'
-    name: '0'
-    type: str
-  - desc: 'from :return: docstring'
-    name: ':'
-    type: str
   rate_limit_key: default
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
@@ -2491,18 +2684,18 @@ fx_quote_baidu:
     func: fx_quote_baidu
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_baidu
     output_mapping:
       代码: code
       名称: name
-      最新价: last
+      最新价: price
       涨跌幅: pct_change
       涨跌额: change
     param_transforms: {}
 fx_spot_quote:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2525,23 +2718,42 @@ fx_spot_quote:
   - desc: 卖报价 field
     name: 卖报价
     type: float
-  - desc: '- field'
-    name: '-'
+  - desc: ccyPair field
+    name: ccyPair
     type: str
+  - desc: bidPrc field
+    name: bidPrc
+    type: float
+  - desc: askPrc field
+    name: askPrc
+    type: float
+  - desc: midprice field
+    name: midprice
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fx_spot_quote
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      askPrc: askPrc
+      bidPrc: bidPrc
+      ccyPair: ccyPair
+      midprice: midprice
+      time: time
+      买报价: 买报价
+      卖报价: 卖报价
       货币对: currency
     param_transforms: {}
 fx_swap_quote:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2578,19 +2790,24 @@ fx_swap_quote:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fx_swap_quote
     input_mapping: {}
     name: akshare_em
     output_mapping:
       1周: week
+      1年: 1年
+      1月: 1月
+      3月: 3月
+      6月: 6月
+      9月: 9月
       货币对: currency
     param_transforms: {}
 get_cffex_daily:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2633,9 +2850,6 @@ get_cffex_daily:
   - desc: open_interest field
     name: open_interest
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: close field
     name: close
     type: float
@@ -2647,14 +2861,13 @@ get_cffex_daily:
     type: str
   rate_limit_key: cffex
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_cffex_daily
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
-      _: _
       close: close
       high: high
       low: low
@@ -2665,11 +2878,12 @@ get_cffex_daily:
       symbol: symbol
       turnover: turnover
       volume: volume
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_cffex_rank_table:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2699,15 +2913,9 @@ get_cffex_rank_table:
   - desc: rank field
     name: rank
     type: int
-  - desc: 'from :return: docstring'
-    name: '0'
-    type: str
-  - desc: 'from :return: docstring'
-    name: ':'
-    type: str
   rate_limit_key: cffex
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_cffex_rank_table
     input_mapping:
@@ -2715,17 +2923,11 @@ get_cffex_rank_table:
       vars_list: vars_list
     name: akshare_em
     output_mapping:
-      '0': '0'
-      ':': ':'
       rank: rank
       symbol: symbol
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_czce_daily:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: '郑州商品交易所-日频率-量价数据
 
@@ -2743,45 +2945,22 @@ get_czce_daily:
     required: true
     type: str
   name: get_czce_daily
-  output:
-  - desc: 'from :return: docstring'
-    name: i.replace(
-    type: str
-  - desc: 'from :return: docstring'
-    name: ).split(|)
-    type: str
-  - desc: 'from :return: docstring'
-    name: for
-    type: str
-  - desc: 'from :return: docstring'
-    name: i
-    type: str
-  - desc: 'from :return: docstring'
-    name: in
-    type: str
-  - desc: 'from :return: docstring'
-    name: html.split(\n)[:-3
-    type: str
+  output: []
   rate_limit_key: czce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_czce_daily
     input_mapping:
       date: date
     name: akshare_em
-    output_mapping:
-      ).split(|): ).split(|)
-      for: for
-      html.split(\n)[:-3: html.split(\n)[:-3
-      i: i
-      i.replace(: i.replace(
-      in: in
-    param_transforms: {}
+    output_mapping: {}
+    param_transforms:
+      date: YYYYMMDD
 get_dce_daily:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2821,9 +3000,6 @@ get_dce_daily:
   - desc: settle field
     name: settle
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: volume field
     name: volume
     type: float
@@ -2842,21 +3018,65 @@ get_dce_daily:
   - desc: 'from :return: docstring'
     name: name
     type: str
+  - desc: contractId field
+    name: contractId
+    type: str
+  - desc: lastClear field
+    name: lastClear
+    type: str
+  - desc: clearPrice field
+    name: clearPrice
+    type: float
+  - desc: diff field
+    name: diff
+    type: str
+  - desc: diff1 field
+    name: diff1
+    type: str
+  - desc: volumn field
+    name: volumn
+    type: str
+  - desc: openInterest field
+    name: openInterest
+    type: float
+  - desc: diffI field
+    name: diffI
+    type: str
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: get_dce_daily
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      clearPrice: clearPrice
+      close: close
+      contractId: contractId
+      diff: diff
+      diff1: diff1
+      diffI: diffI
+      high: high
+      lastClear: lastClear
+      low: low
+      open: open
+      openInterest: openInterest
+      open_interest: open_interest
+      pre_settle: pre_settle
+      settle: settle
+      symbol: symbol
+      turnover: turnover
+      variety: variety
+      volume: volume
+      volumn: volumn
       ~temp_df[品种名称: name
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_dce_rank_table:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -2881,9 +3101,39 @@ get_dce_rank_table:
   - desc: 'from :return: docstring'
     name: symbol
     type: str
+  - desc: 名次 field
+    name: 名次
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: 增减 field
+    name: 增减
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 持买单量 field
+    name: 持买单量
+    type: float
+  - desc: 增减.1 field
+    name: 增减.1
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 持卖单量 field
+    name: 持卖单量
+    type: float
+  - desc: 增减.2 field
+    name: 增减.2
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: get_dce_rank_table
     input_mapping:
@@ -2892,7 +3142,18 @@ get_dce_rank_table:
     name: akshare_em
     output_mapping:
       symbol: symbol
-    param_transforms: {}
+      会员简称: name
+      会员简称.1: name
+      会员简称.2: name
+      名次: 名次
+      增减: 增减
+      增减.1: 增减.1
+      增减.2: 增减.2
+      成交量: volume
+      持买单量: 持买单量
+      持卖单量: 持卖单量
+    param_transforms:
+      date: YYYYMMDD
 get_futures_daily:
   category: other
   description: '交易所日交易数据
@@ -2921,7 +3182,7 @@ get_futures_daily:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_futures_daily
     input_mapping:
@@ -2930,7 +3191,9 @@ get_futures_daily:
       start_date: start_date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 get_gfex_daily:
   category: other
   description: '广州期货交易所-日频率-量价数据
@@ -2953,14 +3216,15 @@ get_gfex_daily:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_gfex_daily
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_ine_daily:
   category: other
   description: '上海国际能源交易中心-日频率-量价数据
@@ -2981,18 +3245,19 @@ get_ine_daily:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_ine_daily
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_qhkc_fund_bs:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3018,7 +3283,7 @@ get_qhkc_fund_bs:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_qhkc_fund_bs
     input_mapping:
@@ -3028,11 +3293,12 @@ get_qhkc_fund_bs:
     output_mapping:
       name: name
       value: value
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_qhkc_fund_money_change:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3058,7 +3324,7 @@ get_qhkc_fund_money_change:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_qhkc_fund_money_change
     input_mapping:
@@ -3068,11 +3334,12 @@ get_qhkc_fund_money_change:
     output_mapping:
       name: name
       value: value
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_qhkc_fund_position:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3098,7 +3365,7 @@ get_qhkc_fund_position:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_qhkc_fund_position
     input_mapping:
@@ -3108,11 +3375,12 @@ get_qhkc_fund_position:
     output_mapping:
       name: name
       value: value
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_qhkc_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3166,7 +3434,7 @@ get_qhkc_index:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_qhkc_index
     input_mapping:
@@ -3185,7 +3453,7 @@ get_qhkc_index:
 get_qhkc_index_profit_loss:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3233,7 +3501,7 @@ get_qhkc_index_profit_loss:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_qhkc_index_profit_loss
     input_mapping:
@@ -3246,11 +3514,13 @@ get_qhkc_index_profit_loss:
       indexes: indexes
       trans_date: trans_date
       value: value
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 get_qhkc_index_trend:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3298,7 +3568,7 @@ get_qhkc_index_trend:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_qhkc_index_trend
     input_mapping:
@@ -3315,7 +3585,7 @@ get_qhkc_index_trend:
 get_rank_sum:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3333,6 +3603,12 @@ get_rank_sum:
     type: str
   name: get_rank_sum
   output:
+  - desc: variety field
+    name: variety
+    type: str
+  - desc: symbol field
+    name: symbol
+    type: str
   - desc: 'from :return: docstring'
     name: vol
     type: str
@@ -3341,7 +3617,7 @@ get_rank_sum:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_rank_sum
     input_mapping:
@@ -3349,9 +3625,12 @@ get_rank_sum:
       vars_list: vars_list
     name: akshare_em
     output_mapping:
+      symbol: symbol
+      variety: variety
       vol: vol
       vol_chg: vol_chg
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_rank_sum_daily:
   category: other
   description: "采集四个期货交易所前 5、前 10、前 15、前 20 会员持仓排名数据\n注1：由于上期所和中金所只公布每个品种内部的标的排名，没有公布品种的总排名;\n\
@@ -3374,7 +3653,7 @@ get_rank_sum_daily:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_rank_sum_daily
     input_mapping:
@@ -3387,7 +3666,7 @@ get_rank_sum_daily:
 get_rank_table_czce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3441,7 +3720,7 @@ get_rank_table_czce:
     type: float
   rate_limit_key: czce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_rank_table_czce
     input_mapping:
@@ -3458,7 +3737,8 @@ get_rank_table_czce:
       vol: vol
       vol_chg: vol_chg
       vol_party_name: vol_party_name
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_receipt:
   category: other
   description: '大宗商品-注册仓单数据
@@ -3487,7 +3767,7 @@ get_receipt:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_receipt
     input_mapping:
@@ -3496,7 +3776,9 @@ get_receipt:
       vars_list: vars_list
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 get_roll_yield:
   category: other
   description: '指定交易日指定品种（主力和次主力）或任意两个合约的展期收益率
@@ -3539,7 +3821,7 @@ get_roll_yield:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_roll_yield
     input_mapping:
@@ -3550,11 +3832,12 @@ get_roll_yield:
       var: var
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_roll_yield_bar:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3600,7 +3883,7 @@ get_roll_yield_bar:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_roll_yield_bar
     input_mapping:
@@ -3614,11 +3897,12 @@ get_roll_yield_bar:
       deferred: deferred
       near_by: near_by
       roll_yield: roll_yield
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_shfe_daily:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3643,7 +3927,7 @@ get_shfe_daily:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_shfe_daily
     input_mapping:
@@ -3651,11 +3935,12 @@ get_shfe_daily:
     name: akshare_em
     output_mapping:
       ~df[symbol: ~df[symbol
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_shfe_rank_table:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3686,9 +3971,48 @@ get_shfe_rank_table:
   - desc: 'from :return: docstring'
     name: variety
     type: str
+  - desc: CJ1 field
+    name: CJ1
+    type: str
+  - desc: CJ1_CHG field
+    name: CJ1_CHG
+    type: str
+  - desc: CJ2 field
+    name: CJ2
+    type: str
+  - desc: CJ2_CHG field
+    name: CJ2_CHG
+    type: str
+  - desc: CJ3 field
+    name: CJ3
+    type: str
+  - desc: CJ3_CHG field
+    name: CJ3_CHG
+    type: str
+  - desc: PARTICIPANTABBR1 field
+    name: PARTICIPANTABBR1
+    type: str
+  - desc: PARTICIPANTABBR2 field
+    name: PARTICIPANTABBR2
+    type: str
+  - desc: PARTICIPANTABBR3 field
+    name: PARTICIPANTABBR3
+    type: str
+  - desc: PRODUCTNAME field
+    name: PRODUCTNAME
+    type: str
+  - desc: RANK field
+    name: RANK
+    type: int
+  - desc: INSTRUMENTID field
+    name: INSTRUMENTID
+    type: str
+  - desc: PRODUCTSORTNO field
+    name: PRODUCTSORTNO
+    type: str
   rate_limit_key: shfe
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_shfe_rank_table
     input_mapping:
@@ -3696,8 +4020,22 @@ get_shfe_rank_table:
       vars_list: vars_list
     name: akshare_em
     output_mapping:
+      CJ1: CJ1
+      CJ1_CHG: CJ1_CHG
+      CJ2: CJ2
+      CJ2_CHG: CJ2_CHG
+      CJ3: CJ3
+      CJ3_CHG: CJ3_CHG
+      INSTRUMENTID: INSTRUMENTID
+      PARTICIPANTABBR1: PARTICIPANTABBR1
+      PARTICIPANTABBR2: PARTICIPANTABBR2
+      PARTICIPANTABBR3: PARTICIPANTABBR3
+      PRODUCTNAME: PRODUCTNAME
+      PRODUCTSORTNO: PRODUCTSORTNO
+      RANK: RANK
       variety: variety
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 get_token:
   category: other
   description: ''
@@ -3706,7 +4044,7 @@ get_token:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: get_token
     input_mapping: {}
@@ -3716,7 +4054,7 @@ get_token:
 hurun_rank:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3740,9 +4078,6 @@ hurun_rank:
   name: hurun_rank
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 排名
     type: int
   - desc: 'from :return: docstring'
@@ -3757,9 +4092,171 @@ hurun_rank:
   - desc: 'from :return: docstring'
     name: industry
     type: str
+  - desc: hs_Rank_Rich_Ranking field
+    name: hs_Rank_Rich_Ranking
+    type: int
+  - desc: hs_Rank_Rich_Wealth field
+    name: hs_Rank_Rich_Wealth
+    type: int
+  - desc: hs_Rank_Rich_Ranking_Change field
+    name: hs_Rank_Rich_Ranking_Change
+    type: int
+  - desc: hs_Rank_Rich_ChaName_Cn field
+    name: hs_Rank_Rich_ChaName_Cn
+    type: int
+  - desc: hs_Rank_Rich_ComName_Cn field
+    name: hs_Rank_Rich_ComName_Cn
+    type: int
+  - desc: hs_Rank_Rich_Industry_Cn field
+    name: hs_Rank_Rich_Industry_Cn
+    type: int
+  - desc: hs_Rank_Global_Ranking field
+    name: hs_Rank_Global_Ranking
+    type: int
+  - desc: hs_Rank_Global_Wealth field
+    name: hs_Rank_Global_Wealth
+    type: int
+  - desc: hs_Rank_Global_Ranking_Change field
+    name: hs_Rank_Global_Ranking_Change
+    type: int
+  - desc: hs_Rank_Global_ChaName_Cn field
+    name: hs_Rank_Global_ChaName_Cn
+    type: int
+  - desc: hs_Rank_Global_ComName_Cn field
+    name: hs_Rank_Global_ComName_Cn
+    type: int
+  - desc: hs_Rank_Global_Industry_Cn field
+    name: hs_Rank_Global_Industry_Cn
+    type: int
+  - desc: hs_Rank_India_Ranking field
+    name: hs_Rank_India_Ranking
+    type: int
+  - desc: hs_Rank_India_Wealth field
+    name: hs_Rank_India_Wealth
+    type: int
+  - desc: hs_Rank_India_Ranking_Change field
+    name: hs_Rank_India_Ranking_Change
+    type: int
+  - desc: hs_Rank_India_ChaName_Cn field
+    name: hs_Rank_India_ChaName_Cn
+    type: int
+  - desc: hs_Rank_India_ComName_Cn field
+    name: hs_Rank_India_ComName_Cn
+    type: int
+  - desc: hs_Rank_India_Industry_Cn field
+    name: hs_Rank_India_Industry_Cn
+    type: int
+  - desc: hs_Rank_Unicorn_Ranking field
+    name: hs_Rank_Unicorn_Ranking
+    type: int
+  - desc: hs_Rank_Unicorn_Wealth field
+    name: hs_Rank_Unicorn_Wealth
+    type: int
+  - desc: hs_Rank_Unicorn_Ranking_Change field
+    name: hs_Rank_Unicorn_Ranking_Change
+    type: int
+  - desc: hs_Rank_Unicorn_ChaName_Cn field
+    name: hs_Rank_Unicorn_ChaName_Cn
+    type: int
+  - desc: hs_Rank_Unicorn_ComName_Cn field
+    name: hs_Rank_Unicorn_ComName_Cn
+    type: int
+  - desc: hs_Rank_Unicorn_Industry_Cn field
+    name: hs_Rank_Unicorn_Industry_Cn
+    type: int
+  - desc: hs_Rank_CGazelles_ComHeadquarters_Cn field
+    name: hs_Rank_CGazelles_ComHeadquarters_Cn
+    type: datetime
+  - desc: hs_Rank_CGazelles_Name_Cn field
+    name: hs_Rank_CGazelles_Name_Cn
+    type: int
+  - desc: hs_Rank_CGazelles_ComName_Cn field
+    name: hs_Rank_CGazelles_ComName_Cn
+    type: int
+  - desc: hs_Rank_CGazelles_Industry_Cn field
+    name: hs_Rank_CGazelles_Industry_Cn
+    type: int
+  - desc: hs_Rank_GGazelles_ComHeadquarters_Cn field
+    name: hs_Rank_GGazelles_ComHeadquarters_Cn
+    type: datetime
+  - desc: hs_Rank_GGazelles_Name_Cn field
+    name: hs_Rank_GGazelles_Name_Cn
+    type: int
+  - desc: hs_Rank_GGazelles_ComName_Cn field
+    name: hs_Rank_GGazelles_ComName_Cn
+    type: int
+  - desc: hs_Rank_GGazelles_Industry_Cn field
+    name: hs_Rank_GGazelles_Industry_Cn
+    type: int
+  - desc: hs_Rank_U30_ComHeadquarters_Cn field
+    name: hs_Rank_U30_ComHeadquarters_Cn
+    type: datetime
+  - desc: hs_Rank_U30_ChaName_Cn field
+    name: hs_Rank_U30_ChaName_Cn
+    type: int
+  - desc: hs_Rank_U30_ComName_Cn field
+    name: hs_Rank_U30_ComName_Cn
+    type: int
+  - desc: hs_Rank_U30_Industry_Cn field
+    name: hs_Rank_U30_Industry_Cn
+    type: int
+  - desc: hs_Rank_CTop500_Ranking field
+    name: hs_Rank_CTop500_Ranking
+    type: int
+  - desc: hs_Rank_CTop500_Wealth field
+    name: hs_Rank_CTop500_Wealth
+    type: int
+  - desc: hs_Rank_CTop500_Ranking_Change field
+    name: hs_Rank_CTop500_Ranking_Change
+    type: int
+  - desc: hs_Rank_CTop500_ChaName_Cn field
+    name: hs_Rank_CTop500_ChaName_Cn
+    type: int
+  - desc: hs_Rank_CTop500_ComName_Cn field
+    name: hs_Rank_CTop500_ComName_Cn
+    type: int
+  - desc: hs_Rank_CTop500_Industry_Cn field
+    name: hs_Rank_CTop500_Industry_Cn
+    type: int
+  - desc: hs_Rank_GTop500_Ranking field
+    name: hs_Rank_GTop500_Ranking
+    type: int
+  - desc: hs_Rank_GTop500_Wealth field
+    name: hs_Rank_GTop500_Wealth
+    type: int
+  - desc: hs_Rank_GTop500_Ranking_Change field
+    name: hs_Rank_GTop500_Ranking_Change
+    type: int
+  - desc: hs_Rank_GTop500_ChaName_Cn field
+    name: hs_Rank_GTop500_ChaName_Cn
+    type: int
+  - desc: hs_Rank_GTop500_ComName_Cn field
+    name: hs_Rank_GTop500_ComName_Cn
+    type: int
+  - desc: hs_Rank_GTop500_Industry_Cn field
+    name: hs_Rank_GTop500_Industry_Cn
+    type: int
+  - desc: hs_Rank_Art_Ranking field
+    name: hs_Rank_Art_Ranking
+    type: int
+  - desc: hs_Rank_Art_Turnover field
+    name: hs_Rank_Art_Turnover
+    type: int
+  - desc: hs_Rank_Art_Ranking_Change field
+    name: hs_Rank_Art_Ranking_Change
+    type: int
+  - desc: hs_Rank_Art_Name_Cn field
+    name: hs_Rank_Art_Name_Cn
+    type: int
+  - desc: hs_Rank_Art_Age field
+    name: hs_Rank_Art_Age
+    type: int
+  - desc: hs_Rank_Art_ArtCategory_Cn field
+    name: hs_Rank_Art_ArtCategory_Cn
+    type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: hurun_rank
     input_mapping:
@@ -3767,8 +4264,67 @@ hurun_rank:
       year: year
     name: akshare_em
     output_mapping:
+      hs_Rank_Art_Age: hs_Rank_Art_Age
+      hs_Rank_Art_ArtCategory_Cn: hs_Rank_Art_ArtCategory_Cn
+      hs_Rank_Art_Name_Cn: hs_Rank_Art_Name_Cn
+      hs_Rank_Art_Ranking: hs_Rank_Art_Ranking
+      hs_Rank_Art_Ranking_Change: hs_Rank_Art_Ranking_Change
+      hs_Rank_Art_Turnover: hs_Rank_Art_Turnover
+      hs_Rank_CGazelles_ComHeadquarters_Cn: hs_Rank_CGazelles_ComHeadquarters_Cn
+      hs_Rank_CGazelles_ComName_Cn: hs_Rank_CGazelles_ComName_Cn
+      hs_Rank_CGazelles_Industry_Cn: hs_Rank_CGazelles_Industry_Cn
+      hs_Rank_CGazelles_Name_Cn: hs_Rank_CGazelles_Name_Cn
+      hs_Rank_CTop500_ChaName_Cn: hs_Rank_CTop500_ChaName_Cn
+      hs_Rank_CTop500_ComName_Cn: hs_Rank_CTop500_ComName_Cn
+      hs_Rank_CTop500_Industry_Cn: hs_Rank_CTop500_Industry_Cn
+      hs_Rank_CTop500_Ranking: hs_Rank_CTop500_Ranking
+      hs_Rank_CTop500_Ranking_Change: hs_Rank_CTop500_Ranking_Change
+      hs_Rank_CTop500_Wealth: hs_Rank_CTop500_Wealth
+      hs_Rank_GGazelles_ComHeadquarters_Cn: hs_Rank_GGazelles_ComHeadquarters_Cn
+      hs_Rank_GGazelles_ComName_Cn: hs_Rank_GGazelles_ComName_Cn
+      hs_Rank_GGazelles_Industry_Cn: hs_Rank_GGazelles_Industry_Cn
+      hs_Rank_GGazelles_Name_Cn: hs_Rank_GGazelles_Name_Cn
+      hs_Rank_GTop500_ChaName_Cn: hs_Rank_GTop500_ChaName_Cn
+      hs_Rank_GTop500_ComName_Cn: hs_Rank_GTop500_ComName_Cn
+      hs_Rank_GTop500_Industry_Cn: hs_Rank_GTop500_Industry_Cn
+      hs_Rank_GTop500_Ranking: hs_Rank_GTop500_Ranking
+      hs_Rank_GTop500_Ranking_Change: hs_Rank_GTop500_Ranking_Change
+      hs_Rank_GTop500_Wealth: hs_Rank_GTop500_Wealth
+      hs_Rank_Global_ChaName_Cn: hs_Rank_Global_ChaName_Cn
+      hs_Rank_Global_ComName_Cn: hs_Rank_Global_ComName_Cn
+      hs_Rank_Global_Industry_Cn: hs_Rank_Global_Industry_Cn
+      hs_Rank_Global_Ranking: hs_Rank_Global_Ranking
+      hs_Rank_Global_Ranking_Change: hs_Rank_Global_Ranking_Change
+      hs_Rank_Global_Wealth: hs_Rank_Global_Wealth
+      hs_Rank_India_ChaName_Cn: hs_Rank_India_ChaName_Cn
+      hs_Rank_India_ComName_Cn: hs_Rank_India_ComName_Cn
+      hs_Rank_India_Industry_Cn: hs_Rank_India_Industry_Cn
+      hs_Rank_India_Ranking: hs_Rank_India_Ranking
+      hs_Rank_India_Ranking_Change: hs_Rank_India_Ranking_Change
+      hs_Rank_India_Wealth: hs_Rank_India_Wealth
+      hs_Rank_Rich_ChaName_Cn: hs_Rank_Rich_ChaName_Cn
+      hs_Rank_Rich_ComName_Cn: hs_Rank_Rich_ComName_Cn
+      hs_Rank_Rich_Industry_Cn: hs_Rank_Rich_Industry_Cn
+      hs_Rank_Rich_Ranking: hs_Rank_Rich_Ranking
+      hs_Rank_Rich_Ranking_Change: hs_Rank_Rich_Ranking_Change
+      hs_Rank_Rich_Wealth: hs_Rank_Rich_Wealth
+      hs_Rank_U30_ChaName_Cn: hs_Rank_U30_ChaName_Cn
+      hs_Rank_U30_ComHeadquarters_Cn: hs_Rank_U30_ComHeadquarters_Cn
+      hs_Rank_U30_ComName_Cn: hs_Rank_U30_ComName_Cn
+      hs_Rank_U30_Industry_Cn: hs_Rank_U30_Industry_Cn
+      hs_Rank_Unicorn_ChaName_Cn: hs_Rank_Unicorn_ChaName_Cn
+      hs_Rank_Unicorn_ComName_Cn: hs_Rank_Unicorn_ComName_Cn
+      hs_Rank_Unicorn_Industry_Cn: hs_Rank_Unicorn_Industry_Cn
+      hs_Rank_Unicorn_Ranking: hs_Rank_Unicorn_Ranking
+      hs_Rank_Unicorn_Ranking_Change: hs_Rank_Unicorn_Ranking_Change
+      hs_Rank_Unicorn_Wealth: hs_Rank_Unicorn_Wealth
+      企业: 企业
+      姓名: 姓名
+      排名: 排名
       行业: industry
-    param_transforms: {}
+      财富: 财富
+    param_transforms:
+      year: YYYY
 match_main_contract:
   category: other
   description: '新浪财经-期货-主力合约
@@ -3789,7 +4345,7 @@ match_main_contract:
   output: []
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: match_main_contract
     input_mapping:
@@ -3829,20 +4385,21 @@ migration_area_baidu:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: migration_area_baidu
     input_mapping:
       area: area
       date: date
       indicator: indicator
-    name: akshare_em
+    name: akshare_baidu
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 migration_scale_baidu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3871,8 +4428,8 @@ migration_scale_baidu:
   - desc: date field
     name: date
     type: datetime
-  - desc: size field
-    name: size
+  - desc: scale field
+    name: scale
     type: float
   rate_limit_key: default
   sources:
@@ -3882,15 +4439,15 @@ migration_scale_baidu:
     input_mapping:
       area: area
       indicator: indicator
-    name: akshare_em
+    name: akshare_baidu
     output_mapping:
       日期: date
-      迁徙规模指数: size
+      迁徙规模指数: scale
     param_transforms: {}
 movie_boxoffice_cinema_daily:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3915,9 +4472,6 @@ movie_boxoffice_cinema_daily:
   - desc: 排序 field
     name: 排序
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: name field
     name: name
     type: str
@@ -3938,21 +4492,26 @@ movie_boxoffice_cinema_daily:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_cinema_daily
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      上座率: 上座率
       单日场次: day
       单日票房: day
+      场均人次: 场均人次
+      场均票价: 场均票价
       影院名称: name
-    param_transforms: {}
+      排序: 排序
+    param_transforms:
+      date: YYYYMMDD
 movie_boxoffice_cinema_weekly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -3977,9 +4536,6 @@ movie_boxoffice_cinema_weekly:
   - desc: 排序 field
     name: 排序
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: name field
     name: name
     type: str
@@ -4000,7 +4556,7 @@ movie_boxoffice_cinema_weekly:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_cinema_weekly
     input_mapping:
@@ -4009,13 +4565,17 @@ movie_boxoffice_cinema_weekly:
     output_mapping:
       单日单厅场次: day
       单日单厅票房: day
+      单银幕票房: 单银幕票房
+      场均人次: 场均人次
       当周票房: week
       影院名称: name
-    param_transforms: {}
+      排序: 排序
+    param_transforms:
+      date: YYYYMMDD
 movie_boxoffice_daily:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4039,9 +4599,6 @@ movie_boxoffice_daily:
   output:
   - desc: 排序 field
     name: 排序
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: name field
     name: name
@@ -4069,20 +4626,28 @@ movie_boxoffice_daily:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_daily
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      上映天数: 上映天数
       单日票房: day
+      口碑指数: 口碑指数
+      场均人次: 场均人次
+      平均票价: 平均票价
       影片名称: name
-    param_transforms: {}
+      排序: 排序
+      环比变化: 环比变化
+      累计票房: 累计票房
+    param_transforms:
+      date: YYYYMMDD
 movie_boxoffice_monthly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4106,9 +4671,6 @@ movie_boxoffice_monthly:
   output:
   - desc: 排序 field
     name: 排序
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: name field
     name: name
@@ -4136,7 +4698,7 @@ movie_boxoffice_monthly:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_monthly
     input_mapping:
@@ -4144,12 +4706,20 @@ movie_boxoffice_monthly:
     name: akshare_em
     output_mapping:
       上映日期: date
+      单月票房: 单月票房
+      口碑指数: 口碑指数
+      场均人次: 场均人次
+      平均票价: 平均票价
       影片名称: name
-    param_transforms: {}
+      排序: 排序
+      月内天数: 月内天数
+      月度占比: 月度占比
+    param_transforms:
+      date: YYYYMMDD
 movie_boxoffice_realtime:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4165,9 +4735,6 @@ movie_boxoffice_realtime:
   output:
   - desc: 排序 field
     name: 排序
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: name field
     name: name
@@ -4186,18 +4753,23 @@ movie_boxoffice_realtime:
     type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_realtime
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      上映天数: 上映天数
+      实时票房: 实时票房
       影片名称: name
+      排序: 排序
+      票房占比: 票房占比
+      累计票房: 累计票房
     param_transforms: {}
 movie_boxoffice_weekly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4221,9 +4793,6 @@ movie_boxoffice_weekly:
   output:
   - desc: 排序 field
     name: 排序
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: name field
     name: name
@@ -4254,20 +4823,29 @@ movie_boxoffice_weekly:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_weekly
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      上映天数: 上映天数
       单周票房: week
+      口碑指数: 口碑指数
+      场均人次: 场均人次
+      平均票价: 平均票价
       影片名称: name
-    param_transforms: {}
+      排名变化: 排名变化
+      排序: 排序
+      环比变化: 环比变化
+      累计票房: 累计票房
+    param_transforms:
+      date: YYYYMMDD
 movie_boxoffice_yearly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4292,9 +4870,6 @@ movie_boxoffice_yearly:
   - desc: 排序 field
     name: 排序
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: name field
     name: name
     type: str
@@ -4310,15 +4885,15 @@ movie_boxoffice_yearly:
   - desc: 场均人次 field
     name: 场均人次
     type: int
-  - desc: country field
-    name: country
+  - desc: 国家及地区 field
+    name: 国家及地区
     type: str
   - desc: date field
     name: date
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_yearly
     input_mapping:
@@ -4326,14 +4901,19 @@ movie_boxoffice_yearly:
     name: akshare_em
     output_mapping:
       上映日期: date
-      国家及地区: country
+      国家及地区: 国家及地区
+      场均人次: 场均人次
+      平均票价: 平均票价
       影片名称: name
+      总票房: 总票房
+      排序: 排序
       类型: type
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 movie_boxoffice_yearly_first_week:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4358,9 +4938,6 @@ movie_boxoffice_yearly_first_week:
   - desc: 排序 field
     name: 排序
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: name field
     name: name
     type: str
@@ -4379,15 +4956,15 @@ movie_boxoffice_yearly_first_week:
   - desc: type field
     name: type
     type: str
-  - desc: country field
-    name: country
+  - desc: 国家及地区 field
+    name: 国家及地区
     type: str
   - desc: 占总票房比重 field
     name: 占总票房比重
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: movie_boxoffice_yearly_first_week
     input_mapping:
@@ -4395,12 +4972,16 @@ movie_boxoffice_yearly_first_week:
     name: akshare_em
     output_mapping:
       上映日期: date
-      国家及地区: country
+      占总票房比重: 占总票房比重
+      国家及地区: 国家及地区
+      场均人次: 场均人次
       影片名称: name
+      排序: 排序
       类型: type
       首周天数: week
       首周票房: week
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 news_cctv:
   category: other
   description: '新闻联播文字稿
@@ -4423,18 +5004,19 @@ news_cctv:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: news_cctv
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 news_economic_baidu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4484,21 +5066,28 @@ news_economic_baidu:
     type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: news_economic_baidu
     input_mapping:
       cookie: cookie
       date: date
-    name: akshare_em
+    name: akshare_baidu
     output_mapping:
+      事件: 事件
+      公布: 公布
+      前值: 前值
+      地区: 地区
       日期: date
       时间: time
-    param_transforms: {}
+      重要性: 重要性
+      预期: 预期
+    param_transforms:
+      date: YYYYMMDD
 news_report_time_baidu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4551,7 +5140,7 @@ news_report_time_baidu:
     input_mapping:
       cookie: cookie
       date: date
-    name: akshare_em
+    name: akshare_baidu
     output_mapping:
       交易所: exchange
       发布日期: date
@@ -4560,11 +5149,12 @@ news_report_time_baidu:
       股票代码: symbol
       股票简称: name
       财报类型: type
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 news_trade_notify_dividend_baidu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4617,23 +5207,29 @@ news_trade_notify_dividend_baidu:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: news_trade_notify_dividend_baidu
     input_mapping:
       cookie: cookie
       date: date
-    name: akshare_em
+    name: akshare_baidu
     output_mapping:
       交易所: exchange
+      分红: 分红
+      实物: 实物
+      报告期: 报告期
       股票代码: symbol
       股票简称: name
+      转增: 转增
+      送股: 送股
       除权日: day
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 news_trade_notify_suspend_baidu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4695,13 +5291,13 @@ news_trade_notify_suspend_baidu:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: news_trade_notify_suspend_baidu
     input_mapping:
       cookie: cookie
       date: date
-    name: akshare_em
+    name: akshare_baidu
     output_mapping:
       交易所代码: code
       停牌事项说明: description
@@ -4711,10 +5307,12 @@ news_trade_notify_suspend_baidu:
       复牌时间: time
       市值: market_cap
       市场类型: market
+      是否跳过: 是否跳过
       股票代码: symbol
       股票简称: name
       证券类型: type
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 nlp_answer:
   category: other
   description: '智能问答
@@ -4737,7 +5335,7 @@ nlp_answer:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: nlp_answer
     input_mapping:
@@ -4748,7 +5346,7 @@ nlp_answer:
 nlp_ownthink:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4784,7 +5382,7 @@ nlp_ownthink:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: nlp_ownthink
     input_mapping:
@@ -4798,7 +5396,7 @@ nlp_ownthink:
 online_value_artist:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4815,9 +5413,6 @@ online_value_artist:
   - desc: 排名 field
     name: 排名
     type: int
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: 艺人 field
     name: 艺人
     type: int
@@ -4838,13 +5433,12 @@ online_value_artist:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: online_value_artist
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      '-': '-'
       专业热度: 专业热度
       关注热度: 关注热度
       带货力: 带货力
@@ -4865,7 +5459,7 @@ pro_api:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: pro_api
     input_mapping:
@@ -4876,7 +5470,7 @@ pro_api:
 qdii_a_index_jsl:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4895,16 +5489,13 @@ qdii_a_index_jsl:
   name: qdii_a_index_jsl
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: code
     type: int
   - desc: 'from :return: docstring'
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: current_price
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: 涨幅
@@ -4948,26 +5539,105 @@ qdii_a_index_jsl:
   - desc: 'from :return: docstring'
     name: 基金公司
     type: str
+  - desc: fund_id field
+    name: fund_id
+    type: str
+  - desc: fund_nm field
+    name: fund_nm
+    type: str
+  - desc: price field
+    name: price
+    type: float
+  - desc: increase_rt field
+    name: increase_rt
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: amount_incr field
+    name: amount_incr
+    type: float
+  - desc: fund_nav field
+    name: fund_nav
+    type: str
+  - desc: nav_dt field
+    name: nav_dt
+    type: str
+  - desc: estimate_value field
+    name: estimate_value
+    type: str
+  - desc: discount_rt field
+    name: discount_rt
+    type: int
+  - desc: index_nm field
+    name: index_nm
+    type: float
+  - desc: ref_increase_rt field
+    name: ref_increase_rt
+    type: str
+  - desc: apply_fee field
+    name: apply_fee
+    type: str
+  - desc: redeem_fee field
+    name: redeem_fee
+    type: str
+  - desc: mt_fee field
+    name: mt_fee
+    type: str
+  - desc: issuer_nm field
+    name: issuer_nm
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: qdii_a_index_jsl
     input_mapping:
       cookie: cookie
     name: akshare_em
     output_mapping:
+      amount: amount
+      amount_incr: amount_incr
+      apply_fee: apply_fee
+      discount_rt: discount_rt
+      estimate_value: estimate_value
+      fund_id: fund_id
+      fund_nav: fund_nav
+      fund_nm: fund_nm
+      increase_rt: increase_rt
+      index_nm: index_nm
+      issuer_nm: issuer_nm
+      mt_fee: mt_fee
+      nav_dt: nav_dt
+      price: price
+      redeem_fee: redeem_fee
+      ref_increase_rt: ref_increase_rt
+      volume: volume
       代码: code
+      估值: 估值
       净值: nav
       净值日期: date
       名称: name
+      场内份额: 场内份额
+      场内新增: 场内新增
+      基金公司: 基金公司
+      成交: 成交
+      托管费: 托管费
+      指数涨幅: 指数涨幅
+      涨幅: 涨幅
       溢价率: premium
-      现价: current_price
+      现价: price
+      申购费: 申购费
+      相关标的: 相关标的
+      赎回费: 赎回费
     param_transforms: {}
 qdii_e_comm_jsl:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -4985,84 +5655,92 @@ qdii_e_comm_jsl:
     type: str
   name: qdii_e_comm_jsl
   output:
-  - desc: 'from :return: docstring'
-    name: '['
+  - desc: fund_id field
+    name: fund_id
     type: str
-  - desc: 'from :return: docstring'
-    name: code
+  - desc: fund_nm field
+    name: fund_nm
+    type: str
+  - desc: price field
+    name: price
+    type: float
+  - desc: increase_rt field
+    name: increase_rt
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: amount_incr field
+    name: amount_incr
+    type: float
+  - desc: fund_nav field
+    name: fund_nav
+    type: str
+  - desc: nav_dt field
+    name: nav_dt
+    type: str
+  - desc: estimate_value field
+    name: estimate_value
+    type: str
+  - desc: last_est_dt field
+    name: last_est_dt
+    type: str
+  - desc: discount_rt field
+    name: discount_rt
     type: int
-  - desc: 'from :return: docstring'
-    name: name
-    type: str
-  - desc: 'from :return: docstring'
-    name: current_price
+  - desc: index_nm field
+    name: index_nm
     type: float
-  - desc: 'from :return: docstring'
-    name: 涨幅
-    type: float
-  - desc: 'from :return: docstring'
-    name: 成交
+  - desc: ref_increase_rt field
+    name: ref_increase_rt
     type: str
-  - desc: 'from :return: docstring'
-    name: 场内份额
-    type: float
-  - desc: 'from :return: docstring'
-    name: 场内新增
+  - desc: apply_fee field
+    name: apply_fee
     type: str
-  - desc: 'from :return: docstring'
-    name: nav
-    type: float
-  - desc: 'from :return: docstring'
-    name: date
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: T-1估值
-    type: float
-  - desc: 'from :return: docstring'
-    name: date
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: premium
-    type: float
-  - desc: 'from :return: docstring'
-    name: 相关标的
+  - desc: redeem_fee field
+    name: redeem_fee
     type: str
-  - desc: 'from :return: docstring'
-    name: T-1指数涨幅
-    type: float
-  - desc: 'from :return: docstring'
-    name: 申购费
+  - desc: mt_fee field
+    name: mt_fee
     type: str
-  - desc: 'from :return: docstring'
-    name: 赎回费
-    type: str
-  - desc: 'from :return: docstring'
-    name: 托管费
-    type: str
-  - desc: 'from :return: docstring'
-    name: 基金公司
+  - desc: issuer_nm field
+    name: issuer_nm
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: qdii_e_comm_jsl
     input_mapping:
       cookie: cookie
     name: akshare_em
     output_mapping:
-      T-1溢价率: premium
-      T-2净值: nav
-      代码: code
-      估值日期: date
-      净值日期: date
-      名称: name
-      现价: current_price
+      amount: amount
+      amount_incr: amount_incr
+      apply_fee: apply_fee
+      discount_rt: discount_rt
+      estimate_value: estimate_value
+      fund_id: fund_id
+      fund_nav: fund_nav
+      fund_nm: fund_nm
+      increase_rt: increase_rt
+      index_nm: index_nm
+      issuer_nm: issuer_nm
+      last_est_dt: last_est_dt
+      mt_fee: mt_fee
+      nav_dt: nav_dt
+      price: price
+      redeem_fee: redeem_fee
+      ref_increase_rt: ref_increase_rt
+      volume: volume
     param_transforms: {}
 qdii_e_index_jsl:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5080,84 +5758,92 @@ qdii_e_index_jsl:
     type: str
   name: qdii_e_index_jsl
   output:
-  - desc: 'from :return: docstring'
-    name: '['
+  - desc: fund_id field
+    name: fund_id
     type: str
-  - desc: 'from :return: docstring'
-    name: code
+  - desc: fund_nm field
+    name: fund_nm
+    type: str
+  - desc: price field
+    name: price
+    type: float
+  - desc: increase_rt field
+    name: increase_rt
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: amount_incr field
+    name: amount_incr
+    type: float
+  - desc: fund_nav field
+    name: fund_nav
+    type: str
+  - desc: nav_dt field
+    name: nav_dt
+    type: str
+  - desc: estimate_value field
+    name: estimate_value
+    type: str
+  - desc: last_est_dt field
+    name: last_est_dt
+    type: str
+  - desc: discount_rt field
+    name: discount_rt
     type: int
-  - desc: 'from :return: docstring'
-    name: name
-    type: str
-  - desc: 'from :return: docstring'
-    name: current_price
+  - desc: index_nm field
+    name: index_nm
     type: float
-  - desc: 'from :return: docstring'
-    name: 涨幅
-    type: float
-  - desc: 'from :return: docstring'
-    name: 成交
+  - desc: ref_increase_rt field
+    name: ref_increase_rt
     type: str
-  - desc: 'from :return: docstring'
-    name: 场内份额
-    type: float
-  - desc: 'from :return: docstring'
-    name: 场内新增
+  - desc: apply_fee field
+    name: apply_fee
     type: str
-  - desc: 'from :return: docstring'
-    name: nav
-    type: float
-  - desc: 'from :return: docstring'
-    name: date
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: T-1估值
-    type: float
-  - desc: 'from :return: docstring'
-    name: date
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: premium
-    type: float
-  - desc: 'from :return: docstring'
-    name: 相关标的
+  - desc: redeem_fee field
+    name: redeem_fee
     type: str
-  - desc: 'from :return: docstring'
-    name: T-1指数涨幅
-    type: float
-  - desc: 'from :return: docstring'
-    name: 申购费
+  - desc: mt_fee field
+    name: mt_fee
     type: str
-  - desc: 'from :return: docstring'
-    name: 赎回费
-    type: str
-  - desc: 'from :return: docstring'
-    name: 托管费
-    type: str
-  - desc: 'from :return: docstring'
-    name: 基金公司
+  - desc: issuer_nm field
+    name: issuer_nm
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: qdii_e_index_jsl
     input_mapping:
       cookie: cookie
     name: akshare_em
     output_mapping:
-      T-1溢价率: premium
-      T-2净值: nav
-      代码: code
-      估值日期: date
-      净值日期: date
-      名称: name
-      现价: current_price
+      amount: amount
+      amount_incr: amount_incr
+      apply_fee: apply_fee
+      discount_rt: discount_rt
+      estimate_value: estimate_value
+      fund_id: fund_id
+      fund_nav: fund_nav
+      fund_nm: fund_nm
+      increase_rt: increase_rt
+      index_nm: index_nm
+      issuer_nm: issuer_nm
+      last_est_dt: last_est_dt
+      mt_fee: mt_fee
+      nav_dt: nav_dt
+      price: price
+      redeem_fee: redeem_fee
+      ref_increase_rt: ref_increase_rt
+      volume: volume
     param_transforms: {}
 qhkc_tool_foreign:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5188,7 +5874,7 @@ qhkc_tool_foreign:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: qhkc_tool_foreign
     input_mapping:
@@ -5202,11 +5888,6 @@ qhkc_tool_foreign:
       rate: rate
     param_transforms: {}
 qhkc_tool_gdp:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: "  奇货可查-工具-各地区经济数据\n  实时更新数据, 暂不能查询历史数据\n  :param url:\n  :return:\
     \ pandas.DataFrame\n  国家  国内生产总值 国内生产总值YoY 国内生产总值QoQ  ...       预算       债务  \
@@ -5217,25 +5898,21 @@ qhkc_tool_gdp:
     required: true
     type: str
   name: qhkc_tool_gdp
-  output:
-  - desc: 'from :return: docstring'
-    name: '0'
-    type: str
+  output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: qhkc_tool_gdp
     input_mapping:
       url: url
     name: akshare_em
-    output_mapping:
-      '0': '0'
+    output_mapping: {}
     param_transforms: {}
 reits_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5263,8 +5940,8 @@ reits_hist_em:
   - desc: open field
     name: open
     type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: high field
     name: high
@@ -5281,15 +5958,12 @@ reits_hist_em:
   - desc: amplitude field
     name: amplitude
     type: str
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: 换手 field
     name: 换手
     type: int
   rate_limit_key: em_push2his
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: reits_hist_em
     input_mapping:
@@ -5300,15 +5974,16 @@ reits_hist_em:
       成交量: volume
       成交额: amount
       振幅: amplitude
+      换手: 换手
       日期: date
       最低: low
-      最新价: last
+      最新价: price
       最高: high
     param_transforms: {}
 reits_hist_min_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5333,8 +6008,8 @@ reits_hist_min_em:
   - desc: time field
     name: time
     type: datetime
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: high field
     name: high
@@ -5365,13 +6040,13 @@ reits_hist_min_em:
       时间: time
       昨收: prev_close
       最低: low
-      最新价: last
+      最新价: price
       最高: high
     param_transforms: {}
 reits_realtime_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5386,9 +6061,6 @@ reits_realtime_em:
   name: reits_realtime_em
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -5398,7 +6070,7 @@ reits_realtime_em:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: last
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: change
@@ -5424,22 +6096,55 @@ reits_realtime_em:
   - desc: 'from :return: docstring'
     name: prev_close
     type: str
+  - desc: index field
+    name: index
+    type: float
+  - desc: f12 field
+    name: f12
+    type: str
+  - desc: f14 field
+    name: f14
+    type: str
+  - desc: f15 field
+    name: f15
+    type: str
+  - desc: f16 field
+    name: f16
+    type: str
+  - desc: f17 field
+    name: f17
+    type: str
+  - desc: f18 field
+    name: f18
+    type: str
+  - desc: f13 field
+    name: f13
+    type: str
   rate_limit_key: em_push2
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: reits_realtime_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      f12: f12
+      f13: f13
+      f14: f14
+      f15: f15
+      f16: f16
+      f17: f17
+      f18: f18
+      index: index
       代码: code
       名称: name
+      序号: 序号
       开盘价: open
       成交量: volume
       成交额: amount
       昨收: prev_close
       最低价: low
-      最新价: last
+      最新价: price
       最高价: high
       涨跌幅: pct_change
       涨跌额: change
@@ -5447,7 +6152,7 @@ reits_realtime_em:
 repo_rate_hist:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5496,7 +6201,7 @@ repo_rate_hist:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: repo_rate_hist
     input_mapping:
@@ -5511,11 +6216,13 @@ repo_rate_hist:
       FR007: FR007
       FR014: FR014
       date: date
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 repo_rate_query:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5560,7 +6267,7 @@ repo_rate_query:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: repo_rate_query
     input_mapping:
@@ -5578,7 +6285,7 @@ repo_rate_query:
 rv_from_futures_zh_minute_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5605,22 +6312,42 @@ rv_from_futures_zh_minute_sina:
   - desc: 'from :return: docstring'
     name: Date
     type: datetime
+  - desc: datetime field
+    name: datetime
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: rv_from_futures_zh_minute_sina
     input_mapping:
       period: period
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       Date: Date
+      close: close
+      datetime: datetime
+      high: high
+      low: low
+      open: open
     param_transforms: {}
 rv_from_stock_zh_a_hist_min_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5659,9 +6386,24 @@ rv_from_stock_zh_a_hist_min_em:
   - desc: 'from :return: docstring'
     name: temp_df[Open
     type: float
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: rv_from_stock_zh_a_hist_min_em
     input_mapping:
@@ -5673,7 +6415,15 @@ rv_from_stock_zh_a_hist_min_em:
     name: akshare_em
     output_mapping:
       temp_df[Open: temp_df[Open
-    param_transforms: {}
+      开盘: open
+      收盘: close
+      时间: time
+      最低: low
+      最高: high
+    param_transforms:
+      adjust: pass_through
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 set_token:
   category: other
   description: ''
@@ -5686,7 +6436,7 @@ set_token:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: set_token
     input_mapping:
@@ -5697,7 +6447,7 @@ set_token:
 sunrise_daily:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5733,7 +6483,7 @@ sunrise_daily:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: sunrise_daily
     input_mapping:
@@ -5743,8 +6493,14 @@ sunrise_daily:
     output_mapping:
       date: date
       index: index
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 sunrise_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: '每个指定 date 所在月份的每日日出日落数据, 如果当前月份未到月底, 则以预测值填充
 
@@ -5765,22 +6521,27 @@ sunrise_monthly:
     required: true
     type: str
   name: sunrise_monthly
-  output: []
+  output:
+  - desc: index field
+    name: index
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: sunrise_monthly
     input_mapping:
       city: city
       date: date
     name: akshare_em
-    output_mapping: {}
-    param_transforms: {}
+    output_mapping:
+      index: index
+    param_transforms:
+      date: YYYYMMDD
 tool_trade_date_hist_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5799,18 +6560,18 @@ tool_trade_date_hist_sina:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: tool_trade_date_hist_sina
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       trade_date: trade_date
     param_transforms: {}
 video_tv:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5850,20 +6611,25 @@ video_tv:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: video_tv
     input_mapping: {}
     name: akshare_em
     output_mapping:
       名称: name
+      好评度: 好评度
+      媒体热度: 媒体热度
+      排序: 排序
+      播映指数: 播映指数
       用户热度: user
       类型: type
+      观看度: 观看度
     param_transforms: {}
 video_variety_show:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5903,20 +6669,25 @@ video_variety_show:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: video_variety_show
     input_mapping: {}
     name: akshare_em
     output_mapping:
       名称: name
+      好评度: 好评度
+      媒体热度: 媒体热度
+      排序: 排序
+      播映指数: 播映指数
       用户热度: user
       类型: type
+      观看度: 观看度
     param_transforms: {}
 volatility_yz_rv:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5938,12 +6709,9 @@ volatility_yz_rv:
   - desc: date field
     name: date
     type: datetime
-  - desc: rv field
-    name: rv
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: volatility_yz_rv
     input_mapping:
@@ -5951,13 +6719,12 @@ volatility_yz_rv:
     name: akshare_em
     output_mapping:
       date: date
-      rv: rv
       yz_rv: yz_rv
     param_transforms: {}
 xincaifu_rank:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
@@ -5979,9 +6746,6 @@ xincaifu_rank:
     type: str
   name: xincaifu_rank
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: 排名
     type: int
@@ -6009,15 +6773,67 @@ xincaifu_rank:
   - desc: 'from :return: docstring'
     name: year
     type: datetime
+  - desc: assets field
+    name: assets
+    type: str
+  - desc: year field
+    name: year
+    type: datetime
+  - desc: sex field
+    name: sex
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: rank field
+    name: rank
+    type: int
+  - desc: company field
+    name: company
+    type: str
+  - desc: industry field
+    name: industry
+    type: str
+  - desc: id field
+    name: id
+    type: str
+  - desc: addr field
+    name: addr
+    type: str
+  - desc: rankLst field
+    name: rankLst
+    type: int
+  - desc: age field
+    name: age
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: xincaifu_rank
     input_mapping:
       year: year
     name: akshare_em
     output_mapping:
+      addr: addr
+      age: age
+      assets: assets
+      company: company
+      id: id
+      industry: industry
+      name: name
+      rank: rank
+      rankLst: rankLst
+      sex: sex
+      year: year
+      主要公司: 主要公司
+      公司总部: 公司总部
+      姓名: 姓名
       年份: year
+      年龄: 年龄
+      性别: 性别
+      排名: 排名
       相关行业: industry
-    param_transforms: {}
+      财富: 财富
+    param_transforms:
+      year: YYYY

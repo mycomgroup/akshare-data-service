@@ -1,7 +1,7 @@
 futures_comex_inventory:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -26,21 +26,41 @@ futures_comex_inventory:
   - desc: 'from :return: docstring'
     name: symbol
     type: str
+  - desc: index field
+    name: index
+    type: float
+  - desc: REPORT_DATE field
+    name: REPORT_DATE
+    type: datetime
+  - desc: INDICATOR_NAME field
+    name: INDICATOR_NAME
+    type: str
+  - desc: INDICATOR_ID1 field
+    name: INDICATOR_ID1
+    type: str
+  - desc: STORAGE_TON field
+    name: STORAGE_TON
+    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_comex_inventory
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      INDICATOR_ID1: INDICATOR_ID1
+      INDICATOR_NAME: INDICATOR_NAME
+      REPORT_DATE: REPORT_DATE
+      STORAGE_TON: STORAGE_TON
+      index: index
       symbol: symbol
     param_transforms: {}
 futures_comm_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -66,8 +86,8 @@ futures_comm_info:
   - desc: 合约品种 field
     name: 合约品种
     type: str
-  - desc: current_price field
-    name: current_price
+  - desc: price field
+    name: price
     type: float
   - desc: 涨/跌停板 field
     name: 涨/跌停板
@@ -102,12 +122,9 @@ futures_comm_info:
   - desc: remark field
     name: remark
     type: str
-  - desc: '- field'
-    name: '-'
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_comm_info
     input_mapping:
@@ -117,17 +134,21 @@ futures_comm_info:
       保证金-买开: margin
       保证金-保证金/每手: margin
       保证金-卖开: margin
+      合约品种: 合约品种
       备注: remark
       手续费(开+平): commission
       手续费标准-平今: commission
       手续费标准-平昨: commission
       手续费标准-开仓: commission
-      现价: current_price
+      每跳净利: 每跳净利
+      每跳毛利: 每跳毛利
+      涨/跌停板: 涨/跌停板
+      现价: price
     param_transforms: {}
 futures_comm_js:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -170,9 +191,63 @@ futures_comm_js:
   - desc: 'from :return: docstring'
     name: _pub_date_price
     type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: heyue_name field
+    name: heyue_name
+    type: str
+  - desc: heyue_code field
+    name: heyue_code
+    type: int
+  - desc: pub_date_commission field
+    name: pub_date_commission
+    type: datetime
+  - desc: pub_date_price field
+    name: pub_date_price
+    type: datetime
+  - desc: heyue_price field
+    name: heyue_price
+    type: float
+  - desc: up_limit_num field
+    name: up_limit_num
+    type: int
+  - desc: down_limit_num field
+    name: down_limit_num
+    type: int
+  - desc: buy_ratio field
+    name: buy_ratio
+    type: str
+  - desc: sell_ratio field
+    name: sell_ratio
+    type: str
+  - desc: per_lot_price field
+    name: per_lot_price
+    type: float
+  - desc: per_ratio field
+    name: per_ratio
+    type: float
+  - desc: buy_commission field
+    name: buy_commission
+    type: str
+  - desc: sell_yesterday_commission field
+    name: sell_yesterday_commission
+    type: datetime
+  - desc: sell_cur_commission field
+    name: sell_cur_commission
+    type: str
+  - desc: per_commission_price field
+    name: per_commission_price
+    type: float
+  - desc: per_net_profit field
+    name: per_net_profit
+    type: float
+  - desc: jys field
+    name: jys
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_comm_js
     input_mapping:
@@ -182,15 +257,34 @@ futures_comm_js:
       _date: _date
       _pub_date_commission: _pub_date_commission
       _pub_date_price: _pub_date_price
+      buy_commission: buy_commission
+      buy_ratio: buy_ratio
       created_at: created_at
+      date: date
+      down_limit_num: down_limit_num
+      heyue_code: heyue_code
+      heyue_name: heyue_name
+      heyue_price: heyue_price
       id: id
+      jys: jys
+      per_commission_price: per_commission_price
+      per_lot_price: per_lot_price
+      per_net_profit: per_net_profit
+      per_ratio: per_ratio
+      pub_date_commission: pub_date_commission
+      pub_date_price: pub_date_price
+      sell_cur_commission: sell_cur_commission
+      sell_ratio: sell_ratio
+      sell_yesterday_commission: sell_yesterday_commission
       status: status
+      up_limit_num: up_limit_num
       updated_at: updated_at
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_contract_detail:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -220,7 +314,7 @@ futures_contract_detail:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_contract_detail
     input_mapping:
@@ -233,7 +327,7 @@ futures_contract_detail:
 futures_contract_detail_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -263,7 +357,7 @@ futures_contract_detail_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_contract_detail_em
     input_mapping:
@@ -276,7 +370,7 @@ futures_contract_detail_em:
 futures_contract_info_cffex:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -301,21 +395,70 @@ futures_contract_info_cffex:
   - desc: 'from :return: docstring'
     name: 挂盘基准价
     type: float
+  - desc: TRADING_DAY field
+    name: TRADING_DAY
+    type: datetime
+  - desc: PRODUCT_ID field
+    name: PRODUCT_ID
+    type: str
+  - desc: INSTRUMENT_ID field
+    name: INSTRUMENT_ID
+    type: str
+  - desc: INSTRUMENT_MONTH field
+    name: INSTRUMENT_MONTH
+    type: datetime
+  - desc: BASIS_PRICE field
+    name: BASIS_PRICE
+    type: float
+  - desc: OPEN_DATE field
+    name: OPEN_DATE
+    type: datetime
+  - desc: END_TRADING_DAY field
+    name: END_TRADING_DAY
+    type: datetime
+  - desc: UPPER_VALUE field
+    name: UPPER_VALUE
+    type: float
+  - desc: LOWER_VALUE field
+    name: LOWER_VALUE
+    type: float
+  - desc: UPPERLIMITPRICE field
+    name: UPPERLIMITPRICE
+    type: float
+  - desc: LOWERLIMITPRICE field
+    name: LOWERLIMITPRICE
+    type: float
+  - desc: LONG_LIMIT field
+    name: LONG_LIMIT
+    type: str
   rate_limit_key: cffex
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_contract_info_cffex
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      BASIS_PRICE: BASIS_PRICE
+      END_TRADING_DAY: END_TRADING_DAY
+      INSTRUMENT_ID: INSTRUMENT_ID
+      INSTRUMENT_MONTH: INSTRUMENT_MONTH
+      LONG_LIMIT: LONG_LIMIT
+      LOWERLIMITPRICE: LOWERLIMITPRICE
+      LOWER_VALUE: LOWER_VALUE
+      OPEN_DATE: OPEN_DATE
+      PRODUCT_ID: PRODUCT_ID
+      TRADING_DAY: TRADING_DAY
+      UPPERLIMITPRICE: UPPERLIMITPRICE
+      UPPER_VALUE: UPPER_VALUE
       挂盘基准价: 挂盘基准价
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_contract_info_czce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -340,21 +483,182 @@ futures_contract_info_czce:
   - desc: 'from :return: docstring'
     name: commission
     type: float
+  - desc: Name field
+    name: Name
+    type: str
+  - desc: CtrCd field
+    name: CtrCd
+    type: str
+  - desc: PrdCd field
+    name: PrdCd
+    type: str
+  - desc: PrdTp field
+    name: PrdTp
+    type: str
+  - desc: ExchCd field
+    name: ExchCd
+    type: str
+  - desc: SegTp field
+    name: SegTp
+    type: str
+  - desc: TrdHrs field
+    name: TrdHrs
+    type: str
+  - desc: TrdCtyCd field
+    name: TrdCtyCd
+    type: str
+  - desc: TrdCcyCd field
+    name: TrdCcyCd
+    type: str
+  - desc: ClrngCcyCd field
+    name: ClrngCcyCd
+    type: str
+  - desc: ExpiryTime field
+    name: ExpiryTime
+    type: datetime
+  - desc: SettleTp field
+    name: SettleTp
+    type: str
+  - desc: Duration field
+    name: Duration
+    type: str
+  - desc: TckSz field
+    name: TckSz
+    type: str
+  - desc: TckVal field
+    name: TckVal
+    type: str
+  - desc: CtrSz field
+    name: CtrSz
+    type: str
+  - desc: MsrmntUnt field
+    name: MsrmntUnt
+    type: str
+  - desc: MaxOrdSz field
+    name: MaxOrdSz
+    type: str
+  - desc: MnthPosLmt field
+    name: MnthPosLmt
+    type: str
+  - desc: MinBlckTrdSz field
+    name: MinBlckTrdSz
+    type: str
+  - desc: CesrEaaFl field
+    name: CesrEaaFl
+    type: str
+  - desc: FlexElgblFl field
+    name: FlexElgblFl
+    type: str
+  - desc: ListCy field
+    name: ListCy
+    type: str
+  - desc: DlvryNtcDt field
+    name: DlvryNtcDt
+    type: str
+  - desc: FrstTrdDt field
+    name: FrstTrdDt
+    type: str
+  - desc: LstTrdDt field
+    name: LstTrdDt
+    type: str
+  - desc: DlvrySettleDt field
+    name: DlvrySettleDt
+    type: str
+  - desc: MnthCd field
+    name: MnthCd
+    type: str
+  - desc: YrCd field
+    name: YrCd
+    type: str
+  - desc: LstDlvryDt field
+    name: LstDlvryDt
+    type: str
+  - desc: LstDlvryDtBoard field
+    name: LstDlvryDtBoard
+    type: str
+  - desc: DlvryMnth field
+    name: DlvryMnth
+    type: str
+  - desc: Margin field
+    name: Margin
+    type: str
+  - desc: PxLim field
+    name: PxLim
+    type: str
+  - desc: FeeCcy field
+    name: FeeCcy
+    type: str
+  - desc: TrdFee field
+    name: TrdFee
+    type: str
+  - desc: FeeCollectionType field
+    name: FeeCollectionType
+    type: float
+  - desc: DlvryFee field
+    name: DlvryFee
+    type: str
+  - desc: IntraDayTrdFee field
+    name: IntraDayTrdFee
+    type: datetime
+  - desc: TradingLimit field
+    name: TradingLimit
+    type: str
   rate_limit_key: czce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_contract_info_czce
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      CesrEaaFl: CesrEaaFl
+      ClrngCcyCd: ClrngCcyCd
+      CtrCd: CtrCd
+      CtrSz: CtrSz
+      DlvryFee: DlvryFee
+      DlvryMnth: DlvryMnth
+      DlvryNtcDt: DlvryNtcDt
+      DlvrySettleDt: DlvrySettleDt
+      Duration: Duration
+      ExchCd: ExchCd
+      ExpiryTime: ExpiryTime
+      FeeCcy: FeeCcy
+      FeeCollectionType: FeeCollectionType
+      FlexElgblFl: FlexElgblFl
+      FrstTrdDt: FrstTrdDt
+      IntraDayTrdFee: IntraDayTrdFee
+      ListCy: ListCy
+      LstDlvryDt: LstDlvryDt
+      LstDlvryDtBoard: LstDlvryDtBoard
+      LstTrdDt: LstTrdDt
+      Margin: Margin
+      MaxOrdSz: MaxOrdSz
+      MinBlckTrdSz: MinBlckTrdSz
+      MnthCd: MnthCd
+      MnthPosLmt: MnthPosLmt
+      MsrmntUnt: MsrmntUnt
+      Name: Name
+      PrdCd: PrdCd
+      PrdTp: PrdTp
+      PxLim: PxLim
+      SegTp: SegTp
+      SettleTp: SettleTp
+      TckSz: TckSz
+      TckVal: TckVal
+      TradingLimit: TradingLimit
+      TrdCcyCd: TrdCcyCd
+      TrdCtyCd: TrdCtyCd
+      TrdFee: TrdFee
+      TrdHrs: TrdHrs
+      YrCd: YrCd
       交易手续费: commission
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_contract_info_dce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -368,9 +672,6 @@ futures_contract_info_dce:
   input: []
   name: futures_contract_info_dce
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: name
     type: str
@@ -392,24 +693,62 @@ futures_contract_info_dce:
   - desc: 'from :return: docstring'
     name: day
     type: datetime
+  - desc: contractId field
+    name: contractId
+    type: str
+  - desc: variety field
+    name: variety
+    type: str
+  - desc: varietyOrder field
+    name: varietyOrder
+    type: str
+  - desc: unit field
+    name: unit
+    type: str
+  - desc: tick field
+    name: tick
+    type: str
+  - desc: startTradeDate field
+    name: startTradeDate
+    type: datetime
+  - desc: endTradeDate field
+    name: endTradeDate
+    type: datetime
+  - desc: endDeliveryDate field
+    name: endDeliveryDate
+    type: datetime
+  - desc: tradeType field
+    name: tradeType
+    type: float
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_contract_info_dce
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      contractId: contractId
+      endDeliveryDate: endDeliveryDate
+      endTradeDate: endTradeDate
+      startTradeDate: startTradeDate
+      tick: tick
+      tradeType: tradeType
+      unit: unit
+      variety: variety
+      varietyOrder: varietyOrder
       交易单位: unit
+      合约: 合约
       品种名称: name
       开始交易日: day
       最后交割日: day
       最后交易日: day
+      最小变动价位: 最小变动价位
     param_transforms: {}
 futures_contract_info_gfex:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -426,20 +765,56 @@ futures_contract_info_gfex:
   - desc: 'from :return: docstring'
     name: unit
     type: int
+  - desc: tradeType field
+    name: tradeType
+    type: float
+  - desc: variety field
+    name: variety
+    type: str
+  - desc: varietyOrder field
+    name: varietyOrder
+    type: str
+  - desc: contractId field
+    name: contractId
+    type: str
+  - desc: unit field
+    name: unit
+    type: str
+  - desc: tick field
+    name: tick
+    type: str
+  - desc: startTradeDate field
+    name: startTradeDate
+    type: datetime
+  - desc: endTradeDate field
+    name: endTradeDate
+    type: datetime
+  - desc: endDeliveryDate0 field
+    name: endDeliveryDate0
+    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_contract_info_gfex
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      contractId: contractId
+      endDeliveryDate0: endDeliveryDate0
+      endTradeDate: endTradeDate
+      startTradeDate: startTradeDate
+      tick: tick
+      tradeType: tradeType
+      unit: unit
+      variety: variety
+      varietyOrder: varietyOrder
       交易单位: unit
     param_transforms: {}
 futures_contract_info_ine:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -462,9 +837,6 @@ futures_contract_info_ine:
   name: futures_contract_info_ine
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: contract_code
     type: int
   - desc: 'from :return: docstring'
@@ -485,26 +857,56 @@ futures_contract_info_ine:
   - desc: 'from :return: docstring'
     name: day
     type: datetime
+  - desc: BASISPRICE field
+    name: BASISPRICE
+    type: float
+  - desc: ENDDELIVDATE field
+    name: ENDDELIVDATE
+    type: datetime
+  - desc: EXPIREDATE field
+    name: EXPIREDATE
+    type: datetime
+  - desc: INSTRUMENTID field
+    name: INSTRUMENTID
+    type: str
+  - desc: OPENDATE field
+    name: OPENDATE
+    type: datetime
+  - desc: STARTDELIVDATE field
+    name: STARTDELIVDATE
+    type: datetime
+  - desc: TRADINGDAY field
+    name: TRADINGDAY
+    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_contract_info_ine
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      BASISPRICE: BASISPRICE
+      ENDDELIVDATE: ENDDELIVDATE
+      EXPIREDATE: EXPIREDATE
+      INSTRUMENTID: INSTRUMENTID
+      OPENDATE: OPENDATE
+      STARTDELIVDATE: STARTDELIVDATE
+      TRADINGDAY: TRADINGDAY
       上市日: day
       交易日: day
       到期日: maturity_date
       合约代码: contract_code
       开始交割日: day
+      挂牌基准价: 挂牌基准价
       最后交割日: day
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_contract_info_shfe:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -527,9 +929,6 @@ futures_contract_info_shfe:
   name: futures_contract_info_shfe
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: contract_code
     type: int
   - desc: 'from :return: docstring'
@@ -550,26 +949,56 @@ futures_contract_info_shfe:
   - desc: 'from :return: docstring'
     name: day
     type: datetime
+  - desc: BASISPRICE field
+    name: BASISPRICE
+    type: float
+  - desc: ENDDELIVDATE field
+    name: ENDDELIVDATE
+    type: datetime
+  - desc: EXPIREDATE field
+    name: EXPIREDATE
+    type: datetime
+  - desc: INSTRUMENTID field
+    name: INSTRUMENTID
+    type: str
+  - desc: OPENDATE field
+    name: OPENDATE
+    type: datetime
+  - desc: STARTDELIVDATE field
+    name: STARTDELIVDATE
+    type: datetime
+  - desc: TRADINGDAY field
+    name: TRADINGDAY
+    type: datetime
   rate_limit_key: shfe
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_contract_info_shfe
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      BASISPRICE: BASISPRICE
+      ENDDELIVDATE: ENDDELIVDATE
+      EXPIREDATE: EXPIREDATE
+      INSTRUMENTID: INSTRUMENTID
+      OPENDATE: OPENDATE
+      STARTDELIVDATE: STARTDELIVDATE
+      TRADINGDAY: TRADINGDAY
       上市日: day
       交易日: day
       到期日: maturity_date
       合约代码: contract_code
       开始交割日: day
+      挂牌基准价: 挂牌基准价
       最后交割日: day
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_dce_position_rank:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -650,7 +1079,7 @@ futures_dce_position_rank:
     type: str
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_dce_position_rank
     input_mapping:
@@ -658,13 +1087,29 @@ futures_dce_position_rank:
       vars_list: vars_list
     name: akshare_em
     output_mapping:
+      data.iloc[start_list[0: data.iloc[start_list[0
+      long_open_interest: long_open_interest
+      long_open_interest_chg: long_open_interest_chg
+      long_party_name: long_party_name
+      rank: rank
+      short_open_interest: short_open_interest
+      short_open_interest_chg: short_open_interest_chg
+      short_party_name: short_party_name
+      vol: vol
+      vol_chg: vol_chg
+      vol_party_name: vol_party_name
       会员简称: name
+      名次: 名次
+      增减: 增减
       成交量: volume
-    param_transforms: {}
+      持买单量: 持买单量
+      持卖单量: 持卖单量
+    param_transforms:
+      date: YYYYMMDD
 futures_dce_position_rank_other:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -698,9 +1143,6 @@ futures_dce_position_rank_other:
   - desc: vol_chg field
     name: vol_chg
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: long_party_name field
     name: long_party_name
     type: str
@@ -721,14 +1163,13 @@ futures_dce_position_rank_other:
     type: float
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_dce_position_rank_other
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
-      _: _
       long_open_interest: long_open_interest
       long_open_interest_chg: long_open_interest_chg
       long_party_name: long_party_name
@@ -739,11 +1180,12 @@ futures_dce_position_rank_other:
       vol: vol
       vol_chg: vol_chg
       vol_party_name: vol_party_name
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_delivery_czce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -776,7 +1218,7 @@ futures_delivery_czce:
     type: float
   rate_limit_key: czce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_delivery_czce
     input_mapping:
@@ -784,7 +1226,10 @@ futures_delivery_czce:
     name: akshare_em
     output_mapping:
       交割数量: quantity
-    param_transforms: {}
+      交割额: 交割额
+      品种: 品种
+    param_transforms:
+      date: YYYYMMDD
 futures_delivery_dce:
   category: futures
   description: '大连商品交易所-交割统计
@@ -807,18 +1252,19 @@ futures_delivery_dce:
   output: []
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_delivery_dce
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_delivery_match_czce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -861,26 +1307,24 @@ futures_delivery_match_czce:
   - desc: contract_code field
     name: contract_code
     type: int
-  - desc: 'from :return: docstring'
-    name: '0'
-    type: str
-  - desc: 'from :return: docstring'
-    name: ':'
-    type: str
   rate_limit_key: czce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_delivery_match_czce
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      买方会员: 买方会员
       买方会员-会员简称: name
+      交割量: 交割量
+      卖方会员: 卖方会员
       卖方会员-会员简称: name
       合约代码: contract_code
       配对日期: date
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_delivery_match_dce:
   category: futures
   description: '大连商品交易所-交割配对表
@@ -903,7 +1347,7 @@ futures_delivery_match_dce:
   output: []
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_delivery_match_dce
     input_mapping:
@@ -914,7 +1358,7 @@ futures_delivery_match_dce:
 futures_delivery_shfe:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -944,9 +1388,6 @@ futures_delivery_shfe:
   - desc: code field
     name: code
     type: int
-  - desc: _ field
-    name: _
-    type: str
   - desc: 交割量-本月 field
     name: 交割量-本月
     type: float
@@ -961,15 +1402,21 @@ futures_delivery_shfe:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_delivery_shfe
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      交割量-本年累计: 交割量-本年累计
+      交割量-本月: 交割量-本月
+      交割量-比重: 交割量-比重
+      交割量-累计同比: 交割量-累计同比
+      品种: 品种
       品种代码: code
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_display_main_sina:
   category: futures
   description: '新浪主力连续合约品种一览表
@@ -984,11 +1431,11 @@ futures_display_main_sina:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_display_main_sina
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping: {}
     param_transforms: {}
 futures_fees_info:
@@ -1005,7 +1452,7 @@ futures_fees_info:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_fees_info
     input_mapping: {}
@@ -1015,7 +1462,7 @@ futures_fees_info:
 futures_foreign_commodity_realtime:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1040,9 +1487,6 @@ futures_foreign_commodity_realtime:
   - desc: current_price field
     name: current_price
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: bid field
     name: bid
     type: float
@@ -1079,8 +1523,8 @@ futures_foreign_commodity_realtime:
   - desc: name field
     name: name
     type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: 人民币报价 field
     name: 人民币报价
@@ -1115,25 +1559,38 @@ futures_foreign_commodity_realtime:
   - desc: price field
     name: price
     type: float
-  - desc: 'from :return: docstring'
-    name: temp
-    type: str
   rate_limit_key: sina_hq
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_foreign_commodity_realtime
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      ask: ask
+      bid: bid
+      current_price: current_price
+      current_price_rmb: current_price_rmb
+      date: date
+      high: high
+      hold: hold
+      last_settle_price: last_settle_price
+      low: low
+      open: open
+      price: price
+      symbol: symbol
+      time: time
+      买价: 买价
+      人民币报价: 人民币报价
+      卖价: 卖价
       名称: name
       开盘价: open
       持仓量: open_interest
       日期: date
       昨日结算价: day
       最低价: low
-      最新价: last
+      最新价: price
       最高价: high
       行情时间: time
     param_transforms: {}
@@ -1151,7 +1608,7 @@ futures_foreign_commodity_subscribe_exchange_symbol:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_foreign_commodity_subscribe_exchange_symbol
     input_mapping: {}
@@ -1179,7 +1636,7 @@ futures_foreign_detail:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_foreign_detail
     input_mapping:
@@ -1210,7 +1667,7 @@ futures_foreign_hist:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_foreign_hist
     input_mapping:
@@ -1248,7 +1705,7 @@ futures_gfex_position_rank:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_gfex_position_rank
     input_mapping:
@@ -1256,11 +1713,12 @@ futures_gfex_position_rank:
       vars_list: vars_list
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_gfex_warehouse_receipt:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1283,9 +1741,6 @@ futures_gfex_warehouse_receipt:
   name: futures_gfex_warehouse_receipt
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: symbol
     type: str
   - desc: 'from :return: docstring'
@@ -1306,22 +1761,52 @@ futures_gfex_warehouse_receipt:
   - desc: 'from :return: docstring'
     name: 增减
     type: str
+  - desc: varietyOrder field
+    name: varietyOrder
+    type: str
+  - desc: variety field
+    name: variety
+    type: str
+  - desc: whAbbr field
+    name: whAbbr
+    type: str
+  - desc: lastWbillQty field
+    name: lastWbillQty
+    type: str
+  - desc: wbillQty field
+    name: wbillQty
+    type: str
+  - desc: regWbillQty field
+    name: regWbillQty
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_gfex_warehouse_receipt
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      lastWbillQty: lastWbillQty
+      regWbillQty: regWbillQty
+      symbol: symbol
+      variety: variety
+      varietyOrder: varietyOrder
+      wbillQty: wbillQty
+      whAbbr: whAbbr
+      whType: whType
       今日仓单量: day
+      仓库/分库: 仓库/分库
+      品种: 品种
+      增减: 增减
       昨日仓单量: day
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_global_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1349,8 +1834,8 @@ futures_global_hist_em:
   - desc: open field
     name: open
     type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: high field
     name: high
@@ -1361,9 +1846,6 @@ futures_global_hist_em:
   - desc: 总量 field
     name: 总量
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: 涨幅 field
     name: 涨幅
     type: float
@@ -1381,7 +1863,7 @@ futures_global_hist_em:
     type: str
   rate_limit_key: em_push2his
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_global_hist_em
     input_mapping:
@@ -1391,17 +1873,19 @@ futures_global_hist_em:
       代码: code
       名称: name
       开盘: open
+      总量: 总量
       持仓: position
       日增: day
       日期: date
       最低: low
-      最新价: last
+      最新价: price
       最高: high
+      涨幅: 涨幅
     param_transforms: {}
 futures_global_spot_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1416,9 +1900,6 @@ futures_global_spot_em:
   name: futures_global_spot_em
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -1428,7 +1909,7 @@ futures_global_spot_em:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: last
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: change
@@ -1460,21 +1941,57 @@ futures_global_spot_em:
   - desc: 'from :return: docstring'
     name: open_interest
     type: float
+  - desc: index field
+    name: index
+    type: float
+  - desc: zsjd field
+    name: zsjd
+    type: str
+  - desc: ccl field
+    name: ccl
+    type: str
+  - desc: vol field
+    name: vol
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: zde field
+    name: zde
+    type: str
+  - desc: zdf field
+    name: zdf
+    type: str
+  - desc: zjsj field
+    name: zjsj
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_global_spot_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      ccl: ccl
+      index: index
+      name: name
+      vol: vol
+      zde: zde
+      zdf: zdf
+      zjsj: zjsj
+      zsjd: zsjd
+      买盘: 买盘
       今开: open
       代码: code
+      卖盘: 卖盘
       名称: name
+      序号: 序号
       成交量: volume
       持仓量: open_interest
+      昨结: 昨结
       最低: low
-      最新价: last
+      最新价: price
       最高: high
       涨跌幅: pct_change
       涨跌额: change
@@ -1482,7 +1999,7 @@ futures_global_spot_em:
 futures_hist_daily_cffex:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1525,9 +2042,6 @@ futures_hist_daily_cffex:
   - desc: open_interest field
     name: open_interest
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: close field
     name: close
     type: float
@@ -1539,14 +2053,13 @@ futures_hist_daily_cffex:
     type: str
   rate_limit_key: cffex
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_hist_daily_cffex
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
-      _: _
       close: close
       high: high
       low: low
@@ -1557,11 +2070,12 @@ futures_hist_daily_cffex:
       symbol: symbol
       turnover: turnover
       volume: volume
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1620,18 +2134,12 @@ futures_hist_em:
   - desc: amount field
     name: amount
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: pct_change field
     name: pct_change
     type: float
   - desc: change field
     name: change
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: open_interest field
     name: open_interest
     type: float
@@ -1657,11 +2165,13 @@ futures_hist_em:
       最高: high
       涨跌: change
       涨跌幅: pct_change
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 futures_hist_table_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1684,14 +2194,26 @@ futures_hist_table_em:
   - desc: contract_code field
     name: contract_code
     type: int
+  - desc: mktname field
+    name: mktname
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: code field
+    name: code
+    type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_hist_table_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      code: code
+      mktname: mktname
+      name: name
       合约中文代码: code
       合约代码: contract_code
       市场简称: name
@@ -1699,7 +2221,7 @@ futures_hist_table_em:
 futures_hog_core:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1729,7 +2251,7 @@ futures_hog_core:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_hog_core
     input_mapping:
@@ -1742,7 +2264,7 @@ futures_hog_core:
 futures_hog_cost:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1772,7 +2294,7 @@ futures_hog_cost:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_hog_cost
     input_mapping:
@@ -1785,7 +2307,7 @@ futures_hog_cost:
 futures_hog_supply:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1854,18 +2376,34 @@ futures_hog_supply:
   - desc: 生猪出栏 field
     name: 生猪出栏
     type: str
+  - desc: benzhou field
+    name: benzhou
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_hog_supply
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      benzhou: benzhou
+      date: date
+      item: item
+      value: value
+      同比: 同比
       周期: week
       大豆播种面积: area
+      大豆进口金额: 大豆进口金额
+      猪肉产量: 猪肉产量
       玉米播种面积: area
+      玉米进口金额: 玉米进口金额
+      环比: 环比
+      生猪出栏: 生猪出栏
+      生猪存栏: 生猪存栏
+      白条肉平均出厂价格: 白条肉平均出厂价格
+      能繁母猪存栏: 能繁母猪存栏
     param_transforms: {}
 futures_hold_pos_sina:
   category: futures
@@ -1899,20 +2437,21 @@ futures_hold_pos_sina:
   output: []
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_hold_pos_sina
     input_mapping:
       contract: contract
       date: date
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_hq_subscribe_exchange_symbol:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1934,7 +2473,7 @@ futures_hq_subscribe_exchange_symbol:
     type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_hq_subscribe_exchange_symbol
     input_mapping: {}
@@ -1946,7 +2485,7 @@ futures_hq_subscribe_exchange_symbol:
 futures_index_ccidx:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -1971,21 +2510,45 @@ futures_index_ccidx:
   - desc: 'from :return: docstring'
     name: date
     type: datetime
+  - desc: tradeDate field
+    name: tradeDate
+    type: datetime
+  - desc: indexId field
+    name: indexId
+    type: float
+  - desc: closingPrice field
+    name: closingPrice
+    type: float
+  - desc: settlePrice field
+    name: settlePrice
+    type: float
+  - desc: dailyIncreaseAndDecrease field
+    name: dailyIncreaseAndDecrease
+    type: str
+  - desc: dailyIncreaseAndDecreasePercentage field
+    name: dailyIncreaseAndDecreasePercentage
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_index_ccidx
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      closingPrice: closingPrice
+      dailyIncreaseAndDecrease: dailyIncreaseAndDecrease
+      dailyIncreaseAndDecreasePercentage: dailyIncreaseAndDecreasePercentage
+      indexId: indexId
+      settlePrice: settlePrice
+      tradeDate: tradeDate
       日期: date
     param_transforms: {}
 futures_inventory_99:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2018,20 +2581,21 @@ futures_inventory_99:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_inventory_99
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      库存: 库存
       收盘价: close
       日期: date
     param_transforms: {}
 futures_inventory_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2053,9 +2617,6 @@ futures_inventory_em:
     type: str
   name: futures_inventory_em
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -2065,24 +2626,23 @@ futures_inventory_em:
   - desc: 增减 field
     name: 增减
     type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_inventory_em
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      增减: 增减
+      库存: 库存
       日期: date
     param_transforms: {}
 futures_main_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2136,15 +2696,16 @@ futures_main_sina:
     type: float
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_main_sina
     input_mapping:
       end_date: end_date
       start_date: start_date
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      动态结算价: 动态结算价
       开盘价: open
       成交量: volume
       持仓量: open_interest
@@ -2152,11 +2713,13 @@ futures_main_sina:
       日期: date
       最低价: low
       最高价: high
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 futures_news_shmet:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2177,9 +2740,6 @@ futures_news_shmet:
     type: str
   name: futures_news_shmet
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -2220,14 +2780,15 @@ futures_rule:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_rule
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_settle:
   category: futures
   description: '期货交易所结算参数
@@ -2252,7 +2813,7 @@ futures_settle:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_settle
     input_mapping:
@@ -2260,11 +2821,12 @@ futures_settle:
       market: market
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_settle_cffex:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2306,7 +2868,7 @@ futures_settle_cffex:
     type: datetime
   rate_limit_key: cffex
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_settle_cffex
     input_mapping:
@@ -2319,11 +2881,12 @@ futures_settle_cffex:
       short_margin_ratio: short_margin_ratio
       symbol: symbol
       trade_fee_ratio: trade_fee_ratio
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_settle_czce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2383,7 +2946,7 @@ futures_settle_czce:
     type: str
   rate_limit_key: czce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_settle_czce
     input_mapping:
@@ -2402,11 +2965,12 @@ futures_settle_czce:
       symbol: symbol
       trade_fee: trade_fee
       trade_limit: trade_limit
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_settle_gfex:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2472,7 +3036,7 @@ futures_settle_gfex:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_settle_gfex
     input_mapping:
@@ -2493,11 +3057,12 @@ futures_settle_gfex:
       spec_buy_rate: spec_buy_rate
       symbol: symbol
       trade_type: trade_type
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_settle_ine:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2569,7 +3134,7 @@ futures_settle_ine:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_settle_ine
     input_mapping:
@@ -2592,11 +3157,12 @@ futures_settle_ine:
       trade_fee_ratio: trade_fee_ratio
       trade_fee_unit: trade_fee_unit
       uni_direction: uni_direction
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_settle_shfe:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2668,7 +3234,7 @@ futures_settle_shfe:
     type: datetime
   rate_limit_key: shfe
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_settle_shfe
     input_mapping:
@@ -2691,7 +3257,8 @@ futures_settle_shfe:
       trade_fee_ratio: trade_fee_ratio
       trade_fee_unit: trade_fee_unit
       uni_direction: uni_direction
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_settlement_price_sgx:
   category: futures
   description: '新加坡交易所-衍生品-历史数据-历史结算价格
@@ -2714,20 +3281,16 @@ futures_settlement_price_sgx:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_settlement_price_sgx
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_shfe_warehouse_receipt:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
   description: '上海期货交易所指定交割仓库期货仓单日报
 
@@ -2746,25 +3309,22 @@ futures_shfe_warehouse_receipt:
     required: true
     type: str
   name: futures_shfe_warehouse_receipt
-  output:
-  - desc: 'from :return: docstring'
-    name: '1'
-    type: str
+  output: []
   rate_limit_key: shfe
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_shfe_warehouse_receipt
     input_mapping:
       date: date
     name: akshare_em
-    output_mapping:
-      '1': '1'
-    param_transforms: {}
+    output_mapping: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_spot_price:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2829,7 +3389,7 @@ futures_spot_price:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_spot_price
     input_mapping:
@@ -2850,13 +3410,9 @@ futures_spot_price:
       near_month: near_month
       spot_price: spot_price
       symbol: symbol
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_spot_price_daily:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
   description: '指定时间段内大宗商品现货价格及相应基差
 
@@ -2879,49 +3435,10 @@ futures_spot_price_daily:
     required: true
     type: str
   name: futures_spot_price_daily
-  output:
-  - desc: date field
-    name: date
-    type: str
-  - desc: symbol field
-    name: symbol
-    type: str
-  - desc: spot_price field
-    name: spot_price
-    type: float
-  - desc: near_contract field
-    name: near_contract
-    type: str
-  - desc: near_contract_price field
-    name: near_contract_price
-    type: float
-  - desc: dominant_contract field
-    name: dominant_contract
-    type: str
-  - desc: dominant_contract_price field
-    name: dominant_contract_price
-    type: float
-  - desc: near_month field
-    name: near_month
-    type: str
-  - desc: dominant_month field
-    name: dominant_month
-    type: str
-  - desc: near_basis field
-    name: near_basis
-    type: float
-  - desc: dom_basis field
-    name: dom_basis
-    type: float
-  - desc: near_basis_rate field
-    name: near_basis_rate
-    type: float
-  - desc: dom_basis_rate field
-    name: dom_basis_rate
-    type: float
+  output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_spot_price_daily
     input_mapping:
@@ -2929,25 +3446,12 @@ futures_spot_price_daily:
       start_day: start_day
       vars_list: vars_list
     name: akshare_em
-    output_mapping:
-      date: date
-      dom_basis: dom_basis
-      dom_basis_rate: dom_basis_rate
-      dominant_contract: dominant_contract
-      dominant_contract_price: dominant_contract_price
-      dominant_month: dominant_month
-      near_basis: near_basis
-      near_basis_rate: near_basis_rate
-      near_contract: near_contract
-      near_contract_price: near_contract_price
-      near_month: near_month
-      spot_price: spot_price
-      symbol: symbol
+    output_mapping: {}
     param_transforms: {}
 futures_spot_price_previous:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -2999,12 +3503,9 @@ futures_spot_price_previous:
   - desc: day field
     name: day
     type: datetime
-  - desc: 'from :return: docstring'
-    name: 2:-1
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_spot_price_previous
     input_mapping:
@@ -3015,11 +3516,18 @@ futures_spot_price_previous:
       180日内主力基差最低: day
       180日内主力基差最高: day
       主力合约代码: code
-    param_transforms: {}
+      主力合约价格: 主力合约价格
+      主力合约变动百分比: 主力合约变动百分比
+      主力合约基差: 主力合约基差
+      主力合约基差(%): 主力合约基差(%)
+      商品: 商品
+      现货价格: 现货价格
+    param_transforms:
+      date: YYYYMMDD
 futures_spot_stock:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3050,19 +3558,20 @@ futures_spot_stock:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_spot_stock
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      date_list[0: date_list[0
       商品名称: name
     param_transforms: {}
 futures_spot_sys:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3098,12 +3607,9 @@ futures_spot_sys:
   - desc: date field
     name: date
     type: datetime
-  - desc: 'from :return: docstring'
-    name: '2'
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_spot_sys
     input_mapping:
@@ -3111,12 +3617,13 @@ futures_spot_sys:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      index: index
       日期: date
     param_transforms: {}
 futures_stock_shfe_js:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3137,25 +3644,22 @@ futures_stock_shfe_js:
     required: true
     type: str
   name: futures_stock_shfe_js
-  output:
-  - desc: 'from :return: docstring'
-    name: '1:'
-    type: str
+  output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_stock_shfe_js
     input_mapping:
       date: date
     name: akshare_em
-    output_mapping:
-      '1:': '1:'
-    param_transforms: {}
+    output_mapping: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_to_spot_czce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3194,7 +3698,8 @@ futures_to_spot_czce:
     output_mapping:
       合约代码: contract_code
       合约数量: quantity
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_to_spot_dce:
   category: futures
   description: '大连商品交易所-期转现
@@ -3217,18 +3722,19 @@ futures_to_spot_dce:
   output: []
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_to_spot_dce
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_to_spot_shfe:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3248,9 +3754,6 @@ futures_to_spot_shfe:
     type: str
   name: futures_to_spot_shfe
   output:
-  - desc: _ field
-    name: _
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -3265,15 +3768,19 @@ futures_to_spot_shfe:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_to_spot_shfe
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      交割量: 交割量
+      合约: 合约
       日期: date
-    param_transforms: {}
+      期转现量: 期转现量
+    param_transforms:
+      date: YYYYMMDD
 futures_warehouse_receipt_czce:
   category: futures
   description: '郑州商品交易所-交易数据-仓单日报
@@ -3296,18 +3803,19 @@ futures_warehouse_receipt_czce:
   output: []
   rate_limit_key: czce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_warehouse_receipt_czce
     input_mapping:
       date: date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 futures_warehouse_receipt_dce:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3329,49 +3837,49 @@ futures_warehouse_receipt_dce:
     type: str
   name: futures_warehouse_receipt_dce
   output:
-  - desc: 'from :return: docstring'
-    name: '['
+  - desc: variety field
+    name: variety
     type: str
-  - desc: 'from :return: docstring'
-    name: code
-    type: int
-  - desc: 'from :return: docstring'
-    name: name
+  - desc: whAbbr field
+    name: whAbbr
     type: str
-  - desc: 'from :return: docstring'
-    name: 仓库/分库
+  - desc: deliveryAbbr field
+    name: deliveryAbbr
     type: str
-  - desc: 'from :return: docstring'
-    name: quantity
-    type: float
-  - desc: 'from :return: docstring'
-    name: day
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: day
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: 增减（手）
-    type: int
+  - desc: lastWbillQty field
+    name: lastWbillQty
+    type: str
+  - desc: wbillQty field
+    name: wbillQty
+    type: str
+  - desc: diff field
+    name: diff
+    type: str
+  - desc: varietyOrder field
+    name: varietyOrder
+    type: str
   rate_limit_key: dce
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_warehouse_receipt_dce
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
-      今日仓单量（手）: day
-      可选提货地点/分库-数量: quantity
-      品种代码: code
-      品种名称: name
-      昨日仓单量（手）: day
-    param_transforms: {}
+      deliveryAbbr: deliveryAbbr
+      diff: diff
+      lastWbillQty: lastWbillQty
+      variety: variety
+      varietyOrder: varietyOrder
+      wbillQty: wbillQty
+      whAbbr: whAbbr
+    param_transforms:
+      date: YYYYMMDD
 futures_zh_daily_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3419,12 +3927,12 @@ futures_zh_daily_sina:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_zh_daily_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       close: close
       date: date
@@ -3438,7 +3946,7 @@ futures_zh_daily_sina:
 futures_zh_minute_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3485,13 +3993,13 @@ futures_zh_minute_sina:
     type: str
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_zh_minute_sina
     input_mapping:
       period: period
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       close: close
       datetime: datetime
@@ -3521,7 +4029,7 @@ futures_zh_realtime:
   output: []
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_zh_realtime
     input_mapping:
@@ -3532,7 +4040,7 @@ futures_zh_realtime:
 futures_zh_spot:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3609,18 +4117,12 @@ futures_zh_spot:
   - desc: volume field
     name: volume
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: amount field
     name: amount
     type: float
-  - desc: __ field
-    name: __
-    type: str
-  rate_limit_key: sina_hq
+  rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: futures_zh_spot
     input_mapping:
@@ -3629,8 +4131,6 @@ futures_zh_spot:
       symbol: symbol
     name: akshare_em
     output_mapping:
-      _: _
-      __: __
       amount: amount
       ask_price: ask_price
       avg_price: avg_price
@@ -3647,11 +4147,12 @@ futures_zh_spot:
       symbol: symbol
       time: time
       volume: volume
-    param_transforms: {}
+    param_transforms:
+      adjust: pass_through
 hf_sp_500:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
@@ -3691,7 +4192,7 @@ hf_sp_500:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: hf_sp_500
     input_mapping:
@@ -3704,4 +4205,5 @@ hf_sp_500:
       low: low
       open: open
       price: price
-    param_transforms: {}
+    param_transforms:
+      year: YYYY

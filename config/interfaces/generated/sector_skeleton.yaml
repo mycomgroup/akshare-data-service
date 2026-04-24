@@ -1,7 +1,7 @@
 sw_index_first_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: sector
@@ -38,14 +38,15 @@ sw_index_first_info:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: sw_index_first_info
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       TTM(滚动)市盈率: pe
       市净率: pb
+      成份个数: 成份个数
       行业代码: code
       行业名称: name
       静态市盈率: pe
@@ -54,7 +55,7 @@ sw_index_first_info:
 sw_index_second_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: sector
@@ -94,15 +95,16 @@ sw_index_second_info:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: sw_index_second_info
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       TTM(滚动)市盈率: pe
       上级行业: industry
       市净率: pb
+      成份个数: 成份个数
       行业代码: code
       行业名称: name
       静态市盈率: pe
@@ -111,7 +113,7 @@ sw_index_second_info:
 sw_index_third_cons:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: sector
@@ -186,28 +188,35 @@ sw_index_third_cons:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: sw_index_third_cons
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       市值: market_cap
       市净率: pb
       市盈率: pe
       市盈率ttm: pe
+      序号: 序号
       归母净利润同比增长(06-30): net_profit
       归母净利润同比增长(09-30): net_profit
+      申万1级: 申万1级
+      申万2级: 申万2级
+      申万3级: 申万3级
       纳入时间: time
       股息率: dividend_yield
       股票代码: symbol
       股票简称: name
+      营业收入同比增长(06-30): 营业收入同比增长(06-30)
+      营业收入同比增长(09-30): 营业收入同比增长(09-30)
     param_transforms: {}
 sw_index_third_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: sector
@@ -247,15 +256,16 @@ sw_index_third_info:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: sw_index_third_info
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       TTM(滚动)市盈率: pe
       上级行业: industry
       市净率: pb
+      成份个数: 成份个数
       行业代码: code
       行业名称: name
       静态市盈率: pe

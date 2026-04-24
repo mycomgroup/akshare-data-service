@@ -1,7 +1,7 @@
 fund_announcement_dividend_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -32,9 +32,6 @@ fund_announcement_dividend_em:
   - desc: name field
     name: name
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -43,7 +40,7 @@ fund_announcement_dividend_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_announcement_dividend_em
     input_mapping:
@@ -54,12 +51,13 @@ fund_announcement_dividend_em:
       公告标题: title
       基金代码: fund_code
       基金名称: name
+      报告ID: 报告ID
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_announcement_personnel_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -90,9 +88,6 @@ fund_announcement_personnel_em:
   - desc: name field
     name: name
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -101,7 +96,7 @@ fund_announcement_personnel_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_announcement_personnel_em
     input_mapping:
@@ -112,12 +107,13 @@ fund_announcement_personnel_em:
       公告标题: title
       基金代码: fund_code
       基金名称: name
+      报告ID: 报告ID
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_announcement_report_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -148,9 +144,6 @@ fund_announcement_report_em:
   - desc: name field
     name: name
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -159,7 +152,7 @@ fund_announcement_report_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_announcement_report_em
     input_mapping:
@@ -170,12 +163,13 @@ fund_announcement_report_em:
       公告标题: title
       基金代码: fund_code
       基金名称: name
+      报告ID: 报告ID
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_aum_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -198,8 +192,8 @@ fund_aum_em:
   - desc: time field
     name: time
     type: datetime
-  - desc: size field
-    name: size
+  - desc: scale field
+    name: scale
     type: float
   - desc: 全部基金数 field
     name: 全部基金数
@@ -209,19 +203,23 @@ fund_aum_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_aum_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      全部管理规模: size
+      全部基金数: 全部基金数
+      全部管理规模: scale
+      全部经理数: 全部经理数
+      基金公司: 基金公司
+      序号: 序号
       成立时间: time
     param_transforms: {}
 fund_aum_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -249,8 +247,8 @@ fund_aum_hist_em:
   - desc: 基金公司 field
     name: 基金公司
     type: str
-  - desc: size field
-    name: size
+  - desc: scale field
+    name: scale
     type: float
   - desc: 股票型 field
     name: 股票型
@@ -272,16 +270,24 @@ fund_aum_hist_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_aum_hist_em
     input_mapping:
       year: year
     name: akshare_em
     output_mapping:
-      总规模: size
+      QDII: QDII
+      债券型: 债券型
+      基金公司: 基金公司
+      序号: 序号
+      总规模: scale
+      指数型: 指数型
+      混合型: 混合型
+      股票型: 股票型
       货币型: currency
-    param_transforms: {}
+    param_transforms:
+      year: YYYY
 fund_aum_trend_em:
   category: fund
   description: '东方财富-基金-基金市场管理规模走势图
@@ -296,7 +302,7 @@ fund_aum_trend_em:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_aum_trend_em
     input_mapping: {}
@@ -317,7 +323,7 @@ fund_balance_position_lg:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_balance_position_lg
     input_mapping: {}
@@ -327,7 +333,7 @@ fund_balance_position_lg:
 fund_cf_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -381,12 +387,9 @@ fund_cf_em:
   - desc: 拆分折算 field
     name: 拆分折算
     type: str
-  - desc: '- field'
-    name: '-'
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_cf_em
     input_mapping:
@@ -399,13 +402,16 @@ fund_cf_em:
     output_mapping:
       基金代码: fund_code
       基金简称: name
+      序号: 序号
+      拆分折算: 拆分折算
       拆分折算日: day
       拆分类型: type
-    param_transforms: {}
+    param_transforms:
+      year: YYYY
 fund_etf_category_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -433,8 +439,8 @@ fund_etf_category_sina:
   - desc: name field
     name: name
     type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: change field
     name: change
@@ -466,9 +472,6 @@ fund_etf_category_sina:
   - desc: amount field
     name: amount
     type: float
-  - desc: _ field
-    name: _
-    type: str
   rate_limit_key: sina_vip
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
@@ -476,7 +479,7 @@ fund_etf_category_sina:
     func: fund_etf_category_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       买入: bid
       今开: open
@@ -487,7 +490,7 @@ fund_etf_category_sina:
       成交额: amount
       昨收: prev_close
       最低: low
-      最新价: last
+      最新价: price
       最高: high
       涨跌幅: pct_change
       涨跌额: change
@@ -496,7 +499,7 @@ fund_etf_category_sina:
 fund_etf_category_ths:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -521,82 +524,83 @@ fund_etf_category_ths:
     type: str
   name: fund_etf_category_ths
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
-    name: 序号
-    type: str
-  - desc: 'from :return: docstring'
-    name: fund_code
+  - desc: index field
+    name: index
+    type: float
+  - desc: code field
+    name: code
     type: int
-  - desc: 'from :return: docstring'
+  - desc: typename field
+    name: typename
+    type: float
+  - desc: net field
+    name: net
+    type: str
+  - desc: name field
     name: name
     type: str
-  - desc: 'from :return: docstring'
-    name: nav
-    type: float
-  - desc: 'from :return: docstring'
-    name: nav
-    type: float
-  - desc: 'from :return: docstring'
-    name: day
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: day
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: 增长值
-    type: float
-  - desc: 'from :return: docstring'
-    name: 增长率
-    type: float
-  - desc: 'from :return: docstring'
-    name: status
+  - desc: totalnet field
+    name: totalnet
     type: str
-  - desc: 'from :return: docstring'
-    name: status
+  - desc: newnet field
+    name: newnet
     type: str
-  - desc: 'from :return: docstring'
-    name: day
+  - desc: newtotalnet field
+    name: newtotalnet
+    type: str
+  - desc: newdate field
+    name: newdate
     type: datetime
-  - desc: 'from :return: docstring'
-    name: nav
+  - desc: net1 field
+    name: net1
+    type: str
+  - desc: totalnet1 field
+    name: totalnet1
+    type: str
+  - desc: ranges field
+    name: ranges
+    type: str
+  - desc: rate field
+    name: rate
     type: float
-  - desc: 'from :return: docstring'
-    name: nav
-    type: float
-  - desc: 'from :return: docstring'
-    name: type
+  - desc: shstat field
+    name: shstat
+    type: str
+  - desc: sgstat field
+    name: sgstat
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_etf_category_ths
     input_mapping:
       date: date
       symbol: symbol
-    name: akshare_em
+    name: akshare_ths
     output_mapping:
-      前一日-单位净值: day
-      前一日-累计净值: day
-      基金代码: fund_code
-      基金名称: name
-      基金类型: type
-      当前-单位净值: nav
-      当前-累计净值: nav
-      最新-交易日: day
-      最新-单位净值: nav
-      最新-累计净值: nav
-      申购状态: status
-      赎回状态: status
+      code: code
+      index: index
+      name: name
+      net: net
+      net1: net1
+      newdate: newdate
+      newnet: newnet
+      newtotalnet: newtotalnet
+      ranges: ranges
+      rate: rate
+      sgstat: sgstat
+      shstat: shstat
+      totalnet: totalnet
+      totalnet1: totalnet1
+      typename: typename
     param_transforms:
+      date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_etf_dividend_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -621,15 +625,6 @@ fund_etf_dividend_sina:
   - desc: date field
     name: date
     type: datetime
-  - desc: f field
-    name: f
-    type: str
-  - desc: s field
-    name: s
-    type: str
-  - desc: u field
-    name: u
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -638,20 +633,22 @@ fund_etf_dividend_sina:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_etf_dividend_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      date: date
       日期: date
+      累计分红: 累计分红
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_etf_fund_daily_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -674,12 +671,6 @@ fund_etf_fund_daily_em:
   - desc: type field
     name: type
     type: str
-  - desc: 'from :return: docstring'
-    name: '0'
-    type: str
-  - desc: 'from :return: docstring'
-    name: ':'
-    type: str
   rate_limit_key: default
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
@@ -695,7 +686,7 @@ fund_etf_fund_daily_em:
 fund_etf_fund_info_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -736,9 +727,6 @@ fund_etf_fund_info_em:
   - desc: accum_nav field
     name: accum_nav
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: day field
     name: day
     type: datetime
@@ -765,11 +753,13 @@ fund_etf_fund_info_em:
       申购状态: status
       累计净值: accum_nav
       赎回状态: status
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 fund_etf_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -869,11 +859,14 @@ fund_etf_hist_em:
       涨跌幅: pct_change
       涨跌额: change
     param_transforms:
+      adjust: pass_through
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_etf_hist_min_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -955,7 +948,7 @@ fund_etf_hist_min_em:
     type: float
   rate_limit_key: em_push2his
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_etf_hist_min_em
     input_mapping:
@@ -966,6 +959,7 @@ fund_etf_hist_min_em:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      均价: 均价
       开盘: open
       成交量: volume
       成交额: amount
@@ -978,6 +972,9 @@ fund_etf_hist_min_em:
       涨跌幅: pct_change
       涨跌额: change
     param_transforms:
+      adjust: pass_through
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_etf_hist_sina:
   category: fund
@@ -1001,19 +998,19 @@ fund_etf_hist_sina:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_etf_hist_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping: {}
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_etf_scale_sse:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1036,9 +1033,6 @@ fund_etf_scale_sse:
   name: fund_etf_scale_sse
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -1056,24 +1050,51 @@ fund_etf_scale_sse:
   - desc: 'from :return: docstring'
     name: 基金份额
     type: float
+  - desc: NUM field
+    name: NUM
+    type: int
+  - desc: SEC_CODE field
+    name: SEC_CODE
+    type: int
+  - desc: SEC_NAME field
+    name: SEC_NAME
+    type: str
+  - desc: ETF_TYPE field
+    name: ETF_TYPE
+    type: float
+  - desc: STAT_DATE field
+    name: STAT_DATE
+    type: datetime
+  - desc: TOT_VOL field
+    name: TOT_VOL
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_etf_scale_sse
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      ETF_TYPE: ETF_TYPE
       ETF类型: type
+      NUM: NUM
+      SEC_CODE: SEC_CODE
+      SEC_NAME: SEC_NAME
+      STAT_DATE: STAT_DATE
+      TOT_VOL: TOT_VOL
       基金代码: fund_code
+      基金份额: 基金份额
       基金简称: name
+      序号: 序号
       统计日期: date
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 fund_etf_scale_szse:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1087,9 +1108,6 @@ fund_etf_scale_szse:
   input: []
   name: fund_etf_scale_szse
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: fund_code
     type: int
@@ -1120,9 +1138,12 @@ fund_etf_scale_szse:
   - desc: 'from :return: docstring'
     name: nav
     type: float
+  - desc: scale field
+    name: scale
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_etf_scale_szse
     input_mapping: {}
@@ -1131,12 +1152,19 @@ fund_etf_scale_szse:
       上市日期: listing_date
       净值: nav
       基金代码: fund_code
+      基金份额: 基金份额
+      基金发起人: 基金发起人
+      基金托管人: 基金托管人
       基金简称: name
+      基金管理人: 基金管理人
+      基金类别: 基金类别
+      当前规模(份): scale
+      投资类别: 投资类别
     param_transforms: {}
 fund_etf_spot_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1150,152 +1178,139 @@ fund_etf_spot_em:
   input: []
   name: fund_etf_spot_em
   output:
-  - desc: 'from :return: docstring'
-    name: '['
+  - desc: f12 field
+    name: f12
     type: str
-  - desc: 'from :return: docstring'
-    name: code
-    type: int
-  - desc: 'from :return: docstring'
-    name: name
+  - desc: f14 field
+    name: f14
     type: str
-  - desc: 'from :return: docstring'
-    name: last
-    type: float
-  - desc: 'from :return: docstring'
-    name: IOPV实时估值
-    type: float
-  - desc: 'from :return: docstring'
-    name: 基金折价率
-    type: float
-  - desc: 'from :return: docstring'
-    name: change
-    type: float
-  - desc: 'from :return: docstring'
-    name: pct_change
-    type: float
-  - desc: 'from :return: docstring'
-    name: volume
-    type: float
-  - desc: 'from :return: docstring'
-    name: amount
-    type: float
-  - desc: 'from :return: docstring'
-    name: open
-    type: float
-  - desc: 'from :return: docstring'
-    name: high
-    type: float
-  - desc: 'from :return: docstring'
-    name: low
-    type: float
-  - desc: 'from :return: docstring'
-    name: prev_close
+  - desc: f17 field
+    name: f17
     type: str
-  - desc: 'from :return: docstring'
-    name: amplitude
+  - desc: f15 field
+    name: f15
     type: str
-  - desc: 'from :return: docstring'
-    name: turnover
-    type: float
-  - desc: 'from :return: docstring'
-    name: 量比
-    type: float
-  - desc: 'from :return: docstring'
-    name: 委比
-    type: float
-  - desc: 'from :return: docstring'
-    name: 外盘
+  - desc: f16 field
+    name: f16
     type: str
-  - desc: 'from :return: docstring'
-    name: 内盘
+  - desc: f18 field
+    name: f18
     type: str
-  - desc: 'from :return: docstring'
-    name: 主力净流入-净额
-    type: float
-  - desc: 'from :return: docstring'
-    name: 主力净流入-净占比
-    type: int
-  - desc: 'from :return: docstring'
-    name: 超大单净流入-净额
-    type: float
-  - desc: 'from :return: docstring'
-    name: 超大单净流入-净占比
-    type: int
-  - desc: 'from :return: docstring'
-    name: 大单净流入-净额
-    type: float
-  - desc: 'from :return: docstring'
-    name: 大单净流入-净占比
-    type: int
-  - desc: 'from :return: docstring'
-    name: 中单净流入-净额
-    type: float
-  - desc: 'from :return: docstring'
-    name: 中单净流入-净占比
-    type: int
-  - desc: 'from :return: docstring'
-    name: 小单净流入-净额
-    type: float
-  - desc: 'from :return: docstring'
-    name: 小单净流入-净占比
-    type: int
-  - desc: 'from :return: docstring'
-    name: 现手
-    type: int
-  - desc: 'from :return: docstring'
-    name: bid1
-    type: float
-  - desc: 'from :return: docstring'
-    name: ask1
-    type: float
-  - desc: 'from :return: docstring'
-    name: 最新份额
-    type: float
-  - desc: 'from :return: docstring'
-    name: circulating_market_cap
-    type: float
-  - desc: 'from :return: docstring'
-    name: total_market_cap
-    type: float
-  - desc: 'from :return: docstring'
-    name: date
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: time
-    type: datetime
+  - desc: f10 field
+    name: f10
+    type: str
+  - desc: f30 field
+    name: f30
+    type: str
+  - desc: f31 field
+    name: f31
+    type: str
+  - desc: f32 field
+    name: f32
+    type: str
+  - desc: f33 field
+    name: f33
+    type: str
+  - desc: f34 field
+    name: f34
+    type: str
+  - desc: f35 field
+    name: f35
+    type: str
+  - desc: f62 field
+    name: f62
+    type: str
+  - desc: f184 field
+    name: f184
+    type: str
+  - desc: f66 field
+    name: f66
+    type: str
+  - desc: f69 field
+    name: f69
+    type: str
+  - desc: f72 field
+    name: f72
+    type: str
+  - desc: f75 field
+    name: f75
+    type: str
+  - desc: f78 field
+    name: f78
+    type: str
+  - desc: f81 field
+    name: f81
+    type: str
+  - desc: f84 field
+    name: f84
+    type: str
+  - desc: f87 field
+    name: f87
+    type: str
+  - desc: f38 field
+    name: f38
+    type: str
+  - desc: f21 field
+    name: f21
+    type: str
+  - desc: f20 field
+    name: f20
+    type: str
+  - desc: f402 field
+    name: f402
+    type: str
+  - desc: f441 field
+    name: f441
+    type: str
+  - desc: f297 field
+    name: f297
+    type: str
+  - desc: f124 field
+    name: f124
+    type: str
   rate_limit_key: em_push2
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_etf_spot_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      买一: bid1
-      代码: code
-      卖一: ask1
-      名称: name
-      开盘价: open
-      总市值: total_market_cap
-      成交量: volume
-      成交额: amount
-      振幅: amplitude
-      换手率: turnover
-      数据日期: date
-      昨收: prev_close
-      更新时间: time
-      最低价: low
-      最新价: last
-      最高价: high
-      流通市值: circulating_market_cap
-      涨跌幅: pct_change
-      涨跌额: change
+      f10: f10
+      f12: f12
+      f124: f124
+      f14: f14
+      f15: f15
+      f16: f16
+      f17: f17
+      f18: f18
+      f184: f184
+      f20: f20
+      f21: f21
+      f297: f297
+      f30: f30
+      f31: f31
+      f32: f32
+      f33: f33
+      f34: f34
+      f35: f35
+      f38: f38
+      f402: f402
+      f441: f441
+      f62: f62
+      f66: f66
+      f69: f69
+      f72: f72
+      f75: f75
+      f78: f78
+      f81: f81
+      f84: f84
+      f87: f87
     param_transforms: {}
 fund_etf_spot_ths:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1367,18 +1382,21 @@ fund_etf_spot_ths:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_etf_spot_ths
     input_mapping:
       date: date
-    name: akshare_em
+    name: akshare_ths
     output_mapping:
       前一日-单位净值: day
       前一日-累计净值: day
       基金代码: fund_code
       基金名称: name
       基金类型: type
+      增长值: 增长值
+      增长率: 增长率
+      序号: 序号
       当前-单位净值: nav
       当前-累计净值: nav
       最新-交易日: day
@@ -1387,11 +1405,12 @@ fund_etf_spot_ths:
       查询日期: date
       申购状态: status
       赎回状态: status
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 fund_exchange_rank_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1413,9 +1432,6 @@ fund_exchange_rank_em:
     type: int
   - desc: name field
     name: name
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: date field
     name: date
@@ -1461,25 +1477,34 @@ fund_exchange_rank_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_exchange_rank_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      今年来: 今年来
       单位净值: nav
       基金代码: fund_code
       基金简称: name
+      序号: 序号
       成立日期: date
+      成立来: 成立来
       日期: date
       类型: type
       累计净值: accum_nav
       近1周: week
+      近1年: 近1年
+      近1月: 近1月
+      近2年: 近2年
+      近3年: 近3年
+      近3月: 近3月
+      近6月: 近6月
     param_transforms: {}
 fund_fee_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1504,6 +1529,12 @@ fund_fee_em:
     type: str
   name: fund_fee_em
   output:
+  - desc: 原费率 field
+    name: 原费率
+    type: float
+  - desc: 天天基金优惠费率 field
+    name: 天天基金优惠费率
+    type: float
   - desc: 'from :return: docstring'
     name: 适用金额
     type: float
@@ -1513,9 +1544,12 @@ fund_fee_em:
   - desc: 'from :return: docstring'
     name: 费率
     type: float
+  - desc: 原费率|天天基金优惠费率 银行卡购买|活期宝购买 field
+    name: 原费率|天天基金优惠费率 银行卡购买|活期宝购买
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_fee_em
     input_mapping:
@@ -1523,13 +1557,18 @@ fund_fee_em:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      原费率: 原费率
+      原费率|天天基金优惠费率 银行卡购买|活期宝购买: 原费率|天天基金优惠费率 银行卡购买|活期宝购买
+      天天基金优惠费率: 天天基金优惠费率
+      费率: 费率
       适用期限: term
+      适用金额: 适用金额
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_fh_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1587,12 +1626,9 @@ fund_fh_em:
   - desc: day field
     name: day
     type: datetime
-  - desc: '- field'
-    name: '-'
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_fh_em
     input_mapping:
@@ -1603,16 +1639,19 @@ fund_fh_em:
       year: year
     name: akshare_em
     output_mapping:
+      分红: 分红
       分红发放日: day
       基金代码: fund_code
       基金简称: name
+      序号: 序号
       权益登记日: day
       除息日期: date
-    param_transforms: {}
+    param_transforms:
+      year: YYYY
 fund_fh_rank_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1644,12 +1683,9 @@ fund_fh_rank_em:
   - desc: date field
     name: date
     type: datetime
-  - desc: '- field'
-    name: '-'
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_fh_rank_em
     input_mapping: {}
@@ -1657,12 +1693,15 @@ fund_fh_rank_em:
     output_mapping:
       基金代码: fund_code
       基金简称: name
+      序号: 序号
       成立日期: date
+      累计分红: 累计分红
+      累计次数: 累计次数
     param_transforms: {}
 fund_financial_fund_daily_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1698,20 +1737,23 @@ fund_financial_fund_daily_em:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_financial_fund_daily_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      f{show_day[0: f{show_day[0
       上一期年化收益率: yield
       基金代码: fund_code
+      封闭期: 封闭期
+      序号: 序号
       申购状态: status
     param_transforms: {}
 fund_financial_fund_info_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1740,9 +1782,6 @@ fund_financial_fund_info_em:
   - desc: accum_nav field
     name: accum_nav
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: day field
     name: day
     type: datetime
@@ -1757,7 +1796,7 @@ fund_financial_fund_info_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_financial_fund_info_em
     input_mapping:
@@ -1765,6 +1804,7 @@ fund_financial_fund_info_em:
     name: akshare_em
     output_mapping:
       净值日期: date
+      分红送配: 分红送配
       单位净值: nav
       日增长率: day
       申购状态: status
@@ -1775,7 +1815,7 @@ fund_financial_fund_info_em:
 fund_graded_fund_daily_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1795,12 +1835,6 @@ fund_graded_fund_daily_em:
   - desc: name field
     name: name
     type: str
-  - desc: '- field'
-    name: '-'
-    type: str
-  - desc: 'from :return: docstring'
-    name: f{show_day[0
-    type: datetime
   rate_limit_key: default
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
@@ -1815,7 +1849,7 @@ fund_graded_fund_daily_em:
 fund_graded_fund_info_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1846,9 +1880,6 @@ fund_graded_fund_info_em:
   - desc: accum_nav field
     name: accum_nav
     type: float
-  - desc: _ field
-    name: _
-    type: str
   - desc: day field
     name: day
     type: datetime
@@ -1878,7 +1909,7 @@ fund_graded_fund_info_em:
 fund_hk_fund_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1904,9 +1935,6 @@ fund_hk_fund_hist_em:
     type: str
   name: fund_hk_fund_hist_em
   output:
-  - desc: _ field
-    name: _
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -1939,7 +1967,7 @@ fund_hk_fund_hist_em:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_hk_fund_hist_em
     input_mapping:
@@ -1949,6 +1977,7 @@ fund_hk_fund_hist_em:
     output_mapping:
       净值日期: date
       分红发放日: day
+      分红金额: 分红金额
       单位: unit
       单位净值: nav
       年份: year
@@ -1961,7 +1990,7 @@ fund_hk_fund_hist_em:
 fund_hk_rank_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -1977,9 +2006,6 @@ fund_hk_rank_em:
   output:
   - desc: 序号 field
     name: 序号
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: code field
     name: code
@@ -2034,24 +2060,35 @@ fund_hk_rank_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_hk_rank_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      今年来: 今年来
       单位净值: nav
+      可购买: 可购买
       基金代码: fund_code
       基金简称: name
+      币种: 币种
+      序号: 序号
+      成立来: 成立来
       日增长率: day
       日期: date
       近1周: week
+      近1年: 近1年
+      近1月: 近1月
+      近2年: 近2年
+      近3年: 近3年
+      近3月: 近3月
+      近6月: 近6月
       香港基金代码: code
     param_transforms: {}
 fund_hold_structure_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2088,18 +2125,24 @@ fund_hold_structure_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_hold_structure_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      个人持有比列: 个人持有比列
+      内部持有比列: 内部持有比列
+      基金家数: 基金家数
+      序号: 序号
+      总份额: 总份额
       截止日期: date
+      机构持有比列: 机构持有比列
     param_transforms: {}
 fund_individual_achievement_xq:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2147,23 +2190,27 @@ fund_individual_achievement_xq:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_individual_achievement_xq
     input_mapping:
       symbol: symbol
       timeout: timeout
-    name: akshare_em
+    name: akshare_xq
     output_mapping:
+      type: type
       业绩类型: type
       周期: week
       周期收益同类排名: week
+      本产品区间收益: 本产品区间收益
+      本产品最大回撒: 本产品最大回撒
     param_transforms:
       symbol: prepend_prefix:sh/sz
+      timeout: pass_through
 fund_individual_analysis_xq:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2209,24 +2256,27 @@ fund_individual_analysis_xq:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_individual_analysis_xq
     input_mapping:
       symbol: symbol
       timeout: timeout
-    name: akshare_em
+    name: akshare_xq
     output_mapping:
       周期: week
       年化夏普比率: sharpe_ratio
       年化波动率: annual_volatility
       最大回撤: max_drawdown
+      较同类抗风险波动: 较同类抗风险波动
+      较同类风险收益比: 较同类风险收益比
     param_transforms:
       symbol: prepend_prefix:sh/sz
+      timeout: pass_through
 fund_individual_basic_info_xq:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2265,23 +2315,82 @@ fund_individual_basic_info_xq:
   - desc: 'from :return: docstring'
     name: rating
     type: str
+  - desc: fd_code field
+    name: fd_code
+    type: int
+  - desc: fd_name field
+    name: fd_name
+    type: str
+  - desc: fd_full_name field
+    name: fd_full_name
+    type: str
+  - desc: found_date field
+    name: found_date
+    type: datetime
+  - desc: totshare field
+    name: totshare
+    type: str
+  - desc: keeper_name field
+    name: keeper_name
+    type: float
+  - desc: manager_name field
+    name: manager_name
+    type: str
+  - desc: trup_name field
+    name: trup_name
+    type: str
+  - desc: type_desc field
+    name: type_desc
+    type: float
+  - desc: rating_source field
+    name: rating_source
+    type: str
+  - desc: rating_desc field
+    name: rating_desc
+    type: str
+  - desc: invest_orientation field
+    name: invest_orientation
+    type: str
+  - desc: invest_target field
+    name: invest_target
+    type: str
+  - desc: performance_bench_mark field
+    name: performance_bench_mark
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_individual_basic_info_xq
     input_mapping:
       symbol: symbol
       timeout: timeout
-    name: akshare_em
+    name: akshare_xq
     output_mapping:
+      fd_code: fd_code
+      fd_full_name: fd_full_name
+      fd_name: fd_name
+      found_date: found_date
+      invest_orientation: invest_orientation
+      invest_target: invest_target
+      item: item
+      keeper_name: keeper_name
+      manager_name: manager_name
+      performance_bench_mark: performance_bench_mark
+      rating_desc: rating_desc
+      rating_source: rating_source
+      totshare: totshare
+      trup_name: trup_name
+      type_desc: type_desc
+      value: value
       评级机构: rating
     param_transforms:
       symbol: prepend_prefix:sh/sz
+      timeout: pass_through
 fund_individual_detail_hold_xq:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2320,9 +2429,6 @@ fund_individual_detail_hold_xq:
     name: 仓位占比
     type: int
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: type_desc
     type: float
   - desc: 'from :return: docstring'
@@ -2330,22 +2436,27 @@ fund_individual_detail_hold_xq:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_individual_detail_hold_xq
     input_mapping:
       date: date
       symbol: symbol
       timeout: timeout
-    name: akshare_em
+    name: akshare_xq
     output_mapping:
+      percent: percent
+      type_desc: type_desc
+      仓位占比: 仓位占比
       资产类型: type
     param_transforms:
+      date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
+      timeout: pass_through
 fund_individual_detail_info_xq:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2389,23 +2500,25 @@ fund_individual_detail_info_xq:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_individual_detail_info_xq
     input_mapping:
       symbol: symbol
       timeout: timeout
-    name: akshare_em
+    name: akshare_xq
     output_mapping:
+      rate_type: rate_type
       条件或名称: name
       费用: fee
       费用类型: type
     param_transforms:
       symbol: prepend_prefix:sh/sz
+      timeout: pass_through
 fund_individual_profit_probability_xq:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2441,9 +2554,6 @@ fund_individual_profit_probability_xq:
     name: 平均收益
     type: str
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: holding_time
     type: datetime
   - desc: 'from :return: docstring'
@@ -2454,15 +2564,14 @@ fund_individual_profit_probability_xq:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_individual_profit_probability_xq
     input_mapping:
       symbol: symbol
       timeout: timeout
-    name: akshare_em
+    name: akshare_xq
     output_mapping:
-      '[': '['
       average_income: average_income
       holding_time: holding_time
       profit_ratio: profit_ratio
@@ -2471,10 +2580,11 @@ fund_individual_profit_probability_xq:
       盈利概率: 盈利概率
     param_transforms:
       symbol: prepend_prefix:sh/sz
+      timeout: pass_through
 fund_info_index_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2504,9 +2614,6 @@ fund_info_index_em:
     type: int
   - desc: name field
     name: name
-    type: str
-  - desc: '- field'
-    name: '-'
     type: str
   - desc: date field
     name: date
@@ -2552,7 +2659,7 @@ fund_info_index_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_info_index_em
     input_mapping:
@@ -2560,19 +2667,28 @@ fund_info_index_em:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      今年来: 今年来
       单位净值: nav
       基金代码: fund_code
       基金名称: name
+      成立来: 成立来
       手续费: commission
       日增长率: day
       日期: date
+      起购金额: 起购金额
       近1周: week
+      近1年: 近1年
+      近1月: 近1月
+      近2年: 近2年
+      近3年: 近3年
+      近3月: 近3月
+      近6月: 近6月
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_lcx_rank_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2609,9 +2725,6 @@ fund_lcx_rank_em:
   - desc: day field
     name: day
     type: datetime
-  - desc: _ field
-    name: _
-    type: str
   - desc: day field
     name: day
     type: datetime
@@ -2641,20 +2754,28 @@ fund_lcx_rank_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_lcx_rank_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      万份收益: 万份收益
+      今年来: 今年来
+      可购买: 可购买
       基金代码: fund_code
       基金简称: name
       年化收益率-14日: day
       年化收益率-28日: day
       年化收益率-7日: day
+      序号: 序号
+      成立来: 成立来
       手续费: commission
       日期: date
       近1周: week
+      近1月: 近1月
+      近3月: 近3月
+      近6月: 近6月
     param_transforms: {}
 fund_linghuo_position_lg:
   category: fund
@@ -2670,7 +2791,7 @@ fund_linghuo_position_lg:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_linghuo_position_lg
     input_mapping: {}
@@ -2680,7 +2801,7 @@ fund_linghuo_position_lg:
 fund_lof_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2780,11 +2901,14 @@ fund_lof_hist_em:
       涨跌幅: pct_change
       涨跌额: change
     param_transforms:
+      adjust: pass_through
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_lof_hist_min_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2866,7 +2990,7 @@ fund_lof_hist_min_em:
     type: float
   rate_limit_key: em_push2his
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_lof_hist_min_em
     input_mapping:
@@ -2877,6 +3001,7 @@ fund_lof_hist_min_em:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      均价: 均价
       开盘: open
       成交量: volume
       成交额: amount
@@ -2889,11 +3014,14 @@ fund_lof_hist_min_em:
       涨跌幅: pct_change
       涨跌额: change
     param_transforms:
+      adjust: pass_through
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_lof_spot_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2908,16 +3036,13 @@ fund_lof_spot_em:
   name: fund_lof_spot_em
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: code
     type: int
   - desc: 'from :return: docstring'
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: last
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: change
@@ -2952,14 +3077,46 @@ fund_lof_spot_em:
   - desc: 'from :return: docstring'
     name: total_market_cap
     type: float
+  - desc: f12 field
+    name: f12
+    type: str
+  - desc: f14 field
+    name: f14
+    type: str
+  - desc: f17 field
+    name: f17
+    type: str
+  - desc: f15 field
+    name: f15
+    type: str
+  - desc: f16 field
+    name: f16
+    type: str
+  - desc: f18 field
+    name: f18
+    type: str
+  - desc: f21 field
+    name: f21
+    type: str
+  - desc: f20 field
+    name: f20
+    type: str
   rate_limit_key: em_push2
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_lof_spot_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      f12: f12
+      f14: f14
+      f15: f15
+      f16: f16
+      f17: f17
+      f18: f18
+      f20: f20
+      f21: f21
       代码: code
       名称: name
       开盘价: open
@@ -2969,7 +3126,7 @@ fund_lof_spot_em:
       换手率: turnover
       昨收: prev_close
       最低价: low
-      最新价: last
+      最新价: price
       最高价: high
       流通市值: circulating_market_cap
       涨跌幅: pct_change
@@ -2978,7 +3135,7 @@ fund_lof_spot_em:
 fund_manager_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -2994,9 +3151,6 @@ fund_manager_em:
   output:
   - desc: 序号 field
     name: 序号
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: 姓名 field
     name: 姓名
@@ -3016,25 +3170,30 @@ fund_manager_em:
   - desc: 现任基金最佳回报 field
     name: 现任基金最佳回报
     type: str
-  - desc: size field
-    name: size
+  - desc: scale field
+    name: scale
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_manager_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      姓名: 姓名
+      序号: 序号
+      所属公司: 所属公司
+      现任基金: 现任基金
       现任基金代码: code
-      现任基金资产总规模: size
+      现任基金最佳回报: 现任基金最佳回报
+      现任基金资产总规模: scale
       累计从业时间: time
     param_transforms: {}
 fund_money_fund_daily_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3054,12 +3213,6 @@ fund_money_fund_daily_em:
   - desc: name field
     name: name
     type: str
-  - desc: 'from :return: docstring'
-    name: '0'
-    type: str
-  - desc: 'from :return: docstring'
-    name: ':'
-    type: str
   rate_limit_key: default
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
@@ -3074,7 +3227,7 @@ fund_money_fund_daily_em:
 fund_money_fund_info_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3105,9 +3258,6 @@ fund_money_fund_info_em:
   - desc: day field
     name: day
     type: datetime
-  - desc: _ field
-    name: _
-    type: str
   - desc: status field
     name: status
     type: str
@@ -3116,7 +3266,7 @@ fund_money_fund_info_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_money_fund_info_em
     input_mapping:
@@ -3125,6 +3275,7 @@ fund_money_fund_info_em:
     output_mapping:
       7日年化收益率: day
       净值日期: date
+      每万份收益: 每万份收益
       申购状态: status
       赎回状态: status
     param_transforms:
@@ -3132,7 +3283,7 @@ fund_money_fund_info_em:
 fund_money_rank_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3161,9 +3312,6 @@ fund_money_rank_em:
   - desc: 近5年 field
     name: 近5年
     type: datetime
-  - desc: _ field
-    name: _
-    type: str
   - desc: fund_code field
     name: fund_code
     type: int
@@ -3205,24 +3353,35 @@ fund_money_rank_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_money_rank_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      万份收益: 万份收益
+      今年来: 今年来
       基金代码: fund_code
       基金简称: name
       年化收益率14日: day
       年化收益率28日: day
       年化收益率7日: day
+      序号: 序号
+      成立来: 成立来
       手续费: commission
       日期: date
+      近1年: 近1年
+      近1月: 近1月
+      近2年: 近2年
+      近3年: 近3年
+      近3月: 近3月
+      近5年: 近5年
+      近6月: 近6月
     param_transforms: {}
 fund_name_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3253,7 +3412,7 @@ fund_name_em:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_name_em
     input_mapping: {}
@@ -3262,11 +3421,13 @@ fund_name_em:
       基金代码: fund_code
       基金简称: name
       基金类型: type
+      拼音全称: 拼音全称
+      拼音缩写: 拼音缩写
     param_transforms: {}
 fund_new_found_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3288,9 +3449,6 @@ fund_new_found_em:
     type: str
   - desc: 发行公司 field
     name: 发行公司
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: type field
     name: type
@@ -3318,23 +3476,28 @@ fund_new_found_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_new_found_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      优惠费率: 优惠费率
+      募集份额: 募集份额
+      发行公司: 发行公司
       基金代码: fund_code
       基金简称: name
       基金类型: type
+      基金经理: 基金经理
       成立日期: date
+      成立来涨幅: 成立来涨幅
       申购状态: status
       集中认购期: call
     param_transforms: {}
 fund_new_found_ths:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3359,22 +3522,74 @@ fund_new_found_ths:
   - desc: 'from :return: docstring'
     name: manager
     type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: float
+  - desc: jjlx field
+    name: jjlx
+    type: str
+  - desc: tzfg field
+    name: tzfg
+    type: str
+  - desc: start field
+    name: start
+    type: str
+  - desc: end field
+    name: end
+    type: str
+  - desc: orgname field
+    name: orgname
+    type: str
+  - desc: zgrgfl field
+    name: zgrgfl
+    type: str
+  - desc: zdrg field
+    name: zdrg
+    type: str
+  - desc: zdje field
+    name: zdje
+    type: str
+  - desc: zzfx field
+    name: zzfx
+    type: str
+  - desc: buy field
+    name: buy
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_new_found_ths
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_ths
     output_mapping:
+      buy: buy
+      code: code
+      end: end
+      jjlx: jjlx
       manager: manager
+      name: name
+      orgname: orgname
+      start: start
+      type: type
+      tzfg: tzfg
+      zdje: zdje
+      zdrg: zdrg
+      zgrgfl: zgrgfl
+      zzfx: zzfx
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_open_fund_daily_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3394,12 +3609,6 @@ fund_open_fund_daily_em:
   - desc: name field
     name: name
     type: str
-  - desc: '- field'
-    name: '-'
-    type: str
-  - desc: 'from :return: docstring'
-    name: f{show_day[0
-    type: datetime
   rate_limit_key: default
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
@@ -3414,7 +3623,7 @@ fund_open_fund_daily_em:
 fund_open_fund_info_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3455,15 +3664,6 @@ fund_open_fund_info_em:
   - desc: day field
     name: day
     type: datetime
-  - desc: _ field
-    name: _
-    type: str
-  - desc: x field
-    name: x
-    type: str
-  - desc: y field
-    name: y
-    type: str
   - desc: accum_nav field
     name: accum_nav
     type: float
@@ -3493,7 +3693,7 @@ fund_open_fund_info_em:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_open_fund_info_em
     input_mapping:
@@ -3511,6 +3711,7 @@ fund_open_fund_info_em:
       报告日期: report_date
       日增长率: day
       日期: date
+      每万份收益: 每万份收益
       累计净值: accum_nav
       累计收益率: yield
     param_transforms:
@@ -3518,7 +3719,7 @@ fund_open_fund_info_em:
 fund_open_fund_rank_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3548,9 +3749,6 @@ fund_open_fund_rank_em:
     type: int
   - desc: name field
     name: name
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: date field
     name: date
@@ -3599,21 +3797,31 @@ fund_open_fund_rank_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_open_fund_rank_em
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      今年来: 今年来
       单位净值: nav
       基金代码: fund_code
       基金简称: name
+      序号: 序号
+      成立来: 成立来
       手续费: commission
       日增长率: day
       日期: date
       累计净值: accum_nav
+      自定义: 自定义
       近1周: week
+      近1年: 近1年
+      近1月: 近1月
+      近2年: 近2年
+      近3年: 近3年
+      近3月: 近3月
+      近6月: 近6月
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_overview_em:
@@ -3638,7 +3846,7 @@ fund_overview_em:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_overview_em
     input_mapping:
@@ -3650,7 +3858,7 @@ fund_overview_em:
 fund_portfolio_bond_hold_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3703,11 +3911,12 @@ fund_portfolio_bond_hold_em:
       持仓市值: position_value
       持仓市值（万元）: market_cap
     param_transforms:
+      date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_portfolio_change_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3764,7 +3973,7 @@ fund_portfolio_change_em:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_portfolio_change_em
     input_mapping:
@@ -3773,17 +3982,20 @@ fund_portfolio_change_em:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      index: index
       占期初基金资产净值比例: nav
       季度: quarter
+      序号: 序号
       本期累计买入金额: bid
       股票代码: symbol
       股票名称: name
     param_transforms:
+      date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_portfolio_hold_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3840,9 +4052,27 @@ fund_portfolio_hold_em:
   - desc: 'from :return: docstring'
     name: quarter
     type: datetime
+  - desc: shares field
+    name: shares
+    type: int
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: shares field
+    name: shares
+    type: int
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: market_cap field
+    name: market_cap
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_portfolio_hold_em
     input_mapping:
@@ -3850,19 +4080,28 @@ fund_portfolio_hold_em:
       symbol: symbol
     name: akshare_em
     output_mapping:
+      index: index
       占净值 比例: nav
       占净值比例: nav
       季度: quarter
+      序号: 序号
       持仓市值: position_value
+      持仓市值 （万元人民币）: market_cap
+      持仓市值 （万元）: market_cap
+      持仓市值（万元人民币）: market_cap
+      持仓市值（万元）: market_cap
       持股数: shares
+      持股数 （万股）: shares
+      持股数（万股）: shares
       股票代码: symbol
       股票名称: name
     param_transforms:
+      date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_portfolio_industry_allocation_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3895,9 +4134,6 @@ fund_portfolio_industry_allocation_em:
   - desc: 序号 field
     name: 序号
     type: str
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -3912,7 +4148,7 @@ fund_portfolio_industry_allocation_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_portfolio_industry_allocation_em
     input_mapping:
@@ -3922,14 +4158,16 @@ fund_portfolio_industry_allocation_em:
     output_mapping:
       占净值比例: nav
       市值: market_cap
+      序号: 序号
       截止时间: time
       行业类别: industry
     param_transforms:
+      date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_purchase_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -3976,15 +4214,12 @@ fund_purchase_em:
   - desc: day field
     name: day
     type: datetime
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: commission field
     name: commission
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_purchase_em
     input_mapping: {}
@@ -3994,17 +4229,19 @@ fund_purchase_em:
       基金代码: fund_code
       基金简称: name
       基金类型: type
+      序号: 序号
       手续费: commission
       日累计限定金额: day
       最新净值/万份收益: nav
       最新净值/万份收益-报告时间: time
       申购状态: status
+      购买起点: 购买起点
       赎回状态: status
     param_transforms: {}
 fund_rating_all:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4030,9 +4267,6 @@ fund_rating_all:
   - desc: 基金经理 field
     name: 基金经理
     type: str
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: 基金公司 field
     name: 基金公司
     type: str
@@ -4056,23 +4290,28 @@ fund_rating_all:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_rating_all
     input_mapping: {}
     name: akshare_em
     output_mapping:
       5星评级家数: rating
+      上海证券: 上海证券
       代码: code
+      基金公司: 基金公司
+      基金经理: 基金经理
       手续费: commission
+      招商证券: 招商证券
       晨星评级: rating
+      济安金信: 济安金信
       简称: name
       类型: type
     param_transforms: {}
 fund_rating_ja:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4106,9 +4345,6 @@ fund_rating_ja:
   - desc: 基金经理 field
     name: 基金经理
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: 基金公司 field
     name: 基金公司
     type: str
@@ -4141,7 +4377,7 @@ fund_rating_ja:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_rating_ja
     input_mapping:
@@ -4152,16 +4388,22 @@ fund_rating_ja:
       3年期评级-较上期: rating
       代码: code
       单位净值: nav
+      基金公司: 基金公司
+      基金经理: 基金经理
       手续费: commission
       日增长率: day
       日期: date
       简称: name
       类型: type
-    param_transforms: {}
+      近1年涨幅: 近1年涨幅
+      近3年涨幅: 近3年涨幅
+      近5年涨幅: 近5年涨幅
+    param_transforms:
+      date: YYYYMMDD
 fund_rating_sh:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4195,9 +4437,6 @@ fund_rating_sh:
   - desc: 基金经理 field
     name: 基金经理
     type: str
-  - desc: _ field
-    name: _
-    type: str
   - desc: 基金公司 field
     name: 基金公司
     type: str
@@ -4236,7 +4475,7 @@ fund_rating_sh:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_rating_sh
     input_mapping:
@@ -4249,16 +4488,22 @@ fund_rating_sh:
       5年期评级-较上期: rating
       代码: code
       单位净值: nav
+      基金公司: 基金公司
+      基金经理: 基金经理
       手续费: commission
       日增长率: day
       日期: date
       简称: name
       类型: type
-    param_transforms: {}
+      近1年涨幅: 近1年涨幅
+      近3年涨幅: 近3年涨幅
+      近5年涨幅: 近5年涨幅
+    param_transforms:
+      date: YYYYMMDD
 fund_rating_zs:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4285,9 +4530,6 @@ fund_rating_zs:
     type: int
   - desc: name field
     name: name
-    type: str
-  - desc: _ field
-    name: _
     type: str
   - desc: 基金经理 field
     name: 基金经理
@@ -4324,7 +4566,7 @@ fund_rating_zs:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_rating_zs
     input_mapping:
@@ -4335,15 +4577,21 @@ fund_rating_zs:
       3年期评级-较上期: rating
       代码: code
       单位净值: nav
+      基金公司: 基金公司
+      基金经理: 基金经理
       手续费: commission
       日增长率: day
       日期: date
       简称: name
-    param_transforms: {}
+      近1年涨幅: 近1年涨幅
+      近3年涨幅: 近3年涨幅
+      近5年涨幅: 近5年涨幅
+    param_transforms:
+      date: YYYYMMDD
 fund_report_asset_allocation_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4357,9 +4605,6 @@ fund_report_asset_allocation_cninfo:
   input: []
   name: fund_report_asset_allocation_cninfo
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: 报告期
     type: str
@@ -4378,23 +4623,49 @@ fund_report_asset_allocation_cninfo:
   - desc: 'from :return: docstring'
     name: market
     type: float
+  - desc: F001N field
+    name: F001N
+    type: str
+  - desc: F008N field
+    name: F008N
+    type: str
+  - desc: F007N field
+    name: F007N
+    type: str
+  - desc: F006N field
+    name: F006N
+    type: str
+  - desc: ENDDATE field
+    name: ENDDATE
+    type: datetime
+  - desc: F005N field
+    name: F005N
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_report_asset_allocation_cninfo
     input_mapping: {}
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
+      ENDDATE: ENDDATE
+      F001N: F001N
+      F005N: F005N
+      F006N: F006N
+      F007N: F007N
+      F008N: F008N
       债券固定收益类占净资产比例: net_asset
       基金市场净资产规模: market
+      基金覆盖家数: 基金覆盖家数
+      报告期: 报告期
       现金货币类占净资产比例: net_asset
       股票权益类占净资产比例: net_asset
     param_transforms: {}
 fund_report_industry_allocation_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4418,9 +4689,6 @@ fund_report_industry_allocation_cninfo:
   name: fund_report_industry_allocation_cninfo
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: industry
     type: str
   - desc: 'from :return: docstring'
@@ -4438,24 +4706,51 @@ fund_report_industry_allocation_cninfo:
   - desc: 'from :return: docstring'
     name: net_asset
     type: float
+  - desc: F004N field
+    name: F004N
+    type: str
+  - desc: F003N field
+    name: F003N
+    type: str
+  - desc: F002V field
+    name: F002V
+    type: str
+  - desc: F001V field
+    name: F001V
+    type: str
+  - desc: ENDDATE field
+    name: ENDDATE
+    type: datetime
+  - desc: F005N field
+    name: F005N
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_report_industry_allocation_cninfo
     input_mapping:
       date: date
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
+      ENDDATE: ENDDATE
+      F001V: F001V
+      F002V: F002V
+      F003N: F003N
+      F004N: F004N
+      F005N: F005N
       占净资产比例: net_asset
+      基金覆盖家数: 基金覆盖家数
+      报告期: 报告期
       行业编码: industry
       行业规模: industry
       证监会行业名称: name
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 fund_report_stock_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4478,9 +4773,6 @@ fund_report_stock_cninfo:
   name: fund_report_stock_cninfo
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -4499,25 +4791,58 @@ fund_report_stock_cninfo:
     name: 持股总数
     type: str
   - desc: 'from :return: docstring'
-    name: market_cap
+    name: total_market_cap
     type: float
+  - desc: F003N field
+    name: F003N
+    type: str
+  - desc: F002N field
+    name: F002N
+    type: str
+  - desc: F001N field
+    name: F001N
+    type: str
+  - desc: SECNAME field
+    name: SECNAME
+    type: str
+  - desc: ID field
+    name: ID
+    type: str
+  - desc: SECCODE field
+    name: SECCODE
+    type: int
+  - desc: ENDDATE field
+    name: ENDDATE
+    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_report_stock_cninfo
     input_mapping:
       date: date
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
-      持股总市值: market_cap
+      ENDDATE: ENDDATE
+      F001N: F001N
+      F002N: F002N
+      F003N: F003N
+      ID: ID
+      SECCODE: SECCODE
+      SECNAME: SECNAME
+      基金覆盖家数: 基金覆盖家数
+      序号: 序号
+      报告期: 报告期
+      持股总市值: total_market_cap
+      持股总数: 持股总数
       股票代码: symbol
       股票简称: name
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 fund_scale_change_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4554,19 +4879,24 @@ fund_scale_change_em:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_scale_change_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      基金家数: 基金家数
+      序号: 序号
       截止日期: date
       期末净资产: net_asset
+      期末总份额: 期末总份额
+      期间申购: 期间申购
+      期间赎回: 期间赎回
     param_transforms: {}
 fund_scale_close_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4581,9 +4911,6 @@ fund_scale_close_sina:
   name: fund_scale_close_sina
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -4596,7 +4923,7 @@ fund_scale_close_sina:
     name: nav
     type: float
   - desc: 'from :return: docstring'
-    name: size
+    name: scale
     type: float
   - desc: 'from :return: docstring'
     name: 最近总份额
@@ -4610,25 +4937,104 @@ fund_scale_close_sina:
   - desc: 'from :return: docstring'
     name: update_date
     type: datetime
+  - desc: index field
+    name: index
+    type: float
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: sname field
+    name: sname
+    type: str
+  - desc: per_nav field
+    name: per_nav
+    type: float
+  - desc: total_nav field
+    name: total_nav
+    type: str
+  - desc: three_month field
+    name: three_month
+    type: datetime
+  - desc: six_month field
+    name: six_month
+    type: datetime
+  - desc: one_year field
+    name: one_year
+    type: datetime
+  - desc: form_year field
+    name: form_year
+    type: datetime
+  - desc: form_start field
+    name: form_start
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: zmjgm field
+    name: zmjgm
+    type: str
+  - desc: clrq field
+    name: clrq
+    type: str
+  - desc: jjjl field
+    name: jjjl
+    type: str
+  - desc: dwjz field
+    name: dwjz
+    type: str
+  - desc: ljjz field
+    name: ljjz
+    type: str
+  - desc: jzrq field
+    name: jzrq
+    type: str
+  - desc: zjzfe field
+    name: zjzfe
+    type: str
+  - desc: jjglr_code field
+    name: jjglr_code
+    type: int
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_scale_close_sina
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      clrq: clrq
+      dwjz: dwjz
+      form_start: form_start
+      form_year: form_year
+      index: index
+      jjglr_code: jjglr_code
+      jjjl: jjjl
+      jzrq: jzrq
+      ljjz: ljjz
+      name: name
+      one_year: one_year
+      per_nav: per_nav
+      six_month: six_month
+      sname: sname
+      symbol: symbol
+      three_month: three_month
+      total_nav: total_nav
+      zjzfe: zjzfe
+      zmjgm: zmjgm
       单位净值: nav
       基金代码: fund_code
       基金简称: name
-      总募集规模: size
+      基金经理: 基金经理
+      序号: 序号
+      总募集规模: scale
       成立日期: date
       更新日期: update_date
+      最近总份额: 最近总份额
     param_transforms: {}
 fund_scale_daily_szse:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4672,9 +5078,12 @@ fund_scale_daily_szse:
   - desc: 'from :return: docstring'
     name: 基金份额
     type: float
+  - desc: scale field
+    name: scale
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_scale_daily_szse
     input_mapping:
@@ -4684,14 +5093,18 @@ fund_scale_daily_szse:
     name: akshare_em
     output_mapping:
       基金代码: fund_code
+      基金份额: 基金份额
       基金简称: name
+      基金规模(份): scale
       日期: date
     param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 fund_scale_open_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4714,9 +5127,6 @@ fund_scale_open_sina:
   name: fund_scale_open_sina
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -4729,7 +5139,7 @@ fund_scale_open_sina:
     name: nav
     type: float
   - desc: 'from :return: docstring'
-    name: size
+    name: scale
     type: float
   - desc: 'from :return: docstring'
     name: 最近总份额
@@ -4743,27 +5153,106 @@ fund_scale_open_sina:
   - desc: 'from :return: docstring'
     name: update_date
     type: datetime
+  - desc: index field
+    name: index
+    type: float
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: sname field
+    name: sname
+    type: str
+  - desc: per_nav field
+    name: per_nav
+    type: float
+  - desc: total_nav field
+    name: total_nav
+    type: str
+  - desc: three_month field
+    name: three_month
+    type: datetime
+  - desc: six_month field
+    name: six_month
+    type: datetime
+  - desc: one_year field
+    name: one_year
+    type: datetime
+  - desc: form_year field
+    name: form_year
+    type: datetime
+  - desc: form_start field
+    name: form_start
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: zmjgm field
+    name: zmjgm
+    type: str
+  - desc: clrq field
+    name: clrq
+    type: str
+  - desc: jjjl field
+    name: jjjl
+    type: str
+  - desc: dwjz field
+    name: dwjz
+    type: str
+  - desc: ljjz field
+    name: ljjz
+    type: str
+  - desc: jzrq field
+    name: jzrq
+    type: str
+  - desc: zjzfe field
+    name: zjzfe
+    type: str
+  - desc: jjglr_code field
+    name: jjglr_code
+    type: int
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_scale_open_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      clrq: clrq
+      dwjz: dwjz
+      form_start: form_start
+      form_year: form_year
+      index: index
+      jjglr_code: jjglr_code
+      jjjl: jjjl
+      jzrq: jzrq
+      ljjz: ljjz
+      name: name
+      one_year: one_year
+      per_nav: per_nav
+      six_month: six_month
+      sname: sname
+      symbol: symbol
+      three_month: three_month
+      total_nav: total_nav
+      zjzfe: zjzfe
+      zmjgm: zmjgm
       单位净值: nav
       基金代码: fund_code
       基金简称: name
-      总募集规模: size
+      基金经理: 基金经理
+      序号: 序号
+      总募集规模: scale
       成立日期: date
       更新日期: update_date
+      最近总份额: 最近总份额
     param_transforms:
       symbol: prepend_prefix:sh/sz
 fund_scale_structured_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4778,9 +5267,6 @@ fund_scale_structured_sina:
   name: fund_scale_structured_sina
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -4793,7 +5279,7 @@ fund_scale_structured_sina:
     name: nav
     type: float
   - desc: 'from :return: docstring'
-    name: size
+    name: scale
     type: float
   - desc: 'from :return: docstring'
     name: 最近总份额
@@ -4807,20 +5293,99 @@ fund_scale_structured_sina:
   - desc: 'from :return: docstring'
     name: update_date
     type: datetime
+  - desc: index field
+    name: index
+    type: float
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: sname field
+    name: sname
+    type: str
+  - desc: per_nav field
+    name: per_nav
+    type: float
+  - desc: total_nav field
+    name: total_nav
+    type: str
+  - desc: three_month field
+    name: three_month
+    type: datetime
+  - desc: six_month field
+    name: six_month
+    type: datetime
+  - desc: one_year field
+    name: one_year
+    type: datetime
+  - desc: form_year field
+    name: form_year
+    type: datetime
+  - desc: form_start field
+    name: form_start
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: zmjgm field
+    name: zmjgm
+    type: str
+  - desc: clrq field
+    name: clrq
+    type: str
+  - desc: jjjl field
+    name: jjjl
+    type: str
+  - desc: dwjz field
+    name: dwjz
+    type: str
+  - desc: ljjz field
+    name: ljjz
+    type: str
+  - desc: jzrq field
+    name: jzrq
+    type: str
+  - desc: zjzfe field
+    name: zjzfe
+    type: str
+  - desc: jjglr_code field
+    name: jjglr_code
+    type: int
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_scale_structured_sina
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      clrq: clrq
+      dwjz: dwjz
+      form_start: form_start
+      form_year: form_year
+      index: index
+      jjglr_code: jjglr_code
+      jjjl: jjjl
+      jzrq: jzrq
+      ljjz: ljjz
+      name: name
+      one_year: one_year
+      per_nav: per_nav
+      six_month: six_month
+      sname: sname
+      symbol: symbol
+      three_month: three_month
+      total_nav: total_nav
+      zjzfe: zjzfe
+      zmjgm: zmjgm
       单位净值: nav
       基金代码: fund_code
       基金简称: name
-      总募集规模: size
+      基金经理: 基金经理
+      序号: 序号
+      总募集规模: scale
       成立日期: date
       更新日期: update_date
+      最近总份额: 最近总份额
     param_transforms: {}
 fund_stock_position_lg:
   category: fund
@@ -4836,7 +5401,7 @@ fund_stock_position_lg:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: fund_stock_position_lg
     input_mapping: {}
@@ -4846,7 +5411,7 @@ fund_stock_position_lg:
 fund_value_estimation_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: fund
@@ -4878,18 +5443,12 @@ fund_value_estimation_em:
   - desc: fund_code field
     name: fund_code
     type: int
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: type field
     name: type
     type: str
   - desc: date field
     name: date
     type: datetime
-  - desc: _ field
-    name: _
-    type: str
   - desc: 估算偏差 field
     name: 估算偏差
     type: str
@@ -4911,39 +5470,26 @@ fund_value_estimation_em:
   - desc: name field
     name: name
     type: str
-  - desc: 'from :return: docstring'
-    name: f{cal_day}-估算数据-估算值
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: f{cal_day}-估算数据-估算增长率
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: day
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: nav
-    type: datetime
-  - desc: 'from :return: docstring'
-    name: nav
-    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: fund_value_estimation_em
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
-      f{cal_day}-公布数据-单位净值: nav
-      f{cal_day}-公布数据-日增长率: day
-      f{value_day}-单位净值: nav
+      index: index
+      '{cal_day}-估算数据-估算值': '{cal_day}-估算数据-估算值'
+      '{cal_day}-估算数据-估算增长率': '{cal_day}-估算数据-估算增长率'
       '{cal_day}-公布数据-单位净值': nav
       '{cal_day}-公布数据-日增长率': day
       '{value_day}-单位净值': nav
+      估算偏差: 估算偏差
       估算日期: date
       基金代码: fund_code
       基金名称: name
       基金类型: type
+      序号: 序号
     param_transforms:
       symbol: prepend_prefix:sh/sz

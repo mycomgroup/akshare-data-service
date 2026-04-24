@@ -1,7 +1,7 @@
 bond_available_index_cbond:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -23,7 +23,7 @@ bond_available_index_cbond:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_available_index_cbond
     input_mapping: {}
@@ -35,7 +35,7 @@ bond_available_index_cbond:
 bond_buy_back_hist_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -78,9 +78,6 @@ bond_buy_back_hist_em:
   - desc: amount field
     name: amount
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
   rate_limit_key: em_push2his
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
@@ -101,7 +98,7 @@ bond_buy_back_hist_em:
 bond_cash_summary_sse:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -140,21 +137,24 @@ bond_cash_summary_sse:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_cash_summary_sse
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      债券现货: 债券现货
+      托管只数: 托管只数
       托管市值: market_cap
       托管面值: par_value
       数据日期: date
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 bond_cb_adj_logs_jsl:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -180,37 +180,34 @@ bond_cb_adj_logs_jsl:
     name: item.replace(
     type: str
   - desc: 'from :return: docstring'
-    name: )
-    type: str
-  - desc: 'from :return: docstring'
     name: for
     type: str
   - desc: 'from :return: docstring'
     name: item
     type: str
   - desc: 'from :return: docstring'
-    name: in
-    type: str
-  - desc: 'from :return: docstring'
     name: temp_df.columns
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_cb_adj_logs_jsl
     input_mapping:
       symbol: symbol
     name: akshare_em
     output_mapping:
-      ): )
       for: for
-      in: in
       item: item
       item.replace(: item.replace(
       temp_df.columns: temp_df.columns
     param_transforms: {}
 bond_cb_index_jsl:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
   description: '首页-可转债-集思录可转债等权指数
 
@@ -221,20 +218,140 @@ bond_cb_index_jsl:
     :rtype: pandas.DataFrame'
   input: []
   name: bond_cb_index_jsl
-  output: []
+  output:
+  - desc: price_dt field
+    name: price_dt
+    type: str
+  - desc: price field
+    name: price
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: count field
+    name: count
+    type: int
+  - desc: increase_val field
+    name: increase_val
+    type: float
+  - desc: increase_rt field
+    name: increase_rt
+    type: float
+  - desc: avg_price field
+    name: avg_price
+    type: float
+  - desc: mid_price field
+    name: mid_price
+    type: float
+  - desc: mid_convert_value field
+    name: mid_convert_value
+    type: float
+  - desc: avg_dblow field
+    name: avg_dblow
+    type: float
+  - desc: avg_premium_rt field
+    name: avg_premium_rt
+    type: float
+  - desc: mid_premium_rt field
+    name: mid_premium_rt
+    type: float
+  - desc: avg_ytm_rt field
+    name: avg_ytm_rt
+    type: float
+  - desc: temperature field
+    name: temperature
+    type: float
+  - desc: turnover_rt field
+    name: turnover_rt
+    type: float
+  - desc: price_90 field
+    name: price_90
+    type: int
+  - desc: price_90_100 field
+    name: price_90_100
+    type: int
+  - desc: price_100_110 field
+    name: price_100_110
+    type: int
+  - desc: price_110_120 field
+    name: price_110_120
+    type: int
+  - desc: price_120_130 field
+    name: price_120_130
+    type: int
+  - desc: price_130 field
+    name: price_130
+    type: int
+  - desc: increase_rt_90 field
+    name: increase_rt_90
+    type: float
+  - desc: increase_rt_90_100 field
+    name: increase_rt_90_100
+    type: float
+  - desc: increase_rt_100_110 field
+    name: increase_rt_100_110
+    type: float
+  - desc: increase_rt_110_120 field
+    name: increase_rt_110_120
+    type: float
+  - desc: increase_rt_120_130 field
+    name: increase_rt_120_130
+    type: float
+  - desc: increase_rt_130 field
+    name: increase_rt_130
+    type: float
+  - desc: idx_price field
+    name: idx_price
+    type: float
+  - desc: idx_increase_rt field
+    name: idx_increase_rt
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_cb_index_jsl
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      amount: amount
+      avg_dblow: avg_dblow
+      avg_premium_rt: avg_premium_rt
+      avg_price: avg_price
+      avg_ytm_rt: avg_ytm_rt
+      count: count
+      idx_increase_rt: idx_increase_rt
+      idx_price: idx_price
+      increase_rt: increase_rt
+      increase_rt_100_110: increase_rt_100_110
+      increase_rt_110_120: increase_rt_110_120
+      increase_rt_120_130: increase_rt_120_130
+      increase_rt_130: increase_rt_130
+      increase_rt_90: increase_rt_90
+      increase_rt_90_100: increase_rt_90_100
+      increase_val: increase_val
+      mid_convert_value: mid_convert_value
+      mid_premium_rt: mid_premium_rt
+      mid_price: mid_price
+      price: price
+      price_100_110: price_100_110
+      price_110_120: price_110_120
+      price_120_130: price_120_130
+      price_130: price_130
+      price_90: price_90
+      price_90_100: price_90_100
+      price_dt: price_dt
+      temperature: temperature
+      turnover_rt: turnover_rt
+      volume: volume
     param_transforms: {}
 bond_cb_jsl:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -257,16 +374,13 @@ bond_cb_jsl:
   name: bond_cb_jsl
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: code
     type: int
   - desc: 'from :return: docstring'
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: current_price
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: pct_change
@@ -278,7 +392,7 @@ bond_cb_jsl:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: 正股价
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: change
@@ -287,10 +401,10 @@ bond_cb_jsl:
     name: 正股PB
     type: float
   - desc: 'from :return: docstring'
-    name: 转股价
+    name: price
     type: float
   - desc: 'from :return: docstring'
-    name: 转股价值
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: premium
@@ -314,7 +428,7 @@ bond_cb_jsl:
     name: 剩余年限
     type: datetime
   - desc: 'from :return: docstring'
-    name: size
+    name: scale
     type: float
   - desc: 'from :return: docstring'
     name: amount
@@ -328,33 +442,135 @@ bond_cb_jsl:
   - desc: 'from :return: docstring'
     name: 双低
     type: float
+  - desc: bond_id field
+    name: bond_id
+    type: str
+  - desc: bond_nm field
+    name: bond_nm
+    type: str
+  - desc: price field
+    name: price
+    type: float
+  - desc: increase_rt field
+    name: increase_rt
+    type: str
+  - desc: stock_id field
+    name: stock_id
+    type: str
+  - desc: stock_nm field
+    name: stock_nm
+    type: str
+  - desc: sprice field
+    name: sprice
+    type: float
+  - desc: sincrease_rt field
+    name: sincrease_rt
+    type: str
+  - desc: pb field
+    name: pb
+    type: float
+  - desc: convert_price field
+    name: convert_price
+    type: float
+  - desc: convert_value field
+    name: convert_value
+    type: str
+  - desc: premium_rt field
+    name: premium_rt
+    type: str
+  - desc: dblow field
+    name: dblow
+    type: float
+  - desc: rating_cd field
+    name: rating_cd
+    type: str
+  - desc: put_convert_price field
+    name: put_convert_price
+    type: float
+  - desc: force_redeem_price field
+    name: force_redeem_price
+    type: float
+  - desc: convert_amt_ratio field
+    name: convert_amt_ratio
+    type: str
+  - desc: maturity_dt field
+    name: maturity_dt
+    type: datetime
+  - desc: year_left field
+    name: year_left
+    type: datetime
+  - desc: curr_iss_amt field
+    name: curr_iss_amt
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: turnover_rt field
+    name: turnover_rt
+    type: str
+  - desc: ytm_rt field
+    name: ytm_rt
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_cb_jsl
     input_mapping:
       cookie: cookie
     name: akshare_em
     output_mapping:
+      bond_id: bond_id
+      bond_nm: bond_nm
+      convert_amt_ratio: convert_amt_ratio
+      convert_price: convert_price
+      convert_value: convert_value
+      curr_iss_amt: curr_iss_amt
+      dblow: dblow
+      force_redeem_price: force_redeem_price
+      increase_rt: increase_rt
+      maturity_dt: maturity_dt
+      pb: pb
+      premium_rt: premium_rt
+      price: price
+      put_convert_price: put_convert_price
+      rating_cd: rating_cd
+      sincrease_rt: sincrease_rt
+      sprice: sprice
+      stock_id: stock_id
+      stock_nm: stock_nm
+      turnover_rt: turnover_rt
+      volume: volume
+      year_left: year_left
+      ytm_rt: ytm_rt
       代码: code
       债券评级: rating
       到期时间: maturity_date
-      剩余规模: size
+      到期税前收益: 到期税前收益
+      剩余年限: 剩余年限
+      剩余规模: scale
+      双低: 双低
+      回售触发价: 回售触发价
+      强赎触发价: 强赎触发价
       成交额: amount
       换手率: turnover
+      正股PB: 正股PB
       正股代码: stock_code
+      正股价: price
       正股名称: name
       正股涨跌: change
       涨跌幅: pct_change
-      现价: current_price
+      现价: price
+      转债占比: 转债占比
       转债名称: name
+      转股价: price
+      转股价值: price
       转股溢价率: premium
     param_transforms: {}
 bond_cb_profile_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -384,12 +600,12 @@ bond_cb_profile_sina:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_cb_profile_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       item: item
       value: value
@@ -397,7 +613,7 @@ bond_cb_profile_sina:
 bond_cb_redeem_jsl:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -412,16 +628,13 @@ bond_cb_redeem_jsl:
   name: bond_cb_redeem_jsl
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: code
     type: int
   - desc: 'from :return: docstring'
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: current_price
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: stock_code
@@ -430,10 +643,10 @@ bond_cb_redeem_jsl:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: size
+    name: scale
     type: float
   - desc: 'from :return: docstring'
-    name: size
+    name: scale
     type: float
   - desc: 'from :return: docstring'
     name: day
@@ -445,7 +658,7 @@ bond_cb_redeem_jsl:
     name: maturity_date
     type: datetime
   - desc: 'from :return: docstring'
-    name: 转股价
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: 强赎触发比
@@ -454,7 +667,7 @@ bond_cb_redeem_jsl:
     name: 强赎触发价
     type: float
   - desc: 'from :return: docstring'
-    name: 正股价
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: 强赎价
@@ -468,30 +681,169 @@ bond_cb_redeem_jsl:
   - desc: 'from :return: docstring'
     name: status
     type: str
+  - desc: bond_id field
+    name: bond_id
+    type: str
+  - desc: bond_nm field
+    name: bond_nm
+    type: str
+  - desc: price field
+    name: price
+    type: float
+  - desc: stock_id field
+    name: stock_id
+    type: str
+  - desc: stock_nm field
+    name: stock_nm
+    type: str
+  - desc: margin_flg field
+    name: margin_flg
+    type: str
+  - desc: btype field
+    name: btype
+    type: float
+  - desc: orig_iss_amt field
+    name: orig_iss_amt
+    type: str
+  - desc: curr_iss_amt field
+    name: curr_iss_amt
+    type: str
+  - desc: convert_dt field
+    name: convert_dt
+    type: str
+  - desc: convert_price field
+    name: convert_price
+    type: float
+  - desc: next_put_dt field
+    name: next_put_dt
+    type: str
+  - desc: redeem_dt field
+    name: redeem_dt
+    type: str
+  - desc: force_redeem field
+    name: force_redeem
+    type: str
+  - desc: redeem_flag field
+    name: redeem_flag
+    type: str
+  - desc: redeem_price field
+    name: redeem_price
+    type: float
+  - desc: redeem_price_ratio field
+    name: redeem_price_ratio
+    type: float
+  - desc: real_force_redeem_price field
+    name: real_force_redeem_price
+    type: float
+  - desc: redeem_remain_days field
+    name: redeem_remain_days
+    type: datetime
+  - desc: redeem_real_days field
+    name: redeem_real_days
+    type: datetime
+  - desc: redeem_total_days field
+    name: redeem_total_days
+    type: datetime
+  - desc: recount_dt field
+    name: recount_dt
+    type: int
+  - desc: redeem_count_days field
+    name: redeem_count_days
+    type: datetime
+  - desc: redeem_tc field
+    name: redeem_tc
+    type: str
+  - desc: sprice field
+    name: sprice
+    type: float
+  - desc: delist_dt field
+    name: delist_dt
+    type: str
+  - desc: maturity_dt field
+    name: maturity_dt
+    type: datetime
+  - desc: redeem_icon field
+    name: redeem_icon
+    type: str
+  - desc: redeem_orders field
+    name: redeem_orders
+    type: str
+  - desc: at_maturity field
+    name: at_maturity
+    type: datetime
+  - desc: redeem_count field
+    name: redeem_count
+    type: int
+  - desc: after_next_put_dt field
+    name: after_next_put_dt
+    type: str
+  - desc: force_redeem_price field
+    name: force_redeem_price
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_cb_redeem_jsl
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      after_next_put_dt: after_next_put_dt
+      at_maturity: at_maturity
+      bond_id: bond_id
+      bond_nm: bond_nm
+      btype: btype
+      convert_dt: convert_dt
+      convert_price: convert_price
+      curr_iss_amt: curr_iss_amt
+      delist_dt: delist_dt
+      force_redeem: force_redeem
+      force_redeem_price: force_redeem_price
+      margin_flg: margin_flg
+      maturity_dt: maturity_dt
+      next_put_dt: next_put_dt
+      orig_iss_amt: orig_iss_amt
+      price: price
+      real_force_redeem_price: real_force_redeem_price
+      recount_dt: recount_dt
+      redeem_count: redeem_count
+      redeem_count_days: redeem_count_days
+      redeem_dt: redeem_dt
+      redeem_flag: redeem_flag
+      redeem_icon: redeem_icon
+      redeem_orders: redeem_orders
+      redeem_price: redeem_price
+      redeem_price_ratio: redeem_price_ratio
+      redeem_real_days: redeem_real_days
+      redeem_remain_days: redeem_remain_days
+      redeem_tc: redeem_tc
+      redeem_total_days: redeem_total_days
+      sprice: sprice
+      stock_id: stock_id
+      stock_nm: stock_nm
       代码: code
       到期日: maturity_date
-      剩余规模: size
+      剩余规模: scale
       名称: name
+      强赎价: 强赎价
+      强赎天计数: 强赎天计数
+      强赎条款: 强赎条款
       强赎状态: status
+      强赎触发价: 强赎触发价
+      强赎触发比: 强赎触发比
       最后交易日: day
       正股代码: stock_code
+      正股价: price
       正股名称: name
-      现价: current_price
-      规模: size
+      现价: price
+      规模: scale
+      转股价: price
       转股起始日: day
     param_transforms: {}
 bond_cb_summary_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -521,12 +873,12 @@ bond_cb_summary_sina:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_cb_summary_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       item: item
       value: value
@@ -534,7 +886,7 @@ bond_cb_summary_sina:
 bond_china_close_return:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -600,7 +952,9 @@ bond_china_close_return:
       日期: date
       期限: term
       远期收益率: yield
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 bond_china_yield:
   category: bond
   description: '中国债券信息网-国债及其他债券收益率曲线
@@ -623,7 +977,7 @@ bond_china_yield:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_china_yield
     input_mapping:
@@ -631,11 +985,13 @@ bond_china_yield:
       start_date: start_date
     name: akshare_em
     output_mapping: {}
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 bond_composite_index_cbond:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -665,7 +1021,7 @@ bond_composite_index_cbond:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_composite_index_cbond
     input_mapping:
@@ -679,7 +1035,7 @@ bond_composite_index_cbond:
 bond_corporate_issue_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -709,9 +1065,6 @@ bond_corporate_issue_cninfo:
     type: str
   name: bond_corporate_issue_cninfo
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: bond_code
     type: int
@@ -763,16 +1116,84 @@ bond_corporate_issue_cninfo:
   - desc: 'from :return: docstring'
     name: name
     type: str
+  - desc: SECNAME field
+    name: SECNAME
+    type: str
+  - desc: DECLAREDATE field
+    name: DECLAREDATE
+    type: datetime
+  - desc: F004D field
+    name: F004D
+    type: str
+  - desc: F003D field
+    name: F003D
+    type: str
+  - desc: F008N field
+    name: F008N
+    type: str
+  - desc: SECCODE field
+    name: SECCODE
+    type: int
+  - desc: F007N field
+    name: F007N
+    type: str
+  - desc: F006N field
+    name: F006N
+    type: str
+  - desc: F005N field
+    name: F005N
+    type: str
+  - desc: F022N field
+    name: F022N
+    type: str
+  - desc: F017V field
+    name: F017V
+    type: str
+  - desc: F052N field
+    name: F052N
+    type: str
+  - desc: F015V field
+    name: F015V
+    type: str
+  - desc: BONDNAME field
+    name: BONDNAME
+    type: str
+  - desc: F014V field
+    name: F014V
+    type: str
+  - desc: F013V field
+    name: F013V
+    type: str
+  - desc: F023V field
+    name: F023V
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_corporate_issue_cninfo
     input_mapping:
       end_date: end_date
       start_date: start_date
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
+      BONDNAME: BONDNAME
+      DECLAREDATE: DECLAREDATE
+      F003D: F003D
+      F004D: F004D
+      F005N: F005N
+      F006N: F006N
+      F007N: F007N
+      F008N: F008N
+      F013V: F013V
+      F014V: F014V
+      F015V: F015V
+      F017V: F017V
+      F022N: F022N
+      F023V: F023V
+      F052N: F052N
+      SECCODE: SECCODE
+      SECNAME: SECNAME
       交易所网上发行终止日: day
       交易所网上发行起始日: day
       债券代码: bond_code
@@ -781,14 +1202,22 @@ bond_corporate_issue_cninfo:
       公告日期: date
       募资用途说明: description
       发行价格: issue_price
+      发行对象: 发行对象
+      发行方式: 发行方式
+      发行范围: 发行范围
       发行面值: par_value
+      实际发行总量: 实际发行总量
+      承销方式: 承销方式
       最低认购额: low
       最小认购单位: unit
-    param_transforms: {}
+      计划发行总量: 计划发行总量
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 bond_cov_comparison:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -805,14 +1234,11 @@ bond_cov_comparison:
   - desc: 序号 field
     name: 序号
     type: str
-  - desc: _ field
-    name: _
-    type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
   - desc: code field
     name: code
@@ -826,11 +1252,11 @@ bond_cov_comparison:
   - desc: 纯债价值 field
     name: 纯债价值
     type: float
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
   - desc: stock_code field
     name: stock_code
@@ -838,11 +1264,11 @@ bond_cov_comparison:
   - desc: name field
     name: name
     type: str
-  - desc: 转股价 field
-    name: 转股价
+  - desc: price field
+    name: price
     type: float
-  - desc: 转股价值 field
-    name: 转股价值
+  - desc: price field
+    name: price
     type: float
   - desc: premium field
     name: premium
@@ -867,30 +1293,37 @@ bond_cov_comparison:
     type: datetime
   rate_limit_key: em_push2
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_cov_comparison
     input_mapping: {}
     name: akshare_em
     output_mapping:
       上市日期: listing_date
+      到期赎回价: 到期赎回价
+      回售触发价: 回售触发价
+      序号: 序号
       开始转股日: day
+      强赎触发价: 强赎触发价
       正股代码: stock_code
       正股名称: name
-      正股最新价: last
-      正股涨跌幅: pct_change
+      正股最新价: price
+      正股涨跌幅: change
       申购日期: subscription_date
+      纯债价值: 纯债价值
       纯债溢价率: premium
       转债代码: code
       转债名称: name
-      转债最新价: last
-      转债涨跌幅: pct_change
+      转债最新价: price
+      转债涨跌幅: change
+      转股价: price
+      转股价值: price
       转股溢价率: premium
     param_transforms: {}
 bond_cov_issue_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -920,9 +1353,6 @@ bond_cov_issue_cninfo:
     type: str
   name: bond_cov_issue_cninfo
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: bond_code
     type: int
@@ -966,7 +1396,7 @@ bond_cov_issue_cninfo:
     name: description
     type: str
   - desc: 'from :return: docstring'
-    name: 初始转股价格
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: date
@@ -1016,16 +1446,140 @@ bond_cov_issue_cninfo:
   - desc: 'from :return: docstring'
     name: name
     type: str
+  - desc: F029D field
+    name: F029D
+    type: str
+  - desc: SECNAME field
+    name: SECNAME
+    type: str
+  - desc: F027D field
+    name: F027D
+    type: str
+  - desc: F003D field
+    name: F003D
+    type: str
+  - desc: F007N field
+    name: F007N
+    type: str
+  - desc: F053D field
+    name: F053D
+    type: str
+  - desc: F005N field
+    name: F005N
+    type: str
+  - desc: F051D field
+    name: F051D
+    type: str
+  - desc: F026N field
+    name: F026N
+    type: str
+  - desc: F066N field
+    name: F066N
+    type: str
+  - desc: F052N field
+    name: F052N
+    type: str
+  - desc: BONDNAME field
+    name: BONDNAME
+    type: str
+  - desc: F014V field
+    name: F014V
+    type: str
+  - desc: F002V field
+    name: F002V
+    type: str
+  - desc: F032V field
+    name: F032V
+    type: str
+  - desc: F086V field
+    name: F086V
+    type: str
+  - desc: DECLAREDATE field
+    name: DECLAREDATE
+    type: datetime
+  - desc: F028D field
+    name: F028D
+    type: str
+  - desc: F004D field
+    name: F004D
+    type: str
+  - desc: F068D field
+    name: F068D
+    type: str
+  - desc: F054D field
+    name: F054D
+    type: str
+  - desc: F008N field
+    name: F008N
+    type: str
+  - desc: SECCODE field
+    name: SECCODE
+    type: int
+  - desc: F006N field
+    name: F006N
+    type: str
+  - desc: F067N field
+    name: F067N
+    type: str
+  - desc: F065N field
+    name: F065N
+    type: str
+  - desc: F017V field
+    name: F017V
+    type: str
+  - desc: F015V field
+    name: F015V
+    type: str
+  - desc: F013V field
+    name: F013V
+    type: str
+  - desc: F021V field
+    name: F021V
+    type: str
+  - desc: F031V field
+    name: F031V
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_cov_issue_cninfo
     input_mapping:
       end_date: end_date
       start_date: start_date
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
+      BONDNAME: BONDNAME
+      DECLAREDATE: DECLAREDATE
+      F002V: F002V
+      F003D: F003D
+      F004D: F004D
+      F005N: F005N
+      F006N: F006N
+      F007N: F007N
+      F008N: F008N
+      F013V: F013V
+      F014V: F014V
+      F015V: F015V
+      F017V: F017V
+      F021V: F021V
+      F026N: F026N
+      F027D: F027D
+      F028D: F028D
+      F029D: F029D
+      F031V: F031V
+      F032V: F032V
+      F051D: F051D
+      F052N: F052N
+      F053D: F053D
+      F054D: F054D
+      F065N: F065N
+      F066N: F066N
+      F067N: F067N
+      F068D: F068D
+      F086V: F086V
+      SECCODE: SECCODE
+      SECNAME: SECNAME
       交易市场: market
       优先申购日: day
       优先申购缴款日: day
@@ -1034,11 +1588,17 @@ bond_cov_issue_cninfo:
       债券简称: name
       债权登记日: day
       公告日期: date
+      初始转股价格: price
       募资用途说明: description
       发行价格: issue_price
+      发行对象: 发行对象
+      发行方式: 发行方式
       发行终止日: day
+      发行范围: 发行范围
       发行起始日: day
       发行面值: par_value
+      实际发行总量: 实际发行总量
+      承销方式: 承销方式
       网上申购中签结果公告日及退款日: day
       网上申购代码: code
       网上申购单位: unit
@@ -1046,14 +1606,18 @@ bond_cov_issue_cninfo:
       网上申购数量下限: quantity
       网上申购日期: date
       网上申购简称: name
+      计划发行总量: 计划发行总量
       转股代码: code
       转股开始日期: date
       转股终止日期: date
-    param_transforms: {}
+      配售价格: 配售价格
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 bond_cov_stock_issue_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1067,9 +1631,6 @@ bond_cov_stock_issue_cninfo:
   input: []
   name: bond_cov_stock_issue_cninfo
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: bond_code
     type: int
@@ -1086,7 +1647,7 @@ bond_cov_stock_issue_cninfo:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: 转股价格
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: day
@@ -1100,27 +1661,69 @@ bond_cov_stock_issue_cninfo:
   - desc: 'from :return: docstring'
     name: name
     type: str
+  - desc: F003N field
+    name: F003N
+    type: str
+  - desc: SECNAME field
+    name: SECNAME
+    type: str
+  - desc: DECLAREDATE field
+    name: DECLAREDATE
+    type: datetime
+  - desc: F005D field
+    name: F005D
+    type: str
+  - desc: F004D field
+    name: F004D
+    type: str
+  - desc: F017V field
+    name: F017V
+    type: str
+  - desc: BONDNAME field
+    name: BONDNAME
+    type: str
+  - desc: F002V field
+    name: F002V
+    type: str
+  - desc: F001V field
+    name: F001V
+    type: str
+  - desc: SECCODE field
+    name: SECCODE
+    type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_cov_stock_issue_cninfo
     input_mapping: {}
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
+      BONDNAME: BONDNAME
+      DECLAREDATE: DECLAREDATE
+      F001V: F001V
+      F002V: F002V
+      F003N: F003N
+      F004D: F004D
+      F005D: F005D
+      F017V: F017V
+      SECCODE: SECCODE
+      SECNAME: SECNAME
       债券代码: bond_code
       债券名称: name
       债券简称: name
       公告日期: date
+      标的股票: 标的股票
       自愿转换期终止日: day
       自愿转换期起始日: day
       转股代码: code
+      转股价格: price
       转股简称: name
     param_transforms: {}
 bond_deal_summary_sse:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1175,11 +1778,12 @@ bond_deal_summary_sse:
       当日成交笔数: day
       当日成交金额: day
       数据日期: date
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 bond_debt_nafmii:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1204,21 +1808,49 @@ bond_debt_nafmii:
   - desc: 'from :return: docstring'
     name: 注册通知书文号
     type: str
+  - desc: firstIssueAmount field
+    name: firstIssueAmount
+    type: float
+  - desc: isReg field
+    name: isReg
+    type: str
+  - desc: regFileName field
+    name: regFileName
+    type: str
+  - desc: regNoticeNo field
+    name: regNoticeNo
+    type: str
+  - desc: regPrdtType field
+    name: regPrdtType
+    type: float
+  - desc: releaseTime field
+    name: releaseTime
+    type: datetime
+  - desc: projPhase field
+    name: projPhase
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_debt_nafmii
     input_mapping:
       page: page
     name: akshare_em
     output_mapping:
+      firstIssueAmount: firstIssueAmount
+      isReg: isReg
+      projPhase: projPhase
+      regFileName: regFileName
+      regNoticeNo: regNoticeNo
+      regPrdtType: regPrdtType
+      releaseTime: releaseTime
       注册通知书文号: 注册通知书文号
     param_transforms: {}
 bond_gb_us_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1255,12 +1887,12 @@ bond_gb_us_sina:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_gb_us_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       close: close
       date: date
@@ -1272,7 +1904,7 @@ bond_gb_us_sina:
 bond_gb_zh_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1309,12 +1941,12 @@ bond_gb_zh_sina:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_gb_zh_sina
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       close: close
       date: date
@@ -1326,7 +1958,7 @@ bond_gb_zh_sina:
 bond_index_general_cbond:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1362,7 +1994,7 @@ bond_index_general_cbond:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_index_general_cbond
     input_mapping:
@@ -1377,7 +2009,7 @@ bond_index_general_cbond:
 bond_local_government_issue_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1408,9 +2040,6 @@ bond_local_government_issue_cninfo:
   name: bond_local_government_issue_cninfo
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: bond_code
     type: int
   - desc: 'from :return: docstring'
@@ -1455,16 +2084,76 @@ bond_local_government_issue_cninfo:
   - desc: 'from :return: docstring'
     name: name
     type: str
+  - desc: F009D field
+    name: F009D
+    type: str
+  - desc: SECNAME field
+    name: SECNAME
+    type: str
+  - desc: DECLAREDATE field
+    name: DECLAREDATE
+    type: datetime
+  - desc: F004D field
+    name: F004D
+    type: str
+  - desc: F003D field
+    name: F003D
+    type: str
+  - desc: F008N field
+    name: F008N
+    type: str
+  - desc: SECCODE field
+    name: SECCODE
+    type: int
+  - desc: F007N field
+    name: F007N
+    type: str
+  - desc: F006N field
+    name: F006N
+    type: str
+  - desc: F005N field
+    name: F005N
+    type: str
+  - desc: F028N field
+    name: F028N
+    type: str
+  - desc: BONDNAME field
+    name: BONDNAME
+    type: str
+  - desc: F014V field
+    name: F014V
+    type: str
+  - desc: F002V field
+    name: F002V
+    type: str
+  - desc: F013V field
+    name: F013V
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_local_government_issue_cninfo
     input_mapping:
       end_date: end_date
       start_date: start_date
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
+      BONDNAME: BONDNAME
+      DECLAREDATE: DECLAREDATE
+      F002V: F002V
+      F003D: F003D
+      F004D: F004D
+      F005N: F005N
+      F006N: F006N
+      F007N: F007N
+      F008N: F008N
+      F009D: F009D
+      F013V: F013V
+      F014V: F014V
+      F028N: F028N
+      SECCODE: SECCODE
+      SECNAME: SECNAME
       交易市场: market
       债券代码: bond_code
       债券名称: name
@@ -1472,14 +2161,21 @@ bond_local_government_issue_cninfo:
       公告日期: date
       单位面值: par_value
       发行价格: issue_price
+      发行对象: 发行对象
+      发行方式: 发行方式
       发行终止日: day
       发行起始日: day
+      增发次数: 增发次数
+      实际发行总量: 实际发行总量
       缴款日: day
-    param_transforms: {}
+      计划发行总量: 计划发行总量
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 bond_new_composite_index_cbond:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1509,7 +2205,7 @@ bond_new_composite_index_cbond:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_new_composite_index_cbond
     input_mapping:
@@ -1523,7 +2219,7 @@ bond_new_composite_index_cbond:
 bond_sh_buy_back_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1538,9 +2234,6 @@ bond_sh_buy_back_em:
   name: bond_sh_buy_back_em
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -1550,7 +2243,7 @@ bond_sh_buy_back_em:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: last
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: change
@@ -1576,22 +2269,51 @@ bond_sh_buy_back_em:
   - desc: 'from :return: docstring'
     name: amount
     type: float
+  - desc: index field
+    name: index
+    type: float
+  - desc: f12 field
+    name: f12
+    type: str
+  - desc: f14 field
+    name: f14
+    type: str
+  - desc: f15 field
+    name: f15
+    type: str
+  - desc: f16 field
+    name: f16
+    type: str
+  - desc: f17 field
+    name: f17
+    type: str
+  - desc: f18 field
+    name: f18
+    type: str
   rate_limit_key: em_push2
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_sh_buy_back_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      f12: f12
+      f14: f14
+      f15: f15
+      f16: f16
+      f17: f17
+      f18: f18
+      index: index
       今开: open
       代码: code
       名称: name
+      序号: 序号
       成交量: volume
       成交额: amount
       昨收: prev_close
       最低: low
-      最新价: last
+      最新价: price
       最高: high
       涨跌幅: pct_change
       涨跌额: change
@@ -1599,7 +2321,7 @@ bond_sh_buy_back_em:
 bond_spot_deal:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1613,9 +2335,6 @@ bond_spot_deal:
   input: []
   name: bond_spot_deal
   output:
-  - desc: _ field
-    name: _
-    type: str
   - desc: name field
     name: name
     type: str
@@ -1631,29 +2350,28 @@ bond_spot_deal:
   - desc: yield field
     name: yield
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: 交易量 field
     name: 交易量
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_spot_deal
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      交易量: 交易量
       债券简称: name
       加权收益率: yield
+      成交净价: 成交净价
       最新收益率: yield
       涨跌: change
     param_transforms: {}
 bond_spot_quote:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1667,9 +2385,6 @@ bond_spot_quote:
   input: []
   name: bond_spot_quote
   output:
-  - desc: _ field
-    name: _
-    type: str
   - desc: 报价机构 field
     name: 报价机构
     type: float
@@ -1684,7 +2399,7 @@ bond_spot_quote:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_spot_quote
     input_mapping: {}
@@ -1693,11 +2408,12 @@ bond_spot_quote:
       买入/卖出净价: bid
       买入/卖出收益率: bid
       债券简称: name
+      报价机构: 报价机构
     param_transforms: {}
 bond_sz_buy_back_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1712,9 +2428,6 @@ bond_sz_buy_back_em:
   name: bond_sz_buy_back_em
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: 序号
     type: str
   - desc: 'from :return: docstring'
@@ -1724,7 +2437,7 @@ bond_sz_buy_back_em:
     name: name
     type: str
   - desc: 'from :return: docstring'
-    name: last
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: change
@@ -1750,22 +2463,51 @@ bond_sz_buy_back_em:
   - desc: 'from :return: docstring'
     name: amount
     type: float
+  - desc: index field
+    name: index
+    type: float
+  - desc: f12 field
+    name: f12
+    type: str
+  - desc: f14 field
+    name: f14
+    type: str
+  - desc: f15 field
+    name: f15
+    type: str
+  - desc: f16 field
+    name: f16
+    type: str
+  - desc: f17 field
+    name: f17
+    type: str
+  - desc: f18 field
+    name: f18
+    type: str
   rate_limit_key: em_push2
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_sz_buy_back_em
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      f12: f12
+      f14: f14
+      f15: f15
+      f16: f16
+      f17: f17
+      f18: f18
+      index: index
       今开: open
       代码: code
       名称: name
+      序号: 序号
       成交量: volume
       成交额: amount
       昨收: prev_close
       最低: low
-      最新价: last
+      最新价: price
       最高: high
       涨跌幅: pct_change
       涨跌额: change
@@ -1773,7 +2515,7 @@ bond_sz_buy_back_em:
 bond_treasure_issue_cninfo:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1804,9 +2546,6 @@ bond_treasure_issue_cninfo:
   name: bond_treasure_issue_cninfo
   output:
   - desc: 'from :return: docstring'
-    name: '['
-    type: str
-  - desc: 'from :return: docstring'
     name: bond_code
     type: int
   - desc: 'from :return: docstring'
@@ -1851,16 +2590,76 @@ bond_treasure_issue_cninfo:
   - desc: 'from :return: docstring'
     name: name
     type: str
+  - desc: F009D field
+    name: F009D
+    type: str
+  - desc: SECNAME field
+    name: SECNAME
+    type: str
+  - desc: DECLAREDATE field
+    name: DECLAREDATE
+    type: datetime
+  - desc: F004D field
+    name: F004D
+    type: str
+  - desc: F003D field
+    name: F003D
+    type: str
+  - desc: F008N field
+    name: F008N
+    type: str
+  - desc: SECCODE field
+    name: SECCODE
+    type: int
+  - desc: F007N field
+    name: F007N
+    type: str
+  - desc: F006N field
+    name: F006N
+    type: str
+  - desc: F005N field
+    name: F005N
+    type: str
+  - desc: F028N field
+    name: F028N
+    type: str
+  - desc: BONDNAME field
+    name: BONDNAME
+    type: str
+  - desc: F014V field
+    name: F014V
+    type: str
+  - desc: F002V field
+    name: F002V
+    type: str
+  - desc: F013V field
+    name: F013V
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_treasure_issue_cninfo
     input_mapping:
       end_date: end_date
       start_date: start_date
-    name: akshare_em
+    name: akshare_cninfo
     output_mapping:
+      BONDNAME: BONDNAME
+      DECLAREDATE: DECLAREDATE
+      F002V: F002V
+      F003D: F003D
+      F004D: F004D
+      F005N: F005N
+      F006N: F006N
+      F007N: F007N
+      F008N: F008N
+      F009D: F009D
+      F013V: F013V
+      F014V: F014V
+      F028N: F028N
+      SECCODE: SECCODE
+      SECNAME: SECNAME
       交易市场: market
       债券代码: bond_code
       债券名称: name
@@ -1868,14 +2667,21 @@ bond_treasure_issue_cninfo:
       公告日期: date
       单位面值: par_value
       发行价格: issue_price
+      发行对象: 发行对象
+      发行方式: 发行方式
       发行终止日: day
       发行起始日: day
+      增发次数: 增发次数
+      实际发行总量: 实际发行总量
       缴款日: day
-    param_transforms: {}
+      计划发行总量: 计划发行总量
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 bond_treasury_index_cbond:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1907,7 +2713,7 @@ bond_treasury_index_cbond:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_treasury_index_cbond
     input_mapping:
@@ -1921,7 +2727,7 @@ bond_treasury_index_cbond:
 bond_zh_cov:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -1938,9 +2744,6 @@ bond_zh_cov:
   - desc: bond_code field
     name: bond_code
     type: int
-  - desc: _ field
-    name: _
-    type: str
   - desc: name field
     name: name
     type: str
@@ -1953,8 +2756,8 @@ bond_zh_cov:
   - desc: rating field
     name: rating
     type: str
-  - desc: size field
-    name: size
+  - desc: scale field
+    name: scale
     type: float
   - desc: subscription_limit field
     name: subscription_limit
@@ -1980,30 +2783,24 @@ bond_zh_cov:
   - desc: lottery_rate field
     name: lottery_rate
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
-  - desc: 正股价 field
-    name: 正股价
+  - desc: price field
+    name: price
     type: float
-  - desc: 转股价 field
-    name: 转股价
+  - desc: price field
+    name: price
     type: float
-  - desc: 转股价值 field
-    name: 转股价值
+  - desc: price field
+    name: price
     type: float
-  - desc: current_price field
-    name: current_price
+  - desc: price field
+    name: price
     type: float
   - desc: premium field
     name: premium
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_zh_cov
     input_mapping: {}
@@ -2015,20 +2812,24 @@ bond_zh_cov:
       信用评级: rating
       债券代码: bond_code
       债券简称: name
-      债现价: current_price
+      债现价: price
+      原股东配售-每股配售额: 原股东配售-每股配售额
       原股东配售-股权登记日: day
-      发行规模: size
+      发行规模: scale
       正股代码: stock_code
+      正股价: price
       正股简称: stock_name
       申购上限: subscription_limit
       申购代码: code
       申购日期: subscription_date
+      转股价: price
+      转股价值: price
       转股溢价率: premium
     param_transforms: {}
 bond_zh_cov_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -2061,7 +2862,7 @@ bond_zh_cov_info:
     type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_zh_cov_info
     input_mapping:
@@ -2074,7 +2875,7 @@ bond_zh_cov_info:
 bond_zh_cov_info_ths:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -2088,9 +2889,6 @@ bond_zh_cov_info_ths:
   input: []
   name: bond_zh_cov_info_ths
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: bond_code
     type: int
@@ -2131,7 +2929,7 @@ bond_zh_cov_info_ths:
     name: stock_name
     type: str
   - desc: 'from :return: docstring'
-    name: 转股价格
+    name: price
     type: float
   - desc: 'from :return: docstring'
     name: maturity_date
@@ -2139,29 +2937,111 @@ bond_zh_cov_info_ths:
   - desc: 'from :return: docstring'
     name: lottery_rate
     type: float
+  - desc: sub_date field
+    name: sub_date
+    type: datetime
+  - desc: bond_code field
+    name: bond_code
+    type: int
+  - desc: bond_name field
+    name: bond_name
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: sub_code field
+    name: sub_code
+    type: int
+  - desc: share_code field
+    name: share_code
+    type: int
+  - desc: sign_date field
+    name: sign_date
+    type: datetime
+  - desc: plan_total field
+    name: plan_total
+    type: str
+  - desc: issue_total field
+    name: issue_total
+    type: str
+  - desc: issue_price field
+    name: issue_price
+    type: float
+  - desc: success_rate field
+    name: success_rate
+    type: float
+  - desc: listing_date field
+    name: listing_date
+    type: datetime
+  - desc: expire_date field
+    name: expire_date
+    type: datetime
+  - desc: price field
+    name: price
+    type: float
+  - desc: quota field
+    name: quota
+    type: str
+  - desc: number field
+    name: number
+    type: int
+  - desc: market_id field
+    name: market_id
+    type: str
+  - desc: stock_market_id field
+    name: stock_market_id
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_zh_cov_info_ths
     input_mapping: {}
-    name: akshare_em
+    name: akshare_ths
     output_mapping:
+      bond_code: bond_code
+      bond_name: bond_name
+      code: code
+      expire_date: expire_date
+      issue_price: issue_price
+      issue_total: issue_total
+      listing_date: listing_date
+      market_id: market_id
+      name: name
+      number: number
+      plan_total: plan_total
+      price: price
+      quota: quota
+      share_code: share_code
+      sign_date: sign_date
+      stock_market_id: stock_market_id
+      sub_code: sub_code
+      sub_date: sub_date
+      success_rate: success_rate
       上市日期: listing_date
       中签公布日: day
+      中签号: 中签号
       中签率: lottery_rate
       债券代码: bond_code
       债券简称: name
       到期时间: maturity_date
+      原股东配售码: 原股东配售码
+      实际发行量: 实际发行量
       正股代码: stock_code
       正股简称: stock_name
+      每股获配额: 每股获配额
       申购代码: code
       申购日期: subscription_date
+      计划发行量: 计划发行量
+      转股价格: price
     param_transforms: {}
 bond_zh_cov_value_analysis:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -2186,11 +3066,8 @@ bond_zh_cov_value_analysis:
   - desc: date field
     name: date
     type: datetime
-  - desc: '- field'
-    name: '-'
-    type: str
-  - desc: 转股价值 field
-    name: 转股价值
+  - desc: price field
+    name: price
     type: float
   - desc: 纯债价值 field
     name: 纯债价值
@@ -2206,7 +3083,7 @@ bond_zh_cov_value_analysis:
     type: float
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_zh_cov_value_analysis
     input_mapping:
@@ -2215,10 +3092,17 @@ bond_zh_cov_value_analysis:
     output_mapping:
       收盘价: close
       日期: date
+      纯债价值: 纯债价值
       纯债溢价率: premium
+      转股价值: price
       转股溢价率: premium
     param_transforms: {}
 bond_zh_hs_cov_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
   description: '新浪财经-债券-沪深可转债的历史行情数据, 大量抓取容易封 IP
 
@@ -2237,21 +3121,45 @@ bond_zh_hs_cov_daily:
     required: true
     type: str
   name: bond_zh_hs_cov_daily
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: int
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_zh_hs_cov_daily
     input_mapping:
       symbol: symbol
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
     param_transforms: {}
 bond_zh_hs_cov_min:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -2312,8 +3220,8 @@ bond_zh_hs_cov_min:
   - desc: amount field
     name: amount
     type: float
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: amplitude field
     name: amplitude
@@ -2327,7 +3235,7 @@ bond_zh_hs_cov_min:
   - desc: turnover field
     name: turnover
     type: float
-  rate_limit_key: em_push2
+  rate_limit_key: em_push2his
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
     enabled: true
@@ -2348,15 +3256,18 @@ bond_zh_hs_cov_min:
       收盘: close
       时间: time
       最低: low
-      最新价: last
+      最新价: price
       最高: high
       涨跌幅: pct_change
       涨跌额: change
-    param_transforms: {}
+    param_transforms:
+      adjust: pass_through
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 bond_zh_hs_cov_pre_min:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -2399,8 +3310,8 @@ bond_zh_hs_cov_pre_min:
   - desc: amount field
     name: amount
     type: float
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   rate_limit_key: em_push2
   sources:
@@ -2417,10 +3328,15 @@ bond_zh_hs_cov_pre_min:
       收盘: close
       时间: time
       最低: low
-      最新价: last
+      最新价: price
       最高: high
     param_transforms: {}
 bond_zh_hs_cov_spot:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
   description: '新浪财经-债券-沪深可转债的实时行情数据; 大量抓取容易封IP
 
@@ -2431,15 +3347,75 @@ bond_zh_hs_cov_spot:
     :rtype: pandas.DataFrame'
   input: []
   name: bond_zh_hs_cov_spot
-  output: []
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: trade field
+    name: trade
+    type: str
+  - desc: pricechange field
+    name: pricechange
+    type: str
+  - desc: changepercent field
+    name: changepercent
+    type: str
+  - desc: buy field
+    name: buy
+    type: str
+  - desc: sell field
+    name: sell
+    type: str
+  - desc: settlement field
+    name: settlement
+    type: str
+  - desc: open field
+    name: open
+    type: str
+  - desc: high field
+    name: high
+    type: str
+  - desc: low field
+    name: low
+    type: str
+  - desc: volume field
+    name: volume
+    type: int
+  - desc: amount field
+    name: amount
+    type: int
+  - desc: code field
+    name: code
+    type: str
+  - desc: ticktime field
+    name: ticktime
+    type: str
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_zh_hs_cov_spot
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      amount: amount
+      buy: buy
+      changepercent: changepercent
+      code: code
+      high: high
+      low: low
+      name: name
+      open: open
+      pricechange: pricechange
+      sell: sell
+      settlement: settlement
+      symbol: symbol
+      ticktime: ticktime
+      trade: trade
+      volume: volume
     param_transforms: {}
 bond_zh_hs_daily:
   category: bond
@@ -2463,7 +3439,7 @@ bond_zh_hs_daily:
   output: []
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_zh_hs_daily
     input_mapping:
@@ -2474,7 +3450,7 @@ bond_zh_hs_daily:
 bond_zh_hs_spot:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -2507,14 +3483,11 @@ bond_zh_hs_spot:
   - desc: code field
     name: code
     type: int
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: name field
     name: name
     type: str
-  - desc: last field
-    name: last
+  - desc: price field
+    name: price
     type: float
   - desc: change field
     name: change
@@ -2565,7 +3538,7 @@ bond_zh_hs_spot:
       成交额: amount
       昨收: prev_close
       最低: low
-      最新价: last
+      最新价: price
       最高: high
       涨跌幅: pct_change
       涨跌额: change
@@ -2573,7 +3546,7 @@ bond_zh_hs_spot:
 bond_zh_us_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
@@ -2595,17 +3568,66 @@ bond_zh_us_rate:
     type: str
   name: bond_zh_us_rate
   output:
-  - desc: 'from :return: docstring'
-    name: col
+  - desc: SOLAR_DATE field
+    name: SOLAR_DATE
+    type: datetime
+  - desc: EMM00166462 field
+    name: EMM00166462
+    type: str
+  - desc: EMM00166466 field
+    name: EMM00166466
+    type: str
+  - desc: EMM00166469 field
+    name: EMM00166469
+    type: str
+  - desc: EMM00588704 field
+    name: EMM00588704
+    type: str
+  - desc: EMM01276014 field
+    name: EMM01276014
+    type: str
+  - desc: EMG00001306 field
+    name: EMG00001306
+    type: str
+  - desc: EMG00001308 field
+    name: EMG00001308
+    type: str
+  - desc: EMG00001310 field
+    name: EMG00001310
+    type: str
+  - desc: EMG00001312 field
+    name: EMG00001312
+    type: str
+  - desc: EMG01339436 field
+    name: EMG01339436
+    type: str
+  - desc: EMM00000024 field
+    name: EMM00000024
+    type: str
+  - desc: EMG00159635 field
+    name: EMG00159635
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: bond_zh_us_rate
     input_mapping:
       start_date: start_date
     name: akshare_em
     output_mapping:
-      col: col
-    param_transforms: {}
+      EMG00001306: EMG00001306
+      EMG00001308: EMG00001308
+      EMG00001310: EMG00001310
+      EMG00001312: EMG00001312
+      EMG00159635: EMG00159635
+      EMG01339436: EMG01339436
+      EMM00000024: EMM00000024
+      EMM00166462: EMM00166462
+      EMM00166466: EMM00166466
+      EMM00166469: EMM00166469
+      EMM00588704: EMM00588704
+      EMM01276014: EMM01276014
+      SOLAR_DATE: SOLAR_DATE
+    param_transforms:
+      start_date: YYYYMMDD

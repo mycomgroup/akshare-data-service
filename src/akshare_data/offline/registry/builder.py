@@ -109,7 +109,9 @@ class RegistryBuilder:
         output_fields = []
         if func_obj:
             signature = func_info.get("signature", [])
-            output_field_list = self.output_capture.capture(func_name, signature, params)
+            output_field_list = self.output_capture.capture(
+                func_name, signature, params, category=category
+            )
             output_fields = [
                 {
                     "name": f.name,

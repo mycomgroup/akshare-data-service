@@ -1,7 +1,7 @@
 macro_australia_bank_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -15,9 +15,6 @@ macro_australia_bank_rate:
   input: []
   name: macro_australia_bank_rate
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -30,24 +27,23 @@ macro_australia_bank_rate:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_australia_bank_rate
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_australia_cpi_quarterly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -61,9 +57,6 @@ macro_australia_cpi_quarterly:
   input: []
   name: macro_australia_cpi_quarterly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -76,24 +69,23 @@ macro_australia_cpi_quarterly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_australia_cpi_quarterly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_australia_cpi_yearly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -107,9 +99,6 @@ macro_australia_cpi_yearly:
   input: []
   name: macro_australia_cpi_yearly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -122,24 +111,23 @@ macro_australia_cpi_yearly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_australia_cpi_yearly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_australia_ppi_quarterly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -153,9 +141,6 @@ macro_australia_ppi_quarterly:
   input: []
   name: macro_australia_ppi_quarterly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -168,24 +153,23 @@ macro_australia_ppi_quarterly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_australia_ppi_quarterly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_australia_retail_rate_monthly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -199,9 +183,6 @@ macro_australia_retail_rate_monthly:
   input: []
   name: macro_australia_retail_rate_monthly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -214,24 +195,23 @@ macro_australia_retail_rate_monthly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_australia_retail_rate_monthly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_australia_trade:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -245,9 +225,6 @@ macro_australia_trade:
   input: []
   name: macro_australia_trade
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -260,24 +237,23 @@ macro_australia_trade:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_australia_trade
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_australia_unemployment_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -291,9 +267,6 @@ macro_australia_unemployment_rate:
   input: []
   name: macro_australia_unemployment_rate
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -306,19 +279,18 @@ macro_australia_unemployment_rate:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_australia_unemployment_rate
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_bank_australia_interest_rate:
   category: macro
@@ -334,7 +306,7 @@ macro_bank_australia_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_australia_interest_rate
     input_mapping: {}
@@ -355,7 +327,7 @@ macro_bank_brazil_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_brazil_interest_rate
     input_mapping: {}
@@ -376,7 +348,7 @@ macro_bank_china_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_china_interest_rate
     input_mapping: {}
@@ -397,7 +369,7 @@ macro_bank_english_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_english_interest_rate
     input_mapping: {}
@@ -420,7 +392,7 @@ macro_bank_euro_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_euro_interest_rate
     input_mapping: {}
@@ -441,7 +413,7 @@ macro_bank_india_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_india_interest_rate
     input_mapping: {}
@@ -462,7 +434,7 @@ macro_bank_japan_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_japan_interest_rate
     input_mapping: {}
@@ -483,7 +455,7 @@ macro_bank_newzealand_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_newzealand_interest_rate
     input_mapping: {}
@@ -504,7 +476,7 @@ macro_bank_russia_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_russia_interest_rate
     input_mapping: {}
@@ -525,7 +497,7 @@ macro_bank_switzerland_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_switzerland_interest_rate
     input_mapping: {}
@@ -546,7 +518,7 @@ macro_bank_usa_interest_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_bank_usa_interest_rate
     input_mapping: {}
@@ -556,7 +528,7 @@ macro_bank_usa_interest_rate:
 macro_canada_bank_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -570,9 +542,6 @@ macro_canada_bank_rate:
   input: []
   name: macro_canada_bank_rate
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -585,24 +554,23 @@ macro_canada_bank_rate:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_bank_rate
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_core_cpi_monthly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -616,9 +584,6 @@ macro_canada_core_cpi_monthly:
   input: []
   name: macro_canada_core_cpi_monthly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -631,24 +596,23 @@ macro_canada_core_cpi_monthly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_core_cpi_monthly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_core_cpi_yearly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -662,9 +626,6 @@ macro_canada_core_cpi_yearly:
   input: []
   name: macro_canada_core_cpi_yearly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -677,24 +638,23 @@ macro_canada_core_cpi_yearly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_core_cpi_yearly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_cpi_monthly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -708,9 +668,6 @@ macro_canada_cpi_monthly:
   input: []
   name: macro_canada_cpi_monthly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -723,24 +680,23 @@ macro_canada_cpi_monthly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_cpi_monthly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_cpi_yearly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -754,9 +710,6 @@ macro_canada_cpi_yearly:
   input: []
   name: macro_canada_cpi_yearly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -769,24 +722,23 @@ macro_canada_cpi_yearly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_cpi_yearly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_gdp_monthly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -800,9 +752,6 @@ macro_canada_gdp_monthly:
   input: []
   name: macro_canada_gdp_monthly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -815,24 +764,23 @@ macro_canada_gdp_monthly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_gdp_monthly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_new_house_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -846,9 +794,6 @@ macro_canada_new_house_rate:
   input: []
   name: macro_canada_new_house_rate
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -861,24 +806,23 @@ macro_canada_new_house_rate:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_new_house_rate
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_retail_rate_monthly:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -892,9 +836,6 @@ macro_canada_retail_rate_monthly:
   input: []
   name: macro_canada_retail_rate_monthly
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -907,24 +848,23 @@ macro_canada_retail_rate_monthly:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_retail_rate_monthly
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_trade:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -938,9 +878,6 @@ macro_canada_trade:
   input: []
   name: macro_canada_trade
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -953,24 +890,23 @@ macro_canada_trade:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_trade
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_canada_unemployment_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -984,9 +920,6 @@ macro_canada_unemployment_rate:
   input: []
   name: macro_canada_unemployment_rate
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -999,24 +932,23 @@ macro_canada_unemployment_rate:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_canada_unemployment_rate
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_agricultural_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1039,44 +971,42 @@ macro_china_agricultural_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_agricultural_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_agricultural_product:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1099,44 +1029,42 @@ macro_china_agricultural_product:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_agricultural_product
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_au_report:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1192,13 +1120,16 @@ macro_china_au_report:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_au_report
     input_mapping: {}
     name: akshare_em
     output_mapping:
       交收方向: direction
+      交收量: 交收量
+      加权平均价: 加权平均价
+      商品: 商品
       开盘价: open
       成交量: volume
       成交金额: amount
@@ -1213,7 +1144,7 @@ macro_china_au_report:
 macro_china_bank_financing:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1236,44 +1167,42 @@ macro_china_bank_financing:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_bank_financing
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_bdti_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1296,44 +1225,42 @@ macro_china_bdti_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_bdti_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_bond_public:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1352,9 +1279,6 @@ macro_china_bond_public:
     type: str
   - desc: type field
     name: type
-    type: str
-  - desc: '- field'
-    name: '-'
     type: str
   - desc: date field
     name: date
@@ -1376,21 +1300,25 @@ macro_china_bond_public:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_bond_public
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      价格: 价格
+      债券全称: 债券全称
       债券期限: term
       债券类型: type
       债券评级: rating
       发行日期: date
+      计划发行量: 计划发行量
+      计息方式: 计息方式
     param_transforms: {}
 macro_china_bsi_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1413,44 +1341,42 @@ macro_china_bsi_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_bsi_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_central_bank_balance:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1469,7 +1395,7 @@ macro_china_central_bank_balance:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_central_bank_balance
     input_mapping: {}
@@ -1480,7 +1406,7 @@ macro_china_central_bank_balance:
 macro_china_commodity_price_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1503,44 +1429,42 @@ macro_china_commodity_price_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_commodity_price_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_construction_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1563,44 +1487,42 @@ macro_china_construction_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_construction_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_construction_price_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1623,44 +1545,42 @@ macro_china_construction_price_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_construction_price_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_consumer_goods_retail:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1674,9 +1594,6 @@ macro_china_consumer_goods_retail:
   input: []
   name: macro_china_consumer_goods_retail
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -1695,23 +1612,25 @@ macro_china_consumer_goods_retail:
   - desc: 累计-同比增长 field
     name: 累计-同比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_consumer_goods_retail
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      同比增长: 同比增长
+      当月: 当月
       月份: month
+      环比增长: 环比增长
+      累计: 累计
+      累计-同比增长: 累计-同比增长
     param_transforms: {}
 macro_china_cpi:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1725,9 +1644,6 @@ macro_china_cpi:
   input: []
   name: macro_china_cpi
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -1767,17 +1683,22 @@ macro_china_cpi:
   - desc: 农村-累计 field
     name: 农村-累计
     type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_cpi
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      全国-同比增长: 全国-同比增长
+      全国-当月: 全国-当月
+      全国-环比增长: 全国-环比增长
+      全国-累计: 全国-累计
+      农村-同比增长: 农村-同比增长
+      农村-当月: 农村-当月
+      农村-环比增长: 农村-环比增长
+      农村-累计: 农村-累计
       城市-同比增长: city
       城市-当月: city
       城市-环比增长: city
@@ -1785,6 +1706,11 @@ macro_china_cpi:
       月份: month
     param_transforms: {}
 macro_china_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国月度 CPI 数据, 数据区间从 19960201-至今
 
@@ -1795,17 +1721,42 @@ macro_china_cpi_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_cpi_monthly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_cpi_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国年度 CPI 数据, 数据区间从 19860201-至今
 
@@ -1816,15 +1767,35 @@ macro_china_cpi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_cpi_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_cpi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_cx_pmi_yearly:
   category: macro
@@ -1840,7 +1811,7 @@ macro_china_cx_pmi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_cx_pmi_yearly
     input_mapping: {}
@@ -1861,7 +1832,7 @@ macro_china_cx_services_pmi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_cx_services_pmi_yearly
     input_mapping: {}
@@ -1871,7 +1842,7 @@ macro_china_cx_services_pmi_yearly:
 macro_china_czsr:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1885,9 +1856,6 @@ macro_china_czsr:
   input: []
   name: macro_china_czsr
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -1906,23 +1874,25 @@ macro_china_czsr:
   - desc: 累计-同比增长 field
     name: 累计-同比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_czsr
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      当月: 当月
+      当月-同比增长: 当月-同比增长
+      当月-环比增长: 当月-环比增长
       月份: month
+      累计: 累计
+      累计-同比增长: 累计-同比增长
     param_transforms: {}
 macro_china_daily_energy:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1940,23 +1910,37 @@ macro_china_daily_energy:
   - desc: date field
     name: date
     type: datetime
+  - desc: 沿海六大电库存 field
+    name: 沿海六大电库存
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: available field
+    name: available
+    type: str
   - desc: 'from :return: docstring'
     name: kinds
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_daily_energy
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      kinds: kinds
+      存煤可用天数: available
       日期: date
+      日耗: day
+      沿海六大电库存: 沿海六大电库存
     param_transforms: {}
 macro_china_energy_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -1979,44 +1963,42 @@ macro_china_energy_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_energy_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_enterprise_boom_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2030,9 +2012,6 @@ macro_china_enterprise_boom_index:
   input: []
   name: macro_china_enterprise_boom_index
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: quarter field
     name: quarter
     type: datetime
@@ -2054,17 +2033,20 @@ macro_china_enterprise_boom_index:
   - desc: 企业家信心指数-环比 field
     name: 企业家信心指数-环比
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_enterprise_boom_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      企业家信心指数-同比: 企业家信心指数-同比
+      企业家信心指数-指数: 企业家信心指数-指数
+      企业家信心指数-环比: 企业家信心指数-环比
+      企业景气指数-同比: 企业景气指数-同比
+      企业景气指数-指数: 企业景气指数-指数
+      企业景气指数-环比: 企业景气指数-环比
       季度: quarter
     param_transforms: {}
 macro_china_exports_yoy:
@@ -2081,7 +2063,7 @@ macro_china_exports_yoy:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_exports_yoy
     input_mapping: {}
@@ -2091,7 +2073,7 @@ macro_china_exports_yoy:
 macro_china_fdi:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2105,9 +2087,6 @@ macro_china_fdi:
   input: []
   name: macro_china_fdi
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -2126,23 +2105,25 @@ macro_china_fdi:
   - desc: 累计-同比增长 field
     name: 累计-同比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_fdi
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      当月: 当月
+      当月-同比增长: 当月-同比增长
+      当月-环比增长: 当月-环比增长
       月份: month
+      累计: 累计
+      累计-同比增长: 累计-同比增长
     param_transforms: {}
 macro_china_foreign_exchange_gold:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2161,7 +2142,7 @@ macro_china_foreign_exchange_gold:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_foreign_exchange_gold
     input_mapping: {}
@@ -2170,11 +2151,6 @@ macro_china_foreign_exchange_gold:
       item[1: item[1
     param_transforms: {}
 macro_china_freight_index:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '新浪财经-中国宏观经济数据-航贸运价指数
 
@@ -2185,24 +2161,20 @@ macro_china_freight_index:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_freight_index
-  output:
-  - desc: 'from :return: docstring'
-    name: '2'
-    type: str
+  output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_freight_index
     input_mapping: {}
     name: akshare_em
-    output_mapping:
-      '2': '2'
+    output_mapping: {}
     param_transforms: {}
 macro_china_fx_gold:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2216,9 +2188,6 @@ macro_china_fx_gold:
   input: []
   name: macro_china_fx_gold
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -2231,30 +2200,30 @@ macro_china_fx_gold:
   - desc: 黄金储备-环比 field
     name: 黄金储备-环比
     type: str
-  - desc: country field
-    name: country
+  - desc: 国家外汇储备-数值 field
+    name: 国家外汇储备-数值
     type: float
-  - desc: country field
-    name: country
+  - desc: 国家外汇储备-同比 field
+    name: 国家外汇储备-同比
     type: str
-  - desc: country field
-    name: country
-    type: str
-  - desc: 'from :return: docstring'
-    name: result
+  - desc: 国家外汇储备-环比 field
+    name: 国家外汇储备-环比
     type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_fx_gold
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      国家外汇储备-同比: country
-      国家外汇储备-数值: country
-      国家外汇储备-环比: country
+      国家外汇储备-同比: 国家外汇储备-同比
+      国家外汇储备-数值: 国家外汇储备-数值
+      国家外汇储备-环比: 国家外汇储备-环比
       月份: month
+      黄金储备-同比: 黄金储备-同比
+      黄金储备-数值: 黄金储备-数值
+      黄金储备-环比: 黄金储备-环比
     param_transforms: {}
 macro_china_fx_reserves_yearly:
   category: macro
@@ -2270,7 +2239,7 @@ macro_china_fx_reserves_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_fx_reserves_yearly
     input_mapping: {}
@@ -2280,7 +2249,7 @@ macro_china_fx_reserves_yearly:
 macro_china_gdp:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2294,9 +2263,6 @@ macro_china_gdp:
   input: []
   name: macro_china_gdp
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: quarter field
     name: quarter
     type: datetime
@@ -2324,20 +2290,30 @@ macro_china_gdp:
   - desc: 第三产业-同比增长 field
     name: 第三产业-同比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_gdp
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      国内生产总值-同比增长: 国内生产总值-同比增长
+      国内生产总值-绝对值: 国内生产总值-绝对值
       季度: quarter
+      第一产业-同比增长: 第一产业-同比增长
+      第一产业-绝对值: 第一产业-绝对值
+      第三产业-同比增长: 第三产业-同比增长
+      第三产业-绝对值: 第三产业-绝对值
+      第二产业-同比增长: 第二产业-同比增长
+      第二产业-绝对值: 第二产业-绝对值
     param_transforms: {}
 macro_china_gdp_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '金十数据中心-中国 GDP 年率报告, 数据区间从 20110120-至今
 
@@ -2348,20 +2324,40 @@ macro_china_gdp_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_gdp_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_gdp_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_gdzctz:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2375,9 +2371,6 @@ macro_china_gdzctz:
   input: []
   name: macro_china_gdzctz
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -2393,23 +2386,24 @@ macro_china_gdzctz:
   - desc: 自年初累计 field
     name: 自年初累计
     type: datetime
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_gdzctz
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      同比增长: 同比增长
+      当月: 当月
       月份: month
+      环比增长: 环比增长
+      自年初累计: 自年初累计
     param_transforms: {}
 macro_china_gyzjz:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2435,24 +2429,23 @@ macro_china_gyzjz:
   - desc: 累计增长 field
     name: 累计增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_gyzjz
     input_mapping: {}
     name: akshare_em
     output_mapping:
       发布时间: time
+      同比增长: 同比增长
       月份: month
+      累计增长: 累计增长
     param_transforms: {}
 macro_china_hgjck:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2466,18 +2459,62 @@ macro_china_hgjck:
   input: []
   name: macro_china_hgjck
   output:
-  - desc: 'from :return: docstring'
-    name: result
+  - desc: REPORT_DATE field
+    name: REPORT_DATE
+    type: datetime
+  - desc: TIME field
+    name: TIME
+    type: datetime
+  - desc: EXIT_BASE field
+    name: EXIT_BASE
+    type: str
+  - desc: IMPORT_BASE field
+    name: IMPORT_BASE
+    type: str
+  - desc: EXIT_BASE_SAME field
+    name: EXIT_BASE_SAME
+    type: str
+  - desc: IMPORT_BASE_SAME field
+    name: IMPORT_BASE_SAME
+    type: str
+  - desc: EXIT_BASE_SEQUENTIAL field
+    name: EXIT_BASE_SEQUENTIAL
+    type: str
+  - desc: IMPORT_BASE_SEQUENTIAL field
+    name: IMPORT_BASE_SEQUENTIAL
+    type: str
+  - desc: EXIT_ACCUMULATE field
+    name: EXIT_ACCUMULATE
+    type: str
+  - desc: IMPORT_ACCUMULATE field
+    name: IMPORT_ACCUMULATE
+    type: str
+  - desc: EXIT_ACCUMULATE_SAME field
+    name: EXIT_ACCUMULATE_SAME
+    type: str
+  - desc: IMPORT_ACCUMULATE_SAME field
+    name: IMPORT_ACCUMULATE_SAME
     type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hgjck
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      result: result
+      EXIT_ACCUMULATE: EXIT_ACCUMULATE
+      EXIT_ACCUMULATE_SAME: EXIT_ACCUMULATE_SAME
+      EXIT_BASE: EXIT_BASE
+      EXIT_BASE_SAME: EXIT_BASE_SAME
+      EXIT_BASE_SEQUENTIAL: EXIT_BASE_SEQUENTIAL
+      IMPORT_ACCUMULATE: IMPORT_ACCUMULATE
+      IMPORT_ACCUMULATE_SAME: IMPORT_ACCUMULATE_SAME
+      IMPORT_BASE: IMPORT_BASE
+      IMPORT_BASE_SAME: IMPORT_BASE_SAME
+      IMPORT_BASE_SEQUENTIAL: IMPORT_BASE_SEQUENTIAL
+      REPORT_DATE: REPORT_DATE
+      TIME: TIME
     param_transforms: {}
 macro_china_hk_building_amount:
   category: macro
@@ -2493,7 +2530,7 @@ macro_china_hk_building_amount:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_building_amount
     input_mapping: {}
@@ -2514,7 +2551,7 @@ macro_china_hk_building_volume:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_building_volume
     input_mapping: {}
@@ -2535,7 +2572,7 @@ macro_china_hk_cpi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_cpi
     input_mapping: {}
@@ -2556,7 +2593,7 @@ macro_china_hk_cpi_ratio:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_cpi_ratio
     input_mapping: {}
@@ -2577,7 +2614,7 @@ macro_china_hk_gbp:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_gbp
     input_mapping: {}
@@ -2598,7 +2635,7 @@ macro_china_hk_gbp_ratio:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_gbp_ratio
     input_mapping: {}
@@ -2608,7 +2645,7 @@ macro_china_hk_gbp_ratio:
 macro_china_hk_market_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2635,12 +2672,14 @@ macro_china_hk_market_info:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_market_info
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_china_hk_ppi:
@@ -2657,7 +2696,7 @@ macro_china_hk_ppi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_ppi
     input_mapping: {}
@@ -2678,7 +2717,7 @@ macro_china_hk_rate_of_unemployment:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_rate_of_unemployment
     input_mapping: {}
@@ -2699,7 +2738,7 @@ macro_china_hk_trade_diff_ratio:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_hk_trade_diff_ratio
     input_mapping: {}
@@ -2722,7 +2761,7 @@ macro_china_imports_yoy:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_imports_yoy
     input_mapping: {}
@@ -2741,7 +2780,7 @@ macro_china_industrial_production_yoy:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_industrial_production_yoy
     input_mapping: {}
@@ -2751,7 +2790,7 @@ macro_china_industrial_production_yoy:
 macro_china_insurance:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2770,7 +2809,7 @@ macro_china_insurance:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_insurance
     input_mapping: {}
@@ -2781,7 +2820,7 @@ macro_china_insurance:
 macro_china_insurance_income:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2804,44 +2843,42 @@ macro_china_insurance_income:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_insurance_income
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_international_tourism_fx:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2860,7 +2897,7 @@ macro_china_international_tourism_fx:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_international_tourism_fx
     input_mapping: {}
@@ -2871,7 +2908,7 @@ macro_china_international_tourism_fx:
 macro_china_lpi_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -2894,46 +2931,39 @@ macro_china_lpi_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_lpi_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_lpr:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: 'LPR品种详细数据
 
@@ -2944,19 +2974,15 @@ macro_china_lpr:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_lpr
-  output:
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
+  output: []
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_lpr
     input_mapping: {}
     name: akshare_em
-    output_mapping:
-      result: result
+    output_mapping: {}
     param_transforms: {}
 macro_china_m2_yearly:
   category: macro
@@ -2972,7 +2998,7 @@ macro_china_m2_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_m2_yearly
     input_mapping: {}
@@ -2982,7 +3008,7 @@ macro_china_m2_yearly:
 macro_china_market_margin_sh:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3017,13 +3043,14 @@ macro_china_market_margin_sh:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_market_margin_sh
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      融券余量: 融券余量
       融券余额: balance
       融券卖出量: ask
       融资买入额: bid
@@ -3033,7 +3060,7 @@ macro_china_market_margin_sh:
 macro_china_market_margin_sz:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3071,13 +3098,15 @@ macro_china_market_margin_sz:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_market_margin_sz
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
       日期: date
+      融券余量: 融券余量
       融券余额: balance
       融券卖出量: ask
       融资买入额: bid
@@ -3087,7 +3116,7 @@ macro_china_market_margin_sz:
 macro_china_mobile_number:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3110,44 +3139,42 @@ macro_china_mobile_number:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_mobile_number
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_money_supply:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3161,9 +3188,6 @@ macro_china_money_supply:
   input: []
   name: macro_china_money_supply
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -3194,19 +3218,18 @@ macro_china_money_supply:
   - desc: 流通中的现金(M0)-环比增长 field
     name: 流通中的现金(M0)-环比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_money_supply
     input_mapping: {}
     name: akshare_em
     output_mapping:
       月份: month
+      流通中的现金(M0)-同比增长: 流通中的现金(M0)-同比增长
       流通中的现金(M0)-数量(亿元): quantity
+      流通中的现金(M0)-环比增长: 流通中的现金(M0)-环比增长
       货币(M1)-同比增长: currency
       货币(M1)-数量(亿元): quantity
       货币(M1)-环比增长: currency
@@ -3217,7 +3240,7 @@ macro_china_money_supply:
 macro_china_national_tax_receipts:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3231,9 +3254,6 @@ macro_china_national_tax_receipts:
   input: []
   name: macro_china_national_tax_receipts
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: quarter field
     name: quarter
     type: datetime
@@ -3246,12 +3266,9 @@ macro_china_national_tax_receipts:
   - desc: quarter field
     name: quarter
     type: datetime
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_national_tax_receipts
     input_mapping: {}
@@ -3259,13 +3276,10 @@ macro_china_national_tax_receipts:
     output_mapping:
       季度: quarter
       季度环比: quarter
+      税收收入合计: 税收收入合计
+      较上年同期: 较上年同期
     param_transforms: {}
 macro_china_nbs_nation:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '国家统计局全国数据通用接口
 
@@ -3294,13 +3308,10 @@ macro_china_nbs_nation:
     required: true
     type: str
   name: macro_china_nbs_nation
-  output:
-  - desc: 'from :return: docstring'
-    name: '0'
-    type: str
+  output: []
   rate_limit_key: stats
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_nbs_nation
     input_mapping:
@@ -3308,15 +3319,9 @@ macro_china_nbs_nation:
       path: path
       period: period
     name: akshare_em
-    output_mapping:
-      '0': '0'
+    output_mapping: {}
     param_transforms: {}
 macro_china_nbs_region:
-  _generated_note: '# Auto-generated from akshare_registry.yaml
-
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
-
-    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '国家统计局地区数据通用接口
 
@@ -3353,13 +3358,10 @@ macro_china_nbs_region:
     required: true
     type: str
   name: macro_china_nbs_region
-  output:
-  - desc: 'from :return: docstring'
-    name: '1'
-    type: str
+  output: []
   rate_limit_key: stats
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_nbs_region
     input_mapping:
@@ -3369,13 +3371,12 @@ macro_china_nbs_region:
       period: period
       region: region
     name: akshare_em
-    output_mapping:
-      '1': '1'
+    output_mapping: {}
     param_transforms: {}
 macro_china_new_financial_credit:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3389,9 +3390,6 @@ macro_china_new_financial_credit:
   input: []
   name: macro_china_new_financial_credit
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -3410,23 +3408,25 @@ macro_china_new_financial_credit:
   - desc: 累计-同比增长 field
     name: 累计-同比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_new_financial_credit
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      当月: 当月
+      当月-同比增长: 当月-同比增长
+      当月-环比增长: 当月-环比增长
       月份: month
+      累计: 累计
+      累计-同比增长: 累计-同比增长
     param_transforms: {}
 macro_china_new_house_price:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3480,15 +3480,9 @@ macro_china_new_house_price:
   - desc: 二手住宅价格指数-定基 field
     name: 二手住宅价格指数-定基
     type: float
-  - desc: '- field'
-    name: '-'
-    type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_new_house_price
     input_mapping:
@@ -3496,7 +3490,13 @@ macro_china_new_house_price:
       city_second: city_second
     name: akshare_em
     output_mapping:
+      二手住宅价格指数-同比: 二手住宅价格指数-同比
+      二手住宅价格指数-定基: 二手住宅价格指数-定基
+      二手住宅价格指数-环比: 二手住宅价格指数-环比
       城市: city
+      新建商品住宅价格指数-同比: 新建商品住宅价格指数-同比
+      新建商品住宅价格指数-定基: 新建商品住宅价格指数-定基
+      新建商品住宅价格指数-环比: 新建商品住宅价格指数-环比
       日期: date
     param_transforms: {}
 macro_china_non_man_pmi:
@@ -3513,7 +3513,7 @@ macro_china_non_man_pmi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_non_man_pmi
     input_mapping: {}
@@ -3523,7 +3523,7 @@ macro_china_non_man_pmi:
 macro_china_passenger_load_factor:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3542,7 +3542,7 @@ macro_china_passenger_load_factor:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_passenger_load_factor
     input_mapping: {}
@@ -3553,7 +3553,7 @@ macro_china_passenger_load_factor:
 macro_china_pmi:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3567,9 +3567,6 @@ macro_china_pmi:
   input: []
   name: macro_china_pmi
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -3585,18 +3582,19 @@ macro_china_pmi:
   - desc: 非制造业-同比增长 field
     name: 非制造业-同比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_pmi
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      制造业-同比增长: 制造业-同比增长
+      制造业-指数: 制造业-指数
       月份: month
+      非制造业-同比增长: 非制造业-同比增长
+      非制造业-指数: 非制造业-指数
     param_transforms: {}
 macro_china_pmi_yearly:
   category: macro
@@ -3612,7 +3610,7 @@ macro_china_pmi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_pmi_yearly
     input_mapping: {}
@@ -3622,7 +3620,7 @@ macro_china_pmi_yearly:
 macro_china_postal_telecommunicational:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3641,7 +3639,7 @@ macro_china_postal_telecommunicational:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_postal_telecommunicational
     input_mapping: {}
@@ -3652,7 +3650,7 @@ macro_china_postal_telecommunicational:
 macro_china_ppi:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3666,9 +3664,6 @@ macro_china_ppi:
   input: []
   name: macro_china_ppi
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -3681,18 +3676,18 @@ macro_china_ppi:
   - desc: 累计 field
     name: 累计
     type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_ppi
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      当月: 当月
+      当月同比增长: 当月同比增长
       月份: month
+      累计: 累计
     param_transforms: {}
 macro_china_ppi_yearly:
   category: macro
@@ -3708,7 +3703,7 @@ macro_china_ppi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_ppi_yearly
     input_mapping: {}
@@ -3718,7 +3713,7 @@ macro_china_ppi_yearly:
 macro_china_qyspjg:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3732,23 +3727,75 @@ macro_china_qyspjg:
   input: []
   name: macro_china_qyspjg
   output:
-  - desc: 'from :return: docstring'
-    name: result
+  - desc: REPORT_DATE field
+    name: REPORT_DATE
+    type: datetime
+  - desc: TIME field
+    name: TIME
+    type: datetime
+  - desc: BASE field
+    name: BASE
+    type: str
+  - desc: BASE_SAME field
+    name: BASE_SAME
+    type: str
+  - desc: BASE_SEQUENTIAL field
+    name: BASE_SEQUENTIAL
+    type: str
+  - desc: FARM_BASE field
+    name: FARM_BASE
+    type: str
+  - desc: FARM_BASE_SAME field
+    name: FARM_BASE_SAME
+    type: str
+  - desc: FARM_BASE_SEQUENTIAL field
+    name: FARM_BASE_SEQUENTIAL
+    type: str
+  - desc: MINERAL_BASE field
+    name: MINERAL_BASE
+    type: str
+  - desc: MINERAL_BASE_SAME field
+    name: MINERAL_BASE_SAME
+    type: str
+  - desc: MINERAL_BASE_SEQUENTIAL field
+    name: MINERAL_BASE_SEQUENTIAL
+    type: str
+  - desc: ENERGY_BASE field
+    name: ENERGY_BASE
+    type: str
+  - desc: ENERGY_BASE_SAME field
+    name: ENERGY_BASE_SAME
+    type: str
+  - desc: ENERGY_BASE_SEQUENTIAL field
+    name: ENERGY_BASE_SEQUENTIAL
     type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_qyspjg
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      result: result
+      BASE: BASE
+      BASE_SAME: BASE_SAME
+      BASE_SEQUENTIAL: BASE_SEQUENTIAL
+      ENERGY_BASE: ENERGY_BASE
+      ENERGY_BASE_SAME: ENERGY_BASE_SAME
+      ENERGY_BASE_SEQUENTIAL: ENERGY_BASE_SEQUENTIAL
+      FARM_BASE: FARM_BASE
+      FARM_BASE_SAME: FARM_BASE_SAME
+      FARM_BASE_SEQUENTIAL: FARM_BASE_SEQUENTIAL
+      MINERAL_BASE: MINERAL_BASE
+      MINERAL_BASE_SAME: MINERAL_BASE_SAME
+      MINERAL_BASE_SEQUENTIAL: MINERAL_BASE_SEQUENTIAL
+      REPORT_DATE: REPORT_DATE
+      TIME: TIME
     param_transforms: {}
 macro_china_real_estate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3771,44 +3818,42 @@ macro_china_real_estate:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_real_estate
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_reserve_requirement_ratio:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3822,9 +3867,6 @@ macro_china_reserve_requirement_ratio:
   input: []
   name: macro_china_reserve_requirement_ratio
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -3849,36 +3891,39 @@ macro_china_reserve_requirement_ratio:
   - desc: 中小金融机构-调整幅度 field
     name: 中小金融机构-调整幅度
     type: str
-  - desc: day field
-    name: day
+  - desc: change field
+    name: change
     type: datetime
-  - desc: day field
-    name: day
+  - desc: change field
+    name: change
     type: datetime
   - desc: remark field
     name: remark
     type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_reserve_requirement_ratio
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      中小金融机构-调整前: 中小金融机构-调整前
+      中小金融机构-调整后: 中小金融机构-调整后
+      中小金融机构-调整幅度: 中小金融机构-调整幅度
       公布时间: time
       备注: remark
-      消息公布次日指数涨跌-上证: day
-      消息公布次日指数涨跌-深证: day
+      大型金融机构-调整前: 大型金融机构-调整前
+      大型金融机构-调整后: 大型金融机构-调整后
+      大型金融机构-调整幅度: 大型金融机构-调整幅度
+      消息公布次日指数涨跌-上证: change
+      消息公布次日指数涨跌-深证: change
       生效时间: time
     param_transforms: {}
 macro_china_retail_price_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3897,7 +3942,7 @@ macro_china_retail_price_index:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_retail_price_index
     input_mapping: {}
@@ -3908,7 +3953,7 @@ macro_china_retail_price_index:
 macro_china_rmb:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3930,18 +3975,19 @@ macro_china_rmb:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_rmb
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
       日期: date
     param_transforms: {}
 macro_china_shibor_all:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -3968,18 +4014,20 @@ macro_china_shibor_all:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_shibor_all
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_china_shrzgm:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4011,8 +4059,8 @@ macro_china_shrzgm:
   - desc: 其中-企业债券 field
     name: 其中-企业债券
     type: str
-  - desc: size field
-    name: size
+  - desc: scale field
+    name: scale
     type: float
   - desc: 其中-非金融企业境内股票融资 field
     name: 其中-非金融企业境内股票融资
@@ -4022,19 +4070,26 @@ macro_china_shrzgm:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_shrzgm
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      其中-人民币贷款: 其中-人民币贷款
+      其中-企业债券: 其中-企业债券
+      其中-信托贷款: 其中-信托贷款
+      其中-委托贷款: 其中-委托贷款
+      其中-委托贷款外币贷款: 其中-委托贷款外币贷款
+      其中-未贴现银行承兑汇票: 其中-未贴现银行承兑汇票
+      其中-非金融企业境内股票融资: 其中-非金融企业境内股票融资
       月份: month
-      社会融资规模增量: size
+      社会融资规模增量: scale
     param_transforms: {}
 macro_china_society_electricity:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4101,20 +4156,34 @@ macro_china_society_electricity:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_society_electricity
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      乡村居民用电量: 乡村居民用电量
+      乡村居民用电量同比: 乡村居民用电量同比
+      全社会用电量: 全社会用电量
+      全社会用电量同比: 全社会用电量同比
       各行业用电量合计: industry
       各行业用电量合计同比: industry
+      城乡居民生活用电量合计: 城乡居民生活用电量合计
+      城乡居民生活用电量合计同比: 城乡居民生活用电量合计同比
+      城镇居民用电量: 城镇居民用电量
+      城镇居民用电量同比: 城镇居民用电量同比
+      第一产业用电量: 第一产业用电量
+      第一产业用电量同比: 第一产业用电量同比
+      第三产业用电量: 第三产业用电量
+      第三产业用电量同比: 第三产业用电量同比
+      第二产业用电量: 第二产业用电量
+      第二产业用电量同比: 第二产业用电量同比
       统计时间: time
     param_transforms: {}
 macro_china_society_traffic_volume:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4133,7 +4202,7 @@ macro_china_society_traffic_volume:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_society_traffic_volume
     input_mapping: {}
@@ -4144,7 +4213,7 @@ macro_china_society_traffic_volume:
 macro_china_stock_market_cap:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4158,9 +4227,6 @@ macro_china_stock_market_cap:
   input: []
   name: macro_china_stock_market_cap
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: date field
     name: date
     type: datetime
@@ -4176,11 +4242,11 @@ macro_china_stock_market_cap:
   - desc: volume field
     name: volume
     type: float
-  - desc: high field
-    name: high
+  - desc: price field
+    name: price
     type: float
-  - desc: low field
-    name: low
+  - desc: price field
+    name: price
     type: float
   - desc: 发行总股本-深圳 field
     name: 发行总股本-深圳
@@ -4194,27 +4260,26 @@ macro_china_stock_market_cap:
   - desc: volume field
     name: volume
     type: float
-  - desc: high field
-    name: high
+  - desc: price field
+    name: price
     type: float
-  - desc: low field
-    name: low
+  - desc: price field
+    name: price
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_stock_market_cap
     input_mapping: {}
     name: akshare_em
     output_mapping:
-      A股最低综合股价指数-上海: low
-      A股最低综合股价指数-深圳: low
-      A股最高综合股价指数-上海: high
-      A股最高综合股价指数-深圳: high
+      A股最低综合股价指数-上海: price
+      A股最低综合股价指数-深圳: price
+      A股最高综合股价指数-上海: price
+      A股最高综合股价指数-深圳: price
+      发行总股本-上海: 发行总股本-上海
+      发行总股本-深圳: 发行总股本-深圳
       市价总值-上海: market
       市价总值-深圳: market
       成交量-上海: volume
@@ -4226,7 +4291,7 @@ macro_china_stock_market_cap:
 macro_china_supply_of_money:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4245,7 +4310,7 @@ macro_china_supply_of_money:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_supply_of_money
     input_mapping: {}
@@ -4256,7 +4321,7 @@ macro_china_supply_of_money:
 macro_china_swap_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4283,9 +4348,6 @@ macro_china_swap_rate:
   - desc: date field
     name: date
     type: datetime
-  - desc: _ field
-    name: _
-    type: str
   - desc: 时刻 field
     name: 时刻
     type: str
@@ -4295,45 +4357,12 @@ macro_china_swap_rate:
   - desc: name field
     name: name
     type: str
-  - desc: data field
-    name: data
-    type: str
-  - desc: 1M field
-    name: 1M
-    type: str
-  - desc: 3M field
-    name: 3M
-    type: str
-  - desc: 6M field
-    name: 6M
-    type: str
-  - desc: 9M field
-    name: 9M
-    type: str
-  - desc: 1Y field
-    name: 1Y
-    type: str
-  - desc: 2Y field
-    name: 2Y
-    type: str
-  - desc: 3Y field
-    name: 3Y
-    type: str
-  - desc: 4Y field
-    name: 4Y
-    type: str
-  - desc: 5Y field
-    name: 5Y
-    type: str
-  - desc: 7Y field
-    name: 7Y
-    type: str
   - desc: 10Y field
     name: 10Y
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_swap_rate
     input_mapping:
@@ -4341,10 +4370,14 @@ macro_china_swap_rate:
       start_date: start_date
     name: akshare_em
     output_mapping:
+      10Y: 10Y
       价格类型: type
       日期: date
+      时刻: 时刻
       曲线名称: name
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 macro_china_trade_balance:
   category: macro
   description: '中国以美元计算贸易帐报告, 数据区间从 19810201-至今
@@ -4361,7 +4394,7 @@ macro_china_trade_balance:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_trade_balance
     input_mapping: {}
@@ -4371,7 +4404,7 @@ macro_china_trade_balance:
 macro_china_urban_unemployment:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4396,7 +4429,7 @@ macro_china_urban_unemployment:
     type: str
   rate_limit_key: stats
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_china_urban_unemployment
     input_mapping: {}
@@ -4409,7 +4442,7 @@ macro_china_urban_unemployment:
 macro_china_vegetable_basket:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4432,44 +4465,42 @@ macro_china_vegetable_basket:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_vegetable_basket
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_china_wbck:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4483,9 +4514,6 @@ macro_china_wbck:
   input: []
   name: macro_china_wbck
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -4501,23 +4529,24 @@ macro_china_wbck:
   - desc: 累计 field
     name: 累计
     type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_wbck
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      同比增长: 同比增长
+      当月: 当月
       月份: month
+      环比增长: 环比增长
+      累计: 累计
     param_transforms: {}
 macro_china_whxd:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4531,9 +4560,6 @@ macro_china_whxd:
   input: []
   name: macro_china_whxd
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -4549,23 +4575,24 @@ macro_china_whxd:
   - desc: 累计 field
     name: 累计
     type: str
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_whxd
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      同比增长: 同比增长
+      当月: 当月
       月份: month
+      环比增长: 环比增长
+      累计: 累计
     param_transforms: {}
 macro_china_xfzxx:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4579,9 +4606,6 @@ macro_china_xfzxx:
   input: []
   name: macro_china_xfzxx
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: month field
     name: month
     type: datetime
@@ -4612,23 +4636,29 @@ macro_china_xfzxx:
   - desc: 消费者预期指数-环比增长 field
     name: 消费者预期指数-环比增长
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_xfzxx
     input_mapping: {}
     name: akshare_em
     output_mapping:
       月份: month
+      消费者信心指数-同比增长: 消费者信心指数-同比增长
+      消费者信心指数-指数值: 消费者信心指数-指数值
+      消费者信心指数-环比增长: 消费者信心指数-环比增长
+      消费者满意指数-同比增长: 消费者满意指数-同比增长
+      消费者满意指数-指数值: 消费者满意指数-指数值
+      消费者满意指数-环比增长: 消费者满意指数-环比增长
+      消费者预期指数-同比增长: 消费者预期指数-同比增长
+      消费者预期指数-指数值: 消费者预期指数-指数值
+      消费者预期指数-环比增长: 消费者预期指数-环比增长
     param_transforms: {}
 macro_china_yw_electronic_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4651,44 +4681,42 @@ macro_china_yw_electronic_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_yw_electronic_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_cnbs:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4729,20 +4757,64 @@ macro_cnbs:
   - desc: 'from :return: docstring'
     name: 金融部门负债方
     type: str
+  - desc: Period field
+    name: Period
+    type: datetime
+  - desc: Household field
+    name: Household
+    type: str
+  - desc: Non-financial corporations field
+    name: Non-financial corporations
+    type: str
+  - desc: Central government field
+    name: Central government
+    type: str
+  - desc: Local government field
+    name: Local government
+    type: str
+  - desc: General government field
+    name: General government
+    type: str
+  - desc: Non financial sector field
+    name: Non financial sector
+    type: str
+  - desc: Financial sector(asset side) field
+    name: Financial sector(asset side)
+    type: str
+  - desc: Financial sector(liability side) field
+    name: Financial sector(liability side)
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_cnbs
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      Central government: Central government
+      Financial sector(asset side): Financial sector(asset side)
+      Financial sector(liability side): Financial sector(liability side)
+      General government: General government
+      Household: Household
+      Local government: Local government
+      Non financial sector: Non financial sector
+      Non-financial corporations: Non-financial corporations
+      Period: Period
+      中央政府: 中央政府
+      地方政府: 地方政府
+      实体经济部门: 实体经济部门
+      居民部门: 居民部门
       年份: year
+      政府部门: 政府部门
+      金融部门负债方: 金融部门负债方
+      金融部门资产方: 金融部门资产方
+      非金融企业部门: 非金融企业部门
     param_transforms: {}
 macro_cons_gold:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4770,18 +4842,21 @@ macro_cons_gold:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_cons_gold
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      增持/减持: 增持/减持
+      总价值: 总价值
+      总库存: 总库存
       日期: date
     param_transforms: {}
 macro_cons_opec_month:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4807,23 +4882,21 @@ macro_cons_opec_month:
   - desc: date field
     name: date
     type: datetime
-  - desc: 'from :return: docstring'
-    name: data
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_cons_opec_month
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
       日期: date
     param_transforms: {}
 macro_cons_silver:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4851,18 +4924,21 @@ macro_cons_silver:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_cons_silver
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      增持/减持: 增持/减持
+      总价值: 总价值
+      总库存: 总库存
       日期: date
     param_transforms: {}
 macro_euro_cpi_mom:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4878,23 +4954,43 @@ macro_euro_cpi_mom:
   input: []
   name: macro_euro_cpi_mom
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_cpi_mom
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_cpi_yoy:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4910,23 +5006,43 @@ macro_euro_cpi_yoy:
   input: []
   name: macro_euro_cpi_yoy
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_cpi_yoy
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_current_account_mom:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4940,23 +5056,43 @@ macro_euro_current_account_mom:
   input: []
   name: macro_euro_current_account_mom
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_current_account_mom
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_employment_change_qoq:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -4970,23 +5106,43 @@ macro_euro_employment_change_qoq:
   input: []
   name: macro_euro_employment_change_qoq
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_employment_change_qoq
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_gdp_yoy:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5000,23 +5156,43 @@ macro_euro_gdp_yoy:
   input: []
   name: macro_euro_gdp_yoy
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_gdp_yoy
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_industrial_production_mom:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5030,23 +5206,43 @@ macro_euro_industrial_production_mom:
   input: []
   name: macro_euro_industrial_production_mom
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_industrial_production_mom
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_lme_holding:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5067,25 +5263,24 @@ macro_euro_lme_holding:
     name: date
     type: datetime
   - desc: 'from :return: docstring'
-    name: ':'
-    type: str
-  - desc: 'from :return: docstring'
     name: item
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_lme_holding
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_euro_lme_stock:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5108,25 +5303,24 @@ macro_euro_lme_stock:
     name: date
     type: datetime
   - desc: 'from :return: docstring'
-    name: ':'
-    type: str
-  - desc: 'from :return: docstring'
     name: item
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_lme_stock
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_euro_manufacturing_pmi:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5140,23 +5334,43 @@ macro_euro_manufacturing_pmi:
   input: []
   name: macro_euro_manufacturing_pmi
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_manufacturing_pmi
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_ppi_mom:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5172,23 +5386,43 @@ macro_euro_ppi_mom:
   input: []
   name: macro_euro_ppi_mom
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_ppi_mom
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_retail_sales_mom:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5202,23 +5436,43 @@ macro_euro_retail_sales_mom:
   input: []
   name: macro_euro_retail_sales_mom
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_retail_sales_mom
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_sentix_investor_confidence:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5230,23 +5484,43 @@ macro_euro_sentix_investor_confidence:
   input: []
   name: macro_euro_sentix_investor_confidence
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_sentix_investor_confidence
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_services_pmi:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5260,23 +5534,43 @@ macro_euro_services_pmi:
   input: []
   name: macro_euro_services_pmi
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_services_pmi
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_trade_balance:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5290,23 +5584,43 @@ macro_euro_trade_balance:
   input: []
   name: macro_euro_trade_balance
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_trade_balance
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_unemployment_rate_mom:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5320,23 +5634,43 @@ macro_euro_unemployment_rate_mom:
   input: []
   name: macro_euro_unemployment_rate_mom
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_unemployment_rate_mom
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_euro_zew_economic_sentiment:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5350,23 +5684,43 @@ macro_euro_zew_economic_sentiment:
   input: []
   name: macro_euro_zew_economic_sentiment
   output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   - desc: 'from :return: docstring'
     name: item[name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_euro_zew_economic_sentiment
     input_mapping: {}
     name: akshare_em
     output_mapping:
       item[name: item[name
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_fx_sentiment:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5390,12 +5744,9 @@ macro_fx_sentiment:
   - desc: date field
     name: date
     type: datetime
-  - desc: 'from :return: docstring'
-    name: '1:'
-    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_fx_sentiment
     input_mapping:
@@ -5403,10 +5754,11 @@ macro_fx_sentiment:
       start_date: start_date
     name: akshare_em
     output_mapping:
-      '1:': '1:'
       date: date
       index: index
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 macro_germany_cpi_monthly:
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-消费者物价指数月率终值
@@ -5421,7 +5773,7 @@ macro_germany_cpi_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_cpi_monthly
     input_mapping: {}
@@ -5442,7 +5794,7 @@ macro_germany_cpi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_cpi_yearly
     input_mapping: {}
@@ -5463,7 +5815,7 @@ macro_germany_gdp:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_gdp
     input_mapping: {}
@@ -5484,7 +5836,7 @@ macro_germany_ifo:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_ifo
     input_mapping: {}
@@ -5505,7 +5857,7 @@ macro_germany_retail_sale_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_retail_sale_monthly
     input_mapping: {}
@@ -5526,7 +5878,7 @@ macro_germany_retail_sale_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_retail_sale_yearly
     input_mapping: {}
@@ -5547,7 +5899,7 @@ macro_germany_trade_adjusted:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_trade_adjusted
     input_mapping: {}
@@ -5568,7 +5920,7 @@ macro_germany_zew:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_germany_zew
     input_mapping: {}
@@ -5578,7 +5930,7 @@ macro_germany_zew:
 macro_global_sox_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5601,44 +5953,42 @@ macro_global_sox_index:
   - desc: pct_change field
     name: pct_change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: pct_change field
-    name: pct_change
+  - desc: change field
+    name: change
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_global_sox_index
     input_mapping: {}
     name: akshare_em
     output_mapping:
       日期: date
+      最新值: 最新值
       涨跌幅: pct_change
-      近1年涨跌幅: pct_change
-      近2年涨跌幅: pct_change
-      近3年涨跌幅: pct_change
-      近3月涨跌幅: pct_change
-      近6月涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_info_ws:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5660,9 +6010,6 @@ macro_info_ws:
     type: str
   name: macro_info_ws
   output:
-  - desc: 'from :return: docstring'
-    name: '['
-    type: str
   - desc: 'from :return: docstring'
     name: time
     type: datetime
@@ -5690,18 +6037,62 @@ macro_info_ws:
   - desc: 'from :return: docstring'
     name: url
     type: str
+  - desc: public_date field
+    name: public_date
+    type: datetime
+  - desc: country field
+    name: country
+    type: int
+  - desc: title field
+    name: title
+    type: str
+  - desc: importance field
+    name: importance
+    type: str
+  - desc: actual field
+    name: actual
+    type: str
+  - desc: forecast field
+    name: forecast
+    type: str
+  - desc: previous field
+    name: previous
+    type: str
+  - desc: revised field
+    name: revised
+    type: str
+  - desc: uri field
+    name: uri
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_info_ws
     input_mapping:
       date: date
     name: akshare_em
     output_mapping:
+      actual: actual
+      country: country
+      forecast: forecast
+      importance: importance
+      previous: previous
+      public_date: public_date
+      revised: revised
+      title: title
+      uri: uri
+      事件: 事件
+      今值: 今值
+      修正: 修正
+      前值: 前值
+      地区: 地区
       时间: time
+      重要性: 重要性
       链接: url
-    param_transforms: {}
+      预期: 预期
+    param_transforms:
+      date: YYYYMMDD
 macro_japan_bank_rate:
   category: macro
   description: '东方财富-经济数据-日本-央行公布利率决议
@@ -5716,7 +6107,7 @@ macro_japan_bank_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_japan_bank_rate
     input_mapping: {}
@@ -5737,7 +6128,7 @@ macro_japan_core_cpi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_japan_core_cpi_yearly
     input_mapping: {}
@@ -5758,7 +6149,7 @@ macro_japan_cpi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_japan_cpi_yearly
     input_mapping: {}
@@ -5779,7 +6170,7 @@ macro_japan_head_indicator:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_japan_head_indicator
     input_mapping: {}
@@ -5800,7 +6191,7 @@ macro_japan_unemployment_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_japan_unemployment_rate
     input_mapping: {}
@@ -5810,7 +6201,7 @@ macro_japan_unemployment_rate:
 macro_rmb_deposit:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5865,22 +6256,30 @@ macro_rmb_deposit:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_rmb_deposit
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      新增企业存款-同比: 新增企业存款-同比
       新增企业存款-数量: quantity
+      新增企业存款-环比: 新增企业存款-环比
+      新增储蓄存款-同比: 新增储蓄存款-同比
       新增储蓄存款-数量: quantity
+      新增储蓄存款-环比: 新增储蓄存款-环比
+      新增其他存款-同比: 新增其他存款-同比
       新增其他存款-数量: quantity
+      新增其他存款-环比: 新增其他存款-环比
+      新增存款-同比: 新增存款-同比
       新增存款-数量: quantity
+      新增存款-环比: 新增存款-环比
       月份: month
     param_transforms: {}
 macro_rmb_loan:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -5914,13 +6313,18 @@ macro_rmb_loan:
     type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_rmb_loan
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      新增人民币贷款-同比: 新增人民币贷款-同比
+      新增人民币贷款-总额: 新增人民币贷款-总额
+      新增人民币贷款-环比: 新增人民币贷款-环比
       月份: month
+      累计人民币贷款-同比: 累计人民币贷款-同比
+      累计人民币贷款-总额: 累计人民币贷款-总额
     param_transforms: {}
 macro_shipping_bci:
   category: macro
@@ -5936,7 +6340,7 @@ macro_shipping_bci:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_shipping_bci
     input_mapping: {}
@@ -5957,7 +6361,7 @@ macro_shipping_bcti:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_shipping_bcti
     input_mapping: {}
@@ -5978,7 +6382,7 @@ macro_shipping_bdi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_shipping_bdi
     input_mapping: {}
@@ -5999,7 +6403,7 @@ macro_shipping_bpi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_shipping_bpi
     input_mapping: {}
@@ -6009,7 +6413,7 @@ macro_shipping_bpi:
 macro_stock_finance:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6038,15 +6442,39 @@ macro_stock_finance:
   - desc: 'from :return: docstring'
     name: 配股募集资金
     type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 募集资金(亿元) field
+    name: 募集资金(亿元)
+    type: str
+  - desc: 首发募集资金(亿元) field
+    name: 首发募集资金(亿元)
+    type: str
+  - desc: 增发募集资金(亿元) field
+    name: 增发募集资金(亿元)
+    type: str
+  - desc: 配股募集资金(亿元) field
+    name: 配股募集资金(亿元)
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_stock_finance
     input_mapping: {}
     name: akshare_em
     output_mapping:
       '[月份': month
+      募集资金: 募集资金
+      募集资金(亿元): 募集资金(亿元)
+      增发募集资金: 增发募集资金
+      增发募集资金(亿元): 增发募集资金(亿元)
+      月份: month
+      配股募集资金: 配股募集资金
+      配股募集资金(亿元): 配股募集资金(亿元)
+      首发募集资金: 首发募集资金
+      首发募集资金(亿元): 首发募集资金(亿元)
     param_transforms: {}
 macro_swiss_cpi_yearly:
   category: macro
@@ -6062,7 +6490,7 @@ macro_swiss_cpi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_swiss_cpi_yearly
     input_mapping: {}
@@ -6083,7 +6511,7 @@ macro_swiss_gbd_bank_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_swiss_gbd_bank_rate
     input_mapping: {}
@@ -6104,7 +6532,7 @@ macro_swiss_gbd_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_swiss_gbd_yearly
     input_mapping: {}
@@ -6125,7 +6553,7 @@ macro_swiss_gdp_quarterly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_swiss_gdp_quarterly
     input_mapping: {}
@@ -6146,7 +6574,7 @@ macro_swiss_svme:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_swiss_svme
     input_mapping: {}
@@ -6167,7 +6595,7 @@ macro_swiss_trade:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_swiss_trade
     input_mapping: {}
@@ -6188,7 +6616,7 @@ macro_uk_bank_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_bank_rate
     input_mapping: {}
@@ -6209,7 +6637,7 @@ macro_uk_core_cpi_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_core_cpi_monthly
     input_mapping: {}
@@ -6230,7 +6658,7 @@ macro_uk_core_cpi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_core_cpi_yearly
     input_mapping: {}
@@ -6251,7 +6679,7 @@ macro_uk_cpi_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_cpi_monthly
     input_mapping: {}
@@ -6272,7 +6700,7 @@ macro_uk_cpi_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_cpi_yearly
     input_mapping: {}
@@ -6293,7 +6721,7 @@ macro_uk_gdp_quarterly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_gdp_quarterly
     input_mapping: {}
@@ -6314,7 +6742,7 @@ macro_uk_gdp_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_gdp_yearly
     input_mapping: {}
@@ -6335,7 +6763,7 @@ macro_uk_halifax_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_halifax_monthly
     input_mapping: {}
@@ -6356,7 +6784,7 @@ macro_uk_halifax_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_halifax_yearly
     input_mapping: {}
@@ -6377,7 +6805,7 @@ macro_uk_retail_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_retail_monthly
     input_mapping: {}
@@ -6398,7 +6826,7 @@ macro_uk_retail_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_retail_yearly
     input_mapping: {}
@@ -6419,7 +6847,7 @@ macro_uk_rightmove_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_rightmove_monthly
     input_mapping: {}
@@ -6440,7 +6868,7 @@ macro_uk_rightmove_yearly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_rightmove_yearly
     input_mapping: {}
@@ -6461,7 +6889,7 @@ macro_uk_trade:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_trade
     input_mapping: {}
@@ -6482,7 +6910,7 @@ macro_uk_unemployment_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_uk_unemployment_rate
     input_mapping: {}
@@ -6503,7 +6931,7 @@ macro_usa_adp_employment:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_adp_employment
     input_mapping: {}
@@ -6526,7 +6954,7 @@ macro_usa_api_crude_stock:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_api_crude_stock
     input_mapping: {}
@@ -6547,7 +6975,7 @@ macro_usa_building_permits:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_building_permits
     input_mapping: {}
@@ -6568,7 +6996,7 @@ macro_usa_business_inventories:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_business_inventories
     input_mapping: {}
@@ -6589,7 +7017,7 @@ macro_usa_cb_consumer_confidence:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_cb_consumer_confidence
     input_mapping: {}
@@ -6599,7 +7027,7 @@ macro_usa_cb_consumer_confidence:
 macro_usa_cftc_c_holding:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6620,25 +7048,24 @@ macro_usa_cftc_c_holding:
     name: date
     type: datetime
   - desc: 'from :return: docstring'
-    name: ':'
-    type: str
-  - desc: 'from :return: docstring'
     name: item
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cftc_c_holding
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_usa_cftc_merchant_currency_holding:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6659,25 +7086,24 @@ macro_usa_cftc_merchant_currency_holding:
     name: date
     type: datetime
   - desc: 'from :return: docstring'
-    name: ':'
-    type: str
-  - desc: 'from :return: docstring'
     name: item
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cftc_merchant_currency_holding
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_usa_cftc_merchant_goods_holding:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6698,25 +7124,24 @@ macro_usa_cftc_merchant_goods_holding:
     name: date
     type: datetime
   - desc: 'from :return: docstring'
-    name: ':'
-    type: str
-  - desc: 'from :return: docstring'
     name: item
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cftc_merchant_goods_holding
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_usa_cftc_nc_holding:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6737,25 +7162,24 @@ macro_usa_cftc_nc_holding:
     name: date
     type: datetime
   - desc: 'from :return: docstring'
-    name: ':'
-    type: str
-  - desc: 'from :return: docstring'
     name: item
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cftc_nc_holding
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
+      item: item
       日期: date
     param_transforms: {}
 macro_usa_cme_merchant_goods_holding:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6769,29 +7193,24 @@ macro_usa_cme_merchant_goods_holding:
   input: []
   name: macro_usa_cme_merchant_goods_holding
   output:
-  - desc: pz field
-    name: pz
-    type: str
-  - desc: tc field
-    name: tc
-    type: str
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: volume field
     name: volume
     type: float
   - desc: date field
     name: date
     type: datetime
+  - desc: 品种 field
+    name: 品种
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cme_merchant_goods_holding
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      品种: 品种
       成交量: volume
       日期: date
     param_transforms: {}
@@ -6809,7 +7228,7 @@ macro_usa_core_cpi_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_core_cpi_monthly
     input_mapping: {}
@@ -6830,7 +7249,7 @@ macro_usa_core_pce_price:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_core_pce_price
     input_mapping: {}
@@ -6851,7 +7270,7 @@ macro_usa_core_ppi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_core_ppi
     input_mapping: {}
@@ -6872,7 +7291,7 @@ macro_usa_cpi_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_cpi_monthly
     input_mapping: {}
@@ -6882,7 +7301,7 @@ macro_usa_cpi_monthly:
 macro_usa_cpi_yoy:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6908,24 +7327,23 @@ macro_usa_cpi_yoy:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cpi_yoy
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_usa_crude_inner:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -6947,12 +7365,13 @@ macro_usa_crude_inner:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_crude_inner
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
       日期: date
     param_transforms: {}
 macro_usa_current_account:
@@ -6969,7 +7388,7 @@ macro_usa_current_account:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_current_account
     input_mapping: {}
@@ -6990,7 +7409,7 @@ macro_usa_durable_goods_orders:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_durable_goods_orders
     input_mapping: {}
@@ -7011,7 +7430,7 @@ macro_usa_eia_crude_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_eia_crude_rate
     input_mapping: {}
@@ -7032,7 +7451,7 @@ macro_usa_exist_home_sales:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_exist_home_sales
     input_mapping: {}
@@ -7055,7 +7474,7 @@ macro_usa_export_price:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_export_price
     input_mapping: {}
@@ -7076,7 +7495,7 @@ macro_usa_factory_orders:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_factory_orders
     input_mapping: {}
@@ -7097,7 +7516,7 @@ macro_usa_gdp_monthly:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_gdp_monthly
     input_mapping: {}
@@ -7118,7 +7537,7 @@ macro_usa_house_price_index:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_house_price_index
     input_mapping: {}
@@ -7139,7 +7558,7 @@ macro_usa_house_starts:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_house_starts
     input_mapping: {}
@@ -7160,7 +7579,7 @@ macro_usa_import_price:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_import_price
     input_mapping: {}
@@ -7181,7 +7600,7 @@ macro_usa_industrial_production:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_industrial_production
     input_mapping: {}
@@ -7202,7 +7621,7 @@ macro_usa_initial_jobless:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_initial_jobless
     input_mapping: {}
@@ -7223,7 +7642,7 @@ macro_usa_ism_non_pmi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_ism_non_pmi
     input_mapping: {}
@@ -7244,7 +7663,7 @@ macro_usa_ism_pmi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_ism_pmi
     input_mapping: {}
@@ -7265,7 +7684,7 @@ macro_usa_job_cuts:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_job_cuts
     input_mapping: {}
@@ -7286,7 +7705,7 @@ macro_usa_lmci:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_lmci
     input_mapping: {}
@@ -7307,7 +7726,7 @@ macro_usa_michigan_consumer_sentiment:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_michigan_consumer_sentiment
     input_mapping: {}
@@ -7328,7 +7747,7 @@ macro_usa_nahb_house_market_index:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_nahb_house_market_index
     input_mapping: {}
@@ -7349,7 +7768,7 @@ macro_usa_new_home_sales:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_new_home_sales
     input_mapping: {}
@@ -7370,7 +7789,7 @@ macro_usa_nfib_small_business:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_nfib_small_business
     input_mapping: {}
@@ -7391,7 +7810,7 @@ macro_usa_non_farm:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_non_farm
     input_mapping: {}
@@ -7412,7 +7831,7 @@ macro_usa_pending_home_sales:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_pending_home_sales
     input_mapping: {}
@@ -7433,7 +7852,7 @@ macro_usa_personal_spending:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_personal_spending
     input_mapping: {}
@@ -7443,7 +7862,7 @@ macro_usa_personal_spending:
 macro_usa_phs:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -7457,9 +7876,6 @@ macro_usa_phs:
   input: []
   name: macro_usa_phs
   output:
-  - desc: '- field'
-    name: '-'
-    type: str
   - desc: time field
     name: time
     type: datetime
@@ -7472,19 +7888,18 @@ macro_usa_phs:
   - desc: 前值 field
     name: 前值
     type: float
-  - desc: 'from :return: docstring'
-    name: result
-    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_phs
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      前值: 前值
       发布日期: date
       时间: time
+      现值: 现值
     param_transforms: {}
 macro_usa_pmi:
   category: macro
@@ -7500,7 +7915,7 @@ macro_usa_pmi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_pmi
     input_mapping: {}
@@ -7521,7 +7936,7 @@ macro_usa_ppi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_ppi
     input_mapping: {}
@@ -7542,7 +7957,7 @@ macro_usa_real_consumer_spending:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_real_consumer_spending
     input_mapping: {}
@@ -7563,7 +7978,7 @@ macro_usa_retail_sales:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_retail_sales
     input_mapping: {}
@@ -7573,7 +7988,7 @@ macro_usa_retail_sales:
 macro_usa_rig_count:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -7595,12 +8010,13 @@ macro_usa_rig_count:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_rig_count
     input_mapping: {}
     name: akshare_em
     output_mapping:
+      index: index
       日期: date
     param_transforms: {}
 macro_usa_services_pmi:
@@ -7617,7 +8033,7 @@ macro_usa_services_pmi:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_services_pmi
     input_mapping: {}
@@ -7638,7 +8054,7 @@ macro_usa_spcs20:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_spcs20
     input_mapping: {}
@@ -7659,7 +8075,7 @@ macro_usa_trade_balance:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_trade_balance
     input_mapping: {}
@@ -7680,7 +8096,7 @@ macro_usa_unemployment_rate:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: macro_usa_unemployment_rate
     input_mapping: {}
@@ -7690,7 +8106,7 @@ macro_usa_unemployment_rate:
 rate_interbank:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
@@ -7717,11 +8133,8 @@ rate_interbank:
   - desc: day field
     name: day
     type: datetime
-  - desc: '- field'
-    name: '-'
-    type: str
-  - desc: interest_rate field
-    name: interest_rate
+  - desc: rate field
+    name: rate
     type: float
   - desc: change field
     name: change
@@ -7731,7 +8144,7 @@ rate_interbank:
     type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: rate_interbank
     input_mapping:
@@ -7740,7 +8153,8 @@ rate_interbank:
       symbol: symbol
     name: akshare_em
     output_mapping:
-      利率: interest_rate
+      market: market
+      利率: rate
       报告日: day
       涨跌: change
     param_transforms: {}

@@ -1,7 +1,7 @@
 currency_boc_safe:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -14,24 +14,20 @@ currency_boc_safe:
     :rtype: pandas.DataFrame'
   input: []
   name: currency_boc_safe
-  output:
-  - desc: 'from :return: docstring'
-    name: '1:'
-    type: str
+  output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: currency_boc_safe
     input_mapping: {}
     name: akshare_em
-    output_mapping:
-      '1:': '1:'
+    output_mapping: {}
     param_transforms: {}
 currency_boc_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -76,21 +72,29 @@ currency_boc_sina:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: currency_boc_sina
     input_mapping:
       end_date: end_date
       start_date: start_date
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      中行折算价: 中行折算价
+      中行汇买价: 中行汇买价
+      中行钞买价: 中行钞买价
+      中行钞卖价/汇卖价: 中行钞卖价/汇卖价
+      央行中间价: 央行中间价
       日期: date
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
+      symbol: prepend_prefix:sh/sz
 currency_convert:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -130,7 +134,7 @@ currency_convert:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: currency_convert
     input_mapping:
@@ -167,7 +171,7 @@ currency_currencies:
   output: []
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: currency_currencies
     input_mapping:
@@ -179,7 +183,7 @@ currency_currencies:
 currency_history:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -219,7 +223,7 @@ currency_history:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: currency_history
     input_mapping:
@@ -231,11 +235,12 @@ currency_history:
     output_mapping:
       currency: currency
       index: index
-    param_transforms: {}
+    param_transforms:
+      date: YYYYMMDD
 currency_latest:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -271,7 +276,7 @@ currency_latest:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: currency_latest
     input_mapping:
@@ -284,6 +289,11 @@ currency_latest:
       index: index
     param_transforms: {}
 currency_pair_map:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
   description: '指定货币的所有可获取货币对的数据
 
@@ -302,21 +312,30 @@ currency_pair_map:
     required: true
     type: str
   name: currency_pair_map
-  output: []
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: code field
+    name: code
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: currency_pair_map
     input_mapping:
       symbol: symbol
     name: akshare_em
-    output_mapping: {}
-    param_transforms: {}
+    output_mapping:
+      code: code
+      name: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
 currency_time_series:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -362,7 +381,7 @@ currency_time_series:
     type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: currency_time_series
     input_mapping:
@@ -375,11 +394,13 @@ currency_time_series:
     output_mapping:
       date: date
       index: index
-    param_transforms: {}
+    param_transforms:
+      end_date: YYYYMMDD
+      start_date: YYYYMMDD
 spot_corn_price_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -401,18 +422,19 @@ spot_corn_price_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_corn_price_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       日期: date
     param_transforms: {}
 spot_golden_benchmark_sge:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -437,18 +459,20 @@ spot_golden_benchmark_sge:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_golden_benchmark_sge
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       交易时间: time
+      早盘价: 早盘价
+      晚盘价: 晚盘价
     param_transforms: {}
 spot_goods:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -482,23 +506,41 @@ spot_goods:
   - desc: pct_change field
     name: pct_change
     type: float
+  - desc: opendate field
+    name: opendate
+    type: datetime
+  - desc: price field
+    name: price
+    type: float
+  - desc: zde field
+    name: zde
+    type: str
+  - desc: zdf field
+    name: zdf
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_goods
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      opendate: opendate
+      price: price
+      zde: zde
+      zdf: zdf
+      指数: 指数
       日期: date
       涨跌幅: pct_change
       涨跌额: change
-    param_transforms: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
 spot_hist_sge:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -534,23 +576,24 @@ spot_hist_sge:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: spot_hist_sge
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       close: close
       date: date
       high: high
       low: low
       open: open
-    param_transforms: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
 spot_hog_crossbred_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -572,18 +615,19 @@ spot_hog_crossbred_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_hog_crossbred_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       日期: date
     param_transforms: {}
 spot_hog_lean_price_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -605,18 +649,19 @@ spot_hog_lean_price_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_hog_lean_price_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       日期: date
     param_transforms: {}
 spot_hog_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -641,19 +686,20 @@ spot_hog_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_hog_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       涨跌幅: pct_change
       省份: province
     param_transforms: {}
 spot_hog_three_way_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -675,18 +721,19 @@ spot_hog_three_way_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_hog_three_way_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       日期: date
     param_transforms: {}
 spot_hog_year_trend_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -708,18 +755,19 @@ spot_hog_year_trend_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_hog_year_trend_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       日期: date
     param_transforms: {}
 spot_mixed_feed_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -741,18 +789,19 @@ spot_mixed_feed_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_mixed_feed_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       日期: date
     param_transforms: {}
 spot_price_qh:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -777,21 +826,26 @@ spot_price_qh:
   - desc: 'from :return: docstring'
     name: date
     type: datetime
+  - desc: date field
+    name: date
+    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_price_qh
     input_mapping:
       symbol: symbol
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      date: date
       日期: date
-    param_transforms: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
 spot_price_table_qh:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -806,26 +860,36 @@ spot_price_table_qh:
   name: spot_price_table_qh
   output:
   - desc: 'from :return: docstring'
-    name: '['
+    name: name
     type: str
   - desc: 'from :return: docstring'
     name: name
     type: str
-  - desc: 'from :return: docstring'
+  - desc: qhExchangeName field
+    name: qhExchangeName
+    type: str
+  - desc: name field
     name: name
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_price_table_qh
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      name: name
+      qhExchangeName: qhExchangeName
       交易所名称: name
       品种名称: name
     param_transforms: {}
 spot_quotations_sge:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
   description: '上海黄金交易所-实时行情数据
 
@@ -843,21 +907,38 @@ spot_quotations_sge:
     required: true
     type: str
   name: spot_quotations_sge
-  output: []
+  output:
+  - desc: 品种 field
+    name: 品种
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: price field
+    name: price
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_quotations_sge
     input_mapping:
       symbol: symbol
-    name: akshare_em
-    output_mapping: {}
-    param_transforms: {}
+    name: akshare_sina
+    output_mapping:
+      品种: 品种
+      时间: time
+      更新时间: time
+      现价: price
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
 spot_silver_benchmark_sge:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -882,18 +963,20 @@ spot_silver_benchmark_sge:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_silver_benchmark_sge
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       交易时间: time
+      早盘价: 早盘价
+      晚盘价: 晚盘价
     param_transforms: {}
 spot_soybean_price_soozhu:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -915,18 +998,19 @@ spot_soybean_price_soozhu:
     type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: spot_soybean_price_soozhu
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
+      价格: 价格
       日期: date
     param_transforms: {}
 spot_symbol_table_sge:
   _generated_note: '# Auto-generated from akshare_registry.yaml
 
-    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
 
     # TODO: 根据需要添加 aliases 和 cache_table'
   category: market
@@ -948,11 +1032,11 @@ spot_symbol_table_sge:
     type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
     func: spot_symbol_table_sge
     input_mapping: {}
-    name: akshare_em
+    name: akshare_sina
     output_mapping:
       品种: 品种
       序号: 序号

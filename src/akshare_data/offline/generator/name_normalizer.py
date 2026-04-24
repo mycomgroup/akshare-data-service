@@ -2,11 +2,59 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Tuple
 
 
 class NameNormalizer:
     """中文字段名 → 英文字段名"""
+
+    COMPOUND_FIELD_MAPPING: Dict[str, str] = {
+        "主力净流入-净额": "main_net_inflow",
+        "主力净流入-净占比": "main_net_inflow_ratio",
+        "超大单净流入-净额": "super_large_net_inflow",
+        "超大单净流入-净占比": "super_large_net_inflow_ratio",
+        "大单净流入-净额": "large_net_inflow",
+        "大单净流入-净占比": "large_net_inflow_ratio",
+        "中单净流入-净额": "medium_net_inflow",
+        "中单净流入-净占比": "medium_net_inflow_ratio",
+        "小单净流入-净额": "small_net_inflow",
+        "小单净流入-净占比": "small_net_inflow_ratio",
+        "暨跌幅": "pct_change",
+        "暨跌额": "change",
+        "内外比": "inner_outer_ratio",
+        "量比": "volume_ratio",
+        "换手率": "turnover",
+        "市盈率(动)": "pe_dynamic",
+        "市盈率(静)": "pe_static",
+        "市盈率(TTM)": "pe_ttm",
+        "市净率": "pb",
+        "总市值": "total_market_cap",
+        "流通市值": "circulating_market_cap",
+        "市值(亿)": "market_cap_billion",
+        "股价": "price",
+        "涨跌": "change",
+        "涨跌额": "change",
+        "涨跌幅": "pct_change",
+        "涨跌%": "pct_change",
+        "涨跌幅%": "pct_change",
+        "收盘价": "close",
+        "开盘价": "open",
+        "最高价": "high",
+        "最低价": "low",
+        "现价": "price",
+        "最新价": "price",
+        "成交额": "amount",
+        "成交量": "volume",
+        "成交价": "price",
+        "成交时间": "trade_time",
+        "成交日期": "trade_date",
+        "申报编号": "order_no",
+        "申报时间": "order_time",
+        "申报价格": "order_price",
+        "申报数量": "order_volume",
+        "成交量": "volume",
+        "成交额": "amount",
+    }
 
     FIELD_MAPPING: Dict[str, str] = {
         "日期": "date",
@@ -63,14 +111,11 @@ class NameNormalizer:
         "卖出": "ask",
         "现汇买入价": "bid",
         "现钞卖出价": "ask",
-        "成交量": "volume",
-        "成交额": "amount",
         "成交价": "price",
         "涨跌额": "change",
         "涨跌幅": "pct_change",
         "涨跌": "change",
         "振幅": "amplitude",
-        "换手率": "turnover",
         "市盈率": "pe",
         "市净率": "pb",
         "股息率": "dividend_yield",
@@ -83,7 +128,6 @@ class NameNormalizer:
         "累计净值": "accum_nav",
         "发行价": "issue_price",
         "面值": "par_value",
-        "规模": "size",
         "额度": "quota",
         "利率": "rate",
         "收益率": "yield",
@@ -102,8 +146,6 @@ class NameNormalizer:
         "持仓": "position",
         "多头": "long_position",
         "空头": "short_position",
-        "成交量": "volume",
-        "成交额": "amount",
         "成交金额": "amount",
         "基本每股盈亏": "eps",
         "扣除非经常损益每股收益": "eps_diluted",
@@ -159,16 +201,13 @@ class NameNormalizer:
         "营业利润": "operating_profit",
         "营业外收入": "non_operating_income",
         "营业外支出": "non_operating_expense",
-        "利润总额": "total_profit",
         "所得税": "income_tax",
-        "净利润": "net_profit",
         "其他收益": "other_income",
         "投资收益": "investment_income",
         "公允价值变动收益": "fair_value_change_income",
         "资产减值损失": "asset_impairment_loss",
         "信用减值损失": "credit_impairment_loss",
         "资产处置收益": "asset_disposal_income",
-        "营业利润": "operating_profit",
         "销售商品、提供劳务收到的现金": "cash_from_sales",
         "收到的税费返还": "tax_refund",
         "收到其他与经营活动有关的现金": "other_operating_cash",
@@ -208,8 +247,6 @@ class NameNormalizer:
         "累计盈亏": "total_pnl",
         "盈亏比例": "pnl_ratio",
         "成本价": "cost",
-        "现价": "current_price",
-        "最新价": "current_price",
         "预警线": "warning_line",
         "止损线": "stop_loss_line",
         "追加线": "add_margin_line",
@@ -259,7 +296,6 @@ class NameNormalizer:
         "内容": "content",
         "主题": "subject",
         "标题": "title",
-        "正文": "body",
         "附件": "attachment",
         "链接": "url",
         "地址": "address",
@@ -270,12 +306,9 @@ class NameNormalizer:
         "邮编": "zip_code",
         "城市": "city",
         "省份": "province",
-        "国家": "country",
         "区域": "region",
-        "国家": "country",
         "货币": "currency",
         "汇率": "exchange_rate",
-        "利率": "interest_rate",
         "税率": "tax_rate",
         "折扣率": "discount_rate",
         "赔率": "odds",
@@ -326,26 +359,14 @@ class NameNormalizer:
         "卖二": "ask2",
         "买三": "bid3",
         "卖三": "ask3",
-        "成交量": "bid_volume",
         "卖量": "ask_volume",
-        "持仓": "position",
         "余额": "balance",
         "可用": "available",
         "冻结": "frozen",
         "占用": "occupied",
-        "净值": "nav",
-        "累计净值": "accum_nav",
-        "单位净值": "nav",
         "复权因子": "adjust_factor",
         "前复权因子": "qfq_factor",
         "后复权因子": "hfq_factor",
-        "涨跌": "change",
-        "涨跌额": "change",
-        "涨跌幅": "pct_change",
-        "换手率": "turnover",
-        "振幅": "amplitude",
-        "成交额": "amount",
-        "成交量": "volume",
         "成交笔数": "trade_count",
         "标准差": "std_dev",
         "方差": "variance",
@@ -388,6 +409,7 @@ class NameNormalizer:
 
     def __init__(self):
         self._mapping_lower = {k.lower(): v for k, v in self.FIELD_MAPPING.items()}
+        self._compound_mapping = {k.lower(): v for k, v in self.COMPOUND_FIELD_MAPPING.items()}
         self._fuzzy_cache: Dict[str, str] = {}
 
     def normalize(self, col_name: str) -> str:
@@ -395,15 +417,23 @@ class NameNormalizer:
         if not col_name:
             return col_name
 
-        if col_name in self._mapping_lower:
-            return self._mapping_lower[col_name]
-
         col_lower = col_name.lower()
-        if col_lower in self._mapping_lower:
-            return self._mapping_lower[col_lower]
+
+        if col_lower in self._compound_mapping:
+            return self._compound_mapping[col_lower]
 
         if col_name in self.FIELD_MAPPING:
             return self.FIELD_MAPPING[col_name]
+
+        if col_lower in self._mapping_lower:
+            return self._mapping_lower[col_lower]
+
+        if col_name in self._mapping_lower:
+            return self._mapping_lower[col_name]
+
+        for cn, en in self.COMPOUND_FIELD_MAPPING.items():
+            if cn in col_name:
+                return en
 
         for cn, en in self.FIELD_MAPPING.items():
             if cn in col_name:
