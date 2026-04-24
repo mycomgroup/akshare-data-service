@@ -171,34 +171,55 @@ class ServedReader:
     ) -> tuple[Optional[str], Optional[str], Optional[Dict[str, Any]]]:
         """Resolve partition parameters with schema contract.
 
-        When user-provided partition_by mismatches schema:
-        - Convert partition_value to where clause using the expected partition key
-        - Use schema's partition_by instead
-        - Clear partition_value (already moved to where)
+        When caller-provided partition_by does not match the schema contract:
+        - If the provided key is a valid table column, treat it as a normal filter
+        - Route reads using the schema partition key (if any)
+        - Never reinterpret the provided value as the expected partition key
 
         Returns:
             (resolved_partition_by, effective_partition_value, effective_where)
         """
+        schema = get_table_schema(table)
         expected = self._resolve_partition_by(table)
+        schema_columns = set(schema.schema.keys()) if schema is not None else set()
 
         if partition_by is None:
             return expected, None, where
 
-        if expected is None or partition_by == expected:
+        if expected is not None and partition_by == expected:
             return partition_by, partition_value, where
+
+        if partition_value is None:
+            logger.warning(
+                "ServedReader partition_by mismatch for table=%s: got=%s expected=%s; "
+                "dropping empty partition_value",
+                table,
+                partition_by,
+                expected,
+            )
+            return expected, None, where
+
+        if partition_by in schema_columns:
+            logger.warning(
+                "ServedReader partition_by mismatch for table=%s: got=%s expected=%s; "
+                "converting partition_value to where[%s]",
+                table,
+                partition_by,
+                expected,
+                partition_by,
+            )
+            effective_where = where.copy() if where else {}
+            effective_where[partition_by] = partition_value
+            return expected, None, effective_where
 
         logger.warning(
             "ServedReader partition_by mismatch for table=%s: got=%s expected=%s; "
-            "converting partition_value to where clause",
+            "ignoring unsupported partition filter",
             table,
             partition_by,
             expected,
         )
-
-        effective_where = where.copy() if where else {}
-        effective_where[expected] = partition_value
-
-        return expected, None, effective_where
+        return expected, None, where
 
     def _validate_partition_by(
         self,
