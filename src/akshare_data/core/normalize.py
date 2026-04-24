@@ -281,18 +281,21 @@ def normalize_dataframe_for_parquet(df: pd.DataFrame) -> pd.DataFrame:
         if df_normalized[col].dtype == "object":
             unique_types = set(type(x).__name__ for x in df_normalized[col].dropna())
             if len(unique_types) > 1:
-                df_normalized[col] = df_normalized[col].astype(str)
+                # Re-cast back to ``object`` so downstream parquet writers
+                # behave consistently across pandas versions (pandas 3.x
+                # returns a nullable StringDtype from ``.astype(str)``).
+                df_normalized[col] = df_normalized[col].astype(str).astype(object)
             elif unique_types == {"int"}:
                 try:
                     df_normalized[col] = df_normalized[col].astype("int64")
                 except (ValueError, TypeError):
-                    df_normalized[col] = df_normalized[col].astype(str)
+                    df_normalized[col] = df_normalized[col].astype(str).astype(object)
             elif unique_types == {"float"}:
                 try:
                     df_normalized[col] = df_normalized[col].astype("float64")
                 except (ValueError, TypeError):
-                    df_normalized[col] = df_normalized[col].astype(str)
+                    df_normalized[col] = df_normalized[col].astype(str).astype(object)
             elif unique_types == {"str"}:
-                df_normalized[col] = df_normalized[col].astype(str)
+                df_normalized[col] = df_normalized[col].astype(str).astype(object)
 
     return df_normalized

@@ -237,10 +237,19 @@ class MarketQuoteDailyNormalizer(NormalizerBase):
             df["exchange"] = None
             return df
 
-        def _exchange(sid: str) -> str:
-            if not sid or not sid[0].isdigit():
+        def _exchange(sid) -> str:
+            # security_id may be NaN/None when upstream rows were missing; those
+            # rows are filtered later in _validate_record but _derive_fields
+            # still iterates over them here.
+            if sid is None or (isinstance(sid, float) and pd.isna(sid)):
                 return "UNKNOWN"
-            first = sid[0]
+            try:
+                sid_str = str(sid)
+            except Exception:
+                return "UNKNOWN"
+            if not sid_str or not sid_str[0].isdigit():
+                return "UNKNOWN"
+            first = sid_str[0]
             if first == "6":
                 return "SSE"
             if first in ("0", "3"):
