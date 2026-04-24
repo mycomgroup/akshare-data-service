@@ -18,10 +18,34 @@ import logging
 import warnings
 import pandas as pd
 
+from akshare_data import get_service
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
-from akshare_data import get_service
+
+def _normalize_new_stock_columns(df: pd.DataFrame) -> pd.DataFrame:
+    rename_map = {}
+    aliases = {
+        "symbol": ("symbol", "代码", "证券代码", "股票代码"),
+        "name": ("name", "名称", "股票简称", "股票名称"),
+        "subscribe_date": ("subscribe_date", "申购日期", "发行日期", "申购日", "apply_date"),
+        "list_date": ("list_date", "上市日期", "上市日", "list_date"),
+        "price": ("price", "发行价", "发行价格", "price"),
+        "pe": ("pe", "市盈率", "发行市盈率", "pe_ratio"),
+    }
+    for target, names in aliases.items():
+        for name in names:
+            if name in df.columns:
+                rename_map[name] = target
+                break
+    out = df.rename(columns=rename_map).copy()
+    for col in ("subscribe_date", "list_date"):
+        if col in out.columns:
+            out[col] = pd.to_datetime(out[col], errors="coerce")
+    if "price" in out.columns:
+        out["price"] = pd.to_numeric(out["price"], errors="coerce")
+    return out
 
 
 def _as_dataframe(data, label: str) -> pd.DataFrame:
@@ -31,6 +55,29 @@ def _as_dataframe(data, label: str) -> pd.DataFrame:
     if data.empty:
         print(f"{label}: 返回空数据")
     return data
+
+
+def _fetch_new_stocks(service) -> pd.DataFrame:
+    method_candidates = [
+        "get_new_stocks",
+        "get_stock_new",
+        "get_new_stock",
+        "get_stock_ipo",
+    ]
+    for method_name in method_candidates:
+        fn = getattr(service, method_name, None)
+        if not callable(fn):
+            continue
+        try:
+            data = fn()
+        except Exception as exc:  # pragma: no cover - example script best-effort
+            print(f"  [失败] {method_name}() 调用异常: {exc}")
+            continue
+        df = _as_dataframe(data, f"{method_name}()")
+        if not df.empty:
+            print(f"  [命中] 使用 {method_name}()，rows={len(df)}")
+            return _normalize_new_stock_columns(df)
+    return pd.DataFrame()
 
 
 # ============================================================
@@ -45,7 +92,7 @@ def example_basic():
     service = get_service()
 
     try:
-        df = _as_dataframe(service.get_new_stocks(), "示例1")
+        df = _fetch_new_stocks(service)
         if df.empty:
             return
 
@@ -73,7 +120,7 @@ def example_overview():
     service = get_service()
 
     try:
-        df = _as_dataframe(service.get_new_stocks(), "示例2")
+        df = _fetch_new_stocks(service)
         if df.empty:
             return
 
@@ -102,21 +149,21 @@ def example_recent():
     service = get_service()
 
     try:
-        df = _as_dataframe(service.get_new_stocks(), "示例3")
+        df = _fetch_new_stocks(service)
         if df.empty:
             return
 
-        # 查找日期相关字段
-        date_col = None
-        for col in df.columns:
-            if "上市" in col or "日期" in col or "date" in col.lower():
-                date_col = col
-                break
+        date_col = "list_date" if "list_date" in df.columns else None
+        if date_col is None:
+            for col in df.columns:
+                if "上市" in col or "日期" in col or "date" in col.lower():
+                    date_col = col
+                    break
 
         if date_col:
-            # 显示最新的10只新股
+            sorted_df = df.sort_values(by=date_col, ascending=False, na_position="last")
             print("最新的10只新股:")
-            print(df.head(10).to_string(index=False))
+            print(sorted_df.head(10).to_string(index=False))
         else:
             print(f"字段列表: {list(df.columns)}")
             print("\n全部新股数据 (前20条):")
@@ -138,16 +185,16 @@ def example_price_analysis():
     service = get_service()
 
     try:
-        df = _as_dataframe(service.get_new_stocks(), "示例4")
+        df = _fetch_new_stocks(service)
         if df.empty:
             return
 
-        # 查找价格相关字段
-        price_col = None
-        for col in df.columns:
-            if "价格" in col or "发行价" in col or "price" in col.lower():
-                price_col = col
-                break
+        price_col = "price" if "price" in df.columns else None
+        if price_col is None:
+            for col in df.columns:
+                if "价格" in col or "发行价" in col or "price" in col.lower():
+                    price_col = col
+                    break
 
         if price_col:
             df[price_col] = pd.to_numeric(df[price_col], errors="coerce")
@@ -179,7 +226,7 @@ def example_error_handling():
 
     try:
         print("\n测试 1: 正常调用")
-        df = _as_dataframe(service.get_new_stocks(), "示例5-测试1")
+        df = _fetch_new_stocks(service)
         if df.empty:
             print("  结果: 无数据")
         else:
@@ -189,7 +236,7 @@ def example_error_handling():
 
     try:
         print("\n测试 2: 再次调用（验证缓存）")
-        df = _as_dataframe(service.get_new_stocks(), "示例5-测试2")
+        df = _fetch_new_stocks(service)
         if df.empty:
             print("  结果: 无数据")
         else:

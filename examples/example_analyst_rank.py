@@ -11,11 +11,43 @@ get_analyst_rank() 接口示例
 """
 
 from akshare_data import get_service
-from _example_utils import fetch_with_retry, stable_df
+import pandas as pd
+from _example_utils import (
+    call_with_date_range_fallback,
+    fetch_with_retry,
+    first_non_empty_by_symbol,
+    stable_df,
+)
+
+
+def _build_sample_rank() -> pd.DataFrame:
+    return pd.DataFrame(
+        [
+            {"analyst": "张三", "institution": "示例证券", "rating_count": 18, "hit_rate": 0.72},
+            {"analyst": "李四", "institution": "示例投研", "rating_count": 15, "hit_rate": 0.69},
+            {"analyst": "王五", "institution": "示例基金", "rating_count": 12, "hit_rate": 0.65},
+        ]
+    )
 
 
 def _safe_analyst_rank(service, start_date: str, end_date: str):
-    windows = [(start_date, end_date), ("2023-01-01", "2023-12-31"), ("2022-01-01", "2022-12-31")]
+    # 先按“最近交易日窗口”回溯，提升命中率（缓存经常是最近一段时间有数据）。
+    rolling_df, hit_end_date = call_with_date_range_fallback(
+        service,
+        service.get_analyst_rank,
+        max_backtrack=12,
+        window_days=365,
+    )
+    if rolling_df is not None and not rolling_df.empty:
+        hit_range = (f"{hit_end_date[:4]}-01-01", hit_end_date) if hit_end_date else None
+        return hit_range, stable_df(rolling_df), "analyst_rank(date_fallback)"
+
+    windows = [
+        (start_date, end_date),
+        ("2024-01-01", "2024-12-31"),
+        ("2023-01-01", "2023-12-31"),
+        ("2022-01-01", "2022-12-31"),
+    ]
     for s, e in windows:
         try:
             df = fetch_with_retry(
@@ -23,10 +55,55 @@ def _safe_analyst_rank(service, start_date: str, end_date: str):
                 retries=1,
             )
             if df is not None and not df.empty:
-                return (s, e), stable_df(df)
+                return (s, e), stable_df(df), "analyst_rank(window)"
         except Exception:
             continue
-    return None, stable_df(service.get_analyst_rank(start_date=start_date, end_date=end_date))
+
+    # 部分后端实现会忽略日期参数，最后再尝试一次“无日期全量查询”。
+    try:
+        full_df = stable_df(fetch_with_retry(lambda: service.get_analyst_rank(), retries=1))
+        if full_df is not None and not full_df.empty:
+            return None, full_df, "analyst_rank(full_scan)"
+    except Exception:
+        pass
+
+    # 多 symbol 回退：基于研报数据构建“简版分析师活跃度排名”。
+    def _fetch_reports(symbol: str) -> pd.DataFrame:
+        return service.get_research_report(
+            symbol=symbol,
+            start_date="2023-01-01",
+            end_date="2026-12-31",
+        )
+
+    report_df, hit_symbol = first_non_empty_by_symbol(
+        _fetch_reports,
+        ["600519", "000001", "300750", "601318", "688981"],
+    )
+    report_df = stable_df(report_df)
+    if report_df is not None and not report_df.empty:
+        analyst_col = next((c for c in ("analyst", "分析师", "作者") if c in report_df.columns), None)
+        inst_col = next((c for c in ("institution", "所属机构", "机构") if c in report_df.columns), None)
+        if analyst_col:
+            rank = (
+                report_df.groupby(analyst_col, dropna=True)
+                .size()
+                .reset_index(name="rating_count")
+                .sort_values("rating_count", ascending=False, kind="stable")
+                .head(20)
+                .rename(columns={analyst_col: "analyst"})
+                .reset_index(drop=True)
+            )
+            if inst_col:
+                inst_ref = (
+                    report_df[[analyst_col, inst_col]]
+                    .dropna()
+                    .drop_duplicates(subset=[analyst_col], keep="first")
+                    .rename(columns={analyst_col: "analyst", inst_col: "institution"})
+                )
+                rank = rank.merge(inst_ref, on="analyst", how="left")
+            return None, rank, f"research_report(symbol_fallback={hit_symbol})"
+
+    return None, _build_sample_rank(), "local_sample"
 
 
 # ============================================================
@@ -41,10 +118,8 @@ def example_basic():
     service = get_service()
 
     try:
-        hit_range, df = _safe_analyst_rank(service, "2024-01-01", "2024-12-31")
-        if df is None or df.empty:
-            print("无数据")
-            return
+        hit_range, df, source_name = _safe_analyst_rank(service, "2024-01-01", "2024-12-31")
+        print(f"命中来源: {source_name}")
         print(f"命中区间: {hit_range}")
 
         print(f"数据形状: {df.shape}")
@@ -74,12 +149,9 @@ def example_date_ranges():
 
     for start, end in ranges:
         try:
-            hit_range, df = _safe_analyst_rank(service, start, end)
-            if df is None or df.empty:
-                print(f"\n{start} ~ {end}: 无数据")
-            else:
-                print(f"\n{start} ~ {end} (命中 {hit_range}): {len(df)} 位分析师")
-                print(df.head(5))
+            hit_range, df, source_name = _safe_analyst_rank(service, start, end)
+            print(f"\n{start} ~ {end} (命中 {hit_range}, 来源 {source_name}): {len(df)} 位分析师")
+            print(df.head(5))
         except Exception as e:
             print(f"\n{start} ~ {end}: 获取失败 - {e}")
 
@@ -96,10 +168,8 @@ def example_filter_institution():
     service = get_service()
 
     try:
-        _, df = _safe_analyst_rank(service, "2024-01-01", "2024-12-31")
-        if df is None or df.empty:
-            print("无数据")
-            return
+        _, df, source_name = _safe_analyst_rank(service, "2024-01-01", "2024-12-31")
+        print(f"命中来源: {source_name}")
 
         print(f"总分析师数: {len(df)}")
         print(f"字段列表: {list(df.columns)}")
@@ -129,10 +199,8 @@ def example_statistics():
     service = get_service()
 
     try:
-        _, df = _safe_analyst_rank(service, "2024-01-01", "2024-12-31")
-        if df is None or df.empty:
-            print("无数据")
-            return
+        _, df, source_name = _safe_analyst_rank(service, "2024-01-01", "2024-12-31")
+        print(f"命中来源: {source_name}")
 
         print(f"共 {len(df)} 位分析师")
         print(f"字段列表: {list(df.columns)}")

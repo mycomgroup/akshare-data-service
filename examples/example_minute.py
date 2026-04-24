@@ -19,8 +19,9 @@ get_minute() 接口示例
 
 import logging
 import warnings
-import pandas as pd
 from datetime import date, timedelta
+
+import pandas as pd
 from akshare_data import get_minute
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -50,14 +51,91 @@ def _candidate_fallback_dates(count: int = 5) -> list[str]:
     return out
 
 
-def _get_minute(symbol, freq="1min", start_date=None, end_date=None):
-    """Get minute data with graceful empty-data handling."""
-    df = get_minute(symbol, freq=freq, start_date=start_date, end_date=end_date)
-    if df is None or df.empty:
-        print(f"  [无数据] {symbol} 在指定范围内无分钟数据")
-        print(f"  候选回退日期: {', '.join(_candidate_fallback_dates())}")
+def _symbol_candidates(symbol: str) -> list[str]:
+    s = str(symbol).strip()
+    if not s:
+        return []
+    candidates = [s]
+
+    digits = "".join(ch for ch in s if ch.isdigit())
+    if len(digits) == 6:
+        if digits.startswith(("6", "9")):
+            candidates.extend([digits, f"sh{digits}", f"{digits}.XSHG"])
+        else:
+            candidates.extend([digits, f"sz{digits}", f"{digits}.XSHE"])
+    # 去重且保持顺序
+    return list(dict.fromkeys(candidates))
+
+
+def _normalize_minute_columns(df: pd.DataFrame) -> pd.DataFrame:
+    rename_map = {}
+    aliases = {
+        "symbol": ("symbol", "代码", "证券代码", "股票代码"),
+        "datetime": ("datetime", "日期时间", "时间", "date", "trade_time"),
+        "open": ("open", "开盘", "open_price"),
+        "high": ("high", "最高", "high_price"),
+        "low": ("low", "最低", "low_price"),
+        "close": ("close", "收盘", "close_price", "最新价"),
+        "volume": ("volume", "成交量", "vol", "成交手"),
+        "amount": ("amount", "成交额", "turnover", "成交金额"),
+    }
+    for target, names in aliases.items():
+        for name in names:
+            if name in df.columns:
+                rename_map[name] = target
+                break
+    out = df.rename(columns=rename_map).copy()
+    if "datetime" in out.columns:
+        out["datetime"] = pd.to_datetime(out["datetime"], errors="coerce")
+    if "symbol" not in out.columns and "code" in out.columns:
+        out["symbol"] = out["code"]
+    return out
+
+
+def _fetch_minute_once(symbol: str, freq: str, start_date: str | None, end_date: str | None) -> pd.DataFrame:
+    try:
+        df = get_minute(symbol, freq=freq, start_date=start_date, end_date=end_date)
+    except Exception as exc:  # pragma: no cover - example script best-effort
+        print(f"  [失败] symbol={symbol}, range={start_date}~{end_date}, err={exc}")
         return pd.DataFrame()
-    return df
+    if df is None or df.empty:
+        return pd.DataFrame()
+    return _normalize_minute_columns(df)
+
+
+def _get_minute(symbol, freq="1min", start_date=None, end_date=None):
+    """分钟数据拉取：symbol 候选 + 日期范围回退 + 字段兼容。"""
+    symbols = _symbol_candidates(symbol) if isinstance(symbol, str) else []
+    if not symbols and isinstance(symbol, list):
+        for s in symbol:
+            symbols.extend(_symbol_candidates(str(s)))
+        symbols = list(dict.fromkeys(symbols))
+    if not symbols:
+        print("  [无效参数] 未提供有效 symbol")
+        return pd.DataFrame()
+
+    tried = 0
+    # 优先尝试用户提供的日期范围
+    for sym in symbols:
+        df = _fetch_minute_once(sym, freq=freq, start_date=start_date, end_date=end_date)
+        tried += 1
+        if not df.empty:
+            print(f"  [命中] symbol={sym}, range={start_date}~{end_date}, rows={len(df)}")
+            return df
+
+    # 自动回退到最近交易日，逐日尝试
+    for d in _candidate_fallback_dates(8):
+        for sym in symbols:
+            df = _fetch_minute_once(sym, freq=freq, start_date=d, end_date=d)
+            tried += 1
+            if not df.empty:
+                print(f"  [回退命中] symbol={sym}, trade_date={d}, rows={len(df)}")
+                return df
+
+    print(f"  [无数据] 候选symbol均未命中，尝试次数={tried}")
+    print(f"  symbol候选: {', '.join(symbols)}")
+    print(f"  候选回退日期: {', '.join(_candidate_fallback_dates())}")
+    return pd.DataFrame()
 
 
 # ============================================================
@@ -71,7 +149,7 @@ def example_basic():
 
     try:
         start, end = _date_range(5)
-        df = _get_minute(symbol="000001", freq="1min", start_date=start, end_date=end)
+        df = _get_minute(symbol=["000001", "600000", "300750"], freq="1min", start_date=start, end_date=end)
 
         # 打印数据形状
         print(f"数据形状: {df.shape}")
@@ -130,7 +208,7 @@ def example_no_dates():
     try:
         # 不传 start_date 和 end_date，返回缓存中的全部数据
         start, end = _date_range(5)
-        df = get_minute("000001", freq="5min", start_date=start, end_date=end)
+        df = _get_minute(["000001", "600000"], freq="5min", start_date=start, end_date=end)
 
         if df is not None and not df.empty:
             print(f"数据形状: {df.shape}")
@@ -156,7 +234,7 @@ def example_sz_stock():
 
     try:
         start, end = _date_range(8)
-        df = _get_minute(symbol="sz000002", freq="15min", start_date=start, end_date=end)
+        df = _get_minute(symbol=["sz000002", "000002", "600036"], freq="15min", start_date=start, end_date=end)
 
         if not df.empty:
             print(f"数据形状: {df.shape}")
@@ -180,7 +258,7 @@ def example_analysis():
 
     try:
         start, end = _date_range(1)
-        df = _get_minute(symbol="600036", freq="5min", start_date=start, end_date=end)
+        df = _get_minute(symbol=["600036", "sh600036"], freq="5min", start_date=start, end_date=end)
 
         if df.empty:
             print("无数据")

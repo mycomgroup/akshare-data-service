@@ -22,9 +22,67 @@ from _example_utils import fetch_with_retry, normalize_symbol_input
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 
-def _safe_security_info(symbol: str):
-    code = normalize_symbol_input(symbol)
-    return code, fetch_with_retry(lambda: get_security_info(code), retries=2)
+DEFAULT_FALLBACK_SYMBOLS = [
+    "000001",
+    "600519",
+    "000300",
+    "510300",
+    "159915",
+]
+
+
+def _candidate_symbols(symbol: str, fallback_symbols: list[str] | None = None) -> list[str]:
+    raw = (symbol or "").strip()
+    candidates: list[str] = []
+    if raw:
+        candidates.append(raw)
+        if "." not in raw and len(raw) == 6 and raw.isdigit():
+            if raw.startswith(("0", "3")):
+                candidates.extend([f"{raw}.sz", f"sz{raw}"])
+            elif raw.startswith(("6", "9")):
+                candidates.extend([f"{raw}.sh", f"sh{raw}"])
+    candidates.extend(fallback_symbols or DEFAULT_FALLBACK_SYMBOLS)
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for item in candidates:
+        if item not in seen:
+            deduped.append(item)
+            seen.add(item)
+    return deduped
+
+
+def _safe_security_info(symbol: str, *, retries: int = 2):
+    tried: list[str] = []
+    errors: list[str] = []
+    seen_codes: set[str] = set()
+
+    for candidate in _candidate_symbols(symbol):
+        try:
+            code = normalize_symbol_input(candidate)
+            if code in seen_codes:
+                continue
+            seen_codes.add(code)
+            tried.append(code)
+            info = fetch_with_retry(lambda: get_security_info(code), retries=retries)
+            if info:
+                return code, info, tried, errors
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{candidate}: {type(exc).__name__}: {exc}")
+            continue
+
+    return None, None, tried, errors
+
+
+def _print_info_brief(symbol: str, info: dict):
+    print(f"命中代码: {symbol}")
+    print(
+        "摘要: "
+        f"{info.get('display_name', '-')}"
+        f" | 类型: {info.get('type', '-')}"
+        f" | 行业: {info.get('industry', '-')}"
+        f" | 上市日期: {info.get('start_date', '-')}"
+    )
 
 
 def example_basic_usage():
@@ -36,15 +94,20 @@ def example_basic_usage():
     try:
         # symbol: 证券代码，支持多种格式 (如 "000001", "000001.sz", "600519")
         symbol = "000001"  # 平安银行
-        symbol, info = _safe_security_info(symbol)
+        hit_symbol, info, tried, errors = _safe_security_info(symbol)
 
-        if not info:
-            print(f"证券代码: {symbol}")
+        if not info or not hit_symbol:
+            print(f"输入代码: {symbol}")
             print("未找到数据")
+            print(f"候选代码: {', '.join(_candidate_symbols(symbol))}")
+            if errors:
+                print(f"最近错误: {errors[-1]}")
             return
 
         # 打印返回的完整字典
-        print(f"证券代码: {symbol}")
+        print(f"输入代码: {symbol}")
+        _print_info_brief(hit_symbol, info)
+        print(f"尝试顺序: {', '.join(tried)}")
         print(f"返回数据: {info}")
         print()
 
@@ -82,13 +145,17 @@ def example_multiple_stocks():
 
     try:
         for symbol in stocks:
-            symbol, info = _safe_security_info(symbol)
-            if info:
+            hit_symbol, info, _, errors = _safe_security_info(symbol)
+            if info and hit_symbol:
                 print(
-                    f"{symbol}: {info.get('display_name')} | 类型: {info.get('type')} | 行业: {info.get('industry')}"
+                    f"{symbol} -> {hit_symbol}: {info.get('display_name')} | "
+                    f"类型: {info.get('type')} | 行业: {info.get('industry')}"
                 )
             else:
-                print(f"{symbol}: 未找到信息")
+                msg = f"{symbol}: 未找到信息"
+                if errors:
+                    msg += f" | 最近错误: {errors[-1]}"
+                print(msg)
 
     except Exception as e:
         err_msg = str(e).lower()
@@ -115,13 +182,18 @@ def example_different_types():
 
     try:
         for symbol, desc in securities.items():
-            symbol, info = _safe_security_info(symbol)
+            hit_symbol, info, tried, errors = _safe_security_info(symbol)
             print(f"{desc} ({symbol}):")
-            if info:
+            if info and hit_symbol:
+                print(f"  命中代码: {hit_symbol}")
+                print(f"  尝试顺序: {', '.join(tried)}")
                 for key, value in info.items():
                     print(f"  {key}: {value}")
             else:
                 print("  未找到信息")
+                print(f"  候选代码: {', '.join(_candidate_symbols(symbol))}")
+                if errors:
+                    print(f"  最近错误: {errors[-1]}")
             print()
 
     except Exception as e:
@@ -144,14 +216,22 @@ def example_with_cache():
     try:
         # 第一次调用: 从数据源获取并写入缓存
         print("第一次调用 (从数据源获取):")
-        symbol, info1 = _safe_security_info(symbol)
+        hit_symbol1, info1, tried1, errors1 = _safe_security_info(symbol)
         print(f"  结果: {info1}")
+        print(f"  命中代码: {hit_symbol1}")
+        print(f"  尝试顺序: {', '.join(tried1)}")
+        if errors1:
+            print(f"  最近错误: {errors1[-1]}")
         print()
 
         # 第二次调用: 直接从缓存读取，速度更快
         print("第二次调用 (从缓存读取):")
-        symbol, info2 = _safe_security_info(symbol)
+        hit_symbol2, info2, tried2, errors2 = _safe_security_info(symbol)
         print(f"  结果: {info2}")
+        print(f"  命中代码: {hit_symbol2}")
+        print(f"  尝试顺序: {', '.join(tried2)}")
+        if errors2:
+            print(f"  最近错误: {errors2[-1]}")
 
     except Exception as e:
         err_msg = str(e).lower()
@@ -175,11 +255,15 @@ def example_error_handling():
 
     for symbol in invalid_symbols:
         try:
-            symbol, info = _safe_security_info(symbol)
-            if info:
-                print(f"{symbol}: {info}")
+            hit_symbol, info, tried, errors = _safe_security_info(symbol)
+            if info and hit_symbol:
+                print(f"{symbol} -> {hit_symbol}: {info}")
             else:
-                print(f"{symbol}: 返回空结果 (证券不存在)")
+                print(f"{symbol}: 返回空结果 (证券不存在或网络波动)")
+                print(f"  候选代码: {', '.join(_candidate_symbols(symbol))}")
+                print(f"  尝试顺序: {', '.join(tried) if tried else '-'}")
+                if errors:
+                    print(f"  最近错误: {errors[-1]}")
         except Exception as e:
             print(f"{symbol}: 异常 - {type(e).__name__}: {e}")
 

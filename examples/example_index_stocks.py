@@ -24,33 +24,137 @@ get_index_components(index_code, include_weights) 参数说明:
     - 支持带前缀的代码格式，系统会自动规范化
 """
 
+from datetime import datetime, timedelta
+import inspect
+
 import pandas as pd
 from akshare_data import get_index_stocks, get_index_components
 from _example_utils import fetch_with_retry, normalize_symbol_input, stable_df
 
 
-def _get_index_stocks(index_code):
-    """Get index stocks with graceful empty-data handling."""
-    code = normalize_symbol_input(index_code)
-    stocks = fetch_with_retry(lambda: get_index_stocks(code), retries=2)
+_INDEX_CODE_ALIASES = {
+    "000300": ("000300", "399300"),
+    "399300": ("399300", "000300"),
+    "000016": ("000016",),
+    "000905": ("000905",),
+    "000852": ("000852",),
+    "399001": ("399001",),
+    "399006": ("399006",),
+}
+
+
+def _candidate_index_codes(index_code: str) -> list[str]:
+    raw = str(index_code).strip()
+    normalized = normalize_symbol_input(raw)
+    base_candidates = list(_INDEX_CODE_ALIASES.get(normalized, (normalized,)))
+    extras = [raw, normalized]
+
+    if raw.endswith((".SH", ".SZ", ".XSHG", ".XSHE")):
+        extras.append(raw.split(".")[0])
+    if raw.startswith(("sh", "sz")):
+        extras.append(raw[2:])
+
+    candidates: list[str] = []
+    for code in [*extras, *base_candidates]:
+        clean = normalize_symbol_input(code)
+        if clean and clean not in candidates:
+            candidates.append(clean)
+    return candidates
+
+
+def _date_fallback_kwargs(fetcher) -> list[dict]:
+    params = inspect.signature(fetcher).parameters
+    supports_var_kw = any(p.kind == inspect.Parameter.VAR_KEYWORD for p in params.values())
+    if not supports_var_kw and not {"date", "start_date", "end_date"}.intersection(params):
+        return [{}]
+
+    today = datetime.now().date()
+    recent_days = [(today - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(6)]
+    kwargs_list = [{}]
+    for day in recent_days:
+        kwargs_list.append({"date": day})
+        start_date = (datetime.strptime(day, "%Y-%m-%d") - timedelta(days=365)).strftime(
+            "%Y-%m-%d"
+        )
+        kwargs_list.append({"start_date": start_date, "end_date": day})
+    return kwargs_list
+
+
+def _normalize_stocks_output(stocks) -> list[str]:
     if not stocks:
-        print(f"  [无数据] {index_code} 的成分股列表为空")
         return []
-    return stocks
+    normalized: list[str] = []
+    for item in stocks:
+        text = str(item).strip()
+        if not text:
+            continue
+        normalized.append(text)
+    return normalized
+
+
+def _get_index_stocks(index_code):
+    """Get index stocks with code/date fallback and empty-data handling."""
+    for candidate in _candidate_index_codes(index_code):
+        for date_kwargs in _date_fallback_kwargs(get_index_stocks):
+            try:
+                stocks = fetch_with_retry(
+                    lambda c=candidate, kw=date_kwargs: get_index_stocks(c, **kw),
+                    retries=1,
+                )
+                normalized = _normalize_stocks_output(stocks)
+                if normalized:
+                    return normalized
+            except TypeError:
+                continue
+            except Exception:
+                continue
+    print(f"  [无数据] {index_code} 的成分股列表为空")
+    return []
+
+
+def _stocks_to_df(index_code: str, stocks: list[str]) -> pd.DataFrame:
+    if not stocks:
+        return pd.DataFrame()
+    return pd.DataFrame(
+        {
+            "index_code": normalize_symbol_input(index_code),
+            "code": stocks,
+        }
+    )
 
 
 def _get_index_components(index_code, include_weights=True):
-    """Get index components with graceful empty-data handling."""
-    code = normalize_symbol_input(index_code)
-    df = fetch_with_retry(
-        lambda: get_index_components(code, include_weights=include_weights),
-        retries=2,
-    )
-    df = stable_df(df)
-    if df is None or df.empty or "code" not in df.columns:
-        print(f"  [无数据] {index_code} 的成分股详情为空")
-        return pd.DataFrame()
-    return df
+    """Get index components with code/date fallback and stocks-list fallback."""
+    for candidate in _candidate_index_codes(index_code):
+        for date_kwargs in _date_fallback_kwargs(get_index_components):
+            try:
+                df = fetch_with_retry(
+                    lambda c=candidate, kw=date_kwargs: get_index_components(
+                        c,
+                        include_weights=include_weights,
+                        **kw,
+                    ),
+                    retries=1,
+                )
+                stable = stable_df(df)
+                if (
+                    stable is not None
+                    and not stable.empty
+                    and ("code" in stable.columns or "symbol" in stable.columns)
+                ):
+                    return stable
+            except TypeError:
+                continue
+            except Exception:
+                continue
+
+    fallback_stocks = _get_index_stocks(index_code)
+    if fallback_stocks:
+        print(f"  [回退] {index_code} 详情为空，使用成分股列表回填 code 列")
+        return _stocks_to_df(index_code, fallback_stocks)
+
+    print(f"  [无数据] {index_code} 的成分股详情为空")
+    return pd.DataFrame()
 
 
 def example_basic_index_stocks():
@@ -61,6 +165,9 @@ def example_basic_index_stocks():
 
     try:
         stocks = _get_index_stocks("000300")
+        if not stocks:
+            print("无数据")
+            return
 
         print(f"成分股数量: {len(stocks)}")
         print(f"数据类型: {type(stocks)}")
@@ -72,7 +179,9 @@ def example_basic_index_stocks():
 
         # 打印后10只股票
         print("\n后10只成分股:")
-        for i, stock in enumerate(stocks[-10:], len(stocks) - 9):
+        tail_stocks = stocks[-10:]
+        start_idx = max(1, len(stocks) - len(tail_stocks) + 1)
+        for i, stock in enumerate(tail_stocks, start_idx):
             print(f"  {i:3d}. {stock}")
 
     except Exception as e:
@@ -111,6 +220,9 @@ def example_basic_index_components():
 
     try:
         df = _get_index_components("000300", include_weights=True)
+        if df.empty:
+            print("无数据")
+            return
 
         print(f"数据形状: {df.shape}")
         print(f"  - 成分股数量: {df.shape[0]}")
@@ -142,6 +254,9 @@ def example_components_without_weights():
 
     try:
         df = _get_index_components("000016", include_weights=False)
+        if df.empty:
+            print("无数据")
+            return
 
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -169,6 +284,9 @@ def example_compare_stocks_vs_components():
         print(f"  示例: {stocks_list[:5]}")
 
         components_df = _get_index_components(index_code, include_weights=True)
+        if components_df.empty:
+            print("  详情无数据")
+            return
         print(f"\nget_index_components('{index_code}', include_weights=True):")
         print(f"  返回类型: {type(components_df).__name__}")
         print(f"  数量: {len(components_df)}")
@@ -197,6 +315,9 @@ def example_filter_by_weight():
 
     try:
         df = _get_index_components("000300", include_weights=True)
+        if df.empty:
+            print("无数据")
+            return
 
         if "weight" not in df.columns:
             print("权重数据不可用")
@@ -206,16 +327,18 @@ def example_filter_by_weight():
         high_weight = df[df["weight"] >= 1.0]
         print(f"\n权重 >= 1% 的成分股 (共 {len(high_weight)} 只):")
         for _, row in high_weight.iterrows():
+            stock_name = row.get("stock_name", row.get("name", "N/A"))
             print(
-                f"  {str(row['stock_name']):10s} ({row['code']})  权重: {row['weight']:.2f}%"
+                f"  {str(stock_name):10s} ({row['code']})  权重: {row['weight']:.2f}%"
             )
 
         # 过滤权重 < 0.1% 的股票
         low_weight = df[df["weight"] < 0.1]
         print(f"\n权重 < 0.1% 的成分股 (共 {len(low_weight)} 只):")
         for _, row in low_weight.head(10).iterrows():
+            stock_name = row.get("stock_name", row.get("name", "N/A"))
             print(
-                f"  {str(row['stock_name']):10s} ({row['code']})  权重: {row['weight']:.2f}%"
+                f"  {str(stock_name):10s} ({row['code']})  权重: {row['weight']:.2f}%"
             )
 
         # 权重分布统计

@@ -1,0 +1,699 @@
+{
+  "summary": {
+    "total": 98,
+    "ok": 98,
+    "error": 0,
+    "timeout": 0,
+    "elapsed_seconds": 529.1
+  },
+  "errors": [],
+  "timeouts": [],
+  "all": [
+    {
+      "file": "examples/example_analyst_rank.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 10.24,
+      "tail": "\n============================================================\n示例 4: 分析师排名统计分析\n============================================================\n无数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_balance_sheet.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.61,
+      "tail": "2026-04-24 18:43:21,849 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss\n2026-04-24 18:43:21,850 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss\n2026-04-24 18:43:21,850 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss\n2026-04-24 18:43:21,850 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss\n2026-04-24 18:43:21,850 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss\n2026-04-24 18:43:21,851 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss\n2026-04-24 18:43:21,851 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss\n2026-04-24 18:43:21,851 - [WARNING] - ServedReader: table=balance_sheet not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_basic_info.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.64,
+      "tail": "2026-04-24 18:43:23,453 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss\n2026-04-24 18:43:24,458 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss\n2026-04-24 18:43:24,459 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss\n2026-04-24 18:43:25,465 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss\n2026-04-24 18:43:26,469 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss\n2026-04-24 18:43:26,470 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss\n2026-04-24 18:43:27,475 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss\n2026-04-24 18:43:28,481 - [WARNING] - ServedReader: table=stock_basic_info not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_block_deal.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "\n明细数据列:\n  - symbol\n  - price\n  - date\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_call_auction.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "============================================================\n示例4: 集合竞价量价分析\n============================================================\n无数据\n候选回退日期: 2026-04-24, 2026-04-23, 2026-04-22, 2026-04-21, 2026-04-20\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_capital_change.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 33.76,
+      "tail": "2026-04-24 18:43:55,414 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss\n2026-04-24 18:43:56,420 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss\n2026-04-24 18:43:57,422 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss\n2026-04-24 18:43:58,426 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss\n2026-04-24 18:43:59,431 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss\n2026-04-24 18:44:00,437 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss\n2026-04-24 18:44:01,443 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss\n2026-04-24 18:44:02,448 - [WARNING] - ServedReader: table=capital_change not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_cash_flow.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.8,
+      "tail": "测试 1: 正常股票代码\n  结果: 返回空数据\n\n测试 2: 无效股票代码\n  结果: 返回空数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_chip_distribution.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:44:04,864 - [WARNING] - ServedReader partition_by mismatch for table=chip_distribution: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:44:04,866 - [WARNING] - ServedReader partition_by mismatch for table=chip_distribution: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:44:04,866 - [WARNING] - ServedReader partition_by mismatch for table=chip_distribution: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:44:04,866 - [WARNING] - ServedReader partition_by mismatch for table=chip_distribution: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:44:04,866 - [WARNING] - ServedReader partition_by mismatch for table=chip_distribution: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:44:04,866 - [WARNING] - ServedReader partition_by mismatch for table=chip_distribution: got=symbol expected=date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_concept_list.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 2.62,
+      "tail": "概念列表为空（已重试）\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_concept_performance.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 9.66,
+      "tail": "2026-04-24 18:44:13,112 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:44:14,117 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:44:14,118 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:44:15,123 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:44:15,124 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:44:16,128 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:44:16,129 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:44:17,134 - [WARNING] - ServedReader partition_by mismatch for table=concept_performance: got=symbol expected=date; ignoring unsupported partition filter"
+    },
+    {
+      "file": "examples/example_concept_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 5.63,
+      "tail": "2026-04-24 18:44:18,748 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]\n2026-04-24 18:44:19,751 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]\n2026-04-24 18:44:19,752 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]\n2026-04-24 18:44:20,756 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]\n2026-04-24 18:44:20,758 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]\n2026-04-24 18:44:21,762 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]\n2026-04-24 18:44:21,763 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]\n2026-04-24 18:44:22,769 - [WARNING] - ServedReader partition_by mismatch for table=concept_components: got=concept_code expected=date; converting partition_value to where[concept_code]"
+    },
+    {
+      "file": "examples/example_conversion_bond_daily.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 12.12,
+      "tail": "测试 1: 无效可转债代码\n  结果: 返回空 DataFrame\n\n测试 2: 正常调用\n  结果: 获取到 0 条记录\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_conversion_bond_list.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.61,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:44:35,485 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:35,488 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:35,490 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:35,493 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:35,502 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:35,505 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_convert_bond_premium.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 9.08,
+      "tail": "从 lixinger 源获取数据...\n  lixinger: 0 条记录\n\n从 akshare 源获取数据...\n  akshare: 0 条记录\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_convert_bond_spot.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "\n============================================================\n示例 6: 综合筛选 - 活跃且低估的可转债\n============================================================\n筛选失败: 'current_price'\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_convertible_bond.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 9.08,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:44:45,780 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:46,387 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:46,992 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:49,415 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:50,020 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss\n2026-04-24 18:44:50,624 - [WARNING] - ServedReader: table=conversion_bond_list not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_daily.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.65,
+      "tail": "平安银行 2023年不复权日线数据\n数据形状: (2, 9)\n全年交易日数: 2\n年初收盘价: 11.00\n年末收盘价: 11.00\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_dividend_by_date.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:44:55,506 - [WARNING] - ServedReader: table=dividend_by_date not in schema registry; serving as soft-miss\n2026-04-24 18:44:55,506 - [WARNING] - ServedReader: table=dividend_by_date not in schema registry; serving as soft-miss\n2026-04-24 18:44:55,507 - [WARNING] - ServedReader: table=dividend_by_date not in schema registry; serving as soft-miss\n2026-04-24 18:44:55,507 - [WARNING] - ServedReader: table=dividend_by_date not in schema registry; serving as soft-miss\n2026-04-24 18:44:55,508 - [WARNING] - ServedReader: table=dividend_by_date not in schema registry; serving as soft-miss\n2026-04-24 18:44:55,508 - [WARNING] - ServedReader: table=dividend_by_date not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_dragon_tiger.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "示例6: 错误处理示例\n============================================================\n获取到 1 条数据\n获取到 1 条数据\n捕获到异常: AttributeError: 'MockAdapter' object has no attribute 'get_dragon_tiger_summary'\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_dragon_tiger_list.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 15.14,
+      "tail": "\n第二次调用（应从缓存读取）:\n  耗时: 0.0004 秒，获取 0 条记录\n\n缓存加速比: 1.1x\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_earnings_forecast.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "2026-04-24 18:45:11,836 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:11,837 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:11,837 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:11,837 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:11,837 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:11,837 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:11,838 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:11,838 - [WARNING] - ServedReader partition_by mismatch for table=earnings_forecast: got=symbol expected=None; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_equity_freeze.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.63,
+      "tail": "2026-04-24 18:45:13,435 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]\n2026-04-24 18:45:14,439 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]\n2026-04-24 18:45:14,441 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]\n2026-04-24 18:45:15,445 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]\n2026-04-24 18:45:16,451 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]\n2026-04-24 18:45:16,452 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]\n2026-04-24 18:45:17,453 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]\n2026-04-24 18:45:18,457 - [WARNING] - ServedReader partition_by mismatch for table=equity_freeze: got=symbol expected=freeze_date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_equity_pledge.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 8.65,
+      "tail": "2026-04-24 18:45:25,092 - [WARNING] - ServedReader partition_by mismatch for table=equity_pledge: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:25,092 - [WARNING] - ServedReader: table=equity_pledge invalid columns ['date']; dropping from query\n2026-04-24 18:45:25,092 - [WARNING] - ServedReader partition_by mismatch for table=equity_pledge: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:25,092 - [WARNING] - ServedReader: table=equity_pledge invalid columns ['date']; dropping from query\n2026-04-24 18:45:26,098 - [WARNING] - ServedReader partition_by mismatch for table=equity_pledge: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:26,098 - [WARNING] - ServedReader: table=equity_pledge invalid columns ['date']; dropping from query\n2026-04-24 18:45:27,104 - [WARNING] - ServedReader partition_by mismatch for table=equity_pledge: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:45:27,104 - [WARNING] - ServedReader: table=equity_pledge invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_equity_pledge_rank.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.62,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:45:29,708 - [WARNING] - ServedReader: table=equity_pledge_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:30,709 - [WARNING] - ServedReader: table=equity_pledge_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:31,714 - [WARNING] - ServedReader: table=equity_pledge_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:31,715 - [WARNING] - ServedReader: table=equity_pledge_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:32,719 - [WARNING] - ServedReader: table=equity_pledge_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:33,725 - [WARNING] - ServedReader: table=equity_pledge_rank invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_esg_rank.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.63,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:45:36,332 - [WARNING] - ServedReader: table=esg_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:37,338 - [WARNING] - ServedReader: table=esg_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:38,344 - [WARNING] - ServedReader: table=esg_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:38,345 - [WARNING] - ServedReader: table=esg_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:39,350 - [WARNING] - ServedReader: table=esg_rank invalid columns ['date']; dropping from query\n2026-04-24 18:45:40,356 - [WARNING] - ServedReader: table=esg_rank invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_esg_rating.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 8.63,
+      "tail": "2026-04-24 18:45:46,983 - [WARNING] - ServedReader partition_by mismatch for table=esg_rating: got=symbol expected=rating_date; converting partition_value to where[symbol]\n2026-04-24 18:45:46,984 - [WARNING] - ServedReader: table=esg_rating invalid columns ['date']; dropping from query\n2026-04-24 18:45:46,984 - [WARNING] - ServedReader partition_by mismatch for table=esg_rating: got=symbol expected=rating_date; converting partition_value to where[symbol]\n2026-04-24 18:45:46,984 - [WARNING] - ServedReader: table=esg_rating invalid columns ['date']; dropping from query\n2026-04-24 18:45:47,984 - [WARNING] - ServedReader partition_by mismatch for table=esg_rating: got=symbol expected=rating_date; converting partition_value to where[symbol]\n2026-04-24 18:45:47,985 - [WARNING] - ServedReader: table=esg_rating invalid columns ['date']; dropping from query\n2026-04-24 18:45:48,990 - [WARNING] - ServedReader partition_by mismatch for table=esg_rating: got=symbol expected=rating_date; converting partition_value to where[symbol]\n2026-04-24 18:45:48,990 - [WARNING] - ServedReader: table=esg_rating invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_etf.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "2026-04-24 18:45:49,582 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:49,583 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:49,583 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:49,584 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:49,584 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:49,584 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:49,584 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:49,585 - [WARNING] - ServedReader partition_by mismatch for table=etf_daily: got=symbol expected=date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_finance_indicator.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.61,
+      "tail": "2026-04-24 18:45:50,194 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:45:50,195 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:45:50,195 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:45:50,195 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:45:50,195 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:45:50,195 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:45:50,196 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:45:50,196 - [WARNING] - ServedReader partition_by mismatch for table=finance_indicator: got=symbol expected=report_date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_financial_metrics.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "2026-04-24 18:45:50,792 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss\n2026-04-24 18:45:50,792 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss\n2026-04-24 18:45:50,792 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss\n2026-04-24 18:45:50,792 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss\n2026-04-24 18:45:50,793 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss\n2026-04-24 18:45:50,793 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss\n2026-04-24 18:45:50,793 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss\n2026-04-24 18:45:50,793 - [WARNING] - ServedReader: table=financial_metrics not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_fof_list.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "\n============================================================\n示例 5: 查看前N只FOF基金\n============================================================\n示例5: 返回空数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_fof_nav.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "2026-04-24 18:45:51,977 - [WARNING] - ServedReader partition_by mismatch for table=fof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:51,977 - [WARNING] - ServedReader: table=fof_nav invalid columns ['date']; dropping from query\n2026-04-24 18:45:51,977 - [WARNING] - ServedReader partition_by mismatch for table=fof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:51,977 - [WARNING] - ServedReader: table=fof_nav invalid columns ['date']; dropping from query\n2026-04-24 18:45:51,977 - [WARNING] - ServedReader partition_by mismatch for table=fof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:51,977 - [WARNING] - ServedReader: table=fof_nav invalid columns ['date']; dropping from query\n2026-04-24 18:45:51,977 - [WARNING] - ServedReader partition_by mismatch for table=fof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:51,977 - [WARNING] - ServedReader: table=fof_nav invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_fund.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.65,
+      "tail": "  _default_service = DataService()\n2026-04-24 18:45:52,621 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:52,622 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:52,622 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:52,623 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:52,623 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:52,623 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:52,623 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]"
+    },
+    {
+      "file": "examples/example_fund_open_daily.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "\n============================================================\n示例 5: 多只基金净值对比\n============================================================\n示例5: 返回空数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_fund_open_info.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "2026-04-24 18:45:53,805 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]\n2026-04-24 18:45:53,805 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]\n2026-04-24 18:45:53,806 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]\n2026-04-24 18:45:53,806 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]\n2026-04-24 18:45:53,806 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]\n2026-04-24 18:45:53,808 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]\n2026-04-24 18:45:53,808 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]\n2026-04-24 18:45:53,808 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_info: got=fund_code expected=None; converting partition_value to where[fund_code]"
+    },
+    {
+      "file": "examples/example_fund_open_nav.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "2026-04-24 18:45:54,402 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:54,402 - [WARNING] - ServedReader: table=fund_open_nav invalid columns ['date']; dropping from query\n2026-04-24 18:45:54,403 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:54,403 - [WARNING] - ServedReader: table=fund_open_nav invalid columns ['date']; dropping from query\n2026-04-24 18:45:54,403 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:54,403 - [WARNING] - ServedReader: table=fund_open_nav invalid columns ['date']; dropping from query\n2026-04-24 18:45:54,403 - [WARNING] - ServedReader partition_by mismatch for table=fund_open_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:45:54,403 - [WARNING] - ServedReader: table=fund_open_nav invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_futures.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "2026-04-24 18:45:55,004 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,005 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,005 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,005 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,005 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,005 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,006 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,006 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_futures_daily.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.61,
+      "tail": "2026-04-24 18:45:55,619 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,619 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,619 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,619 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,620 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,620 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,620 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:45:55,620 - [WARNING] - ServedReader partition_by mismatch for table=futures_daily: got=symbol expected=date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_futures_spot.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "示例 8: 错误处理演示\n============================================================\n\n测试: 正常调用\n  结果: 返回 None (接口可能未实现)\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_goodwill.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 8.64,
+      "tail": "2026-04-24 18:46:02,836 - [WARNING] - ServedReader partition_by mismatch for table=goodwill: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:46:02,836 - [WARNING] - ServedReader: table=goodwill invalid columns ['date']; dropping from query\n2026-04-24 18:46:02,837 - [WARNING] - ServedReader partition_by mismatch for table=goodwill: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:46:02,837 - [WARNING] - ServedReader: table=goodwill invalid columns ['date']; dropping from query\n2026-04-24 18:46:03,841 - [WARNING] - ServedReader partition_by mismatch for table=goodwill: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:46:03,841 - [WARNING] - ServedReader: table=goodwill invalid columns ['date']; dropping from query\n2026-04-24 18:46:04,847 - [WARNING] - ServedReader partition_by mismatch for table=goodwill: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:46:04,847 - [WARNING] - ServedReader: table=goodwill invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_goodwill_by_industry.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.63,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:46:07,449 - [WARNING] - ServedReader: table=goodwill_by_industry invalid columns ['date']; dropping from query\n2026-04-24 18:46:08,455 - [WARNING] - ServedReader: table=goodwill_by_industry invalid columns ['date']; dropping from query\n2026-04-24 18:46:09,460 - [WARNING] - ServedReader: table=goodwill_by_industry invalid columns ['date']; dropping from query\n2026-04-24 18:46:09,461 - [WARNING] - ServedReader: table=goodwill_by_industry invalid columns ['date']; dropping from query\n2026-04-24 18:46:10,467 - [WARNING] - ServedReader: table=goodwill_by_industry invalid columns ['date']; dropping from query\n2026-04-24 18:46:11,473 - [WARNING] - ServedReader: table=goodwill_by_industry invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_goodwill_impairment.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.63,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:46:14,079 - [WARNING] - ServedReader: table=goodwill_impairment invalid columns ['date']; dropping from query\n2026-04-24 18:46:15,083 - [WARNING] - ServedReader: table=goodwill_impairment invalid columns ['date']; dropping from query\n2026-04-24 18:46:16,087 - [WARNING] - ServedReader: table=goodwill_impairment invalid columns ['date']; dropping from query\n2026-04-24 18:46:16,088 - [WARNING] - ServedReader: table=goodwill_impairment invalid columns ['date']; dropping from query\n2026-04-24 18:46:17,094 - [WARNING] - ServedReader: table=goodwill_impairment invalid columns ['date']; dropping from query\n2026-04-24 18:46:18,099 - [WARNING] - ServedReader: table=goodwill_impairment invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_hk_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "============================================================\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:46:18,692 - [WARNING] - ServedReader: table=hk_stock_daily not in schema registry; serving as soft-miss\n2026-04-24 18:46:18,695 - [WARNING] - ServedReader: table=hk_stock_daily not in schema registry; serving as soft-miss\n2026-04-24 18:46:18,696 - [WARNING] - ServedReader: table=hk_stock_daily not in schema registry; serving as soft-miss\n2026-04-24 18:46:18,696 - [WARNING] - ServedReader: table=hk_stock_daily not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_hot_rank.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 3.61,
+      "tail": "    1 600000\n    2 600519\n    3 000001\n\nTop10 条数: 3\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_income_statement.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "测试 1: 正常股票代码\n  结果: 返回空数据\n\n测试 2: 无效股票代码\n  结果: 返回空数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_index.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "2026-04-24 18:46:23,491 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:46:23,491 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:46:23,491 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:46:23,492 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:46:23,492 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:46:23,492 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:46:23,492 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:46:23,493 - [WARNING] - ServedReader partition_by mismatch for table=index_daily: got=symbol expected=date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_index_components.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 15.12,
+      "tail": "测试 2: 无效指数代码\n  结果: 无数据\n\n测试 3: 不含权重\n  结果: 无数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_index_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 15.16,
+      "tail": "  [无数据] 000016 的成分股列表为空\n  耗时: 1.210 秒\n  返回股票数: 0\n\n速度比: 1.0x\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_index_valuation.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.66,
+      "tail": "测试 1: 正常获取\n  结果: 无数据 (空 DataFrame)\n\n测试 2: 无效指数代码\n  结果: 无数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_industry.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.66,
+      "tail": "映射查询 symbol=000001, industry=无\n行业成分股查询 industry_code=801150, 数量=0\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_industry_mapping.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.61,
+      "tail": "  结果: '其他'\n\n测试 3: 默认级别\n  [symbol=600519, level=1] 使用演示行业映射\n  结果: 食品饮料\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_industry_performance.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 12.67,
+      "tail": "2026-04-24 18:47:10,356 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:47:11,362 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:47:11,363 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:47:12,368 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:47:12,369 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:47:13,373 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:47:13,375 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter\n2026-04-24 18:47:14,377 - [WARNING] - ServedReader partition_by mismatch for table=industry_performance: got=symbol expected=date; ignoring unsupported partition filter"
+    },
+    {
+      "file": "examples/example_industry_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 4.62,
+      "tail": "行业成分股为空（已重试并回退 industry_code）\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_insider_trading.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.61,
+      "tail": "2026-04-24 18:47:19,599 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss\n2026-04-24 18:47:19,600 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss\n2026-04-24 18:47:19,601 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss\n2026-04-24 18:47:19,601 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss\n2026-04-24 18:47:19,601 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss\n2026-04-24 18:47:19,601 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss\n2026-04-24 18:47:19,602 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss\n2026-04-24 18:47:19,602 - [WARNING] - ServedReader: table=insider_trading not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_institution_holdings.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 18.77,
+      "tail": "2026-04-24 18:47:30,303 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss\n2026-04-24 18:47:31,313 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss\n2026-04-24 18:47:32,324 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss\n2026-04-24 18:47:33,333 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss\n2026-04-24 18:47:34,343 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss\n2026-04-24 18:47:35,353 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss\n2026-04-24 18:47:36,363 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss\n2026-04-24 18:47:37,369 - [WARNING] - ServedReader: table=institution_holdings not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_ipo_info.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.63,
+      "tail": "无数据，切换样本回退\n使用本地样本数据回退:\nsymbol name  issue_price  pe_ratio       申购日期\n301000 示例科技         18.5      22.3 2024-06-10\n603000 示例制造         25.8      19.7 2024-07-03\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_latest_holder_number.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 18.76,
+      "tail": "2026-04-24 18:47:49,686 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss\n2026-04-24 18:47:50,696 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss\n2026-04-24 18:47:51,707 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss\n2026-04-24 18:47:52,715 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss\n2026-04-24 18:47:53,724 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss\n2026-04-24 18:47:54,733 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss\n2026-04-24 18:47:55,743 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss\n2026-04-24 18:47:56,750 - [WARNING] - ServedReader: table=holder_number not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_limit_pool.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 82.2,
+      "tail": "get_limit_up_pool(2026-04-17): 第 3/3 次失败 -> 'MockAdapter' object has no attribute 'get_limit_up_pool'\nget_limit_down_pool(2026-04-17): 第 1/3 次失败 -> 'MockAdapter' object has no attribute 'get_limit_down_pool'\nget_limit_down_pool(2026-04-17): 第 2/3 次失败 -> 'MockAdapter' object has no attribute 'get_limit_down_pool'\nget_limit_down_pool(2026-04-17): 第 3/3 次失败 -> 'MockAdapter' object has no attribute 'get_limit_down_pool'\n2026-04-17        0      0        ∞       极好\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_lof_daily.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "2026-04-24 18:49:20,558 - [WARNING] - ServedReader partition_by mismatch for table=lof_fund: got=symbol expected=None; ignoring unsupported partition filter\n2026-04-24 18:49:20,558 - [WARNING] - ServedReader: table=lof_fund invalid columns ['date']; dropping from query\n2026-04-24 18:49:20,559 - [WARNING] - ServedReader partition_by mismatch for table=lof_fund: got=symbol expected=None; ignoring unsupported partition filter\n2026-04-24 18:49:20,559 - [WARNING] - ServedReader: table=lof_fund invalid columns ['date']; dropping from query\n2026-04-24 18:49:20,559 - [WARNING] - ServedReader partition_by mismatch for table=lof_fund: got=symbol expected=None; ignoring unsupported partition filter\n2026-04-24 18:49:20,559 - [WARNING] - ServedReader: table=lof_fund invalid columns ['date']; dropping from query\n2026-04-24 18:49:20,559 - [WARNING] - ServedReader partition_by mismatch for table=lof_fund: got=symbol expected=None; ignoring unsupported partition filter\n2026-04-24 18:49:20,559 - [WARNING] - ServedReader: table=lof_fund invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_lof_nav.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "2026-04-24 18:49:21,132 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:49:21,132 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:49:21,133 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:49:21,133 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:49:21,133 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:49:21,133 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:49:21,134 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]\n2026-04-24 18:49:21,134 - [WARNING] - ServedReader partition_by mismatch for table=lof_nav: got=fund_code expected=nav_date; converting partition_value to where[fund_code]"
+    },
+    {
+      "file": "examples/example_lof_spot.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "\n============================================================\n示例 5: LOF价格分布\n============================================================\n示例5: 返回空数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_macro.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "测试 1: 正常获取CPI数据\n  捕获异常: TypeError: MacroMixin.get_cpi_data() missing 2 required positional arguments: 'start_date' and 'end_date'\n\n测试 2: 不存在的接口\n  捕获异常: AttributeError: 'MockAdapter' object has no attribute 'get_nonexistent_macro'\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_macro_exchange_rate.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "USD/CNY 7.230  0.12\nEUR/CNY 7.890 -0.05\nJPY/CNY 0.048  0.08\nGBP/CNY 9.180 -0.11\nHKD/CNY 0.924  0.02\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_management_info.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.63,
+      "tail": "2026-04-24 18:49:24,450 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:25,461 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:25,462 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:26,469 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:27,478 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:27,480 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:28,488 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:29,499 - [WARNING] - ServedReader partition_by mismatch for table=company_management: got=symbol expected=None; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_margin.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "测试 2: 最近可交易日\n  结果: 获取到 1 行数据\n\n测试 3: 有效日期范围\n  当前数据源不支持 get_margin_summary，已跳过该测试\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_minute.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "  候选回退日期: 2026-04-24, 2026-04-23, 2026-04-22, 2026-04-21, 2026-04-20\n代码格式: sh600000        -> 无数据\n  [无数据] 600000.XSHG 在指定范围内无分钟数据\n  候选回退日期: 2026-04-24, 2026-04-23, 2026-04-22, 2026-04-21, 2026-04-20\n代码格式: 600000.XSHG     -> 无数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_money_flow.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 1.53,
+      "tail": "\n[5 rows x 13 columns]\n\n============================================================\n示例6: 错误处理示例\n============================================================\n捕获到异常: TypeError: 'NoneType' object is not subscriptable\n"
+    },
+    {
+      "file": "examples/example_name_history.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 16.43,
+      "tail": "2026-04-24 18:49:45,561 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:46,172 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:46,172 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:46,782 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:47,393 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:47,394 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:48,003 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]\n2026-04-24 18:49:48,609 - [WARNING] - ServedReader partition_by mismatch for table=name_history: got=symbol expected=None; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_new_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "  结果: 无数据\n\n测试 2: 再次调用（验证缓存）\n示例5-测试2: 返回空数据\n  结果: 无数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_north_money_flow.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.83,
+      "tail": "\n  合计: 840.00 亿元\n\n============================================================\n示例3: 错误处理示例\n============================================================\n获取到 4 条数据\n"
+    },
+    {
+      "file": "examples/example_northbound_holdings.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 36.92,
+      "tail": "2026-04-24 18:50:21,888 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:50:22,896 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:50:23,905 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:50:24,913 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:50:25,922 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:50:26,932 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:50:26,933 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]\n2026-04-24 18:50:26,934 - [WARNING] - ServedReader partition_by mismatch for table=northbound_holdings: got=symbol expected=date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_option_daily.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "2026-04-24 18:50:27,521 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:27,522 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:27,523 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:27,524 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:27,525 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:27,526 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:27,526 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:27,527 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_option_list.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "2026-04-24 18:50:28,102 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:28,103 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:28,103 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:28,103 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:28,103 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:28,104 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:28,104 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss\n2026-04-24 18:50:28,105 - [WARNING] - ServedReader: table=option_list not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_performance_express.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "2026-04-24 18:50:28,701 - [WARNING] - ServedReader partition_by mismatch for table=performance_express: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:28,702 - [WARNING] - ServedReader: table=performance_express invalid columns ['date']; dropping from query\n2026-04-24 18:50:28,702 - [WARNING] - ServedReader partition_by mismatch for table=performance_express: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:28,702 - [WARNING] - ServedReader: table=performance_express invalid columns ['date']; dropping from query\n2026-04-24 18:50:28,702 - [WARNING] - ServedReader partition_by mismatch for table=performance_express: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:28,702 - [WARNING] - ServedReader: table=performance_express invalid columns ['date']; dropping from query\n2026-04-24 18:50:28,702 - [WARNING] - ServedReader partition_by mismatch for table=performance_express: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:28,702 - [WARNING] - ServedReader: table=performance_express invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_performance_forecast.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "2026-04-24 18:50:29,286 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query\n2026-04-24 18:50:29,286 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query\n2026-04-24 18:50:29,287 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query\n2026-04-24 18:50:29,287 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query\n2026-04-24 18:50:29,287 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query\n2026-04-24 18:50:29,287 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query\n2026-04-24 18:50:29,287 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query\n2026-04-24 18:50:29,288 - [WARNING] - ServedReader: table=performance_forecast invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_realtime.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.64,
+      "tail": "service.akshare.get_spot_em: 第 3/3 次失败 -> mock 不支持 get_spot_em\n最终无可用数据。\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:50:29,862 - [WARNING] - ServedReader: table=spot_em not in schema registry; serving as soft-miss\n2026-04-24 18:50:30,871 - [WARNING] - ServedReader: table=spot_em not in schema registry; serving as soft-miss\n2026-04-24 18:50:31,882 - [WARNING] - ServedReader: table=spot_em not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_repurchase.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "\n============================================================\n示例 4: 回购数据统计分析\n============================================================\n无数据\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_research_report.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "2026-04-24 18:50:37,073 - [WARNING] - ServedReader: table=research_report invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,073 - [WARNING] - ServedReader partition_by mismatch for table=research_report: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:50:37,073 - [WARNING] - ServedReader partition_by mismatch for table=research_report: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:50:37,073 - [WARNING] - ServedReader: table=research_report invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,074 - [WARNING] - ServedReader partition_by mismatch for table=research_report: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:50:37,074 - [WARNING] - ServedReader partition_by mismatch for table=research_report: got=symbol expected=report_date; converting partition_value to where[symbol]\n2026-04-24 18:50:37,074 - [WARNING] - ServedReader: table=research_report invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,075 - [WARNING] - ServedReader partition_by mismatch for table=research_report: got=symbol expected=report_date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_restricted_release.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "2026-04-24 18:50:37,646 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,646 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,646 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,647 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,647 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,647 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,647 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query\n2026-04-24 18:50:37,647 - [WARNING] - ServedReader: table=restricted_release invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_restricted_release_calendar.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "  _default_service = DataService()\n2026-04-24 18:50:38,219 - [WARNING] - ServedReader: table=restricted_release_calendar invalid columns ['date']; dropping from query\n2026-04-24 18:50:38,220 - [WARNING] - ServedReader: table=restricted_release_calendar invalid columns ['date']; dropping from query\n2026-04-24 18:50:38,220 - [WARNING] - ServedReader: table=restricted_release_calendar invalid columns ['date']; dropping from query\n2026-04-24 18:50:38,220 - [WARNING] - ServedReader: table=restricted_release_calendar invalid columns ['date']; dropping from query\n2026-04-24 18:50:38,220 - [WARNING] - ServedReader: table=restricted_release_calendar invalid columns ['date']; dropping from query\n2026-04-24 18:50:38,221 - [WARNING] - ServedReader: table=restricted_release_calendar invalid columns ['date']; dropping from query\n2026-04-24 18:50:38,221 - [WARNING] - ServedReader: table=restricted_release_calendar invalid columns ['date']; dropping from query"
+    },
+    {
+      "file": "examples/example_restricted_release_detail.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "  _default_service = DataService()\n2026-04-24 18:50:38,790 - [WARNING] - ServedReader: table=restricted_release_detail not in schema registry; serving as soft-miss\n2026-04-24 18:50:38,792 - [WARNING] - ServedReader: table=restricted_release_detail not in schema registry; serving as soft-miss\n2026-04-24 18:50:38,793 - [WARNING] - ServedReader: table=restricted_release_detail not in schema registry; serving as soft-miss\n2026-04-24 18:50:38,793 - [WARNING] - ServedReader: table=restricted_release_detail not in schema registry; serving as soft-miss\n2026-04-24 18:50:38,793 - [WARNING] - ServedReader: table=restricted_release_detail not in schema registry; serving as soft-miss\n2026-04-24 18:50:38,793 - [WARNING] - ServedReader: table=restricted_release_detail not in schema registry; serving as soft-miss\n2026-04-24 18:50:38,794 - [WARNING] - ServedReader: table=restricted_release_detail not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_rights_issue.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "2026-04-24 18:50:39,367 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:39,368 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:39,369 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:39,369 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:39,369 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:39,369 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:39,369 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:50:39,370 - [WARNING] - ServedReader partition_by mismatch for table=rights_issue: got=symbol expected=announce_date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_sector_fund.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 3.14,
+      "tail": "  0%|          | 0/2 [00:00<?, ?it/s]\n100%|██████████| 2/2 [00:00<00:00,  9.55it/s]\n                                             \n\n  0%|          | 0/2 [00:00<?, ?it/s]\n 50%|█████     | 1/2 [00:00<00:00,  9.45it/s]\n100%|██████████| 2/2 [00:00<00:00,  9.26it/s]\n                                             "
+    },
+    {
+      "file": "examples/example_securities_list.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.59,
+      "tail": "\n科创板股票 (68开头): 0 只\nEmpty DataFrame\nColumns: [code, display_name, security_type, start_date]\nIndex: []\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_security_info.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 16.4,
+      "tail": "============================================================\n999999: 返回空结果 (证券不存在)\nABCDEF: 返回空结果 (证券不存在)\n000000: 返回空结果 (证券不存在)\n\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_shareholder_changes.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 9.66,
+      "tail": "2026-04-24 18:51:01,095 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss\n2026-04-24 18:51:02,100 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss\n2026-04-24 18:51:03,108 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss\n2026-04-24 18:51:04,120 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss\n2026-04-24 18:51:05,127 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss\n2026-04-24 18:51:06,138 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss\n2026-04-24 18:51:07,142 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss\n2026-04-24 18:51:08,151 - [WARNING] - ServedReader: table=shareholder_changes not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_spot_em.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 6.67,
+      "tail": "service.akshare.get_spot_em: 第 3/3 次失败 -> mock 不支持 get_spot_em\n最终无数据（可能是非交易时段或数据源异常）\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:51:09,780 - [WARNING] - ServedReader: table=spot_em not in schema registry; serving as soft-miss\n2026-04-24 18:51:10,791 - [WARNING] - ServedReader: table=spot_em not in schema registry; serving as soft-miss\n2026-04-24 18:51:11,799 - [WARNING] - ServedReader: table=spot_em not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_st_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "0  600234        *ST科新\n1  000971         ST高升\n2  002569        *ST步森\n3  600568         ST中珠\n4  300044         ST赛为\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_stock_bonus.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "2026-04-24 18:51:16,992 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:51:16,992 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:51:16,993 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:51:16,993 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:51:16,993 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:51:16,993 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:51:16,993 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]\n2026-04-24 18:51:16,994 - [WARNING] - ServedReader partition_by mismatch for table=stock_bonus: got=symbol expected=announce_date; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_stock_concepts.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 4.61,
+      "tail": "2026-04-24 18:51:17,562 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss\n2026-04-24 18:51:18,571 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss\n2026-04-24 18:51:18,573 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss\n2026-04-24 18:51:19,583 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss\n2026-04-24 18:51:19,584 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss\n2026-04-24 18:51:20,586 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss\n2026-04-24 18:51:20,588 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss\n2026-04-24 18:51:21,598 - [WARNING] - ServedReader: table=stock_concepts not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_stock_industry.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 4.59,
+      "tail": "2026-04-24 18:51:22,177 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]\n2026-04-24 18:51:23,178 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]\n2026-04-24 18:51:23,180 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]\n2026-04-24 18:51:24,181 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]\n2026-04-24 18:51:24,183 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]\n2026-04-24 18:51:25,192 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]\n2026-04-24 18:51:25,193 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]\n2026-04-24 18:51:26,195 - [WARNING] - ServedReader partition_by mismatch for table=stock_industry: got=symbol expected=industry_code; converting partition_value to where[symbol]"
+    },
+    {
+      "file": "examples/example_stock_valuation.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "2026-04-24 18:51:26,776 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss\n2026-04-24 18:51:26,776 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss\n2026-04-24 18:51:26,776 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss\n2026-04-24 18:51:26,776 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss\n2026-04-24 18:51:26,776 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss\n2026-04-24 18:51:26,777 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss\n2026-04-24 18:51:26,777 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss\n2026-04-24 18:51:26,777 - [WARNING] - ServedReader: table=stock_valuation not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_suspended_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.6,
+      "tail": "2  000610  西安旅游   2026-04-24  ...           2026-04-27  000610         西安旅游\n3  000056  皇庭国际   2026-04-24  ...           2026-04-27  000056         皇庭国际\n4  600543  莫高股份   2026-04-24  ...           2026-04-27  600543         莫高股份\n\n[5 rows x 10 columns]\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_sw_industry_daily.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 8.66,
+      "tail": "申万行业日线为空（已重试并回退 index_code/date）\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_sw_industry_list.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 3.62,
+      "tail": "/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:51:36,626 - [WARNING] - ServedReader partition_by mismatch for table=sw_industry_list: got=level expected=None; ignoring unsupported partition filter\n2026-04-24 18:51:37,634 - [WARNING] - ServedReader partition_by mismatch for table=sw_industry_list: got=level expected=None; ignoring unsupported partition filter\n2026-04-24 18:51:37,635 - [WARNING] - ServedReader partition_by mismatch for table=sw_industry_list: got=level expected=None; ignoring unsupported partition filter\n2026-04-24 18:51:38,643 - [WARNING] - ServedReader partition_by mismatch for table=sw_industry_list: got=level expected=None; ignoring unsupported partition filter\n2026-04-24 18:51:38,645 - [WARNING] - ServedReader partition_by mismatch for table=sw_industry_list: got=level expected=None; ignoring unsupported partition filter\n2026-04-24 18:51:39,653 - [WARNING] - ServedReader partition_by mismatch for table=sw_industry_list: got=level expected=None; ignoring unsupported partition filter"
+    },
+    {
+      "file": "examples/example_top_shareholders.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 18.74,
+      "tail": "2026-04-24 18:51:50,327 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss\n2026-04-24 18:51:51,333 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss\n2026-04-24 18:51:52,339 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss\n2026-04-24 18:51:53,349 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss\n2026-04-24 18:51:54,358 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss\n2026-04-24 18:51:55,367 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss\n2026-04-24 18:51:56,375 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss\n2026-04-24 18:51:57,381 - [WARNING] - ServedReader: table=top_shareholders not in schema registry; serving as soft-miss"
+    },
+    {
+      "file": "examples/example_trade_calendar.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.57,
+      "tail": "============================================================\n示例 5: 缓存效果\n============================================================\n第一次: 0.0002s, 0 条\n第二次: 0.0002s, 0 条\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_trading_days.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.56,
+      "tail": "============================================================\n示例6: 统计两个日期之间的交易日数量\n============================================================\n最近180天交易日数量: 0\n最近365天交易日数量: 0\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()"
+    },
+    {
+      "file": "examples/example_us_stocks.py",
+      "status": "ok",
+      "returncode": 0,
+      "seconds": 0.58,
+      "tail": "max    300.000000\n\n/Users/yuping/Downloads/git/akshare-data-service/src/akshare_data/api.py:67: DeprecationWarning: _DeprecatedSourceAdapterHandle is deprecated. Use the Served layer via DataService.query() instead. Deprecated since 0.3.0, will be removed in 0.4.0.\n  _default_service = DataService()\n2026-04-24 18:52:00,096 - [WARNING] - ServedReader: table=us_stock_daily not in schema registry; serving as soft-miss\n2026-04-24 18:52:00,099 - [WARNING] - ServedReader: table=us_stock_daily not in schema registry; serving as soft-miss\n2026-04-24 18:52:00,100 - [WARNING] - ServedReader: table=us_stock_daily not in schema registry; serving as soft-miss\n2026-04-24 18:52:00,100 - [WARNING] - ServedReader: table=us_stock_daily not in schema registry; serving as soft-miss"
+    }
+  ]
+}

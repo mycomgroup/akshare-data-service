@@ -25,6 +25,11 @@ get_index_components() 接口示例
   - weight: 权重 (当 include_weights=True 时)
 """
 
+from datetime import datetime, timedelta
+import inspect
+
+import pandas as pd
+
 from akshare_data import get_service
 from _example_utils import fetch_with_retry, normalize_symbol_input, stable_df
 
@@ -36,13 +41,82 @@ def _safe_df(df):
     return df
 
 
+_INDEX_CODE_ALIASES = {
+    "000300": ("000300", "399300"),
+    "399300": ("399300", "000300"),
+    "000016": ("000016",),
+    "000905": ("000905",),
+    "000852": ("000852",),
+    "399001": ("399001",),
+    "399006": ("399006",),
+}
+
+
+def _candidate_index_codes(index_code: str) -> list[str]:
+    raw = str(index_code).strip()
+    normalized = normalize_symbol_input(raw)
+    base_candidates = list(_INDEX_CODE_ALIASES.get(normalized, (normalized,)))
+    extras = [raw, normalized]
+
+    if raw.endswith((".SH", ".SZ", ".XSHG", ".XSHE")):
+        extras.append(raw.split(".")[0])
+    if raw.startswith(("sh", "sz")):
+        extras.append(raw[2:])
+
+    candidates: list[str] = []
+    for code in [*extras, *base_candidates]:
+        clean = normalize_symbol_input(code)
+        if clean and clean not in candidates:
+            candidates.append(clean)
+    return candidates
+
+
+def _date_fallback_kwargs(fetcher) -> list[dict]:
+    params = inspect.signature(fetcher).parameters
+    supports_var_kw = any(p.kind == inspect.Parameter.VAR_KEYWORD for p in params.values())
+    if not supports_var_kw and not {"date", "start_date", "end_date"}.intersection(params):
+        return [{}]
+
+    today = datetime.now().date()
+    recent_days = [(today - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(6)]
+    kwargs_list = [{}]
+    for day in recent_days:
+        kwargs_list.append({"date": day})
+        kwargs_list.append(
+            {"start_date": (datetime.strptime(day, "%Y-%m-%d") - timedelta(days=365)).strftime("%Y-%m-%d"), "end_date": day}
+        )
+    return kwargs_list
+
+
 def _safe_index_components(service, index_code: str, include_weights: bool = True):
-    code = normalize_symbol_input(index_code)
-    df = fetch_with_retry(
-        lambda: service.get_index_components(index_code=code, include_weights=include_weights),
-        retries=2,
-    )
-    return _safe_df(stable_df(df))
+    for candidate in _candidate_index_codes(index_code):
+        for date_kwargs in _date_fallback_kwargs(service.get_index_components):
+            try:
+                df = fetch_with_retry(
+                    lambda c=candidate, kw=date_kwargs: service.get_index_components(
+                        index_code=c,
+                        include_weights=include_weights,
+                        **kw,
+                    ),
+                    retries=1,
+                )
+                safe = _safe_df(stable_df(df))
+                if safe is not None:
+                    return safe
+            except TypeError:
+                continue
+            except Exception:
+                continue
+    return None
+
+
+def _safe_weight_sum(df: pd.DataFrame) -> str:
+    if "weight" not in df.columns:
+        return "N/A"
+    weights = pd.to_numeric(df["weight"], errors="coerce").dropna()
+    if weights.empty:
+        return "N/A"
+    return f"{weights.sum():.2f}%"
 
 
 # ============================================================
@@ -127,9 +201,7 @@ def example_compare_indices():
             else:
                 print(f"{name}({code}): {len(df)} 只成分股")
                 print(f"  字段: {list(df.columns)}")
-                if "weight" in df.columns:
-                    total_weight = df["weight"].sum()
-                    print(f"  权重合计: {total_weight:.2f}%")
+                print(f"  权重合计: {_safe_weight_sum(df)}")
         except Exception as e:
             print(f"{name}({code}): 获取失败 - {e}")
 
@@ -151,14 +223,30 @@ def example_weight_analysis():
             print("无权重数据")
             return
 
+        weights = pd.to_numeric(df["weight"], errors="coerce").dropna()
+        if weights.empty:
+            print("无可用权重数据")
+            return
+
         print(f"成分股数量: {len(df)}")
         print("\n权重统计:")
-        print(df["weight"].describe())
+        print(weights.describe())
 
         if "name" in df.columns:
-            top10 = df.nlargest(10, "weight")[["code", "name", "weight"]]
+            top10 = (
+                df.assign(weight_num=pd.to_numeric(df["weight"], errors="coerce"))
+                .dropna(subset=["weight_num"])
+                .nlargest(10, "weight_num")[["code", "name", "weight_num"]]
+                .rename(columns={"weight_num": "weight"})
+            )
         else:
-            top10 = df.nlargest(10, "weight")
+            top10 = (
+                df.assign(weight_num=pd.to_numeric(df["weight"], errors="coerce"))
+                .dropna(subset=["weight_num"])
+                .nlargest(10, "weight_num")
+                .drop(columns=["weight"])
+                .rename(columns={"weight_num": "weight"})
+            )
 
         print("\n前10大权重股:")
         print(top10.to_string(index=False))
@@ -172,7 +260,7 @@ def example_weight_analysis():
             (10, 100),
         ]
         for low, high in ranges:
-            count = len(df[(df["weight"] >= low) & (df["weight"] < high)])
+            count = len(weights[(weights >= low) & (weights < high)])
             print(f"  {low}% - {high}%: {count} 只")
 
     except Exception as e:
