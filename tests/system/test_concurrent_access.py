@@ -9,7 +9,6 @@ Verifies thread safety under load:
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List
-from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest

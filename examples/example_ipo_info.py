@@ -16,7 +16,6 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
 import pandas as pd
-import akshare as ak
 
 from akshare_data import get_service
 from _example_utils import first_non_empty_by_symbol, stable_df

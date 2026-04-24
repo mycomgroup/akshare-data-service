@@ -23,7 +23,7 @@ def _call_rights_issue(symbol):
         if df is None or df.empty:
             return _mock_rights_issue(symbol)
         return df
-    except Exception as e:
+    except Exception:
         return _mock_rights_issue(symbol)
 
 

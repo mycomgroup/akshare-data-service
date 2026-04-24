@@ -49,11 +49,54 @@ class ParamInferrer:
         return func.__doc__ or ""
 
     def _parse_doc_params(self, doc: str) -> Dict[str, Any]:
-        """从文档中解析参数示例"""
+        """从文档中解析参数示例
+
+        只匹配 :param <name>: <description> 格式，或 :param <name>: <value>
+        避免捕获数学公式、URL 等无效值
+        """
         params = {}
-        pattern = r'(\w+)\s*=\s*["\']?([^"\',\s]+)["\']?'
-        for match in re.finditer(pattern, doc):
-            name, value = match.groups()
-            if name not in ("type", "rtype", "param"):
-                params[name] = value
+
+        patterns = [
+            r':param\s+(\w+)\s*:\s*([^\n]+)',
+            r'(\w+)\s*=\s*["\']([^"\']+)["\']',
+        ]
+
+        for pattern in patterns:
+            for match in re.finditer(pattern, doc):
+                name = match.group(1)
+                value = match.group(2).strip()
+
+                if name in ("type", "rtype", "param"):
+                    continue
+
+                if not self._is_valid_probe_value(value):
+                    continue
+
+                if name not in params:
+                    params[name] = value
+
         return params
+
+    def _is_valid_probe_value(self, value: str) -> bool:
+        """验证探针参数值是否合理"""
+        if not value:
+            return False
+
+        value_str = str(value)
+
+        if len(value_str) > 200:
+            return False
+
+        invalid_patterns = [
+            r'[\(\)\/\^\+\-\*]',
+            r'^https?://',
+            r'&[a-z]+=',
+            r'\bid\b.*\b=\b',
+            r'\{[^{}]*\}',
+        ]
+
+        for pattern in invalid_patterns:
+            if re.search(pattern, value_str):
+                return False
+
+        return True

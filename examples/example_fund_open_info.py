@@ -3,7 +3,6 @@
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-import logging
 
 import pandas as pd
 import akshare as ak

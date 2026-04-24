@@ -7,7 +7,7 @@ src/data_access/data_source.py
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional, List, Dict, Any, Union
+from typing import Optional, Dict, Any, Union
 from datetime import datetime, date
 import pandas as pd
 

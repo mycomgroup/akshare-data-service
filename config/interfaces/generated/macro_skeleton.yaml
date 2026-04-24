@@ -1,0 +1,7746 @@
+macro_australia_bank_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-澳大利亚-央行公布利率决议
+
+    https://data.eastmoney.com/cjsj/foreign_5_6.html
+
+    :return: 央行公布利率决议
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_australia_bank_rate
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_australia_bank_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_australia_cpi_quarterly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-澳大利亚-消费者物价指数季率
+
+    https://data.eastmoney.com/cjsj/foreign_5_4.html
+
+    :return: 消费者物价指数季率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_australia_cpi_quarterly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_australia_cpi_quarterly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_australia_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-澳大利亚-消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_5_5.html
+
+    :return: 消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_australia_cpi_yearly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_australia_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_australia_ppi_quarterly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-澳大利亚-生产者物价指数季率
+
+    https://data.eastmoney.com/cjsj/foreign_5_3.html
+
+    :return: 生产者物价指数季率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_australia_ppi_quarterly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_australia_ppi_quarterly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_australia_retail_rate_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-澳大利亚-零售销售月率
+
+    https://data.eastmoney.com/cjsj/foreign_5_0.html
+
+    :return: 零售销售月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_australia_retail_rate_monthly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_australia_retail_rate_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_australia_trade:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-澳大利亚-贸易帐
+
+    https://data.eastmoney.com/cjsj/foreign_5_1.html
+
+    :return: 贸易帐
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_australia_trade
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_australia_trade
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_australia_unemployment_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-澳大利亚-失业率
+
+    https://data.eastmoney.com/cjsj/foreign_5_2.html
+
+    :return: 失业率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_australia_unemployment_rate
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_australia_unemployment_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_bank_australia_interest_rate:
+  category: macro
+  description: '澳洲联储决议报告, 数据区间从 19800201-至今
+
+    https://datacenter.jin10.com/reportType/dc_australia_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_australia_interest_rate_decision_all.js?v=1578582414
+
+    :return...'
+  input: []
+  name: macro_bank_australia_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_australia_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_brazil_interest_rate:
+  category: macro
+  description: '巴西利率决议报告, 数据区间从 20080201-至今
+
+    https://datacenter.jin10.com/reportType/dc_brazil_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_brazil_interest_rate_decision_all.js?v=1578582718
+
+    :return: 巴西利率...'
+  input: []
+  name: macro_bank_brazil_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_brazil_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_china_interest_rate:
+  category: macro
+  description: '中国央行决议报告, 数据区间从 19990105-至今
+
+    https://datacenter.jin10.com/reportType/dc_newzealand_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_newzealand_interest_rate_decision_all.js?v=1578582075
+
+    :retu...'
+  input: []
+  name: macro_bank_china_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_china_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_english_interest_rate:
+  category: macro
+  description: '英国央行决议报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_english_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_english_interest_rate_decision_all.js?v=1578582331
+
+    :return: 英国...'
+  input: []
+  name: macro_bank_english_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_english_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_euro_interest_rate:
+  category: macro
+  description: '欧洲央行决议报告, 数据区间从 19990101-至今
+
+    https://datacenter.jin10.com/reportType/dc_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_interest_rate_decision_all.js?v=1578581663
+
+    :return: 欧洲央行决议报告-今值(%)
+
+    :rt...'
+  input: []
+  name: macro_bank_euro_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_euro_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_india_interest_rate:
+  category: macro
+  description: '印度利率决议报告, 数据区间从 20000801-至今
+
+    https://datacenter.jin10.com/reportType/dc_india_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_india_interest_rate_decision_all.js?v=1578582645
+
+    :return: 印度利率决议...'
+  input: []
+  name: macro_bank_india_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_india_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_japan_interest_rate:
+  category: macro
+  description: '日本利率决议报告, 数据区间从 20080214-至今
+
+    https://datacenter.jin10.com/reportType/dc_japan_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_japan_interest_rate_decision_all.js?v=1578582485
+
+    :return: 日本利率决议...'
+  input: []
+  name: macro_bank_japan_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_japan_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_newzealand_interest_rate:
+  category: macro
+  description: '新西兰联储决议报告, 数据区间从 19990401-至今
+
+    https://datacenter.jin10.com/reportType/dc_newzealand_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_newzealand_interest_rate_decision_all.js?v=1578582075
+
+    :ret...'
+  input: []
+  name: macro_bank_newzealand_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_newzealand_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_russia_interest_rate:
+  category: macro
+  description: '俄罗斯利率决议报告, 数据区间从 20030601-至今
+
+    https://datacenter.jin10.com/reportType/dc_russia_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_russia_interest_rate_decision_all.js?v=1578582572
+
+    :return: 俄罗斯...'
+  input: []
+  name: macro_bank_russia_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_russia_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_switzerland_interest_rate:
+  category: macro
+  description: '瑞士央行利率决议报告, 数据区间从 20080313-至今
+
+    https://datacenter.jin10.com/reportType/dc_switzerland_interest_rate_decision
+
+    https://cdn.jin10.com/dc/reports/dc_switzerland_interest_rate_decision_all.js?v=1578582240
+
+    :...'
+  input: []
+  name: macro_bank_switzerland_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_switzerland_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_bank_usa_interest_rate:
+  category: macro
+  description: '美联储利率决议报告, 数据区间从 19820927-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_interest_rate_decision
+
+    :return: 美联储利率决议报告-今值(%)
+
+    :rtype: pandas.Series'
+  input: []
+  name: macro_bank_usa_interest_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_bank_usa_interest_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_canada_bank_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-央行公布利率决议
+
+    https://data.eastmoney.com/cjsj/foreign_7_4.html
+
+    :return: 央行公布利率决议
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_bank_rate
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_bank_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_core_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-核心消费者物价指数月率
+
+    https://data.eastmoney.com/cjsj/foreign_7_6.html
+
+    :return: 核心消费者物价指数月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_core_cpi_monthly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_core_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_core_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-核心消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_7_5.html
+
+    :return: 核心消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_core_cpi_yearly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_core_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-消费者物价指数月率
+
+    https://data.eastmoney.com/cjsj/foreign_7_8.html
+
+    :return: 消费者物价指数月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_cpi_monthly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_7_7.html
+
+    :return: 消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_cpi_yearly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_gdp_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-GDP 月率
+
+    https://data.eastmoney.com/cjsj/foreign_7_9.html
+
+    :return: GDP 月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_gdp_monthly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_gdp_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_new_house_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-新屋开工
+
+    https://data.eastmoney.com/cjsj/foreign_7_0.html
+
+    :return: 新屋开工
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_new_house_rate
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_new_house_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_retail_rate_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-零售销售月率
+
+    https://data.eastmoney.com/cjsj/foreign_7_3.html
+
+    :return: 零售销售月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_retail_rate_monthly
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_retail_rate_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_trade:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-贸易帐
+
+    https://data.eastmoney.com/cjsj/foreign_7_2.html
+
+    :return: 贸易帐
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_trade
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_trade
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_canada_unemployment_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-加拿大-失业率
+
+    https://data.eastmoney.com/cjsj/foreign_7_1.html
+
+    :return: 失业率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_canada_unemployment_rate
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_canada_unemployment_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_china_agricultural_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '农副指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00662543.html
+
+    :return: 农副指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_agricultural_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_agricultural_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_agricultural_product:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '农产品批发价格总指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00009274.html
+
+    :return: 农产品批发价格总指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_agricultural_product
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_agricultural_product
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_au_report:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '上海黄金交易所报告, 数据区间从20100331-至今
+
+    https://datacenter.jin10.com/reportType/dc_sge_report
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_au_report
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 加权平均价 field
+    name: 加权平均价
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: direction field
+    name: direction
+    type: str
+  - desc: 交收量 field
+    name: 交收量
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_au_report
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      交收方向: direction
+      开盘价: open
+      成交量: volume
+      成交金额: amount
+      持仓量: open_interest
+      收盘价: close
+      日期: date
+      最低价: low
+      最高价: high
+      涨跌: change
+      涨跌幅: pct_change
+    param_transforms: {}
+macro_china_bank_financing:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '银行理财产品发行数量
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI01516267.html
+
+    :return: 银行理财产品发行数量
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_bank_financing
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_bank_financing
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_bdti_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '原油运输指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00107668.html
+
+    :return: 原油运输指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_bdti_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_bdti_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_bond_public:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '中国-债券信息披露-债券发行
+
+    https://www.chinamoney.com.cn/chinese/xzjfx/
+
+    :return: 债券发行
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_bond_public
+  output:
+  - desc: 债券全称 field
+    name: 债券全称
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 计息方式 field
+    name: 计息方式
+    type: str
+  - desc: term field
+    name: term
+    type: datetime
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: 价格 field
+    name: 价格
+    type: float
+  - desc: 计划发行量 field
+    name: 计划发行量
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_bond_public
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      债券期限: term
+      债券类型: type
+      债券评级: rating
+      发行日期: date
+    param_transforms: {}
+macro_china_bsi_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '超灵便型船运价指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00107667.html
+
+    :return: 超灵便型船运价指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_bsi_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_bsi_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_central_bank_balance:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-央行货币当局资产负债
+
+    https://finance.sina.com.cn/mac/#fininfo-8-0-31-2
+
+    :return: 央行货币当局资产负债
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_central_bank_balance
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_central_bank_balance
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_commodity_price_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '大宗商品价格
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00662535.html
+
+    :return: 大宗商品价格
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_commodity_price_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_commodity_price_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_construction_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '建材指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00662541.html
+
+    :return: 建材指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_construction_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_construction_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_construction_price_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '建材价格指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00237146.html
+
+    :return: 建材价格指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_construction_price_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_construction_price_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_consumer_goods_retail:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据-社会消费品零售总额
+
+    https://data.eastmoney.com/cjsj/xfp.html
+
+    :return: 社会消费品零售总额
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_consumer_goods_retail
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 同比增长 field
+    name: 同比增长
+    type: float
+  - desc: 环比增长 field
+    name: 环比增长
+    type: float
+  - desc: 累计 field
+    name: 累计
+    type: str
+  - desc: 累计-同比增长 field
+    name: 累计-同比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_consumer_goods_retail
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_cpi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-中国居民消费价格指数
+
+    https://data.eastmoney.com/cjsj/cpi.html
+
+    :return: 东方财富-中国居民消费价格指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_cpi
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 全国-同比增长 field
+    name: 全国-同比增长
+    type: float
+  - desc: 全国-当月 field
+    name: 全国-当月
+    type: datetime
+  - desc: 全国-环比增长 field
+    name: 全国-环比增长
+    type: float
+  - desc: 全国-累计 field
+    name: 全国-累计
+    type: str
+  - desc: city field
+    name: city
+    type: float
+  - desc: city field
+    name: city
+    type: datetime
+  - desc: city field
+    name: city
+    type: float
+  - desc: city field
+    name: city
+    type: str
+  - desc: 农村-同比增长 field
+    name: 农村-同比增长
+    type: float
+  - desc: 农村-当月 field
+    name: 农村-当月
+    type: datetime
+  - desc: 农村-环比增长 field
+    name: 农村-环比增长
+    type: float
+  - desc: 农村-累计 field
+    name: 农村-累计
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_cpi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      城市-同比增长: city
+      城市-当月: city
+      城市-环比增长: city
+      城市-累计: city
+      月份: month
+    param_transforms: {}
+macro_china_cpi_monthly:
+  category: macro
+  description: '中国月度 CPI 数据, 数据区间从 19960201-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_cpi_mom
+
+    :return: 中国月度 CPI 数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_cpi_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_cpi_yearly:
+  category: macro
+  description: '中国年度 CPI 数据, 数据区间从 19860201-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_cpi_yoy
+
+    :return: 中国年度 CPI 数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_cpi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_cx_pmi_yearly:
+  category: macro
+  description: '中国年度财新 PMI 数据, 数据区间从 20120120-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_caixin_manufacturing_pmi
+
+    :return: 中国年度财新 PMI 数据
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_cx_pmi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_cx_pmi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_cx_services_pmi_yearly:
+  category: macro
+  description: '中国财新服务业PMI报告, 数据区间从 20120405-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_caixin_services_pmi
+
+    https://cdn.jin10.com/dc/reports/dc_chinese_caixin_services_pmi_all.js?v=1578818109
+
+    :return: pand...'
+  input: []
+  name: macro_china_cx_services_pmi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_cx_services_pmi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_czsr:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-财政收入
+
+    https://data.eastmoney.com/cjsj/czsr.html
+
+    :return: 东方财富-财政收入
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_czsr
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 当月-同比增长 field
+    name: 当月-同比增长
+    type: float
+  - desc: 当月-环比增长 field
+    name: 当月-环比增长
+    type: float
+  - desc: 累计 field
+    name: 累计
+    type: str
+  - desc: 累计-同比增长 field
+    name: 累计-同比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_czsr
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_daily_energy:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '中国日度沿海六大电库存数据, 数据区间从20160101-至今
+
+    https://datacenter.jin10.com/reportType/dc_qihuo_energy_report
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_daily_energy
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: kinds
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_daily_energy
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_china_energy_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '能源指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00662539.html
+
+    :return: 能源指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_energy_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_energy_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_enterprise_boom_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: 'https://data.eastmoney.com/cjsj/qyjqzs.html
+
+    中国-企业景气及企业家信心指数
+
+    :return: 企业景气及企业家信心指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_enterprise_boom_index
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: quarter field
+    name: quarter
+    type: datetime
+  - desc: 企业景气指数-指数 field
+    name: 企业景气指数-指数
+    type: float
+  - desc: 企业家信心指数-指数 field
+    name: 企业家信心指数-指数
+    type: float
+  - desc: 企业景气指数-同比 field
+    name: 企业景气指数-同比
+    type: float
+  - desc: 企业景气指数-环比 field
+    name: 企业景气指数-环比
+    type: float
+  - desc: 企业家信心指数-同比 field
+    name: 企业家信心指数-同比
+    type: float
+  - desc: 企业家信心指数-环比 field
+    name: 企业家信心指数-环比
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_enterprise_boom_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      季度: quarter
+    param_transforms: {}
+macro_china_exports_yoy:
+  category: macro
+  description: '中国以美元计算出口年率报告, 数据区间从 19820201-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_exports_yoy
+
+    :return: 中国以美元计算出口年率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_exports_yoy
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_exports_yoy
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_fdi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据一览-中国-外商直接投资数据
+
+    https://data.eastmoney.com/cjsj/fdi.html
+
+    :return: 外商直接投资数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_fdi
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 当月-同比增长 field
+    name: 当月-同比增长
+    type: float
+  - desc: 当月-环比增长 field
+    name: 当月-环比增长
+    type: float
+  - desc: 累计 field
+    name: 累计
+    type: str
+  - desc: 累计-同比增长 field
+    name: 累计-同比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_fdi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_foreign_exchange_gold:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '央行黄金和外汇储备
+
+    https://finance.sina.com.cn/mac/#fininfo-5-0-31-2
+
+    :return: 央行黄金和外汇储备
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_foreign_exchange_gold
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_foreign_exchange_gold
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_freight_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-航贸运价指数
+
+    https://finance.sina.com.cn/mac/#industry-22-0-31-2
+
+    :return: 航贸运价指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_freight_index
+  output:
+  - desc: 'from :return: docstring'
+    name: '2'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_freight_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '2': '2'
+    param_transforms: {}
+macro_china_fx_gold:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-外汇和黄金储备
+
+    https://data.eastmoney.com/cjsj/hjwh.html
+
+    :return: 外汇和黄金储备
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_fx_gold
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 黄金储备-数值 field
+    name: 黄金储备-数值
+    type: float
+  - desc: 黄金储备-同比 field
+    name: 黄金储备-同比
+    type: str
+  - desc: 黄金储备-环比 field
+    name: 黄金储备-环比
+    type: str
+  - desc: country field
+    name: country
+    type: float
+  - desc: country field
+    name: country
+    type: str
+  - desc: country field
+    name: country
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_fx_gold
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      国家外汇储备-同比: country
+      国家外汇储备-数值: country
+      国家外汇储备-环比: country
+      月份: month
+    param_transforms: {}
+macro_china_fx_reserves_yearly:
+  category: macro
+  description: '中国年度外汇储备数据, 数据区间从 20140115-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_fx_reserves
+
+    :return: 中国年度外汇储备数据
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_fx_reserves_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_fx_reserves_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_gdp:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-中国国内生产总值
+
+    https://data.eastmoney.com/cjsj/gdp.html
+
+    :return: 东方财富中国国内生产总值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_gdp
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: quarter field
+    name: quarter
+    type: datetime
+  - desc: 国内生产总值-绝对值 field
+    name: 国内生产总值-绝对值
+    type: float
+  - desc: 第一产业-绝对值 field
+    name: 第一产业-绝对值
+    type: float
+  - desc: 第二产业-绝对值 field
+    name: 第二产业-绝对值
+    type: float
+  - desc: 第三产业-绝对值 field
+    name: 第三产业-绝对值
+    type: float
+  - desc: 国内生产总值-同比增长 field
+    name: 国内生产总值-同比增长
+    type: float
+  - desc: 第一产业-同比增长 field
+    name: 第一产业-同比增长
+    type: float
+  - desc: 第二产业-同比增长 field
+    name: 第二产业-同比增长
+    type: float
+  - desc: 第三产业-同比增长 field
+    name: 第三产业-同比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_gdp
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      季度: quarter
+    param_transforms: {}
+macro_china_gdp_yearly:
+  category: macro
+  description: '金十数据中心-中国 GDP 年率报告, 数据区间从 20110120-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_gdp_yoy
+
+    :return: 中国 GDP 年率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_gdp_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_gdp_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_gdzctz:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-中国城镇固定资产投资
+
+    https://data.eastmoney.com/cjsj/gdzctz.html
+
+    :return: 东方财富中国城镇固定资产投资
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_gdzctz
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 同比增长 field
+    name: 同比增长
+    type: float
+  - desc: 环比增长 field
+    name: 环比增长
+    type: float
+  - desc: 自年初累计 field
+    name: 自年初累计
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_gdzctz
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_gyzjz:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富网-经济数据-工业增加值增长
+
+    https://data.eastmoney.com/cjsj/gyzjz.html
+
+    :return: 工业增加值增长
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_gyzjz
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 同比增长 field
+    name: 同比增长
+    type: float
+  - desc: 累计增长 field
+    name: 累计增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_gyzjz
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布时间: time
+      月份: month
+    param_transforms: {}
+macro_china_hgjck:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-海关进出口增减情况一览表
+
+    https://data.eastmoney.com/cjsj/hgjck.html
+
+    :return: 东方财富-海关进出口增减情况一览表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hgjck
+  output:
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hgjck
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      result: result
+    param_transforms: {}
+macro_china_hk_building_amount:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-香港楼宇买卖合约成交金额
+
+    https://data.eastmoney.com/cjsj/foreign_8_6.html
+
+    :return: 香港楼宇买卖合约成交金额
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_building_amount
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_building_amount
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_building_volume:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-香港楼宇买卖合约数量
+
+    https://data.eastmoney.com/cjsj/foreign_8_5.html
+
+    :return: 香港楼宇买卖合约数量
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_building_volume
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_building_volume
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_cpi:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-消费者物价指数
+
+    https://data.eastmoney.com/cjsj/foreign_8_0.html
+
+    :return: 消费者物价指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_cpi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_cpi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_cpi_ratio:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_8_1.html
+
+    :return: 消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_cpi_ratio
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_cpi_ratio
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_gbp:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-香港 GDP
+
+    https://data.eastmoney.com/cjsj/foreign_8_3.html
+
+    :return: 香港 GDP
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_gbp
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_gbp
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_gbp_ratio:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-香港 GDP 同比
+
+    https://data.eastmoney.com/cjsj/foreign_8_4.html
+
+    :return: 香港 GDP 同比
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_gbp_ratio
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_gbp_ratio
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_market_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '香港同业拆借报告, 数据区间从 20170320-至今
+
+    https://datacenter.jin10.com/reportType/dc_hk_market_info
+
+    https://cdn.jin10.com/dc/reports/dc_hk_market_info_all.js?v=1578755471
+
+    :return: 香港同业拆借报告-今值(%)
+
+    :rtype: pandas.Data...'
+  input: []
+  name: macro_china_hk_market_info
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_market_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_china_hk_ppi:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-香港制造业 PPI 年率
+
+    https://data.eastmoney.com/cjsj/foreign_8_8.html
+
+    :return: 香港制造业 PPI 年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_ppi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_ppi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_rate_of_unemployment:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-失业率
+
+    https://data.eastmoney.com/cjsj/foreign_8_2.html
+
+    :return: 失业率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_rate_of_unemployment
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_rate_of_unemployment
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_hk_trade_diff_ratio:
+  category: macro
+  description: '东方财富-经济数据一览-中国香港-香港商品贸易差额年率
+
+    https://data.eastmoney.com/cjsj/foreign_8_7.html
+
+    :return: 香港商品贸易差额年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_hk_trade_diff_ratio
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_hk_trade_diff_ratio
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_imports_yoy:
+  category: macro
+  description: '中国以美元计算进口年率报告, 数据区间从 19960201-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_imports_yoy
+
+    https://cdn.jin10.com/dc/reports/dc_chinese_imports_yoy_all.js?v=1578754588
+
+    :return: 中国以美元计算进口年率报告
+
+    :rtyp...'
+  input: []
+  name: macro_china_imports_yoy
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_imports_yoy
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_industrial_production_yoy:
+  category: macro
+  description: '中国规模以上工业增加值年率报告, 数据区间从19900301-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_industrial_production_yoy
+
+    https://cdn.jin10.com/dc/reports/dc_chinese_industrial_production_yoy_all.js?v=1578754779...'
+  input: []
+  name: macro_china_industrial_production_yoy
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_industrial_production_yoy
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_insurance:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-保险业经营情况
+
+    https://finance.sina.com.cn/mac/#fininfo-19-0-31-3
+
+    :return: 保险业经营情况
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_insurance
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_insurance
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_insurance_income:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '原保险保费收入
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMM00088870.html
+
+    :return: 原保险保费收入
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_insurance_income
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_insurance_income
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_international_tourism_fx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-国际旅游外汇收入构成
+
+    https://finance.sina.com.cn/mac/#industry-15-0-31-3
+
+    :return: 国际旅游外汇收入构成
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_international_tourism_fx
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_international_tourism_fx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_lpi_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '物流景气指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00352262.html
+
+    :return: 物流景气指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_lpi_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_lpi_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_lpr:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: 'LPR品种详细数据
+
+    https://data.eastmoney.com/cjsj/globalRateLPR.html
+
+    :return: LPR品种详细数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_lpr
+  output:
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_lpr
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      result: result
+    param_transforms: {}
+macro_china_m2_yearly:
+  category: macro
+  description: '中国年度 M2 数据, 数据区间从 19980201-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_m2_money_supply_yoy
+
+    :return: 中国年度 M2 数据
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_m2_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_m2_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_market_margin_sh:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '上海融资融券报告, 数据区间从 20100331-至今
+
+    https://datacenter.jin10.com/reportType/dc_market_margin_sse
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_market_margin_sh
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: balance field
+    name: balance
+    type: float
+  - desc: ask field
+    name: ask
+    type: float
+  - desc: 融券余量 field
+    name: 融券余量
+    type: float
+  - desc: balance field
+    name: balance
+    type: float
+  - desc: balance field
+    name: balance
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_market_margin_sh
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      融券余额: balance
+      融券卖出量: ask
+      融资买入额: bid
+      融资余额: balance
+      融资融券余额: balance
+    param_transforms: {}
+macro_china_market_margin_sz:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '深圳融资融券报告, 数据区间从20100331-至今
+
+    https://datacenter.jin10.com/reportType/dc_market_margin_sz
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_market_margin_sz
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: balance field
+    name: balance
+    type: float
+  - desc: ask field
+    name: ask
+    type: float
+  - desc: 融券余量 field
+    name: 融券余量
+    type: float
+  - desc: balance field
+    name: balance
+    type: float
+  - desc: balance field
+    name: balance
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_market_margin_sz
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      融券余额: balance
+      融券卖出量: ask
+      融资买入额: bid
+      融资余额: balance
+      融资融券余额: balance
+    param_transforms: {}
+macro_china_mobile_number:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '手机出货量
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00225823.html
+
+    :return: 手机出货量
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_mobile_number
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_mobile_number
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_money_supply:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-货币供应量
+
+    https://data.eastmoney.com/cjsj/hbgyl.html
+
+    :return: 货币供应量
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_money_supply
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: currency field
+    name: currency
+    type: float
+  - desc: currency field
+    name: currency
+    type: float
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: currency field
+    name: currency
+    type: float
+  - desc: currency field
+    name: currency
+    type: float
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 流通中的现金(M0)-同比增长 field
+    name: 流通中的现金(M0)-同比增长
+    type: float
+  - desc: 流通中的现金(M0)-环比增长 field
+    name: 流通中的现金(M0)-环比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_money_supply
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+      流通中的现金(M0)-数量(亿元): quantity
+      货币(M1)-同比增长: currency
+      货币(M1)-数量(亿元): quantity
+      货币(M1)-环比增长: currency
+      货币和准货币(M2)-同比增长: currency
+      货币和准货币(M2)-数量(亿元): quantity
+      货币和准货币(M2)-环比增长: currency
+    param_transforms: {}
+macro_china_national_tax_receipts:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '中国-全国税收收入
+
+    https://data.eastmoney.com/cjsj/qgsssr.html
+
+    :return: 全国税收收入
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_national_tax_receipts
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: quarter field
+    name: quarter
+    type: datetime
+  - desc: 税收收入合计 field
+    name: 税收收入合计
+    type: str
+  - desc: 较上年同期 field
+    name: 较上年同期
+    type: datetime
+  - desc: quarter field
+    name: quarter
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_national_tax_receipts
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      季度: quarter
+      季度环比: quarter
+    param_transforms: {}
+macro_china_nbs_nation:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '国家统计局全国数据通用接口
+
+    https://data.stats.gov.cn/easyquery.htm
+
+    :param kind: 数据类别
+
+    :param path: 数据路径
+
+    :param period: 时间区间，例如''LAST10'', ''2016-2023'', ''2016-''等
+
+    :return: 国家统计局统计数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: kind parameter
+    name: kind
+    required: true
+    type: str
+  - desc: path parameter
+    name: path
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: macro_china_nbs_nation
+  output:
+  - desc: 'from :return: docstring'
+    name: '0'
+    type: str
+  rate_limit_key: stats
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_nbs_nation
+    input_mapping:
+      kind: kind
+      path: path
+      period: period
+    name: akshare_em
+    output_mapping:
+      '0': '0'
+    param_transforms: {}
+macro_china_nbs_region:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '国家统计局地区数据通用接口
+
+    https://data.stats.gov.cn/easyquery.htm
+
+    :param kind: 数据类别
+
+    :param path: 数据路径
+
+    :param indicator: 指定指标
+
+    :param region:  指定地区 当指定region时，将symbol设为None可以同时获得所有可选指标的值
+
+    :param period: 时间区间，例如''LAST...'
+  input:
+  - desc: kind parameter
+    name: kind
+    required: true
+    type: str
+  - desc: path parameter
+    name: path
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: region parameter
+    name: region
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: macro_china_nbs_region
+  output:
+  - desc: 'from :return: docstring'
+    name: '1'
+    type: str
+  rate_limit_key: stats
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_nbs_region
+    input_mapping:
+      indicator: indicator
+      kind: kind
+      path: path
+      period: period
+      region: region
+    name: akshare_em
+    output_mapping:
+      '1': '1'
+    param_transforms: {}
+macro_china_new_financial_credit:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '中国-新增信贷数据
+
+    https://data.eastmoney.com/cjsj/xzxd.html
+
+    :return: 新增信贷数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_new_financial_credit
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 当月-同比增长 field
+    name: 当月-同比增长
+    type: float
+  - desc: 当月-环比增长 field
+    name: 当月-环比增长
+    type: float
+  - desc: 累计 field
+    name: 累计
+    type: str
+  - desc: 累计-同比增长 field
+    name: 累计-同比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_new_financial_credit
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_new_house_price:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '中国-新房价指数
+
+    https://data.eastmoney.com/cjsj/newhouse.html
+
+    :param city_first: 城市; 城市列表见目标网站
+
+    :type city_first: str
+
+    :param city_second: 城市; 城市列表见目标网站
+
+    :type city_second: str
+
+    :return: 新房价指数
+
+    :rtype: pandas.Dat...'
+  input:
+  - desc: city_first parameter
+    name: city_first
+    required: true
+    type: str
+  - desc: city_second parameter
+    name: city_second
+    required: true
+    type: str
+  name: macro_china_new_house_price
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: city field
+    name: city
+    type: str
+  - desc: 新建商品住宅价格指数-同比 field
+    name: 新建商品住宅价格指数-同比
+    type: float
+  - desc: 新建商品住宅价格指数-环比 field
+    name: 新建商品住宅价格指数-环比
+    type: float
+  - desc: 新建商品住宅价格指数-定基 field
+    name: 新建商品住宅价格指数-定基
+    type: float
+  - desc: 二手住宅价格指数-同比 field
+    name: 二手住宅价格指数-同比
+    type: float
+  - desc: 二手住宅价格指数-环比 field
+    name: 二手住宅价格指数-环比
+    type: float
+  - desc: 二手住宅价格指数-定基 field
+    name: 二手住宅价格指数-定基
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_new_house_price
+    input_mapping:
+      city_first: city_first
+      city_second: city_second
+    name: akshare_em
+    output_mapping:
+      城市: city
+      日期: date
+    param_transforms: {}
+macro_china_non_man_pmi:
+  category: macro
+  description: '中国官方非制造业 PMI, 数据区间从 20160101-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_non_manufacturing_pmi
+
+    :return: 中国官方非制造业 PMI
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_non_man_pmi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_non_man_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_passenger_load_factor:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-民航客座率及载运率
+
+    https://finance.sina.com.cn/mac/#industry-20-0-31-1
+
+    :return: 民航客座率及载运率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_passenger_load_factor
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_passenger_load_factor
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-中国采购经理人指数
+
+    https://data.eastmoney.com/cjsj/pmi.html
+
+    :return: 东方财富中国采购经理人指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_pmi
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 制造业-指数 field
+    name: 制造业-指数
+    type: float
+  - desc: 制造业-同比增长 field
+    name: 制造业-同比增长
+    type: float
+  - desc: 非制造业-指数 field
+    name: 非制造业-指数
+    type: float
+  - desc: 非制造业-同比增长 field
+    name: 非制造业-同比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_pmi_yearly:
+  category: macro
+  description: '中国年度 PMI 数据, 数据区间从 20050201-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_manufacturing_pmi
+
+    :return: 中国年度 PMI 数据
+
+    :return: pandas.DataFrame'
+  input: []
+  name: macro_china_pmi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_pmi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_postal_telecommunicational:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-邮电业务基本情况
+
+    https://finance.sina.com.cn/mac/#industry-11-0-31-1
+
+    :return: 邮电业务基本情况
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_postal_telecommunicational
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_postal_telecommunicational
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_ppi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-中国工业品出厂价格指数
+
+    https://data.eastmoney.com/cjsj/ppi.html
+
+    :return: 东方财富中国工业品出厂价格指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_ppi
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 当月同比增长 field
+    name: 当月同比增长
+    type: float
+  - desc: 累计 field
+    name: 累计
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_ppi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_ppi_yearly:
+  category: macro
+  description: '中国年度 PPI 数据, 数据区间从 19950801-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_ppi_yoy
+
+    :return: 中国年度 PPI 数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_ppi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_ppi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_qyspjg:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据一览-中国-企业商品价格指数
+
+    https://data.eastmoney.com/cjsj/qyspjg.html
+
+    :return: 企业商品价格指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_qyspjg
+  output:
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_qyspjg
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      result: result
+    param_transforms: {}
+macro_china_real_estate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '国房景气指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMM00121987.html
+
+    :return: 国房景气指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_real_estate
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_real_estate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_reserve_requirement_ratio:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '存款准备金率
+
+    https://data.eastmoney.com/cjsj/ckzbj.html
+
+    :return: 存款准备金率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_reserve_requirement_ratio
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: 大型金融机构-调整前 field
+    name: 大型金融机构-调整前
+    type: str
+  - desc: 大型金融机构-调整后 field
+    name: 大型金融机构-调整后
+    type: str
+  - desc: 大型金融机构-调整幅度 field
+    name: 大型金融机构-调整幅度
+    type: str
+  - desc: 中小金融机构-调整前 field
+    name: 中小金融机构-调整前
+    type: str
+  - desc: 中小金融机构-调整后 field
+    name: 中小金融机构-调整后
+    type: str
+  - desc: 中小金融机构-调整幅度 field
+    name: 中小金融机构-调整幅度
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: remark field
+    name: remark
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_reserve_requirement_ratio
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      公布时间: time
+      备注: remark
+      消息公布次日指数涨跌-上证: day
+      消息公布次日指数涨跌-深证: day
+      生效时间: time
+    param_transforms: {}
+macro_china_retail_price_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '商品零售价格指数
+
+    https://finance.sina.com.cn/mac/#price-12-0-31-1
+
+    :return: 商品零售价格指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_retail_price_index
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_retail_price_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_rmb:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '中国人民币汇率中间价报告, 数据区间从 20170103-至今
+
+    https://datacenter.jin10.com/reportType/dc_rmb_data
+
+    :return: 中国人民币汇率中间价报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_rmb
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_rmb
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_china_shibor_all:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '上海银行业同业拆借报告, 数据区间从20170317-至今
+
+    https://datacenter.jin10.com/reportType/dc_shibor
+
+    https://cdn.jin10.com/dc/reports/dc_shibor_all.js?v=1578755058
+
+    :return: 上海银行业同业拆借报告-今值(%)
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_shibor_all
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_shibor_all
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_china_shrzgm:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '商务数据中心-国内贸易-社会融资规模增量统计
+
+    https://data.mofcom.gov.cn/gnmy/shrzgm.shtml
+
+    :return: 社会融资规模增量统计
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_shrzgm
+  output:
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 其中-未贴现银行承兑汇票 field
+    name: 其中-未贴现银行承兑汇票
+    type: str
+  - desc: 其中-委托贷款 field
+    name: 其中-委托贷款
+    type: float
+  - desc: 其中-委托贷款外币贷款 field
+    name: 其中-委托贷款外币贷款
+    type: float
+  - desc: 其中-人民币贷款 field
+    name: 其中-人民币贷款
+    type: int
+  - desc: 其中-企业债券 field
+    name: 其中-企业债券
+    type: str
+  - desc: size field
+    name: size
+    type: float
+  - desc: 其中-非金融企业境内股票融资 field
+    name: 其中-非金融企业境内股票融资
+    type: str
+  - desc: 其中-信托贷款 field
+    name: 其中-信托贷款
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_shrzgm
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+      社会融资规模增量: size
+    param_transforms: {}
+macro_china_society_electricity:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-全社会用电分类情况表
+
+    https://finance.sina.com.cn/mac/#industry-6-0-31-1
+
+    :return: 全社会用电分类情况表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_society_electricity
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: 全社会用电量 field
+    name: 全社会用电量
+    type: float
+  - desc: 全社会用电量同比 field
+    name: 全社会用电量同比
+    type: float
+  - desc: industry field
+    name: industry
+    type: float
+  - desc: industry field
+    name: industry
+    type: float
+  - desc: 第一产业用电量 field
+    name: 第一产业用电量
+    type: float
+  - desc: 第一产业用电量同比 field
+    name: 第一产业用电量同比
+    type: float
+  - desc: 第二产业用电量 field
+    name: 第二产业用电量
+    type: float
+  - desc: 第二产业用电量同比 field
+    name: 第二产业用电量同比
+    type: float
+  - desc: 第三产业用电量 field
+    name: 第三产业用电量
+    type: float
+  - desc: 第三产业用电量同比 field
+    name: 第三产业用电量同比
+    type: float
+  - desc: 城乡居民生活用电量合计 field
+    name: 城乡居民生活用电量合计
+    type: float
+  - desc: 城乡居民生活用电量合计同比 field
+    name: 城乡居民生活用电量合计同比
+    type: float
+  - desc: 城镇居民用电量 field
+    name: 城镇居民用电量
+    type: float
+  - desc: 城镇居民用电量同比 field
+    name: 城镇居民用电量同比
+    type: float
+  - desc: 乡村居民用电量 field
+    name: 乡村居民用电量
+    type: float
+  - desc: 乡村居民用电量同比 field
+    name: 乡村居民用电量同比
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_society_electricity
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      各行业用电量合计: industry
+      各行业用电量合计同比: industry
+      统计时间: time
+    param_transforms: {}
+macro_china_society_traffic_volume:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-全社会客货运输量
+
+    https://finance.sina.com.cn/mac/#industry-10-0-31-1
+
+    :return: 全社会客货运输量
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_society_traffic_volume
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_society_traffic_volume
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_stock_market_cap:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-全国股票交易统计表
+
+    https://data.eastmoney.com/cjsj/gpjytj.html
+
+    :return: 全国股票交易统计表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_stock_market_cap
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 发行总股本-上海 field
+    name: 发行总股本-上海
+    type: int
+  - desc: market field
+    name: market
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: 发行总股本-深圳 field
+    name: 发行总股本-深圳
+    type: int
+  - desc: market field
+    name: market
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_stock_market_cap
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      A股最低综合股价指数-上海: low
+      A股最低综合股价指数-深圳: low
+      A股最高综合股价指数-上海: high
+      A股最高综合股价指数-深圳: high
+      市价总值-上海: market
+      市价总值-深圳: market
+      成交量-上海: volume
+      成交量-深圳: volume
+      成交金额-上海: amount
+      成交金额-深圳: amount
+      数据日期: date
+    param_transforms: {}
+macro_china_supply_of_money:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '新浪财经-中国宏观经济数据-货币供应量
+
+    https://finance.sina.com.cn/mac/#fininfo-1-0-31-1
+
+    :return: 货币供应量
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_supply_of_money
+  output:
+  - desc: 'from :return: docstring'
+    name: item[1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_supply_of_money
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[1: item[1
+    param_transforms: {}
+macro_china_swap_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: 'FR007 利率互换曲线历史数据; 只能获取近一年的数据
+
+    https://www.chinamoney.com.cn/chinese/bkcurvfxhis/?cfgItemType=72&curveType=FR007
+
+    :param start_date: 开始日期, 开始和结束日期不得超过一个月
+
+    :type start_date: str
+
+    :param end_date: 结束日期, 开始和结...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: macro_china_swap_rate
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 时刻 field
+    name: 时刻
+    type: str
+  - desc: type field
+    name: type
+    type: float
+  - desc: name field
+    name: name
+    type: str
+  - desc: data field
+    name: data
+    type: str
+  - desc: 1M field
+    name: 1M
+    type: str
+  - desc: 3M field
+    name: 3M
+    type: str
+  - desc: 6M field
+    name: 6M
+    type: str
+  - desc: 9M field
+    name: 9M
+    type: str
+  - desc: 1Y field
+    name: 1Y
+    type: str
+  - desc: 2Y field
+    name: 2Y
+    type: str
+  - desc: 3Y field
+    name: 3Y
+    type: str
+  - desc: 4Y field
+    name: 4Y
+    type: str
+  - desc: 5Y field
+    name: 5Y
+    type: str
+  - desc: 7Y field
+    name: 7Y
+    type: str
+  - desc: 10Y field
+    name: 10Y
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_swap_rate
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      价格类型: type
+      日期: date
+      曲线名称: name
+    param_transforms: {}
+macro_china_trade_balance:
+  category: macro
+  description: '中国以美元计算贸易帐报告, 数据区间从 19810201-至今
+
+    https://datacenter.jin10.com/reportType/dc_chinese_trade_balance
+
+    https://cdn.jin10.com/dc/reports/dc_chinese_trade_balance_all.js?v=1578754677
+
+    :return: 中国以美元计算贸易帐报告
+
+    :rt...'
+  input: []
+  name: macro_china_trade_balance
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_trade_balance
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_china_urban_unemployment:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '国家统计局-月度数据-城镇调查失业率
+
+    https://data.stats.gov.cn/dg/website/page.html#/pc/national/monthData
+
+    :return: 城镇调查失业率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_urban_unemployment
+  output:
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  - desc: 'from :return: docstring'
+    name: value
+    type: str
+  rate_limit_key: stats
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_urban_unemployment
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      date: date
+      item: item
+      value: value
+    param_transforms: {}
+macro_china_vegetable_basket:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '菜篮子产品批发价格指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00009275.html
+
+    :return: 菜篮子产品批发价格指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_vegetable_basket
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_vegetable_basket
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_china_wbck:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-本外币存款
+
+    https://data.eastmoney.com/cjsj/wbck.html
+
+    :return: 东方财富-本外币存款
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_wbck
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 同比增长 field
+    name: 同比增长
+    type: float
+  - desc: 环比增长 field
+    name: 环比增长
+    type: float
+  - desc: 累计 field
+    name: 累计
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_wbck
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_whxd:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-外汇贷款数据
+
+    https://data.eastmoney.com/cjsj/whxd.html
+
+    :return: 东方财富-外汇贷款数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_whxd
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 当月 field
+    name: 当月
+    type: datetime
+  - desc: 同比增长 field
+    name: 同比增长
+    type: float
+  - desc: 环比增长 field
+    name: 环比增长
+    type: float
+  - desc: 累计 field
+    name: 累计
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_whxd
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_xfzxx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富网-经济数据一览-消费者信心指数
+
+    https://data.eastmoney.com/cjsj/xfzxx.html
+
+    :return: 消费者信心指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_xfzxx
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 消费者信心指数-指数值 field
+    name: 消费者信心指数-指数值
+    type: float
+  - desc: 消费者信心指数-同比增长 field
+    name: 消费者信心指数-同比增长
+    type: float
+  - desc: 消费者信心指数-环比增长 field
+    name: 消费者信心指数-环比增长
+    type: float
+  - desc: 消费者满意指数-指数值 field
+    name: 消费者满意指数-指数值
+    type: float
+  - desc: 消费者满意指数-同比增长 field
+    name: 消费者满意指数-同比增长
+    type: float
+  - desc: 消费者满意指数-环比增长 field
+    name: 消费者满意指数-环比增长
+    type: float
+  - desc: 消费者预期指数-指数值 field
+    name: 消费者预期指数-指数值
+    type: float
+  - desc: 消费者预期指数-同比增长 field
+    name: 消费者预期指数-同比增长
+    type: float
+  - desc: 消费者预期指数-环比增长 field
+    name: 消费者预期指数-环比增长
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_xfzxx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_china_yw_electronic_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '义乌小商品指数-电子元器件
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00055551.html
+
+    :return: 义乌小商品指数-电子元器件
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_china_yw_electronic_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_china_yw_electronic_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_cnbs:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '国家金融与发展实验室-中国宏观杠杆率数据
+
+    http://114.115.232.154:8080/
+
+    :return: 中国宏观杠杆率数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_cnbs
+  output:
+  - desc: 'from :return: docstring'
+    name: year
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 居民部门
+    type: str
+  - desc: 'from :return: docstring'
+    name: 非金融企业部门
+    type: str
+  - desc: 'from :return: docstring'
+    name: 政府部门
+    type: str
+  - desc: 'from :return: docstring'
+    name: 中央政府
+    type: str
+  - desc: 'from :return: docstring'
+    name: 地方政府
+    type: str
+  - desc: 'from :return: docstring'
+    name: 实体经济部门
+    type: str
+  - desc: 'from :return: docstring'
+    name: 金融部门资产方
+    type: str
+  - desc: 'from :return: docstring'
+    name: 金融部门负债方
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_cnbs
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      年份: year
+    param_transforms: {}
+macro_cons_gold:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '全球最大黄金 ETF—SPDR Gold Trust 持仓报告, 数据区间从 20041118-至今
+
+    https://datacenter.jin10.com/reportType/dc_etf_gold
+
+    :return: 持仓报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_cons_gold
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 总库存 field
+    name: 总库存
+    type: str
+  - desc: 增持/减持 field
+    name: 增持/减持
+    type: str
+  - desc: 总价值 field
+    name: 总价值
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_cons_gold
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_cons_opec_month:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧佩克报告-月度, 数据区间从 20170118-至今
+
+    这里返回的具体索引日期的数据为上一个月的数据, 由于某些国家的数据有缺失
+
+    只选择有数据的国家返回
+
+    20200312:fix:由于 “厄瓜多尔” 已经有几个月没有更新数据，在这里加以剔除
+
+    https://datacenter.jin10.com/reportType/dc_opec_report
+
+    :return: 欧佩克报告-月度
+
+    :rtype...'
+  input: []
+  name: macro_cons_opec_month
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: data
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_cons_opec_month
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_cons_silver:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '全球最大白银 ETF—SPDR Gold Trust 持仓报告, 数据区间从 20041118-至今
+
+    https://datacenter.jin10.com/reportType/dc_etf_sliver
+
+    :return: 持仓报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_cons_silver
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 总库存 field
+    name: 总库存
+    type: str
+  - desc: 增持/减持 field
+    name: 增持/减持
+    type: str
+  - desc: 总价值 field
+    name: 总价值
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_cons_silver
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_euro_cpi_mom:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区 CPI 月率报告, 数据区间从 19900301-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_cpi_mom
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_cpi_mom_all.js?v=1578578318
+
+    :return: 欧元区CPI月率报告
+
+    :rtype: pandas....'
+  input: []
+  name: macro_euro_cpi_mom
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_cpi_mom
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_cpi_yoy:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区CPI年率报告, 数据区间从19910201-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_cpi_yoy
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_cpi_yoy_all.js?v=1578578404
+
+    :return: 欧元区CPI年率报告-今值(%)
+
+    :rtype: pand...'
+  input: []
+  name: macro_euro_cpi_yoy
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_cpi_yoy
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_current_account_mom:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区经常帐报告, 数据区间从20080221-至今, 前两个值需要去掉
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_current_account_mom
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_current_account_mom_all.js?v=1578577976
+
+    :retur...'
+  input: []
+  name: macro_euro_current_account_mom
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_current_account_mom
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_employment_change_qoq:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区季调后就业人数季率报告, 数据区间从20083017-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_employment_change_qoq
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_employment_change_qoq_all.js?v=1578578699
+
+    :retur...'
+  input: []
+  name: macro_euro_employment_change_qoq
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_employment_change_qoq
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_gdp_yoy:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区季度 GDP 年率报告, 数据区间从 20131114-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_gdp_yoy
+
+    :return: 欧元区季度 GDP 年率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_euro_gdp_yoy
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_gdp_yoy
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_industrial_production_mom:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区工业产出月率报告, 数据区间从19910301-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_industrial_production_mom
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_industrial_production_mom_all.js?v=1578577377
+
+    :...'
+  input: []
+  name: macro_euro_industrial_production_mom
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_industrial_production_mom
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_lme_holding:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '伦敦金属交易所(LME)-持仓报告, 数据区间从 20151022-至今
+
+    https://datacenter.jin10.com/reportType/dc_lme_traders_report
+
+    https://cdn.jin10.com/data_center/reports/lme_position.json?_=1591533934658
+
+    :return: 伦敦金属交易所(LME)-持仓报...'
+  input: []
+  name: macro_euro_lme_holding
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_lme_holding
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_euro_lme_stock:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '伦敦金属交易所(LME)-库存报告, 数据区间从 20140702-至今
+
+    https://datacenter.jin10.com/reportType/dc_lme_report
+
+    https://cdn.jin10.com/data_center/reports/lme_stock.json?_=1591535304783
+
+    :return: 伦敦金属交易所(LME)-库存报告
+
+    :rtype: p...'
+  input: []
+  name: macro_euro_lme_stock
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_lme_stock
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_euro_manufacturing_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区制造业PMI初值报告, 数据区间从20080222-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_manufacturing_pmi
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_manufacturing_pmi_all.js?v=1578577537
+
+    :return: 欧元区制造业...'
+  input: []
+  name: macro_euro_manufacturing_pmi
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_manufacturing_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_ppi_mom:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区PPI月率报告, 数据区间从19810301-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_ppi_mom
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_ppi_mom_all.js?v=1578578493
+
+    :return: 欧元区PPI月率报告-今值(%)
+
+    :rtype: pand...'
+  input: []
+  name: macro_euro_ppi_mom
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_ppi_mom
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_retail_sales_mom:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区零售销售月率报告, 数据区间从20000301-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_retail_sales_mom
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_retail_sales_mom_all.js?v=1578578576
+
+    :return: 欧元区零售销售月率报...'
+  input: []
+  name: macro_euro_retail_sales_mom
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_retail_sales_mom
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_sentix_investor_confidence:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区Sentix投资者信心指数报告, 数据区间从20020801-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_sentix_investor_confidence
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_sentix_investor_confidence_all.js?v=157...'
+  input: []
+  name: macro_euro_sentix_investor_confidence
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_sentix_investor_confidence
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_services_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区服务业PMI终值报告, 数据区间从 20080222-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_services_pmi
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_services_pmi_all.js?v=1578577639
+
+    :return: 欧元区服务业PMI终值报告-今...'
+  input: []
+  name: macro_euro_services_pmi
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_services_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_trade_balance:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区未季调贸易帐报告, 数据区间从19990201-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_trade_balance_mom
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_trade_balance_mom_all.js?v=1578577862
+
+    :return: 欧元区未季调贸易...'
+  input: []
+  name: macro_euro_trade_balance
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_trade_balance
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_unemployment_rate_mom:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区失业率报告, 数据区间从19980501-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_unemployment_rate_mom
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_unemployment_rate_mom_all.js?v=1578578767
+
+    :return: 欧元区...'
+  input: []
+  name: macro_euro_unemployment_rate_mom
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_unemployment_rate_mom
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_euro_zew_economic_sentiment:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '欧元区ZEW经济景气指数报告, 数据区间从20080212-至今
+
+    https://datacenter.jin10.com/reportType/dc_eurozone_zew_economic_sentiment
+
+    https://cdn.jin10.com/dc/reports/dc_eurozone_zew_economic_sentiment_all.js?v=1578577013
+
+    :ret...'
+  input: []
+  name: macro_euro_zew_economic_sentiment
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_euro_zew_economic_sentiment
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+macro_fx_sentiment:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: "金十数据-外汇-投机情绪报告\n外汇投机情绪报告显示当前市场多空仓位比例，数据由8家交易平台提供，涵盖11个主要货币对和1个黄金品种。\n\
+    报告内容: 品种: 澳元兑日元、澳元兑美元、欧元兑美元、欧元兑澳元、欧元兑日元、英镑兑美元、英镑兑日元、纽元兑美元、美元兑加元、美元兑瑞郎、美元兑日元以及现货黄金兑美元。\n\
+    \         数据: 由Shark - fx整合全球8家交易平台（ 包括 Oanda、 F..."
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: macro_fx_sentiment
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: '1:'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_fx_sentiment
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      '1:': '1:'
+      date: date
+      index: index
+    param_transforms: {}
+macro_germany_cpi_monthly:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-消费者物价指数月率终值
+
+    https://data.eastmoney.com/cjsj/foreign_1_1.html
+
+    :return: 消费者物价指数月率终值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_cpi_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_germany_cpi_yearly:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-消费者物价指数年率终值
+
+    https://data.eastmoney.com/cjsj/foreign_1_2.html
+
+    :return: 消费者物价指数年率终值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_cpi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_germany_gdp:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-GDP
+
+    https://data.eastmoney.com/cjsj/foreign_1_4.html
+
+    :return: GDP
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_gdp
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_gdp
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_germany_ifo:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-IFO商业景气指数
+
+    https://data.eastmoney.com/cjsj/foreign_1_0.html
+
+    :return: IFO商业景气指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_ifo
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_ifo
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_germany_retail_sale_monthly:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-实际零售销售月率
+
+    https://data.eastmoney.com/cjsj/foreign_1_5.html
+
+    :return: 实际零售销售月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_retail_sale_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_retail_sale_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_germany_retail_sale_yearly:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-实际零售销售年率
+
+    https://data.eastmoney.com/cjsj/foreign_1_6.html
+
+    :return: 实际零售销售年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_retail_sale_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_retail_sale_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_germany_trade_adjusted:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-贸易帐(季调后)
+
+    https://data.eastmoney.com/cjsj/foreign_1_3.html
+
+    :return: 贸易帐(季调后)
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_trade_adjusted
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_trade_adjusted
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_germany_zew:
+  category: macro
+  description: '东方财富-数据中心-经济数据一览-德国-ZEW 经济景气指数
+
+    https://data.eastmoney.com/cjsj/foreign_1_7.html
+
+    :return: ZEW 经济景气指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_germany_zew
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_germany_zew
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_global_sox_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '费城半导体指数
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00055562.html
+
+    :return: 费城半导体指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_global_sox_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 最新值 field
+    name: 最新值
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_global_sox_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      近1年涨跌幅: pct_change
+      近2年涨跌幅: pct_change
+      近3年涨跌幅: pct_change
+      近3月涨跌幅: pct_change
+      近6月涨跌幅: pct_change
+    param_transforms: {}
+macro_info_ws:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '华尔街见闻-日历-宏观
+
+    https://wallstreetcn.com/calendar
+
+    :param date: 日期
+
+    :type date: str
+
+    :return: 日历-宏观
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: macro_info_ws
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: time
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 地区
+    type: str
+  - desc: 'from :return: docstring'
+    name: 事件
+    type: str
+  - desc: 'from :return: docstring'
+    name: 重要性
+    type: str
+  - desc: 'from :return: docstring'
+    name: 今值
+    type: float
+  - desc: 'from :return: docstring'
+    name: 预期
+    type: str
+  - desc: 'from :return: docstring'
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: 修正
+    type: str
+  - desc: 'from :return: docstring'
+    name: url
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_info_ws
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      时间: time
+      链接: url
+    param_transforms: {}
+macro_japan_bank_rate:
+  category: macro
+  description: '东方财富-经济数据-日本-央行公布利率决议
+
+    https://data.eastmoney.com/cjsj/foreign_3_0.html
+
+    :return: 央行公布利率决议
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_japan_bank_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_japan_bank_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_japan_core_cpi_yearly:
+  category: macro
+  description: '东方财富-经济数据-日本-全国核心消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_2_2.html
+
+    :return: 全国核心消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_japan_core_cpi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_japan_core_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_japan_cpi_yearly:
+  category: macro
+  description: '东方财富-经济数据-日本-全国消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_3_1.html
+
+    :return: 全国消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_japan_cpi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_japan_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_japan_head_indicator:
+  category: macro
+  description: '东方财富-经济数据-日本-领先指标终值
+
+    https://data.eastmoney.com/cjsj/foreign_3_4.html
+
+    :return: 领先指标终值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_japan_head_indicator
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_japan_head_indicator
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_japan_unemployment_rate:
+  category: macro
+  description: '东方财富-经济数据-日本-失业率
+
+    https://data.eastmoney.com/cjsj/foreign_2_3.html
+
+    :return: 失业率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_japan_unemployment_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_japan_unemployment_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_rmb_deposit:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '同花顺-数据中心-宏观数据-人民币存款余额
+
+    https://data.10jqka.com.cn/macro/rmb/
+
+    :return: 人民币存款余额
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_rmb_deposit
+  output:
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 新增存款-同比 field
+    name: 新增存款-同比
+    type: str
+  - desc: 新增存款-环比 field
+    name: 新增存款-环比
+    type: str
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 新增企业存款-同比 field
+    name: 新增企业存款-同比
+    type: str
+  - desc: 新增企业存款-环比 field
+    name: 新增企业存款-环比
+    type: str
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 新增储蓄存款-同比 field
+    name: 新增储蓄存款-同比
+    type: str
+  - desc: 新增储蓄存款-环比 field
+    name: 新增储蓄存款-环比
+    type: str
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 新增其他存款-同比 field
+    name: 新增其他存款-同比
+    type: str
+  - desc: 新增其他存款-环比 field
+    name: 新增其他存款-环比
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_rmb_deposit
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      新增企业存款-数量: quantity
+      新增储蓄存款-数量: quantity
+      新增其他存款-数量: quantity
+      新增存款-数量: quantity
+      月份: month
+    param_transforms: {}
+macro_rmb_loan:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '同花顺-数据中心-宏观数据-新增人民币贷款
+
+    https://data.10jqka.com.cn/macro/loan/
+
+    :return: 新增人民币贷款
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_rmb_loan
+  output:
+  - desc: month field
+    name: month
+    type: datetime
+  - desc: 新增人民币贷款-总额 field
+    name: 新增人民币贷款-总额
+    type: float
+  - desc: 新增人民币贷款-同比 field
+    name: 新增人民币贷款-同比
+    type: int
+  - desc: 新增人民币贷款-环比 field
+    name: 新增人民币贷款-环比
+    type: int
+  - desc: 累计人民币贷款-总额 field
+    name: 累计人民币贷款-总额
+    type: float
+  - desc: 累计人民币贷款-同比 field
+    name: 累计人民币贷款-同比
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_rmb_loan
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      月份: month
+    param_transforms: {}
+macro_shipping_bci:
+  category: macro
+  description: '海岬型运费指数(BCI)
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00107666.html
+
+    :return: 海岬型运费指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_shipping_bci
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_shipping_bci
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_shipping_bcti:
+  category: macro
+  description: '成品油运输指数（BCTI）
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00107669.html
+
+    :return: 成品油运输指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_shipping_bcti
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_shipping_bcti
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_shipping_bdi:
+  category: macro
+  description: '波罗的海干散货指数(BDI)
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00107664.html
+
+    :return: 波罗的海干散货指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_shipping_bdi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_shipping_bdi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_shipping_bpi:
+  category: macro
+  description: '巴拿马型运费指数(BPI)
+
+    https://data.eastmoney.com/cjsj/hyzs_list_EMI00107665.html
+
+    :return: 巴拿马型运费指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_shipping_bpi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_shipping_bpi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_stock_finance:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '同花顺-数据中心-宏观数据-股票筹资
+
+    https://data.10jqka.com.cn/macro/finance/
+
+    :return: 股票筹资
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_stock_finance
+  output:
+  - desc: 'from :return: docstring'
+    name: month
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 募集资金
+    type: str
+  - desc: 'from :return: docstring'
+    name: 首发募集资金
+    type: str
+  - desc: 'from :return: docstring'
+    name: 增发募集资金
+    type: str
+  - desc: 'from :return: docstring'
+    name: 配股募集资金
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_stock_finance
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '[月份': month
+    param_transforms: {}
+macro_swiss_cpi_yearly:
+  category: macro
+  description: '东方财富-经济数据-瑞士-消费者物价指数年率
+
+    http://data.eastmoney.com/cjsj/foreign_2_2.html
+
+    :return: 消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_swiss_cpi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_swiss_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_swiss_gbd_bank_rate:
+  category: macro
+  description: '东方财富-经济数据-瑞士-央行公布利率决议
+
+    http://data.eastmoney.com/cjsj/foreign_2_5.html
+
+    :return: 央行公布利率决议
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_swiss_gbd_bank_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_swiss_gbd_bank_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_swiss_gbd_yearly:
+  category: macro
+  description: '东方财富-经济数据-瑞士-GDP 年率
+
+    http://data.eastmoney.com/cjsj/foreign_2_4.html
+
+    :return: GDP年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_swiss_gbd_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_swiss_gbd_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_swiss_gdp_quarterly:
+  category: macro
+  description: '东方财富-经济数据-瑞士-GDP季率
+
+    http://data.eastmoney.com/cjsj/foreign_2_3.html
+
+    :return: GDP季率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_swiss_gdp_quarterly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_swiss_gdp_quarterly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_swiss_svme:
+  category: macro
+  description: '东方财富-经济数据-瑞士-SVME采购经理人指数
+
+    http://data.eastmoney.com/cjsj/foreign_2_0.html
+
+    :return: SVME采购经理人指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_swiss_svme
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_swiss_svme
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_swiss_trade:
+  category: macro
+  description: '东方财富-经济数据-瑞士-贸易帐
+
+    http://data.eastmoney.com/cjsj/foreign_2_1.html
+
+    :return: 贸易帐
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_swiss_trade
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_swiss_trade
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_bank_rate:
+  category: macro
+  description: '东方财富-经济数据-英国-央行公布利率决议
+
+    https://data.eastmoney.com/cjsj/foreign_4_3.html
+
+    :return: 央行公布利率决议
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_bank_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_bank_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_core_cpi_monthly:
+  category: macro
+  description: '东方财富-经济数据-英国-核心消费者物价指数月率
+
+    https://data.eastmoney.com/cjsj/foreign_4_5.html
+
+    :return: 核心消费者物价指数月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_core_cpi_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_core_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_core_cpi_yearly:
+  category: macro
+  description: '东方财富-经济数据-英国-核心消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_4_4.html
+
+    :return: 核心消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_core_cpi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_core_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_cpi_monthly:
+  category: macro
+  description: '东方财富-经济数据-英国-消费者物价指数月率
+
+    https://data.eastmoney.com/cjsj/foreign_4_7.html
+
+    :return: 消费者物价指数月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_cpi_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_cpi_yearly:
+  category: macro
+  description: '东方财富-经济数据-英国-消费者物价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_4_6.html
+
+    :return: 消费者物价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_cpi_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_cpi_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_gdp_quarterly:
+  category: macro
+  description: '东方财富-经济数据-英国-GDP 季率初值
+
+    https://data.eastmoney.com/cjsj/foreign_4_12.html
+
+    :return: GDP 季率初值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_gdp_quarterly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_gdp_quarterly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_gdp_yearly:
+  category: macro
+  description: '东方财富-经济数据-英国-GDP 年率初值
+
+    https://data.eastmoney.com/cjsj/foreign_4_13.html
+
+    :return: GDP 年率初值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_gdp_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_gdp_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_halifax_monthly:
+  category: macro
+  description: '东方财富-经济数据-英国-Halifax 房价指数月率
+
+    https://data.eastmoney.com/cjsj/foreign_4_0.html
+
+    :return: Halifax 房价指数月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_halifax_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_halifax_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_halifax_yearly:
+  category: macro
+  description: '东方财富-经济数据-英国-Halifax 房价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_4_1.html
+
+    :return: Halifax房价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_halifax_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_halifax_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_retail_monthly:
+  category: macro
+  description: '东方财富-经济数据-英国-零售销售月率
+
+    https://data.eastmoney.com/cjsj/foreign_4_8.html
+
+    :return: 零售销售月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_retail_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_retail_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_retail_yearly:
+  category: macro
+  description: '东方财富-经济数据-英国-零售销售年率
+
+    https://data.eastmoney.com/cjsj/foreign_4_9.html
+
+    :return: 零售销售年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_retail_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_retail_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_rightmove_monthly:
+  category: macro
+  description: '东方财富-经济数据-英国-Rightmove 房价指数月率
+
+    https://data.eastmoney.com/cjsj/foreign_4_11.html
+
+    :return: Rightmove 房价指数月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_rightmove_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_rightmove_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_rightmove_yearly:
+  category: macro
+  description: '东方财富-经济数据-英国-Rightmove 房价指数年率
+
+    https://data.eastmoney.com/cjsj/foreign_4_10.html
+
+    :return: Rightmove 房价指数年率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_rightmove_yearly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_rightmove_yearly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_trade:
+  category: macro
+  description: '东方财富-经济数据-英国-贸易帐
+
+    https://data.eastmoney.com/cjsj/foreign_4_2.html
+
+    :return: 贸易帐
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_trade
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_trade
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_uk_unemployment_rate:
+  category: macro
+  description: '东方财富-经济数据-英国-失业率
+
+    https://data.eastmoney.com/cjsj/foreign_4_14.html
+
+    :return: 失业率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_uk_unemployment_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_uk_unemployment_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_adp_employment:
+  category: macro
+  description: '美国ADP就业人数报告, 数据区间从 20010601-至今
+
+    https://datacenter.jin10.com/reportType/dc_adp_nonfarm_employment
+
+    :return: 美国ADP就业人数报告
+
+    :rtype: pandas.Series'
+  input: []
+  name: macro_usa_adp_employment
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_adp_employment
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_api_crude_stock:
+  category: macro
+  description: '美国 API 原油库存报告, 数据区间从 20120328-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_api_crude_stock
+
+    https://cdn.jin10.com/dc/reports/dc_usa_api_crude_stock_all.js?v=1578743859
+
+    :return: 美国API原油库存报告-今值(万桶)
+
+    ...'
+  input: []
+  name: macro_usa_api_crude_stock
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_api_crude_stock
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_building_permits:
+  category: macro
+  description: '美国营建许可总数报告, 数据区间从 20080220-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_building_permits
+
+    :return: 美国营建许可总数报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_building_permits
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_building_permits
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_business_inventories:
+  category: macro
+  description: '美国商业库存月率报告, 数据区间从 19920301-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_business_inventories
+
+    :return: 美国商业库存月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_business_inventories
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_business_inventories
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_cb_consumer_confidence:
+  category: macro
+  description: '金十数据中心-经济指标-美国-领先指标-美国谘商会消费者信心指数报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_cb_consumer_confidence
+
+    :return: 美国谘商会消费者信心指数报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cb_consumer_confidence
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cb_consumer_confidence
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_cftc_c_holding:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '美国商品期货交易委员会CFTC商品类非商业持仓报告, 数据区间从 19830107-至今
+
+    https://datacenter.jin10.com/reportType/dc_cftc_c_report
+
+    :return: 美国商品期货交易委员会CFTC外汇类非商业持仓报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cftc_c_holding
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cftc_c_holding
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_usa_cftc_merchant_currency_holding:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '美国商品期货交易委员会CFTC外汇类商业持仓报告, 数据区间从 19860115-至今
+
+    https://datacenter.jin10.com/reportType/dc_cftc_merchant_currency
+
+    :return: 美国商品期货交易委员会CFTC外汇类商业持仓报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cftc_merchant_currency_holding
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cftc_merchant_currency_holding
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_usa_cftc_merchant_goods_holding:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '美国商品期货交易委员会CFTC商品类商业持仓报告, 数据区间从 19860115-至今
+
+    https://datacenter.jin10.com/reportType/dc_cftc_merchant_goods
+
+    :return: 美国商品期货交易委员会CFTC商品类商业持仓报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cftc_merchant_goods_holding
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cftc_merchant_goods_holding
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_usa_cftc_nc_holding:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '美国商品期货交易委员会CFTC外汇类非商业持仓报告, 数据区间从 19830107-至今
+
+    https://datacenter.jin10.com/reportType/dc_cftc_nc_report
+
+    :return: 美国商品期货交易委员会CFTC外汇类非商业持仓报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cftc_nc_holding
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cftc_nc_holding
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_usa_cme_merchant_goods_holding:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: 'CME-贵金属, 数据区间从 20180405-至今
+
+    https://datacenter.jin10.com/org
+
+    :return: CME-贵金属
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cme_merchant_goods_holding
+  output:
+  - desc: pz field
+    name: pz
+    type: str
+  - desc: tc field
+    name: tc
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cme_merchant_goods_holding
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      成交量: volume
+      日期: date
+    param_transforms: {}
+macro_usa_core_cpi_monthly:
+  category: macro
+  description: '美国核心 CPI 月率报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_core_cpi
+
+    :return: 美国核心CPI月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_core_cpi_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_core_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_core_pce_price:
+  category: macro
+  description: '美国核心PCE物价指数年率报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_core_pce_price
+
+    :return: 美国核心PCE物价指数年率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_core_pce_price
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_core_pce_price
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_core_ppi:
+  category: macro
+  description: '美国核心生产者物价指数(PPI)报告, 数据区间从20080318-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_core_ppi
+
+    :return: 美国核心生产者物价指数(PPI)报告-今值(%)
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_core_ppi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_core_ppi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_cpi_monthly:
+  category: macro
+  description: '美国 CPI 月率报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_cpi
+
+    :return: 美国 CPI 月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cpi_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cpi_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_cpi_yoy:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据一览-美国-CPI年率, 数据区间从 2008-至今
+
+    https://data.eastmoney.com/cjsj/foreign_0_12.html
+
+    :return: 美国 CPI 年率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_cpi_yoy
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_cpi_yoy
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_usa_crude_inner:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '美国原油产量报告, 数据区间从 19830107-至今
+
+    https://datacenter.jin10.com/reportType/dc_eia_crude_oil_produce
+
+    :return: 美国原油产量报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_crude_inner
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_crude_inner
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_usa_current_account:
+  category: macro
+  description: '美国经常帐报告, 数据区间从 20080317-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_current_account
+
+    :return: 美国经常帐报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_current_account
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_current_account
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_durable_goods_orders:
+  category: macro
+  description: '美国耐用品订单月率报告, 数据区间从 20080227-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_durable_goods_orders
+
+    :return: 美国耐用品订单月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_durable_goods_orders
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_durable_goods_orders
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_eia_crude_rate:
+  category: macro
+  description: '美国 EIA 原油库存报告, 数据区间从 19950801-至今
+
+    https://datacenter.jin10.com/reportType/dc_eia_crude_oil
+
+    :return: 美国 EIA 原油库存报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_eia_crude_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_eia_crude_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_exist_home_sales:
+  category: macro
+  description: '美国成屋销售总数年化报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_exist_home_sales
+
+    :return: 美国成屋销售总数年化报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_exist_home_sales
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_exist_home_sales
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_export_price:
+  category: macro
+  description: '美国出口价格指数报告, 数据区间从19890201-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_export_price
+
+    https://cdn.jin10.com/dc/reports/dc_usa_export_price_all.js?v=1578741832
+
+    :return: 美国出口价格指数报告-今值(%)
+
+    :rtype: pand...'
+  input: []
+  name: macro_usa_export_price
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_export_price
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_factory_orders:
+  category: macro
+  description: '美国工厂订单月率报告, 数据区间从 19920401-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_factory_orders
+
+    :return: 美国工厂订单月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_factory_orders
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_factory_orders
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_gdp_monthly:
+  category: macro
+  description: '金十数据-美国国内生产总值(GDP)报告, 数据区间从 20080228-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_gdp
+
+    :return: 美国国内生产总值(GDP)
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_gdp_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_gdp_monthly
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_house_price_index:
+  category: macro
+  description: '美国FHFA房价指数月率报告, 数据区间从 19910301-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_house_price_index
+
+    :return: 美国FHFA房价指数月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_house_price_index
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_house_price_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_house_starts:
+  category: macro
+  description: '美国新屋开工总数年化报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_house_starts
+
+    :return: 美国新屋开工总数年化报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_house_starts
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_house_starts
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_import_price:
+  category: macro
+  description: '美国进口物价指数报告, 数据区间从19890201-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_import_price
+
+    :return: 美国进口物价指数报告-今值(%)
+
+    :rtype: pandas.Series'
+  input: []
+  name: macro_usa_import_price
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_import_price
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_industrial_production:
+  category: macro
+  description: '美国工业产出月率报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_industrial_production
+
+    :return: 美国工业产出月率报告-今值(%)
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_industrial_production
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_industrial_production
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_initial_jobless:
+  category: macro
+  description: '美国初请失业金人数报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_initial_jobless
+
+    :return: 美国 EIA 原油库存报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_initial_jobless
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_initial_jobless
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_ism_non_pmi:
+  category: macro
+  description: '美国ISM非制造业PMI报告, 数据区间从 19970801-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_ism_non_pmi
+
+    :return: 美国ISM非制造业PMI报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_ism_non_pmi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_ism_non_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_ism_pmi:
+  category: macro
+  description: '美国 ISM 制造业 PMI 报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_ism_pmi
+
+    :return: 美国 ISM 制造业 PMI 报告-今值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_ism_pmi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_ism_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_job_cuts:
+  category: macro
+  description: '美国挑战者企业裁员人数报告, 数据区间从 19940201-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_job_cuts
+
+    :return: 美国挑战者企业裁员人数报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_job_cuts
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_job_cuts
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_lmci:
+  category: macro
+  description: '美联储劳动力市场状况指数报告, 数据区间从 20141006-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_lmci
+
+    :return: 美联储劳动力市场状况指数报告-今值(%)
+
+    :rtype: pandas.Series'
+  input: []
+  name: macro_usa_lmci
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_lmci
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_michigan_consumer_sentiment:
+  category: macro
+  description: '美国密歇根大学消费者信心指数初值报告, 数据区间从 19700301-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_michigan_consumer_sentiment
+
+    :return: 美国密歇根大学消费者信心指数初值报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_michigan_consumer_sentiment
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_michigan_consumer_sentiment
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_nahb_house_market_index:
+  category: macro
+  description: '美国NAHB房产市场指数报告, 数据区间从 19850201-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_nahb_house_market_index
+
+    :return: 美国NAHB房产市场指数报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_nahb_house_market_index
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_nahb_house_market_index
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_new_home_sales:
+  category: macro
+  description: '美国新屋销售总数年化报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_new_home_sales
+
+    :return: 美国新屋销售总数年化报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_new_home_sales
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_new_home_sales
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_nfib_small_business:
+  category: macro
+  description: '美国NFIB小型企业信心指数报告, 数据区间从 19750201-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_nfib_small_business
+
+    :return: 美国NFIB小型企业信心指数报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_nfib_small_business
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_nfib_small_business
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_non_farm:
+  category: macro
+  description: '美国非农就业人数报告, 数据区间从19700102-至今
+
+    https://datacenter.jin10.com/reportType/dc_nonfarm_payrolls
+
+    :return: 美国非农就业人数报告
+
+    :rtype: pandas.Series'
+  input: []
+  name: macro_usa_non_farm
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_non_farm
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_pending_home_sales:
+  category: macro
+  description: '美国成屋签约销售指数月率报告, 数据区间从 20010301-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_pending_home_sales
+
+    :return: 美国成屋签约销售指数月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_pending_home_sales
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_pending_home_sales
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_personal_spending:
+  category: macro
+  description: '美国个人支出月率报告, 数据区间从19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_personal_spending
+
+    :return: 美国个人支出月率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_personal_spending
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_personal_spending
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_phs:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-经济数据一览-美国-未决房屋销售月率
+
+    https://data.eastmoney.com/cjsj/foreign_0_5.html
+
+    :return: 未决房屋销售月率
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_phs
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_phs
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+      时间: time
+    param_transforms: {}
+macro_usa_pmi:
+  category: macro
+  description: '美国 Markit 制造业 PMI 初值报告, 数据区间从 20120601-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_pmi
+
+    :return: 美国 Markit 制造业 PMI 初值报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_pmi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_ppi:
+  category: macro
+  description: '美国生产者物价指数(PPI)报告, 数据区间从 20080226-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_ppi
+
+    :return: 美国生产者物价指数(PPI)报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_ppi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_ppi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_real_consumer_spending:
+  category: macro
+  description: '美国实际个人消费支出季率初值报告, 数据区间从 20131107-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_real_consumer_spending
+
+    :return: 美国实际个人消费支出季率初值报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_real_consumer_spending
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_real_consumer_spending
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_retail_sales:
+  category: macro
+  description: '美国零售销售月率报告, 数据区间从 19920301-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_retail_sales
+
+    :return: 美国零售销售月率报告-今值(%)
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_retail_sales
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_retail_sales
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_rig_count:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '贝克休斯钻井报告, 数据区间从 20080317-至今
+
+    https://datacenter.jin10.com/reportType/dc_rig_count_summary
+
+    :return: 贝克休斯钻井报告-当周
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_rig_count
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_rig_count
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+macro_usa_services_pmi:
+  category: macro
+  description: '美国Markit服务业PMI初值报告, 数据区间从 20120701-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_services_pmi
+
+    :return: 美国Markit服务业PMI初值报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_services_pmi
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_services_pmi
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_spcs20:
+  category: macro
+  description: '美国S&P/CS20座大城市房价指数年率报告, 数据区间从 20010201-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_spcs20
+
+    :return: 美国S&P/CS20座大城市房价指数年率报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_spcs20
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_spcs20
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_trade_balance:
+  category: macro
+  description: '美国贸易帐报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_trade_balance
+
+    :return: 美国贸易帐报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: macro_usa_trade_balance
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_trade_balance
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+macro_usa_unemployment_rate:
+  category: macro
+  description: '美国失业率报告, 数据区间从 19700101-至今
+
+    https://datacenter.jin10.com/reportType/dc_usa_unemployment_rate
+
+    :return: 获取美国失业率报告
+
+    :rtype: pandas.Series'
+  input: []
+  name: macro_usa_unemployment_rate
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: macro_usa_unemployment_rate
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+rate_interbank:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: macro
+  description: '东方财富-拆借利率一览-具体市场的具体品种的具体指标的拆借利率数据
+
+    具体 market 和 symbol 参见: https://data.eastmoney.com/shibor/shibor.aspx?m=sg&t=88&d=99333&cu=sgd&type=009065&p=79
+
+    :param market: choice of {"上海银行同业拆借市场", "中国银行同业拆借市场", "...'
+  input:
+  - desc: market parameter
+    name: market
+    required: true
+    type: str
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: rate_interbank
+  output:
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: interest_rate field
+    name: interest_rate
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: market
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: rate_interbank
+    input_mapping:
+      indicator: indicator
+      market: market
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      利率: interest_rate
+      报告日: day
+      涨跌: change
+    param_transforms: {}

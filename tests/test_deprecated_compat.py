@@ -96,7 +96,6 @@ class TestDeprecatedErrors:
             warnings.simplefilter("ignore", DeprecationWarning)
             from akshare_data.core.errors import (
                 ErrorCode,
-                DataAccessException,
                 DataSourceError,
             )
 

@@ -58,7 +58,7 @@
 config/
 │
 ├── system.yaml                    # 系统配置（新增）
-├── schemas.yaml                   # 缓存表 Schema（新增，从 schema.py 外置）
+├── schemas.yaml                   # 缓存表 Schema（设计目标，未实际集成，已删除）
 ├── rate_limits.yaml               # 限流配置（保留，34 行合理）
 ├── health_state.json              # 数据源健康状态（保留，运行时数据）
 │
@@ -176,10 +176,13 @@ sources:
   timeout: 30
 ```
 
-### 4.4 schemas.yaml（新增，从 schema.py 外置）
+### 4.4 schemas.yaml（设计目标，未实际集成，已删除）
+
+> **注**: schemas.yaml 曾计划用于外置缓存表 schema，但实际核心代码仍使用 `schema.py` 硬编码定义。
+> 该文件已于 2026-04 删除，schema 定义统一由 `src/akshare_data/core/schema.py` 管理。
 
 ```yaml
-# config/schemas.yaml
+# config/schemas.yaml（示例，已删除）
 version: '1.0'
 tables:
   stock_daily:

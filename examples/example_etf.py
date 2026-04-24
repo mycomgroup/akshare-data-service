@@ -28,7 +28,6 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import logging
 import random
-from datetime import date, timedelta
 
 import pandas as pd
 from akshare_data import get_etf
@@ -41,7 +40,6 @@ HISTORICAL_END = "2024-06-30"
 
 
 def _mock_etf_data(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
-    import random
     random.seed(hash(symbol) % 2**32)
     dates = pd.bdate_range(start=start_date, end=end_date)
     base_prices = {"510300": 3.8, "510050": 2.6, "159919": 3.7, "510500": 5.5}

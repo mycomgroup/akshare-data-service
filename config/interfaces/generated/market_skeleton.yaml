@@ -1,0 +1,959 @@
+currency_boc_safe:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '人民币汇率中间价
+
+    https://www.safe.gov.cn/safe/rmbhlzjj/index.html
+
+    :return: 人民币汇率中间价
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: currency_boc_safe
+  output:
+  - desc: 'from :return: docstring'
+    name: '1:'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_boc_safe
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '1:': '1:'
+    param_transforms: {}
+currency_boc_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '新浪财经-中行人民币牌价历史数据查询
+
+    https://biz.finance.sina.com.cn/forex/forex.php?startdate=2012-01-01&enddate=2021-06-14&money_code=EUR&type=0
+
+    :param symbol: choice of {''美元'', ''英镑'', ''欧元'', ''澳门元'', ''泰国铢'', ''菲律宾比索'',
+    ''港币''...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: currency_boc_sina
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 中行汇买价 field
+    name: 中行汇买价
+    type: float
+  - desc: 中行钞买价 field
+    name: 中行钞买价
+    type: float
+  - desc: 中行钞卖价/汇卖价 field
+    name: 中行钞卖价/汇卖价
+    type: float
+  - desc: 央行中间价 field
+    name: 央行中间价
+    type: float
+  - desc: 中行折算价 field
+    name: 中行折算价
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_boc_sina
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+currency_convert:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: 'currencies data from currencyscoop.com
+
+    https://currencyscoop.com/api-documentation
+
+    :param base: The base currency you would like to use for your rates
+
+    :type base: str
+
+    :param to: The currency you would...'
+  input:
+  - desc: base parameter
+    name: base
+    required: true
+    type: str
+  - desc: to parameter
+    name: to
+    required: true
+    type: str
+  - desc: amount parameter
+    name: amount
+    required: true
+    type: float
+  - desc: api_key parameter
+    name: api_key
+    required: true
+    type: str
+  name: currency_convert
+  output:
+  - desc: item field
+    name: item
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_convert
+    input_mapping:
+      amount: amount
+      api_key: api_key
+      base: base
+      to: to
+    name: akshare_em
+    output_mapping:
+      item: item
+      value: value
+    param_transforms: {}
+currency_currencies:
+  category: market
+  description: 'currencies data from currencyscoop.com
+
+    https://currencyscoop.com/api-documentation
+
+    :param c_type: now only "fiat" can return data
+
+    :type c_type: str
+
+    :param api_key: Account -> Account Details -> API KE...'
+  input:
+  - desc: c_type parameter
+    name: c_type
+    required: true
+    type: str
+  - desc: api_key parameter
+    name: api_key
+    required: true
+    type: str
+  name: currency_currencies
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_currencies
+    input_mapping:
+      api_key: api_key
+      c_type: c_type
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+currency_history:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: 'Latest data from currencyscoop.com
+
+    https://currencyscoop.com/api-documentation
+
+    :param base: The base currency you would like to use for your rates
+
+    :type base: str
+
+    :param date: Specific date, e.g., "20...'
+  input:
+  - desc: base parameter
+    name: base
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: symbols parameter
+    name: symbols
+    required: true
+    type: str
+  - desc: api_key parameter
+    name: api_key
+    required: true
+    type: str
+  name: currency_history
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: currency field
+    name: currency
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_history
+    input_mapping:
+      api_key: api_key
+      base: base
+      date: date
+      symbols: symbols
+    name: akshare_em
+    output_mapping:
+      currency: currency
+      index: index
+    param_transforms: {}
+currency_latest:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: 'Latest data from currencyscoop.com
+
+    https://currencyscoop.com/api-documentation
+
+    :param base: The base currency you would like to use for your rates
+
+    :type base: str
+
+    :param symbols: A list of currencies ...'
+  input:
+  - desc: base parameter
+    name: base
+    required: true
+    type: str
+  - desc: symbols parameter
+    name: symbols
+    required: true
+    type: str
+  - desc: api_key parameter
+    name: api_key
+    required: true
+    type: str
+  name: currency_latest
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: currency field
+    name: currency
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_latest
+    input_mapping:
+      api_key: api_key
+      base: base
+      symbols: symbols
+    name: akshare_em
+    output_mapping:
+      currency: currency
+      index: index
+    param_transforms: {}
+currency_pair_map:
+  category: market
+  description: '指定货币的所有可获取货币对的数据
+
+    https://cn.investing.com/currencies/cny-jmd
+
+    :param symbol: 指定货币
+
+    :type symbol: str
+
+    :return: 指定货币的所有可获取货币对的数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: currency_pair_map
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_pair_map
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+currency_time_series:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: 'Time-series data from currencyscoop.com
+
+    P.S. need special authority
+
+    https://currencyscoop.com/api-documentation
+
+    :param base: The base currency you would like to use for your rates
+
+    :type base: str
+
+    :par...'
+  input:
+  - desc: base parameter
+    name: base
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: symbols parameter
+    name: symbols
+    required: true
+    type: str
+  - desc: api_key parameter
+    name: api_key
+    required: true
+    type: str
+  name: currency_time_series
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: currency_time_series
+    input_mapping:
+      api_key: api_key
+      base: base
+      end_date: end_date
+      start_date: start_date
+      symbols: symbols
+    name: akshare_em
+    output_mapping:
+      date: date
+      index: index
+    param_transforms: {}
+spot_corn_price_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-全国玉米价格走势
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 全国玉米价格走势
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_corn_price_soozhu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 价格 field
+    name: 价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_corn_price_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_golden_benchmark_sge:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '上海黄金交易所-数据资讯-上海金基准价-历史数据
+
+    https://www.sge.com.cn/sjzx/jzj
+
+    :return: 历史数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_golden_benchmark_sge
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: 晚盘价 field
+    name: 晚盘价
+    type: float
+  - desc: 早盘价 field
+    name: 早盘价
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_golden_benchmark_sge
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      交易时间: time
+    param_transforms: {}
+spot_goods:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '新浪财经-商品现货价格指数
+
+    https://finance.sina.com.cn/futuremarket/spotprice.shtml#titlePos_0
+
+    :param symbol: choice of {"波罗的海干散货指数", "钢坯价格指数", "澳大利亚粉矿价格"}
+
+    :type symbol: str
+
+    :return: 商品现货价格指数
+
+    :rtype: pandas.DataFr...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: spot_goods
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 指数 field
+    name: 指数
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_goods
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+spot_hist_sge:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '上海黄金交易所-数据资讯-行情走势-历史数据
+
+    https://www.sge.com.cn/sjzx/mrhq
+
+    :param symbol: choice of {''Au99.99'', ''Au99.95'', ''Au100g'', ''Pt99.95'', ''Ag(T+D)'',
+    ''Au(T+D)'',
+
+    ''mAu(T+D)'', ''Au(T+N1)'', ''Au(T+N2)'', ''Ag99.99'', ''iAu99...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: spot_hist_sge
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_hist_sge
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+spot_hog_crossbred_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-全国后备二元母猪
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 全国后备二元母猪
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_hog_crossbred_soozhu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 价格 field
+    name: 价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_hog_crossbred_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_hog_lean_price_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-全国瘦肉型肉猪
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 全国瘦肉型肉猪
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_hog_lean_price_soozhu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 价格 field
+    name: 价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_hog_lean_price_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_hog_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-各省均价实时排行榜
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 各省均价实时排行榜
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_hog_soozhu
+  output:
+  - desc: province field
+    name: province
+    type: str
+  - desc: 价格 field
+    name: 价格
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_hog_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      涨跌幅: pct_change
+      省份: province
+    param_transforms: {}
+spot_hog_three_way_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-全国三元仔猪
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 全国三元仔猪
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_hog_three_way_soozhu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 价格 field
+    name: 价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_hog_three_way_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_hog_year_trend_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-今年以来全国出栏均价走势
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 今年以来全国出栏均价走势
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_hog_year_trend_soozhu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 价格 field
+    name: 价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_hog_year_trend_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_mixed_feed_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-全国育肥猪合料（含自配料）半月走势
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 全国育肥猪合料（含自配料）半月走势
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_mixed_feed_soozhu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 价格 field
+    name: 价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_mixed_feed_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_price_qh:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '99 期货-数据-期现-现货走势
+
+    https://www.99qh.com/data/spotTrend
+
+    :param symbol: 品种名称
+
+    :type symbol: str
+
+    :return: 现货走势
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: spot_price_qh
+  output:
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_price_qh
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_price_table_qh:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '99 期货-数据-期现-交易所与品种对照表
+
+    https://www.99qh.com/data/spotTrend
+
+    :return: 交易所与品种对照表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_price_table_qh
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_price_table_qh
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      交易所名称: name
+      品种名称: name
+    param_transforms: {}
+spot_quotations_sge:
+  category: market
+  description: '上海黄金交易所-实时行情数据
+
+    https://www.sge.com.cn/
+
+    https://www.sge.com.cn/graph/quotations
+
+    :param symbol: choice of {''Au99.99'', ''Au99.95'', ''Au100g'', ''Pt99.95'', ''Ag(T+D)'',
+    ''Au(T+D)'',
+
+    ''mAu(T+D)'', ''Au(T+N1)'', ''Au(T+...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: spot_quotations_sge
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_quotations_sge
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+spot_silver_benchmark_sge:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '上海黄金交易所-数据资讯-上海银基准价-历史数据
+
+    https://www.sge.com.cn/sjzx/mrhq
+
+    :return: 历史数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_silver_benchmark_sge
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: 晚盘价 field
+    name: 晚盘价
+    type: float
+  - desc: 早盘价 field
+    name: 早盘价
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_silver_benchmark_sge
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      交易时间: time
+    param_transforms: {}
+spot_soybean_price_soozhu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '搜猪-生猪大数据-全国豆粕价格走势
+
+    https://www.soozhu.com/price/data/center/
+
+    :return: 全国豆粕价格走势
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_soybean_price_soozhu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 价格 field
+    name: 价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_soybean_price_soozhu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+spot_symbol_table_sge:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: market
+  description: '上海黄金交易所-数据资讯-行情走势-品种表
+
+    https://www.sge.com.cn/sjzx/mrhq
+
+    :return: 品种表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: spot_symbol_table_sge
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: 品种 field
+    name: 品种
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: spot_symbol_table_sge
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      品种: 品种
+      序号: 序号
+    param_transforms: {}

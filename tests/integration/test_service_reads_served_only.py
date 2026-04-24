@@ -16,6 +16,7 @@ from unittest.mock import MagicMock
 import pandas as pd
 import pytest
 
+from akshare_data.store.manager import CacheManager, reset_cache_manager
 from akshare_data.service.reader import ServedReader
 from akshare_data.service.data_service import DataService, QueryResult
 from akshare_data.service.missing_data_policy import MissingDataReport

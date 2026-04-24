@@ -13,7 +13,7 @@ import logging
 from dataclasses import dataclass, field
 from datetime import date
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from akshare_data.ingestion.backfill_request import BackfillRequest, get_backfill_registry
 

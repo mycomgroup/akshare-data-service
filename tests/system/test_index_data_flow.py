@@ -9,7 +9,6 @@ Tests cover:
 - Index-specific fields (pe, pb valuation metrics)
 """
 
-from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest

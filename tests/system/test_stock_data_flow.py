@@ -11,7 +11,6 @@ Tests cover:
 - Financial data query flow (balance sheet, income statement, cash flow)
 """
 
-from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest

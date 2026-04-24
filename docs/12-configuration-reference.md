@@ -12,7 +12,6 @@ This document provides a comprehensive reference for all YAML configuration file
 config/
 ├── akshare_registry.yaml           # AkShare interface registry (master)
 ├── rate_limits.yaml                # Domain rate limiting
-├── schemas.yaml                    # Schema registry configuration
 ├── system.yaml                     # System-level configuration
 ├── interfaces/                     # Interface definitions by category
 │   ├── equity.yaml                 # Equity/stock interfaces
@@ -620,55 +619,7 @@ column_types:
 
 ---
 
-## 12. schemas.yaml — Schema Registry Configuration
-
-**File**: `config/schemas.yaml`
-
-**Purpose**: Defines cache table schemas and their storage policies. Maps to the `TableRegistry` in `src/akshare_data/core/schema.py`.
-
-**Structure**:
-
-```yaml
-tables:
-  stock_daily:
-    partition_by: date
-    ttl_hours: 0
-    aggregation_enabled: true
-    compaction_threshold: 20
-    priority: P0
-    storage_layer: daily
-
-  finance_indicator:
-    partition_by: report_date
-    ttl_hours: 2160
-    aggregation_enabled: true
-    compaction_threshold: 5
-    priority: P1
-    storage_layer: daily
-
-  securities:
-    partition_by: null
-    ttl_hours: 0
-    aggregation_enabled: false
-    compaction_threshold: 0
-    priority: P2
-    storage_layer: meta
-```
-
-**Key parameters**:
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `tables.<name>.partition_by` | string/null | `null` | Column used for Parquet partitioning |
-| `tables.<name>.ttl_hours` | int | `0` | Cache TTL in hours (0 = never expire) |
-| `tables.<name>.aggregation_enabled` | bool | `true` | Whether to enable file compaction |
-| `tables.<name>.compaction_threshold` | int | `20` | File count threshold to trigger compaction |
-| `tables.<name>.priority` | string | `P0` | Priority level (P0–P3) |
-| `tables.<name>.storage_layer` | string | `daily` | Storage layer: `daily`/`minute`/`meta`/`snapshot` |
-
----
-
-## 13. system.yaml — System Configuration
+## 12. system.yaml — System Configuration
 
 **File**: `config/system.yaml`
 

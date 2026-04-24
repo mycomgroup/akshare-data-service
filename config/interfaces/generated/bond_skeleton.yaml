@@ -1,0 +1,2611 @@
+bond_available_index_cbond:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国债券信息网-中债指数-中债指数族系 当中， 非指定期限部分
+
+    https://yield.chinabond.com.cn/cbweb-mn/indices/singleIndexQueryResult
+
+    :return: 可选项列表
+
+    :rtype: list'
+  input: []
+  name: bond_available_index_cbond
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_available_index_cbond
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      index: index
+      value: value
+    param_transforms: {}
+bond_buy_back_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-行情中心-债券市场-质押式回购-历史数据
+
+    https://quote.eastmoney.com/center/gridlist.html#bond_sh_buyback
+
+    :param symbol: 质押式回购代码
+
+    :type symbol: str
+
+    :return: 历史数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_buy_back_hist_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_buy_back_hist_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      收盘: close
+      日期: date
+      最低: low
+      最高: high
+    param_transforms: {}
+bond_cash_summary_sse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '上登债券信息网-市场数据-市场统计-市场概览-债券现券市场概览
+
+    http://bond.sse.com.cn/data/statistics/overview/bondow/
+
+    :param date: 指定日期
+
+    :type date: str
+
+    :return: 债券成交概览
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: bond_cash_summary_sse
+  output:
+  - desc: 债券现货 field
+    name: 债券现货
+    type: str
+  - desc: 托管只数 field
+    name: 托管只数
+    type: str
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: par_value field
+    name: par_value
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cash_summary_sse
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      托管市值: market_cap
+      托管面值: par_value
+      数据日期: date
+    param_transforms: {}
+bond_cb_adj_logs_jsl:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '集思录-可转债转股价-调整记录
+
+    https://www.jisilu.cn/data/cbnew/#cb
+
+    :param symbol: 可转债代码
+
+    :type symbol: str
+
+    :return: 转股价调整记录
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_cb_adj_logs_jsl
+  output:
+  - desc: 'from :return: docstring'
+    name: item.replace(
+    type: str
+  - desc: 'from :return: docstring'
+    name: )
+    type: str
+  - desc: 'from :return: docstring'
+    name: for
+    type: str
+  - desc: 'from :return: docstring'
+    name: item
+    type: str
+  - desc: 'from :return: docstring'
+    name: in
+    type: str
+  - desc: 'from :return: docstring'
+    name: temp_df.columns
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cb_adj_logs_jsl
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      ): )
+      for: for
+      in: in
+      item: item
+      item.replace(: item.replace(
+      temp_df.columns: temp_df.columns
+    param_transforms: {}
+bond_cb_index_jsl:
+  category: bond
+  description: '首页-可转债-集思录可转债等权指数
+
+    https://www.jisilu.cn/web/data/cb/index
+
+    :return: 集思录可转债等权指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_cb_index_jsl
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cb_index_jsl
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+bond_cb_jsl:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '集思录可转债
+
+    https://www.jisilu.cn/data/cbnew/#cb
+
+    :param cookie: 输入获取到的游览器 cookie
+
+    :type cookie: str
+
+    :return: 集思录可转债
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: bond_cb_jsl
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: current_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: stock_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 正股价
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: 正股PB
+    type: float
+  - desc: 'from :return: docstring'
+    name: 转股价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 转股价值
+    type: float
+  - desc: 'from :return: docstring'
+    name: premium
+    type: float
+  - desc: 'from :return: docstring'
+    name: rating
+    type: str
+  - desc: 'from :return: docstring'
+    name: 回售触发价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 强赎触发价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 转债占比
+    type: int
+  - desc: 'from :return: docstring'
+    name: maturity_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 剩余年限
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: size
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: turnover
+    type: float
+  - desc: 'from :return: docstring'
+    name: 到期税前收益
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 双低
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cb_jsl
+    input_mapping:
+      cookie: cookie
+    name: akshare_em
+    output_mapping:
+      代码: code
+      债券评级: rating
+      到期时间: maturity_date
+      剩余规模: size
+      成交额: amount
+      换手率: turnover
+      正股代码: stock_code
+      正股名称: name
+      正股涨跌: change
+      涨跌幅: pct_change
+      现价: current_price
+      转债名称: name
+      转股溢价率: premium
+    param_transforms: {}
+bond_cb_profile_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '新浪财经-债券-可转债-详情资料
+
+    https://money.finance.sina.com.cn/bond/info/sz128039.html
+
+    :param symbol: 带市场标识的转债代码
+
+    :type symbol: str
+
+    :return: 可转债-详情资料
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_cb_profile_sina
+  output:
+  - desc: item field
+    name: item
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cb_profile_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      item: item
+      value: value
+    param_transforms: {}
+bond_cb_redeem_jsl:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '集思录可转债-强赎
+
+    https://www.jisilu.cn/data/cbnew/#redeem
+
+    :return: 集思录可转债-强赎
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_cb_redeem_jsl
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: current_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: stock_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: size
+    type: float
+  - desc: 'from :return: docstring'
+    name: size
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: maturity_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 转股价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 强赎触发比
+    type: str
+  - desc: 'from :return: docstring'
+    name: 强赎触发价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 正股价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 强赎价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 强赎天计数
+    type: str
+  - desc: 'from :return: docstring'
+    name: 强赎条款
+    type: str
+  - desc: 'from :return: docstring'
+    name: status
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cb_redeem_jsl
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      代码: code
+      到期日: maturity_date
+      剩余规模: size
+      名称: name
+      强赎状态: status
+      最后交易日: day
+      正股代码: stock_code
+      正股名称: name
+      现价: current_price
+      规模: size
+      转股起始日: day
+    param_transforms: {}
+bond_cb_summary_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '新浪财经-债券-可转债-债券概况
+
+    https://money.finance.sina.com.cn/bond/quotes/sh155255.html
+
+    :param symbol: 带市场标识的转债代码
+
+    :type symbol: str
+
+    :return: 可转债-债券概况
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_cb_summary_sina
+  output:
+  - desc: item field
+    name: item
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cb_summary_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      item: item
+      value: value
+    param_transforms: {}
+bond_china_close_return:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '收盘收益率曲线历史数据
+
+    https://www.chinamoney.com.cn/chinese/bkcurvclosedyhis/?bondType=CYCC000&reference=1
+
+    :param symbol: 需要获取的指标
+
+    :type period: choice of {''0.1'', ''0.5'', ''1''}
+
+    :param period: 期限间隔
+
+    :type symbol: st...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: bond_china_close_return
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: term field
+    name: term
+    type: datetime
+  - desc: yield field
+    name: yield
+    type: datetime
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_china_close_return
+    input_mapping:
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      到期收益率: yield
+      即期收益率: yield
+      日期: date
+      期限: term
+      远期收益率: yield
+    param_transforms: {}
+bond_china_yield:
+  category: bond
+  description: '中国债券信息网-国债及其他债券收益率曲线
+
+    https://www.chinabond.com.cn/
+
+    https://yield.chinabond.com.cn/cbweb-pbc-web/pbc/historyQuery?startDate=2019-02-07&endDate=2020-02-04&gjqx=0&qxId=ycqx&locale=cn_ZH
+
+    注意: end_date - st...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: bond_china_yield
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_china_yield
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+bond_composite_index_cbond:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国债券信息网-中债指数-中债指数族系-总指数-综合类指数-中债-综合指数
+
+    https://yield.chinabond.com.cn/cbweb-mn/indices/single_index_query
+
+    :param indicator: choice of {"全价", "净价", "财富", "平均市值法久期", "平均现金流法久期", "平均市值法凸性",
+
+    "平均现金流法凸性", "平...'
+  input:
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: bond_composite_index_cbond
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_composite_index_cbond
+    input_mapping:
+      indicator: indicator
+      period: period
+    name: akshare_em
+    output_mapping:
+      date: date
+      value: value
+    param_transforms: {}
+bond_corporate_issue_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '巨潮资讯-数据中心-专题统计-债券报表-债券发行-企业债发行
+
+    http://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :param start_date: 开始统计时间
+
+    :type start_date: str
+
+    :param end_date: 开始统计时间
+
+    :type end_date: str
+
+    :return: 企业债发行
+
+    :rtype: panda...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: bond_corporate_issue_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: bond_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 计划发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: 实际发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: par_value
+    type: float
+  - desc: 'from :return: docstring'
+    name: issue_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: 发行方式
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行对象
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行范围
+    type: str
+  - desc: 'from :return: docstring'
+    name: 承销方式
+    type: str
+  - desc: 'from :return: docstring'
+    name: unit
+    type: int
+  - desc: 'from :return: docstring'
+    name: description
+    type: str
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_corporate_issue_cninfo
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      交易所网上发行终止日: day
+      交易所网上发行起始日: day
+      债券代码: bond_code
+      债券名称: name
+      债券简称: name
+      公告日期: date
+      募资用途说明: description
+      发行价格: issue_price
+      发行面值: par_value
+      最低认购额: low
+      最小认购单位: unit
+    param_transforms: {}
+bond_cov_comparison:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-行情中心-债券市场-可转债比价表
+
+    https://quote.eastmoney.com/center/fullscreenlist.html#convertible_comparison
+
+    :return: 可转债比价表数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_cov_comparison
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: listing_date field
+    name: listing_date
+    type: datetime
+  - desc: 纯债价值 field
+    name: 纯债价值
+    type: float
+  - desc: last field
+    name: last
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: stock_code field
+    name: stock_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 转股价 field
+    name: 转股价
+    type: float
+  - desc: 转股价值 field
+    name: 转股价值
+    type: float
+  - desc: premium field
+    name: premium
+    type: float
+  - desc: premium field
+    name: premium
+    type: float
+  - desc: 回售触发价 field
+    name: 回售触发价
+    type: float
+  - desc: 强赎触发价 field
+    name: 强赎触发价
+    type: float
+  - desc: 到期赎回价 field
+    name: 到期赎回价
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: subscription_date field
+    name: subscription_date
+    type: datetime
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cov_comparison
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      上市日期: listing_date
+      开始转股日: day
+      正股代码: stock_code
+      正股名称: name
+      正股最新价: last
+      正股涨跌幅: pct_change
+      申购日期: subscription_date
+      纯债溢价率: premium
+      转债代码: code
+      转债名称: name
+      转债最新价: last
+      转债涨跌幅: pct_change
+      转股溢价率: premium
+    param_transforms: {}
+bond_cov_issue_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '巨潮资讯-数据中心-专题统计-债券报表-债券发行-可转债发行
+
+    http://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :param start_date: 开始统计时间
+
+    :type start_date: str
+
+    :param end_date: 开始统计时间
+
+    :type end_date: str
+
+    :return: 可转债发行
+
+    :rtype: panda...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: bond_cov_issue_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: bond_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 计划发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: 实际发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: par_value
+    type: float
+  - desc: 'from :return: docstring'
+    name: issue_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: 发行方式
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行对象
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行范围
+    type: str
+  - desc: 'from :return: docstring'
+    name: 承销方式
+    type: str
+  - desc: 'from :return: docstring'
+    name: description
+    type: str
+  - desc: 'from :return: docstring'
+    name: 初始转股价格
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: quantity
+    type: float
+  - desc: 'from :return: docstring'
+    name: quantity
+    type: float
+  - desc: 'from :return: docstring'
+    name: unit
+    type: int
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 配售价格
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: market
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cov_issue_cninfo
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      交易市场: market
+      优先申购日: day
+      优先申购缴款日: day
+      债券代码: bond_code
+      债券名称: name
+      债券简称: name
+      债权登记日: day
+      公告日期: date
+      募资用途说明: description
+      发行价格: issue_price
+      发行终止日: day
+      发行起始日: day
+      发行面值: par_value
+      网上申购中签结果公告日及退款日: day
+      网上申购代码: code
+      网上申购单位: unit
+      网上申购数量上限: quantity
+      网上申购数量下限: quantity
+      网上申购日期: date
+      网上申购简称: name
+      转股代码: code
+      转股开始日期: date
+      转股终止日期: date
+    param_transforms: {}
+bond_cov_stock_issue_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '巨潮资讯-数据中心-专题统计-债券报表-债券发行-可转债转股
+
+    http://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :return: 可转债转股
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_cov_stock_issue_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: bond_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 转股价格
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 标的股票
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_cov_stock_issue_cninfo
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      债券代码: bond_code
+      债券名称: name
+      债券简称: name
+      公告日期: date
+      自愿转换期终止日: day
+      自愿转换期起始日: day
+      转股代码: code
+      转股简称: name
+    param_transforms: {}
+bond_deal_summary_sse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '上登债券信息网-市场数据-市场统计-市场概览-债券成交概览
+
+    http://bond.sse.com.cn/data/statistics/overview/turnover/
+
+    :param date: 指定日期
+
+    :type date: str
+
+    :return: 债券成交概览
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: bond_deal_summary_sse
+  output:
+  - desc: type field
+    name: type
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: trade_count field
+    name: trade_count
+    type: datetime
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_deal_summary_sse
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      债券类型: type
+      当年成交笔数: trade_count
+      当年成交金额: amount
+      当日成交笔数: day
+      当日成交金额: day
+      数据日期: date
+    param_transforms: {}
+bond_debt_nafmii:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国银行间市场交易商协会-非金融企业债务融资工具注册信息系统
+
+    http://zhuce.nafmii.org.cn/fans/publicQuery/manager
+
+    :param page: 输入数字页码
+
+    :type page: int
+
+    :return: 指定 sector 和 indicator 的数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: page parameter
+    name: page
+    required: true
+    type: int
+  name: bond_debt_nafmii
+  output:
+  - desc: 'from :return: docstring'
+    name: 注册通知书文号
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_debt_nafmii
+    input_mapping:
+      page: page
+    name: akshare_em
+    output_mapping:
+      注册通知书文号: 注册通知书文号
+    param_transforms: {}
+bond_gb_us_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '新浪财经-债券-美国国债收益率行情数据
+
+    https://stock.finance.sina.com.cn/forex/globalbd/cn10yt.html
+
+    :param symbol: choice of {"美国1月期国债", "美国2月期国债", "美国3月期国债", "美国4月期国债", "美国6月期国债",
+    "美国1年期国债", "美国2年期国债", "美国3年期国债", "美国5年...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_gb_us_sina
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_gb_us_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
+    param_transforms: {}
+bond_gb_zh_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '新浪财经-债券-中国国债收益率行情数据
+
+    https://stock.finance.sina.com.cn/forex/globalbd/cn10yt.html
+
+    :param symbol: choice of {"中国1年期国债", "中国2年期国债", "中国3年期国债", "中国5年期国债", "中国7年期国债",
+    "中国10年期国债", "中国15年期国债", "中国20年期国债", "中...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_gb_zh_sina
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_gb_zh_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
+    param_transforms: {}
+bond_index_general_cbond:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国债券信息网-中债指数-中债指数族系
+
+    https://yield.chinabond.com.cn/cbweb-mn/indices/singleIndexQueryResult
+
+    :param index_category: see result of available_bond_index()
+
+    :type index_category: str
+
+    :param indicator: choic...'
+  input:
+  - desc: index_category parameter
+    name: index_category
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: bond_index_general_cbond
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_index_general_cbond
+    input_mapping:
+      index_category: index_category
+      indicator: indicator
+      period: period
+    name: akshare_em
+    output_mapping:
+      date: date
+      value: value
+    param_transforms: {}
+bond_local_government_issue_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '巨潮资讯-数据中心-专题统计-债券报表-债券发行-地方债发行
+
+    http://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :param start_date: 开始统计时间
+
+    :type start_date: str
+
+    :param end_date: 开始统计时间
+
+    :type end_date: str
+
+    :return: 地方债发行
+
+    :rtype: panda...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: bond_local_government_issue_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: bond_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 计划发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: 实际发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: issue_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: par_value
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 增发次数
+    type: str
+  - desc: 'from :return: docstring'
+    name: market
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行方式
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行对象
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_local_government_issue_cninfo
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      交易市场: market
+      债券代码: bond_code
+      债券名称: name
+      债券简称: name
+      公告日期: date
+      单位面值: par_value
+      发行价格: issue_price
+      发行终止日: day
+      发行起始日: day
+      缴款日: day
+    param_transforms: {}
+bond_new_composite_index_cbond:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国债券信息网-中债指数-中债指数族系-总指数-综合类指数-中债-新综合指数
+
+    https://yield.chinabond.com.cn/cbweb-mn/indices/single_index_query
+
+    :param indicator: choice of {"全价", "净价", "财富", "平均市值法久期", "平均现金流法久期", "平均市值法凸性",
+
+    "平均现金流法凸性", "...'
+  input:
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: bond_new_composite_index_cbond
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_new_composite_index_cbond
+    input_mapping:
+      indicator: indicator
+      period: period
+    name: akshare_em
+    output_mapping:
+      date: date
+      value: value
+    param_transforms: {}
+bond_sh_buy_back_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-行情中心-债券市场-上证质押式回购
+
+    https://quote.eastmoney.com/center/gridlist.html#bond_sh_buyback
+
+    :return: 上证质押式回购
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_sh_buy_back_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: str
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: prev_close
+    type: str
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_sh_buy_back_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      今开: open
+      代码: code
+      名称: name
+      成交量: volume
+      成交额: amount
+      昨收: prev_close
+      最低: low
+      最新价: last
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+bond_spot_deal:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-市场数据-债券市场行情-现券市场成交行情
+
+    https://www.chinamoney.com.cn/chinese/mkdatabond/
+
+    :return: 现券市场成交行情
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_spot_deal
+  output:
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: change field
+    name: change
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: 成交净价 field
+    name: 成交净价
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 交易量 field
+    name: 交易量
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_spot_deal
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      债券简称: name
+      加权收益率: yield
+      最新收益率: yield
+      涨跌: change
+    param_transforms: {}
+bond_spot_quote:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-市场数据-债券市场行情-现券市场做市报价
+
+    https://www.chinamoney.com.cn/chinese/mkdatabond/
+
+    :return: 现券市场做市报价
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_spot_quote
+  output:
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 报价机构 field
+    name: 报价机构
+    type: float
+  - desc: name field
+    name: name
+    type: str
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: bid field
+    name: bid
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_spot_quote
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      买入/卖出净价: bid
+      买入/卖出收益率: bid
+      债券简称: name
+    param_transforms: {}
+bond_sz_buy_back_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-行情中心-债券市场-深证质押式回购
+
+    https://quote.eastmoney.com/center/gridlist.html#bond_sz_buyback
+
+    :return: 深证质押式回购
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_sz_buy_back_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: str
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: prev_close
+    type: str
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_sz_buy_back_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      今开: open
+      代码: code
+      名称: name
+      成交量: volume
+      成交额: amount
+      昨收: prev_close
+      最低: low
+      最新价: last
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+bond_treasure_issue_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '巨潮资讯-数据中心-专题统计-债券报表-债券发行-国债发行
+
+    http://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :param start_date: 开始统计时间
+
+    :type start_date: str
+
+    :param end_date: 结束统计数据
+
+    :type end_date: str
+
+    :return: 国债发行
+
+    :rtype: pandas....'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: bond_treasure_issue_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: bond_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 计划发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: 实际发行总量
+    type: float
+  - desc: 'from :return: docstring'
+    name: issue_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: par_value
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 增发次数
+    type: str
+  - desc: 'from :return: docstring'
+    name: market
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行方式
+    type: str
+  - desc: 'from :return: docstring'
+    name: 发行对象
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_treasure_issue_cninfo
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      交易市场: market
+      债券代码: bond_code
+      债券名称: name
+      债券简称: name
+      公告日期: date
+      单位面值: par_value
+      发行价格: issue_price
+      发行终止日: day
+      发行起始日: day
+      缴款日: day
+    param_transforms: {}
+bond_treasury_index_cbond:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '中国债券信息网-中债指数-中债指数族系-总指数-综合类指数-中债-国债指数
+
+    https://yield.chinabond.com.cn/cbweb-mn/indices/single_index_query
+
+    :param indicator: choice of {"全价", "净价", "财富"}
+
+    :type indicator: str
+
+    :param period: choice of {''...'
+  input:
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: bond_treasury_index_cbond
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_treasury_index_cbond
+    input_mapping:
+      indicator: indicator
+      period: period
+    name: akshare_em
+    output_mapping:
+      date: date
+      value: value
+    param_transforms: {}
+bond_zh_cov:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-数据中心-新股数据-可转债数据
+
+    https://data.eastmoney.com/kzz/default.html
+
+    :return: 可转债数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_zh_cov
+  output:
+  - desc: bond_code field
+    name: bond_code
+    type: int
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: stock_code field
+    name: stock_code
+    type: int
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: size field
+    name: size
+    type: float
+  - desc: subscription_limit field
+    name: subscription_limit
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: subscription_date field
+    name: subscription_date
+    type: datetime
+  - desc: lottery_date field
+    name: lottery_date
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: stock_name field
+    name: stock_name
+    type: str
+  - desc: 原股东配售-每股配售额 field
+    name: 原股东配售-每股配售额
+    type: float
+  - desc: lottery_rate field
+    name: lottery_rate
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 正股价 field
+    name: 正股价
+    type: float
+  - desc: 转股价 field
+    name: 转股价
+    type: float
+  - desc: 转股价值 field
+    name: 转股价值
+    type: float
+  - desc: current_price field
+    name: current_price
+    type: float
+  - desc: premium field
+    name: premium
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_cov
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      上市时间: time
+      中签号发布日: lottery_date
+      中签率: lottery_rate
+      信用评级: rating
+      债券代码: bond_code
+      债券简称: name
+      债现价: current_price
+      原股东配售-股权登记日: day
+      发行规模: size
+      正股代码: stock_code
+      正股简称: stock_name
+      申购上限: subscription_limit
+      申购代码: code
+      申购日期: subscription_date
+      转股溢价率: premium
+    param_transforms: {}
+bond_zh_cov_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: 'https://data.eastmoney.com/kzz/detail/123121.html
+
+    东方财富网-数据中心-新股数据-可转债详情
+
+    :param symbol: 可转债代码
+
+    :type symbol: str
+
+    :param indicator: choice of {"基本信息", "中签号", "筹资用途", "重要日期"}
+
+    :type indicator: str
+
+    :return:...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: bond_zh_cov_info
+  output:
+  - desc: 'from :return: docstring'
+    name: indicator
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_cov_info
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      indicator: indicator
+    param_transforms: {}
+bond_zh_cov_info_ths:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '同花顺-数据中心-可转债
+
+    https://data.10jqka.com.cn/ipo/bond/
+
+    :return: 可转债行情
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_zh_cov_info_ths
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: bond_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: subscription_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: 原股东配售码
+    type: str
+  - desc: 'from :return: docstring'
+    name: 每股获配额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 计划发行量
+    type: float
+  - desc: 'from :return: docstring'
+    name: 实际发行量
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 中签号
+    type: str
+  - desc: 'from :return: docstring'
+    name: listing_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: stock_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: stock_name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 转股价格
+    type: float
+  - desc: 'from :return: docstring'
+    name: maturity_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: lottery_rate
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_cov_info_ths
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      上市日期: listing_date
+      中签公布日: day
+      中签率: lottery_rate
+      债券代码: bond_code
+      债券简称: name
+      到期时间: maturity_date
+      正股代码: stock_code
+      正股简称: stock_name
+      申购代码: code
+      申购日期: subscription_date
+    param_transforms: {}
+bond_zh_cov_value_analysis:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: 'https://data.eastmoney.com/kzz/detail/113527.html
+
+    东方财富网-数据中心-新股数据-可转债数据-价值分析-溢价率分析
+
+    :param symbol: 可转债代码
+
+    :type symbol: str
+
+    :return: 可转债价值分析
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_zh_cov_value_analysis
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 转股价值 field
+    name: 转股价值
+    type: float
+  - desc: 纯债价值 field
+    name: 纯债价值
+    type: float
+  - desc: premium field
+    name: premium
+    type: float
+  - desc: premium field
+    name: premium
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_cov_value_analysis
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      收盘价: close
+      日期: date
+      纯债溢价率: premium
+      转股溢价率: premium
+    param_transforms: {}
+bond_zh_hs_cov_daily:
+  category: bond
+  description: '新浪财经-债券-沪深可转债的历史行情数据, 大量抓取容易封 IP
+
+    https://vip.stock.finance.sina.com.cn/mkt/#hskzz_z
+
+    :param symbol: 沪深可转债代码; e.g., sh010107
+
+    :type symbol: str
+
+    :return: 指定沪深可转债代码的日 K 线数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_zh_hs_cov_daily
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_hs_cov_daily
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+bond_zh_hs_cov_min:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-可转债-分时行情
+
+    https://quote.eastmoney.com/concept/sz128039.html
+
+    :param symbol: 转债代码
+
+    :type symbol: str
+
+    :param period: choice of {''1'', ''5'', ''15'', ''30'', ''60''}
+
+    :type period: str
+
+    :param adjust: choice of ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: adjust parameter
+    name: adjust
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: bond_zh_hs_cov_min
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: last field
+    name: last
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_hs_cov_min
+    input_mapping:
+      adjust: adjust
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      收盘: close
+      时间: time
+      最低: low
+      最新价: last
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+bond_zh_hs_cov_pre_min:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-可转债-分时行情-盘前
+
+    https://quote.eastmoney.com/concept/sz128039.html
+
+    :param symbol: 转债代码
+
+    :type symbol: str
+
+    :return: 分时行情-盘前
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_zh_hs_cov_pre_min
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: last field
+    name: last
+    type: float
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_hs_cov_pre_min
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      收盘: close
+      时间: time
+      最低: low
+      最新价: last
+      最高: high
+    param_transforms: {}
+bond_zh_hs_cov_spot:
+  category: bond
+  description: '新浪财经-债券-沪深可转债的实时行情数据; 大量抓取容易封IP
+
+    https://vip.stock.finance.sina.com.cn/mkt/#hskzz_z
+
+    :return: 所有沪深可转债在当前时刻的实时行情数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: bond_zh_hs_cov_spot
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_hs_cov_spot
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+bond_zh_hs_daily:
+  category: bond
+  description: '新浪财经-债券-沪深债券-历史行情数据, 大量抓取容易封 IP
+
+    https://vip.stock.finance.sina.com.cn/mkt/#hs_z
+
+    :param symbol: 沪深债券代码; e.g., sh010107
+
+    :type symbol: str
+
+    :return: 指定沪深债券代码的日 K 线数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: bond_zh_hs_daily
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_hs_daily
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+bond_zh_hs_spot:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '新浪财经-债券-沪深债券-实时行情数据, 大量抓取容易封IP
+
+    https://vip.stock.finance.sina.com.cn/mkt/#hs_z
+
+    :param start_page: 分页起始页
+
+    :type start_page: str
+
+    :param end_page: 分页结束页
+
+    :type end_page: str
+
+    :return: 所有沪深债券在当前时刻的实时行情数据
+
+    :rt...'
+  input:
+  - desc: start_page parameter
+    name: start_page
+    required: true
+    type: str
+  - desc: end_page parameter
+    name: end_page
+    required: true
+    type: str
+  name: bond_zh_hs_spot
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: ask field
+    name: ask
+    type: float
+  - desc: prev_close field
+    name: prev_close
+    type: str
+  - desc: open field
+    name: open
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_hs_spot
+    input_mapping:
+      end_page: end_page
+      start_page: start_page
+    name: akshare_em
+    output_mapping:
+      买入: bid
+      今开: open
+      代码: code
+      卖出: ask
+      名称: name
+      成交量: volume
+      成交额: amount
+      昨收: prev_close
+      最低: low
+      最新价: last
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+bond_zh_us_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: bond
+  description: '东方财富网-数据中心-经济数据-中美国债收益率
+
+    https://data.eastmoney.com/cjsj/zmgzsyl.html
+
+    :param start_date: 开始统计时间
+
+    :type start_date: str
+
+    :return: 中美国债收益率
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  name: bond_zh_us_rate
+  output:
+  - desc: 'from :return: docstring'
+    name: col
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bond_zh_us_rate
+    input_mapping:
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      col: col
+    param_transforms: {}

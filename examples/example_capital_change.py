@@ -21,7 +21,6 @@ import logging
 logging.getLogger("ServedReader").setLevel(logging.ERROR)
 
 from akshare_data import get_service
-import akshare as ak
 import re
 import time
 from typing import Callable, Optional

@@ -19,7 +19,6 @@ get_industry_mapping() 接口示例
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-import akshare as ak
 from akshare_data import get_service
 
 

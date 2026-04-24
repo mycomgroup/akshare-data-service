@@ -16,7 +16,6 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 import pandas as pd
 from datetime import date, timedelta
 import akshare as ak
-from akshare_data import get_service
 
 
 def _candidate_fallback_dates(count: int = 5) -> list[str]:

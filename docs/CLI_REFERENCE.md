@@ -332,7 +332,6 @@ Config merged: /path/to/config/akshare_registry.yaml
 config/
 ├── akshare_registry.yaml           # 主注册表文件
 ├── rate_limits.yaml                # 域名限速配置
-├── schemas.yaml                    # Schema 注册表配置
 ├── system.yaml                     # 系统配置
 ├── interfaces/                     # 按分类的接口定义
 │   ├── equity.yaml

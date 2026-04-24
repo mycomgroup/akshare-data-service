@@ -14,6 +14,7 @@ from akshare_data.offline.scanner import (
     DomainExtractor,
     CategoryInferrer,
     ParamInferrer,
+    OutputFieldCapture,
 )
 
 logger = logging.getLogger("akshare_data")
@@ -64,6 +65,7 @@ class RegistryBuilder:
         self.domain_extractor = DomainExtractor()
         self.category_inferrer = CategoryInferrer()
         self.param_inferrer = ParamInferrer()
+        self.output_capture = OutputFieldCapture()
 
     def build(self, scan_results: Optional[Dict[str, Dict]] = None) -> Dict[str, Any]:
         """构建完整注册表"""
@@ -84,9 +86,9 @@ class RegistryBuilder:
                     }
 
         return {
-            "version": "2.0",
+            "version": "3.0",
             "generated_at": datetime.now().isoformat(),
-            "description": "AkShare 接口注册表 - 按分类拆分",
+            "description": "AkShare 接口注册表 - 含输出字段",
             "interfaces": interfaces,
             "domains": domains,
             "rate_limits": rate_limits,
@@ -104,6 +106,20 @@ class RegistryBuilder:
         )
         rate_limit_key = self._infer_rate_limit(domains)
 
+        output_fields = []
+        if func_obj:
+            signature = func_info.get("signature", [])
+            output_field_list = self.output_capture.capture(func_name, signature, params)
+            output_fields = [
+                {
+                    "name": f.name,
+                    "type": f.inferred_type,
+                    "source": f.source,
+                    "description": f.description,
+                }
+                for f in output_field_list
+            ]
+
         return {
             "name": func_name,
             "category": category,
@@ -111,6 +127,7 @@ class RegistryBuilder:
             "signature": func_info.get("signature", []),
             "domains": domains,
             "rate_limit_key": rate_limit_key,
+            "output_fields": output_fields,
             "sources": [],
             "probe": {
                 "params": params,

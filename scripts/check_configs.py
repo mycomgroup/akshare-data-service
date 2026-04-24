@@ -23,7 +23,7 @@ with open('config/akshare_registry.yaml') as f:
 interfaces_reg = registry.get('interfaces', {})
 count_with_sources = sum(1 for v in interfaces_reg.values() if v.get('sources'))
 print()
-print(f'=== akshare_registry.yaml ===')
+print('=== akshare_registry.yaml ===')
 print(f'Total in registry: {len(interfaces_reg)}')
 print(f'With sources: {count_with_sources}')
 print(f'Without sources (raw akshare): {len(interfaces_reg) - count_with_sources}')

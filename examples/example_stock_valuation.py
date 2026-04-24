@@ -22,8 +22,6 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 import pandas as pd
 import akshare as ak
 
-from akshare_data import get_service
-from _example_utils import first_non_empty_by_symbol
 
 
 def _mock_valuation(symbol):

@@ -362,7 +362,7 @@ def example_futures_spot_market_overview():
             return
 
         print(f"数据来源: {source}")
-        print(f"\n市场总览:")
+        print("\n市场总览:")
         print(f"  数据行数: {len(df)}")
 
         change_cols = [col for col in df.columns if "change" in col.lower() or "涨跌幅" in col]

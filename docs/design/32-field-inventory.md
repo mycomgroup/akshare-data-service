@@ -8,8 +8,8 @@
 
 | 来源 | 文件路径 | 字段数量 | 说明 |
 |------|----------|---------|------|
-| Schema Registry (YAML) | `config/schemas.yaml` | 69 表 x N 字段 | 缓存表结构定义 |
-| Schema Registry (Python) | `src/akshare_data/core/schema.py` | 69 表 x N 字段 | Python 版表定义 (与 YAML 同步) |
+| Schema Registry (Python) | `src/akshare_data/core/schema.py` | 69 表 x N 字段 | 缓存表结构定义（核心代码使用） |
+| Entity Standards | `config/standards/entities/*.yaml` | 13 表 x N 字段 | 字段补丁覆盖（运行时加载） |
 | Field Mapping | `src/akshare_data/core/fields.py` | 53 条映射 | 中→英字段映射 |
 | Interface Definitions | `config/interfaces/*.yaml` | 6 类接口 | 接口输入输出规范 |
 | Lixinger Source | `src/akshare_data/sources/lixinger_source.py` | - | 数据源适配器 |
@@ -662,12 +662,11 @@
 1. **字段标准化**: 参考 Section 5.2 统一所有字段名
 2. **类型统一**: 所有数值字段使用 `float64`，避免精度问题
 3. **映射表完善**: 补充 AkShare 原生字段 → 标准字段映射
-4. **文档同步**: 更新 `schemas.yaml` 与 `schema.py` 保持一致
 
 ---
 
 **文档生成日期**: 2026-04-22  
-**扫描文件**: schemas.yaml, schema.py, fields.py, interfaces/*.yaml, lixinger_source.py, akshare_source.py  
+**扫描文件**: schema.py, fields.py, interfaces/*.yaml, lixinger_source.py, akshare_source.py  
 **总表数**: 69  
 **总字段数**: 约 300+  
 **同义字段组**: 15+

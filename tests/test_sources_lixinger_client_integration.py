@@ -4,7 +4,6 @@ Without LIXINGER_TOKEN, these fail with auth errors. We verify the error handlin
 is correct and that the API call pattern works.
 """
 
-import os
 
 import pytest
 import pandas as pd

@@ -1,0 +1,4949 @@
+fund_announcement_dividend_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金档案-基金公告-分红配送
+
+    https://fundf10.eastmoney.com/jjgg_000001_2.html
+
+    :param symbol: 基金代码; 可以通过调用 ak.fund_name_em() 接口获取
+
+    :type symbol: str
+
+    :return: 分红配送-公告列表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_announcement_dividend_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: title field
+    name: title
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 报告ID field
+    name: 报告ID
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_announcement_dividend_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      公告日期: date
+      公告标题: title
+      基金代码: fund_code
+      基金名称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_announcement_personnel_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金档案-基金公告-人事调整
+
+    https://fundf10.eastmoney.com/jjgg_000001_4.html
+
+    :param symbol: 基金代码; 可以通过调用 ak.fund_name_em() 接口获取
+
+    :type symbol: str
+
+    :return: 人事调整-公告列表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_announcement_personnel_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: title field
+    name: title
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 报告ID field
+    name: 报告ID
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_announcement_personnel_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      公告日期: date
+      公告标题: title
+      基金代码: fund_code
+      基金名称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_announcement_report_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金档案-基金公告-定期报告
+
+    https://fundf10.eastmoney.com/jjgg_000001_3.html
+
+    :param symbol: 基金代码; 可以通过调用 ak.fund_name_em() 接口获取
+
+    :type symbol: str
+
+    :return: 定期报告-公告列表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_announcement_report_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: title field
+    name: title
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 报告ID field
+    name: 报告ID
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_announcement_report_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      公告日期: date
+      公告标题: title
+      基金代码: fund_code
+      基金名称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_aum_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-基金-基金公司排名列表
+
+    https://fund.eastmoney.com/Company/lsgm.html
+
+    :return: 基金公司排名列表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_aum_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: 基金公司 field
+    name: 基金公司
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: size field
+    name: size
+    type: float
+  - desc: 全部基金数 field
+    name: 全部基金数
+    type: str
+  - desc: 全部经理数 field
+    name: 全部经理数
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_aum_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      全部管理规模: size
+      成立时间: time
+    param_transforms: {}
+fund_aum_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-基金-基金公司历年管理规模排行列表
+
+    https://fund.eastmoney.com/Company/lsgm.html
+
+    :param year: query year
+
+    :type year: str
+
+    :return: 基金公司历年管理规模排行列表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  name: fund_aum_hist_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: 基金公司 field
+    name: 基金公司
+    type: str
+  - desc: size field
+    name: size
+    type: float
+  - desc: 股票型 field
+    name: 股票型
+    type: str
+  - desc: 混合型 field
+    name: 混合型
+    type: str
+  - desc: 债券型 field
+    name: 债券型
+    type: str
+  - desc: 指数型 field
+    name: 指数型
+    type: float
+  - desc: QDII field
+    name: QDII
+    type: str
+  - desc: currency field
+    name: currency
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_aum_hist_em
+    input_mapping:
+      year: year
+    name: akshare_em
+    output_mapping:
+      总规模: size
+      货币型: currency
+    param_transforms: {}
+fund_aum_trend_em:
+  category: fund
+  description: '东方财富-基金-基金市场管理规模走势图
+
+    https://fund.eastmoney.com/Company/default.html
+
+    :return: 基金市场管理规模走势图
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_aum_trend_em
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_aum_trend_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+fund_balance_position_lg:
+  category: fund
+  description: '乐咕乐股-基金仓位-平衡混合型基金仓位
+
+    https://legulegu.com/stockdata/fund-position/pos-pingheng
+
+    :return: 平衡混合型基金仓位
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_balance_position_lg
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_balance_position_lg
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+fund_cf_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金数据-分红送配-基金拆分
+
+    https://fund.eastmoney.com/data/fundchaifen.html#FSRQ,desc,1,,,
+
+    :param year: 查询年份
+
+    :type year: str
+
+    :param typ: 基金类型；空串表示全部; choice of {"", "指数型-其他", "指数型-海外股票", "指数型-固收", "指数型-股票",...'
+  input:
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  - desc: typ parameter
+    name: typ
+    required: true
+    type: str
+  - desc: rank parameter
+    name: rank
+    required: true
+    type: str
+  - desc: sort parameter
+    name: sort
+    required: true
+    type: str
+  - desc: page parameter
+    name: page
+    required: true
+    type: int
+  name: fund_cf_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  - desc: 拆分折算 field
+    name: 拆分折算
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_cf_em
+    input_mapping:
+      page: page
+      rank: rank
+      sort: sort
+      typ: typ
+      year: year
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      拆分折算日: day
+      拆分类型: type
+    param_transforms: {}
+fund_etf_category_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '新浪财经-基金列表
+
+    https://vip.stock.finance.sina.com.cn/fund_center/index.html#jjhqetf
+
+    :param symbol: choice of {"封闭式基金", "ETF基金", "LOF基金"}
+
+    :type symbol: str
+
+    :return: 指定 symbol 的基金列表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_etf_category_sina
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: ask field
+    name: ask
+    type: float
+  - desc: prev_close field
+    name: prev_close
+    type: str
+  - desc: open field
+    name: open
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_category_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      买入: bid
+      今开: open
+      代码: code
+      卖出: ask
+      名称: name
+      成交量: volume
+      成交额: amount
+      昨收: prev_close
+      最低: low
+      最新价: last
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_etf_category_ths:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '同花顺理财-基金数据-每日净值-实时行情
+
+    https://fund.10jqka.com.cn/datacenter/jz/
+
+    :param symbol: 基金类型; choice of {"股票型", "债券型", "混合型", "ETF", "LOF", "QDII", "保本型",
+    "指数型", ""}; "" 表示全部
+
+    :type symbol: str
+
+    :param date: 查询日期...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_etf_category_ths
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: fund_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 增长值
+    type: float
+  - desc: 'from :return: docstring'
+    name: 增长率
+    type: float
+  - desc: 'from :return: docstring'
+    name: status
+    type: str
+  - desc: 'from :return: docstring'
+    name: status
+    type: str
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: type
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_category_ths
+    input_mapping:
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      前一日-单位净值: day
+      前一日-累计净值: day
+      基金代码: fund_code
+      基金名称: name
+      基金类型: type
+      当前-单位净值: nav
+      当前-累计净值: nav
+      最新-交易日: day
+      最新-单位净值: nav
+      最新-累计净值: nav
+      申购状态: status
+      赎回状态: status
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_etf_dividend_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '新浪财经-基金-ETF 基金-累计分红
+
+    https://finance.sina.com.cn/fund/quotes/510050/bc.shtml
+
+    :param symbol: 基金名称, 可以通过 ak.fund_etf_category_sina() 函数获取
+
+    :type symbol: str
+
+    :return: 累计分红
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_etf_dividend_sina
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: f field
+    name: f
+    type: str
+  - desc: s field
+    name: s
+    type: str
+  - desc: u field
+    name: u
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 累计分红 field
+    name: 累计分红
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_dividend_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_etf_fund_daily_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-天天基金网-基金数据-场内交易基金
+
+    https://fund.eastmoney.com/cnjy_dwjz.html
+
+    :return: 当前交易日的所有场内交易基金数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_etf_fund_daily_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 'from :return: docstring'
+    name: '0'
+    type: str
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_fund_daily_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      类型: type
+    param_transforms: {}
+fund_etf_fund_info_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-场内交易基金-历史净值明细
+
+    https://fundf10.eastmoney.com/jjjz_511280.html
+
+    :param fund: 场内交易基金代码, 可以通过 fund_etf_fund_daily_em 来获取
+
+    :type fund: str
+
+    :param start_date: 开始统计时间
+
+    :type start_date: str
+
+    :p...'
+  input:
+  - desc: fund parameter
+    name: fund
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: fund_etf_fund_info_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: accum_nav field
+    name: accum_nav
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: status field
+    name: status
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_fund_info_em
+    input_mapping:
+      end_date: end_date
+      fund: fund
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      净值日期: date
+      单位净值: nav
+      日增长率: day
+      申购状态: status
+      累计净值: accum_nav
+      赎回状态: status
+    param_transforms: {}
+fund_etf_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-ETF行情
+
+    https://quote.eastmoney.com/sz159707.html
+
+    :param symbol: ETF 代码
+
+    :type symbol: str
+
+    :param period: choice of {''daily'', ''weekly'', ''monthly''}
+
+    :type period: str
+
+    :param start_date: 开始日期
+
+    :type sta...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: adjust parameter
+    name: adjust
+    required: true
+    type: str
+  name: fund_etf_hist_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_hist_em
+    input_mapping:
+      adjust: adjust
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      收盘: close
+      日期: date
+      最低: low
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_etf_hist_min_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-ETF 行情
+
+    https://quote.eastmoney.com/sz159707.html
+
+    :param symbol: ETF 代码
+
+    :type symbol: str
+
+    :param start_date: 开始日期
+
+    :type start_date: str
+
+    :param end_date: 结束日期
+
+    :type end_date: str
+
+    :param period: cho...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: adjust parameter
+    name: adjust
+    required: true
+    type: str
+  name: fund_etf_hist_min_em
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: 均价 field
+    name: 均价
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_hist_min_em
+    input_mapping:
+      adjust: adjust
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      收盘: close
+      时间: time
+      最低: low
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_etf_hist_sina:
+  category: fund
+  description: '新浪财经-基金-ETF 基金-日行情数据
+
+    https://finance.sina.com.cn/fund/quotes/159996/bc.shtml
+
+    :param symbol: 基金名称, 可以通过 ak.fund_etf_category_sina() 函数获取
+
+    :type symbol: str
+
+    :return: 日行情数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_etf_hist_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_hist_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_etf_scale_sse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '上海证券交易所-产品-基金产品-ETF产品-ETF产品列表-基金规模
+
+    https://www.sse.com.cn/assortment/fund/etf/list/scale/
+
+    :param date: 统计日期, 默认为空返回最新数据, 格式如 "20250115"
+
+    :type date: str
+
+    :return: ETF基金份额数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_etf_scale_sse
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: fund_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: type
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 基金份额
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_scale_sse
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      ETF类型: type
+      基金代码: fund_code
+      基金简称: name
+      统计日期: date
+    param_transforms: {}
+fund_etf_scale_szse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '深圳证券交易所-基金产品-基金列表-ETF基金份额
+
+    https://fund.szse.cn/marketdata/fundslist/index.html
+
+    :return: ETF基金份额数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_etf_scale_szse
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: fund_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金类别
+    type: str
+  - desc: 'from :return: docstring'
+    name: 投资类别
+    type: str
+  - desc: 'from :return: docstring'
+    name: listing_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 基金份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 基金管理人
+    type: int
+  - desc: 'from :return: docstring'
+    name: 基金发起人
+    type: int
+  - desc: 'from :return: docstring'
+    name: 基金托管人
+    type: int
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_scale_szse
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      上市日期: listing_date
+      净值: nav
+      基金代码: fund_code
+      基金简称: name
+    param_transforms: {}
+fund_etf_spot_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-ETF 实时行情
+
+    https://quote.eastmoney.com/center/gridlist.html#fund_etf
+
+    :return: ETF 实时行情
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_etf_spot_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: IOPV实时估值
+    type: float
+  - desc: 'from :return: docstring'
+    name: 基金折价率
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: prev_close
+    type: str
+  - desc: 'from :return: docstring'
+    name: amplitude
+    type: str
+  - desc: 'from :return: docstring'
+    name: turnover
+    type: float
+  - desc: 'from :return: docstring'
+    name: 量比
+    type: float
+  - desc: 'from :return: docstring'
+    name: 委比
+    type: float
+  - desc: 'from :return: docstring'
+    name: 外盘
+    type: str
+  - desc: 'from :return: docstring'
+    name: 内盘
+    type: str
+  - desc: 'from :return: docstring'
+    name: 主力净流入-净额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 主力净流入-净占比
+    type: int
+  - desc: 'from :return: docstring'
+    name: 超大单净流入-净额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 超大单净流入-净占比
+    type: int
+  - desc: 'from :return: docstring'
+    name: 大单净流入-净额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 大单净流入-净占比
+    type: int
+  - desc: 'from :return: docstring'
+    name: 中单净流入-净额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 中单净流入-净占比
+    type: int
+  - desc: 'from :return: docstring'
+    name: 小单净流入-净额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 小单净流入-净占比
+    type: int
+  - desc: 'from :return: docstring'
+    name: 现手
+    type: int
+  - desc: 'from :return: docstring'
+    name: bid1
+    type: float
+  - desc: 'from :return: docstring'
+    name: ask1
+    type: float
+  - desc: 'from :return: docstring'
+    name: 最新份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: circulating_market_cap
+    type: float
+  - desc: 'from :return: docstring'
+    name: total_market_cap
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: time
+    type: datetime
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_spot_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      买一: bid1
+      代码: code
+      卖一: ask1
+      名称: name
+      开盘价: open
+      总市值: total_market_cap
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      数据日期: date
+      昨收: prev_close
+      更新时间: time
+      最低价: low
+      最新价: last
+      最高价: high
+      流通市值: circulating_market_cap
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+fund_etf_spot_ths:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '同花顺理财-基金数据-每日净值-ETF-实时行情
+
+    https://fund.10jqka.com.cn/datacenter/jz/kfs/etf/
+
+    :param date: 查询日期
+
+    :type date: str
+
+    :return: ETF 实时行情
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_etf_spot_ths
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: int
+  - desc: fund_code field
+    name: fund_code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: day field
+    name: day
+    type: float
+  - desc: day field
+    name: day
+    type: float
+  - desc: 增长值 field
+    name: 增长值
+    type: float
+  - desc: 增长率 field
+    name: 增长率
+    type: float
+  - desc: status field
+    name: status
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: type field
+    name: type
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_etf_spot_ths
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      前一日-单位净值: day
+      前一日-累计净值: day
+      基金代码: fund_code
+      基金名称: name
+      基金类型: type
+      当前-单位净值: nav
+      当前-累计净值: nav
+      最新-交易日: day
+      最新-单位净值: nav
+      最新-累计净值: nav
+      查询日期: date
+      申购状态: status
+      赎回状态: status
+    param_transforms: {}
+fund_exchange_rank_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-数据中心-场内交易基金排行
+
+    https://fund.eastmoney.com/data/fbsfundranking.html
+
+    :return: 场内交易基金数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_exchange_rank_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: accum_nav field
+    name: accum_nav
+    type: float
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 近1月 field
+    name: 近1月
+    type: datetime
+  - desc: 近3月 field
+    name: 近3月
+    type: datetime
+  - desc: 近6月 field
+    name: 近6月
+    type: datetime
+  - desc: 近1年 field
+    name: 近1年
+    type: datetime
+  - desc: 近2年 field
+    name: 近2年
+    type: datetime
+  - desc: 近3年 field
+    name: 近3年
+    type: datetime
+  - desc: 今年来 field
+    name: 今年来
+    type: datetime
+  - desc: 成立来 field
+    name: 成立来
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_exchange_rank_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      单位净值: nav
+      基金代码: fund_code
+      基金简称: name
+      成立日期: date
+      日期: date
+      类型: type
+      累计净值: accum_nav
+      近1周: week
+    param_transforms: {}
+fund_fee_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金-基金档案-购买信息
+
+    https://fundf10.eastmoney.com/jjfl_015641.html
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param indicator: choice of {"交易状态", "申购与赎回金额", "交易确认日", "运作费用", "认购费率（前端）", "认购费率（后端）","申购费率（前端）",
+    ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: fund_fee_em
+  output:
+  - desc: 'from :return: docstring'
+    name: 适用金额
+    type: float
+  - desc: 'from :return: docstring'
+    name: term
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 费率
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_fee_em
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      适用期限: term
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_fh_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金数据-分红送配-基金分红
+
+    https://fund.eastmoney.com/data/fundfenhong.html#DJR,desc,1,,,
+
+    :param year: 查询年份
+
+    :type year: str
+
+    :param typ: 基金类型；空串表示全部; choice of {"指数型-其他", "指数型-海外股票", "指数型-固收", "指数型-股票",
+    "债券型...'
+  input:
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  - desc: typ parameter
+    name: typ
+    required: true
+    type: str
+  - desc: rank parameter
+    name: rank
+    required: true
+    type: str
+  - desc: sort parameter
+    name: sort
+    required: true
+    type: str
+  - desc: page parameter
+    name: page
+    required: true
+    type: int
+  name: fund_fh_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 分红 field
+    name: 分红
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_fh_em
+    input_mapping:
+      page: page
+      rank: rank
+      sort: sort
+      typ: typ
+      year: year
+    name: akshare_em
+    output_mapping:
+      分红发放日: day
+      基金代码: fund_code
+      基金简称: name
+      权益登记日: day
+      除息日期: date
+    param_transforms: {}
+fund_fh_rank_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金数据-分红送配-基金分红排行
+
+    https://fund.eastmoney.com/data/fundleijifenhong.html
+
+    :return: 基金分红排行
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_fh_rank_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 累计分红 field
+    name: 累计分红
+    type: str
+  - desc: 累计次数 field
+    name: 累计次数
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_fh_rank_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      成立日期: date
+    param_transforms: {}
+fund_financial_fund_daily_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-理财型基金收益
+
+    # 该接口暂无数据
+
+    https://fund.eastmoney.com/lcjj.html#1_1__0__ljjz,desc_1_os1
+
+    :return: 当前交易日的所有理财型基金收益
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_financial_fund_daily_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: 封闭期 field
+    name: 封闭期
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: status field
+    name: status
+    type: str
+  - desc: 'from :return: docstring'
+    name: f{show_day[0
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_financial_fund_daily_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      上一期年化收益率: yield
+      基金代码: fund_code
+      申购状态: status
+    param_transforms: {}
+fund_financial_fund_info_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-理财型基金收益-历史净值明细
+
+    https://fundf10.eastmoney.com/jjjz_000791.html
+
+    :param symbol: 理财型基金代码, 可以通过 ak.fund_financial_fund_daily_em() 来获取
+
+    :type symbol: str
+
+    :return: 东方财富网站-天天基金网-基金数据-理财型基金收益-...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_financial_fund_info_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: accum_nav field
+    name: accum_nav
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: status field
+    name: status
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  - desc: 分红送配 field
+    name: 分红送配
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_financial_fund_info_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      净值日期: date
+      单位净值: nav
+      日增长率: day
+      申购状态: status
+      累计净值: accum_nav
+      赎回状态: status
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_graded_fund_daily_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-分级基金净值
+
+    https://fund.eastmoney.com/fjjj.html#1_1__0__zdf,desc_1
+
+    :return: 当前交易日的所有分级基金净值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_graded_fund_daily_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 'from :return: docstring'
+    name: f{show_day[0
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_graded_fund_daily_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+    param_transforms: {}
+fund_graded_fund_info_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-分级基金净值-历史净值明细
+
+    https://fundf10.eastmoney.com/jjjz_150232.html
+
+    :param symbol: 分级基金代码, 可以通过 ak.fund_money_fund_daily_em() 来获取
+
+    :type symbol: str
+
+    :return: 东方财富网站-天天基金网-基金数据-分级基金净值-历史净值明细
+
+    ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_graded_fund_info_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: accum_nav field
+    name: accum_nav
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: status field
+    name: status
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_graded_fund_info_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      净值日期: date
+      单位净值: nav
+      日增长率: day
+      申购状态: status
+      累计净值: accum_nav
+      赎回状态: status
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_hk_fund_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-天天基金网-基金数据-香港基金-历史净值明细(分红送配详情)
+
+    https://overseas.1234567.com.cn/f10/FundJz/968092#FHPS
+
+    :param code: 通过 ak.fund_em_hk_rank() 获取
+
+    :type code: str
+
+    :param symbol: choice of {"历史净值明细", "分红送配详情"}
+
+    :type ...'
+  input:
+  - desc: code parameter
+    name: code
+    required: true
+    type: str
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_hk_fund_hist_em
+  output:
+  - desc: _ field
+    name: _
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: unit field
+    name: unit
+    type: int
+  - desc: year field
+    name: year
+    type: datetime
+  - desc: 分红金额 field
+    name: 分红金额
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_hk_fund_hist_em
+    input_mapping:
+      code: code
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      净值日期: date
+      分红发放日: day
+      单位: unit
+      单位净值: nav
+      年份: year
+      日增长值: day
+      日增长率: day
+      权益登记日: day
+      除息日: day
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_hk_rank_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-数据中心-香港基金排行
+
+    https://overseas.1234567.com.cn/FundList
+
+    :return: 香港基金排行
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_hk_rank_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 可购买 field
+    name: 可购买
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 近1月 field
+    name: 近1月
+    type: datetime
+  - desc: 近3月 field
+    name: 近3月
+    type: datetime
+  - desc: 近6月 field
+    name: 近6月
+    type: datetime
+  - desc: 近1年 field
+    name: 近1年
+    type: datetime
+  - desc: 近2年 field
+    name: 近2年
+    type: datetime
+  - desc: 近3年 field
+    name: 近3年
+    type: datetime
+  - desc: 今年来 field
+    name: 今年来
+    type: datetime
+  - desc: 成立来 field
+    name: 成立来
+    type: str
+  - desc: 币种 field
+    name: 币种
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_hk_rank_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      单位净值: nav
+      基金代码: fund_code
+      基金简称: name
+      日增长率: day
+      日期: date
+      近1周: week
+      香港基金代码: code
+    param_transforms: {}
+fund_hold_structure_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金数据-规模份额-持有人结构
+
+    https://fund.eastmoney.com/data/cyrjglist.html
+
+    :return: 持有人结构
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_hold_structure_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 基金家数 field
+    name: 基金家数
+    type: str
+  - desc: 机构持有比列 field
+    name: 机构持有比列
+    type: str
+  - desc: 个人持有比列 field
+    name: 个人持有比列
+    type: int
+  - desc: 内部持有比列 field
+    name: 内部持有比列
+    type: str
+  - desc: 总份额 field
+    name: 总份额
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_hold_structure_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      截止日期: date
+    param_transforms: {}
+fund_individual_achievement_xq:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '雪球基金-基金业绩
+
+    https://danjuanfunds.com/djapi/fundx/base/fund/achievement/675091
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param timeout: choice of None or a positive float number
+
+    :type timeout: float
+
+    :return...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: timeout parameter
+    name: timeout
+    required: true
+    type: str
+  name: fund_individual_achievement_xq
+  output:
+  - desc: type field
+    name: type
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 本产品区间收益 field
+    name: 本产品区间收益
+    type: str
+  - desc: 本产品最大回撒 field
+    name: 本产品最大回撒
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: type
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_individual_achievement_xq
+    input_mapping:
+      symbol: symbol
+      timeout: timeout
+    name: akshare_em
+    output_mapping:
+      业绩类型: type
+      周期: week
+      周期收益同类排名: week
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_individual_analysis_xq:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '雪球基金-基金数据分析
+
+    https://danjuanfunds.com/djapi/fund/base/quote/data/index/analysis/675091
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param timeout: choice of None or a positive float number
+
+    :type timeout: flo...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: timeout parameter
+    name: timeout
+    required: true
+    type: str
+  name: fund_individual_analysis_xq
+  output:
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 较同类风险收益比 field
+    name: 较同类风险收益比
+    type: str
+  - desc: 较同类抗风险波动 field
+    name: 较同类抗风险波动
+    type: str
+  - desc: annual_volatility field
+    name: annual_volatility
+    type: float
+  - desc: sharpe_ratio field
+    name: sharpe_ratio
+    type: float
+  - desc: max_drawdown field
+    name: max_drawdown
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_individual_analysis_xq
+    input_mapping:
+      symbol: symbol
+      timeout: timeout
+    name: akshare_em
+    output_mapping:
+      周期: week
+      年化夏普比率: sharpe_ratio
+      年化波动率: annual_volatility
+      最大回撤: max_drawdown
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_individual_basic_info_xq:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '雪球基金-基金详情
+
+    https://danjuanfunds.com/djapi/fund/675091
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param timeout: choice of None or a positive float number
+
+    :type timeout: float
+
+    :return: 基金信息
+
+    :rtype: pandas.D...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: timeout parameter
+    name: timeout
+    required: true
+    type: str
+  name: fund_individual_basic_info_xq
+  output:
+  - desc: item field
+    name: item
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  - desc: 'from :return: docstring'
+    name: rating
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_individual_basic_info_xq
+    input_mapping:
+      symbol: symbol
+      timeout: timeout
+    name: akshare_em
+    output_mapping:
+      评级机构: rating
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_individual_detail_hold_xq:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '雪球基金-持仓
+
+    https://danjuanfunds.com/rn/fund-detail/archive?id=103&code=002804
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param date: 财报日期
+
+    :type date: str
+
+    :param timeout: choice of None or a positive float nu...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: timeout parameter
+    name: timeout
+    required: true
+    type: str
+  name: fund_individual_detail_hold_xq
+  output:
+  - desc: type field
+    name: type
+    type: str
+  - desc: 仓位占比 field
+    name: 仓位占比
+    type: int
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: type_desc
+    type: float
+  - desc: 'from :return: docstring'
+    name: percent
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_individual_detail_hold_xq
+    input_mapping:
+      date: date
+      symbol: symbol
+      timeout: timeout
+    name: akshare_em
+    output_mapping:
+      资产类型: type
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_individual_detail_info_xq:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '雪球基金-交易规则
+
+    https://danjuanfunds.com/djapi/fund/detail/675091
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param timeout: choice of None or a positive float number
+
+    :type timeout: float
+
+    :return: 交易规则
+
+    :rtype: p...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: timeout parameter
+    name: timeout
+    required: true
+    type: str
+  name: fund_individual_detail_info_xq
+  output:
+  - desc: type field
+    name: type
+    type: float
+  - desc: name field
+    name: name
+    type: str
+  - desc: fee field
+    name: fee
+    type: float
+  - desc: 'from :return: docstring'
+    name: rate_type
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_individual_detail_info_xq
+    input_mapping:
+      symbol: symbol
+      timeout: timeout
+    name: akshare_em
+    output_mapping:
+      条件或名称: name
+      费用: fee
+      费用类型: type
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_individual_profit_probability_xq:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '雪球基金-盈利概率-历史任意时点买入，持有满 X 年，盈利概率 Y%
+
+    https://danjuanfunds.com/djapi/fundx/base/fund/profit/ratio/675091
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param timeout: choice of None or a positive float number
+
+    :t...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: timeout parameter
+    name: timeout
+    required: true
+    type: str
+  name: fund_individual_profit_probability_xq
+  output:
+  - desc: 持有时长 field
+    name: 持有时长
+    type: str
+  - desc: 盈利概率 field
+    name: 盈利概率
+    type: float
+  - desc: 平均收益 field
+    name: 平均收益
+    type: str
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: holding_time
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: profit_ratio
+    type: str
+  - desc: 'from :return: docstring'
+    name: average_income
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_individual_profit_probability_xq
+    input_mapping:
+      symbol: symbol
+      timeout: timeout
+    name: akshare_em
+    output_mapping:
+      '[': '['
+      average_income: average_income
+      holding_time: holding_time
+      profit_ratio: profit_ratio
+      平均收益: 平均收益
+      持有时长: 持有时长
+      盈利概率: 盈利概率
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_info_index_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-基金信息-指数型
+
+    https://fund.eastmoney.com/trade/zs.html
+
+    :param symbol: choice of {"全部", "沪深指数", "行业主题", "大盘指数", "中盘指数", "小盘指数", "股票指数",
+    "债券指数"}
+
+    :type symbol: str
+
+    :param indicator: choice o...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: fund_info_index_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 近1月 field
+    name: 近1月
+    type: datetime
+  - desc: 近3月 field
+    name: 近3月
+    type: datetime
+  - desc: 近6月 field
+    name: 近6月
+    type: datetime
+  - desc: 近1年 field
+    name: 近1年
+    type: datetime
+  - desc: 近2年 field
+    name: 近2年
+    type: datetime
+  - desc: 近3年 field
+    name: 近3年
+    type: datetime
+  - desc: 今年来 field
+    name: 今年来
+    type: datetime
+  - desc: 成立来 field
+    name: 成立来
+    type: str
+  - desc: commission field
+    name: commission
+    type: float
+  - desc: 起购金额 field
+    name: 起购金额
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_info_index_em
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      单位净值: nav
+      基金代码: fund_code
+      基金名称: name
+      手续费: commission
+      日增长率: day
+      日期: date
+      近1周: week
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_lcx_rank_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-数据中心-理财基金排行
+
+    # 该接口暂时没有数据
+
+    https://fund.eastmoney.com/data/lcxfundranking.html#t;c0;r;sSYL_Z;ddesc;pn50;f;os1;
+
+    :return: 理财基金排行
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_lcx_rank_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 万份收益 field
+    name: 万份收益
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: _ field
+    name: _
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 近1月 field
+    name: 近1月
+    type: datetime
+  - desc: 近3月 field
+    name: 近3月
+    type: datetime
+  - desc: 近6月 field
+    name: 近6月
+    type: datetime
+  - desc: 今年来 field
+    name: 今年来
+    type: datetime
+  - desc: 成立来 field
+    name: 成立来
+    type: str
+  - desc: 可购买 field
+    name: 可购买
+    type: float
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_lcx_rank_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      年化收益率-14日: day
+      年化收益率-28日: day
+      年化收益率-7日: day
+      手续费: commission
+      日期: date
+      近1周: week
+    param_transforms: {}
+fund_linghuo_position_lg:
+  category: fund
+  description: '乐咕乐股-基金仓位-灵活配置型基金仓位
+
+    https://legulegu.com/stockdata/fund-position/pos-linghuo
+
+    :return: 灵活配置型基金仓位
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_linghuo_position_lg
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_linghuo_position_lg
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+fund_lof_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-LOF 行情
+
+    https://quote.eastmoney.com/sz166009.html
+
+    :param symbol: LOF 代码
+
+    :type symbol: str
+
+    :param period: choice of {''daily'', ''weekly'', ''monthly''}
+
+    :type period: str
+
+    :param start_date: 开始日期
+
+    :type st...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: adjust parameter
+    name: adjust
+    required: true
+    type: str
+  name: fund_lof_hist_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_lof_hist_em
+    input_mapping:
+      adjust: adjust
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      收盘: close
+      日期: date
+      最低: low
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_lof_hist_min_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-LOF 分时行情
+
+    https://quote.eastmoney.com/sz166009.html
+
+    :param symbol: LOF 代码
+
+    :type symbol: str
+
+    :param start_date: 开始日期时间
+
+    :type start_date: str
+
+    :param end_date: 结束日期时间
+
+    :type end_date: str
+
+    :param perio...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: adjust parameter
+    name: adjust
+    required: true
+    type: str
+  name: fund_lof_hist_min_em
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: 均价 field
+    name: 均价
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_lof_hist_min_em
+    input_mapping:
+      adjust: adjust
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      收盘: close
+      时间: time
+      最低: low
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_lof_spot_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富-LOF 实时行情
+
+    https://quote.eastmoney.com/center/gridlist.html#fund_lof
+
+    :return: LOF 实时行情
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_lof_spot_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: prev_close
+    type: str
+  - desc: 'from :return: docstring'
+    name: turnover
+    type: float
+  - desc: 'from :return: docstring'
+    name: circulating_market_cap
+    type: float
+  - desc: 'from :return: docstring'
+    name: total_market_cap
+    type: float
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_lof_spot_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      代码: code
+      名称: name
+      开盘价: open
+      总市值: total_market_cap
+      成交量: volume
+      成交额: amount
+      换手率: turnover
+      昨收: prev_close
+      最低价: low
+      最新价: last
+      最高价: high
+      流通市值: circulating_market_cap
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+fund_manager_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金数据-基金经理大全
+
+    https://fund.eastmoney.com/manager/default.html
+
+    :return: 基金经理大全
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_manager_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 姓名 field
+    name: 姓名
+    type: str
+  - desc: 所属公司 field
+    name: 所属公司
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: 现任基金 field
+    name: 现任基金
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: 现任基金最佳回报 field
+    name: 现任基金最佳回报
+    type: str
+  - desc: size field
+    name: size
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_manager_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      现任基金代码: code
+      现任基金资产总规模: size
+      累计从业时间: time
+    param_transforms: {}
+fund_money_fund_daily_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-天天基金网-基金数据-货币型基金收益
+
+    https://fund.eastmoney.com/HBJJ_pjsyl.html
+
+    :return: 当前交易日的所有货币型基金收益数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_money_fund_daily_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: '0'
+    type: str
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_money_fund_daily_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+    param_transforms: {}
+fund_money_fund_info_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-天天基金网-基金数据-货币型基金收益-历史净值数据
+
+    https://fundf10.eastmoney.com/jjjz_004186.html
+
+    :param symbol: 货币型基金代码, 可以通过 fund_money_fund_daily_em 来获取
+
+    :type symbol: str
+
+    :return: 东方财富网站-天天基金网-基金数据-货币型基金收益-历史净值数据
+
+    :rt...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_money_fund_info_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 每万份收益 field
+    name: 每万份收益
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: _ field
+    name: _
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_money_fund_info_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      7日年化收益率: day
+      净值日期: date
+      申购状态: status
+      赎回状态: status
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_money_rank_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-数据中心-货币型基金排行
+
+    https://fund.eastmoney.com/data/hbxfundranking.html
+
+    :return: 货币型基金排行
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_money_rank_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: 近1年 field
+    name: 近1年
+    type: datetime
+  - desc: 近2年 field
+    name: 近2年
+    type: datetime
+  - desc: 近3年 field
+    name: 近3年
+    type: datetime
+  - desc: 近5年 field
+    name: 近5年
+    type: datetime
+  - desc: _ field
+    name: _
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 万份收益 field
+    name: 万份收益
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 近1月 field
+    name: 近1月
+    type: datetime
+  - desc: 近3月 field
+    name: 近3月
+    type: datetime
+  - desc: 近6月 field
+    name: 近6月
+    type: datetime
+  - desc: 今年来 field
+    name: 今年来
+    type: datetime
+  - desc: 成立来 field
+    name: 成立来
+    type: str
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_money_rank_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      年化收益率14日: day
+      年化收益率28日: day
+      年化收益率7日: day
+      手续费: commission
+      日期: date
+    param_transforms: {}
+fund_name_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-所有基金的名称和类型
+
+    https://fund.eastmoney.com/manager/default.html#dt14;mcreturnjson;ftall;pn20;pi1;scabbname;stasc
+
+    :return: 所有基金的名称和类型
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_name_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: 拼音缩写 field
+    name: 拼音缩写
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 拼音全称 field
+    name: 拼音全称
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_name_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      基金类型: type
+    param_transforms: {}
+fund_new_found_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '基金数据-新发基金-新成立基金
+
+    https://fund.eastmoney.com/data/xinfound.html
+
+    :return: 新成立基金
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_new_found_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 发行公司 field
+    name: 发行公司
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 募集份额 field
+    name: 募集份额
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 成立来涨幅 field
+    name: 成立来涨幅
+    type: float
+  - desc: 基金经理 field
+    name: 基金经理
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  - desc: call field
+    name: call
+    type: str
+  - desc: 优惠费率 field
+    name: 优惠费率
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_new_found_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      基金类型: type
+      成立日期: date
+      申购状态: status
+      集中认购期: call
+    param_transforms: {}
+fund_new_found_ths:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '同花顺-基金数据-新发基金
+
+    https://fund.10jqka.com.cn/datacenter/xfjj/
+
+    :param symbol: 选择基金类型; choice of {"全部", "发行中", "将发行"}
+
+    :type symbol: str
+
+    :return: 新发基金数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_new_found_ths
+  output:
+  - desc: 'from :return: docstring'
+    name: manager
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_new_found_ths
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      manager: manager
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_open_fund_daily_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-天天基金网-基金数据-开放式基金净值
+
+    https://fund.eastmoney.com/fund.html#os_0;isall_0;ft_;pt_1
+
+    :return: 当前交易日的所有开放式基金净值数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_open_fund_daily_em
+  output:
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 'from :return: docstring'
+    name: f{show_day[0
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_open_fund_daily_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+    param_transforms: {}
+fund_open_fund_info_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-天天基金网-基金数据-开放式基金净值
+
+    https://fund.eastmoney.com/fund.html
+
+    :param symbol: 基金代码; 可以通过调用 ak.fund_open_fund_daily_em() 获取所有开放式基金代码
+
+    :type symbol: str
+
+    :param indicator: 需要获取的指标
+
+    :type indicator: str
+
+    :par...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: fund_open_fund_info_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: _ field
+    name: _
+    type: str
+  - desc: x field
+    name: x
+    type: str
+  - desc: y field
+    name: y
+    type: str
+  - desc: accum_nav field
+    name: accum_nav
+    type: float
+  - desc: 每万份收益 field
+    name: 每万份收益
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: report_date field
+    name: report_date
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_open_fund_info_em
+    input_mapping:
+      indicator: indicator
+      period: period
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      7日年化收益率: day
+      净值日期: date
+      单位净值: nav
+      同类型排名-每日近3月收益排名百分比: day
+      同类型排名-每日近三月排名: day
+      总排名-每日近三月排名: day
+      报告日期: report_date
+      日增长率: day
+      日期: date
+      累计净值: accum_nav
+      累计收益率: yield
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_open_fund_rank_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-数据中心-开放基金排行
+
+    https://fund.eastmoney.com/data/fundranking.html
+
+    :param symbol: choice of {"全部", "股票型", "混合型", "债券型", "指数型", "QDII", "FOF"}
+
+    :type symbol: str
+
+    :return: 开放基金排行
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_open_fund_rank_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: accum_nav field
+    name: accum_nav
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 近1月 field
+    name: 近1月
+    type: datetime
+  - desc: 近3月 field
+    name: 近3月
+    type: datetime
+  - desc: 近6月 field
+    name: 近6月
+    type: datetime
+  - desc: 近1年 field
+    name: 近1年
+    type: datetime
+  - desc: 近2年 field
+    name: 近2年
+    type: datetime
+  - desc: 近3年 field
+    name: 近3年
+    type: datetime
+  - desc: 今年来 field
+    name: 今年来
+    type: datetime
+  - desc: 成立来 field
+    name: 成立来
+    type: str
+  - desc: 自定义 field
+    name: 自定义
+    type: str
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_open_fund_rank_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      单位净值: nav
+      基金代码: fund_code
+      基金简称: name
+      手续费: commission
+      日增长率: day
+      日期: date
+      累计净值: accum_nav
+      近1周: week
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_overview_em:
+  category: fund
+  description: '天天基金-基金档案-基本概况
+
+    https://fundf10.eastmoney.com/jbgk_015641.html
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :return: 基本概况
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_overview_em
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_overview_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_portfolio_bond_hold_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金档案-投资组合-债券持仓
+
+    https://fundf10.eastmoney.com/ccmx1_000001.html
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param date: 查询年份
+
+    :type date: str
+
+    :return: 债券持仓
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_portfolio_bond_hold_em
+  output:
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: position_value field
+    name: position_value
+    type: float
+  - desc: 'from :return: docstring'
+    name: quarter
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_portfolio_bond_hold_em
+    input_mapping:
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      季度: quarter
+      持仓市值: position_value
+      持仓市值（万元）: market_cap
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_portfolio_change_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金档案-投资组合-重大变动
+
+    https://fundf10.eastmoney.com/ccbd_000001.html
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param indicator: choice of {"累计买入", "累计卖出"}
+
+    :type indicator: str
+
+    :param date: 查询年份
+
+    :type date...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_portfolio_change_em
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: symbol field
+    name: symbol
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: quarter field
+    name: quarter
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_portfolio_change_em
+    input_mapping:
+      date: date
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      占期初基金资产净值比例: nav
+      季度: quarter
+      本期累计买入金额: bid
+      股票代码: symbol
+      股票名称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_portfolio_hold_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金档案-投资组合-基金持仓
+
+    https://fundf10.eastmoney.com/ccmx_000001.html
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param date: 查询年份
+
+    :type date: str
+
+    :return: 基金持仓
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_portfolio_hold_em
+  output:
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: index field
+    name: index
+    type: float
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: symbol
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: shares
+    type: int
+  - desc: 'from :return: docstring'
+    name: position_value
+    type: float
+  - desc: 'from :return: docstring'
+    name: quarter
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_portfolio_hold_em
+    input_mapping:
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      占净值 比例: nav
+      占净值比例: nav
+      季度: quarter
+      持仓市值: position_value
+      持股数: shares
+      股票代码: symbol
+      股票名称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_portfolio_industry_allocation_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金档案-投资组合-行业配置
+
+    https://fundf10.eastmoney.com/hytz_000001.html
+
+    :param symbol: 基金代码
+
+    :type symbol: str
+
+    :param date: 查询年份
+
+    :type date: str
+
+    :return: 行业配置
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_portfolio_industry_allocation_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: industry field
+    name: industry
+    type: str
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: nav field
+    name: nav
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_portfolio_industry_allocation_em
+    input_mapping:
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      占净值比例: nav
+      市值: market_cap
+      截止时间: time
+      行业类别: industry
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_purchase_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网站-天天基金网-基金数据-基金申购状态
+
+    https://fund.eastmoney.com/Fund_sgzt_bzdm.html#fcode,asc_1
+
+    :return: 基金申购状态
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_purchase_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: status field
+    name: status
+    type: str
+  - desc: status field
+    name: status
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 购买起点 field
+    name: 购买起点
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_purchase_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      下一开放日: day
+      基金代码: fund_code
+      基金简称: name
+      基金类型: type
+      手续费: commission
+      日累计限定金额: day
+      最新净值/万份收益: nav
+      最新净值/万份收益-报告时间: time
+      申购状态: status
+      赎回状态: status
+    param_transforms: {}
+fund_rating_all:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金评级-基金评级总汇
+
+    https://fund.eastmoney.com/data/fundrating.html
+
+    :return: 基金评级总汇
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_rating_all
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 基金经理 field
+    name: 基金经理
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 基金公司 field
+    name: 基金公司
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: 招商证券 field
+    name: 招商证券
+    type: str
+  - desc: 上海证券 field
+    name: 上海证券
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: 济安金信 field
+    name: 济安金信
+    type: str
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_rating_all
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      5星评级家数: rating
+      代码: code
+      手续费: commission
+      晨星评级: rating
+      简称: name
+      类型: type
+    param_transforms: {}
+fund_rating_ja:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金评级-济安金信评级
+
+    https://fund.eastmoney.com/data/fundrating_4.html
+
+    :param date: 日期; https://fund.eastmoney.com/data/fundrating_4.html 获取查询日期
+
+    :type date: str
+
+    :return: 济安金信评级
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_rating_ja
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 基金经理 field
+    name: 基金经理
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 基金公司 field
+    name: 基金公司
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 近1年涨幅 field
+    name: 近1年涨幅
+    type: float
+  - desc: 近3年涨幅 field
+    name: 近3年涨幅
+    type: float
+  - desc: 近5年涨幅 field
+    name: 近5年涨幅
+    type: float
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_rating_ja
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      3年期评级-3年评级: rating
+      3年期评级-较上期: rating
+      代码: code
+      单位净值: nav
+      手续费: commission
+      日增长率: day
+      日期: date
+      简称: name
+      类型: type
+    param_transforms: {}
+fund_rating_sh:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金评级-上海证券评级
+
+    https://fund.eastmoney.com/data/fundrating_3.html
+
+    :param date: 日期; https://fund.eastmoney.com/data/fundrating_3.html 获取查询日期
+
+    :type date: str
+
+    :return: 上海证券评级
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_rating_sh
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 基金经理 field
+    name: 基金经理
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 基金公司 field
+    name: 基金公司
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 近1年涨幅 field
+    name: 近1年涨幅
+    type: float
+  - desc: 近3年涨幅 field
+    name: 近3年涨幅
+    type: float
+  - desc: 近5年涨幅 field
+    name: 近5年涨幅
+    type: float
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_rating_sh
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      3年期评级-3年评级: rating
+      3年期评级-较上期: rating
+      5年期评级-5年评级: rating
+      5年期评级-较上期: rating
+      代码: code
+      单位净值: nav
+      手续费: commission
+      日增长率: day
+      日期: date
+      简称: name
+      类型: type
+    param_transforms: {}
+fund_rating_zs:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金评级-招商证券评级
+
+    https://fund.eastmoney.com/data/fundrating_2.html
+
+    :param date: 日期; https://fund.eastmoney.com/data/fundrating_2.html 获取查询日期
+
+    :type date: str
+
+    :return: 招商证券评级-混合型
+
+    :rtype: pandas.DataFra...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_rating_zs
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 基金经理 field
+    name: 基金经理
+    type: str
+  - desc: 基金公司 field
+    name: 基金公司
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: rating field
+    name: rating
+    type: str
+  - desc: nav field
+    name: nav
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 近1年涨幅 field
+    name: 近1年涨幅
+    type: float
+  - desc: 近3年涨幅 field
+    name: 近3年涨幅
+    type: float
+  - desc: 近5年涨幅 field
+    name: 近5年涨幅
+    type: float
+  - desc: commission field
+    name: commission
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_rating_zs
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      3年期评级-3年评级: rating
+      3年期评级-较上期: rating
+      代码: code
+      单位净值: nav
+      手续费: commission
+      日增长率: day
+      日期: date
+      简称: name
+    param_transforms: {}
+fund_report_asset_allocation_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '巨潮资讯-数据中心-专题统计-基金报表-基金资产配置
+
+    https://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :return: 基金资产配置
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_report_asset_allocation_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 报告期
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金覆盖家数
+    type: str
+  - desc: 'from :return: docstring'
+    name: net_asset
+    type: float
+  - desc: 'from :return: docstring'
+    name: net_asset
+    type: float
+  - desc: 'from :return: docstring'
+    name: net_asset
+    type: float
+  - desc: 'from :return: docstring'
+    name: market
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_report_asset_allocation_cninfo
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      债券固定收益类占净资产比例: net_asset
+      基金市场净资产规模: market
+      现金货币类占净资产比例: net_asset
+      股票权益类占净资产比例: net_asset
+    param_transforms: {}
+fund_report_industry_allocation_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '巨潮资讯-数据中心-专题统计-基金报表-基金行业配置
+
+    https://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :param date: 报告时间; choice of {"XXXX0331", "XXXX0630", "XXXX0930", "XXXX1231"},
+    从 2017 年开始
+
+    :type date: str
+
+    :return: 基金行业配置
+
+    :...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_report_industry_allocation_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: industry
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 报告期
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金覆盖家数
+    type: str
+  - desc: 'from :return: docstring'
+    name: industry
+    type: float
+  - desc: 'from :return: docstring'
+    name: net_asset
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_report_industry_allocation_cninfo
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      占净资产比例: net_asset
+      行业编码: industry
+      行业规模: industry
+      证监会行业名称: name
+    param_transforms: {}
+fund_report_stock_cninfo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '巨潮资讯-数据中心-专题统计-基金报表-基金重仓股
+
+    https://webapi.cninfo.com.cn/#/thematicStatistics
+
+    :param date: 报告时间; choice of {"XXXX0331", "XXXX0630", "XXXX0930", "XXXX1231"}
+
+    :type date: str
+
+    :return: 基金重仓股
+
+    :rtype: pandas....'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fund_report_stock_cninfo
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: symbol
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 报告期
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金覆盖家数
+    type: str
+  - desc: 'from :return: docstring'
+    name: 持股总数
+    type: str
+  - desc: 'from :return: docstring'
+    name: market_cap
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_report_stock_cninfo
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      持股总市值: market_cap
+      股票代码: symbol
+      股票简称: name
+    param_transforms: {}
+fund_scale_change_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '天天基金网-基金数据-规模份额-规模变动
+
+    https://fund.eastmoney.com/data/gmbdlist.html
+
+    :return: 规模变动
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_scale_change_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 基金家数 field
+    name: 基金家数
+    type: str
+  - desc: 期间申购 field
+    name: 期间申购
+    type: str
+  - desc: 期间赎回 field
+    name: 期间赎回
+    type: str
+  - desc: 期末总份额 field
+    name: 期末总份额
+    type: float
+  - desc: net_asset field
+    name: net_asset
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_scale_change_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      截止日期: date
+      期末净资产: net_asset
+    param_transforms: {}
+fund_scale_close_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '新浪财经-基金数据中心-基金规模-封闭式基金
+
+    https://vip.stock.finance.sina.com.cn/fund_center/index.html#jjhqetf
+
+    :return: 基金规模
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_scale_close_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: fund_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: size
+    type: float
+  - desc: 'from :return: docstring'
+    name: 最近总份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 基金经理
+    type: str
+  - desc: 'from :return: docstring'
+    name: update_date
+    type: datetime
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_scale_close_sina
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      单位净值: nav
+      基金代码: fund_code
+      基金简称: name
+      总募集规模: size
+      成立日期: date
+      更新日期: update_date
+    param_transforms: {}
+fund_scale_daily_szse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '深圳证券交易所-基金产品-基金规模-日频数据
+
+    https://www.szse.cn/market/fund/volume/etf/index.html
+
+    :param start_date: 开始日期, 格式如 "20260401"
+
+    :type start_date: str
+
+    :param end_date: 结束日期, 格式如 "20260401"
+
+    :type end_date: str
+
+    :pa...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_scale_daily_szse
+  output:
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: fund_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金份额
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_scale_daily_szse
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      基金代码: fund_code
+      基金简称: name
+      日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_scale_open_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '新浪财经-基金数据中心-基金规模-开放式基金
+
+    https://vip.stock.finance.sina.com.cn/fund_center/index.html#jjhqetf
+
+    :param symbol: choice of {"股票型基金", "混合型基金", "债券型基金", "货币型基金", "QDII基金"}
+
+    :type symbol: str
+
+    :return: 基金规模
+
+    :rty...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_scale_open_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: fund_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: size
+    type: float
+  - desc: 'from :return: docstring'
+    name: 最近总份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 基金经理
+    type: str
+  - desc: 'from :return: docstring'
+    name: update_date
+    type: datetime
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_scale_open_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      单位净值: nav
+      基金代码: fund_code
+      基金简称: name
+      总募集规模: size
+      成立日期: date
+      更新日期: update_date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+fund_scale_structured_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '新浪财经-基金数据中心-基金规模-分级子基金
+
+    https://vip.stock.finance.sina.com.cn/fund_center/index.html#jjgmfjall
+
+    :return: 基金规模
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_scale_structured_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: fund_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: size
+    type: float
+  - desc: 'from :return: docstring'
+    name: 最近总份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 基金经理
+    type: str
+  - desc: 'from :return: docstring'
+    name: update_date
+    type: datetime
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_scale_structured_sina
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      单位净值: nav
+      基金代码: fund_code
+      基金简称: name
+      总募集规模: size
+      成立日期: date
+      更新日期: update_date
+    param_transforms: {}
+fund_stock_position_lg:
+  category: fund
+  description: '乐咕乐股-基金仓位-股票型基金仓位
+
+    https://legulegu.com/stockdata/fund-position/pos-stock
+
+    :return: 股票型基金仓位
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fund_stock_position_lg
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_stock_position_lg
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+fund_value_estimation_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: fund
+  description: '东方财富网-数据中心-净值估算
+
+    https://fund.eastmoney.com/fundguzhi.html
+
+    :param symbol: choice of {''全部'', ''股票型'', ''混合型'', ''债券型'', ''指数型'', ''QDII'',
+    ''ETF联接'', ''LOF'', ''场内交易基金''}
+
+    :type symbol: str
+
+    :return: 近期净值估算数据
+
+    :rtype: pand...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fund_value_estimation_em
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: fund_code field
+    name: fund_code
+    type: int
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 估算偏差 field
+    name: 估算偏差
+    type: str
+  - desc: '{cal_day}-估算数据-估算值 field'
+    name: '{cal_day}-估算数据-估算值'
+    type: datetime
+  - desc: '{cal_day}-估算数据-估算增长率 field'
+    name: '{cal_day}-估算数据-估算增长率'
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: datetime
+  - desc: nav field
+    name: nav
+    type: datetime
+  - desc: name field
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: f{cal_day}-估算数据-估算值
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: f{cal_day}-估算数据-估算增长率
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: nav
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: nav
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fund_value_estimation_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      f{cal_day}-公布数据-单位净值: nav
+      f{cal_day}-公布数据-日增长率: day
+      f{value_day}-单位净值: nav
+      '{cal_day}-公布数据-单位净值': nav
+      '{cal_day}-公布数据-日增长率': day
+      '{value_day}-单位净值': nav
+      估算日期: date
+      基金代码: fund_code
+      基金名称: name
+      基金类型: type
+    param_transforms:
+      symbol: prepend_prefix:sh/sz

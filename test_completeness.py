@@ -1,7 +1,6 @@
 """Test CompletenessChecker with sample data"""
 
 import pandas as pd
-from datetime import datetime, timedelta
 
 from akshare_data.offline.analyzer.cache_analysis import CompletenessChecker
 

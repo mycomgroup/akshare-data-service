@@ -29,7 +29,6 @@ from typing import Callable, Optional
 import pandas as pd
 import akshare as ak
 
-from akshare_data import get_service
 
 
 def _fetch_with_retry(fetcher: Callable[[], pd.DataFrame], desc: str) -> Optional[pd.DataFrame]:

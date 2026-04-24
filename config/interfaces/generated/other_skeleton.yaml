@@ -1,0 +1,6023 @@
+air_city_table:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '真气网-空气质量历史数据查询-全部城市列表
+
+    https://www.zq12369.com/environment.php?date=2019-06-05&tab=rank&order=DESC&type=DAY#rank
+
+    :return: 城市映射
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: air_city_table
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: province field
+    name: province
+    type: str
+  - desc: city field
+    name: city
+    type: str
+  - desc: AQI field
+    name: AQI
+    type: str
+  - desc: 空气质量 field
+    name: 空气质量
+    type: float
+  - desc: PM2.5浓度 field
+    name: PM2.5浓度
+    type: str
+  - desc: 首要污染物 field
+    name: 首要污染物
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: air_city_table
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      城市: city
+      省份: province
+    param_transforms: {}
+air_quality_hebei:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '河北省空气质量预报信息发布系统-空气质量预报, 未来 6 天
+
+    http://218.11.10.130:8080/#/application/home
+
+    :return: city = "", 返回所有地区的数据; city="唐山市", 返回唐山市的数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: air_quality_hebei
+  output:
+  - desc: 'from :return: docstring'
+    name: AQI
+    type: str
+  - desc: 'from :return: docstring'
+    name: Longitude
+    type: str
+  - desc: 'from :return: docstring'
+    name: Latitude
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: air_quality_hebei
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      AQI: AQI
+      Latitude: Latitude
+      Longitude: Longitude
+    param_transforms: {}
+air_quality_hist:
+  category: other
+  description: '真气网-空气历史数据
+
+    https://www.zq12369.com/
+
+    :param city: 调用 ak.air_city_table() 接口获取所有城市列表
+
+    :type city: str
+
+    :param period: "hour": 每小时一个数据, 由于数据量比较大, 下载较慢; "day": 每天一个数据; "month": 每个月一个数据
+
+    :type period: str
+
+    :pa...'
+  input:
+  - desc: city parameter
+    name: city
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: air_quality_hist
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: air_quality_hist
+    input_mapping:
+      city: city
+      end_date: end_date
+      period: period
+      start_date: start_date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+air_quality_rank:
+  category: other
+  description: '真气网-168 城市 AQI 排行榜
+
+    https://www.zq12369.com/environment.php?date=2020-03-12&tab=rank&order=DESC&type=DAY#rank
+
+    :param date: "": 当前时刻空气质量排名; "20200312": 当日空气质量排名; "202003": 当月空气质量排名; "2019":
+    当年空气质量排名;
+
+    :t...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: air_quality_rank
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: air_quality_rank
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+air_quality_watch_point:
+  category: other
+  description: '真气网-监测点空气质量-细化到具体城市的每个监测点
+
+    指定之间段之间的空气质量数据
+
+    https://www.zq12369.com/
+
+    :param city: 调用 ak.air_city_table() 接口获取
+
+    :type city: str
+
+    :param start_date: e.g., "20190327"
+
+    :type start_date: str
+
+    :param end_date: e....'
+  input:
+  - desc: city parameter
+    name: city
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: air_quality_watch_point
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: air_quality_watch_point
+    input_mapping:
+      city: city
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+amac_aoin_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-基金产品公示-证券公司直投基金
+
+    https://gs.amac.org.cn/amac-infodisc/res/aoin/product/index.html
+
+    :return: 证券公司直投基金
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_aoin_info
+  output:
+  - desc: 产品编码 field
+    name: 产品编码
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 直投子公司 field
+    name: 直投子公司
+    type: str
+  - desc: 管理机构 field
+    name: 管理机构
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_aoin_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      产品名称: name
+      设立日期: date
+    param_transforms: {}
+amac_fund_abs:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-基金产品公示-资产支持专项计划公示信息
+
+    https://gs.amac.org.cn/amac-infodisc/res/fund/abs/index.html
+
+    :return: 资产支持专项计划公示信息
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_fund_abs
+  output:
+  - desc: num field
+    name: num
+    type: int
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 专项计划全称 field
+    name: 专项计划全称
+    type: str
+  - desc: num field
+    name: num
+    type: int
+  - desc: 管理人 field
+    name: 管理人
+    type: int
+  - desc: 托管人 field
+    name: 托管人
+    type: int
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: time field
+    name: time
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_fund_abs
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      备案编号: num
+      备案通过时间: time
+      成立日期: date
+      编号: num
+      预期到期时间: time
+    param_transforms: {}
+amac_fund_account_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-基金产品公示-基金公司及子公司集合资管产品公示
+
+    https://gs.amac.org.cn/amac-infodisc/res/fund/account/index.html
+
+    :return: 基金公司及子公司集合资管产品公示
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_fund_account_info
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 产品编码 field
+    name: 产品编码
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: name field
+    name: name
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_fund_account_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      产品名称: name
+      成立日期: date
+      管理人名称: name
+    param_transforms: {}
+amac_fund_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-基金产品-私募基金管理人基金产品
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/fund/index.html
+
+    :param start_page: 开始页码, 获取指定页码直接的数据
+
+    :type start_page: str
+
+    :param end_page: 结束页码, 获取指定页码直接的数据
+
+    :type end_p...'
+  input:
+  - desc: start_page parameter
+    name: start_page
+    required: true
+    type: str
+  - desc: end_page parameter
+    name: end_page
+    required: true
+    type: str
+  name: amac_fund_info
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: name field
+    name: name
+    type: int
+  - desc: type field
+    name: type
+    type: int
+  - desc: status field
+    name: status
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: name field
+    name: name
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_fund_info
+    input_mapping:
+      end_page: end_page
+      start_page: start_page
+    name: akshare_em
+    output_mapping:
+      基金名称: name
+      备案时间: time
+      建立时间: time
+      托管人名称: name
+      私募基金管理人名称: name
+      私募基金管理人类型: type
+      运行状态: status
+    param_transforms: {}
+amac_fund_sub_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-基金产品公示-证券公司私募投资基金
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/subfund/index.html
+
+    :return: 证券公司私募投资基金
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_fund_sub_info
+  output:
+  - desc: 产品编码 field
+    name: 产品编码
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: name field
+    name: name
+    type: int
+  - desc: name field
+    name: name
+    type: int
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_fund_sub_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      产品名称: name
+      备案日期: date
+      成立日期: date
+      托管人名称: name
+      私募基金管理人名称: name
+    param_transforms: {}
+amac_futures_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-基金产品公示-期货公司集合资管产品公示
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/futures/index.html
+
+    :return: 期货公司集合资管产品公示
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_futures_info
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: 产品编码 field
+    name: 产品编码
+    type: str
+  - desc: name field
+    name: name
+    type: int
+  - desc: name field
+    name: name
+    type: int
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  - desc: 是否分级 field
+    name: 是否分级
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: maturity_date field
+    name: maturity_date
+    type: datetime
+  - desc: status field
+    name: status
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_futures_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      产品名称: name
+      到期日: maturity_date
+      备案日期: date
+      成立日期: date
+      托管人名称: name
+      投资类型: type
+      管理人名称: name
+      运作状态: status
+    param_transforms: {}
+amac_manager_cancelled_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-诚信信息公示-已注销私募基金管理人名单
+
+    https://gs.amac.org.cn/amac-infodisc/res/cancelled/manager/index.html
+
+    主动注销: 100
+
+    依公告注销: 200
+
+    协会注销: 300
+
+    :return: 已注销私募基金管理人名单
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_manager_cancelled_info
+  output:
+  - desc: name field
+    name: name
+    type: int
+  - desc: code field
+    name: code
+    type: int
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_manager_cancelled_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      注销时间: time
+      注销类型: type
+      登记时间: time
+      管理人名称: name
+      统一社会信用代码: code
+    param_transforms: {}
+amac_manager_classify_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-私募基金管理人公示-私募基金管理人分类公示
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/manager/managerList.html
+
+    :return: 私募基金管理人分类公示
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_manager_classify_info
+  output:
+  - desc: name field
+    name: name
+    type: int
+  - desc: 法定代表人/执行事务合伙人(委派代表)姓名 field
+    name: 法定代表人/执行事务合伙人(委派代表)姓名
+    type: float
+  - desc: type field
+    name: type
+    type: str
+  - desc: num field
+    name: num
+    type: int
+  - desc: 注册地 field
+    name: 注册地
+    type: str
+  - desc: 办公地 field
+    name: 办公地
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: type field
+    name: type
+    type: str
+  - desc: 是否有提示信息 field
+    name: 是否有提示信息
+    type: str
+  - desc: 是否有诚信信息 field
+    name: 是否有诚信信息
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_manager_classify_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      会员类型: type
+      在管基金数量: quantity
+      成立时间: time
+      机构类型: type
+      登记时间: time
+      登记编号: num
+      私募基金管理人名称: name
+    param_transforms: {}
+amac_manager_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-私募基金管理人公示-私募基金管理人综合查询
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/manager/index.html
+
+    :return: 私募基金管理人综合查询
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_manager_info
+  output:
+  - desc: name field
+    name: name
+    type: int
+  - desc: 法定代表人/执行事务合伙人(委派代表)姓名 field
+    name: 法定代表人/执行事务合伙人(委派代表)姓名
+    type: float
+  - desc: type field
+    name: type
+    type: str
+  - desc: 注册地 field
+    name: 注册地
+    type: str
+  - desc: num field
+    name: num
+    type: int
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: time field
+    name: time
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_manager_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      成立时间: time
+      机构类型: type
+      登记时间: time
+      登记编号: num
+      私募基金管理人名称: name
+    param_transforms: {}
+amac_member_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-会员信息-会员机构综合查询
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/member/index.html
+
+    :return: 会员机构综合查询
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_member_info
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: 会员代表 field
+    name: 会员代表
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: num field
+    name: num
+    type: int
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  - desc: 是否星标 field
+    name: 是否星标
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_member_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      会员类型: type
+      会员编号: num
+      入会时间: time
+      机构类型: type
+      机构（会员）名称: name
+    param_transforms: {}
+amac_member_sub_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-私募基金管理人公示-证券公司私募基金子公司管理人信息公示
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/member/index.html?primaryInvestType=private
+
+    :return: 证券公司私募基金子公司管理人信息公示
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_member_sub_info
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: 会员代表 field
+    name: 会员代表
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: num field
+    name: num
+    type: int
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_member_sub_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      会员类型: type
+      会员编号: num
+      入会时间: time
+      公司类型: type
+      机构（会员）名称: name
+    param_transforms: {}
+amac_person_bond_org_list:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-从业人员信息-债券投资交易相关人员公示
+
+    https://human.amac.org.cn/web/org/personPublicity.html
+
+    :return: 债券投资交易相关人员公示
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_person_bond_org_list
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 公示网址 field
+    name: 公示网址
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_person_bond_org_list
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      机构名称: name
+      机构类型: type
+    param_transforms: {}
+amac_person_fund_org_list:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-从业人员信息-基金从业人员资格注册信息
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/person/personOrgList.html
+
+    :param symbol: choice of {"公募基金管理公司", "公募基金管理公司资管子公司", "商业银行", "证券公司", "证券公司子公司",
+
+    "私募基金管理人",...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: amac_person_fund_org_list
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 员工人数 field
+    name: 员工人数
+    type: int
+  - desc: 基金从业资格 field
+    name: 基金从业资格
+    type: str
+  - desc: 基金销售业务资格 field
+    name: 基金销售业务资格
+    type: str
+  - desc: 基金经理 field
+    name: 基金经理
+    type: str
+  - desc: 投资经理 field
+    name: 投资经理
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_person_fund_org_list
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      机构名称: name
+      机构类型: type
+    param_transforms: {}
+amac_securities_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国证券投资基金业协会-信息公示-基金产品公示-证券公司集合资管产品公示
+
+    https://gs.amac.org.cn/amac-infodisc/res/pof/securities/index.html
+
+    :return: 证券公司集合资管产品公示
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: amac_securities_info
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: 产品编码 field
+    name: 产品编码
+    type: str
+  - desc: name field
+    name: name
+    type: int
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: maturity_date field
+    name: maturity_date
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  - desc: 是否分级 field
+    name: 是否分级
+    type: str
+  - desc: name field
+    name: name
+    type: int
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: status field
+    name: status
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: amac_securities_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      产品名称: name
+      到期时间: maturity_date
+      备案日期: date
+      成立日期: date
+      托管人名称: name
+      投资类型: type
+      管理人名称: name
+      运作状态: status
+    param_transforms: {}
+article_epu_index:
+  category: other
+  description: '经济政策不确定性指数
+
+    https://www.policyuncertainty.com/index.html
+
+    :param symbol: 指定的国家名称, e.g. “China”
+
+    :type symbol: str
+
+    :return: 经济政策不确定性指数数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: article_epu_index
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: article_epu_index
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+article_ff_crr:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: 'FF多因子模型
+
+    https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html
+
+    :return: FF多因子模型单一表格
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: article_ff_crr
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: item field
+    name: item
+    type: str
+  - desc: 'from :return: docstring'
+    name: '4'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: article_ff_crr
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '4': '4'
+      index: index
+      item: item
+    param_transforms: {}
+article_oman_rv:
+  category: other
+  description: 'Oxford-Man Institute of Quantitative Finance Realized Library 的数据
+
+    :param symbol: str [''AEX'', ''AORD'', ''BFX'', ''BSESN'', ''BVLG'', ''BVSP'',
+    ''DJI'', ''FCHI'', ''FTMIB'', ''FTSE'', ''GDAXI'', ''GSPTSE'', ''HSI'', ''IBEX'',
+    ''...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: index parameter
+    name: index
+    required: true
+    type: str
+  name: article_oman_rv
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: article_oman_rv
+    input_mapping:
+      index: index
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+article_oman_rv_short:
+  category: other
+  description: 'Oxford-Man Institute of Quantitative Finance Realized Library 的数据
+
+    :param symbol: str FTSE: FTSE 100, GDAXI: DAX, RUT: Russel 2000, SPX: S&P 500
+    Index, STOXX50E: EURO STOXX 50, SSEC: Shanghai Composite...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: article_oman_rv_short
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: article_oman_rv_short
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+article_rlab_rv:
+  category: other
+  description: '修大成主页-Risk Lab-Realized Volatility
+
+    :param symbol: str 股票代码
+
+    :return: pandas.DataFrame
+
+    1996-01-02    0.000000
+
+    1996-01-04    0.000000
+
+    1996-01-05    0.000000
+
+    1996-01-09    0.000000
+
+    1996-01-10    0.000000
+
+    ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: article_rlab_rv
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: article_rlab_rv
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+bank_fjcf_table_detail:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '获取 首页-政务信息-行政处罚-银保监分局本级-XXXX行政处罚信息公开表 数据
+
+    :param page: 需要获取前 page 页的内容, 总页数请通过 ak.bank_fjcf_total_page() 获取
+
+    :type page: int
+
+    :param item: choice of {"机关", "本级", "分局本级"}
+
+    :type item: str
+
+    :param begin: 开始页...'
+  input:
+  - desc: page parameter
+    name: page
+    required: true
+    type: int
+  - desc: item parameter
+    name: item
+    required: true
+    type: str
+  - desc: begin parameter
+    name: begin
+    required: true
+    type: str
+  name: bank_fjcf_table_detail
+  output:
+  - desc: content field
+    name: content
+    type: str
+  - desc: 行政处罚决定书文号 field
+    name: 行政处罚决定书文号
+    type: str
+  - desc: 姓名 field
+    name: 姓名
+    type: str
+  - desc: unit field
+    name: unit
+    type: int
+  - desc: name field
+    name: name
+    type: int
+  - desc: 主要负责人姓名 field
+    name: 主要负责人姓名
+    type: int
+  - desc: 主要违法违规事实（案由） field
+    name: 主要违法违规事实（案由）
+    type: str
+  - desc: 行政处罚依据 field
+    name: 行政处罚依据
+    type: str
+  - desc: 行政处罚决定 field
+    name: 行政处罚决定
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 处罚ID field
+    name: 处罚ID
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: bank_fjcf_table_detail
+    input_mapping:
+      begin: begin
+      item: item
+      page: page
+    name: akshare_em
+    output_mapping:
+      作出处罚决定的日期: date
+      作出处罚决定的机关名称: name
+      内容: content
+      单位: unit
+      单位名称: name
+      处罚公布日期: date
+    param_transforms: {}
+business_value_artist:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '艺恩-艺人-艺人商业价值
+
+    https://www.endata.com.cn/Marketing/Artist/business.html
+
+    :return: 艺人商业价值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: business_value_artist
+  output:
+  - desc: 排名 field
+    name: 排名
+    type: int
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 艺人 field
+    name: 艺人
+    type: int
+  - desc: 商业价值 field
+    name: 商业价值
+    type: float
+  - desc: 专业热度 field
+    name: 专业热度
+    type: str
+  - desc: 关注热度 field
+    name: 关注热度
+    type: str
+  - desc: 预测热度 field
+    name: 预测热度
+    type: str
+  - desc: 美誉度 field
+    name: 美誉度
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: business_value_artist
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '-': '-'
+      专业热度: 专业热度
+      关注热度: 关注热度
+      商业价值: 商业价值
+      排名: 排名
+      美誉度: 美誉度
+      艺人: 艺人
+      预测热度: 预测热度
+    param_transforms: {}
+car_market_cate_cpca:
+  category: other
+  description: '乘联会-统计数据-车型大类
+
+    http://data.cpcadata.com/CategoryMarket
+
+    :param symbol: choice of {"轿车", "MPV", "SUV", "占比"}
+
+    :type symbol: str
+
+    :param indicator: choice of {"批发", "零售"}
+
+    :type indicator: str
+
+    :return: 统计数据-...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: car_market_cate_cpca
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: car_market_cate_cpca
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+car_market_country_cpca:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '乘联会-统计数据-国别细分市场
+
+    http://data.cpcadata.com/CountryMarket
+
+    :return: 统计数据-车型大类
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: car_market_country_cpca
+  output:
+  - desc: 'from :return: docstring'
+    name: '1:'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: car_market_country_cpca
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '1:': '1:'
+    param_transforms: {}
+car_market_fuel_cpca:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '乘联会-统计数据-新能源细分市场
+
+    :param symbol: choice of {"整体市场", "销量占比-PHEV-BEV", "销量占比-ICE-NEV"}
+
+    :type symbol: str
+
+    https://data.cpcadata.com/FuelMarket
+
+    :return: 新能源细分市场
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: car_market_fuel_cpca
+  output:
+  - desc: 'from :return: docstring'
+    name: '2'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: car_market_fuel_cpca
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      '2': '2'
+    param_transforms: {}
+car_market_man_rank_cpca:
+  category: other
+  description: '乘联会-统计数据-厂商排名
+
+    http://data.cpcadata.com/ManRank
+
+    :param symbol: choice of {"狭义乘用车-单月", "狭义乘用车-累计", "广义乘用车-单月", "广义乘用车-累计"}
+
+    :type symbol: str
+
+    :param indicator: choice of {"批发", "零售"}
+
+    :type indicator: str...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: car_market_man_rank_cpca
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: car_market_man_rank_cpca
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+car_market_segment_cpca:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '乘联会-统计数据-级别细分市场
+
+    http://data.cpcadata.com/SegmentMarket
+
+    :param symbol: choice of {"轿车", "MPV", "SUV"}
+
+    :type symbol: str
+
+    :return: 统计数据-车型大类
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: car_market_segment_cpca
+  output:
+  - desc: 'from :return: docstring'
+    name: '1:'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: car_market_segment_cpca
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      '1:': '1:'
+    param_transforms: {}
+car_market_total_cpca:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '乘联会-统计数据-总体市场
+
+    http://data.cpcadata.com/TotalMarket
+
+    :param symbol: choice of {"狭义乘用车", "广义乘用车"}
+
+    :type symbol: str
+
+    :param indicator: choice of {"产量", "批发", "零售", "出口"}
+
+    :type indicator: str
+
+    :return: 统计数据...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: car_market_total_cpca
+  output:
+  - desc: 'from :return: docstring'
+    name: '2'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: car_market_total_cpca
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      '2': '2'
+    param_transforms: {}
+car_sale_rank_gasgoo:
+  category: other
+  description: '盖世汽车-汽车行业制造企业数据库-销量数据
+
+    https://i.gasgoo.com/data/ranking
+
+    :param symbol: choice of {"车企榜", "品牌榜", "车型榜"}
+
+    :type symbol: str
+
+    :param date: 查询的年份和月份
+
+    :type date: str
+
+    :return: 销量数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: car_sale_rank_gasgoo
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: car_sale_rank_gasgoo
+    input_mapping:
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+crypto_bitcoin_cme:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '芝加哥商业交易所-比特币成交量报告
+
+    https://datacenter.jin10.com/reportType/dc_cme_btc_report
+
+    :param date: Specific date, e.g., "20230830"
+
+    :type date: str
+
+    :return: 比特币成交量报告
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: crypto_bitcoin_cme
+  output:
+  - desc: 'from :return: docstring'
+    name: item[name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: crypto_bitcoin_cme
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      item[name: item[name
+    param_transforms: {}
+crypto_bitcoin_hold_report:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '金十数据-比特币持仓报告
+
+    https://datacenter.jin10.com/dc_report?name=bitcoint
+
+    :return: 比特币持仓报告
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: crypto_bitcoin_hold_report
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: country field
+    name: country
+    type: str
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: position field
+    name: position
+    type: float
+  - desc: position field
+    name: position
+    type: int
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: url field
+    name: url
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 分类 field
+    name: 分类
+    type: str
+  - desc: 倍数 field
+    name: 倍数
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: crypto_bitcoin_hold_report
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      代码: code
+      公司名称-中文: name
+      公司名称-英文: name
+      公告链接: url
+      国家/地区: country
+      市值: market_cap
+      当日持仓市值: day
+      持仓占比: position
+      持仓成本: position
+      持仓量: open_interest
+      查询日期: date
+      比特币占市值比重: market_cap
+    param_transforms: {}
+crypto_js_spot:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '主流加密货币的实时行情数据, 一次请求返回具体某一时刻行情数据
+
+    https://datacenter.jin10.com/reportType/dc_bitcoin_current
+
+    :return: pandas.DataFrame'
+  input: []
+  name: crypto_js_spot
+  output:
+  - desc: market field
+    name: market
+    type: str
+  - desc: 交易品种 field
+    name: 交易品种
+    type: str
+  - desc: 最近报价 field
+    name: 最近报价
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: crypto_js_spot
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      24小时成交量: volume
+      24小时最低: low
+      24小时最高: high
+      市场: market
+      更新时间: time
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+drewry_wci_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: 'Drewry 集装箱指数
+
+    https://infogram.com/world-container-index-1h17493095xl4zj
+
+    :param symbol: choice of {"composite", "shanghai-rotterdam", "rotterdam-shanghai",
+    "shanghai-los angeles",
+
+    "los angeles-shanghai...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: drewry_wci_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: wci field
+    name: wci
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: drewry_wci_index
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      date: date
+      wci: wci
+    param_transforms: {}
+energy_carbon_bj:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '北京市碳排放权电子交易平台-北京市碳排放权公开交易行情
+
+    https://www.bjets.com.cn/article/jyxx/
+
+    :return: 北京市碳排放权公开交易行情
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: energy_carbon_bj
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: 成交均价 field
+    name: 成交均价
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_carbon_bj
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      成交量: volume
+      成交额: amount
+      日期: date
+    param_transforms: {}
+energy_carbon_domestic:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '碳交易网-行情信息
+
+    http://www.tanjiaoyi.com/
+
+    :param symbol: choice of {''湖北'', ''上海'', ''北京'', ''重庆'', ''广东'', ''天津'', ''深圳'',
+    ''福建''}
+
+    :type symbol: str
+
+    :return: 行情信息
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: energy_carbon_domestic
+  output:
+  - desc: price field
+    name: price
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: 地点 field
+    name: 地点
+    type: str
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_carbon_domestic
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      成交价: price
+      成交量: volume
+      成交额: amount
+      日期: date
+    param_transforms: {}
+energy_carbon_eu:
+  category: other
+  description: '深圳碳排放交易所-国际碳情
+
+    http://www.cerx.cn/dailynewsOuter/index.htm
+
+    :return: 国际碳情每日行情数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: energy_carbon_eu
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_carbon_eu
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+energy_carbon_gz:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '广州碳排放权交易中心-行情信息
+
+    http://www.cnemission.com/article/hqxx/
+
+    :return: 行情信息数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: energy_carbon_gz
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 品种 field
+    name: 品种
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_carbon_gz
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      开盘价: open
+      成交数量: quantity
+      成交金额: amount
+      收盘价: close
+      日期: date
+      最低价: low
+      最高价: high
+      涨跌: change
+      涨跌幅: pct_change
+    param_transforms: {}
+energy_carbon_hb:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '湖北碳排放权交易中心-现货交易数据-配额-每日概况
+
+    http://www.hbets.cn/list/13.html?page=42
+
+    :return: 现货交易数据-配额-每日概况行情数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: energy_carbon_hb
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: price
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: 最新
+    type: str
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_carbon_hb
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      成交价: price
+      成交量: volume
+      日期: date
+      涨跌: change
+    param_transforms: {}
+energy_carbon_sz:
+  category: other
+  description: '深圳碳排放交易所-国内碳情
+
+    http://www.cerx.cn/dailynewsCN/index.htm
+
+    :return: 国内碳情每日行情数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: energy_carbon_sz
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_carbon_sz
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+energy_oil_detail:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '全国各地区的汽油和柴油油价
+
+    https://data.eastmoney.com/cjsj/oil_default.html
+
+    :param date: 可以调用 ak.energy_oil_hist() 得到可以获取油价的调整时间
+
+    :type date: str
+
+    :return: oil price at specific date
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: energy_oil_detail
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 地区 field
+    name: 地区
+    type: str
+  - desc: V_0 field
+    name: V_0
+    type: str
+  - desc: V_92 field
+    name: V_92
+    type: str
+  - desc: V_95 field
+    name: V_95
+    type: str
+  - desc: V_89 field
+    name: V_89
+    type: str
+  - desc: ZDE_0 field
+    name: ZDE_0
+    type: str
+  - desc: ZDE_92 field
+    name: ZDE_92
+    type: str
+  - desc: ZDE_95 field
+    name: ZDE_95
+    type: str
+  - desc: ZDE_89 field
+    name: ZDE_89
+    type: str
+  - desc: QE_0 field
+    name: QE_0
+    type: str
+  - desc: QE_92 field
+    name: QE_92
+    type: str
+  - desc: QE_95 field
+    name: QE_95
+    type: str
+  - desc: QE_89 field
+    name: QE_89
+    type: str
+  - desc: 首字母 field
+    name: 首字母
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_oil_detail
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+energy_oil_hist:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '汽柴油历史调价信息
+
+    https://data.eastmoney.com/cjsj/oil_default.html
+
+    :return: 汽柴油历史调价信息
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: energy_oil_hist
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 汽油价格 field
+    name: 汽油价格
+    type: float
+  - desc: 柴油价格 field
+    name: 柴油价格
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: energy_oil_hist
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      柴油涨跌: change
+      汽油涨跌: change
+      调整日期: date
+    param_transforms: {}
+forbes_rank:
+  category: other
+  description: '福布斯中国-榜单
+
+    https://www.forbeschina.com/lists
+
+    https://www.forbeschina.com/lists/1750
+
+    :param symbol: choice of {"2020福布斯美国富豪榜", "2020福布斯新加坡富豪榜", "2020福布斯中国名人榜", *}
+
+    :type symbol: str
+
+    :return: 具体指标的榜单
+
+    :rtyp...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: forbes_rank
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: forbes_rank
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+forex_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '东方财富网-行情中心-外汇市场-所有汇率-历史行情数据
+
+    https://quote.eastmoney.com/cnyrate/EURCNYC.html
+
+    :param symbol: 品种代码；可以通过 ak.forex_spot_em() 来获取所有可获取历史行情数据的品种代码
+
+    :type symbol: str
+
+    :return: 历史行情数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: forex_hist_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: forex_hist_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      今开: open
+      代码: code
+      名称: name
+      振幅: amplitude
+      日期: date
+      最低: low
+      最新价: last
+      最高: high
+    param_transforms: {}
+forex_spot_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '东方财富网-行情中心-外汇市场-所有汇率-实时行情数据
+
+    https://quote.eastmoney.com/center/gridlist.html#forex_all
+
+    :return: 实时行情数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: forex_spot_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: str
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: prev_close
+    type: str
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: forex_spot_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      今开: open
+      代码: code
+      名称: name
+      昨收: prev_close
+      最低: low
+      最新价: last
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+fred_md:
+  category: other
+  description: The accompanying paper shows that factors extracted from the FRED-MD
+    dataset share the same predictive content as those based on the various vintages
+    of the so-called Stock-Watson data. In addition, i...
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fred_md
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fred_md
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+fred_qd:
+  category: other
+  description: FRED-QD is a quarterly frequency companion to FRED-MD. It is designed
+    to emulate the dataset used in "Disentangling the Channels of the 2007-2009 Recession"
+    by Stock and Watson (2012, NBER WP No. 1809...
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: fred_qd
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fred_qd
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+fx_c_swap_cm:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-基准-外汇市场-外汇掉期曲线-外汇掉期 C-Swap 定盘曲线
+
+    https://www.chinamoney.org.cn/chinese/bkcurvfsw
+
+    :return: 外汇掉期 C-Swap 定盘曲线
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fx_c_swap_cm
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: term
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 掉期点(Pips)
+    type: str
+  - desc: 'from :return: docstring'
+    name: 掉期点数据源
+    type: str
+  - desc: 'from :return: docstring'
+    name: exchange_rate
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fx_c_swap_cm
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      全价汇率: exchange_rate
+      日期时间: date
+      期限品种: term
+    param_transforms: {}
+fx_pair_quote:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-市场数据-市场行情-债券市场行情-外币对即期报价
+
+    http://www.chinamoney.com.cn/chinese/mkdatapfx/
+
+    :return: 外币对即期报价
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fx_pair_quote
+  output:
+  - desc: currency field
+    name: currency
+    type: str
+  - desc: 买报价 field
+    name: 买报价
+    type: float
+  - desc: 卖报价 field
+    name: 卖报价
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fx_pair_quote
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      货币对: currency
+    param_transforms: {}
+fx_quote_baidu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '百度股市通-外汇-行情榜单
+
+    https://gushitong.baidu.com/top/foreign-rmb
+
+    :param symbol: choice of {"人民币", 美元"}
+
+    :type symbol: str
+
+    :return: 外汇行情数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: fx_quote_baidu
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: '0'
+    type: str
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fx_quote_baidu
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      代码: code
+      名称: name
+      最新价: last
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+fx_spot_quote:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-市场数据-市场行情-外汇市场行情-人民币外汇即期报价
+
+    http://www.chinamoney.com.cn/chinese/mkdatapfx/
+
+    :return: 人民币外汇即期报价
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fx_spot_quote
+  output:
+  - desc: currency field
+    name: currency
+    type: str
+  - desc: 买报价 field
+    name: 买报价
+    type: float
+  - desc: 卖报价 field
+    name: 卖报价
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fx_spot_quote
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      货币对: currency
+    param_transforms: {}
+fx_swap_quote:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-市场数据-市场行情-债券市场行情-人民币外汇远掉报价
+
+    https://www.chinamoney.com.cn/chinese/index.html
+
+    :return: 人民币外汇远掉报价
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: fx_swap_quote
+  output:
+  - desc: currency field
+    name: currency
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 1月 field
+    name: 1月
+    type: datetime
+  - desc: 3月 field
+    name: 3月
+    type: datetime
+  - desc: 6月 field
+    name: 6月
+    type: datetime
+  - desc: 9月 field
+    name: 9月
+    type: datetime
+  - desc: 1年 field
+    name: 1年
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: fx_swap_quote
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      1周: week
+      货币对: currency
+    param_transforms: {}
+get_cffex_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国金融期货交易所-日频率交易数据
+
+    http://www.cffex.com.cn/rtj/
+
+    :param date: 交易日; 数据开始时间为 20100416
+
+    :type date: str
+
+    :return: 日频率交易数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: get_cffex_daily
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: str
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: close field
+    name: close
+    type: float
+  - desc: settle field
+    name: settle
+    type: str
+  - desc: pre_settle field
+    name: pre_settle
+    type: str
+  rate_limit_key: cffex
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_cffex_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      _: _
+      close: close
+      high: high
+      low: low
+      open: open
+      open_interest: open_interest
+      pre_settle: pre_settle
+      settle: settle
+      symbol: symbol
+      turnover: turnover
+      volume: volume
+    param_transforms: {}
+get_cffex_rank_table:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国金融期货交易所前 20 会员持仓排名数据明细
+
+    http://www.cffex.com.cn/ccpm/
+
+    注：该交易所既公布品种排名，也公布标的排名
+
+    :param date: 日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象 为空时为当天
+
+    :param vars_list: 合约品种如RB、AL等列表 为空时为所有商品, 数据从20100416...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: get_cffex_rank_table
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: rank field
+    name: rank
+    type: int
+  - desc: 'from :return: docstring'
+    name: '0'
+    type: str
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  rate_limit_key: cffex
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_cffex_rank_table
+    input_mapping:
+      date: date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping:
+      '0': '0'
+      ':': ':'
+      rank: rank
+      symbol: symbol
+    param_transforms: {}
+get_czce_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '郑州商品交易所-日频率-量价数据
+
+    http://www.czce.com.cn/cn/jysj/mrhq/H770301index_1.htm
+
+    :param date: 日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date 对象，默认为当前交易日; 日期需要大于
+    20100824
+
+    :type date: str or datetime.date
+
+    :retu...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: get_czce_daily
+  output:
+  - desc: 'from :return: docstring'
+    name: i.replace(
+    type: str
+  - desc: 'from :return: docstring'
+    name: ).split(|)
+    type: str
+  - desc: 'from :return: docstring'
+    name: for
+    type: str
+  - desc: 'from :return: docstring'
+    name: i
+    type: str
+  - desc: 'from :return: docstring'
+    name: in
+    type: str
+  - desc: 'from :return: docstring'
+    name: html.split(\n)[:-3
+    type: str
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_czce_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      ).split(|): ).split(|)
+      for: for
+      html.split(\n)[:-3: html.split(\n)[:-3
+      i: i
+      i.replace(: i.replace(
+      in: in
+    param_transforms: {}
+get_dce_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '大连商品交易所日交易数据
+
+    http://www.dce.com.cn/dalianshangpin/xqsj/tjsj26/rtj/rxq/index.html
+
+    :param date: 交易日, e.g., 20200416
+
+    :type date: str
+
+    :return: 具体交易日的个品种行情数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: get_dce_daily
+  output:
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: pre_settle field
+    name: pre_settle
+    type: str
+  - desc: settle field
+    name: settle
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: str
+  - desc: variety field
+    name: variety
+    type: str
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_dce_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      ~temp_df[品种名称: name
+    param_transforms: {}
+get_dce_rank_table:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '大连商品交易所前 20 会员持仓排名数据明细, 由于交易所网站问题, 需要 20200720 之后才有数据
+
+    注: 该交易所只公布标的合约排名
+
+    :param date: 日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date 对象, 为空时为当天
+
+    :param vars_list: 合约品种如 RB、AL 等列表为空时为所有商品, 数据从 20060104 开...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: get_dce_rank_table
+  output:
+  - desc: 'from :return: docstring'
+    name: symbol
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_dce_rank_table
+    input_mapping:
+      date: date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping:
+      symbol: symbol
+    param_transforms: {}
+get_futures_daily:
+  category: other
+  description: '交易所日交易数据
+
+    :param start_date: 开始日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象 为空时为当天
+
+    :type start_date: str
+
+    :param end_date: 结束数据 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象 为空时为当天
+
+    :type end_date:...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: market parameter
+    name: market
+    required: true
+    type: str
+  name: get_futures_daily
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_futures_daily
+    input_mapping:
+      end_date: end_date
+      market: market
+      start_date: start_date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+get_gfex_daily:
+  category: other
+  description: '广州期货交易所-日频率-量价数据
+
+    广州期货交易所: 工业硅(上市时间: 20221222)
+
+    http://www.gfex.com.cn/gfex/rihq/hqsj_tjsj.shtml
+
+    :param date: 日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象，默认为当前交易日
+
+    :type date: str or datetime.date
+
+    ...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: get_gfex_daily
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_gfex_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+get_ine_daily:
+  category: other
+  description: '上海国际能源交易中心-日频率-量价数据
+
+    上海国际能源交易中心: 原油期货(上市时间: 20180326); 20号胶期货(上市时间: 20190812)
+
+    trade_price: https://www.ine.cn/statements/daily/?paramid=kx
+
+    trade_note: https://www.ine.cn/data/datanote.dat
+
+    :param date: ...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: get_ine_daily
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_ine_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+get_qhkc_fund_bs:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: "奇货可查-资金-净持仓分布\n可获取数据的时间段为:\"2016-10-10:2019-09-30\"\n:param url: 网址\n\
+    :param date: 中文名称\n:return: 净持仓分布\n:rtype: pandas.DataFrame\nsymbol_df\n   name\
+    \       value        ratio      date\n   IC  1552535406     0.1..."
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  name: get_qhkc_fund_bs
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_qhkc_fund_bs
+    input_mapping:
+      date: date
+      url: url
+    name: akshare_em
+    output_mapping:
+      name: name
+      value: value
+    param_transforms: {}
+get_qhkc_fund_money_change:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: "奇货可查-资金-成交额分布\n可获取数据的时间段为:\"2016-10-10:2019-09-30\"\n:param url: 网址\n\
+    :param date: 中文名称\n:return: 成交额分布\n:rtype: pandas.DataFrame\n    name        value\
+    \        ratio        date\n   沪镍    2.292e+10     0.145963..."
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  name: get_qhkc_fund_money_change
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_qhkc_fund_money_change
+    input_mapping:
+      date: date
+      url: url
+    name: akshare_em
+    output_mapping:
+      name: name
+      value: value
+    param_transforms: {}
+get_qhkc_fund_position:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: "奇货可查-资金-总持仓分布\n可获取数据的时间段为:\"2016-10-10:2019-09-30\"\n:param url: 网址\n\
+    :param date: 中文名称\n:return: 总持仓分布\n:rtype: pandas.DataFrame\nsymbol_df\n   name\
+    \       value        ratio      date\n   IC  1552535406     0.1..."
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  name: get_qhkc_fund_position
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_qhkc_fund_position
+    input_mapping:
+      date: date
+      url: url
+    name: akshare_em
+    output_mapping:
+      name: name
+      value: value
+    param_transforms: {}
+get_qhkc_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '奇货可查-指数-指数详情
+
+    获得奇货可查的指数数据: ''奇货黑链'', ''奇货商品'', ''奇货谷物'', ''奇货贵金属'', ''奇货饲料'', ''奇货软商品'', ''奇货化工'',
+    ''奇货有色'', ''奇货股指'', ''奇货铁合金'', ''奇货油脂''
+
+    :param url: 网址
+
+    :type url: str
+
+    :param name: 中文名称
+
+    :type name: str
+
+    :return: 指数详情
+
+    :rtype...'
+  input:
+  - desc: name parameter
+    name: name
+    required: true
+    type: str
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  name: get_qhkc_index
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: price field
+    name: price
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: margin field
+    name: margin
+    type: str
+  - desc: profit field
+    name: profit
+    type: str
+  - desc: long_short_ratio field
+    name: long_short_ratio
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_qhkc_index
+    input_mapping:
+      name: name
+      url: url
+    name: akshare_em
+    output_mapping:
+      date: date
+      long_short_ratio: long_short_ratio
+      margin: margin
+      open_interest: open_interest
+      price: price
+      profit: profit
+      volume: volume
+    param_transforms: {}
+get_qhkc_index_profit_loss:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '奇货可查-指数-盈亏详情
+
+    获得奇货可查的指数数据: ''奇货黑链'', ''奇货商品'', ''奇货谷物'', ''奇货贵金属'', ''奇货饲料'', ''奇货软商品'', ''奇货化工'',
+    ''奇货有色'', ''奇货股指'', ''奇货铁合金'', ''奇货油脂''
+
+    :param url: 网址
+
+    :type url: str
+
+    :param name: None
+
+    :type name: str
+
+    :param start_date: "...'
+  input:
+  - desc: name parameter
+    name: name
+    required: true
+    type: str
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: get_qhkc_index_profit_loss
+  output:
+  - desc: indexes field
+    name: indexes
+    type: float
+  - desc: value field
+    name: value
+    type: str
+  - desc: trans_date field
+    name: trans_date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_qhkc_index_profit_loss
+    input_mapping:
+      end_date: end_date
+      name: name
+      start_date: start_date
+      url: url
+    name: akshare_em
+    output_mapping:
+      indexes: indexes
+      trans_date: trans_date
+      value: value
+    param_transforms: {}
+get_qhkc_index_trend:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '奇货可查-指数-大资金动向
+
+    获得奇货可查的指数数据: ''奇货黑链'', ''奇货商品'', ''奇货谷物'', ''奇货贵金属'', ''奇货饲料'', ''奇货软商品'', ''奇货化工'',
+    ''奇货有色'', ''奇货股指'', ''奇货铁合金'', ''奇货油脂''
+
+    :param name: None
+
+    :type name: str
+
+    :param url: 网址
+
+    :type url: str
+
+    :return: 大资金动向
+
+    :rty...'
+  input:
+  - desc: name parameter
+    name: name
+    required: true
+    type: str
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  name: get_qhkc_index_trend
+  output:
+  - desc: broker field
+    name: broker
+    type: str
+  - desc: grade field
+    name: grade
+    type: str
+  - desc: money field
+    name: money
+    type: str
+  - desc: open_order field
+    name: open_order
+    type: float
+  - desc: variety field
+    name: variety
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_qhkc_index_trend
+    input_mapping:
+      name: name
+      url: url
+    name: akshare_em
+    output_mapping:
+      broker: broker
+      grade: grade
+      money: money
+      open_order: open_order
+      variety: variety
+    param_transforms: {}
+get_rank_sum:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: "采集五个期货交易所前5、前10、前15、前20会员持仓排名数据\n注1：由于上期所和中金所只公布每个品种内部的标的排名, 没有公布品种的总排名;\n\
+    \    所以函数输出的品种排名是由品种中的每个标的加总获得, 并不是真实的品种排名列表\n注2：大商所只公布了品种排名, 未公布标的排名\n:param\
+    \ date: 日期 format: YYYY-MM-DD 或 YYYYMMDD 或 datetime.dat..."
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: get_rank_sum
+  output:
+  - desc: 'from :return: docstring'
+    name: vol
+    type: str
+  - desc: 'from :return: docstring'
+    name: vol_chg
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_rank_sum
+    input_mapping:
+      date: date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping:
+      vol: vol
+      vol_chg: vol_chg
+    param_transforms: {}
+get_rank_sum_daily:
+  category: other
+  description: "采集四个期货交易所前 5、前 10、前 15、前 20 会员持仓排名数据\n注1：由于上期所和中金所只公布每个品种内部的标的排名，没有公布品种的总排名;\n\
+    \    所以函数输出的品种排名是由品种中的每个标的加总获得，并不是真实的品种排名列表\n注2：大商所只公布了品种排名，未公布标的排名\n:param start_day:\
+    \ 开始日期 format：YYYY-MM-DD 或 YYYYMMDD 或 date..."
+  input:
+  - desc: start_day parameter
+    name: start_day
+    required: true
+    type: str
+  - desc: end_day parameter
+    name: end_day
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: get_rank_sum_daily
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_rank_sum_daily
+    input_mapping:
+      end_day: end_day
+      start_day: start_day
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+get_rank_table_czce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '郑州商品交易所前 20 会员持仓排名数据明细
+
+    https://www.czce.com.cn/cn/jysj/ccpm/H077003004index_1.htm
+
+    注：该交易所既公布了品种排名, 也公布了标的排名
+
+    :param date: 日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象 为空时为当天
+
+    :return: 持仓排名数据明细
+
+    :rtyp...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: get_rank_table_czce
+  output:
+  - desc: rank field
+    name: rank
+    type: int
+  - desc: vol_party_name field
+    name: vol_party_name
+    type: str
+  - desc: vol field
+    name: vol
+    type: str
+  - desc: vol_chg field
+    name: vol_chg
+    type: str
+  - desc: long_party_name field
+    name: long_party_name
+    type: str
+  - desc: long_open_interest field
+    name: long_open_interest
+    type: float
+  - desc: long_open_interest_chg field
+    name: long_open_interest_chg
+    type: float
+  - desc: short_party_name field
+    name: short_party_name
+    type: str
+  - desc: short_open_interest field
+    name: short_open_interest
+    type: float
+  - desc: short_open_interest_chg field
+    name: short_open_interest_chg
+    type: float
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_rank_table_czce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      long_open_interest: long_open_interest
+      long_open_interest_chg: long_open_interest_chg
+      long_party_name: long_party_name
+      rank: rank
+      short_open_interest: short_open_interest
+      short_open_interest_chg: short_open_interest_chg
+      short_party_name: short_party_name
+      vol: vol
+      vol_chg: vol_chg
+      vol_party_name: vol_party_name
+    param_transforms: {}
+get_receipt:
+  category: other
+  description: '大宗商品-注册仓单数据
+
+    :param start_date: 开始日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date 对象 为空时为当天
+
+    :type start_date: str
+
+    :param end_date: 结束数据 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date 对象 为空时为当天
+
+    :type end_...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: get_receipt
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_receipt
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+get_roll_yield:
+  category: other
+  description: '指定交易日指定品种（主力和次主力）或任意两个合约的展期收益率
+
+    Parameters
+
+    ------
+
+    date: string 某一天日期 format： YYYYMMDD
+
+    var: string 合约品种如 RB、AL 等
+
+    symbol1: string 合约 1 如 rb1810
+
+    symbol2: string 合约 2 如 rb1812
+
+    df: DataFrame或None 从dailyBar得...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: var parameter
+    name: var
+    required: true
+    type: str
+  - desc: symbol1 parameter
+    name: symbol1
+    required: true
+    type: str
+  - desc: symbol2 parameter
+    name: symbol2
+    required: true
+    type: str
+  - desc: df parameter
+    name: df
+    required: true
+    type: str
+  name: get_roll_yield
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_roll_yield
+    input_mapping:
+      date: date
+      df: df
+      symbol1: symbol1
+      symbol2: symbol2
+      var: var
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+get_roll_yield_bar:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '展期收益率
+
+    :param type_method: ''symbol'': 获取指定交易日指定品种所有交割月合约的收盘价; ''var'': 获取指定交易日所有品种两个主力合约的展期收益率(展期收益率横截面);
+    ''date'': 获取指定品种每天的两个主力合约的展期收益率(展期收益率时间序列)
+
+    :param var: 合约品种如 "RB", "AL" 等
+
+    :param date: 指定交易日 format：...'
+  input:
+  - desc: type_method parameter
+    name: type_method
+    required: true
+    type: str
+  - desc: var parameter
+    name: var
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: start_day parameter
+    name: start_day
+    required: true
+    type: str
+  - desc: end_day parameter
+    name: end_day
+    required: true
+    type: str
+  name: get_roll_yield_bar
+  output:
+  - desc: 'from :return: docstring'
+    name: roll_yield
+    type: float
+  - desc: 'from :return: docstring'
+    name: near_by
+    type: str
+  - desc: 'from :return: docstring'
+    name: deferred
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_roll_yield_bar
+    input_mapping:
+      date: date
+      end_day: end_day
+      start_day: start_day
+      type_method: type_method
+      var: var
+    name: akshare_em
+    output_mapping:
+      deferred: deferred
+      near_by: near_by
+      roll_yield: roll_yield
+    param_transforms: {}
+get_shfe_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '上海期货交易所-日频率-量价数据
+
+    https://tsite.shfe.com.cn/statements/dataview.html?paramid=kx
+
+    :param date: 日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象, 默认为当前交易日
+
+    :type date: str or datetime.date
+
+    :return: 上海期货交易...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: get_shfe_daily
+  output:
+  - desc: 'from :return: docstring'
+    name: ~df[symbol
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_shfe_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      ~df[symbol: ~df[symbol
+    param_transforms: {}
+get_shfe_rank_table:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '上海期货交易所会员成交及持仓排名表
+
+    https://www.shfe.com.cn/
+
+    https://tsite.shfe.com.cn/statements/dataview.html?paramid=kx
+
+    注：该交易所只公布每个品种内部的标的排名，没有公布品种的总排名
+
+    数据从 20020107 开始，每交易日 16:30 左右更新数据
+
+    :param date: 交易日
+
+    :type date: ...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: get_shfe_rank_table
+  output:
+  - desc: 'from :return: docstring'
+    name: variety
+    type: str
+  rate_limit_key: shfe
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_shfe_rank_table
+    input_mapping:
+      date: date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping:
+      variety: variety
+    param_transforms: {}
+get_token:
+  category: other
+  description: ''
+  input: []
+  name: get_token
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: get_token
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+hurun_rank:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '胡润排行榜
+
+    https://www.hurun.net/CN/HuList/Index?num=3YwKs889SRIm
+
+    :param indicator: choice of {"胡润百富榜", "胡润全球富豪榜", "胡润印度榜", "胡润全球独角兽榜", "全球瞪羚企业榜",
+    "胡润Under30s创业领袖榜", "胡润中国500强民营企业", "胡润世界500强", "胡润艺术榜"}
+
+    :t...'
+  input:
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  name: hurun_rank
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 排名
+    type: int
+  - desc: 'from :return: docstring'
+    name: 财富
+    type: str
+  - desc: 'from :return: docstring'
+    name: 姓名
+    type: str
+  - desc: 'from :return: docstring'
+    name: 企业
+    type: str
+  - desc: 'from :return: docstring'
+    name: industry
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: hurun_rank
+    input_mapping:
+      indicator: indicator
+      year: year
+    name: akshare_em
+    output_mapping:
+      行业: industry
+    param_transforms: {}
+match_main_contract:
+  category: other
+  description: '新浪财经-期货-主力合约
+
+    https://vip.stock.finance.sina.com.cn/quotes_service/view/qihuohangqing.html#titlePos_1
+
+    :param symbol: choice of {''czce'', ''dce'', ''shfe'', ''cffex'', ''gfex''}
+
+    :type symbol: str
+
+    :return: 主力合约的字...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: match_main_contract
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: match_main_contract
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+migration_area_baidu:
+  category: other
+  description: '百度地图慧眼-百度迁徙-XXX迁入地详情
+
+    百度地图慧眼-百度迁徙-XXX迁出地详情
+
+    以上展示 top100 结果，如不够 100 则展示全部
+
+    迁入来源地比例: 从 xx 地迁入到当前区域的人数与当前区域迁入总人口的比值
+
+    迁出目的地比例: 从当前区域迁出到 xx 的人口与从当前区域迁出总人口的比值
+
+    https://qianxi.baidu.com/?from=shoubai#city=0
+
+    :para...'
+  input:
+  - desc: area parameter
+    name: area
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: migration_area_baidu
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: migration_area_baidu
+    input_mapping:
+      area: area
+      date: date
+      indicator: indicator
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+migration_scale_baidu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '百度地图慧眼-百度迁徙-迁徙规模
+
+    迁徙规模指数：反映迁入或迁出人口规模，城市间可横向对比城市迁徙边界采用该城市行政区划，包含该城市管辖的区、县、乡、村
+
+    https://qianxi.baidu.com/?from=shoubai#city=0
+
+    :param area: 可以输入 省份 或者 具体城市 但是需要用全称
+
+    :type area: str
+
+    :param indicator: move_in...'
+  input:
+  - desc: area parameter
+    name: area
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: migration_scale_baidu
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: size field
+    name: size
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: migration_scale_baidu
+    input_mapping:
+      area: area
+      indicator: indicator
+    name: akshare_em
+    output_mapping:
+      日期: date
+      迁徙规模指数: size
+    param_transforms: {}
+movie_boxoffice_cinema_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-影院票房-日票房排行
+
+    https://www.endata.com.cn/BoxOffice/BO/Cinema/day.html
+
+    :param date: 当前日期前一日的票房数据
+
+    :type date: str
+
+    :return: 影票房-影院票房-日票房排行
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: movie_boxoffice_cinema_daily
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 场均票价 field
+    name: 场均票价
+    type: float
+  - desc: 场均人次 field
+    name: 场均人次
+    type: int
+  - desc: 上座率 field
+    name: 上座率
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_cinema_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      单日场次: day
+      单日票房: day
+      影院名称: name
+    param_transforms: {}
+movie_boxoffice_cinema_weekly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-影院票房-周票房排行
+
+    https://www.endata.com.cn/BoxOffice/BO/Cinema/week.html
+
+    :param date: 当前日期前完整一周的票房数据
+
+    :type date: str
+
+    :return: 影票房-影院票房-轴票房排行
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: movie_boxoffice_cinema_weekly
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 单银幕票房 field
+    name: 单银幕票房
+    type: str
+  - desc: 场均人次 field
+    name: 场均人次
+    type: int
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_cinema_weekly
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      单日单厅场次: day
+      单日单厅票房: day
+      当周票房: week
+      影院名称: name
+    param_transforms: {}
+movie_boxoffice_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-单日票房
+
+    https://www.endata.com.cn/BoxOffice/BO/Day/index.html
+
+    :param date: 只能设置当前日期的前一天的票房数据
+
+    :type date: str
+
+    :return: 每日票房
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: movie_boxoffice_daily
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 累计票房 field
+    name: 累计票房
+    type: str
+  - desc: 平均票价 field
+    name: 平均票价
+    type: float
+  - desc: 上映天数 field
+    name: 上映天数
+    type: str
+  - desc: 场均人次 field
+    name: 场均人次
+    type: int
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 环比变化 field
+    name: 环比变化
+    type: str
+  - desc: 口碑指数 field
+    name: 口碑指数
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_daily
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      单日票房: day
+      影片名称: name
+    param_transforms: {}
+movie_boxoffice_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-单月票房
+
+    https://www.endata.com.cn/BoxOffice/BO/Month/oneMonth.html
+
+    :param date: 指定日期所在月份的月度票房
+
+    :type date: str
+
+    :return: 单月票房
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: movie_boxoffice_monthly
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 月内天数 field
+    name: 月内天数
+    type: datetime
+  - desc: 单月票房 field
+    name: 单月票房
+    type: datetime
+  - desc: 平均票价 field
+    name: 平均票价
+    type: float
+  - desc: 场均人次 field
+    name: 场均人次
+    type: int
+  - desc: 月度占比 field
+    name: 月度占比
+    type: int
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 口碑指数 field
+    name: 口碑指数
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_monthly
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      上映日期: date
+      影片名称: name
+    param_transforms: {}
+movie_boxoffice_realtime:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-实时票房
+
+    https://ys.endata.cn/BoxOffice/Movie
+
+    :return: 实时票房数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: movie_boxoffice_realtime
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 实时票房 field
+    name: 实时票房
+    type: str
+  - desc: 累计票房 field
+    name: 累计票房
+    type: str
+  - desc: 上映天数 field
+    name: 上映天数
+    type: str
+  - desc: 票房占比 field
+    name: 票房占比
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_realtime
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      影片名称: name
+    param_transforms: {}
+movie_boxoffice_weekly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-单周票房
+
+    https://www.endata.com.cn/BoxOffice/BO/Week/oneWeek.html
+
+    :param date: 只能获取指定日期所在完整周的票房数据
+
+    :type date: str
+
+    :return: 单周票房
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: movie_boxoffice_weekly
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 累计票房 field
+    name: 累计票房
+    type: str
+  - desc: 上映天数 field
+    name: 上映天数
+    type: str
+  - desc: 平均票价 field
+    name: 平均票价
+    type: float
+  - desc: 场均人次 field
+    name: 场均人次
+    type: int
+  - desc: 环比变化 field
+    name: 环比变化
+    type: str
+  - desc: 排名变化 field
+    name: 排名变化
+    type: int
+  - desc: 口碑指数 field
+    name: 口碑指数
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_weekly
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      单周票房: week
+      影片名称: name
+    param_transforms: {}
+movie_boxoffice_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-年度票房
+
+    https://www.endata.com.cn/BoxOffice/BO/Year/index.html
+
+    :param date: 当前日期所在年度的票房数据
+
+    :type date: str
+
+    :return: 年度票房
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: movie_boxoffice_yearly
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 总票房 field
+    name: 总票房
+    type: str
+  - desc: 平均票价 field
+    name: 平均票价
+    type: float
+  - desc: 场均人次 field
+    name: 场均人次
+    type: int
+  - desc: country field
+    name: country
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_yearly
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      上映日期: date
+      国家及地区: country
+      影片名称: name
+      类型: type
+    param_transforms: {}
+movie_boxoffice_yearly_first_week:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '电影票房-年度票房-年度首周票房
+
+    https://www.endata.com.cn/BoxOffice/BO/Year/firstWeek.html
+
+    :param date: 当前日期所在年度的年度首周票房票房数据
+
+    :type date: str
+
+    :return: 年度首周票房
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: movie_boxoffice_yearly_first_week
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 场均人次 field
+    name: 场均人次
+    type: int
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: type field
+    name: type
+    type: str
+  - desc: country field
+    name: country
+    type: str
+  - desc: 占总票房比重 field
+    name: 占总票房比重
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: movie_boxoffice_yearly_first_week
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      上映日期: date
+      国家及地区: country
+      影片名称: name
+      类型: type
+      首周天数: week
+      首周票房: week
+    param_transforms: {}
+news_cctv:
+  category: other
+  description: '新闻联播文字稿
+
+    https://tv.cctv.com/lm/xwlb
+
+    :param date: 需要获取数据的日期; 目前 20160203 年后
+
+    :type date: str
+
+    :return: 新闻联播文字稿
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: news_cctv
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: news_cctv
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+news_economic_baidu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '百度股市通-经济数据
+
+    https://finance.baidu.com/calendar
+
+    :param date: 查询日期 (格式: YYYYMMDD)
+
+    :param cookie: cookie
+
+    :return: 经济数据 pd.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: news_economic_baidu
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: time field
+    name: time
+    type: str
+  - desc: 地区 field
+    name: 地区
+    type: str
+  - desc: 事件 field
+    name: 事件
+    type: str
+  - desc: 公布 field
+    name: 公布
+    type: float
+  - desc: 预期 field
+    name: 预期
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 重要性 field
+    name: 重要性
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: news_economic_baidu
+    input_mapping:
+      cookie: cookie
+      date: date
+    name: akshare_em
+    output_mapping:
+      日期: date
+      时间: time
+    param_transforms: {}
+news_report_time_baidu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '百度股市通-财报发行
+
+    https://finance.baidu.com/calendar
+
+    :param date: 查询日期 (格式: YYYYMMDD)
+
+    :param cookie: cookie
+
+    :return: 财报发行DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: news_report_time_baidu
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: exchange field
+    name: exchange
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: time field
+    name: time
+    type: str
+  - desc: market_cap field
+    name: market_cap
+    type: int
+  - desc: date field
+    name: date
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: news_report_time_baidu
+    input_mapping:
+      cookie: cookie
+      date: date
+    name: akshare_em
+    output_mapping:
+      交易所: exchange
+      发布日期: date
+      发布时间: time
+      市值: market_cap
+      股票代码: symbol
+      股票简称: name
+      财报类型: type
+    param_transforms: {}
+news_trade_notify_dividend_baidu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '百度股市通-交易提醒-分红派息
+
+    https://finance.baidu.com/calendar
+
+    :param date: 查询日期 (格式: YYYYMMDD)
+
+    :param cookie: cookie
+
+    :return: 交易提醒-分红派息DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: news_trade_notify_dividend_baidu
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: 分红 field
+    name: 分红
+    type: str
+  - desc: 送股 field
+    name: 送股
+    type: str
+  - desc: 转增 field
+    name: 转增
+    type: str
+  - desc: 实物 field
+    name: 实物
+    type: str
+  - desc: exchange field
+    name: exchange
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 报告期 field
+    name: 报告期
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: news_trade_notify_dividend_baidu
+    input_mapping:
+      cookie: cookie
+      date: date
+    name: akshare_em
+    output_mapping:
+      交易所: exchange
+      股票代码: symbol
+      股票简称: name
+      除权日: day
+    param_transforms: {}
+news_trade_notify_suspend_baidu:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '百度股市通-交易提醒-停复牌
+
+    https://finance.baidu.com/calendar
+
+    :param date: 查询日期 (格式: YYYYMMDD)
+
+    :param cookie: cookie
+
+    :return: 停复牌数据DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: news_trade_notify_suspend_baidu
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: time field
+    name: time
+    type: str
+  - desc: time field
+    name: time
+    type: str
+  - desc: description field
+    name: description
+    type: str
+  - desc: market_cap field
+    name: market_cap
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: time field
+    name: time
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: market field
+    name: market
+    type: str
+  - desc: 是否跳过 field
+    name: 是否跳过
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: news_trade_notify_suspend_baidu
+    input_mapping:
+      cookie: cookie
+      date: date
+    name: akshare_em
+    output_mapping:
+      交易所代码: code
+      停牌事项说明: description
+      停牌时间: time
+      公告日期: date
+      公告时间: time
+      复牌时间: time
+      市值: market_cap
+      市场类型: market
+      股票代码: symbol
+      股票简称: name
+      证券类型: type
+    param_transforms: {}
+nlp_answer:
+  category: other
+  description: '智能问答
+
+    https://ownthink.com/robot.html
+
+    :param question: word in chinese
+
+    :type question: str
+
+    :return: indicator data
+
+    :rtype: list or dict or pandas.DataFrame'
+  input:
+  - desc: question parameter
+    name: question
+    required: true
+    type: str
+  name: nlp_answer
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: nlp_answer
+    input_mapping:
+      question: question
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+nlp_ownthink:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: 'Knowledge Graph interface for financial research
+
+    https://ownthink.com/
+
+    :param word: word in chinese
+
+    :type word: str
+
+    :param indicator: entity or desc or avp or tag
+
+    :type indicator: str
+
+    :return: indicat...'
+  input:
+  - desc: word parameter
+    name: word
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: nlp_ownthink
+  output:
+  - desc: 'from :return: docstring'
+    name: 字段
+    type: str
+  - desc: 'from :return: docstring'
+    name: 值
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: nlp_ownthink
+    input_mapping:
+      indicator: indicator
+      word: word
+    name: akshare_em
+    output_mapping:
+      值: 值
+      字段: 字段
+    param_transforms: {}
+online_value_artist:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '艺恩-艺人-艺人流量价值
+
+    https://www.endata.com.cn/Marketing/Artist/business.html
+
+    :return: 艺人流量价值
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: online_value_artist
+  output:
+  - desc: 排名 field
+    name: 排名
+    type: int
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 艺人 field
+    name: 艺人
+    type: int
+  - desc: 流量价值 field
+    name: 流量价值
+    type: float
+  - desc: 专业热度 field
+    name: 专业热度
+    type: str
+  - desc: 关注热度 field
+    name: 关注热度
+    type: str
+  - desc: 预测热度 field
+    name: 预测热度
+    type: str
+  - desc: 带货力 field
+    name: 带货力
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: online_value_artist
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '-': '-'
+      专业热度: 专业热度
+      关注热度: 关注热度
+      带货力: 带货力
+      排名: 排名
+      流量价值: 流量价值
+      艺人: 艺人
+      预测热度: 预测热度
+    param_transforms: {}
+pro_api:
+  category: other
+  description: 初始化 pro API,第一次可以通过ak.set_token('your token')来记录自己的token凭证，临时token可以通过本参数传入
+  input:
+  - desc: token parameter
+    name: token
+    required: true
+    type: str
+  name: pro_api
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: pro_api
+    input_mapping:
+      token: token
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+qdii_a_index_jsl:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '集思录-T+0 QDII-亚洲市场-亚洲指数
+
+    https://www.jisilu.cn/data/qdii/#qdiia
+
+    :return: T+0 QDII-亚洲市场-亚洲指数
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: qdii_a_index_jsl
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: current_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: 涨幅
+    type: float
+  - desc: 'from :return: docstring'
+    name: 成交
+    type: str
+  - desc: 'from :return: docstring'
+    name: 场内份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 场内新增
+    type: str
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 估值
+    type: float
+  - desc: 'from :return: docstring'
+    name: premium
+    type: float
+  - desc: 'from :return: docstring'
+    name: 相关标的
+    type: str
+  - desc: 'from :return: docstring'
+    name: 指数涨幅
+    type: float
+  - desc: 'from :return: docstring'
+    name: 申购费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 赎回费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 托管费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金公司
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: qdii_a_index_jsl
+    input_mapping:
+      cookie: cookie
+    name: akshare_em
+    output_mapping:
+      代码: code
+      净值: nav
+      净值日期: date
+      名称: name
+      溢价率: premium
+      现价: current_price
+    param_transforms: {}
+qdii_e_comm_jsl:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '集思录-T+0 QDII-欧美市场-商品
+
+    https://www.jisilu.cn/data/qdii/#qdiia
+
+    :return: T+0 QDII-欧美市场-商品
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: qdii_e_comm_jsl
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: current_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: 涨幅
+    type: float
+  - desc: 'from :return: docstring'
+    name: 成交
+    type: str
+  - desc: 'from :return: docstring'
+    name: 场内份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 场内新增
+    type: str
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: T-1估值
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: premium
+    type: float
+  - desc: 'from :return: docstring'
+    name: 相关标的
+    type: str
+  - desc: 'from :return: docstring'
+    name: T-1指数涨幅
+    type: float
+  - desc: 'from :return: docstring'
+    name: 申购费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 赎回费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 托管费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金公司
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: qdii_e_comm_jsl
+    input_mapping:
+      cookie: cookie
+    name: akshare_em
+    output_mapping:
+      T-1溢价率: premium
+      T-2净值: nav
+      代码: code
+      估值日期: date
+      净值日期: date
+      名称: name
+      现价: current_price
+    param_transforms: {}
+qdii_e_index_jsl:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '集思录-T+0 QDII-欧美市场-欧美指数
+
+    https://www.jisilu.cn/data/qdii/#qdiia
+
+    :return: T+0 QDII-亚洲市场
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: cookie parameter
+    name: cookie
+    required: true
+    type: str
+  name: qdii_e_index_jsl
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: current_price
+    type: float
+  - desc: 'from :return: docstring'
+    name: 涨幅
+    type: float
+  - desc: 'from :return: docstring'
+    name: 成交
+    type: str
+  - desc: 'from :return: docstring'
+    name: 场内份额
+    type: float
+  - desc: 'from :return: docstring'
+    name: 场内新增
+    type: str
+  - desc: 'from :return: docstring'
+    name: nav
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: T-1估值
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: premium
+    type: float
+  - desc: 'from :return: docstring'
+    name: 相关标的
+    type: str
+  - desc: 'from :return: docstring'
+    name: T-1指数涨幅
+    type: float
+  - desc: 'from :return: docstring'
+    name: 申购费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 赎回费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 托管费
+    type: str
+  - desc: 'from :return: docstring'
+    name: 基金公司
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: qdii_e_index_jsl
+    input_mapping:
+      cookie: cookie
+    name: akshare_em
+    output_mapping:
+      T-1溢价率: premium
+      T-2净值: nav
+      代码: code
+      估值日期: date
+      净值日期: date
+      名称: name
+      现价: current_price
+    param_transforms: {}
+qhkc_tool_foreign:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: "奇货可查-工具-外盘比价\n实时更新数据, 暂不能查询历史数据\n:param url: str 网址\n:return: 外盘比价\n\
+    :rtype: pandas.DataFrame\nname    base_time base_price latest_price   rate\n 伦敦铜\
+    \  10/08 01:00       5704       5746.5  0.745\n 伦敦锌  10/08 0..."
+  input:
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  name: qhkc_tool_foreign
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: base_time field
+    name: base_time
+    type: datetime
+  - desc: base_price field
+    name: base_price
+    type: float
+  - desc: latest_price field
+    name: latest_price
+    type: float
+  - desc: rate field
+    name: rate
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: qhkc_tool_foreign
+    input_mapping:
+      url: url
+    name: akshare_em
+    output_mapping:
+      base_price: base_price
+      base_time: base_time
+      latest_price: latest_price
+      name: name
+      rate: rate
+    param_transforms: {}
+qhkc_tool_gdp:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: "  奇货可查-工具-各地区经济数据\n  实时更新数据, 暂不能查询历史数据\n  :param url:\n  :return:\
+    \ pandas.DataFrame\n  国家  国内生产总值 国内生产总值YoY 国内生产总值QoQ  ...       预算       债务  \
+    \ 经常账户       人口\n   美国   20494     2.30%     2.00%  ...   -3.80% ..."
+  input:
+  - desc: url parameter
+    name: url
+    required: true
+    type: str
+  name: qhkc_tool_gdp
+  output:
+  - desc: 'from :return: docstring'
+    name: '0'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: qhkc_tool_gdp
+    input_mapping:
+      url: url
+    name: akshare_em
+    output_mapping:
+      '0': '0'
+    param_transforms: {}
+reits_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '东方财富网-行情中心-REITs-沪深 REITs-历史行情
+
+    https://quote.eastmoney.com/sh508097.html
+
+    :param symbol: REITs 代码
+
+    :type symbol: str
+
+    :return: 沪深 REITs-历史行情
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: reits_hist_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 换手 field
+    name: 换手
+    type: int
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: reits_hist_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      今开: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      日期: date
+      最低: low
+      最新价: last
+      最高: high
+    param_transforms: {}
+reits_hist_min_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '东方财富网-行情中心-REITs-沪深 REITs-历史行情
+
+    https://quote.eastmoney.com/sh508097.html
+
+    :param symbol: REITs 代码
+
+    :type symbol: str
+
+    :return: 沪深 REITs-历史行情
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: reits_hist_min_em
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: last field
+    name: last
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: prev_close field
+    name: prev_close
+    type: str
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: reits_hist_min_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      成交量: volume
+      成交额: amount
+      时间: time
+      昨收: prev_close
+      最低: low
+      最新价: last
+      最高: high
+    param_transforms: {}
+reits_realtime_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '东方财富网-行情中心-REITs-沪深 REITs
+
+    https://quote.eastmoney.com/center/gridlist.html#fund_reits_all
+
+    :return: 沪深 REITs-实时行情
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: reits_realtime_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: prev_close
+    type: str
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: reits_realtime_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      代码: code
+      名称: name
+      开盘价: open
+      成交量: volume
+      成交额: amount
+      昨收: prev_close
+      最低价: low
+      最新价: last
+      最高价: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+repo_rate_hist:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-回购定盘利率-历史数据
+
+    https://www.chinamoney.com.cn/chinese/bkfrr/
+
+    :param start_date: 开始时间, 开始时间与结束时间需要在一个月内
+
+    :type start_date: str
+
+    :param end_date: 结束时间, 开始时间与结束时间需要在一个月内
+
+    :type end_date: st...'
+  input:
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: repo_rate_hist
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: FR001 field
+    name: FR001
+    type: float
+  - desc: FR007 field
+    name: FR007
+    type: float
+  - desc: FR014 field
+    name: FR014
+    type: float
+  - desc: FDR001 field
+    name: FDR001
+    type: float
+  - desc: FDR007 field
+    name: FDR007
+    type: float
+  - desc: FDR014 field
+    name: FDR014
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: repo_rate_hist
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+    name: akshare_em
+    output_mapping:
+      FDR001: FDR001
+      FDR007: FDR007
+      FDR014: FDR014
+      FR001: FR001
+      FR007: FR007
+      FR014: FR014
+      date: date
+    param_transforms: {}
+repo_rate_query:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '中国外汇交易中心暨全国银行间同业拆借中心-回购定盘利率-历史数据
+
+    https://www.chinamoney.com.cn/chinese/bkfrr/
+
+    :param symbol: choice of {"回购定盘利率", "银银间回购定盘利率"}
+
+    :type symbol: str
+
+    :return: 回购定盘利率-历史数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: repo_rate_query
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: FR001 field
+    name: FR001
+    type: str
+  - desc: FR007 field
+    name: FR007
+    type: str
+  - desc: FR014 field
+    name: FR014
+    type: str
+  - desc: FDR001 field
+    name: FDR001
+    type: str
+  - desc: FDR007 field
+    name: FDR007
+    type: str
+  - desc: FDR014 field
+    name: FDR014
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: repo_rate_query
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      FDR001: FDR001
+      FDR007: FDR007
+      FDR014: FDR014
+      FR001: FR001
+      FR007: FR007
+      FR014: FR014
+      date: date
+    param_transforms: {}
+rv_from_futures_zh_minute_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '从新浪财经获取期货的分钟级历史行情数据,并进行数据清洗和格式化
+
+    https://vip.stock.finance.sina.com.cn/quotes_service/view/qihuohangqing.html#titlePos_3
+
+    :param symbol: 期货合约代码,如"IF2008"代表沪深300期货2020年8月合约
+
+    :type symbol: str
+
+    :param perio...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: rv_from_futures_zh_minute_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: Date
+    type: datetime
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: rv_from_futures_zh_minute_sina
+    input_mapping:
+      period: period
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      Date: Date
+    param_transforms: {}
+rv_from_stock_zh_a_hist_min_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '从东方财富网获取股票的分钟级历史行情数据,并进行数据清洗和格式化为计算 yz 已实现波动率所需的数据格式
+
+    https://quote.eastmoney.com/concept/sh603777.html?from=classic
+
+    :param symbol: 股票代码,如"000001"
+
+    :type symbol: str
+
+    :param start_date: 开始日期时间,格式"YYYY-MM...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: adjust parameter
+    name: adjust
+    required: true
+    type: str
+  name: rv_from_stock_zh_a_hist_min_em
+  output:
+  - desc: 'from :return: docstring'
+    name: temp_df[Open
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: rv_from_stock_zh_a_hist_min_em
+    input_mapping:
+      adjust: adjust
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      temp_df[Open: temp_df[Open
+    param_transforms: {}
+set_token:
+  category: other
+  description: ''
+  input:
+  - desc: token parameter
+    name: token
+    required: true
+    type: str
+  name: set_token
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: set_token
+    input_mapping:
+      token: token
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+sunrise_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '每日日出日落数据
+
+    https://www.timeanddate.com/astronomy/china/shaoxing
+
+    :param date: 需要查询的日期, e.g., “20200428”
+
+    :type date: str
+
+    :param city: 需要查询的城市; 注意输入的格式, e.g., "北京", "上海"
+
+    :type city: str
+
+    :return: 返回指定日期指定地区...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: city parameter
+    name: city
+    required: true
+    type: str
+  name: sunrise_daily
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: sunrise_daily
+    input_mapping:
+      city: city
+      date: date
+    name: akshare_em
+    output_mapping:
+      date: date
+      index: index
+    param_transforms: {}
+sunrise_monthly:
+  category: other
+  description: '每个指定 date 所在月份的每日日出日落数据, 如果当前月份未到月底, 则以预测值填充
+
+    https://www.timeanddate.com/astronomy/china/shaoxing
+
+    :param date: 需要查询的日期, 这里用来指定 date 所在的月份; e.g., “20200428”
+
+    :type date: str
+
+    :param city: 需要查询的城市; 注意输入的格...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: city parameter
+    name: city
+    required: true
+    type: str
+  name: sunrise_monthly
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: sunrise_monthly
+    input_mapping:
+      city: city
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+tool_trade_date_hist_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '新浪财经-交易日历-历史数据
+
+    https://finance.sina.com.cn/realstock/company/klc_td_sh.txt
+
+    :return: 交易日历
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: tool_trade_date_hist_sina
+  output:
+  - desc: trade_date field
+    name: trade_date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: tool_trade_date_hist_sina
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      trade_date: trade_date
+    param_transforms: {}
+video_tv:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '艺恩-视频放映-电视剧集
+
+    https://www.endata.com.cn/Video/index.html
+
+    :return: 电视剧集
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: video_tv
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 播映指数 field
+    name: 播映指数
+    type: float
+  - desc: user field
+    name: user
+    type: int
+  - desc: 媒体热度 field
+    name: 媒体热度
+    type: str
+  - desc: 观看度 field
+    name: 观看度
+    type: str
+  - desc: 好评度 field
+    name: 好评度
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: video_tv
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      名称: name
+      用户热度: user
+      类型: type
+    param_transforms: {}
+video_variety_show:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '艺恩-视频放映-综艺节目
+
+    https://www.endata.com.cn/Video/index.html
+
+    :return: 综艺节目
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: video_variety_show
+  output:
+  - desc: 排序 field
+    name: 排序
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 播映指数 field
+    name: 播映指数
+    type: float
+  - desc: user field
+    name: user
+    type: int
+  - desc: 媒体热度 field
+    name: 媒体热度
+    type: str
+  - desc: 观看度 field
+    name: 观看度
+    type: str
+  - desc: 好评度 field
+    name: 好评度
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: video_variety_show
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      名称: name
+      用户热度: user
+      类型: type
+    param_transforms: {}
+volatility_yz_rv:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '波动率-已实现波动率-Yang-Zhang 已实现波动率(Yang-Zhang Realized Volatility)
+
+    https://github.com/hugogobato/Yang-Zhang-s-Realized-Volatility-Automated-Estimation-in-Python
+
+    论文地址：https://www.jstor.org/stable/10.1086/209...'
+  input:
+  - desc: data parameter
+    name: data
+    required: true
+    type: str
+  name: volatility_yz_rv
+  output:
+  - desc: yz_rv field
+    name: yz_rv
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: rv field
+    name: rv
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: volatility_yz_rv
+    input_mapping:
+      data: data
+    name: akshare_em
+    output_mapping:
+      date: date
+      rv: rv
+      yz_rv: yz_rv
+    param_transforms: {}
+xincaifu_rank:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: other
+  description: '新财富 500 人富豪榜
+
+    http://www.xcf.cn/zhuanti/ztzz/hdzt1/500frb/index.html
+
+    :param year: 具体排名年份, 数据从 2003-至今
+
+    :type year: str
+
+    :return: 排行榜
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  name: xincaifu_rank
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 排名
+    type: int
+  - desc: 'from :return: docstring'
+    name: 财富
+    type: str
+  - desc: 'from :return: docstring'
+    name: 姓名
+    type: str
+  - desc: 'from :return: docstring'
+    name: 主要公司
+    type: str
+  - desc: 'from :return: docstring'
+    name: industry
+    type: str
+  - desc: 'from :return: docstring'
+    name: 公司总部
+    type: str
+  - desc: 'from :return: docstring'
+    name: 性别
+    type: str
+  - desc: 'from :return: docstring'
+    name: 年龄
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: year
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: xincaifu_rank
+    input_mapping:
+      year: year
+    name: akshare_em
+    output_mapping:
+      年份: year
+      相关行业: industry
+    param_transforms: {}

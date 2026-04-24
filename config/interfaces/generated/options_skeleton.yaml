@@ -1,0 +1,2571 @@
+option_cffex_hs300_daily_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '新浪财经-中金所-沪深300指数-指定合约-日频行情
+
+    :param symbol: 具体合约代码(包括看涨和看跌标识), 可以通过 ak.option_cffex_hs300_spot_sina 中的 call-标识
+    获取
+
+    :type symbol: str
+
+    :return: 日频率数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_cffex_hs300_daily_sina
+  output:
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_hs300_daily_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
+    param_transforms: {}
+option_cffex_hs300_list_sina:
+  category: options
+  description: '新浪财经-中金所-沪深 300 指数-所有合约, 返回的第一个合约为主力合约
+
+    目前新浪财经-中金所有沪深 300 指数和中证 1000 指数
+
+    :return: 中金所-沪深300指数-所有合约
+
+    :rtype: dict'
+  input: []
+  name: option_cffex_hs300_list_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_hs300_list_sina
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_cffex_hs300_spot_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '中金所-沪深 300 指数-指定合约-实时行情
+
+    https://stock.finance.sina.com.cn/futures/view/optionsCffexDP.php
+
+    :param symbol: 合约代码; 用 option_cffex_hs300_list_sina 函数查看
+
+    :type symbol: str
+
+    :return: 中金所-沪深300指数-指定合约-看涨看跌实时行情
+
+    ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_cffex_hs300_spot_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: 行权价
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_hs300_spot_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      看涨合约-买价: bullish
+      看涨合约-买量: bullish
+      看涨合约-卖价: bullish
+      看涨合约-卖量: bullish
+      看涨合约-持仓量: open_interest
+      看涨合约-最新价: last
+      看涨合约-标识: bullish
+      看涨合约-涨跌: change
+    param_transforms: {}
+option_cffex_sz50_daily_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '新浪财经-中金所-上证 50 指数-指定合约-日频行情
+
+    :param symbol: 具体合约代码(包括看涨和看跌标识), 可以通过 ak.option_cffex_sz50_spot_sina 中的 call-标识
+    获取
+
+    :type symbol: str
+
+    :return: 日频率数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_cffex_sz50_daily_sina
+  output:
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_sz50_daily_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
+    param_transforms: {}
+option_cffex_sz50_list_sina:
+  category: options
+  description: '新浪财经-中金所-上证 50 指数-所有合约, 返回的第一个合约为主力合约
+
+    目前新浪财经-中金所有上证 50 指数，沪深 300 指数和中证 1000 指数
+
+    :return: 中金所-上证 50 指数-所有合约
+
+    :rtype: dict'
+  input: []
+  name: option_cffex_sz50_list_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_sz50_list_sina
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_cffex_sz50_spot_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '中金所-上证 50 指数-指定合约-实时行情
+
+    https://stock.finance.sina.com.cn/futures/view/optionsCffexDP.php/ho/cffex
+
+    :param symbol: 合约代码; 用 ak.option_cffex_sz300_list_sina() 函数查看
+
+    :type symbol: str
+
+    :return: 中金所-上证 50 指数-...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_cffex_sz50_spot_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: 行权价
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_sz50_spot_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      看涨合约-买价: bullish
+      看涨合约-买量: bullish
+      看涨合约-卖价: bullish
+      看涨合约-卖量: bullish
+      看涨合约-持仓量: open_interest
+      看涨合约-最新价: last
+      看涨合约-标识: bullish
+      看涨合约-涨跌: change
+    param_transforms: {}
+option_cffex_zz1000_daily_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '新浪财经-中金所-中证 1000 指数-指定合约-日频行情
+
+    :param symbol: 具体合约代码(包括看涨和看跌标识), 可以通过 ak.option_cffex_zz1000_spot_sina 中的 call-标识
+    获取
+
+    :type symbol: str
+
+    :return: 日频率数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_cffex_zz1000_daily_sina
+  output:
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_zz1000_daily_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
+    param_transforms: {}
+option_cffex_zz1000_list_sina:
+  category: options
+  description: '新浪财经-中金所-中证 1000 指数-所有合约, 返回的第一个合约为主力合约
+
+    目前新浪财经-中金所有沪深 300 指数和中证 1000 指数
+
+    :return: 中金所-中证 1000 指数-所有合约
+
+    :rtype: dict'
+  input: []
+  name: option_cffex_zz1000_list_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_zz1000_list_sina
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_cffex_zz1000_spot_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '中金所-中证 1000 指数-指定合约-实时行情
+
+    https://stock.finance.sina.com.cn/futures/view/optionsCffexDP.php
+
+    :param symbol: 合约代码; 用 option_cffex_zz1000_list_sina 函数查看
+
+    :type symbol: str
+
+    :return: 中金所-中证 1000 指数-指定合约-看涨看跌...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_cffex_zz1000_spot_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: 行权价
+    type: float
+  - desc: 'from :return: docstring'
+    name: bullish
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_cffex_zz1000_spot_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      看涨合约-买价: bullish
+      看涨合约-买量: bullish
+      看涨合约-卖价: bullish
+      看涨合约-卖量: bullish
+      看涨合约-持仓量: open_interest
+      看涨合约-最新价: last
+      看涨合约-标识: bullish
+      看涨合约-涨跌: change
+    param_transforms: {}
+option_comm_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '九期网-商品期权手续费
+
+    https://www.9qihuo.com/qiquanshouxufei
+
+    :param symbol: choice of {"所有", "上海期货交易所", "大连商品交易所", "郑州商品交易所", "上海国际能源交易中心",
+    "广州期货交易所"}
+
+    :type symbol: str
+
+    :return: 期权手续费
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_comm_info
+  output:
+  - desc: 'from :return: docstring'
+    name: '2'
+    type: str
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_comm_info
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      '2': '2'
+      ':': ':'
+    param_transforms: {}
+option_commodity_contract_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '当前可以查询的期权品种的合约日期
+
+    https://stock.finance.sina.com.cn/futures/view/optionsDP.php
+
+    :param symbol: choice of {"豆粕期权", "玉米期权", "铁矿石期权", "棉花期权", "白糖期权", "PTA期权", "甲醇期权",
+    "橡胶期权", "沪铜期权", "黄金期权", "菜籽粕期权", "液化石油...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_commodity_contract_sina
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: 合约 field
+    name: 合约
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_commodity_contract_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      合约: 合约
+      序号: 序号
+    param_transforms: {}
+option_commodity_contract_table_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '当前所有期权合约, 包括看涨期权合约和看跌期权合约
+
+    https://stock.finance.sina.com.cn/futures/view/optionsDP.php
+
+    :param symbol: choice of {"豆粕期权", "玉米期权", "铁矿石期权", "棉花期权", "白糖期权", "PTA期权", "甲醇期权",
+    "橡胶期权", "沪铜期权", "黄金期权", "菜籽粕期...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: contract parameter
+    name: contract
+    required: true
+    type: str
+  name: option_commodity_contract_table_sina
+  output:
+  - desc: bullish field
+    name: bullish
+    type: float
+  - desc: bullish field
+    name: bullish
+    type: float
+  - desc: last field
+    name: last
+    type: float
+  - desc: bullish field
+    name: bullish
+    type: float
+  - desc: bullish field
+    name: bullish
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: 行权价 field
+    name: 行权价
+    type: float
+  - desc: bullish field
+    name: bullish
+    type: float
+  - desc: bearish field
+    name: bearish
+    type: float
+  - desc: bearish field
+    name: bearish
+    type: float
+  - desc: last field
+    name: last
+    type: float
+  - desc: bearish field
+    name: bearish
+    type: float
+  - desc: bearish field
+    name: bearish
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: bearish field
+    name: bearish
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_commodity_contract_table_sina
+    input_mapping:
+      contract: contract
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      看涨合约-买价: bullish
+      看涨合约-买量: bullish
+      看涨合约-卖价: bullish
+      看涨合约-卖量: bullish
+      看涨合约-持仓量: open_interest
+      看涨合约-最新价: last
+      看涨合约-涨跌: change
+      看涨合约-看涨期权合约: bullish
+      看跌合约-买价: bearish
+      看跌合约-买量: bearish
+      看跌合约-卖价: bearish
+      看跌合约-卖量: bearish
+      看跌合约-持仓量: open_interest
+      看跌合约-最新价: last
+      看跌合约-涨跌: change
+      看跌合约-看跌期权合约: bearish
+    param_transforms: {}
+option_commodity_hist_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '合约历史行情-日频
+
+    https://stock.finance.sina.com.cn/futures/view/optionsDP.php
+
+    :param symbol: return of option_sina_option_commodity_contract_list(symbol="黄金期权",
+    contract="au2012"), 看涨期权合约 filed
+
+    :type symbol:...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_commodity_hist_sina
+  output:
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_commodity_hist_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
+    param_transforms: {}
+option_contract_info_ctp:
+  category: options
+  description: 'openctp-合约信息接口-期权合约
+
+    http://openctp.cn/instruments.html
+
+    :return: 期权合约信息
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: option_contract_info_ctp
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_contract_info_ctp
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_current_day_sse:
+  category: options
+  description: '上海证券交易所-产品-股票期权-信息披露-当日合约
+
+    http://www.sse.com.cn/assortment/options/disclo/preinfo/
+
+    :return: 上交所期权当日合约
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: option_current_day_sse
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_current_day_sse
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_current_day_szse:
+  category: options
+  description: '深圳证券交易所-期权子网-行情数据-当日合约
+
+    https://www.sse.org.cn/option/quotation/contract/daycontract/index.html
+
+    :return: 深圳期权当日合约
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: option_current_day_szse
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_current_day_szse
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_current_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '东方财富网-行情中心-期权市场
+
+    https://quote.eastmoney.com/center/qqsc.html
+
+    :return: 期权价格
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: option_current_em
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: code field
+    name: code
+    type: int
+  - desc: market field
+    name: market
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: open field
+    name: open
+    type: str
+  - desc: 昨结 field
+    name: 昨结
+    type: str
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: 行权价 field
+    name: 行权价
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_current_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      今开: open
+      代码: code
+      剩余日: day
+      名称: name
+      市场标识: market
+      成交量: volume
+      成交额: amount
+      持仓量: open_interest
+      日增: day
+      最新价: last
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+option_daily_stats_sse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '上海证券交易所-产品-股票期权-每日统计
+
+    https://www.sse.com.cn/assortment/options/date/
+
+    :param date: 交易日
+
+    :type date: str
+
+    :return: 每日统计
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: option_daily_stats_sse
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: quantity
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: call
+    type: str
+  - desc: 'from :return: docstring'
+    name: close
+    type: str
+  - desc: 'from :return: docstring'
+    name: call
+    type: str
+  - desc: 'from :return: docstring'
+    name: put
+    type: str
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_daily_stats_sse
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      交易日: day
+      合约数量: quantity
+      合约标的代码: code
+      合约标的名称: name
+      总成交量: volume
+      总成交额: amount
+      未平仓合约总数: close
+      未平仓认沽合约数: put
+      未平仓认购合约数: call
+      认沽/认购: call
+      认沽成交量: volume
+      认购成交量: volume
+    param_transforms: {}
+option_daily_stats_szse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '深圳证券交易所-市场数据-期权数据-日度概况
+
+    https://investor.szse.cn/market/option/day/index.html
+
+    :param date: 交易日
+
+    :type date: str
+
+    :return: 每日统计
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: option_daily_stats_szse
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: position
+    type: str
+  - desc: 'from :return: docstring'
+    name: close
+    type: str
+  - desc: 'from :return: docstring'
+    name: call
+    type: str
+  - desc: 'from :return: docstring'
+    name: put
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_daily_stats_szse
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      合约标的代码: code
+      合约标的名称: name
+      成交量: volume
+      未平仓合约总数: close
+      未平仓认沽合约数: put
+      未平仓认购合约数: call
+      认沽/认购持仓比: position
+      认沽成交量: volume
+      认购成交量: volume
+    param_transforms: {}
+option_finance_board:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '期权当前交易日的行情数据
+
+    主要为三个: 华夏上证50ETF期权, 华泰柏瑞沪深300ETF期权, 嘉实沪深300ETF期权,
+
+    沪深300股指期权, 中证1000股指期权, 上证50股指期权, 华夏科创50ETF期权, 易方达科创50ETF期权
+
+    http://www.sse.com.cn/assortment/options/price/
+
+    http://www.szse.cn/market/prod...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: end_month parameter
+    name: end_month
+    required: true
+    type: str
+  name: option_finance_board
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: 当前价 field
+    name: 当前价
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 前结价 field
+    name: 前结价
+    type: float
+  - desc: 行权价 field
+    name: 行权价
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 合约编码 field
+    name: 合约编码
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: contract_unit field
+    name: contract_unit
+    type: int
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  rate_limit_key: cffex
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_finance_board
+    input_mapping:
+      end_month: end_month
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      合约交易代码: code
+      合约单位: contract_unit
+      合约简称: name
+      数量: quantity
+      日期: date
+      期权行权日: day
+      标的名称: name
+      涨跌幅: pct_change
+      类型: type
+      行权交收日: day
+    param_transforms: {}
+option_finance_minute_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '指定期权的分钟频率数据
+
+    https://stock.finance.sina.com.cn/option/quotes.html
+
+    :param symbol: 期权代码
+
+    :type symbol: str
+
+    :return: 指定期权的分钟频率数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_finance_minute_sina
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: price field
+    name: price
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: average_price field
+    name: average_price
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_finance_minute_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      _: _
+      average_price: average_price
+      date: date
+      price: price
+      time: time
+      volume: volume
+    param_transforms: {}
+option_finance_sse_underlying:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '期权标的当日行情
+
+    http://www.sse.com.cn/assortment/options/price/
+
+    :param symbol: choice of {"华夏上证50ETF期权", "华泰柏瑞沪深300ETF期权", "南方中证500ETF期权", "华夏科创50ETF期权",
+    "易方达科创50ETF期权"}
+
+    :type symbol: str
+
+    :return: 期权标的当日行情
+
+    :...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_finance_sse_underlying
+  output:
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 当前价 field
+    name: 当前价
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: update_date field
+    name: update_date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_finance_sse_underlying
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      代码: code
+      名称: name
+      成交量(手): volume
+      成交额(万元): amount
+      振幅: amplitude
+      更新日期: update_date
+      涨跌: change
+      涨跌幅: pct_change
+    param_transforms: {}
+option_hist_czce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '郑州商品交易所-期权-日频行情数据
+
+    http://www.czce.com.cn/cn/sspz/dejbqhqq/H770227index_1.htm#tabs-2
+
+    :param trade_date: 交易日
+
+    :type trade_date: str
+
+    :param symbol: choice of {"白糖期权", "棉花期权", "甲醇期权", "PTA期权", "动力煤期权", "菜籽...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  name: option_hist_czce
+  output:
+  - desc: contract_code field
+    name: contract_code
+    type: int
+  - desc: 昨结算 field
+    name: 昨结算
+    type: str
+  - desc: open field
+    name: open
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: str
+  - desc: 今结算 field
+    name: 今结算
+    type: str
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: 增减量 field
+    name: 增减量
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: DELTA field
+    name: DELTA
+    type: str
+  - desc: 隐含波动率 field
+    name: 隐含波动率
+    type: float
+  - desc: 行权量 field
+    name: 行权量
+    type: float
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_hist_czce
+    input_mapping:
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping:
+      今开盘: open
+      今收盘: close
+      合约代码: contract_code
+      成交量(手): volume
+      成交额(万元): amount
+      持仓量: open_interest
+      最低价: low
+      最高价: high
+      涨跌1: change
+      涨跌2: change
+    param_transforms: {}
+option_hist_dce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '大连商品交易所-期权-日频行情数据
+
+    http://www.dce.com.cn/
+
+    :param trade_date: 交易日
+
+    :type trade_date: str
+
+    :param symbol: choice of {"玉米期权", "豆粕期权", "铁矿石期权", "液化石油气期权", "聚乙烯期权", "聚氯乙烯期权",
+
+    "聚丙烯期权", "棕榈油期权", "黄大豆1号期权", "黄大豆...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  name: option_hist_dce
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 合约
+    type: str
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: close
+    type: float
+  - desc: 'from :return: docstring'
+    name: 前结算价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 结算价
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: Delta
+    type: str
+  - desc: 'from :return: docstring'
+    name: 隐含波动率(%)
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: 行权量
+    type: float
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_hist_dce
+    input_mapping:
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping:
+      品种名称: name
+      开盘价: open
+      成交量: volume
+      成交额: amount
+      持仓量: open_interest
+      持仓量变化: open_interest
+      收盘价: close
+      最低价: low
+      最高价: high
+      涨跌: change
+      涨跌1: change
+    param_transforms: {}
+option_hist_gfex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '广州期货交易所-日频率-量价数据
+
+    http://www.gfex.com.cn/gfex/rihq/hqsj_tjsj.shtml
+
+    :param trade_date: 交易日
+
+    :type trade_date: str
+
+    :param symbol: choice of {"工业硅", "碳酸锂"}
+
+    :type symbol: str
+
+    :return: 日频行情数据
+
+    :rtype: pandas....'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  name: option_hist_gfex
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: contract_name
+    type: str
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: close
+    type: float
+  - desc: 'from :return: docstring'
+    name: 前结算价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 结算价
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: Delta
+    type: str
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: 行权量
+    type: float
+  - desc: 'from :return: docstring'
+    name: 隐含波动率
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_hist_gfex
+    input_mapping:
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping:
+      合约名称: contract_name
+      商品名称: name
+      开盘价: open
+      成交量: volume
+      成交额: amount
+      持仓量: open_interest
+      持仓量变化: open_interest
+      收盘价: close
+      最低价: low
+      最高价: high
+      涨跌: change
+      涨跌1: change
+    param_transforms: {}
+option_hist_shfe:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '上海期货交易所-期权-日频行情数据
+
+    https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/
+
+    :param trade_date: 交易日
+
+    :type trade_date: str
+
+    :param symbol: choice of {''原油期权'', ''铜期权'', ''铝期权'', ''锌期权'', ''铅期权'', ''螺纹钢期权'',
+    ''镍期权...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  name: option_hist_shfe
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: contract_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: close
+    type: float
+  - desc: 'from :return: docstring'
+    name: 前结算价
+    type: float
+  - desc: 'from :return: docstring'
+    name: 结算价
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: 德尔塔
+    type: str
+  - desc: 'from :return: docstring'
+    name: 行权量
+    type: float
+  rate_limit_key: shfe
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_hist_shfe
+    input_mapping:
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping:
+      合约代码: contract_code
+      开盘价: open
+      成交量: volume
+      成交额: amount
+      持仓量: open_interest
+      持仓量变化: open_interest
+      收盘价: close
+      最低价: low
+      最高价: high
+      涨跌1: change
+      涨跌2: change
+    param_transforms: {}
+option_hist_yearly_czce:
+  category: options
+  description: '郑州商品交易所-交易数据-历史行情下载-期权历史行情下载
+
+    http://www.czce.com.cn/cn/jysj/lshqxz/H770319index_1.htm
+
+    :param symbol: choice of {"白糖": "SR", "棉花": "CF", "PTA": "TA", "甲醇": "MA", "菜籽粕":
+    "RM",
+
+    "动力煤": "ZC", "菜籽油": "OI", ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  name: option_hist_yearly_czce
+  output: []
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_hist_yearly_czce
+    input_mapping:
+      symbol: symbol
+      year: year
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_lhb_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '东方财富网-数据中心-期货期权-期权龙虎榜单
+
+    https://data.eastmoney.com/other/qqlhb.html
+
+    :param symbol: 期权代码; choice of {"510050", "510300", "159919"}
+
+    :type symbol: str
+
+    :param indicator: 需要获取的指标; choice of {"期权交易情况-认沽交易量",...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  name: option_lhb_em
+  output:
+  - desc: type field
+    name: type
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: symbol field
+    name: symbol
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 机构 field
+    name: 机构
+    type: str
+  - desc: 名次 field
+    name: 名次
+    type: str
+  - desc: 交易量 field
+    name: 交易量
+    type: float
+  - desc: 增减 field
+    name: 增减
+    type: str
+  - desc: put field
+    name: put
+    type: float
+  - desc: 占总交易量比例 field
+    name: 占总交易量比例
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: 净交易量 field
+    name: 净交易量
+    type: float
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_lhb_em
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping:
+      交易日期: date
+      交易类型: type
+      净持仓量: open_interest
+      净认沽量: put
+      持仓量: open_interest
+      标的名称: name
+      证券代码: symbol
+    param_transforms: {}
+option_margin:
+  category: options
+  description: '获取商品期权保证金
+
+    :param symbol: 商品期权品种名称, 如 "原油期权"，可以通过 ak.option_margin_symbol() 获取所有商品期权品种代码和名称
+
+    :type symbol: str
+
+    :return: 商品期权保证金
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_margin
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_margin
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_minute_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '东方财富网-行情中心-期权市场-分时行情
+
+    https://wap.eastmoney.com/quote/stock/151.cu2404P61000.html
+
+    :param symbol: 期权代码; 通过调用 ak.option_current_em() 获取
+
+    :type symbol: str
+
+    :return: 指定期权的分钟频率数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_minute_em
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: close field
+    name: close
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_minute_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      '-': '-'
+      amount: amount
+      close: close
+      high: high
+      low: low
+      time: time
+      volume: volume
+    param_transforms: {}
+option_premium_analysis_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '东方财富网-数据中心-特色数据-期权折溢价
+
+    https://data.eastmoney.com/other/premium.html
+
+    :return: 期权折溢价
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: option_premium_analysis_em
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 行权价 field
+    name: 行权价
+    type: float
+  - desc: premium field
+    name: premium
+    type: float
+  - desc: maturity_date field
+    name: maturity_date
+    type: datetime
+  - desc: name field
+    name: name
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 盈亏平衡价 field
+    name: 盈亏平衡价
+    type: float
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_premium_analysis_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      到期日: maturity_date
+      折溢价率: premium
+      最新价: last
+      期权代码: code
+      期权名称: name
+      标的名称: name
+      标的最新价: last
+      标的涨跌幅: pct_change
+      涨跌幅: pct_change
+    param_transforms: {}
+option_risk_analysis_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '东方财富网-数据中心-特色数据-期权风险分析
+
+    https://data.eastmoney.com/other/riskanal.html
+
+    :return: 期权风险分析
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: option_risk_analysis_em
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: maturity_date field
+    name: maturity_date
+    type: datetime
+  - desc: 杠杆比率 field
+    name: 杠杆比率
+    type: float
+  - desc: 实际杠杆比率 field
+    name: 实际杠杆比率
+    type: float
+  - desc: Delta field
+    name: Delta
+    type: str
+  - desc: Gamma field
+    name: Gamma
+    type: str
+  - desc: Vega field
+    name: Vega
+    type: str
+  - desc: Theta field
+    name: Theta
+    type: str
+  - desc: Rho field
+    name: Rho
+    type: str
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_risk_analysis_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      到期日: maturity_date
+      最新价: last
+      期权代码: code
+      期权名称: name
+      涨跌幅: pct_change
+    param_transforms: {}
+option_risk_indicator_sse:
+  category: options
+  description: '上海证券交易所-产品-股票期权-期权风险指标
+
+    http://www.sse.com.cn/assortment/options/risk/
+
+    :param date: 日期; 20150209 开始
+
+    :type date: str
+
+    :return: 期权风险指标
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: option_risk_indicator_sse
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_risk_indicator_sse
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_sse_codes_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '上海证券交易所-所有看涨和看跌合约的代码
+
+
+    :param symbol: choice of {"看涨期权", "看跌期权"}
+
+    :type symbol: str
+
+    :param trade_date: 期权到期月份
+
+    :type trade_date: "202002"
+
+    :param underlying: 标的产品代码 华夏上证 50ETF: 510050 or 华泰柏瑞沪深 300ETF: 51...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  - desc: underlying parameter
+    name: underlying
+    required: true
+    type: str
+  name: option_sse_codes_sina
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  rate_limit_key: sina_hq
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_codes_sina
+    input_mapping:
+      symbol: symbol
+      trade_date: trade_date
+      underlying: underlying
+    name: akshare_em
+    output_mapping:
+      期权代码: code
+    param_transforms: {}
+option_sse_daily_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '指定期权的日频率数据
+
+    :param symbol: 期权代码
+
+    :type symbol: str
+
+    :return: 指定期权的所有日频率历史数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_sse_daily_sina
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_daily_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      收盘: close
+      日期: date
+      最低: low
+      最高: high
+    param_transforms: {}
+option_sse_expire_day_sina:
+  category: options
+  description: '指定到期月份指定品种的剩余到期时间
+
+    :param trade_date: 到期月份: 202002, 20203, 20206, 20209
+
+    :type trade_date: str
+
+    :param symbol: 50ETF or 300ETF
+
+    :type symbol: str
+
+    :param exchange: null
+
+    :type exchange: str
+
+    :return: (到期时间, ...'
+  input:
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: exchange parameter
+    name: exchange
+    required: true
+    type: str
+  name: option_sse_expire_day_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_expire_day_sina
+    input_mapping:
+      exchange: exchange
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_sse_greeks_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '期权基本信息表
+
+    :param symbol: 合约代码
+
+    :type symbol: str
+
+    :return: 期权基本信息表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_sse_greeks_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: 字段
+    type: str
+  - desc: 'from :return: docstring'
+    name: 值
+    type: float
+  rate_limit_key: sina_hq
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_greeks_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      值: 值
+      字段: 字段
+    param_transforms: {}
+option_sse_list_sina:
+  category: options
+  description: '新浪财经-期权-上交所-50ETF-合约到期月份列表
+
+    https://stock.finance.sina.com.cn/option/quotes.html
+
+    :param symbol: 50ETF or 300ETF
+
+    :type symbol: str
+
+    :param exchange: null
+
+    :type exchange: str
+
+    :return: 合约到期时间
+
+    :rtype: list'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: exchange parameter
+    name: exchange
+    required: true
+    type: str
+  name: option_sse_list_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_list_sina
+    input_mapping:
+      exchange: exchange
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+option_sse_minute_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '指定期权品种在当前交易日的分钟数据, 只能获取当前交易日的数据, 不能获取历史分钟数据
+
+    https://stock.finance.sina.com.cn/option/quotes.html
+
+    :param symbol: 期权代码
+
+    :type symbol: str
+
+    :return: 指定期权的当前交易日的分钟数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_sse_minute_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: time
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 价格
+    type: float
+  - desc: 'from :return: docstring'
+    name: 成交
+    type: str
+  - desc: 'from :return: docstring'
+    name: position
+    type: str
+  - desc: 'from :return: docstring'
+    name: 均价
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_minute_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      持仓: position
+      日期: date
+      时间: time
+    param_transforms: {}
+option_sse_spot_price_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '新浪财经-期权-期权实时数据
+
+    :param symbol: 期权代码
+
+    :type symbol: str
+
+    :return: 期权量价数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_sse_spot_price_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: 字段
+    type: str
+  - desc: 'from :return: docstring'
+    name: 值
+    type: float
+  rate_limit_key: sina_hq
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_spot_price_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      值: 值
+      字段: 字段
+    param_transforms: {}
+option_sse_underlying_spot_price_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '期权标的物的实时数据
+
+    :param symbol: sh510050 or sh510300
+
+    :type symbol: str
+
+    :return: 期权标的物的信息
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: option_sse_underlying_spot_price_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: 字段
+    type: str
+  - desc: 'from :return: docstring'
+    name: 值
+    type: float
+  rate_limit_key: sina_hq
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_sse_underlying_spot_price_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      值: 值
+      字段: 字段
+    param_transforms: {}
+option_value_analysis_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '东方财富网-数据中心-特色数据-期权价值分析
+
+    https://data.eastmoney.com/other/valueAnal.html
+
+    :return: 期权价值分析
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: option_value_analysis_em
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 隐含波动率 field
+    name: 隐含波动率
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: 内在价值 field
+    name: 内在价值
+    type: float
+  - desc: 理论价格 field
+    name: 理论价格
+    type: float
+  - desc: maturity_date field
+    name: maturity_date
+    type: datetime
+  - desc: name field
+    name: name
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: 标的近一年波动率 field
+    name: 标的近一年波动率
+    type: float
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_value_analysis_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      到期日: maturity_date
+      时间价值: time
+      最新价: last
+      期权代码: code
+      期权名称: name
+      标的名称: name
+      标的最新价: last
+    param_transforms: {}
+option_vol_gfex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '广州期货交易所-日频率-合约隐含波动率
+
+    http://www.gfex.com.cn/gfex/rihq/hqsj_tjsj.shtml
+
+    :param symbol: choice of choice of {"工业硅", "碳酸锂"}
+
+    :type symbol: str
+
+    :param trade_date: 交易日
+
+    :type trade_date: str
+
+    :return: 日频行情数据
+
+    :r...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  name: option_vol_gfex
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 合约系列
+    type: str
+  - desc: 'from :return: docstring'
+    name: 隐含波动率
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_vol_gfex
+    input_mapping:
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping:
+      '[': '['
+      合约系列: 合约系列
+      隐含波动率: 隐含波动率
+    param_transforms: {}
+option_vol_shfe:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: options
+  description: '上海期货交易所-期权-日频行情数据
+
+    https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/
+
+    :param trade_date: 交易日
+
+    :type trade_date: str
+
+    :param symbol: choice of {''原油期权'', ''铜期权'', ''铝期权'', ''锌期权'', ''铅期权'', ''螺纹钢期权'',
+    ''镍期权...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: trade_date parameter
+    name: trade_date
+    required: true
+    type: str
+  name: option_vol_shfe
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 合约系列
+    type: str
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  - desc: 'from :return: docstring'
+    name: 行权量
+    type: float
+  - desc: 'from :return: docstring'
+    name: 隐含波动率
+    type: float
+  rate_limit_key: shfe
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: option_vol_shfe
+    input_mapping:
+      symbol: symbol
+      trade_date: trade_date
+    name: akshare_em
+    output_mapping:
+      成交量: volume
+      成交额: amount
+      持仓量: open_interest
+      持仓量变化: open_interest
+    param_transforms: {}

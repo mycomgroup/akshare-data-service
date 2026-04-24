@@ -9,7 +9,6 @@ Tests cover:
 - Multiple macro indicators in sequence
 """
 
-from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest

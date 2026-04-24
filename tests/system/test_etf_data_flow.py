@@ -9,7 +9,6 @@ Tests cover:
 - ETF-specific field validation
 """
 
-from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest

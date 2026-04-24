@@ -1,0 +1,3707 @@
+futures_comex_inventory:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '东方财富网-数据中心-期货期权-COMEX库存数据
+
+    https://data.eastmoney.com/pmetal/comex/by.html
+
+    :param symbol: choice of {"黄金", "白银"}
+
+    :type symbol: str
+
+    :return: COMEX库存数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_comex_inventory
+  output:
+  - desc: 'from :return: docstring'
+    name: symbol
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_comex_inventory
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      symbol: symbol
+    param_transforms: {}
+futures_comm_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '九期网-期货手续费
+
+    https://www.9qihuo.com/qihuoshouxufei
+
+    :param symbol: choice of {"所有", "上海期货交易所", "大连商品交易所", "郑州商品交易所", "上海国际能源交易中心",
+    "中国金融期货交易所", "广州期货交易所"}
+
+    :type symbol: str
+
+    :return: 期货手续费
+
+    :rtype: pandas.D...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_comm_info
+  output:
+  - desc: 合约品种 field
+    name: 合约品种
+    type: str
+  - desc: current_price field
+    name: current_price
+    type: float
+  - desc: 涨/跌停板 field
+    name: 涨/跌停板
+    type: float
+  - desc: margin field
+    name: margin
+    type: float
+  - desc: margin field
+    name: margin
+    type: float
+  - desc: margin field
+    name: margin
+    type: float
+  - desc: commission field
+    name: commission
+    type: float
+  - desc: commission field
+    name: commission
+    type: float
+  - desc: commission field
+    name: commission
+    type: float
+  - desc: 每跳毛利 field
+    name: 每跳毛利
+    type: str
+  - desc: commission field
+    name: commission
+    type: float
+  - desc: 每跳净利 field
+    name: 每跳净利
+    type: str
+  - desc: remark field
+    name: remark
+    type: str
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_comm_info
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      保证金-买开: margin
+      保证金-保证金/每手: margin
+      保证金-卖开: margin
+      备注: remark
+      手续费(开+平): commission
+      手续费标准-平今: commission
+      手续费标准-平昨: commission
+      手续费标准-开仓: commission
+      现价: current_price
+    param_transforms: {}
+futures_comm_js:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '金十财经-期货手续费
+
+    https://www.jin10.com/
+
+    :param date: 日期; 格式为 YYYYMMDD，例如 "20250213"
+
+    :type date: str
+
+    :return: 期货手续费数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_comm_js
+  output:
+  - desc: 'from :return: docstring'
+    name: id
+    type: str
+  - desc: 'from :return: docstring'
+    name: status
+    type: str
+  - desc: 'from :return: docstring'
+    name: created_at
+    type: str
+  - desc: 'from :return: docstring'
+    name: updated_at
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: _date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: _pub_date_commission
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: _pub_date_price
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_comm_js
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      _date: _date
+      _pub_date_commission: _pub_date_commission
+      _pub_date_price: _pub_date_price
+      created_at: created_at
+      id: id
+      status: status
+      updated_at: updated_at
+    param_transforms: {}
+futures_contract_detail:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '查询期货合约详情
+
+    https://finance.sina.com.cn/futures/quotes/V2101.shtml
+
+    :param symbol: 合约
+
+    :type symbol: str
+
+    :return: 期货合约详情
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_contract_detail
+  output:
+  - desc: item field
+    name: item
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_detail
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      item: item
+      value: value
+    param_transforms: {}
+futures_contract_detail_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '查询期货合约详情
+
+    https://quote.eastmoney.com/qihuo/v2602F.html
+
+    :param symbol: 合约
+
+    :type symbol: str
+
+    :return: 期货合约详情
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_contract_detail_em
+  output:
+  - desc: item field
+    name: item
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_detail_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      item: item
+      value: value
+    param_transforms: {}
+futures_contract_info_cffex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '中国金融期货交易所-数据-交易参数
+
+    http://www.gfex.com.cn/gfex/hyxx/ywcs.shtml
+
+    :param date: 查询日期
+
+    :type date: str
+
+    :return: 交易参数汇总查询
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_contract_info_cffex
+  output:
+  - desc: 'from :return: docstring'
+    name: 挂盘基准价
+    type: float
+  rate_limit_key: cffex
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_info_cffex
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      挂盘基准价: 挂盘基准价
+    param_transforms: {}
+futures_contract_info_czce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '郑州商品交易所-交易数据-参考数据
+
+    http://www.czce.com.cn/cn/jysj/cksj/H770322index_1.htm
+
+    :param date: 查询日期
+
+    :type date: str
+
+    :return: 交易参数汇总查询
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_contract_info_czce
+  output:
+  - desc: 'from :return: docstring'
+    name: commission
+    type: float
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_info_czce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      交易手续费: commission
+    param_transforms: {}
+futures_contract_info_dce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '大连商品交易所-数据中心-业务数据-交易参数-合约信息
+
+    http://www.dce.com.cn/dce/channel/list/180.html
+
+    :return: 交易参数汇总查询
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: futures_contract_info_dce
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 合约
+    type: str
+  - desc: 'from :return: docstring'
+    name: unit
+    type: int
+  - desc: 'from :return: docstring'
+    name: 最小变动价位
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_info_dce
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      交易单位: unit
+      品种名称: name
+      开始交易日: day
+      最后交割日: day
+      最后交易日: day
+    param_transforms: {}
+futures_contract_info_gfex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '广州期货交易所-业务/服务-合约信息
+
+    http://www.gfex.com.cn/gfex/hyxx/ywcs.shtml
+
+    :return: 交易参数汇总查询
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: futures_contract_info_gfex
+  output:
+  - desc: 'from :return: docstring'
+    name: unit
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_info_gfex
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      交易单位: unit
+    param_transforms: {}
+futures_contract_info_ine:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海国际能源交易中心-业务指南-交易参数汇总(期货)
+
+    https://www.ine.cn/bourseService/summary/?name=currinstrumentprop
+
+    :param date: 查询日期; 交易日
+
+    :type date: str
+
+    :return: 交易参数汇总查询
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_contract_info_ine
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: contract_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: maturity_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 挂牌基准价
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_info_ine
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      上市日: day
+      交易日: day
+      到期日: maturity_date
+      合约代码: contract_code
+      开始交割日: day
+      最后交割日: day
+    param_transforms: {}
+futures_contract_info_shfe:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海期货交易所-交易所服务-业务数据-交易参数汇总查询
+
+    https://tsite.shfe.com.cn/bourseService/businessdata/summaryinquiry/
+
+    :param date: 查询日期; 交易日
+
+    :type date: str
+
+    :return: 交易参数汇总查询
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_contract_info_shfe
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: contract_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: maturity_date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 挂牌基准价
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  rate_limit_key: shfe
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_contract_info_shfe
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      上市日: day
+      交易日: day
+      到期日: maturity_date
+      合约代码: contract_code
+      开始交割日: day
+      最后交割日: day
+    param_transforms: {}
+futures_dce_position_rank:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '大连商品交易所-每日持仓排名-具体合约
+
+    http://www.dce.com.cn/dalianshangpin/xqsj/tjsj26/rtj/rcjccpm/index.html
+
+    :param date: 指定交易日; e.g., "20200511"
+
+    :type date: str
+
+    :param vars_list: 品种列表
+
+    :type vars_list: list
+
+    :return: 指...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: futures_dce_position_rank
+  output:
+  - desc: 名次 field
+    name: 名次
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: 增减 field
+    name: 增减
+    type: str
+  - desc: 持买单量 field
+    name: 持买单量
+    type: float
+  - desc: 持卖单量 field
+    name: 持卖单量
+    type: float
+  - desc: vol_party_name field
+    name: vol_party_name
+    type: str
+  - desc: vol field
+    name: vol
+    type: str
+  - desc: vol_chg field
+    name: vol_chg
+    type: str
+  - desc: long_party_name field
+    name: long_party_name
+    type: str
+  - desc: long_open_interest field
+    name: long_open_interest
+    type: float
+  - desc: long_open_interest_chg field
+    name: long_open_interest_chg
+    type: float
+  - desc: short_party_name field
+    name: short_party_name
+    type: str
+  - desc: short_open_interest field
+    name: short_open_interest
+    type: float
+  - desc: short_open_interest_chg field
+    name: short_open_interest_chg
+    type: float
+  - desc: rank field
+    name: rank
+    type: int
+  - desc: 'from :return: docstring'
+    name: data.iloc[start_list[0
+    type: str
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_dce_position_rank
+    input_mapping:
+      date: date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping:
+      会员简称: name
+      成交量: volume
+    param_transforms: {}
+futures_dce_position_rank_other:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '大连商品交易所-每日持仓排名-具体合约-补充
+
+    http://www.dce.com.cn/dalianshangpin/xqsj/tjsj26/rtj/rcjccpm/index.html
+
+    :param date: 交易日
+
+    :type date: str
+
+    :return: 合约具体名称列表
+
+    :rtype: list'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_dce_position_rank_other
+  output:
+  - desc: rank field
+    name: rank
+    type: int
+  - desc: vol_party_name field
+    name: vol_party_name
+    type: str
+  - desc: vol field
+    name: vol
+    type: str
+  - desc: vol_chg field
+    name: vol_chg
+    type: str
+  - desc: _ field
+    name: _
+    type: str
+  - desc: long_party_name field
+    name: long_party_name
+    type: str
+  - desc: long_open_interest field
+    name: long_open_interest
+    type: float
+  - desc: long_open_interest_chg field
+    name: long_open_interest_chg
+    type: float
+  - desc: short_party_name field
+    name: short_party_name
+    type: str
+  - desc: short_open_interest field
+    name: short_open_interest
+    type: float
+  - desc: short_open_interest_chg field
+    name: short_open_interest_chg
+    type: float
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_dce_position_rank_other
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      _: _
+      long_open_interest: long_open_interest
+      long_open_interest_chg: long_open_interest_chg
+      long_party_name: long_party_name
+      rank: rank
+      short_open_interest: short_open_interest
+      short_open_interest_chg: short_open_interest_chg
+      short_party_name: short_party_name
+      vol: vol
+      vol_chg: vol_chg
+      vol_party_name: vol_party_name
+    param_transforms: {}
+futures_delivery_czce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '郑州商品交易所-月度交割查询
+
+    http://www.czce.com.cn/cn/jysj/ydjgcx/H770316index_1.htm
+
+    :param date: 年月日
+
+    :type date: str
+
+    :return: 郑州商品交易所-月度交割查询
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_delivery_czce
+  output:
+  - desc: 品种 field
+    name: 品种
+    type: str
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 交割额 field
+    name: 交割额
+    type: float
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_delivery_czce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      交割数量: quantity
+    param_transforms: {}
+futures_delivery_dce:
+  category: futures
+  description: '大连商品交易所-交割统计
+
+    http://www.dce.com.cn/dalianshangpin/xqsj/tjsj26/jgtj/jgsj/index.html
+
+    :param date: 交割日期
+
+    :type date: str
+
+    :return: 大连商品交易所-交割统计
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_delivery_dce
+  output: []
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_delivery_dce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_delivery_match_czce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '郑州商品交易所-交割配对
+
+    http://www.czce.com.cn/cn/jysj/jgpd/H770308index_1.htm
+
+    :param date: 年月日
+
+    :type date: str
+
+    :return: 郑州商品交易所-交割配对
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_delivery_match_czce
+  output:
+  - desc: 卖方会员 field
+    name: 卖方会员
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: 买方会员 field
+    name: 买方会员
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: 交割量 field
+    name: 交割量
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: contract_code field
+    name: contract_code
+    type: int
+  - desc: 'from :return: docstring'
+    name: '0'
+    type: str
+  - desc: 'from :return: docstring'
+    name: ':'
+    type: str
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_delivery_match_czce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      买方会员-会员简称: name
+      卖方会员-会员简称: name
+      合约代码: contract_code
+      配对日期: date
+    param_transforms: {}
+futures_delivery_match_dce:
+  category: futures
+  description: '大连商品交易所-交割配对表
+
+    http://www.dce.com.cn/dalianshangpin/xqsj/tjsj26/jgtj/jgsj/index.html
+
+    :param symbol: 交割品种
+
+    :type symbol: str
+
+    :return: 大连商品交易所-交割配对表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_delivery_match_dce
+  output: []
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_delivery_match_dce
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_delivery_shfe:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海期货交易所-交割情况表
+
+    https://tsite.shfe.com.cn/statements/dataview.html?paramid=kx
+
+    注意: 日期 -> 月度统计 -> 下拉到交割情况表
+
+    :param date: 年月日
+
+    :type date: str
+
+    :return: 上海期货交易所-交割情况表
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_delivery_shfe
+  output:
+  - desc: 品种 field
+    name: 品种
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: _ field
+    name: _
+    type: str
+  - desc: 交割量-本月 field
+    name: 交割量-本月
+    type: float
+  - desc: 交割量-比重 field
+    name: 交割量-比重
+    type: float
+  - desc: 交割量-本年累计 field
+    name: 交割量-本年累计
+    type: float
+  - desc: 交割量-累计同比 field
+    name: 交割量-累计同比
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_delivery_shfe
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      品种代码: code
+    param_transforms: {}
+futures_display_main_sina:
+  category: futures
+  description: '新浪主力连续合约品种一览表
+
+    https://finance.sina.com.cn/futuremarket/index.shtml
+
+    :return: 新浪主力连续合约品种一览表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: futures_display_main_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_display_main_sina
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_fees_info:
+  category: futures
+  description: 'openctp 期货交易费用参照表
+
+    http://openctp.cn/fees.html
+
+    :return: 期货交易费用参照表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: futures_fees_info
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_fees_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_foreign_commodity_realtime:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '新浪-外盘期货-行情数据
+
+    https://finance.sina.com.cn/money/future/hf.html
+
+    :param symbol: 通过调用 ak.futures_hq_subscribe_exchange_symbol() 函数来获取
+
+    :type symbol: list or str
+
+    :return: 行情数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_foreign_commodity_realtime
+  output:
+  - desc: current_price field
+    name: current_price
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: ask field
+    name: ask
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: last_settle_price field
+    name: last_settle_price
+    type: float
+  - desc: open field
+    name: open
+    type: float
+  - desc: hold field
+    name: hold
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: current_price_rmb field
+    name: current_price_rmb
+    type: float
+  - desc: name field
+    name: name
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: 人民币报价 field
+    name: 人民币报价
+    type: float
+  - desc: 买价 field
+    name: 买价
+    type: float
+  - desc: 卖价 field
+    name: 卖价
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: price field
+    name: price
+    type: float
+  - desc: 'from :return: docstring'
+    name: temp
+    type: str
+  rate_limit_key: sina_hq
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_foreign_commodity_realtime
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      名称: name
+      开盘价: open
+      持仓量: open_interest
+      日期: date
+      昨日结算价: day
+      最低价: low
+      最新价: last
+      最高价: high
+      行情时间: time
+    param_transforms: {}
+futures_foreign_commodity_subscribe_exchange_symbol:
+  category: futures
+  description: '需要订阅的行情的代码
+
+    https://finance.sina.com.cn/money/future/hf.html
+
+    :return: 需要订阅的行情的代码
+
+    :rtype: list'
+  input: []
+  name: futures_foreign_commodity_subscribe_exchange_symbol
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_foreign_commodity_subscribe_exchange_symbol
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_foreign_detail:
+  category: futures
+  description: 'foreign futures contract detail data
+
+    :param symbol: futures symbol, you can get it from hf_subscribe_exchange_symbol
+    function
+
+    :type symbol: str
+
+    :return: contract detail
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_foreign_detail
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_foreign_detail
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_foreign_hist:
+  category: futures
+  description: '外盘期货-历史行情数据-日频率
+
+    https://finance.sina.com.cn/money/future/hf.html
+
+    :param symbol: 外盘期货代码, 可以通过 ak.futures_foreign_commodity_subscribe_exchange_symbol()
+    来获取所有品种代码
+
+    :type symbol: str
+
+    :return: 历史行情数据-日频率
+
+    :r...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_foreign_hist
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_foreign_hist
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_gfex_position_rank:
+  category: futures
+  description: '广州期货交易所-日成交持仓排名
+
+    http://www.gfex.com.cn/gfex/rcjccpm/hqsj_tjsj.shtml
+
+    :param date: 开始日期; 广州期货交易所的日成交持仓排名从 20231110 开始
+
+    :type date: str
+
+    :param vars_list: 商品代码列表
+
+    :type vars_list: list
+
+    :return: 日成交持仓排名
+
+    :rty...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: futures_gfex_position_rank
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_gfex_position_rank
+    input_mapping:
+      date: date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_gfex_warehouse_receipt:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '广州期货交易所-行情数据-仓单日报
+
+    http://www.gfex.com.cn/gfex/cdrb/hqsj_tjsj.shtml
+
+    :param date: 交易日, e.g., "20240122"
+
+    :type date: str
+
+    :return: 指定日期的仓单日报数据
+
+    :rtype: dict'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_gfex_warehouse_receipt
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: symbol
+    type: str
+  - desc: 'from :return: docstring'
+    name: whType
+    type: float
+  - desc: 'from :return: docstring'
+    name: 品种
+    type: str
+  - desc: 'from :return: docstring'
+    name: 仓库/分库
+    type: str
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 增减
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_gfex_warehouse_receipt
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      今日仓单量: day
+      昨日仓单量: day
+    param_transforms: {}
+futures_global_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '东方财富网-行情中心-期货市场-国际期货-历史行情数据
+
+    https://quote.eastmoney.com/globalfuture/HG25J.html
+
+    :param symbol: 品种代码；可以通过 ak.futures_global_spot_em() 来获取所有可获取历史行情数据的品种代码
+
+    :type symbol: str
+
+    :return: 历史行情数据
+
+    :rtype: panda...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_global_hist_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: 总量 field
+    name: 总量
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: 涨幅 field
+    name: 涨幅
+    type: float
+  - desc: position field
+    name: position
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_global_hist_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      代码: code
+      名称: name
+      开盘: open
+      持仓: position
+      日增: day
+      日期: date
+      最低: low
+      最新价: last
+      最高: high
+    param_transforms: {}
+futures_global_spot_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '东方财富网-行情中心-期货市场-国际期货
+
+    https://quote.eastmoney.com/center/gridlist.html#futures_global
+
+    :return: 行情数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: futures_global_spot_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: str
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: 昨结
+    type: str
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: 买盘
+    type: float
+  - desc: 'from :return: docstring'
+    name: 卖盘
+    type: float
+  - desc: 'from :return: docstring'
+    name: open_interest
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_global_spot_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      今开: open
+      代码: code
+      名称: name
+      成交量: volume
+      持仓量: open_interest
+      最低: low
+      最新价: last
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+futures_hist_daily_cffex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '中国金融期货交易所-交易所日交易数据
+
+    http://www.cffex.com.cn/cn/rtj.html
+
+    :param date: 交易日
+
+    :type date: str
+
+    :return: 交易所日交易数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_hist_daily_cffex
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: str
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: close field
+    name: close
+    type: float
+  - desc: settle field
+    name: settle
+    type: str
+  - desc: pre_settle field
+    name: pre_settle
+    type: str
+  rate_limit_key: cffex
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hist_daily_cffex
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      _: _
+      close: close
+      high: high
+      low: low
+      open: open
+      open_interest: open_interest
+      pre_settle: pre_settle
+      settle: settle
+      symbol: symbol
+      turnover: turnover
+      volume: volume
+    param_transforms: {}
+futures_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '东方财富网-期货行情-行情数据
+
+    https://qhweb.eastmoney.com/quote
+
+    :param symbol: 期货代码
+
+    :type symbol: str
+
+    :param period: choice of {''daily'', ''weekly'', ''monthly''}
+
+    :type period: str
+
+    :param start_date: 开始日期
+
+    :type start_da...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: futures_hist_em
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hist_em
+    input_mapping:
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      持仓量: open_interest
+      收盘: close
+      时间: time
+      最低: low
+      最高: high
+      涨跌: change
+      涨跌幅: pct_change
+    param_transforms: {}
+futures_hist_table_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '东方财富网-期货行情-交易所品种对照表
+
+    https://quote.eastmoney.com/qihuo/al2505.html
+
+    :return: 交易所品种对照表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: futures_hist_table_em
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: contract_code field
+    name: contract_code
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hist_table_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      合约中文代码: code
+      合约代码: contract_code
+      市场简称: name
+    param_transforms: {}
+futures_hog_core:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '玄田数据-核心数据
+
+    https://zhujia.zhuwang.com.cn
+
+    :param symbol: choice of {"外三元", "内三元", "土杂猪"}
+
+    :type symbol: str
+
+    :return: 玄田数据-核心数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_hog_core
+  output:
+  - desc: value field
+    name: value
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hog_core
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      date: date
+      value: value
+    param_transforms: {}
+futures_hog_cost:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '玄田数据-成本维度
+
+    https://zhujia.zhuwang.com.cn
+
+    :param symbol: choice of {"玉米", "豆粕", "二元母猪价格", "仔猪价格"}
+
+    :type symbol: str
+
+    :return: 玄田数据-成本维度
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_hog_cost
+  output:
+  - desc: value field
+    name: value
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hog_cost
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      date: date
+      value: value
+    param_transforms: {}
+futures_hog_supply:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '玄田数据-供应维度
+
+    https://zhujia.zhuwang.com.cn
+
+    :param symbol: choice of {"猪肉批发价", "储备冻猪肉", "饲料原料数据", "白条肉",
+
+    "生猪产能", "育肥猪", "肉类价格指数", "猪粮比价"}
+
+    :type symbol: str
+
+    :return: 玄田数据-供应维度
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_hog_supply
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: item field
+    name: item
+    type: str
+  - desc: value field
+    name: value
+    type: str
+  - desc: week field
+    name: week
+    type: datetime
+  - desc: 大豆进口金额 field
+    name: 大豆进口金额
+    type: float
+  - desc: area field
+    name: area
+    type: str
+  - desc: 玉米进口金额 field
+    name: 玉米进口金额
+    type: float
+  - desc: area field
+    name: area
+    type: str
+  - desc: 白条肉平均出厂价格 field
+    name: 白条肉平均出厂价格
+    type: float
+  - desc: 环比 field
+    name: 环比
+    type: str
+  - desc: 同比 field
+    name: 同比
+    type: str
+  - desc: 能繁母猪存栏 field
+    name: 能繁母猪存栏
+    type: str
+  - desc: 猪肉产量 field
+    name: 猪肉产量
+    type: float
+  - desc: 生猪存栏 field
+    name: 生猪存栏
+    type: str
+  - desc: 生猪出栏 field
+    name: 生猪出栏
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hog_supply
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      周期: week
+      大豆播种面积: area
+      玉米播种面积: area
+    param_transforms: {}
+futures_hold_pos_sina:
+  category: futures
+  description: '新浪财经-期货-成交持仓
+
+    https://vip.stock.finance.sina.com.cn/q/view/vFutures_Positions_cjcc.php
+
+    :param symbol: choice of {"成交量", "多单持仓", "空单持仓"}
+
+    :type symbol: str
+
+    :param contract: 期货合约
+
+    :type contract: str
+
+    :para...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: contract parameter
+    name: contract
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_hold_pos_sina
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hold_pos_sina
+    input_mapping:
+      contract: contract
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_hq_subscribe_exchange_symbol:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '将品种字典转化为 pandas.DataFrame
+
+    https://finance.sina.com.cn/money/future/hf.html
+
+    :return: 品种对应表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: futures_hq_subscribe_exchange_symbol
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_hq_subscribe_exchange_symbol
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      code: code
+      symbol: symbol
+    param_transforms: {}
+futures_index_ccidx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '中证商品指数-商品指数-日频率
+
+    http://www.ccidx.com/index.html
+
+    :param symbol: choice of {"中证商品期货指数", "中证商品期货价格指数"}
+
+    :type symbol: str
+
+    :return: 商品指数-日频率
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_index_ccidx
+  output:
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_index_ccidx
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+futures_inventory_99:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '99 期货网-大宗商品库存数据
+
+    https://www.99qh.com/data/stockIn?productId=12
+
+    :param symbol: 交易所对应的具体品种; 如：大连商品交易所的 豆一
+
+    :type symbol: str
+
+    :return: 大宗商品库存数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_inventory_99
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: close field
+    name: close
+    type: float
+  - desc: 库存 field
+    name: 库存
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_inventory_99
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      收盘价: close
+      日期: date
+    param_transforms: {}
+futures_inventory_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '东方财富网-数据中心-期货库存数据
+
+    https://data.eastmoney.com/ifdata/kcsj.html
+
+    :param symbol: 支持品种代码和中文名称，中文名称参见：https://data.eastmoney.com/ifdata/kcsj.html
+
+    :type symbol: str
+
+    :return: 指定品种的库存数据
+
+    :rtype: pandas.DataFram...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_inventory_em
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 库存 field
+    name: 库存
+    type: str
+  - desc: 增减 field
+    name: 增减
+    type: str
+  - desc: 'from :return: docstring'
+    name: result
+    type: str
+  rate_limit_key: em_datacenter
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_inventory_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+futures_main_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '新浪财经-期货-主力连续日数据
+
+    https://vip.stock.finance.sina.com.cn/quotes_service/view/qihuohangqing.html#titlePos_1
+
+    :param symbol: 通过 ak.futures_display_main_sina() 函数获取 symbol
+
+    :type symbol: str
+
+    :param start_date...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: futures_main_sina
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: 动态结算价 field
+    name: 动态结算价
+    type: float
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_main_sina
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘价: open
+      成交量: volume
+      持仓量: open_interest
+      收盘价: close
+      日期: date
+      最低价: low
+      最高价: high
+    param_transforms: {}
+futures_news_shmet:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海金属网-快讯
+
+    https://www.shmet.com/newsFlash/newsFlash.html?searchKeyword=
+
+    :param symbol: choice of {"全部", "要闻", "VIP", "财经", "铜", "铝", "铅", "锌", "镍", "锡",
+    "贵金属", "小金属"}
+
+    :type symbol: str
+
+    :return: 上海金属网-快...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_news_shmet
+  output:
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: content field
+    name: content
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_news_shmet
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      内容: content
+      发布时间: time
+    param_transforms: {}
+futures_rule:
+  category: futures
+  description: '国泰君安期货-交易日历数据表
+
+    https://www.gtjaqh.com/pc/calendar.html
+
+    :param date: 需要指定为交易日, 且是近期的日期
+
+    :type date: str
+
+    :return: 交易日历数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_rule
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_rule
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_settle:
+  category: futures
+  description: '期货交易所结算参数
+
+    :param date: 结算日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象，默认为当前交易日
+
+    :type date: str or datetime.date
+
+    :param market: 交易所代码: CFFEX-中金所, CZCE-郑商所, SHFE-上期所, DCE-大商所, INE-上能中心, GFEX-广期所
+
+    :t...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: market parameter
+    name: market
+    required: true
+    type: str
+  name: futures_settle
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_settle
+    input_mapping:
+      date: date
+      market: market
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_settle_cffex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '中国金融期货交易所-结算参数
+
+    http://www.cffex.com.cn/jscs/
+
+    :param date: 结算参数日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象，默认为当前交易日
+
+    :type date: str or datetime.date
+
+    :return: 结算参数数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_settle_cffex
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: long_margin_ratio field
+    name: long_margin_ratio
+    type: str
+  - desc: short_margin_ratio field
+    name: short_margin_ratio
+    type: str
+  - desc: trade_fee_ratio field
+    name: trade_fee_ratio
+    type: str
+  - desc: delivery_fee_ratio field
+    name: delivery_fee_ratio
+    type: str
+  - desc: close_today_fee_ratio field
+    name: close_today_fee_ratio
+    type: datetime
+  rate_limit_key: cffex
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_settle_cffex
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      close_today_fee_ratio: close_today_fee_ratio
+      delivery_fee_ratio: delivery_fee_ratio
+      long_margin_ratio: long_margin_ratio
+      short_margin_ratio: short_margin_ratio
+      symbol: symbol
+      trade_fee_ratio: trade_fee_ratio
+    param_transforms: {}
+futures_settle_czce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '郑州商品交易所-结算参数
+
+    http://www.czce.com.cn/cn/jysj/jscs/H077003003index_1.htm
+
+    :param date: 结算参数日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象，默认为当前交易日
+
+    :type date: str or datetime.date
+
+    :return: 结算参数数据
+
+    :rty...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_settle_czce
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: settle_price field
+    name: settle_price
+    type: float
+  - desc: is_single_market field
+    name: is_single_market
+    type: str
+  - desc: single_market_days field
+    name: single_market_days
+    type: datetime
+  - desc: margin_ratio field
+    name: margin_ratio
+    type: str
+  - desc: limit_ratio field
+    name: limit_ratio
+    type: str
+  - desc: trade_fee field
+    name: trade_fee
+    type: str
+  - desc: fee_type field
+    name: fee_type
+    type: float
+  - desc: delivery_fee field
+    name: delivery_fee
+    type: str
+  - desc: close_today_fee field
+    name: close_today_fee
+    type: datetime
+  - desc: position_limit field
+    name: position_limit
+    type: str
+  - desc: trade_limit field
+    name: trade_limit
+    type: str
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_settle_czce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      close_today_fee: close_today_fee
+      delivery_fee: delivery_fee
+      fee_type: fee_type
+      is_single_market: is_single_market
+      limit_ratio: limit_ratio
+      margin_ratio: margin_ratio
+      position_limit: position_limit
+      settle_price: settle_price
+      single_market_days: single_market_days
+      symbol: symbol
+      trade_fee: trade_fee
+      trade_limit: trade_limit
+    param_transforms: {}
+futures_settle_gfex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '广州期货交易所-结算参数
+
+    http://www.gfex.com.cn/gfex/rjycs/ywcs.shtml
+
+    :param date: 结算参数日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象，默认为当前交易日
+
+    :type date: str or datetime.date
+
+    :return: 结算参数数据
+
+    :rtype: pandas.Da...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_settle_gfex
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: spec_buy_rate field
+    name: spec_buy_rate
+    type: float
+  - desc: spec_buy field
+    name: spec_buy
+    type: float
+  - desc: hedge_buy_rate field
+    name: hedge_buy_rate
+    type: float
+  - desc: hedge_buy field
+    name: hedge_buy
+    type: str
+  - desc: rise_limit_rate field
+    name: rise_limit_rate
+    type: float
+  - desc: rise_limit field
+    name: rise_limit
+    type: str
+  - desc: fall_limit field
+    name: fall_limit
+    type: str
+  - desc: agent_tot_buy_posi_quota field
+    name: agent_tot_buy_posi_quota
+    type: str
+  - desc: self_tot_buy_posi_quota field
+    name: self_tot_buy_posi_quota
+    type: str
+  - desc: client_buy_posi_quota field
+    name: client_buy_posi_quota
+    type: str
+  - desc: self_tot_buy_ser_limit field
+    name: self_tot_buy_ser_limit
+    type: str
+  - desc: client_buy_ser_limit field
+    name: client_buy_ser_limit
+    type: str
+  - desc: trade_type field
+    name: trade_type
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_settle_gfex
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      agent_tot_buy_posi_quota: agent_tot_buy_posi_quota
+      client_buy_posi_quota: client_buy_posi_quota
+      client_buy_ser_limit: client_buy_ser_limit
+      fall_limit: fall_limit
+      hedge_buy: hedge_buy
+      hedge_buy_rate: hedge_buy_rate
+      rise_limit: rise_limit
+      rise_limit_rate: rise_limit_rate
+      self_tot_buy_posi_quota: self_tot_buy_posi_quota
+      self_tot_buy_ser_limit: self_tot_buy_ser_limit
+      spec_buy: spec_buy
+      spec_buy_rate: spec_buy_rate
+      symbol: symbol
+      trade_type: trade_type
+    param_transforms: {}
+futures_settle_ine:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海国际能源交易中心-结算参数
+
+    https://www.ine.cn/reports/businessdata/prmsummary/
+
+    :param date: 结算参数日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象，默认为当前交易日
+
+    :type date: str or datetime.date
+
+    :return: 结算参数数据
+
+    :rtype:...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_settle_ine
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: trade_fee_ratio field
+    name: trade_fee_ratio
+    type: str
+  - desc: close_today_fee_ratio field
+    name: close_today_fee_ratio
+    type: datetime
+  - desc: delivery_fee_unit field
+    name: delivery_fee_unit
+    type: str
+  - desc: spec_long_margin_ratio field
+    name: spec_long_margin_ratio
+    type: float
+  - desc: hedge_long_margin_ratio field
+    name: hedge_long_margin_ratio
+    type: str
+  - desc: delivery_fee_ratio field
+    name: delivery_fee_ratio
+    type: str
+  - desc: product_id field
+    name: product_id
+    type: str
+  - desc: product_name field
+    name: product_name
+    type: str
+  - desc: close_today_fee_unit field
+    name: close_today_fee_unit
+    type: datetime
+  - desc: trade_fee_unit field
+    name: trade_fee_unit
+    type: str
+  - desc: hedge_short_margin_ratio field
+    name: hedge_short_margin_ratio
+    type: str
+  - desc: settle_price field
+    name: settle_price
+    type: float
+  - desc: uni_direction field
+    name: uni_direction
+    type: str
+  - desc: spec_short_margin_ratio field
+    name: spec_short_margin_ratio
+    type: float
+  - desc: is_close_today field
+    name: is_close_today
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_settle_ine
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      close_today_fee_ratio: close_today_fee_ratio
+      close_today_fee_unit: close_today_fee_unit
+      delivery_fee_ratio: delivery_fee_ratio
+      delivery_fee_unit: delivery_fee_unit
+      hedge_long_margin_ratio: hedge_long_margin_ratio
+      hedge_short_margin_ratio: hedge_short_margin_ratio
+      is_close_today: is_close_today
+      product_id: product_id
+      product_name: product_name
+      settle_price: settle_price
+      spec_long_margin_ratio: spec_long_margin_ratio
+      spec_short_margin_ratio: spec_short_margin_ratio
+      symbol: symbol
+      trade_fee_ratio: trade_fee_ratio
+      trade_fee_unit: trade_fee_unit
+      uni_direction: uni_direction
+    param_transforms: {}
+futures_settle_shfe:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海期货交易所-结算参数
+
+    https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/
+
+    :param date: 结算参数日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象，默认为当前交易日
+
+    :type date: str or datetime.date
+
+    :return: 结算参数数据
+
+    ...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_settle_shfe
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: trade_fee_ratio field
+    name: trade_fee_ratio
+    type: str
+  - desc: close_today_fee_ratio field
+    name: close_today_fee_ratio
+    type: datetime
+  - desc: delivery_fee_unit field
+    name: delivery_fee_unit
+    type: str
+  - desc: spec_long_margin_ratio field
+    name: spec_long_margin_ratio
+    type: float
+  - desc: hedge_long_margin_ratio field
+    name: hedge_long_margin_ratio
+    type: str
+  - desc: delivery_fee_ratio field
+    name: delivery_fee_ratio
+    type: str
+  - desc: product_id field
+    name: product_id
+    type: str
+  - desc: product_name field
+    name: product_name
+    type: str
+  - desc: close_today_fee_unit field
+    name: close_today_fee_unit
+    type: datetime
+  - desc: trade_fee_unit field
+    name: trade_fee_unit
+    type: str
+  - desc: hedge_short_margin_ratio field
+    name: hedge_short_margin_ratio
+    type: str
+  - desc: settle_price field
+    name: settle_price
+    type: float
+  - desc: uni_direction field
+    name: uni_direction
+    type: str
+  - desc: spec_short_margin_ratio field
+    name: spec_short_margin_ratio
+    type: float
+  - desc: is_close_today field
+    name: is_close_today
+    type: datetime
+  rate_limit_key: shfe
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_settle_shfe
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      close_today_fee_ratio: close_today_fee_ratio
+      close_today_fee_unit: close_today_fee_unit
+      delivery_fee_ratio: delivery_fee_ratio
+      delivery_fee_unit: delivery_fee_unit
+      hedge_long_margin_ratio: hedge_long_margin_ratio
+      hedge_short_margin_ratio: hedge_short_margin_ratio
+      is_close_today: is_close_today
+      product_id: product_id
+      product_name: product_name
+      settle_price: settle_price
+      spec_long_margin_ratio: spec_long_margin_ratio
+      spec_short_margin_ratio: spec_short_margin_ratio
+      symbol: symbol
+      trade_fee_ratio: trade_fee_ratio
+      trade_fee_unit: trade_fee_unit
+      uni_direction: uni_direction
+    param_transforms: {}
+futures_settlement_price_sgx:
+  category: futures
+  description: '新加坡交易所-衍生品-历史数据-历史结算价格
+
+    https://www.sgx.com/zh-hans/research-education/derivatives
+
+    :param date: 交易日
+
+    :type date: str
+
+    :return: 所有期货品种的在指定交易日的历史结算价格
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_settlement_price_sgx
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_settlement_price_sgx
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_shfe_warehouse_receipt:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海期货交易所指定交割仓库期货仓单日报
+
+    https://tsite.shfe.com.cn/statements/dataview.html?paramid=dailystock&paramdate=20200703
+
+    :param date: 交易日, e.g., "20200702"
+
+    :type date: str
+
+    :return: 指定日期的仓单日报数据
+
+    :rtype: dict'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_shfe_warehouse_receipt
+  output:
+  - desc: 'from :return: docstring'
+    name: '1'
+    type: str
+  rate_limit_key: shfe
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_shfe_warehouse_receipt
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      '1': '1'
+    param_transforms: {}
+futures_spot_price:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '指定交易日大宗商品现货价格及相应基差
+
+    https://www.100ppi.com/sf/day-2017-09-12.html
+
+    :param date: 开始日期 format: YYYY-MM-DD 或 YYYYMMDD 或 datetime.date 对象; 为空时为当天
+
+    :param vars_list: 合约品种如 RB、AL 等列表 为空时为所有商品
+
+    :return: pandas.D...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: futures_spot_price
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: spot_price field
+    name: spot_price
+    type: float
+  - desc: near_contract field
+    name: near_contract
+    type: str
+  - desc: near_contract_price field
+    name: near_contract_price
+    type: float
+  - desc: dominant_contract field
+    name: dominant_contract
+    type: str
+  - desc: dominant_contract_price field
+    name: dominant_contract_price
+    type: float
+  - desc: near_month field
+    name: near_month
+    type: str
+  - desc: dominant_month field
+    name: dominant_month
+    type: str
+  - desc: near_basis field
+    name: near_basis
+    type: float
+  - desc: dom_basis field
+    name: dom_basis
+    type: float
+  - desc: near_basis_rate field
+    name: near_basis_rate
+    type: float
+  - desc: dom_basis_rate field
+    name: dom_basis_rate
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_spot_price
+    input_mapping:
+      date: date
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping:
+      date: date
+      dom_basis: dom_basis
+      dom_basis_rate: dom_basis_rate
+      dominant_contract: dominant_contract
+      dominant_contract_price: dominant_contract_price
+      dominant_month: dominant_month
+      near_basis: near_basis
+      near_basis_rate: near_basis_rate
+      near_contract: near_contract
+      near_contract_price: near_contract_price
+      near_month: near_month
+      spot_price: spot_price
+      symbol: symbol
+    param_transforms: {}
+futures_spot_price_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '指定时间段内大宗商品现货价格及相应基差
+
+    https://www.100ppi.com/sf/
+
+    :param start_day: str 开始日期 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象; 默认为当天
+
+    :param end_day: str 结束数据 format：YYYY-MM-DD 或 YYYYMMDD 或 datetime.date对象;...'
+  input:
+  - desc: start_day parameter
+    name: start_day
+    required: true
+    type: str
+  - desc: end_day parameter
+    name: end_day
+    required: true
+    type: str
+  - desc: vars_list parameter
+    name: vars_list
+    required: true
+    type: str
+  name: futures_spot_price_daily
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: spot_price field
+    name: spot_price
+    type: float
+  - desc: near_contract field
+    name: near_contract
+    type: str
+  - desc: near_contract_price field
+    name: near_contract_price
+    type: float
+  - desc: dominant_contract field
+    name: dominant_contract
+    type: str
+  - desc: dominant_contract_price field
+    name: dominant_contract_price
+    type: float
+  - desc: near_month field
+    name: near_month
+    type: str
+  - desc: dominant_month field
+    name: dominant_month
+    type: str
+  - desc: near_basis field
+    name: near_basis
+    type: float
+  - desc: dom_basis field
+    name: dom_basis
+    type: float
+  - desc: near_basis_rate field
+    name: near_basis_rate
+    type: float
+  - desc: dom_basis_rate field
+    name: dom_basis_rate
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_spot_price_daily
+    input_mapping:
+      end_day: end_day
+      start_day: start_day
+      vars_list: vars_list
+    name: akshare_em
+    output_mapping:
+      date: date
+      dom_basis: dom_basis
+      dom_basis_rate: dom_basis_rate
+      dominant_contract: dominant_contract
+      dominant_contract_price: dominant_contract_price
+      dominant_month: dominant_month
+      near_basis: near_basis
+      near_basis_rate: near_basis_rate
+      near_contract: near_contract
+      near_contract_price: near_contract_price
+      near_month: near_month
+      spot_price: spot_price
+      symbol: symbol
+    param_transforms: {}
+futures_spot_price_previous:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '具体交易日大宗商品现货价格及相应基差
+
+    https://www.100ppi.com/sf/day-2017-09-12.html
+
+    :param date: 交易日; 历史日期
+
+    :type date: str
+
+    :return: 现货价格及相应基差
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_spot_price_previous
+  output:
+  - desc: 主力合约基差 field
+    name: 主力合约基差
+    type: str
+  - desc: 主力合约基差(%) field
+    name: 主力合约基差(%)
+    type: str
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: 现货价格 field
+    name: 现货价格
+    type: float
+  - desc: code field
+    name: code
+    type: int
+  - desc: 主力合约价格 field
+    name: 主力合约价格
+    type: float
+  - desc: 主力合约变动百分比 field
+    name: 主力合约变动百分比
+    type: str
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: day field
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 2:-1
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_spot_price_previous
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      180日内主力基差平均: day
+      180日内主力基差最低: day
+      180日内主力基差最高: day
+      主力合约代码: code
+    param_transforms: {}
+futures_spot_stock:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '东方财富网-数据中心-现货与股票
+
+    https://data.eastmoney.com/ifdata/xhgp.html
+
+    :param symbol: choice of {''能源'', ''化工'', ''塑料'', ''纺织'', ''有色'', ''钢铁'', ''建材'',
+    ''农副''}
+
+    :type symbol: str
+
+    :return: 现货与股票上下游对应数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_spot_stock
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: date_list[0
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_spot_stock
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      商品名称: name
+    param_transforms: {}
+futures_spot_sys:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '生意社-商品与期货-现期图
+
+    https://www.100ppi.com/sf/792.html
+
+    :param symbol: 期货品种
+
+    :type symbol: str
+
+    :param indicator: 市场价格; choice of {"市场价格", "基差率", "主力基差"}
+
+    :type indicator: str
+
+    :return: pandas.DataFrame
+
+    :rtype: ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: indicator parameter
+    name: indicator
+    required: true
+    type: str
+  name: futures_spot_sys
+  output:
+  - desc: index field
+    name: index
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: '2'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_spot_sys
+    input_mapping:
+      indicator: indicator
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+futures_stock_shfe_js:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '金十财经-上海期货交易所指定交割仓库库存周报
+
+    https://datacenter.jin10.com/reportType/dc_shfe_weekly_stock
+
+    :param date: 交易日; 库存周报只在每周的最后一个交易日公布数据
+
+    :type date: str
+
+    :return: 库存周报
+
+    :rtype: pandas.Series'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_stock_shfe_js
+  output:
+  - desc: 'from :return: docstring'
+    name: '1:'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_stock_shfe_js
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      '1:': '1:'
+    param_transforms: {}
+futures_to_spot_czce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '郑州商品交易所-期转现统计
+
+    http://www.czce.com.cn/cn/jysj/qzxtj/H770311index_1.htm
+
+    :param date: 年月日
+
+    :type date: str
+
+    :return: 郑州商品交易所-期转现统计
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_to_spot_czce
+  output:
+  - desc: contract_code field
+    name: contract_code
+    type: int
+  - desc: quantity field
+    name: quantity
+    type: float
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_to_spot_czce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      合约代码: contract_code
+      合约数量: quantity
+    param_transforms: {}
+futures_to_spot_dce:
+  category: futures
+  description: '大连商品交易所-期转现
+
+    http://www.dce.com.cn/dalianshangpin/xqsj/tjsj26/jgtj/qzxcx/index.html
+
+    :param date: 期转现日期
+
+    :type date: str
+
+    :return: 大连商品交易所-期转现
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_to_spot_dce
+  output: []
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_to_spot_dce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_to_spot_shfe:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '上海期货交易所-期转现
+
+    https://tsite.shfe.com.cn/statements/dataview.html?paramid=kx
+
+    1、铜、铜(BC)、铝、锌、铅、镍、锡、螺纹钢、线材、热轧卷板、天然橡胶、20号胶、低硫燃料油、燃料油、石油沥青、纸浆、不锈钢的数量单位为：吨；黄金的数量单位为：克；白银的数量单位为：千克；原油的数量单位为：桶。
+
+    2、交割量、期转现量为单向计算。
+
+    :p...'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_to_spot_shfe
+  output:
+  - desc: _ field
+    name: _
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 交割量 field
+    name: 交割量
+    type: float
+  - desc: 期转现量 field
+    name: 期转现量
+    type: float
+  - desc: 合约 field
+    name: 合约
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_to_spot_shfe
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+futures_warehouse_receipt_czce:
+  category: futures
+  description: '郑州商品交易所-交易数据-仓单日报
+
+    http://www.czce.com.cn/cn/jysj/cdrb/H770310index_1.htm
+
+    :param date: 交易日, e.g., "20200702"
+
+    :type date: str
+
+    :return: 指定日期的仓单日报数据
+
+    :rtype: dict'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_warehouse_receipt_czce
+  output: []
+  rate_limit_key: czce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_warehouse_receipt_czce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_warehouse_receipt_dce:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '大连商品交易所-行情数据-统计数据-日统计-仓单日报
+
+    http://www.dce.com.cn/dce/channel/list/187.html
+
+    :param date: 交易日, e.g., "20200702"
+
+    :type date: str
+
+    :return: 指定日期的仓单日报数据
+
+    :rtype: dict'
+  input:
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: futures_warehouse_receipt_dce
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 仓库/分库
+    type: str
+  - desc: 'from :return: docstring'
+    name: quantity
+    type: float
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 增减（手）
+    type: int
+  rate_limit_key: dce
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_warehouse_receipt_dce
+    input_mapping:
+      date: date
+    name: akshare_em
+    output_mapping:
+      今日仓单量（手）: day
+      可选提货地点/分库-数量: quantity
+      品种代码: code
+      品种名称: name
+      昨日仓单量（手）: day
+    param_transforms: {}
+futures_zh_daily_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '中国各品种期货日频率数据
+
+    https://finance.sina.com.cn/futures/quotes/V2105.shtml
+
+    :param symbol: 可以通过 match_main_contract(symbol="cffex") 获取, 或者访问网页获取
+
+    :type symbol: str
+
+    :return: 指定 symbol 的数据
+
+    :rtype: pandas.DataFra...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_zh_daily_sina
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: hold field
+    name: hold
+    type: str
+  - desc: settle field
+    name: settle
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_zh_daily_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      hold: hold
+      low: low
+      open: open
+      settle: settle
+      volume: volume
+    param_transforms: {}
+futures_zh_minute_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '中国各品种期货分钟频率数据
+
+    https://vip.stock.finance.sina.com.cn/quotes_service/view/qihuohangqing.html#titlePos_3
+
+    :param symbol: 可以通过 match_main_contract(symbol="cffex") 获取, 或者访问网页获取
+
+    :type symbol: str
+
+    :param peri...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: futures_zh_minute_sina
+  output:
+  - desc: datetime field
+    name: datetime
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: hold field
+    name: hold
+    type: str
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_zh_minute_sina
+    input_mapping:
+      period: period
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      close: close
+      datetime: datetime
+      high: high
+      hold: hold
+      low: low
+      open: open
+      volume: volume
+    param_transforms: {}
+futures_zh_realtime:
+  category: futures
+  description: '期货品种当前时刻所有可交易的合约实时数据
+
+    https://vip.stock.finance.sina.com.cn/quotes_service/view/qihuohangqing.html#titlePos_1
+
+    :param symbol: 品种名称；可以通过 ak.futures_symbol_mark() 获取所有品种命名表
+
+    :type symbol: str
+
+    :return: 期货品种...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: futures_zh_realtime
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_zh_realtime
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+futures_zh_spot:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: '期货的实时行情数据
+
+    https://vip.stock.finance.sina.com.cn/quotes_service/view/qihuohangqing.html#titlePos_1
+
+    :param symbol: 合约名称的字符串组合
+
+    :type symbol: str
+
+    :param market: CF 为商品期货
+
+    :type market: str
+
+    :param adjust: ''...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: market parameter
+    name: market
+    required: true
+    type: str
+  - desc: adjust parameter
+    name: adjust
+    required: true
+    type: str
+  name: futures_zh_spot
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: last_close field
+    name: last_close
+    type: float
+  - desc: bid_price field
+    name: bid_price
+    type: float
+  - desc: ask_price field
+    name: ask_price
+    type: float
+  - desc: current_price field
+    name: current_price
+    type: float
+  - desc: avg_price field
+    name: avg_price
+    type: float
+  - desc: last_settle_price field
+    name: last_settle_price
+    type: float
+  - desc: buy_vol field
+    name: buy_vol
+    type: str
+  - desc: sell_vol field
+    name: sell_vol
+    type: str
+  - desc: hold field
+    name: hold
+    type: str
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: _ field
+    name: _
+    type: str
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: __ field
+    name: __
+    type: str
+  rate_limit_key: sina_hq
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: futures_zh_spot
+    input_mapping:
+      adjust: adjust
+      market: market
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      _: _
+      __: __
+      amount: amount
+      ask_price: ask_price
+      avg_price: avg_price
+      bid_price: bid_price
+      buy_vol: buy_vol
+      current_price: current_price
+      high: high
+      hold: hold
+      last_close: last_close
+      last_settle_price: last_settle_price
+      low: low
+      open: open
+      sell_vol: sell_vol
+      symbol: symbol
+      time: time
+      volume: volume
+    param_transforms: {}
+hf_sp_500:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: futures
+  description: 'S&P 500 minute data from 2012-2018
+
+    :param year: from 2012-2018
+
+    :type year: str
+
+    :return: specific year dataframe
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  name: hf_sp_500
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: price field
+    name: price
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: hf_sp_500
+    input_mapping:
+      year: year
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      price: price
+    param_transforms: {}

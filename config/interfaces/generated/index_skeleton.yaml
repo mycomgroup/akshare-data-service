@@ -1,0 +1,3640 @@
+index_ai_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-AI策略指数
+
+    https://yun.ccxe.com.cn/indices/ai
+
+    :return: AI策略指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_ai_cx
+  output:
+  - desc: 变化幅度 field
+    name: 变化幅度
+    type: str
+  - desc: AI策略指数 field
+    name: AI策略指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_ai_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_all_cni:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '国证指数-最近交易日的所有指数
+
+    https://www.cnindex.com.cn/zh_indices/sese/index.html?act_menu=1&index_type=-1
+
+    :return: 国证指数-所有指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_all_cni
+  output:
+  - desc: _ field
+    name: _
+    type: str
+  - desc: code field
+    name: code
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: 样本数 field
+    name: 样本数
+    type: str
+  - desc: close field
+    name: close
+    type: int
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: PE滚动 field
+    name: PE滚动
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: total_market_cap field
+    name: total_market_cap
+    type: float
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_all_cni
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      总市值: total_market_cap
+      成交量: volume
+      成交额: amount
+      指数代码: code
+      指数简称: name
+      收盘点位: close
+      涨跌幅: pct_change
+      自由流通市值: market_cap
+    param_transforms: {}
+index_analysis_daily_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-指数分析
+
+    https://www.swsresearch.com/institute_sw/allIndex/analysisIndex
+
+    :param symbol: choice of {"市场表征", "一级行业", "二级行业", "风格指数"}
+
+    :type symbol: str
+
+    :param start_date: 开始日期
+
+    :type start_date: str
+
+    :p...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: index_analysis_daily_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_analysis_daily_sw
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_analysis_monthly_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-指数分析-月报告
+
+    https://www.swsresearch.com/institute_sw/allIndex/analysisIndex
+
+    :param symbol: choice of {"市场表征", "一级行业", "二级行业", "风格指数"}
+
+    :type symbol: str
+
+    :param date: 查询日期; 通过调用 ak.index_analysis_we...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: index_analysis_monthly_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_analysis_monthly_sw
+    input_mapping:
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_analysis_week_month_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-周/月报表-日期序列
+
+    https://www.swsresearch.com/institute_sw/allIndex/analysisIndex
+
+    :param symbol: choice of {"week", "month"}
+
+    :type symbol: str
+
+    :return: 日期序列
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_analysis_week_month_sw
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_analysis_week_month_sw
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      date: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_analysis_weekly_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-指数分析-周报告
+
+    https://www.swsresearch.com/institute_sw/allIndex/analysisIndex
+
+    :param symbol: choice of {"市场表征", "一级行业", "二级行业", "风格指数"}
+
+    :type symbol: str
+
+    :param date: 查询日期; 通过调用 ak.index_analysis_we...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: date parameter
+    name: date
+    required: true
+    type: str
+  name: index_analysis_weekly_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_analysis_weekly_sw
+    input_mapping:
+      date: date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      发布日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_awpr_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-新经济入职工资溢价水平
+
+    https://yun.ccxe.com.cn/indices/nei
+
+    :return: 新经济入职工资溢价水平
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_awpr_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: premium field
+    name: premium
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_awpr_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      新经济入职工资溢价水平: premium
+      日期: date
+    param_transforms: {}
+index_bei_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-基石经济指数
+
+    https://yun.ccxe.com.cn/indices/bei
+
+    :return: 基石经济指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_bei_cx
+  output:
+  - desc: 变化幅度 field
+    name: 变化幅度
+    type: str
+  - desc: 基石经济指数 field
+    name: 基石经济指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_bei_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_bi_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-基础指数
+
+    https://yun.ccxe.com.cn/indices/dei
+
+    :return: 基础指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_bi_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 基础指数 field
+    name: 基础指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_bi_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_bloomberg_billionaires:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: 'Bloomberg Billionaires Index
+
+    https://www.bloomberg.com/billionaires/
+
+    :return: 彭博亿万富豪指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_bloomberg_billionaires
+  output:
+  - desc: rank field
+    name: rank
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: total_net_worth field
+    name: total_net_worth
+    type: str
+  - desc: last_change field
+    name: last_change
+    type: str
+  - desc: YTD_change field
+    name: YTD_change
+    type: str
+  - desc: country field
+    name: country
+    type: int
+  - desc: industry field
+    name: industry
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_bloomberg_billionaires
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      YTD_change: YTD_change
+      country: country
+      industry: industry
+      last_change: last_change
+      name: name
+      rank: rank
+      total_net_worth: total_net_worth
+    param_transforms: {}
+index_bloomberg_billionaires_hist:
+  category: index
+  description: 'Bloomberg Billionaires Index
+
+    https://stats.areppim.com/stats/links_billionairexlists.htm
+
+    :param year: choice of {"2021", "2019", "2018", ...}
+
+    :type year: str
+
+    :return: 彭博亿万富豪指数历史数据
+
+    :rtype: pandas.DataF...'
+  input:
+  - desc: year parameter
+    name: year
+    required: true
+    type: str
+  name: index_bloomberg_billionaires_hist
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_bloomberg_billionaires_hist
+    input_mapping:
+      year: year
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+index_cci_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-大宗商品指数
+
+    https://yun.ccxe.com.cn/indices/nei
+
+    :return: 大宗商品指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_cci_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 大宗商品指数 field
+    name: 大宗商品指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_cci_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_ci_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-资本投入指数
+
+    https://yun.ccxe.com.cn/indices/nei
+
+    :return: 资本投入指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_ci_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 资本投入指数 field
+    name: 资本投入指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_ci_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_component_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-指数发布-指数详情-成分股
+
+    https://www.swsresearch.com/institute_sw/allIndex/releasedIndex/releasedetail?code=801001&name=%E7%94%B3%E4%B8%8750
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :return: 成分股
+
+    :rtype: pand...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_component_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: symbol
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 最新权重
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_component_sw
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      计入日期: date
+      证券代码: symbol
+      证券名称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_csindex_all:
+  category: index
+  description: '中证指数网站-指数列表
+
+    https://www.csindex.com.cn/#/indices/family/list?index_series=1
+
+    Note: 但是不知道数据更新时间
+
+    :return: 最新指数的列表,
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_csindex_all
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_csindex_all
+    input_mapping: {}
+    name: akshare_em
+    output_mapping: {}
+    param_transforms: {}
+index_dei_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-数字经济指数
+
+    https://yun.ccxe.com.cn/indices/dei
+
+    :return: 数字经济指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_dei_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 数字经济指数 field
+    name: 数字经济指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_dei_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_detail_cni:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '国证指数-样本详情-指定日期的样本成份
+
+    https://www.cnindex.com.cn/module/index-detail.html?act_menu=1&indexCode=399001
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :return: 指定日期的样本成份
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_detail_cni
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: industry field
+    name: industry
+    type: str
+  - desc: total_market_cap field
+    name: total_market_cap
+    type: float
+  - desc: 权重 field
+    name: 权重
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_detail_cni
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      总市值: total_market_cap
+      所属行业: industry
+      日期: date
+      样本代码: code
+      样本简称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_detail_hist_adjust_cni:
+  category: index
+  description: '国证指数-样本详情-历史调样
+
+    http://www.cnindex.com.cn/module/index-detail.html?act_menu=1&indexCode=399005
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :return: 历史调样
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_detail_hist_adjust_cni
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_detail_hist_adjust_cni
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_detail_hist_cni:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '国证指数-样本详情-历史样本
+
+    https://www.cnindex.com.cn/module/index-detail.html?act_menu=1&indexCode=399001
+
+    :param symbol: 指数代码; "399001"
+
+    :type symbol: str
+
+    :return: 历史样本
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_detail_hist_cni
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: industry field
+    name: industry
+    type: str
+  - desc: total_market_cap field
+    name: total_market_cap
+    type: float
+  - desc: 权重 field
+    name: 权重
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_detail_hist_cni
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      总市值: total_market_cap
+      所属行业: industry
+      日期: date
+      样本代码: code
+      样本简称: name
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_eri:
+  category: index
+  description: '浙江省排污权交易指数
+
+    https://zs.zjpwq.net
+
+    :param symbol: choice of {"月度", "季度"}
+
+    :type symbol: str
+
+    :return: 浙江省排污权交易指数
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_eri
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_eri
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_fi_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-融合指数
+
+    https://yun.ccxe.com.cn/indices/dei
+
+    :return: 融合指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_fi_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 融合指数 field
+    name: 融合指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_fi_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_global_hist_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '东方财富网-行情中心-全球指数-历史行情数据
+
+    https://quote.eastmoney.com/gb/zsUDI.html
+
+    :param symbol: 指数名称；可以通过 ak.index_global_spot_em() 获取
+
+    :type symbol: str
+
+    :return: 历史行情数据
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_global_hist_em
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: last field
+    name: last
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: '- field'
+    name: '-'
+    type: str
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: code field
+    name: code
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_global_hist_em
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      今开: open
+      代码: code
+      名称: name
+      振幅: amplitude
+      日期: date
+      最低: low
+      最新价: last
+      最高: high
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_global_hist_sina:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '新浪财经-行情中心-环球市场-历史行情
+
+    https://finance.sina.com.cn/stock/globalindex/quotes/UKX
+
+    :param symbol: 指数名称；可以通过 ak.index_global_name_table() 获取
+
+    :type symbol: str
+
+    :return: 环球市场历史行情
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_global_hist_sina
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: close
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_global_hist_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      '[': '['
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      volume: volume
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_global_name_table:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '新浪财经-行情中心-环球市场-名称代码映射表
+
+    https://finance.sina.com.cn/stock/globalindex/quotes/UKX
+
+    :return: 名称代码映射表
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_global_name_table
+  output:
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_global_name_table
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      代码: code
+    param_transforms: {}
+index_global_spot_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '东方财富网-行情中心-全球指数-实时行情数据
+
+    https://quote.eastmoney.com/center/gridlist.html#global_qtzs
+
+    :return: 实时行情数据
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_global_spot_em
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: 序号
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: last
+    type: float
+  - desc: 'from :return: docstring'
+    name: change
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: prev_close
+    type: float
+  - desc: 'from :return: docstring'
+    name: amplitude
+    type: str
+  - desc: 'from :return: docstring'
+    name: time
+    type: datetime
+  rate_limit_key: em_push2
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_global_spot_em
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      代码: code
+      名称: name
+      开盘价: open
+      振幅: amplitude
+      昨收价: prev_close
+      最低价: low
+      最新价: last
+      最新行情时间: time
+      最高价: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms: {}
+index_hist_cni:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '指数历史行情数据
+
+    http://www.cnindex.com.cn/module/index-detail.html?act_menu=1&indexCode=399001
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :param start_date: 开始时间
+
+    :type start_date: str
+
+    :param end_date: 结束时间
+
+    :type ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: index_hist_cni
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: _ field
+    name: _
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: open field
+    name: open
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_hist_cni
+    input_mapping:
+      end_date: end_date
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘价: open
+      成交量: volume
+      成交额: amount
+      收盘价: close
+      日期: date
+      最低价: low
+      最高价: high
+      涨跌幅: pct_change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_hist_fund_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-申万指数-指数发布-基金指数-历史行情
+
+    https://www.swsresearch.com/institute_sw/allIndex/releasedIndex/fundDetail?code=807100
+
+    :param symbol: 基金指数代码
+
+    :type symbol: str
+
+    :param period: 周期
+
+    :type period: str
+
+    :return: 历...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: index_hist_fund_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: close
+    type: float
+  - desc: 'from :return: docstring'
+    name: open
+    type: float
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_hist_fund_sw
+    input_mapping:
+      period: period
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘指数: open
+      收盘指数: close
+      日期: date
+      最低指数: low
+      最高指数: high
+      涨跌幅: pct_change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_hist_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-指数发布-指数详情-指数历史数据
+
+    https://www.swsresearch.com/institute_sw/allIndex/releasedIndex/releasedetail?code=801001&name=%E7%94%B3%E4%B8%8750
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :param period: choice ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  name: index_hist_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: close
+    type: str
+  - desc: 'from :return: docstring'
+    name: open
+    type: str
+  - desc: 'from :return: docstring'
+    name: high
+    type: float
+  - desc: 'from :return: docstring'
+    name: low
+    type: float
+  - desc: 'from :return: docstring'
+    name: volume
+    type: float
+  - desc: 'from :return: docstring'
+    name: amount
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_hist_sw
+    input_mapping:
+      period: period
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      代码: code
+      开盘: open
+      成交量: volume
+      成交额: amount
+      收盘: close
+      日期: date
+      最低: low
+      最高: high
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_hog_spot_price:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '行情宝-生猪市场价格指数
+
+    https://hqb.nxin.com/pigindex/index.shtml
+
+    :return: 生猪市场价格指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_hog_spot_price
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 指数 field
+    name: 指数
+    type: float
+  - desc: 4个月均线 field
+    name: 4个月均线
+    type: datetime
+  - desc: 6个月均线 field
+    name: 6个月均线
+    type: datetime
+  - desc: 12个月均线 field
+    name: 12个月均线
+    type: datetime
+  - desc: 预售均价 field
+    name: 预售均价
+    type: float
+  - desc: 成交均价 field
+    name: 成交均价
+    type: float
+  - desc: 成交均重 field
+    name: 成交均重
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_hog_spot_price
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_ii_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-产业指数
+
+    https://yun.ccxe.com.cn/indices/dei
+
+    :return: 产业指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_ii_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 产业指数 field
+    name: 产业指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_ii_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_inner_quote_sugar_msweet:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '沐甜科技数据中心-配额内进口糖估算指数
+
+    https://www.msweet.com.cn/mtkj/sjzx13/index.html
+
+    :return: 配额内进口糖估算指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_inner_quote_sugar_msweet
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 利润空间 field
+    name: 利润空间
+    type: str
+  - desc: 泰国糖 field
+    name: 泰国糖
+    type: str
+  - desc: 泰国MA5 field
+    name: 泰国MA5
+    type: str
+  - desc: 巴西MA5 field
+    name: 巴西MA5
+    type: str
+  - desc: 利润MA5 field
+    name: 利润MA5
+    type: str
+  - desc: 巴西MA10 field
+    name: 巴西MA10
+    type: str
+  - desc: 巴西糖 field
+    name: 巴西糖
+    type: str
+  - desc: 柳州现货价 field
+    name: 柳州现货价
+    type: float
+  - desc: 广州现货价 field
+    name: 广州现货价
+    type: float
+  - desc: 泰国MA10 field
+    name: 泰国MA10
+    type: str
+  - desc: 利润MA30 field
+    name: 利润MA30
+    type: str
+  - desc: 利润MA10 field
+    name: 利润MA10
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_inner_quote_sugar_msweet
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_kq_fashion:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '柯桥时尚指数
+
+    http://ss.kqindex.cn:9559/rinder_web_kqsszs/index/index_page.do
+
+    :param symbol: choice of {''柯桥时尚指数'', ''时尚创意指数'', ''时尚设计人才数'', ''新花型推出数'', ''创意产品成交数'',
+    ''创意企业数量'', ''时尚活跃度指数'', ''电商运行数'', ''时尚平台拓展数'', ''新产品销售额占比''...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_kq_fashion
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: 指数
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_kq_fashion
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_kq_fz:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中国柯桥纺织指数
+
+    http://www.kqindex.cn/flzs/jiage
+
+    :param symbol: choice of {''价格指数'', ''景气指数'', ''外贸指数''}
+
+    :type symbol: str
+
+    :return: 中国柯桥纺织指数
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_kq_fz
+  output:
+  - desc: 期次 field
+    name: 期次
+    type: str
+  - desc: 指数 field
+    name: 指数
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 总景气指数 field
+    name: 总景气指数
+    type: float
+  - desc: 流通景气指数 field
+    name: 流通景气指数
+    type: float
+  - desc: 生产景气指数 field
+    name: 生产景气指数
+    type: float
+  - desc: 价格指数 field
+    name: 价格指数
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: 景气指数 field
+    name: 景气指数
+    type: float
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_kq_fz
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      价格指数-涨跌幅: pct_change
+      景气指数-涨跌幅: pct_change
+      涨跌幅: pct_change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_li_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-劳动力投入指数
+
+    https://yun.ccxe.com.cn/indices/nei
+
+    :return: 劳动力投入指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_li_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 劳动力投入指数 field
+    name: 劳动力投入指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_li_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_min_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-指数发布-指数详情-指数分时数据
+
+    https://www.swsresearch.com/institute_sw/allIndex/releasedIndex/releasedetail?code=801001&name=%E7%94%B3%E4%B8%8750
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :return: 指数分时数据
+
+    :rtype...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_min_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: int
+  - desc: 'from :return: docstring'
+    name: name
+    type: str
+  - desc: 'from :return: docstring'
+    name: 价格
+    type: float
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: time
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_min_sw
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      代码: code
+      名称: name
+      日期: date
+      时间: time
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_neaw_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-新经济行业入职平均工资水平
+
+    https://yun.ccxe.com.cn/indices/nei
+
+    :return: 新经济行业入职平均工资水平
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_neaw_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: industry field
+    name: industry
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_neaw_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      新经济行业入职平均工资水平: industry
+      日期: date
+    param_transforms: {}
+index_neei_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-新动能指数
+
+    https://yun.ccxe.com.cn/indices/neei
+
+    :return: 新动能指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_neei_cx
+  output:
+  - desc: 变化幅度 field
+    name: 变化幅度
+    type: str
+  - desc: 新动能指数 field
+    name: 新动能指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_neei_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_nei_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-中国新经济指数
+
+    https://yun.ccxe.com.cn/indices/nei
+
+    :return: 中国新经济指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_nei_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 中国新经济指数 field
+    name: 中国新经济指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_nei_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_news_sentiment_scope:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '数库-A股新闻情绪指数
+
+    https://www.chinascope.com/reasearch.html
+
+    :return: A股新闻情绪指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_news_sentiment_scope
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: date
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: market
+    type: float
+  - desc: 'from :return: docstring'
+    name: 沪深300指数
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_news_sentiment_scope
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      市场情绪指数: market
+      日期: date
+    param_transforms: {}
+index_option_1000index_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中证1000股指 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?Index1000
+
+    :return: 中证1000股指 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_1000index_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_1000index_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_1000index_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中证1000股指 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?Index1000
+
+    :return: 中证1000股指 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_1000index_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_1000index_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_100etf_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '深证100ETF 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?100ETF
+
+    :return: 深证100ETF 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_100etf_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_100etf_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_100etf_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '深证100ETF 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?100ETF
+
+    :return: 深证100ETF 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_100etf_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_100etf_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_300etf_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '300 ETF 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?300ETF
+
+    :return: 300 ETF 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_300etf_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_300etf_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_300etf_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '300 ETF 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?300ETF
+
+    :return: 300 ETF 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_300etf_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_300etf_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_300index_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中证300股指 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?Index
+
+    :return: 中证300股指 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_300index_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_300index_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_300index_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中证300股指 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?Index
+
+    :return: 中证300股指 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_300index_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_300index_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_500etf_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '500 ETF 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?500ETF
+
+    :return: 500 ETF 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_500etf_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_500etf_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_500etf_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '500 ETF 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?500ETF
+
+    :return: 500 ETF 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_500etf_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_500etf_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_50etf_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '50 ETF 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?50ETF
+
+    :return: 50 ETF 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_50etf_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_50etf_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_50etf_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '50ETF 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?50ETF
+
+    :return: 50ETF 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_50etf_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_50etf_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_50index_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '上证50股指 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?50index
+
+    :return: 上证50股指 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_50index_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_50index_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_50index_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '上证50股指 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?50index
+
+    :return: 上证50股指 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_50index_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_50index_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_cyb_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '创业板 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?CYB
+
+    :return: 创业板 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_cyb_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_cyb_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_cyb_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '创业板 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?CYB
+
+    :return: 创业板 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_cyb_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_cyb_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_option_kcb_min_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '科创板 期权波动率指数 QVIX-分时
+
+    http://1.optbbs.com/s/vix.shtml?KCB
+
+    :return: 科创板 期权波动率指数 QVIX-分时
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_kcb_min_qvix
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: qvix field
+    name: qvix
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_kcb_min_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      qvix: qvix
+      time: time
+    param_transforms: {}
+index_option_kcb_qvix:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '科创板 期权波动率指数 QVIX
+
+    http://1.optbbs.com/s/vix.shtml?KCB
+
+    :return: 科创板 期权波动率指数 QVIX
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_option_kcb_qvix
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_option_kcb_qvix
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+    param_transforms: {}
+index_outer_quote_sugar_msweet:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '沐甜科技数据中心-配额外进口糖估算指数
+
+    https://www.msweet.com.cn/mtkj/sjzx13/index.html
+
+    :return: 配额内进口糖估算指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_outer_quote_sugar_msweet
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 巴西糖进口成本 field
+    name: 巴西糖进口成本
+    type: float
+  - desc: 泰国糖进口利润空间 field
+    name: 泰国糖进口利润空间
+    type: str
+  - desc: 巴西糖进口利润空间 field
+    name: 巴西糖进口利润空间
+    type: str
+  - desc: 泰国糖进口成本 field
+    name: 泰国糖进口成本
+    type: float
+  - desc: day field
+    name: day
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_outer_quote_sugar_msweet
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+      日照现货价: day
+    param_transforms: {}
+index_pmi_com_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-财新中国 PMI-综合 PMI
+
+    https://yun.ccxe.com.cn/indices/pmi
+
+    :return: 财新中国 PMI-综合 PMI
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_pmi_com_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 综合PMI field
+    name: 综合PMI
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_pmi_com_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_pmi_man_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-财新中国 PMI-制造业 PMI
+
+    https://yun.ccxe.com.cn/indices/pmi
+
+    :return: 财新中国 PMI-制造业 PMI
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_pmi_man_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 制造业PMI field
+    name: 制造业PMI
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_pmi_man_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_pmi_ser_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-财新中国 PMI-服务业 PMI
+
+    https://yun.ccxe.com.cn/indices/pmi
+
+    :return: 财新中国 PMI-服务业 PMI
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_pmi_ser_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 服务业PMI field
+    name: 服务业PMI
+    type: str
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_pmi_ser_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_price_cflp:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中国公路物流运价指数
+
+    http://index.0256.cn/expx.htm
+
+    :param symbol: choice of {"周指数", "月指数", "季度指数", "年度指数"}
+
+    :type symbol: str
+
+    :return: 中国公路物流运价指数
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_price_cflp
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 定基指数 field
+    name: 定基指数
+    type: float
+  - desc: 环比指数 field
+    name: 环比指数
+    type: float
+  - desc: 同比指数 field
+    name: 同比指数
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_price_cflp
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_qli_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-高质量因子
+
+    https://yun.ccxe.com.cn/indices/qli
+
+    :return: 高质量因子
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_qli_cx
+  output:
+  - desc: 变化幅度 field
+    name: 变化幅度
+    type: str
+  - desc: 高质量因子指数 field
+    name: 高质量因子指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_qli_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_realtime_fund_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-申万指数-指数发布-基金指数-实时行情
+
+    https://www.swsresearch.com/institute_sw/allIndex/releasedIndex
+
+    :param symbol: choice of {"基础一级", "基础二级", "基础三级", "特色指数"}
+
+    :type symbol: str
+
+    :return: 基金指数-实时行情
+
+    :rtype: pandas...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_realtime_fund_sw
+  output:
+  - desc: 'from :return: docstring'
+    name: '['
+    type: str
+  - desc: 'from :return: docstring'
+    name: code
+    type: float
+  - desc: 'from :return: docstring'
+    name: name
+    type: float
+  - desc: 'from :return: docstring'
+    name: close
+    type: str
+  - desc: 'from :return: docstring'
+    name: day
+    type: datetime
+  - desc: 'from :return: docstring'
+    name: pct_change
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_realtime_fund_sw
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      年涨跌幅: pct_change
+      指数代码: code
+      指数名称: name
+      日涨跌幅: day
+      昨收盘: close
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_realtime_sw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '申万宏源研究-指数系列
+
+    https://www.swsresearch.com/institute_sw/allIndex/releasedIndex
+
+    :param symbol: choice of {"市场表征", "一级行业", "二级行业", "风格指数", "大类风格指数", "金创指数"}
+
+    :type symbol: str
+
+    :return: 指数系列实时行情数据
+
+    :rtype: pa...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_realtime_sw
+  output:
+  - desc: code field
+    name: code
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: close field
+    name: close
+    type: str
+  - desc: open field
+    name: open
+    type: str
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: last field
+    name: last
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_realtime_sw
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      今开盘: open
+      成交量: volume
+      成交额: amount
+      指数代码: code
+      指数名称: name
+      昨收盘: close
+      最低价: low
+      最新价: last
+      最高价: high
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_si_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-溢出指数
+
+    https://yun.ccxe.com.cn/indices/dei
+
+    :return: 溢出指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_si_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 溢出指数 field
+    name: 溢出指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_si_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_stock_cons:
+  category: index
+  description: '最新股票指数的成份股目录
+
+    https://vip.stock.finance.sina.com.cn/corp/view/vII_NewestComponent.php?page=1&indexid=399639
+
+    :param symbol: 指数代码, 可以通过 ak.index_stock_info() 函数获取
+
+    :type symbol: str
+
+    :return: 最新股票指数的成份股目录
+
+    ...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_stock_cons
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_stock_cons
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_stock_cons_csindex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中证指数网站-成份股目录
+
+    https://www.csindex.com.cn/zh-CN/indices/index-detail/000300
+
+    :param symbol: 指数代码, 可以通过 ak.index_stock_info() 函数获取
+
+    :type symbol: str
+
+    :return: 最新指数的成份股
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_stock_cons_csindex
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: code field
+    name: code
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: symbol field
+    name: symbol
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: exchange field
+    name: exchange
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_stock_cons_csindex
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      交易所: exchange
+      交易所英文名称: name
+      成分券代码: symbol
+      成分券名称: name
+      成分券英文名称: name
+      指数代码: code
+      指数名称: name
+      指数英文名称: name
+      日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_stock_cons_sina:
+  category: index
+  description: '新浪新版股票指数成份页面, 目前该接口可获取指数数量较少
+
+    https://vip.stock.finance.sina.com.cn/mkt/#zhishu_000040
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :return: 指数的成份股
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_stock_cons_sina
+  output: []
+  rate_limit_key: sina_vip
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_stock_cons_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_stock_cons_weight_csindex:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中证指数网站-样本权重
+
+    https://www.csindex.com.cn/zh-CN/indices/index-detail/000300
+
+    :param symbol: 指数代码, 可以通过 ak.index_stock_info() 接口获取
+
+    :type symbol: str
+
+    :return: 最新指数的成份股权重
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_stock_cons_weight_csindex
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: code field
+    name: code
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: name field
+    name: name
+    type: float
+  - desc: symbol field
+    name: symbol
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: exchange field
+    name: exchange
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 权重 field
+    name: 权重
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_stock_cons_weight_csindex
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      交易所: exchange
+      交易所英文名称: name
+      成分券代码: symbol
+      成分券名称: name
+      成分券英文名称: name
+      指数代码: code
+      指数名称: name
+      指数英文名称: name
+      日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_stock_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '聚宽-指数数据-指数列表
+
+    https://www.joinquant.com/data/dict/indexData
+
+    :return: 指数信息的数据框
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_stock_info
+  output:
+  - desc: index_code field
+    name: index_code
+    type: float
+  - desc: display_name field
+    name: display_name
+    type: str
+  - desc: publish_date field
+    name: publish_date
+    type: datetime
+  - desc: '- field'
+    name: '-'
+    type: str
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_stock_info
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      '-': '-'
+      display_name: display_name
+      index_code: index_code
+      publish_date: publish_date
+    param_transforms: {}
+index_sugar_msweet:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '沐甜科技数据中心-中国食糖指数
+
+    https://www.msweet.com.cn/mtkj/sjzx13/index.html
+
+    :return: 中国食糖指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_sugar_msweet
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 综合价格 field
+    name: 综合价格
+    type: float
+  - desc: 原糖价格 field
+    name: 原糖价格
+    type: float
+  - desc: 现货价格 field
+    name: 现货价格
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_sugar_msweet
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_ti_cx:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '财新数据-指数报告-科技投入指数
+
+    https://yun.ccxe.com.cn/indices/nei
+
+    :return: 科技投入指数
+
+    :rtype: pandas.DataFrame'
+  input: []
+  name: index_ti_cx
+  output:
+  - desc: 变化值 field
+    name: 变化值
+    type: float
+  - desc: 科技投入指数 field
+    name: 科技投入指数
+    type: float
+  - desc: date field
+    name: date
+    type: datetime
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_ti_cx
+    input_mapping: {}
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms: {}
+index_us_stock_sina:
+  category: index
+  description: '新浪财经-美股指数行情
+
+    https://stock.finance.sina.com.cn/usstock/quotes/.IXIC.html
+
+    :param symbol: choice of {".IXIC", ".DJI", ".INX", ".NDX"}
+
+    :type symbol: str
+
+    :return: 美股指数行情
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_us_stock_sina
+  output: []
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_us_stock_sina
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping: {}
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_volume_cflp:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '中国公路物流运量指数
+
+    http://index.0256.cn/expx.htm
+
+    :param symbol: choice of {"月指数", "季度指数", "年度指数"}
+
+    :type symbol: str
+
+    :return: 中国公路物流运量指数
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_volume_cflp
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: 定基指数 field
+    name: 定基指数
+    type: float
+  - desc: 环比指数 field
+    name: 环比指数
+    type: float
+  - desc: 同比指数 field
+    name: 同比指数
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_volume_cflp
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      日期: date
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_yw:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '义乌小商品指数
+
+    https://www.ywindex.com/Home/Product/index/
+
+    :param symbol: choice of {"周价格指数", "月价格指数", "月景气指数"}
+
+    :type symbol: str
+
+    :return: 指数结果
+
+    :rtype: pandas.DataFrame'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  name: index_yw
+  output:
+  - desc: 期数 field
+    name: 期数
+    type: str
+  - desc: 景气指数 field
+    name: 景气指数
+    type: float
+  - desc: size field
+    name: size
+    type: float
+  - desc: 效益指数 field
+    name: 效益指数
+    type: float
+  - desc: market field
+    name: market
+    type: float
+  rate_limit_key: default
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_yw
+    input_mapping:
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      市场信心指数: market
+      规模指数: size
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_zh_a_hist:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '东方财富网-中国股票指数-行情数据
+
+    https://quote.eastmoney.com/zz/2.000859.html
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :param period: choice of {''daily'', ''weekly'', ''monthly''}
+
+    :type period: str
+
+    :param start_date: 开始日期
+
+    :...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: index_zh_a_hist
+  output:
+  - desc: date field
+    name: date
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_zh_a_hist
+    input_mapping:
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      收盘: close
+      日期: date
+      最低: low
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz
+index_zh_a_hist_min_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
+  category: index
+  description: '东方财富网-指数数据-每日分时行情
+
+    https://quote.eastmoney.com/center/hszs.html
+
+    :param symbol: 指数代码
+
+    :type symbol: str
+
+    :param period: choice of {''1'', ''5'', ''15'', ''30'', ''60''}
+
+    :type period: str
+
+    :param start_date: 开始日期
+
+    :ty...'
+  input:
+  - desc: symbol parameter
+    name: symbol
+    required: true
+    type: str
+  - desc: period parameter
+    name: period
+    required: true
+    type: str
+  - desc: start_date parameter
+    name: start_date
+    required: true
+    type: str
+  - desc: end_date parameter
+    name: end_date
+    required: true
+    type: str
+  name: index_zh_a_hist_min_em
+  output:
+  - desc: time field
+    name: time
+    type: datetime
+  - desc: open field
+    name: open
+    type: str
+  - desc: close field
+    name: close
+    type: str
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: amount field
+    name: amount
+    type: float
+  - desc: 均价 field
+    name: 均价
+    type: float
+  - desc: amplitude field
+    name: amplitude
+    type: str
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  rate_limit_key: em_push2his
+  sources:
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
+    enabled: true
+    func: index_zh_a_hist_min_em
+    input_mapping:
+      end_date: end_date
+      period: period
+      start_date: start_date
+      symbol: symbol
+    name: akshare_em
+    output_mapping:
+      开盘: open
+      成交量: volume
+      成交额: amount
+      振幅: amplitude
+      换手率: turnover
+      收盘: close
+      时间: time
+      最低: low
+      最高: high
+      涨跌幅: pct_change
+      涨跌额: change
+    param_transforms:
+      symbol: prepend_prefix:sh/sz

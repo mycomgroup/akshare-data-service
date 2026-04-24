@@ -10,7 +10,6 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import pandas as pd
 
-import akshare as ak
 from akshare_data import get_service
 
 
@@ -76,7 +75,7 @@ def example_basic() -> None:
             import akshare as ak
             df = ak.stock_goodwill_loss_em(date="20240630")
             if df is not None and not df.empty:
-                _print_df(df, f"成功: date=20240630 (akshare fallback)")
+                _print_df(df, "成功: date=20240630 (akshare fallback)")
                 return
         except Exception:
             pass
