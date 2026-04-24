@@ -241,8 +241,9 @@ class LixingerClient:
         end_date: str,
         candlestick_type: str = "normal",
     ) -> pd.DataFrame:
+        # cn/index/candlestick takes the singular stockCode parameter.
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
             "type": candlestick_type,
@@ -331,7 +332,7 @@ class LixingerClient:
         return self._to_df(self.query_api("cn/company", params))
 
     def get_company_profile(self, symbol: str) -> pd.DataFrame:
-        params = {"stockCodes": [symbol]}
+        params = {"stockCode": symbol}
         return self._to_df(self.query_api("cn/company/profile", params))
 
     def get_company_candlestick(
@@ -342,7 +343,7 @@ class LixingerClient:
         candlestick_type: str = "normal",
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
             "type": candlestick_type,
@@ -353,7 +354,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -363,7 +364,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -373,7 +374,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -383,25 +384,25 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
         return self._to_df(self.query_api("cn/company/split", params))
 
     def get_company_indices(self, symbol: str) -> pd.DataFrame:
-        params = {"stockCodes": [symbol]}
+        params = {"stockCode": symbol}
         return self._to_df(self.query_api("cn/company/indices", params))
 
     def get_company_industries(self, symbol: str) -> pd.DataFrame:
-        params = {"stockCodes": [symbol]}
+        params = {"stockCode": symbol}
         return self._to_df(self.query_api("cn/company/industries", params))
 
     def get_company_equity_change(
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -425,39 +426,60 @@ class LixingerClient:
             self.query_api("cn/company/fundamental/non_financial", params)
         )
 
+    # Default metricsList used by fs/* endpoints when the caller does not
+    # provide a specific metric set. Lixinger requires a non-empty list.
+    _DEFAULT_FS_METRICS = [
+        "bs.ta",  # total assets
+        "bs.tl",  # total liabilities
+        "bs.se",  # shareholders' equity
+        "is.or",  # operating revenue
+        "is.np",  # net profit
+        "cf.nccfofa",  # net cash flow from operating activities
+    ]
+
     def get_company_fs_non_financial(
-        self, symbol: str, start_date: str, end_date: str
+        self,
+        symbol: str,
+        start_date: str,
+        end_date: str,
+        metrics: list[str] | None = None,
     ) -> pd.DataFrame:
         params = {
             "stockCodes": [symbol],
             "startDate": start_date,
             "endDate": end_date,
+            "metricsList": metrics or self._DEFAULT_FS_METRICS,
         }
         return self._to_df(self.query_api("cn/company/fs/non_financial", params))
 
     def get_company_fs_hybrid(
-        self, symbol: str, start_date: str, end_date: str
+        self,
+        symbol: str,
+        start_date: str,
+        end_date: str,
+        metrics: list[str] | None = None,
     ) -> pd.DataFrame:
         params = {
             "stockCodes": [symbol],
             "startDate": start_date,
             "endDate": end_date,
+            "metricsList": metrics or self._DEFAULT_FS_METRICS,
         }
         return self._to_df(self.query_api("cn/company/fs/hybrid", params))
 
     def get_company_customers(self, symbol: str) -> pd.DataFrame:
-        params = {"stockCodes": [symbol]}
+        params = {"stockCode": symbol}
         return self._to_df(self.query_api("cn/company/customers", params))
 
     def get_company_suppliers(self, symbol: str) -> pd.DataFrame:
-        params = {"stockCodes": [symbol]}
+        params = {"stockCode": symbol}
         return self._to_df(self.query_api("cn/company/suppliers", params))
 
     def get_company_operating_data(
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -489,7 +511,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -499,7 +521,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -509,7 +531,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -521,7 +543,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -531,7 +553,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -543,7 +565,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -553,7 +575,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -563,7 +585,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -573,7 +595,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -585,7 +607,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -599,7 +621,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -609,7 +631,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -619,7 +641,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -629,7 +651,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -639,7 +661,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -693,7 +715,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -703,7 +725,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -713,7 +735,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -723,7 +745,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -733,7 +755,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -743,7 +765,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -762,7 +784,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -772,7 +794,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -782,7 +804,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -889,14 +911,14 @@ class LixingerClient:
         return self._to_df(self.query_api("hk/company", {}))
 
     def get_hk_company_profile(self, symbol: str) -> pd.DataFrame:
-        params = {"stockCodes": [symbol]}
+        params = {"stockCode": symbol}
         return self._to_df(self.query_api("hk/company/profile", params))
 
     def get_hk_company_candlestick(
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
@@ -906,7 +928,7 @@ class LixingerClient:
         self, symbol: str, start_date: str, end_date: str
     ) -> pd.DataFrame:
         params = {
-            "stockCodes": [symbol],
+            "stockCode": symbol,
             "startDate": start_date,
             "endDate": end_date,
         }
