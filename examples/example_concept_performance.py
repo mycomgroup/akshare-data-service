@@ -1,5 +1,8 @@
 """get_concept_performance 示例：symbol/date 回退 + 空数据重试。"""
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import time
 import pandas as pd
 from akshare_data import get_service

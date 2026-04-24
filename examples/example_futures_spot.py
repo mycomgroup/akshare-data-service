@@ -17,16 +17,22 @@ get_futures_spot() 接口示例
 注意: 实时行情数据为快照数据，每次调用获取最新市场状态。
 """
 
+import sys
 import logging
 import warnings
+
+sys.warnoptions = ["ignore::DeprecationWarning"]
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.simplefilter("ignore", DeprecationWarning)
+
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore", DeprecationWarning)
+    import pandas as pd
+    from akshare_data import get_service
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
-
-import pandas as pd
-
-from akshare_data import get_service
 
 
 _FUTURES_SYMBOLS = [

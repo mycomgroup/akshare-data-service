@@ -17,6 +17,9 @@
 注意: 财务指标通常按报告期计算，不同数据源提供的指标可能略有差异。
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
 from akshare_data import get_service
 from _example_utils import first_non_empty_by_symbol

@@ -1,41 +1,50 @@
-"""get_hot_rank 接口示例（带重试与降级）。"""
+"""get_hot_rank 接口示例（带重试与降级）。
+
+演示如何使用 akshare_data.get_hot_rank() 获取港股热度排行数据。
+
+返回字段包括: 排名、股票代码、股票名称、最新价、涨跌幅等。
+
+注意: 该接口返回港股实时热度排行数据，不支持日期参数。
+"""
 
 import logging
-import time
 import warnings
-from typing import Callable, Optional
-
-import pandas as pd
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
+import pandas as pd
+
 from akshare_data import get_service
+from _example_utils import fetch_with_retry
 
 
-def _fetch_with_retry(fetcher: Callable[[], pd.DataFrame], desc: str) -> Optional[pd.DataFrame]:
-    last_error: Optional[Exception] = None
-    for i in range(3):
+def _mock_hot_rank() -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "rank": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            "symbol": ["00700", "00941", "09988", "03690", "01299", "01810", "02318", "02628", "00388", "00005"],
+            "name": ["腾讯控股", "中国移动", "阿里巴巴-SW", "美团-W", "友邦保险", "小米集团-W", "中国平安", "中国人寿", "香港交易所", "汇丰控股"],
+            "price": [380.0, 72.5, 85.3, 142.6, 68.9, 18.5, 42.3, 15.8, 285.0, 65.2],
+            "pct_change": [2.5, -0.3, 1.8, 0.9, -1.2, 3.2, -0.8, 1.5, 0.6, -0.5],
+        }
+    )
+
+
+def _get_hot_rank_df(service) -> pd.DataFrame:
+    methods = [
+        lambda: service.get_hot_rank(),
+        lambda: service.akshare.get_hot_rank(),
+    ]
+    for fn in methods:
         try:
-            df = fetcher()
+            df = fetch_with_retry(fn, retries=2)
             if df is not None and not df.empty:
                 return df
-            print(f"{desc}: 第 {i + 1}/3 次返回空结果")
-        except Exception as e:  # noqa: BLE001
-            last_error = e
-            print(f"{desc}: 第 {i + 1}/3 次失败 -> {e}")
-        time.sleep(1)
-    if last_error is not None:
-        print(f"{desc}: 重试后仍失败，最终异常: {last_error}")
-    return None
-
-
-def _get_hot_rank_df(service) -> Optional[pd.DataFrame]:
-    # 首选 facade 方法，失败后降级到 akshare 直调
-    df = _fetch_with_retry(lambda: service.get_hot_rank(), "service.get_hot_rank")
-    if df is not None:
-        return df
-    return _fetch_with_retry(lambda: service.akshare.get_hot_rank(), "service.akshare.get_hot_rank")
+        except Exception:
+            continue
+    print("[港股热度排行接口不可用，使用演示数据]")
+    return _mock_hot_rank()
 
 
 def main() -> None:
@@ -45,9 +54,6 @@ def main() -> None:
 
     service = get_service()
     df = _get_hot_rank_df(service)
-    if df is None:
-        print("最终无可用数据，可能是数据源暂时不可用。")
-        return
 
     print(f"数据形状: {df.shape}")
     print(f"字段列表: {list(df.columns)}")

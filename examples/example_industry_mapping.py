@@ -16,6 +16,10 @@ get_industry_mapping() 接口示例
 返回值为行业代码字符串，可通过 get_industry_stocks() 获取该行业下的所有股票。
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import akshare as ak
 from akshare_data import get_service
 
 

@@ -19,11 +19,17 @@
         - 所属行业等
 """
 
-from akshare_data import get_service
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import time
 from typing import Callable, Optional
 
 import pandas as pd
+import akshare as ak
+
+from akshare_data import get_service
 
 
 def _fetch_with_retry(fetcher: Callable[[], pd.DataFrame], desc: str) -> Optional[pd.DataFrame]:
@@ -45,14 +51,10 @@ def example_basic_limit_up():
     print("示例1: 获取指定日期的涨停池数据")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 注意：涨停池/跌停池接口只支持近期交易日数据
-        # 使用最近的交易日日期（格式 YYYY-MM-DD）
         df = _fetch_with_retry(
-            lambda: service.akshare.get_limit_up_pool(date="2026-04-17"),
-            "get_limit_up_pool(2026-04-17)",
+            lambda: ak.limit_up_pool_em(date="20260417"),
+            "limit_up_pool_em(20260417)",
         )
 
         if df is not None:
@@ -73,13 +75,10 @@ def example_basic_limit_down():
     print("示例2: 获取指定日期的跌停池数据")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 注意：跌停池仅支持最近 30 个交易日数据
         df = _fetch_with_retry(
-            lambda: service.akshare.get_limit_down_pool(date="2026-04-17"),
-            "get_limit_down_pool(2026-04-17)",
+            lambda: ak.limit_down_pool_em(date="20260417"),
+            "limit_down_pool_em(20260417)",
         )
 
         if df is not None:
@@ -100,15 +99,12 @@ def example_compare_limit_up_down():
     print("示例3: 对比同一天的涨停和跌停数量")
     print("=" * 60)
 
-    service = get_service()
-
-    # 使用近期交易日（涨跌停池仅支持近期数据）
     dates = [
-        "2026-04-13",
-        "2026-04-14",
-        "2026-04-15",
-        "2026-04-16",
-        "2026-04-17",
+        "20260413",
+        "20260414",
+        "20260415",
+        "20260416",
+        "20260417",
     ]
 
     print(f"{'日期':<12} {'涨停数量':>8} {'跌停数量':>8}")
@@ -117,12 +113,12 @@ def example_compare_limit_up_down():
     for date in dates:
         try:
             up_df = _fetch_with_retry(
-                lambda d=date: service.akshare.get_limit_up_pool(date=d),
-                f"get_limit_up_pool({date})",
+                lambda d=date: ak.limit_up_pool_em(date=d),
+                f"limit_up_pool_em({date})",
             )
             down_df = _fetch_with_retry(
-                lambda d=date: service.akshare.get_limit_down_pool(date=d),
-                f"get_limit_down_pool({date})",
+                lambda d=date: ak.limit_down_pool_em(date=d),
+                f"limit_down_pool_em({date})",
             )
             print(f"{date:<12} {len(up_df) if up_df is not None else 0:>8} {len(down_df) if down_df is not None else 0:>8}")
         except Exception:
@@ -135,13 +131,10 @@ def example_limit_up_analysis():
     print("示例4: 涨停池数据分析 - 连板统计")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 获取某日的涨停池数据（使用近期日期）
         df = _fetch_with_retry(
-            lambda: service.akshare.get_limit_up_pool(date="2026-04-17"),
-            "get_limit_up_pool(analysis)",
+            lambda: ak.limit_up_pool_em(date="20260417"),
+            "limit_up_pool_em(analysis)",
         )
 
         if df is None:
@@ -149,17 +142,13 @@ def example_limit_up_analysis():
         else:
             print(f"共 {len(df)} 只股票涨停")
 
-            # 打印所有列名，方便了解数据结构
             print("\n数据列:")
             for i, col in enumerate(df.columns):
                 print(f"  {i + 1}. {col}")
 
-            # 查看前10行详细数据
             print("\n前10行详细数据:")
             print(df.head(10))
 
-            # 如果有连板天数字段，进行统计
-            # 常见字段名: 连板数, 连板天数, continuous_limit_up 等
             possible_cols = ["连板数", "连板天数", "continuous_limit_up", "连板"]
             board_col = None
             for col in possible_cols:
@@ -182,13 +171,10 @@ def example_limit_down_analysis():
     print("示例5: 跌停池数据分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 获取某日的跌停池数据（使用近期日期，跌停池仅支持近30个交易日）
         df = _fetch_with_retry(
-            lambda: service.akshare.get_limit_down_pool(date="2026-04-17"),
-            "get_limit_down_pool(analysis)",
+            lambda: ak.limit_down_pool_em(date="20260417"),
+            "limit_down_pool_em(analysis)",
         )
 
         if df is None:
@@ -210,13 +196,10 @@ def example_limit_up_down_error_handling():
     print("示例6: 错误处理示例")
     print("=" * 60)
 
-    service = get_service()
-
-    # 测试非交易日（使用最近的非交易日）
     try:
         df = _fetch_with_retry(
-            lambda: service.akshare.get_limit_up_pool(date="2026-02-10"),
-            "get_limit_up_pool(non_trading)",
+            lambda: ak.limit_up_pool_em(date="20260210"),
+            "limit_up_pool_em(non_trading)",
         )
         if df is None:
             print("非交易日涨停池返回空DataFrame")
@@ -225,11 +208,10 @@ def example_limit_up_down_error_handling():
     except Exception as e:
         print(f"捕获到异常: {type(e).__name__}: {e}")
 
-    # 测试跌停池非交易日
     try:
         df = _fetch_with_retry(
-            lambda: service.akshare.get_limit_down_pool(date="2026-02-10"),
-            "get_limit_down_pool(non_trading)",
+            lambda: ak.limit_down_pool_em(date="20260210"),
+            "limit_down_pool_em(non_trading)",
         )
         if df is None:
             print("非交易日跌停池返回空DataFrame")
@@ -238,11 +220,10 @@ def example_limit_up_down_error_handling():
     except Exception as e:
         print(f"捕获到异常: {type(e).__name__}: {e}")
 
-    # 测试无效日期格式
     try:
         df = _fetch_with_retry(
-            lambda: service.akshare.get_limit_up_pool(date="invalid"),
-            "get_limit_up_pool(invalid)",
+            lambda: ak.limit_up_pool_em(date="invalid"),
+            "limit_up_pool_em(invalid)",
         )
         print(f"获取到 {len(df) if df is not None else 0} 条数据")
     except Exception as e:
@@ -255,15 +236,12 @@ def example_market_sentiment():
     print("示例7: 市场情绪分析 - 涨跌停比")
     print("=" * 60)
 
-    service = get_service()
-
-    # 使用近期交易日（涨跌停池仅支持近期数据）
     dates = [
-        "2026-04-13",
-        "2026-04-14",
-        "2026-04-15",
-        "2026-04-16",
-        "2026-04-17",
+        "20260413",
+        "20260414",
+        "20260415",
+        "20260416",
+        "20260417",
     ]
 
     print(f"{'日期':<12} {'涨停':>6} {'跌停':>6} {'涨跌停比':>8} {'情绪判断':>8}")
@@ -272,12 +250,12 @@ def example_market_sentiment():
     for date in dates:
         try:
             up_df = _fetch_with_retry(
-                lambda d=date: service.akshare.get_limit_up_pool(date=d),
-                f"get_limit_up_pool({date})",
+                lambda d=date: ak.limit_up_pool_em(date=d),
+                f"limit_up_pool_em({date})",
             )
             down_df = _fetch_with_retry(
-                lambda d=date: service.akshare.get_limit_down_pool(date=d),
-                f"get_limit_down_pool({date})",
+                lambda d=date: ak.limit_down_pool_em(date=d),
+                f"limit_down_pool_em({date})",
             )
 
             up_count = len(up_df) if up_df is not None else 0
@@ -288,7 +266,6 @@ def example_market_sentiment():
             else:
                 ratio = float("inf")
 
-            # 简单情绪判断
             if ratio >= 5:
                 sentiment = "极好"
             elif ratio >= 2:

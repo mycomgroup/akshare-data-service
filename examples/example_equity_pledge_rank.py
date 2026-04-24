@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import time
+import warnings
 from typing import Callable
 
 import pandas as pd
 
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -53,15 +57,28 @@ def _print_df(df: pd.DataFrame, title: str, rows: int = 10) -> None:
 # ============================================================
 # 示例 4: 排名数据分析
 # ============================================================
+def _get_equity_pledge_rank_with_fallback(date, top_n: int = 20) -> pd.DataFrame:
+    service = get_service()
+    df = service.get_equity_pledge_rank(date=date, top_n=top_n)
+    if df is not None and not df.empty:
+        return df
+    try:
+        df = ak.stock_equity_pledge_rank(date=date, top=top_n)
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
+    return pd.DataFrame()
+
+
 def example_basic() -> None:
     print("=" * 60)
     print("股权质押排名示例（参数修复：date/top_n）")
     print("=" * 60)
-    service = get_service()
     date_values = [None] + _date_candidates("2024-06-30")
     for date in date_values:
         desc = f"date={date}, top_n=20"
-        df = _fetch_with_retry(lambda: service.get_equity_pledge_rank(date=date, top_n=20), desc)
+        df = _fetch_with_retry(lambda: _get_equity_pledge_rank_with_fallback(date, 20), desc)
         if df is not None and not df.empty:
             _print_df(df, f"成功: {desc}")
             return

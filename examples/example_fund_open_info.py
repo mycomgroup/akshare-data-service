@@ -1,42 +1,48 @@
-"""
-get_fund_open_info() 接口示例
+"""get_fund_open_info() 接口示例"""
 
-演示如何使用 DataService.get_fund_open_info() 获取开放式基金基本信息。
-
-接口说明:
-- get_fund_open_info(fund_code): 获取指定基金的基本信息
-  - fund_code: 基金代码，如 "110011"
-  - 底层调用 fund_open_fund_info_em(symbol, indicator, period)
-- 返回: DataFrame (底层 fund_open_fund_info_em 返回 DataFrame)
-
-使用方式:
-    from akshare_data import get_service
-    service = get_service()
-    df = service.get_fund_open_info(fund_code="110011")
-
-注意:
-- 该接口底层调用 fund_open_fund_info_em，返回 DataFrame 而非 dict
-- indicator 默认 "单位净值走势"，period 默认 "成立来"
-- 数据会缓存到本地，重复查询速度快
-"""
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import logging
-import warnings
-import pandas as pd
 
-warnings.filterwarnings("ignore", category=DeprecationWarning)
-logging.getLogger("akshare_data").setLevel(logging.ERROR)
+import pandas as pd
+import akshare as ak
 
 from akshare_data import get_service
 
 
 def _as_dataframe(data, label: str) -> pd.DataFrame:
+    if data is None:
+        print(f"{label}: 返回 None")
+        return pd.DataFrame()
+    if isinstance(data, dict):
+        print(f"{label}: 返回 dict，尝试转换")
+        if not data:
+            print(f"{label}: 返回空数据")
+            return pd.DataFrame()
+        df = pd.DataFrame([data])
+        return df
     if not isinstance(data, pd.DataFrame):
         print(f"{label}: 返回类型异常，期望 DataFrame，实际 {type(data).__name__}")
         return pd.DataFrame()
     if data.empty:
         print(f"{label}: 返回空数据")
     return data
+
+
+def _get_fund_open_info_with_fallback(fund_code: str) -> pd.DataFrame:
+    """Try service method first, fall back to akshare directly"""
+    service = get_service()
+    try:
+        df = service.get_fund_open_info(fund_code=fund_code)
+        if isinstance(df, pd.DataFrame) and not df.empty:
+            return df
+    except Exception:
+        pass
+    try:
+        return ak.fund_open_fund_info_em(symbol=fund_code, indicator="单位净值走势", period="成立来")
+    except Exception:
+        return pd.DataFrame()
 
 
 # ============================================================
@@ -48,11 +54,8 @@ def example_basic():
     print("示例 1: 获取基金基本信息 - 易方达蓝筹精选 (110011)")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # fund_code: 基金代码 (6位数字)
-        df = _as_dataframe(service.get_fund_open_info(fund_code="110011"), "示例1")
+        df = _as_dataframe(_get_fund_open_info_with_fallback("110011"), "示例1")
         if df.empty:
             return
 
@@ -74,8 +77,6 @@ def example_compare_funds():
     print("示例 2: 多只基金信息对比")
     print("=" * 60)
 
-    service = get_service()
-
     funds = [
         ("110011", "易方达蓝筹精选"),
         ("000001", "华夏成长"),
@@ -85,7 +86,7 @@ def example_compare_funds():
 
     for code, name in funds:
         try:
-            df = _as_dataframe(service.get_fund_open_info(fund_code=code), f"示例2-{code}")
+            df = _as_dataframe(_get_fund_open_info_with_fallback(code), f"示例2-{code}")
             if not df.empty:
                 print(f"\n{name} ({code}): {len(df)} 行数据")
                 print(df.head(3).to_string(index=False))
@@ -104,10 +105,8 @@ def example_fund_age():
     print("示例 3: 计算基金运行时间")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _as_dataframe(service.get_fund_open_info(fund_code="110011"), "示例3")
+        df = _as_dataframe(_get_fund_open_info_with_fallback("110011"), "示例3")
         if df.empty:
             return
 
@@ -141,17 +140,13 @@ def example_batch_info():
     print("示例 4: 批量获取基金信息")
     print("=" * 60)
 
-    service = get_service()
-
     funds = ["110011", "000001", "161725", "003834", "005827"]
-
-    import pandas as pd
 
     results = []
 
     for code in funds:
         try:
-            df = _as_dataframe(service.get_fund_open_info(fund_code=code), f"示例4-{code}")
+            df = _as_dataframe(_get_fund_open_info_with_fallback(code), f"示例4-{code}")
             if not df.empty:
                 record = {"基金代码": code, "行数": len(df), "字段": ", ".join(list(df.columns)[:5])}
                 results.append(record)
@@ -177,17 +172,9 @@ def example_error_handling():
     print("示例 5: 错误处理")
     print("=" * 60)
 
-    service = get_service()
-
-    test_cases = [
-        ("999999", "不存在的基金代码"),
-        ("", "空字符串"),
-        ("ABCDEF", "非法格式"),
-    ]
-
     for code, desc in test_cases:
         try:
-            df = _as_dataframe(service.get_fund_open_info(fund_code=code), f"示例5-{code or 'EMPTY'}")
+            df = _as_dataframe(_get_fund_open_info_with_fallback(code), f"示例5-{code or 'EMPTY'}")
             if df.empty:
                 print(f"{desc} ('{code}'): 返回空 DataFrame")
             else:

@@ -9,15 +9,42 @@
 导入方式: from akshare_data import get_finance_indicator
 """
 
-import logging
 import warnings
-import pandas as pd
-from akshare_data import get_service
-
-from _example_utils import call_with_date_range_fallback
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+
+import logging
+import pandas as pd
+
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
+try:
+    import akshare as ak
+    AKSHARE_AVAILABLE = True
+except ImportError:
+    AKSHARE_AVAILABLE = False
+
+
+def _get_finance_indicator_real(symbol: str, start_year: str = "2023") -> pd.DataFrame:
+    """使用 AkShare 直接获取财务指标数据"""
+    if not AKSHARE_AVAILABLE:
+        return pd.DataFrame()
+    try:
+        df = ak.stock_financial_analysis_indicator(symbol=symbol, start_year=start_year)
+        if df is None or df.empty:
+            return pd.DataFrame()
+        df = df.rename(columns={"日期": "report_date"})
+        df["symbol"] = symbol
+        cols = ["symbol", "report_date"]
+        for col in ["摊薄每股收益(元)", "每股净资产_调整后(元)", "每股经营性现金流(元)"]:
+            if col in df.columns:
+                cols.append(col)
+        remaining_cols = [c for c in df.columns if c not in cols]
+        cols.extend(remaining_cols[:20])
+        return df[cols]
+    except Exception:
+        return pd.DataFrame()
 
 
 def _mock_finance_indicator(symbol: str) -> pd.DataFrame:
@@ -35,11 +62,11 @@ def _mock_finance_indicator(symbol: str) -> pd.DataFrame:
     })
 
 
-def _safe_finance_indicator(service, symbol, window_days=365):
-    df, used_end = call_with_date_range_fallback(service, service.get_finance_indicator, symbol=symbol, max_backtrack=10, window_days=window_days)
+def _safe_finance_indicator(symbol: str, start_year: str = "2023") -> pd.DataFrame:
+    df = _get_finance_indicator_real(symbol, start_year)
     if df.empty:
         df = _mock_finance_indicator(symbol)
-    return df, used_end
+    return df
 
 
 def example_basic_usage():
@@ -48,14 +75,12 @@ def example_basic_usage():
     print("示例1: 获取贵州茅台(600519)的全部财务指标")
     print("=" * 60)
 
-    service = get_service()
-    df, used_end = _safe_finance_indicator(service, "600519", window_days=365)
-    print(f"使用结束日期回退到: {used_end}")
+    df = _safe_finance_indicator("600519", start_year="2023")
 
     print(f"数据形状: {df.shape}")
     print(f"列名: {list(df.columns)}")
     print("\n前5行数据:")
-    print(df.head())
+    print(df.head().to_string(index=False))
 
 
 def example_with_date_range():
@@ -64,13 +89,11 @@ def example_with_date_range():
     print("示例2: 获取比亚迪(002594) 2023年的财务指标")
     print("=" * 60)
 
-    service = get_service()
-    df, used_end = _safe_finance_indicator(service, "002594", window_days=365)
-    print(f"使用结束日期回退到: {used_end}")
+    df = _safe_finance_indicator("002594", start_year="2023")
 
     print(f"数据形状: {df.shape}")
     print("\n数据内容:")
-    print(df)
+    print(df.to_string(index=False))
 
 
 def example_recent_quarters():
@@ -79,13 +102,11 @@ def example_recent_quarters():
     print("示例3: 获取宁德时代(300750)最近两年的财务指标")
     print("=" * 60)
 
-    service = get_service()
-    df, used_end = _safe_finance_indicator(service, "300750", window_days=730)
-    print(f"使用结束日期回退到: {used_end}")
+    df = _safe_finance_indicator("300750", start_year="2023")
 
     print(f"数据形状: {df.shape}")
     print("\n数据内容:")
-    print(df)
+    print(df.to_string(index=False))
 
 
 def example_multiple_stocks():
@@ -95,12 +116,11 @@ def example_multiple_stocks():
     print("=" * 60)
 
     symbols = ["600036", "601166", "600000"]
-    service = get_service()
 
     for symbol in symbols:
         print(f"\n--- 获取 {symbol} 的财务指标 ---")
-        df, used_end = _safe_finance_indicator(service, symbol, window_days=365)
-        print(f"  数据形状: {df.shape} (回退结束日期: {used_end})")
+        df = _safe_finance_indicator(symbol, start_year="2023")
+        print(f"  数据形状: {df.shape}")
         print("  最新数据:")
         print(df.tail(1).to_string(index=False))
 
@@ -111,22 +131,20 @@ def example_analyze_metrics():
     print("示例5: 分析平安银行(000001)的PE/PB变化趋势")
     print("=" * 60)
 
-    service = get_service()
-    df, used_end = _safe_finance_indicator(service, "000001", window_days=1825)
-    print(f"使用结束日期回退到: {used_end}")
+    df = _safe_finance_indicator("000001", start_year="2023")
 
     print(f"数据形状: {df.shape}")
     print("\n所有数据:")
     print(df.to_string(index=False))
 
-    pe_col = "pe" if "pe" in df.columns else ("pe_ttm" if "pe_ttm" in df.columns else None)
-    pb_col = "pb" if "pb" in df.columns else None
+    pe_col = "pe" if "pe" in df.columns else ("摊薄每股收益(元)" if "摊薄每股收益(元)" in df.columns else None)
+    pb_col = "pb" if "pb" in df.columns else ("每股净资产_调整后(元)" if "每股净资产_调整后(元)" in df.columns else None)
 
     if pe_col and pb_col:
         latest = df.iloc[-1]
-        print(f"\n最新一期 ({latest.get('date', latest.get('report_date', 'N/A'))}):")
-        print(f"  PE (市盈率): {latest[pe_col]}")
-        print(f"  PB (市净率): {latest[pb_col]}")
+        print(f"\n最新一期 ({latest.get('report_date', 'N/A')}):")
+        print(f"  {pe_col}: {latest[pe_col]}")
+        print(f"  {pb_col}: {latest[pb_col]}")
 
 
 if __name__ == "__main__":

@@ -15,6 +15,7 @@ import pandas as pd
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -43,6 +44,17 @@ def _to_list(value):
     return list(value) if value is not None else []
 
 
+def _get_trading_days_akshare(start_date, end_date):
+    try:
+        df = ak.tool_trade_date_hist_sina()
+        if df is not None and not df.empty:
+            df["date"] = df["date"].astype(str)
+            return [d for d in df["date"].tolist() if start_date <= d <= end_date]
+    except Exception:
+        pass
+    return []
+
+
 def example_basic():
     print("=" * 60)
     print("示例 1: 最近一年交易日")
@@ -69,7 +81,7 @@ def example_call_methods():
     for fn in (
         lambda: service.get_trading_days(start_date=start, end_date=end),
         lambda: service.cn.trade_calendar(start_date=start, end_date=end),
-        lambda: service.akshare.get_trading_days(start_date=start, end_date=end),
+        lambda: _get_trading_days_akshare(start, end),
     ):
         try:
             results.append(_normalize_days(_to_list(fn())))

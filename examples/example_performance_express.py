@@ -16,6 +16,9 @@ get_performance_express() 接口示例
     df = service.get_performance_express(symbol="000001", start_date="2024-01-01", end_date="2024-12-31")
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 from akshare_data import get_service
 from _example_utils import call_with_date_range_fallback
 
@@ -32,9 +35,6 @@ def example_basic():
     service = get_service()
 
     try:
-        # symbol: 股票代码
-        # start_date: 起始日期，格式 "YYYY-MM-DD"
-        # end_date: 结束日期，格式 "YYYY-MM-DD"
         df, used_end = call_with_date_range_fallback(
             service,
             service.get_performance_express,
@@ -164,7 +164,6 @@ def example_analysis():
         print(f"全市场业绩快报: {len(df)} 条 (回退结束日期: {used_end})")
         print(f"字段列表: {list(df.columns)}")
 
-        # 数值列统计
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
             print("\n数值字段统计:")

@@ -1,5 +1,9 @@
 """get_latest_holder_number 示例（symbol 规范 + 重试 + 降级）。"""
 
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import re
 import time
 from typing import Callable, Optional
@@ -40,7 +44,6 @@ def main() -> None:
             f"get_latest_holder_number({raw_symbol})",
         )
         if df is None:
-            # 降级到明确指定 lixinger
             df = _fetch_with_retry(
                 lambda s=symbol: service.get_latest_holder_number(symbol=s, source="lixinger"),
                 f"get_latest_holder_number({raw_symbol}, source=lixinger)",

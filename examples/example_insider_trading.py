@@ -1,13 +1,17 @@
 """
-高管交易/内部人交易接口示例 (get_insider_trading)
+高管交易/内部人交易接口示例
 
 注意: 该接口当前未在 akshare 数据源的接口配置中定义。
       调用此接口可能导致错误或返回空数据。
 
 如需要高管/内部人交易相关数据，建议:
 1. 使用 lixinger 数据源（需配置 LIXINGER_TOKEN）
-2. 或等待 akshare 数据源添加对应接口配置
+2. 或使用 akshare 直接获取
 """
+
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 from akshare_data import get_service
 
@@ -26,22 +30,18 @@ def example_basic():
     service = get_service()
 
     try:
-        # symbol: 证券代码
         df = service.get_insider_trading(symbol="600519")
 
         if df is None or df.empty:
             print("无数据（接口未配置或数据源不可用）")
             return
 
-        # 打印数据形状
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 打印前5行
         print("\n前5行数据:")
         print(df.head())
 
-        # 打印后5行
         print("\n后5行数据:")
         print(df.tail())
 
@@ -127,13 +127,11 @@ def example_analysis():
         print(f"贵州茅台高管交易数据 ({len(df)}条)")
         print(f"数据形状: {df.shape}")
 
-        # 打印基本统计信息
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
             print("\n数值字段统计信息:")
             print(df[numeric_cols].describe())
 
-        # 打印最新交易
         print("\n最新10条交易记录:")
         print(df.tail(10).to_string(index=False))
 
@@ -152,7 +150,6 @@ def example_error_handling():
 
     service = get_service()
 
-    # 测试无效代码
     print("\n测试 1: 无效股票代码")
     try:
         df = service.get_insider_trading(symbol="999999")
@@ -163,7 +160,6 @@ def example_error_handling():
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
 
-    # 测试不存在的代码
     print("\n测试 2: 不存在的股票代码")
     try:
         df = service.get_insider_trading(symbol="INVALID")

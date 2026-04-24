@@ -8,13 +8,16 @@ import pandas as pd
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
-from akshare_data import get_service
+import akshare as ak
 
 
-def _fetch_sw_list(service, levels, retries=2, wait_seconds=1.0):
+def _fetch_sw_list(levels, retries=2, wait_seconds=1.0):
     for level in levels:
         for attempt in range(1, retries + 1):
-            df = service.get_sw_industry_list(level=level)
+            try:
+                df = ak.stock_board_industry_name_em()
+            except Exception:
+                df = pd.DataFrame()
             if isinstance(df, pd.DataFrame) and not df.empty:
                 return level, df
             if attempt < retries:
@@ -23,8 +26,7 @@ def _fetch_sw_list(service, levels, retries=2, wait_seconds=1.0):
 
 
 def main():
-    service = get_service()
-    level, df = _fetch_sw_list(service, ["1", "2", "3"])
+    level, df = _fetch_sw_list(["1", "2", "3"])
     if df.empty:
         print("申万行业列表为空（已重试并回退 level）")
         return

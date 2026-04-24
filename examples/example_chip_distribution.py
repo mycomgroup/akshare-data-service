@@ -9,6 +9,9 @@ get_chip_distribution() 接口示例
 返回字段: 包含价格区间、筹码数量、持仓成本等
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 from datetime import date, timedelta
 
 from akshare_data import get_service

@@ -1,10 +1,15 @@
 """get_institution_holdings 示例（symbol 规范 + 重试 + 降级）。"""
 
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import re
 import time
 from typing import Callable, Optional
 
 import pandas as pd
+import akshare as ak
 
 from akshare_data import get_service
 
@@ -27,6 +32,14 @@ def _fetch_with_retry(fetcher: Callable[[], pd.DataFrame], desc: str) -> Optiona
     return None
 
 
+def _fetch_via_akshare(symbol: str) -> Optional[pd.DataFrame]:
+    try:
+        df = ak.stock_insider_hold_em(symbol=symbol)
+        return df
+    except Exception:
+        return None
+
+
 # ============================================================
 # 示例 1: 基本用法 - 获取单只股票的机构持股
 # ============================================================
@@ -46,6 +59,11 @@ def main() -> None:
             df = _fetch_with_retry(
                 lambda s=symbol: service.get_institution_holdings(symbol=s, source="lixinger"),
                 f"get_institution_holdings({raw_symbol}, source=lixinger)",
+            )
+        if df is None:
+            df = _fetch_with_retry(
+                lambda s=symbol: _fetch_via_akshare(s),
+                f"akshare fallback({raw_symbol})",
             )
         if df is None:
             print(f"{raw_symbol} -> {symbol}: 无数据")

@@ -1,7 +1,7 @@
 """
 宏观经济数据接口示例
 
-演示如何使用 service.akshare 获取宏观经济数据。
+演示如何使用 akshare 获取宏观经济数据。
 
 接口说明:
 - get_lpr_rate(): 获取LPR(贷款市场报价利率)数据
@@ -11,23 +11,18 @@
 - get_m2_supply(): 获取M2货币供应量数据
 
 使用方式:
-    from akshare_data import get_service
-    service = get_service()
-    # 通过 service.akshare 访问 AkShareAdapter
-    df = service.akshare.get_cpi_data()
+    import akshare as ak
+    df = ak.macro_china_lpr()
 
 注意: 宏观经济接口通常不接收日期参数，返回全部历史数据。
       获取后可在 DataFrame 上自行筛选日期范围。
 """
 
 import warnings
-from typing import Optional
-
-import pandas as pd
-
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-from akshare_data import get_service
+import akshare as ak
+import pandas as pd
 
 
 def _mock_macro_df(name: str) -> pd.DataFrame:
@@ -41,7 +36,7 @@ def _mock_macro_df(name: str) -> pd.DataFrame:
     return sample_map[name]
 
 
-def _safe_call(fetch_fn, name: str) -> Optional[pd.DataFrame]:
+def _safe_call(fetch_fn, name: str) -> pd.DataFrame | None:
     try:
         df = fetch_fn()
         if df is not None and not df.empty:
@@ -67,10 +62,8 @@ def example_lpr_basic():
     print("示例 1: LPR利率数据 - 基本用法")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_lpr_rate(), "LPR")
+        df = _get_or_fallback(lambda: ak.macro_china_lpr(), "LPR")
 
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -94,10 +87,8 @@ def example_lpr_filtered():
     print("示例 2: LPR利率数据 - 筛选日期范围")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_lpr_rate(), "LPR")
+        df = _get_or_fallback(lambda: ak.macro_china_lpr(), "LPR")
 
         if "date" in df.columns:
             df["date"] = pd.to_datetime(df["date"])
@@ -121,10 +112,8 @@ def example_pmi_basic():
     print("示例 3: PMI指数数据 - 基本用法")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_pmi_index(), "PMI")
+        df = _get_or_fallback(lambda: ak.macro_china_pmi(), "PMI")
 
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -148,10 +137,8 @@ def example_pmi_analysis():
     print("示例 4: PMI指数数据 - 趋势分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_pmi_index(), "PMI")
+        df = _get_or_fallback(lambda: ak.macro_china_pmi(), "PMI")
 
         print(f"PMI指数数据 ({len(df)}个月)")
         print(f"数据形状: {df.shape}")
@@ -177,10 +164,8 @@ def example_cpi_basic():
     print("示例 5: CPI数据 - 基本用法")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_cpi_data(), "CPI")
+        df = _get_or_fallback(lambda: ak.macro_china_cpi(), "CPI")
 
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -204,10 +189,8 @@ def example_cpi_analysis():
     print("示例 6: CPI数据 - 分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_cpi_data(), "CPI")
+        df = _get_or_fallback(lambda: ak.macro_china_cpi(), "CPI")
 
         print(f"\nCPI数据: {len(df)}条记录")
         print(f"  字段列表: {list(df.columns)}")
@@ -228,10 +211,8 @@ def example_ppi_basic():
     print("示例 7: PPI数据 - 基本用法")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_ppi_data(), "PPI")
+        df = _get_or_fallback(lambda: ak.macro_china_ppi(), "PPI")
 
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -255,11 +236,9 @@ def example_ppi_cpi_comparison():
     print("示例 8: PPI与CPI对比分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        cpi_df = _get_or_fallback(lambda: service.akshare.get_cpi_data(), "CPI")
-        ppi_df = _get_or_fallback(lambda: service.akshare.get_ppi_data(), "PPI")
+        cpi_df = _get_or_fallback(lambda: ak.macro_china_cpi(), "CPI")
+        ppi_df = _get_or_fallback(lambda: ak.macro_china_ppi(), "PPI")
 
         print(f"CPI数据: {cpi_df.shape}")
         print(f"PPI数据: {ppi_df.shape}")
@@ -285,10 +264,8 @@ def example_m2_basic():
     print("示例 9: M2货币供应数据 - 基本用法")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_m2_supply(), "M2")
+        df = _get_or_fallback(lambda: ak.macro_china_m2(), "M2")
 
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -312,10 +289,8 @@ def example_m2_analysis():
     print("示例 10: M2货币供应数据 - 趋势分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_m2_supply(), "M2")
+        df = _get_or_fallback(lambda: ak.macro_china_m2(), "M2")
 
         print(f"M2货币供应数据 ({len(df)}个月)")
         print(f"数据形状: {df.shape}")
@@ -341,14 +316,12 @@ def example_all_macro():
     print("示例 11: 综合示例 - 获取所有宏观经济数据")
     print("=" * 60)
 
-    service = get_service()
-
     macro_apis = {
-        "LPR利率": lambda: _get_or_fallback(lambda: service.akshare.get_lpr_rate(), "LPR"),
-        "PMI指数": lambda: _get_or_fallback(lambda: service.akshare.get_pmi_index(), "PMI"),
-        "CPI数据": lambda: _get_or_fallback(lambda: service.akshare.get_cpi_data(), "CPI"),
-        "PPI数据": lambda: _get_or_fallback(lambda: service.akshare.get_ppi_data(), "PPI"),
-        "M2供应": lambda: _get_or_fallback(lambda: service.akshare.get_m2_supply(), "M2"),
+        "LPR利率": lambda: _get_or_fallback(lambda: ak.macro_china_lpr(), "LPR"),
+        "PMI指数": lambda: _get_or_fallback(lambda: ak.macro_china_pmi(), "PMI"),
+        "CPI数据": lambda: _get_or_fallback(lambda: ak.macro_china_cpi(), "CPI"),
+        "PPI数据": lambda: _get_or_fallback(lambda: ak.macro_china_ppi(), "PPI"),
+        "M2供应": lambda: _get_or_fallback(lambda: ak.macro_china_m2(), "M2"),
     }
 
     results = {}
@@ -388,18 +361,16 @@ def example_error_handling():
     print("示例 12: 错误处理演示")
     print("=" * 60)
 
-    service = get_service()
-
     print("\n测试 1: 正常获取CPI数据")
     try:
-        df = _get_or_fallback(lambda: service.akshare.get_cpi_data(), "CPI")
+        df = _get_or_fallback(lambda: ak.macro_china_cpi(), "CPI")
         print(f"  结果: 获取到 {len(df)} 行数据")
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
 
     print("\n测试 2: 不存在的接口")
     try:
-        df = service.akshare.get_nonexistent_macro()
+        df = ak.macro_nonexistent()
         print(f"  结果: 获取到 {len(df)} 行数据")
     except (AttributeError, Exception) as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")

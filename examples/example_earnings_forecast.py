@@ -4,19 +4,36 @@ get_earnings_forecast() 接口示例
 演示如何使用 akshare_data.get_earnings_forecast() 获取盈利预测数据。
 """
 
-from akshare_data import get_service
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
+import pandas as pd
+import akshare as ak
+from akshare_data import get_service
 from _example_utils import first_non_empty_by_symbol
+
+
+def _get_earnings_forecast_with_fallback(symbol: str) -> tuple:
+    service = get_service()
+    df = service.get_earnings_forecast(symbol=symbol)
+    if df is not None and not df.empty:
+        return df, "service"
+    try:
+        df = ak.stock_profit_forecast(symbol=symbol)
+        if df is not None and not df.empty:
+            return df, "akshare"
+    except Exception:
+        pass
+    return pd.DataFrame(), None
 
 
 def example_basic():
     print("=" * 60)
     print("示例 1: 基本用法 - 获取盈利预测（股票代码回退）")
     print("=" * 60)
-    service = get_service()
     try:
         df, used_symbol = first_non_empty_by_symbol(
-            service.get_earnings_forecast, ["600519", "000001", "300750"]
+            _get_earnings_forecast_with_fallback, ["600519", "000001", "300750"]
         )
         if df.empty:
             print("无数据")
@@ -33,14 +50,13 @@ def example_multi_stocks():
     print("\n" + "=" * 60)
     print("示例 2: 多只股票盈利预测")
     print("=" * 60)
-    service = get_service()
     for symbol, name in [("600519", "贵州茅台"), ("000001", "平安银行"), ("300750", "宁德时代")]:
         try:
-            df = service.get_earnings_forecast(symbol=symbol)
+            df, source = _get_earnings_forecast_with_fallback(symbol)
             if df is None or df.empty:
                 print(f"{name} ({symbol}): 无数据")
             else:
-                print(f"{name} ({symbol}): {len(df)} 条")
+                print(f"{name} ({symbol}): {len(df)} 条 (来源: {source})")
                 print(df.head(2).to_string(index=False))
         except Exception as e:
             print(f"{name} ({symbol}): 获取失败 - {e}")
@@ -50,10 +66,9 @@ def example_trend():
     print("\n" + "=" * 60)
     print("示例 3: 盈利预测统计")
     print("=" * 60)
-    service = get_service()
     try:
         df, used_symbol = first_non_empty_by_symbol(
-            service.get_earnings_forecast, ["000001", "600519", "300750"]
+            _get_earnings_forecast_with_fallback, ["000001", "600519", "300750"]
         )
         if df.empty:
             print("无数据")

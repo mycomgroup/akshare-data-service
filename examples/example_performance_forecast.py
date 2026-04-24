@@ -16,6 +16,9 @@ get_performance_forecast() 接口示例
     df = service.get_performance_forecast(date="20240331")
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
 
 from akshare_data import get_service
@@ -120,7 +123,6 @@ def example_type_statistics():
 
         print(f"全市场业绩预告: {len(df)} 条 (回退结束日期: {used_end})")
 
-        # 查找预告类型字段
         type_col = None
         for col in df.columns:
             if "类型" in col or "type" in col.lower() or "预告" in col:
@@ -160,7 +162,6 @@ def example_high_growth():
             print("无数据（接口暂无可用数据源）")
             return
 
-        # 查找变动幅度字段
         change_col = None
         for col in df.columns:
             if "变动" in col or "增幅" in col or "增长" in col or "change" in col.lower():
@@ -168,7 +169,6 @@ def example_high_growth():
                 break
 
         if change_col:
-            # 筛选增长超过100%的
             numeric_change = pd.to_numeric(df[change_col], errors="coerce")
             df_high = df[numeric_change > 100]
             print(f"业绩增长超过100%的股票: {len(df_high)} 只")

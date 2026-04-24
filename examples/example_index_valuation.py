@@ -7,66 +7,87 @@ get_index_valuation() 接口示例
   - get_index_valuation(index_code) -> pd.DataFrame
   - 返回指数的估值指标，如 PE-TTM、PB 等
 
-常用指数代码:
-  - "000001": 上证指数
-  - "000016": 上证50
+数据来源:
+  - Lixinger (需要配置 LIXINGER_TOKEN 环境变量)
+  - AkShare CSIndex (stock_zh_index_value_csindex)
+
+常用指数代码 (CSIndex格式):
   - "000300": 沪深300
   - "000905": 中证500
-  - "399001": 深证成指
-  - "399006": 创业板指
+  - "000852": 中证1000
+  - "000903": 中证A100
+  - "000913": 300医药
 
 常用估值指标:
-  - pe_ttm: 指数市盈率-TTM
-  - pb: 指数市净率
+  - pe: 指数市盈率
+  - pe_2: 指数市盈率2
+  - dividend_yield: 股息率
 """
 
-import logging
+import sys
 import warnings
 
+sys.warnoptions = ["ignore::DeprecationWarning"]
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import logging
+
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
-from akshare_data import get_service
-def _first_non_empty_index(service, codes):
-    for code in codes:
-        try:
-            df = service.get_index_valuation(index_code=code)
-            if df is not None and not df.empty:
-                return df, code
-        except Exception:
-            continue
-    return None, None
+try:
+    from _example_utils import fetch_with_retry
+except ImportError:
+    from examples._example_utils import fetch_with_retry
 
 
+CSINDEX_CODES = ["000300", "000905", "000852", "000903", "000913"]
+CSINDEX_NAMES = {
+    "000300": "沪深300",
+    "000905": "中证500",
+    "000852": "中证1000",
+    "000903": "中证A100",
+    "000913": "300医药",
+}
+
+
+def _try_direct_akshare_fetch(index_code: str):
+    """直接尝试通过 AkShare 获取指数估值数据"""
+    try:
+        from akshare_data.sources.akshare.fetcher import fetch
+
+        df = fetch("index_valuation", index_code=index_code)
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
+    return None
 
 
 # ============================================================
-# 示例 1: 基本用法 - 获取上证指数估值
+# 示例 1: 基本用法 - 获取沪深300估值
 # ============================================================
 def example_basic():
-    """基本用法: 获取上证指数估值数据"""
+    """基本用法: 获取沪深300估值数据"""
     print("=" * 60)
-    print("示例 1: 基本用法 - 获取上证指数估值")
+    print("示例 1: 基本用法 - 获取沪深300估值")
     print("=" * 60)
-
-    service = get_service()
 
     try:
-        # index_code: 指数代码
-        df, used_code = _first_non_empty_index(service, ["000001", "000300", "399001"])
+        # 直接通过 AkShare fetcher 获取数据
+        df = _try_direct_akshare_fetch("000300")
 
         if df is None or df.empty:
             print("无数据")
-            print("提示: get_index_valuation 目前主要由 Lixinger 数据源支持，")
-            print("      请确保 LIXINGER_TOKEN 环境变量已配置")
+            print("提示: get_index_valuation 数据来源:")
+            print("      1. Lixinger API (需要配置 LIXINGER_TOKEN 环境变量)")
+            print("      2. AkShare CSIndex (stock_zh_index_value_csindex)")
+            print("      请确保至少有一个数据源可用")
             return
 
-        # 打印数据形状
         print(f"数据形状: {df.shape}")
-        print(f"回退命中指数: {used_code}")
+        print(f"指数名称: {CSINDEX_NAMES.get('000300', '沪深300')}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 打印全部数据
         print("\n估值数据:")
         print(df.to_string(index=False))
 
@@ -83,25 +104,19 @@ def example_compare_indices():
     print("示例 2: 宽基指数估值对比")
     print("=" * 60)
 
-    service = get_service()
-
-    # 主要宽基指数
     indices = {
-        "000001": "上证指数",
-        "000016": "上证50",
         "000300": "沪深300",
         "000905": "中证500",
-        "399001": "深证成指",
-        "399006": "创业板指",
+        "000852": "中证1000",
     }
 
     results = []
     for code, name in indices.items():
         try:
-            df = service.get_index_valuation(index_code=code)
+            df = _try_direct_akshare_fetch(code)
             if df is not None and not df.empty:
                 row = {"指数代码": code, "指数名称": name}
-                for col in ["pe_ttm", "pb"]:
+                for col in ["pe", "pe_2", "dividend_yield", "dividend_yield_2"]:
                     if col in df.columns:
                         row[col] = df[col].iloc[0]
                 results.append(row)
@@ -117,23 +132,23 @@ def example_compare_indices():
         compare_df = pd.DataFrame(results)
         print("\n指数估值对比表:")
         print(compare_df.to_string(index=False))
+    else:
+        print("\n提示: 所有指数均无数据，请检查数据源配置")
 
 
 # ============================================================
-# 示例 3: 获取深证指数估值
+# 示例 3: 获取中证500估值
 # ============================================================
-def example_sz_index():
-    """获取深证成指估值数据"""
+def example_csi500():
+    """获取中证500估值数据"""
     print("\n" + "=" * 60)
-    print("示例 3: 获取深证成指估值")
+    print("示例 3: 获取中证500估值")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = service.get_index_valuation(index_code="399001")
+        df = _try_direct_akshare_fetch("000905")
 
-        if df.empty:
+        if df is None or df.empty:
             print("无数据")
             return
 
@@ -155,36 +170,32 @@ def example_valuation_analysis():
     print("示例 4: 估值水平分析")
     print("=" * 60)
 
-    service = get_service()
-
-    # 关注几只核心指数
     core_indices = {
         "000300": "沪深300",
         "000905": "中证500",
-        "399006": "创业板指",
     }
 
     for code, name in core_indices.items():
         try:
-            df = service.get_index_valuation(index_code=code)
-            if df.empty:
+            df = _try_direct_akshare_fetch(code)
+            if df is None or df.empty:
+                print(f"{name}({code}): 无数据")
                 continue
 
             print(f"\n{name}({code}):")
-            if "pe_ttm" in df.columns:
-                pe = df["pe_ttm"].iloc[0]
-                print(f"  市盈率(PE-TTM): {pe}")
-                # 简单判断估值分位 (仅为示例，非真实历史分位)
-                if pe < 15:
+            if "pe" in df.columns:
+                pe = df["pe"].iloc[0]
+                print(f"  市盈率(PE): {pe}")
+                if pe < 12:
                     print("  估值判断: 偏低")
-                elif pe < 25:
+                elif pe < 20:
                     print("  估值判断: 适中")
                 else:
                     print("  估值判断: 偏高")
 
-            if "pb" in df.columns:
-                pb = df["pb"].iloc[0]
-                print(f"  市净率(PB): {pb}")
+            if "dividend_yield" in df.columns:
+                dy = df["dividend_yield"].iloc[0]
+                print(f"  股息率: {dy}%")
 
         except Exception as e:
             print(f"{name}({code}): 分析失败 - {e}")
@@ -199,23 +210,19 @@ def example_error_handling():
     print("示例 5: 错误处理演示")
     print("=" * 60)
 
-    service = get_service()
-
-    # 测试 1: 正常获取
     print("\n测试 1: 正常获取")
     try:
-        df, used_code = _first_non_empty_index(service, ["000001", "000300", "399001"])
+        df = _try_direct_akshare_fetch("000300")
         if df is None or df.empty:
             print("  结果: 无数据 (空 DataFrame)")
         else:
-            print(f"  结果: 获取到 {len(df)} 行数据 (回退指数: {used_code})")
+            print(f"  结果: 获取到 {len(df)} 行数据")
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
 
-    # 测试 2: 无效指数代码
     print("\n测试 2: 无效指数代码")
     try:
-        df = service.get_index_valuation(index_code="999999")
+        df = _try_direct_akshare_fetch("999999")
         if df is None or df.empty:
             print("  结果: 无数据")
         else:
@@ -223,10 +230,20 @@ def example_error_handling():
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
 
+    print("\n测试 3: 数据源状态检查")
+    import os
+
+    lixinger_token = os.environ.get("LIXINGER_TOKEN", "")
+    if lixinger_token:
+        print(f"  LIXINGER_TOKEN: 已配置")
+    else:
+        print(f"  LIXINGER_TOKEN: 未配置")
+    print("  AkShare CSIndex: 网络依赖 (stock_zh_index_value_csindex)")
+
 
 if __name__ == "__main__":
     example_basic()
     example_compare_indices()
-    example_sz_index()
+    example_csi500()
     example_valuation_analysis()
     example_error_handling()

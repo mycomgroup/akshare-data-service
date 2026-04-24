@@ -1,5 +1,4 @@
-"""
-get_convert_bond_spot() 接口示例
+"""get_convert_bond_spot() 接口示例
 
 演示如何使用 DataService 获取可转债实时行情数据。
 
@@ -23,7 +22,11 @@ get_convert_bond_spot() 接口示例
 - premium_rate: 溢价率
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -42,17 +45,18 @@ def _mock_spot_data():
 
 def _fetch_convert_bond_spot():
     service = get_service()
-    methods = [
-        lambda: service.get_convert_bond_spot(),
-        lambda: service.akshare.get_convert_bond_spot(),
-    ]
-    for fn in methods:
-        try:
-            df = fn()
-            if df is not None and not df.empty:
-                return df
-        except Exception:
-            continue
+    try:
+        df = service.get_convert_bond_spot()
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
+    try:
+        df = ak.bond_zh_cov_snapshot()
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
     print("[可转债实时接口不可用，使用演示数据]")
     return _mock_spot_data()
 
@@ -67,8 +71,6 @@ def example_basic():
     print("=" * 60)
 
     try:
-        # 获取可转债实时行情
-        # 注意: 该接口返回实时数据，不经过缓存
         df = _fetch_convert_bond_spot()
 
         print(f"数据形状: {df.shape}")
@@ -77,7 +79,6 @@ def example_basic():
         print("\n前10行数据:")
         print(df.head(10).to_string(index=False))
 
-        # 显示统计信息
         print(f"\n共获取 {len(df)} 只可转债的实时行情")
 
     except Exception as e:
@@ -99,23 +100,45 @@ def example_top_movers():
     try:
         df = _fetch_convert_bond_spot()
 
-        # 确保涨跌幅为数值类型
-        if "change_percent" in df.columns:
-            df["change_percent"] = pd.to_numeric(df["change_percent"], errors="coerce")
+        change_col = None
+        for col in ["change_percent", "涨跌幅", "pct_change"]:
+            if col in df.columns:
+                change_col = col
+                break
 
-            # 涨幅榜 TOP 5
-            print("\n涨幅榜 TOP 5:")
-            top_gainers = df.nlargest(5, "change_percent")
-            display_cols = ["bond_code", "bond_name", "current_price", "change_percent"]
-            available_cols = [c for c in display_cols if c in top_gainers.columns]
-            print(top_gainers[available_cols].to_string(index=False))
-
-            # 跌幅榜 TOP 5
-            print("\n跌幅榜 TOP 5:")
-            top_losers = df.nsmallest(5, "change_percent")
-            print(top_losers[available_cols].to_string(index=False))
-        else:
+        if change_col is None:
             print("数据中无涨跌幅字段")
+            return
+
+        df[change_col] = pd.to_numeric(df[change_col], errors="coerce")
+
+        price_col = None
+        for col in ["current_price", "价格", "price"]:
+            if col in df.columns:
+                price_col = col
+                break
+
+        code_col = None
+        for col in ["bond_code", "代码", "code"]:
+            if col in df.columns:
+                code_col = col
+                break
+
+        name_col = None
+        for col in ["bond_name", "名称", "name"]:
+            if col in df.columns:
+                name_col = col
+                break
+
+        display_cols = [c for c in [code_col, name_col, price_col, change_col] if c]
+
+        print("\n涨幅榜 TOP 5:")
+        top_gainers = df.nlargest(5, change_col)
+        print(top_gainers[display_cols].to_string(index=False))
+
+        print("\n跌幅榜 TOP 5:")
+        top_losers = df.nsmallest(5, change_col)
+        print(top_losers[display_cols].to_string(index=False))
 
     except Exception as e:
         print(f"分析失败: {e}")
@@ -133,26 +156,50 @@ def example_active_bonds():
     try:
         df = _fetch_convert_bond_spot()
 
-        # 确保成交量为数值类型
-        if "volume" in df.columns:
-            df["volume"] = pd.to_numeric(df["volume"], errors="coerce")
-            df["amount"] = pd.to_numeric(df["amount"], errors="coerce")
+        vol_col = None
+        for col in ["volume", "成交量", "vol"]:
+            if col in df.columns:
+                vol_col = col
+                break
 
-            # 筛选成交量 > 50000 的可转债
-            active_threshold = 50000
-            active_bonds = df[df["volume"] > active_threshold].copy()
-            active_bonds = active_bonds.sort_values("volume", ascending=False)
+        amt_col = None
+        for col in ["amount", "成交额", "turnover"]:
+            if col in df.columns:
+                amt_col = col
+                break
 
-            print(f"\n成交量超过 {active_threshold} 的可转债: {len(active_bonds)} 只")
-
-            if not active_bonds.empty:
-                display_cols = ["bond_code", "bond_name", "current_price", "volume", "amount", "change_percent"]
-                available_cols = [c for c in display_cols if c in active_bonds.columns]
-                print(active_bonds[available_cols].head(10).to_string(index=False))
-            else:
-                print("暂无高成交量可转债")
-        else:
+        if vol_col is None:
             print("数据中无成交量字段")
+            return
+
+        df[vol_col] = pd.to_numeric(df[vol_col], errors="coerce")
+        if amt_col and amt_col in df.columns:
+            df[amt_col] = pd.to_numeric(df[amt_col], errors="coerce")
+
+        active_threshold = 50000
+        active_bonds = df[df[vol_col] > active_threshold].copy()
+        active_bonds = active_bonds.sort_values(vol_col, ascending=False)
+
+        print(f"\n成交量超过 {active_threshold} 的可转债: {len(active_bonds)} 只")
+
+        price_col = None
+        for col in ["current_price", "价格", "price"]:
+            if col in df.columns:
+                price_col = col
+                break
+
+        change_col = None
+        for col in ["change_percent", "涨跌幅", "pct_change"]:
+            if col in df.columns:
+                change_col = col
+                break
+
+        display_cols = [c for c in ["bond_code", "bond_name", price_col, vol_col, amt_col, change_col] if c and c in df.columns]
+
+        if not active_bonds.empty:
+            print(active_bonds[display_cols].head(10).to_string(index=False))
+        else:
+            print("暂无高成交量可转债")
 
     except Exception as e:
         print(f"筛选失败: {e}")
@@ -170,29 +217,34 @@ def example_price_range():
     try:
         df = _fetch_convert_bond_spot()
 
-        if "current_price" in df.columns:
-            df["current_price"] = pd.to_numeric(df["current_price"], errors="coerce")
+        price_col = None
+        for col in ["current_price", "价格", "price"]:
+            if col in df.columns:
+                price_col = col
+                break
 
-            # 定义价格区间
-            bins = [0, 100, 110, 120, 130, 150, float("inf")]
-            labels = ["<100", "100-110", "110-120", "120-130", "130-150", ">150"]
-            df["price_range"] = pd.cut(df["current_price"], bins=bins, labels=labels)
-
-            print("\n全市场可转债价格分布:")
-            distribution = df["price_range"].value_counts().sort_index()
-            for range_label, count in distribution.items():
-                percentage = count / len(df) * 100
-                bar = "█" * int(percentage / 2)
-                print(f"  {range_label:8s}: {count:4d} 只 ({percentage:5.1f}%) {bar}")
-
-            # 统计信息
-            print("\n价格统计:")
-            print(f"  平均价格: {df['current_price'].mean():.2f}")
-            print(f"  中位数: {df['current_price'].median():.2f}")
-            print(f"  最低: {df['current_price'].min():.2f}")
-            print(f"  最高: {df['current_price'].max():.2f}")
-        else:
+        if price_col is None:
             print("数据中无当前价格字段")
+            return
+
+        df[price_col] = pd.to_numeric(df[price_col], errors="coerce")
+
+        bins = [0, 100, 110, 120, 130, 150, float("inf")]
+        labels = ["<100", "100-110", "110-120", "120-130", "130-150", ">150"]
+        df["price_range"] = pd.cut(df[price_col], bins=bins, labels=labels)
+
+        print("\n全市场可转债价格分布:")
+        distribution = df["price_range"].value_counts().sort_index()
+        for range_label, count in distribution.items():
+            percentage = count / len(df) * 100
+            bar = "█" * int(percentage / 2)
+            print(f"  {range_label:8s}: {count:4d} 只 ({percentage:5.1f}%) {bar}")
+
+        print("\n价格统计:")
+        print(f"  平均价格: {df[price_col].mean():.2f}")
+        print(f"  中位数: {df[price_col].median():.2f}")
+        print(f"  最低: {df[price_col].min():.2f}")
+        print(f"  最高: {df[price_col].max():.2f}")
 
     except Exception as e:
         print(f"分析失败: {e}")
@@ -210,25 +262,47 @@ def example_find_bond():
     try:
         df = _fetch_convert_bond_spot()
 
-        # 示例: 查找牧原转债
         bond_code = "127045"
         bond_name = "牧原转债"
 
         print(f"\n查找可转债: {bond_code} ({bond_name})")
 
-        if "bond_code" in df.columns:
-            bond = df[df["bond_code"] == bond_code]
-            if bond.empty and "bond_name" in df.columns:
-                bond = df[df["bond_name"] == bond_name]
+        code_col = None
+        for col in ["bond_code", "代码", "code"]:
+            if col in df.columns:
+                code_col = col
+                break
+
+        name_col = None
+        for col in ["bond_name", "名称", "name"]:
+            if col in df.columns:
+                name_col = col
+                break
+
+        if code_col:
+            bond = df[df[code_col] == bond_code]
+            if bond.empty and name_col and name_col in df.columns:
+                bond = df[df[name_col] == bond_name]
 
             if not bond.empty:
                 print("\n行情数据:")
                 print(bond.to_string(index=False))
 
-                # 显示详细分析
-                if "change_percent" in bond.columns and "premium_rate" in bond.columns:
-                    change = float(bond["change_percent"].iloc[0])
-                    premium = float(bond["premium_rate"].iloc[0])
+                change_col = None
+                for col in ["change_percent", "涨跌幅", "pct_change"]:
+                    if col in bond.columns:
+                        change_col = col
+                        break
+
+                premium_col = None
+                for col in ["premium_rate", "溢价率"]:
+                    if col in bond.columns:
+                        premium_col = col
+                        break
+
+                if change_col and premium_col:
+                    change = float(bond[change_col].iloc[0])
+                    premium = float(bond[premium_col].iloc[0])
 
                     print("\n分析:")
                     print(f"  今日涨跌: {change:+.2f}%")
@@ -266,35 +340,67 @@ def example_comprehensive_filter():
     try:
         df = _fetch_convert_bond_spot()
 
-        # 转换为数值类型
-        numeric_cols = ["current_price", "volume", "change_percent", "premium_rate"]
-        for col in numeric_cols:
+        price_col = None
+        for col in ["current_price", "价格", "price"]:
             if col in df.columns:
+                price_col = col
+                break
+
+        vol_col = None
+        for col in ["volume", "成交量", "vol"]:
+            if col in df.columns:
+                vol_col = col
+                break
+
+        change_col = None
+        for col in ["change_percent", "涨跌幅", "pct_change"]:
+            if col in df.columns:
+                change_col = col
+                break
+
+        premium_col = None
+        for col in ["premium_rate", "溢价率"]:
+            if col in df.columns:
+                premium_col = col
+                break
+
+        for col in [price_col, vol_col, change_col, premium_col]:
+            if col and col in df.columns:
                 df[col] = pd.to_numeric(df[col], errors="coerce")
 
-        # 综合条件:
-        # 1. 价格在 100-120 之间 (相对安全)
-        # 2. 成交量 > 40000 (活跃)
-        # 3. 溢价率 < 20 (股性较好)
+        if not all([price_col, vol_col, premium_col]) or price_col not in df.columns or vol_col not in df.columns or premium_col not in df.columns:
+            print("数据缺少必要字段（需要：价格、成交量、溢价率）")
+            return
+
         conditions = (
-            (df["current_price"] >= 100) &
-            (df["current_price"] <= 120) &
-            (df["volume"] >= 40000) &
-            (df["premium_rate"] < 20)
+            (df[price_col] >= 100) &
+            (df[price_col] <= 120) &
+            (df[vol_col] >= 40000) &
+            (df[premium_col] < 20)
         )
 
         candidates = df[conditions].copy()
-
-        # 按成交量排序
-        candidates = candidates.sort_values("volume", ascending=False)
+        candidates = candidates.sort_values(vol_col, ascending=False)
 
         print("\n筛选条件: 价格100-120, 成交量>40000, 溢价率<20%")
         print(f"符合条件可转债: {len(candidates)} 只")
 
+        code_col = None
+        for col in ["bond_code", "代码", "code"]:
+            if col in df.columns:
+                code_col = col
+                break
+
+        name_col = None
+        for col in ["bond_name", "名称", "name"]:
+            if col in df.columns:
+                name_col = col
+                break
+
+        display_cols = [c for c in [code_col, name_col, price_col, vol_col, premium_col, change_col] if c and c in candidates.columns]
+
         if not candidates.empty:
-            display_cols = ["bond_code", "bond_name", "current_price", "volume", "premium_rate", "change_percent"]
-            available_cols = [c for c in display_cols if c in candidates.columns]
-            print(candidates[available_cols].head(10).to_string(index=False))
+            print(candidates[display_cols].head(10).to_string(index=False))
         else:
             print("暂无符合条件的可转债")
 

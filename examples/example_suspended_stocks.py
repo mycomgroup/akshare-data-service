@@ -16,12 +16,16 @@ get_suspended_stocks() 接口示例
 返回字段: code, display_name (具体字段以实际返回为准)
 """
 
-from akshare_data import get_suspended_stocks
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import pandas as pd
+import akshare as ak
+
+from akshare_data import get_suspended_stocks, get_securities_list
 
 
 def _mock_suspended_stocks():
-    import pandas as pd
-
     return pd.DataFrame(
         {
             "code": ["000671", "600421", "300312"],
@@ -38,6 +42,12 @@ def _fetch_suspended_stocks():
             return df
     except Exception as e:
         print(f"实时接口异常: {e}")
+    try:
+        df = ak.stock_zh_a_stop_em()
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
     print("[停牌接口不可用或无数据，使用演示数据]")
     return _mock_suspended_stocks()
 
@@ -52,18 +62,14 @@ def example_basic():
     print("=" * 60)
 
     try:
-        # 该接口无需参数，直接调用即可获取当前所有停牌股票
         df = _fetch_suspended_stocks()
 
-        # 打印数据形状
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 打印前10行
         print("\n前10只停牌股票:")
         print(df.head(10))
 
-        # 打印后5行
         print("\n后5行数据:")
         print(df.tail())
 
@@ -85,7 +91,6 @@ def example_count():
 
         print(f"当前停牌股票总数: {len(df)} 只")
 
-        # 如果有停牌原因字段，可以按原因统计
         if "reason" in df.columns:
             print("\n按停牌原因统计:")
             reason_counts = df["reason"].value_counts()
@@ -110,7 +115,6 @@ def example_details():
 
         print(f"共 {len(df)} 只停牌股票\n")
 
-        # 打印完整的前20只停牌股票信息
         print("前20只停牌股票详细信息:")
         print(df.head(20).to_string(index=False))
 
@@ -130,26 +134,24 @@ def example_filter_by_board():
     try:
         df = _fetch_suspended_stocks()
 
-        # 沪市主板停牌股票 (代码以 60 开头)
-        sh_suspended = df[df["code"].str.startswith("60")]
+        code_col = "code" if "code" in df.columns else "symbol"
+
+        sh_suspended = df[df[code_col].astype(str).str.startswith("60")]
         print(f"沪市主板停牌: {len(sh_suspended)} 只")
         if not sh_suspended.empty:
             print(sh_suspended.head(5))
 
-        # 深市主板停牌股票 (代码以 00 开头)
-        sz_suspended = df[df["code"].str.startswith("00")]
+        sz_suspended = df[df[code_col].astype(str).str.startswith("00")]
         print(f"\n深市主板停牌: {len(sz_suspended)} 只")
         if not sz_suspended.empty:
             print(sz_suspended.head(5))
 
-        # 创业板停牌股票 (代码以 30 开头)
-        cyb_suspended = df[df["code"].str.startswith("30")]
+        cyb_suspended = df[df[code_col].astype(str).str.startswith("30")]
         print(f"\n创业板停牌: {len(cyb_suspended)} 只")
         if not cyb_suspended.empty:
             print(cyb_suspended.head(5))
 
-        # 科创板停牌股票 (代码以 68 开头)
-        kcb_suspended = df[df["code"].str.startswith("68")]
+        kcb_suspended = df[df[code_col].astype(str).str.startswith("68")]
         print(f"\n科创板停牌: {len(kcb_suspended)} 只")
         if not kcb_suspended.empty:
             print(kcb_suspended.head(5))
@@ -168,21 +170,19 @@ def example_with_securities_list():
     print("=" * 60)
 
     try:
-        from akshare_data import get_securities_list
-
-        # 获取停牌股票列表
         suspended_df = _fetch_suspended_stocks()
 
-        # 获取全部股票列表
         all_stocks = get_securities_list()
 
         if all_stocks.empty:
             print("无法获取股票列表")
             return
 
-        # 将停牌股票与证券列表关联，获取更多信息
-        suspended_codes = suspended_df["code"].tolist()
-        suspended_info = all_stocks[all_stocks["code"].isin(suspended_codes)]
+        suspended_code_col = "code" if "code" in suspended_df.columns else "symbol"
+        suspended_codes = suspended_df[suspended_code_col].astype(str).tolist()
+
+        all_code_col = "code" if "code" in all_stocks.columns else "symbol"
+        suspended_info = all_stocks[all_stocks[all_code_col].astype(str).isin(suspended_codes)]
 
         print(f"停牌股票数量: {len(suspended_df)}")
         print(f"成功匹配证券信息的数量: {len(suspended_info)}")
@@ -207,14 +207,14 @@ def example_check_specific_stock():
     try:
         df = _fetch_suspended_stocks()
 
-        # 要检查的股票代码列表
         check_codes = ["000001", "600519", "000002", "600036"]
 
-        suspended_codes = set(df["code"].tolist())
+        code_col = "code" if "code" in df.columns else "symbol"
+        suspended_codes = set(df[code_col].astype(str).tolist())
 
         for code in check_codes:
             if code in suspended_codes:
-                stock_info = df[df["code"] == code]
+                stock_info = df[df[code_col].astype(str) == code]
                 print(f"{code}: 停牌中")
                 print(stock_info.to_string(index=False))
             else:
@@ -239,11 +239,6 @@ def example_export():
         print(f"获取到 {len(df)} 只停牌股票")
         print(f"字段列表: {list(df.columns)}")
 
-        # 示例: 导出到 CSV (取消注释即可使用)
-        # df.to_csv("suspended_stocks.csv", index=False, encoding="utf-8-sig")
-        # print("已导出到 suspended_stocks.csv")
-
-        # 打印前5行预览
         print("\n前5行预览:")
         print(df.head())
 

@@ -24,7 +24,12 @@ get_index_components(index_code, include_weights) 参数说明:
     - 支持带前缀的代码格式，系统会自动规范化
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
+
+import akshare as ak
 from akshare_data import get_index_stocks, get_index_components
 from _example_utils import fetch_with_retry, normalize_symbol_input, stable_df
 

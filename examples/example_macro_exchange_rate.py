@@ -14,6 +14,11 @@ get_macro_exchange_rate() 接口示例
     df = service.get_macro_exchange_rate()
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import akshare as ak
+
 from akshare_data import get_service
 
 
@@ -43,6 +48,10 @@ def _fetch_exchange_rate():
                 return df
         except Exception as e:
             print(f"实时接口异常({kwargs}): {e}")
+    try:
+        return ak.forex_spot_em()
+    except Exception:
+        pass
     print("[汇率接口不可用或无数据，使用演示数据]")
     return _mock_macro_exchange_rate()
 

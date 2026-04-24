@@ -1,26 +1,9 @@
-"""
-get_fund_open_daily() 接口示例
+"""get_fund_open_daily() 接口示例"""
 
-演示如何使用 DataService.get_fund_open_daily() 获取所有开放式基金每日净值列表。
-
-接口说明:
-- get_fund_open_daily(): 获取全部开放式基金的当日净值列表
-- 无必需参数
-- 返回: pd.DataFrame，包含基金代码、名称、净值等字段
-
-使用方式:
-    from akshare_data import get_service
-    service = get_service()
-    df = service.get_fund_open_daily()
-
-注意:
-- 该接口返回全市场开放式基金的最新净值快照
-- 数据量较大，首次获取可能需要一些时间
-- 采用 Cache-First 策略，后续请求会直接返回缓存数据
-"""
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import logging
-import warnings
 import pandas as pd
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)

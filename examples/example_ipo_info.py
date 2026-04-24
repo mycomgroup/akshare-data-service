@@ -11,10 +11,12 @@ get_ipo_info() 接口示例
 
 import logging
 import warnings
-import pandas as pd
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
+import pandas as pd
+import akshare as ak
 
 from akshare_data import get_service
 

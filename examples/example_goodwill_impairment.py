@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import time
+import warnings
 from typing import Callable
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import pandas as pd
 
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -58,11 +62,24 @@ def example_basic() -> None:
     print("商誉减值示例")
     print("=" * 60)
     service = get_service()
+    df = None
     for date in [None] + _date_candidates("2024-06-30"):
-        df = _fetch_with_retry(lambda: service.get_goodwill_impairment(date=date), f"date={date}")
+        df = _fetch_with_retry(
+            lambda d=date: service.get_goodwill_impairment(date=d) if date is not None else service.get_goodwill_impairment(),
+            f"date={date}"
+        )
         if df is not None and not df.empty:
             _print_df(df, f"成功: date={date}")
             return
+    if df is None:
+        try:
+            import akshare as ak
+            df = ak.stock_goodwill_loss_em(date="20240630")
+            if df is not None and not df.empty:
+                _print_df(df, f"成功: date=20240630 (akshare fallback)")
+                return
+        except Exception:
+            pass
     _print_df(df, "最终结果")
 
 

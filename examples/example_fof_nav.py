@@ -1,28 +1,9 @@
-"""
-get_fof_nav() 接口示例
+"""get_fof_nav() 接口示例"""
 
-演示如何使用 DataService.get_fof_nav() 获取FOF基金历史净值数据。
-
-接口说明:
-- get_fof_nav(fund_code, start_date, end_date): 获取指定FOF基金的历史净值
-  - fund_code: FOF基金代码，如 "005156"
-  - start_date: 起始日期，格式 "YYYY-MM-DD"
-  - end_date: 结束日期，格式 "YYYY-MM-DD"
-- 返回: pd.DataFrame，包含日期、单位净值、累计净值等字段
-
-使用方式:
-    from akshare_data import get_service
-    service = get_service()
-    df = service.get_fof_nav("005156", "2024-01-01", "2024-03-31")
-
-注意:
-- FOF基金净值更新频率通常较低(周度或月度)
-- 该接口需要指定具体的FOF基金代码
-- 采用 Cache-First 策略
-"""
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import logging
-import warnings
 from datetime import date, timedelta
 
 import pandas as pd

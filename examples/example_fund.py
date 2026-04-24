@@ -1,25 +1,17 @@
-"""
-基金相关接口示例
-
-演示如何使用 DataService 获取基金数据:
-  - get_fund_open_nav: 开放式基金净值历史数据 (基于 fund_open_fund_info_em)
-  - get_fund_manager_info: 基金经理信息
-  - get_etf_list / get_lof_list: 基金列表
-
-使用方式:
-  from akshare_data import get_service
-"""
+"""基金相关接口示例"""
 
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import logging
-logging.getLogger("akshare_data").setLevel(logging.ERROR)
+import sys
+sys.warnoptions = ["ignore::DeprecationWarning"]
 
 from datetime import date, timedelta
 
 import pandas as pd
 
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -231,10 +223,10 @@ def example_fund_manager_basic():
     service = get_service()
 
     try:
-        df = _safe_call(lambda: service.akshare.get_fund_manager_info())
-        if df.empty:
-            print("  无真实缓存数据，使用演示数据")
-            df = _mock_fund_managers()
+            df = _safe_call(lambda: ak.fund_manager_info())
+            if df.empty:
+                print("  无真实缓存数据，使用演示数据")
+                df = _mock_fund_managers()
 
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
@@ -264,7 +256,7 @@ def example_fund_manager_multiple():
     ]
 
     try:
-        all_managers = _safe_call(lambda: service.akshare.get_fund_manager_info())
+        all_managers = _safe_call(lambda: ak.fund_manager_info())
         if all_managers.empty:
             print("  无真实缓存数据，使用演示数据")
             all_managers = _mock_fund_managers()
@@ -308,7 +300,7 @@ def example_fund_list_etf():
     service = get_service()
 
     try:
-        df = _safe_call(lambda: service.akshare.get_etf_list())
+        df = _safe_call(lambda: ak.fund_etf_list_em())
         if df.empty:
             print("  无真实缓存数据，使用演示数据")
             df = _mock_etf_list()
@@ -336,7 +328,7 @@ def example_fund_list_lof():
     service = get_service()
 
     try:
-        df = _safe_call(lambda: service.akshare.get_lof_list())
+        df = _safe_call(lambda: ak.fund_lof_list_em())
         if df.empty:
             print("  无真实缓存数据，使用演示数据")
             df = _mock_lof_list()
@@ -382,7 +374,7 @@ def example_fund_combined_analysis():
         print(nav_df.head(5).to_string(index=False))
 
         print("\n--- 基金经理信息 (全部) ---")
-        manager_df = _safe_call(lambda: service.akshare.get_fund_manager_info())
+        manager_df = _safe_call(lambda: ak.fund_manager_info())
         if manager_df.empty:
             print("  无真实缓存数据，使用演示数据")
             manager_df = _mock_fund_managers()

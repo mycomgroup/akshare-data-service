@@ -25,6 +25,10 @@ get_index_components() 接口示例
   - weight: 权重 (当 include_weights=True 时)
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import akshare as ak
 from akshare_data import get_service
 from _example_utils import fetch_with_retry, normalize_symbol_input, stable_df
 
@@ -42,6 +46,24 @@ def _safe_index_components(service, index_code: str, include_weights: bool = Tru
         lambda: service.get_index_components(index_code=code, include_weights=include_weights),
         retries=2,
     )
+    if df is not None and not df.empty:
+        return _safe_df(stable_df(df))
+    try:
+        import akshare as ak
+        symbol = code.replace(".XSHG", "").replace(".XSHE", "")
+        if symbol.startswith("0") or symbol.startswith("3"):
+            symbol = symbol + ".SZ"
+        else:
+            symbol = symbol + ".SH"
+        df = ak.index_weight_cons(symbol=symbol)
+        if df is not None and not df.empty:
+            if "品种代码" in df.columns:
+                df = df.rename(columns={"品种代码": "code", "品种名称": "name"})
+            if "权重" in df.columns:
+                df = df.rename(columns={"权重": "weight"})
+            return df
+    except Exception:
+        pass
     return _safe_df(stable_df(df))
 
 

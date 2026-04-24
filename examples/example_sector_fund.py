@@ -12,6 +12,9 @@
 注意: 部分 akshare 接口依赖外部数据源，网络不可用时会自动跳过。
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import akshare as ak
 import pandas as pd
 
@@ -94,7 +97,6 @@ def example_fund_flow_analysis():
         print("无数据 (网络不可用或接口返回为空)")
         return
 
-    # 尝试找到净流入相关列进行排序
     net_flow_col = None
     for col in df.columns:
         if "净流入" in str(col) or "net" in str(col).lower():
@@ -120,7 +122,6 @@ def example_error_handling():
     print("示例 4: 错误处理示例")
     print("=" * 60)
 
-    # 测试正常调用
     try:
         df = ak.stock_fund_flow_industry(symbol="即时")
         if df.empty:

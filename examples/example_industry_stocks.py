@@ -1,21 +1,26 @@
 """get_industry_stocks 示例：industry_code 回退 + 空数据重试。"""
 
 import logging
-import time
 import warnings
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
+import time
+import akshare as ak
 from akshare_data import get_service
 
 
 def _fetch_industry_stocks(service, industry_codes, level=1, retries=2, wait_seconds=1.0):
     for code in industry_codes:
         for attempt in range(1, retries + 1):
-            stocks = service.get_industry_stocks(industry_code=code, level=level)
-            if stocks:
-                return code, stocks
+            try:
+                df = ak.stock_board_industry_cons_em(symbol=code)
+                if df is not None and not df.empty:
+                    stocks = df["代码"].tolist() if "代码" in df.columns else []
+                    return code, stocks
+            except Exception:
+                pass
             if attempt < retries:
                 time.sleep(wait_seconds)
     return industry_codes[-1], []

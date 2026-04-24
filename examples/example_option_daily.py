@@ -17,7 +17,12 @@ get_option_daily() 接口示例
       底层 option_sse_daily_sina 仅支持上交所期权。
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
+import akshare as ak
+
 from akshare_data import get_service
 
 
@@ -32,7 +37,6 @@ def _candidate_option_symbols(service):
                     break
     except Exception:
         pass
-    # 去重保序
     return list(dict.fromkeys(symbols))
 
 
@@ -44,7 +48,12 @@ def _fetch_option_daily(service, symbol_hint: str = "10000001"):
             if df is not None and not df.empty:
                 return str(symbol), df
         except Exception:
-            continue
+            try:
+                df = ak.option_sse_daily_sina(symbol=str(symbol))
+                if df is not None and not df.empty:
+                    return str(symbol), df
+            except Exception:
+                continue
     return symbol_hint, pd.DataFrame()
 
 
@@ -60,8 +69,6 @@ def example_option_daily_basic():
     service = get_service()
 
     try:
-        # symbol: 期权合约代码
-        # 注意: 期权代码需要先通过 get_option_list() 获取
         used_symbol, df = _fetch_option_daily(service, symbol_hint="10000001")
 
         if df is None or df.empty:
@@ -70,15 +77,12 @@ def example_option_daily_basic():
             return
 
         print(f"实际使用合约: {used_symbol}")
-        # 打印数据形状
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 打印前5行
         print("\n前5行数据:")
         print(df.head())
 
-        # 打印后5行
         print("\n后5行数据:")
         print(df.tail())
 
@@ -114,7 +118,6 @@ def example_option_daily_multiple():
 
     service = get_service()
 
-    # 示例期权合约代码列表
     symbols = [
         "10000001",
         "10000002",
@@ -149,7 +152,6 @@ def example_option_daily_with_list():
     service = get_service()
 
     try:
-        # 第一步: 获取期权合约列表
         option_list = service.get_option_list()
 
         if option_list.empty:
@@ -158,7 +160,6 @@ def example_option_daily_with_list():
 
         print(f"获取到 {len(option_list)} 个期权合约")
 
-        # 找到合约代码列
         symbol_col = None
         for col in ["symbol", "合约代码", "code", "期权代码"]:
             if col in option_list.columns:
@@ -169,7 +170,6 @@ def example_option_daily_with_list():
             print(f"未找到合约代码列，可用列: {list(option_list.columns)}")
             return
 
-        # 第二步: 取前3个合约查询日线数据
         symbols_to_query = option_list[symbol_col].head(3).tolist()
         print(f"\n查询前3个合约的日线数据: {symbols_to_query}")
 
@@ -211,7 +211,6 @@ def example_option_daily_analysis():
         print(f"期权合约 {used_symbol} 日线数据统计")
         print(f"数据形状: {df.shape}")
 
-        # 基本统计
         if "close" in df.columns:
             print("\n收盘价统计:")
             print(f"  最高价: {df['high'].max():.4f}")
@@ -224,7 +223,6 @@ def example_option_daily_analysis():
             print(f"  最大成交量: {df['volume'].max()}")
             print(f"  平均成交量: {df['volume'].mean():.0f}")
 
-        # 计算日收益率
         if "close" in df.columns and len(df) > 1:
             df["daily_return"] = df["close"].pct_change() * 100
             print("\n日收益率统计:")
@@ -248,14 +246,12 @@ def example_option_daily_cross_market():
     service = get_service()
 
     try:
-        # 获取上交所期权列表（底层 option_current_day_sse 仅支持上交所）
         option_list = service.get_option_list()
 
         if option_list.empty:
             print("无期权合约")
             return
 
-        # 找到合约代码列
         symbol_col = None
         for col in ["symbol", "合约代码", "code", "期权代码"]:
             if col in option_list.columns:
@@ -266,7 +262,6 @@ def example_option_daily_cross_market():
             print(f"未找到合约代码列，可用列: {list(option_list.columns)}")
             return
 
-        # 取第一个合约查询日线
         first_symbol = option_list[symbol_col].iloc[0]
         df = service.get_option_daily(symbol=str(first_symbol))
 
@@ -293,7 +288,6 @@ def example_option_daily_error_handling():
 
     service = get_service()
 
-    # 测试无效合约代码
     print("\n测试 1: 无效合约代码")
     try:
         _, df = _fetch_option_daily(service, symbol_hint="INVALID")
@@ -304,7 +298,6 @@ def example_option_daily_error_handling():
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
 
-    # 测试正常调用
     print("\n测试 2: 正常调用")
     try:
         _, df = _fetch_option_daily(service, symbol_hint="10000001")

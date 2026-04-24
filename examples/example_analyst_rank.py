@@ -10,6 +10,9 @@ get_analyst_rank() 接口示例
 返回字段: 包含分析师姓名、所属机构、评级次数、评级准确率等
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 from akshare_data import get_service
 from _example_utils import fetch_with_retry, stable_df
 

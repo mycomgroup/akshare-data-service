@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import time
+import warnings
 from typing import Callable
 
 import pandas as pd
 
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -53,17 +57,30 @@ def _print_df(df: pd.DataFrame, title: str, rows: int = 8) -> None:
 # ============================================================
 # 示例 4: ESG 评级趋势分析
 # ============================================================
+def _get_esg_rating_with_fallback(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
+    service = get_service()
+    df = service.get_esg_rating(symbol=symbol, start_date=start_date, end_date=end_date)
+    if df is not None and not df.empty:
+        return df
+    try:
+        df = ak.stock_esg_rating(symbol=symbol, start_date=start_date, end_date=end_date)
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
+    return pd.DataFrame()
+
+
 def example_basic() -> None:
     print("=" * 60)
     print("ESG 评级示例（修复参数：symbol/start_date/end_date）")
     print("=" * 60)
-    service = get_service()
 
     for start_date in _date_candidates("2024-01-01"):
         for end_date in _date_candidates("2024-12-31"):
             desc = f"symbol=000001, {start_date}~{end_date}"
             df = _fetch_with_retry(
-                lambda: service.get_esg_rating(symbol="000001", start_date=start_date, end_date=end_date),
+                lambda: _get_esg_rating_with_fallback("000001", start_date, end_date),
                 desc,
             )
             if df is not None and not df.empty:

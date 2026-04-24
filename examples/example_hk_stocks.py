@@ -10,7 +10,12 @@ get_hk_stocks() 接口示例
 注意: 该接口不支持日期参数，返回当前实时行情。
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
+
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -29,7 +34,7 @@ def _fetch_hk_stocks():
     service = get_service()
     methods = [
         lambda: service.get_hk_stocks(),
-        lambda: service.akshare.get_hk_stocks(),
+        lambda: ak.stock_hk_spot_em(),
     ]
     for fn in methods:
         try:

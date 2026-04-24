@@ -19,11 +19,15 @@
    - stock_price: 正股价格
    - 返回: dict - 包含转股价值和溢价率
 
-注意: 接口通过 service.akshare 访问 AkShareAdapter。
-若接口不可用，会打印错误信息并跳过。
+注意: 接口通过 service.get_conversion_bond_list() 和 service.get_conversion_bond_daily() 访问。
+若接口不可用，会使用演示数据。
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
+import akshare as ak
 from _example_utils import (
     fetch_with_retry,
     normalize_symbol_input,
@@ -49,6 +53,38 @@ def calculate_conversion_value(
     }
 
 
+def _mock_bond_list():
+    """返回模拟的可转债列表数据用于演示"""
+    return pd.DataFrame({
+        "bond_code": ["127045", "110059", "123107", "113050", "128143", "113052", "127046"],
+        "bond_name": ["牧原转债", "南航转债", "蓝盾转债", "南银转债", "锋龙转债", "兴业转债", "中装转债"],
+        "stock_code": ["002714", "601111", "300297", "601009", "002931", "601166", "002822"],
+        "stock_name": ["牧原股份", "中国国航", "蓝盾股份", "南京银行", "锋龙股份", "兴业银行", "中装建设"],
+        "list_date": ["2021-09-06", "2021-09-13", "2020-12-15", "2021-03-24", "2021-03-30", "2022-01-18", "2021-05-07"],
+        "maturity_date": ["2027-09-06", "2027-09-13", "2026-12-15", "2027-03-24", "2027-03-30", "2028-01-18", "2027-05-07"],
+        "face_value": [100.0] * 7,
+        "issue_size": [90.0, 100.0, 4.0, 200.0, 2.45, 500.0, 11.6],
+        "credit_rating": ["AA+", "AAA", "A+", "AAA", "A+", "AAA", "AA"],
+    })
+
+
+def _mock_daily_data(symbol="127045"):
+    """返回模拟的可转债日线数据用于演示"""
+    dates = pd.date_range(start="2024-01-01", end="2024-03-31", freq="B")
+    n = len(dates)
+    base_price = 120.0
+    prices = base_price + (pd.Series(range(n)) * 0.1) + (pd.Series(range(n)).apply(lambda x: (x % 5 - 2) * 0.5))
+    return pd.DataFrame({
+        "date": dates.strftime("%Y-%m-%d"),
+        "open": prices - 0.2,
+        "high": prices + 0.5,
+        "low": prices - 0.5,
+        "close": prices,
+        "volume": [50000 + (i % 10) * 5000 for i in range(n)],
+        "amount": [6000000 + (i % 10) * 600000 for i in range(n)],
+    })
+
+
 # ============================================================
 # 示例 1: 获取可转债列表
 # ============================================================
@@ -65,11 +101,16 @@ def example_convert_bond_list():
         df = fetch_with_retry(lambda: service.get_conversion_bond_list(), retries=2)
     except Exception as e:
         print(f"获取数据失败: {e}")
-        return
+        try:
+            df = ak.bond_zh_cov()
+            if df is not None and not df.empty:
+                print("[AkShare fallback success]")
+        except Exception:
+            df = None
 
-    if df is None or df.empty:
-        print("无数据")
-        return
+    if df is None or (isinstance(df, pd.DataFrame) and df.empty):
+        print("[数据未下载，使用演示数据]")
+        df = _mock_bond_list()
 
     print_df_brief(stable_df(df), rows=10)
 
@@ -97,11 +138,11 @@ def example_convert_bond_daily():
         )
     except Exception as e:
         print(f"获取数据失败: {e}")
-        return
+        df = None
 
-    if df is None or df.empty:
-        print("无数据")
-        return
+    if df is None or (isinstance(df, pd.DataFrame) and df.empty):
+        print("[数据未下载，使用演示数据]")
+        df = _mock_daily_data()
 
     print_df_brief(stable_df(df), rows=10)
 
@@ -129,11 +170,11 @@ def example_convert_bond_daily_with_prefix():
         )
     except Exception as e:
         print(f"获取数据失败: {e}")
-        return
+        df = None
 
-    if df is None or df.empty:
-        print("无数据")
-        return
+    if df is None or (isinstance(df, pd.DataFrame) and df.empty):
+        print("[数据未下载，使用演示数据]")
+        df = _mock_daily_data("110059")
 
     print_df_brief(stable_df(df), rows=10)
 
@@ -182,11 +223,14 @@ def example_convert_bond_analysis():
         df = fetch_with_retry(lambda: service.get_conversion_bond_list(), retries=2)
     except Exception as e:
         print(f"获取数据失败: {e}")
-        return
+        try:
+            df = ak.bond_zh_cov()
+        except Exception:
+            df = None
 
-    if df is None or df.empty:
-        print("无数据")
-        return
+    if df is None or (isinstance(df, pd.DataFrame) and df.empty):
+        print("[数据未下载，使用演示数据]")
+        df = _mock_bond_list()
 
     print(f"可转债总数: {len(df)}")
     print(f"字段列表: {list(df.columns)}")
@@ -236,8 +280,8 @@ def example_batch_convert_bond_daily():
         except Exception as e:
             print(f"\n可转债 {code}: 获取失败 - {e}")
             continue
-        if df is None or df.empty:
-            print(f"\n可转债 {code}: 无数据")
+        if df is None or (isinstance(df, pd.DataFrame) and df.empty):
+            print(f"\n可转债 {code}: [数据未下载]")
             continue
         print(f"\n可转债 {code}:")
         print(f"  数据行数: {len(df)}")

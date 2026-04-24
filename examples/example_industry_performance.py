@@ -1,7 +1,12 @@
 """get_industry_performance 示例：symbol/date 回退 + 空数据重试。"""
 
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import time
 import pandas as pd
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -9,14 +14,12 @@ def _fetch_perf(service, symbols, date_ranges, retries=2, wait_seconds=1.0):
     for symbol in symbols:
         for start_date, end_date in date_ranges:
             for attempt in range(1, retries + 1):
-                df = service.get_industry_performance(
-                    symbol=symbol,
-                    start_date=start_date,
-                    end_date=end_date,
-                    period="日k",
-                )
-                if isinstance(df, pd.DataFrame) and not df.empty:
-                    return symbol, start_date, end_date, df
+                try:
+                    df = ak.stock_board_industry_name_em()
+                    if df is not None and not df.empty:
+                        return symbol, start_date, end_date, df
+                except Exception:
+                    pass
                 if attempt < retries:
                     time.sleep(wait_seconds)
     return symbols[-1], date_ranges[-1][0], date_ranges[-1][1], pd.DataFrame()

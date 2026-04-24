@@ -1,23 +1,21 @@
 """
 大宗交易接口使用示例
 
-本示例展示如何通过 DataService 的 akshare adapter 获取大宗交易数据。
+本示例展示如何通过 akshare 获取大宗交易数据。
 包含主要接口：
   - get_block_deal(): 获取最新交易日的大宗交易明细数据
 
 注意：
-    akshare 源的 get_block_deal() 底层调用 stock_fund_flow_big_deal()，
-    该函数不接受任何参数，只返回最新交易日的大宗交易数据。
-    如果传入 date/symbol/start_date/end_date 参数，会产生 warning 并被忽略。
-
-    get_block_deal_summary 在 akshare 源中映射到与 get_block_deal 相同的底层接口，
-    因此也不支持日期范围查询。如需日期范围汇总，请使用 lixinger 源。
-
-lixinger 源的 get_block_deal(symbol, start_date, end_date) 支持指定股票和日期范围。
+    akshare 的 stock_fund_flow_big_deal() 不接受任何参数，
+    只返回最新交易日的大宗交易数据。
 """
+
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import pandas as pd
 from datetime import date, timedelta
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -44,17 +42,12 @@ def example_basic_block_deal():
     print("示例1: 获取最新交易日的大宗交易明细")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 获取最新交易日的大宗交易数据
-        # 注意：该接口不支持 date 参数，只返回最新交易日数据
-        df = service.akshare.get_block_deal()
+        df = ak.stock_fund_flow_big_deal()
 
         if df is None or df.empty:
             _print_empty_hint()
         else:
-            # 打印数据基本信息
             print(f"数据形状: {df.shape}")
             print(f"大宗交易笔数: {len(df)}")
             print(f"列名: {df.columns.tolist()}")
@@ -70,23 +63,18 @@ def example_block_deal_recent():
     print("示例2: 获取最新交易日的大宗交易数据")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 获取最新交易日的大宗交易数据
-        df = service.akshare.get_block_deal()
+        df = ak.stock_fund_flow_big_deal()
 
         if df is None or df.empty:
             _print_empty_hint()
         else:
             print(f"共 {len(df)} 笔大宗交易")
 
-            # 打印数据结构
             print("\n数据列说明:")
             for i, col in enumerate(df.columns):
                 print(f"  {i + 1}. {col}")
 
-            # 查看前10行数据
             print("\n前10行数据:")
             print(df.head(10))
     except Exception as e:
@@ -127,11 +115,8 @@ def example_block_deal_multiple_dates():
     print("示例5: 获取最新交易日的大宗交易数量")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 注意：该接口不支持指定日期，只返回最新交易日数据
-        df = service.akshare.get_block_deal()
+        df = ak.stock_fund_flow_big_deal()
         if df is None or df.empty:
             _print_empty_hint()
         else:
@@ -146,11 +131,8 @@ def example_block_deal_premium_analysis():
     print("示例6: 大宗交易溢价率分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 获取最新交易日的大宗交易数据
-        df = service.akshare.get_block_deal()
+        df = ak.stock_fund_flow_big_deal()
 
         if df is None or df.empty:
             _print_empty_hint()
@@ -200,11 +182,8 @@ def example_block_deal_error_handling():
     print("示例7: 错误处理示例")
     print("=" * 60)
 
-    service = get_service()
-
-    # 测试正常调用（无参数）
     try:
-        df = service.akshare.get_block_deal()
+        df = ak.stock_fund_flow_big_deal()
         if df is None or df.empty:
             _print_empty_hint()
         else:
@@ -227,11 +206,8 @@ def example_block_deal_combined_analysis():
     print("示例8: 最新交易日大宗交易数据分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 获取最新交易日明细
-        detail_df = service.akshare.get_block_deal()
+        detail_df = ak.stock_fund_flow_big_deal()
 
         print("最新交易日明细数据:")
         print(f"  交易笔数: {len(detail_df)}")

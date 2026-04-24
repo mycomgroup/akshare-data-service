@@ -10,8 +10,13 @@ get_us_stocks() 接口示例
 注意: 该接口不支持日期参数，返回当前实时行情。
 """
 
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
-from akshare_data import get_service
+
+import akshare as ak
 
 
 def _mock_us_stocks():
@@ -26,18 +31,12 @@ def _mock_us_stocks():
 
 
 def _fetch_us_stocks():
-    service = get_service()
-    methods = [
-        lambda: service.get_us_stocks(),
-        lambda: service.akshare.get_us_stocks(),
-    ]
-    for fn in methods:
-        try:
-            df = fn()
-            if df is not None and not df.empty:
-                return df
-        except Exception:
-            continue
+    try:
+        df = ak.stock_us_spot_em()
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
     print("[美股实时接口不可用，使用演示数据]")
     return _mock_us_stocks()
 

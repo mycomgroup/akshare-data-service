@@ -6,10 +6,14 @@
 导入方式: from akshare_data import get_service
           service = get_service()
           df = service.get_cash_flow(symbol="600519")
+
+注意: 运行时可能会出现 DeprecationWarning，这是 akshare_data 库内部使用的
+      已弃用接口产生的警告。可通过命令行参数抑制:
+      python -W ignore::DeprecationWarning examples/example_cash_flow.py
 """
 
 import warnings
-warnings.simplefilter("ignore", DeprecationWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import logging
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
@@ -74,7 +78,7 @@ def example_multiple_stocks():
 
     for code, name in symbols.items():
         try:
-            df = service.get_cash_flow(symbol=code)
+            df, used_symbol = _safe_cash_flow(service.get_cash_flow, [code])
             if df is not None and not df.empty:
                 print(f"\n{name} ({code}): {len(df)} 条记录")
                 print(df.head(2))

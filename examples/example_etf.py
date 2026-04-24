@@ -23,26 +23,18 @@ get_etf(symbol, start_date, end_date) 参数说明:
     - 支持带前缀的代码格式 (如 "sh510300")，系统会自动规范化
 """
 
-import sys
 import warnings
-
-sys.warnoptions = ["ignore::DeprecationWarning"]
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-warnings.simplefilter("ignore", DeprecationWarning)
-
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore", DeprecationWarning)
-    from akshare_data import get_etf
 
 import logging
+import random
 from datetime import date, timedelta
 
 import pandas as pd
+from akshare_data import get_etf
 from _example_utils import fetch_with_retry
 
-warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
-
 
 HISTORICAL_START = "2024-01-01"
 HISTORICAL_END = "2024-06-30"

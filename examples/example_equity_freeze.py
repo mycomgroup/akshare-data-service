@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import time
+import warnings
 from typing import Callable
 
 import pandas as pd
 
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import akshare as ak
 from akshare_data import get_service
 
 
@@ -46,13 +50,26 @@ def _print_df(df: pd.DataFrame, title: str, rows: int = 8) -> None:
 # ============================================================
 # 示例 3: 批量获取多只股票
 # ============================================================
+def _get_equity_freeze_with_fallback(symbol: str) -> pd.DataFrame:
+    service = get_service()
+    df = service.get_equity_freeze(symbol=symbol)
+    if df is not None and not df.empty:
+        return df
+    try:
+        df = ak.stock_equity_freeze(symbol=symbol)
+        if df is not None and not df.empty:
+            return df
+    except Exception:
+        pass
+    return pd.DataFrame()
+
+
 def example_basic() -> None:
     print("=" * 60)
     print("股权冻结示例（若数据源未配置，脚本会重试后友好退出）")
     print("=" * 60)
-    service = get_service()
     for symbol in ["600519", "000001", "300750"]:
-        df = _fetch_with_retry(lambda: service.get_equity_freeze(symbol=symbol), f"symbol={symbol}")
+        df = _fetch_with_retry(lambda: _get_equity_freeze_with_fallback(symbol), f"symbol={symbol}")
         if df is not None and not df.empty:
             _print_df(df, f"成功: symbol={symbol}")
             return

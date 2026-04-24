@@ -18,74 +18,55 @@ get_index() 接口示例
 返回字段: symbol, date, open, high, low, close, volume, amount
 """
 
+import sys
 import warnings
 
+sys.warnoptions = ["ignore::DeprecationWarning"]
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import logging
+
+logging.getLogger("akshare_data").setLevel(logging.ERROR)
+
 from datetime import date, timedelta
 
 import pandas as pd
 
-from akshare_data import get_index
-
-logging.getLogger("akshare_data").setLevel(logging.ERROR)
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore", DeprecationWarning)
+    from akshare_data import get_index
 
 
 def _last_trading_day(anchor: date | None = None) -> date:
+    """回退到最近工作日（避免周末和未来日）"""
     d = min(anchor or date.today(), date.today())
     while d.weekday() >= 5:
         d -= timedelta(days=1)
     return d
 
 
-def _date_range(days: int) -> tuple[str, str]:
+def _date_range(trading_days: int) -> tuple[str, str]:
+    """计算日期范围，确保 end_date 是最近的交易日"""
     end = _last_trading_day()
-    start = end - timedelta(days=max(days * 2, 10))
+    start = end - timedelta(days=max(trading_days * 2, 7))
     return start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d")
 
 
 def _candidate_fallback_dates(count: int = 5) -> list[str]:
+    """生成候选回退日期列表"""
     d = _last_trading_day()
     out: list[str] = []
     while len(out) < count:
-        out.append(d.strftime("%Y-%m-%d"))
+        if d.weekday() < 5:
+            out.append(d.strftime("%Y-%m-%d"))
         d -= timedelta(days=1)
-        while d.weekday() >= 5:
-            d -= timedelta(days=1)
     return out
 
 
-def _mock_index_data(index_code: str, start_date: str, end_date: str) -> pd.DataFrame:
-    import random
-    random.seed(42)
-    dates = pd.bdate_range(start=start_date, end=end_date)
-    base_prices = {"000001": 3000, "000300": 3800, "399001": 9000, "399006": 1800, "000016": 2500, "000905": 5500}
-    base = base_prices.get(index_code, 3000)
-    data = []
-    price = base
-    for d in dates[-60:]:
-        price *= (1 + random.uniform(-0.02, 0.02))
-        data.append({
-            "symbol": index_code, "date": d.strftime("%Y-%m-%d"),
-            "open": round(price * 0.998, 2), "high": round(price * 1.01, 2),
-            "low": round(price * 0.99, 2), "close": round(price, 2),
-            "volume": int(random.uniform(1e8, 5e8)), "amount": int(random.uniform(1e9, 5e9)),
-        })
-    return pd.DataFrame(data)
-
-
-def _get_index(index_code, start_date=None, end_date=None):
-    """Get index data with graceful empty-data handling."""
-    if start_date is None:
-        start_date = "1990-01-01"
-    if end_date is None:
-        end_date = datetime.now().strftime("%Y-%m-%d")
-
-    df = get_index(index_code=index_code, start_date=start_date, end_date=end_date)
-    if df is None or df.empty:
-        df = _mock_index_data(index_code, start_date, end_date)
-    return df
+def _print_empty_hint(index_code: str, start_date: str, end_date: str) -> None:
+    """打印无数据时的提示信息"""
+    print(f"{index_code} 在 {start_date} ~ {end_date} 无数据。")
+    print(f"候选回退日期: {', '.join(_candidate_fallback_dates())}")
 
 
 # ============================================================
@@ -99,22 +80,20 @@ def example_basic():
 
     try:
         start, end = _date_range(60)
-        df = _get_index("000300", start, end)
+        df = get_index(index_code="000300", start_date=start, end_date=end)
 
-        # 打印数据形状
+        if df is None or df.empty:
+            _print_empty_hint("000300", start, end)
+            return
+
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 打印前5行
-        if not df.empty:
-            print("\n前5行数据:")
-            print(df.head())
+        print("\n前5行数据:")
+        print(df.head())
 
-            # 打印后5行
-            print("\n后5行数据:")
-            print(df.tail())
-        else:
-            print("\n无数据")
+        print("\n后5行数据:")
+        print(df.tail())
 
     except Exception as e:
         print(f"获取数据失败: {e}")
@@ -147,8 +126,8 @@ def example_major_indices():
 
     for code, name in indices.items():
         try:
-            df = _get_index(code, start, end)
-            if not df.empty and len(df) >= 2:
+            df = get_index(index_code=code, start_date=start, end_date=end)
+            if df is not None and not df.empty and len(df) >= 2:
                 start_close = df.iloc[0]["close"]
                 end_close = df.iloc[-1]["close"]
                 change_pct = (end_close - start_close) / start_close * 100
@@ -171,21 +150,21 @@ def example_default_dates():
     print("=" * 60)
 
     try:
-        # 不传 start_date 和 end_date，默认从 1990-01-01 到当天
         start, end = _date_range(260)
-        df = _get_index("000001", start, end)
+        df = get_index(index_code="000001", start_date=start, end_date=end)
 
-        if not df.empty:
-            print("上证指数全部历史数据")
-            print(f"数据形状: {df.shape}")
-            print(f"时间范围: {df['date'].min()} ~ {df['date'].max()}")
-            print(f"总交易日数: {len(df)}")
-            print("\n最早5个交易日:")
-            print(df.head())
-            print("\n最近5个交易日:")
-            print(df.tail())
-        else:
-            print("无数据")
+        if df is None or df.empty:
+            _print_empty_hint("000001", start, end)
+            return
+
+        print("上证指数历史数据")
+        print(f"数据形状: {df.shape}")
+        print(f"时间范围: {df['date'].min()} ~ {df['date'].max()}")
+        print(f"总交易日数: {len(df)}")
+        print("\n最早5个交易日:")
+        print(df.head())
+        print("\n最近5个交易日:")
+        print(df.tail())
 
     except Exception as e:
         print(f"获取数据失败: {e}")
@@ -200,7 +179,6 @@ def example_symbol_formats():
     print("示例 4: 不同指数代码格式")
     print("=" * 60)
 
-    # 沪深300的不同写法
     codes = [
         "000300",
         "sh000300",
@@ -210,8 +188,8 @@ def example_symbol_formats():
     for code in codes:
         try:
             start, end = _date_range(10)
-            df = _get_index(code, start, end)
-            if not df.empty:
+            df = get_index(index_code=code, start_date=start, end_date=end)
+            if df is not None and not df.empty:
                 print(
                     f"代码格式: {code:15s} -> 标准化后: {df['symbol'].iloc[0]:10s}, 行数: {len(df)}"
                 )
@@ -232,26 +210,23 @@ def example_analysis():
 
     try:
         start, end = _date_range(260)
-        df = _get_index("000300", start, end)
+        df = get_index(index_code="000300", start_date=start, end_date=end)
 
-        if df.empty:
-            print("无数据")
+        if df is None or df.empty:
+            _print_empty_hint("000300", start, end)
             return
 
-        # 计算移动平均线
         df["ma5"] = df["close"].rolling(window=5).mean()
         df["ma10"] = df["close"].rolling(window=10).mean()
         df["ma20"] = df["close"].rolling(window=20).mean()
         df["ma60"] = df["close"].rolling(window=60).mean()
 
-        # 计算日收益率
         df["pct_change"] = df["close"].pct_change() * 100
 
-        print("沪深300 2024年日线数据 (含均线)")
+        print("沪深300日线数据 (含均线)")
         print(f"数据形状: {df.shape}")
 
-        # 统计信息
-        print("\n2024年统计:")
+        print("\n统计信息:")
         print(
             f"  最高收盘: {df['close'].max():.2f} ({df.loc[df['close'].idxmax(), 'date']})"
         )
@@ -260,7 +235,6 @@ def example_analysis():
         )
         print(f"  年化波动: {df['pct_change'].std() * (252**0.5):.2f}%")
 
-        # 最新数据
         print("\n最新10行数据:")
         cols = ["date", "close", "ma5", "ma10", "ma20", "ma60", "pct_change"]
         available_cols = [c for c in cols if c in df.columns]
@@ -281,10 +255,10 @@ def example_yearly_return():
 
     try:
         start, end = _date_range(1300)
-        df = _get_index("000300", start, end)
+        df = get_index(index_code="000300", start_date=start, end_date=end)
 
-        if df.empty or len(df) < 2:
-            print("数据不足")
+        if df is None or df.empty or len(df) < 2:
+            _print_empty_hint("000300", start, end)
             return
 
         df["date"] = pd.to_datetime(df["date"])

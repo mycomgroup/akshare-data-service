@@ -1,10 +1,14 @@
 """实时行情示例（统一 symbol 格式、重试、降级输出）。"""
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import re
 import time
 from typing import Callable, Optional
 
 import pandas as pd
+import akshare as ak
 
 from akshare_data import get_service
 
@@ -35,7 +39,7 @@ def main() -> None:
     service = get_service()
     df = _fetch_with_retry(lambda: service.get_spot_em(), "service.get_spot_em")
     if df is None:
-        df = _fetch_with_retry(lambda: service.akshare.get_spot_em(), "service.akshare.get_spot_em")
+        df = _fetch_with_retry(lambda: ak.spot_em(), "ak.spot_em")
     if df is None:
         print("最终无可用数据。")
         return

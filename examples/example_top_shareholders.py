@@ -2,11 +2,14 @@
 
 import re
 import time
+import warnings
 from typing import Callable, Optional
 
 import pandas as pd
 
-from akshare_data import get_service
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+import akshare as ak
 
 
 def _normalize_symbol(symbol: str) -> str:
@@ -35,18 +38,13 @@ def main() -> None:
     print("top_shareholders 示例")
     print("=" * 60)
 
-    service = get_service()
     for raw_symbol in ["600519", "sh600519", "000001.XSHE"]:
         symbol = _normalize_symbol(raw_symbol)
+        symbol_ak = f"sh{symbol}" if not symbol.startswith(("sh", "sz")) else symbol
         df = _fetch_with_retry(
-            lambda s=symbol: service.get_top_shareholders(symbol=s),
-            f"get_top_shareholders({raw_symbol})",
+            lambda s=symbol_ak: ak.stock_gdfx_top_10_em(symbol=s),
+            f"stock_gdfx_top_10_em({raw_symbol})",
         )
-        if df is None:
-            df = _fetch_with_retry(
-                lambda s=symbol: service.get_top_shareholders(symbol=s, source="lixinger"),
-                f"get_top_shareholders({raw_symbol}, source=lixinger)",
-            )
         if df is None:
             print(f"{raw_symbol} -> {symbol}: 无数据")
             continue

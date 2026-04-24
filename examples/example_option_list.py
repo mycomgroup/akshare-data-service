@@ -16,7 +16,12 @@ get_option_list() 接口示例
     df = service.get_option_list()
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import pandas as pd
+import akshare as ak
+
 from akshare_data import get_service
 
 
@@ -27,7 +32,13 @@ def _fetch_option_list(service):
             if df is not None and not df.empty:
                 return market, df
         except Exception:
-            continue
+            pass
+    try:
+        df = ak.option_current_day_sse(symbol="50ETF")
+        if df is not None and not df.empty:
+            return "sse", df
+    except Exception:
+        pass
     return "sse", pd.DataFrame()
 
 
@@ -54,23 +65,19 @@ def example_option_list_basic():
     service = get_service()
 
     try:
-        # 底层使用 option_current_day_sse，返回上交所当日合约
         market, df = _fetch_option_list(service)
         if df is None or df.empty:
             print("无数据，切换样本回退")
             _show_option_list_sample()
             return
 
-        # 打印数据形状
         print(f"实际使用 market: {market}")
         print(f"数据形状: {df.shape}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 打印前5行
         print("\n前5行数据:")
         print(df.head())
 
-        # 打印后5行
         print("\n后5行数据:")
         print(df.tail())
 
@@ -99,7 +106,6 @@ def example_option_list_filter_by_underlying():
         print(f"上交所期权合约总数: {len(df)}")
         print(f"字段列表: {list(df.columns)}")
 
-        # 尝试按标的资产筛选
         underlying_cols = [
             col for col in df.columns
             if any(keyword in col.lower() for keyword in ["underlying", "标的", "symbol", "code"])
@@ -138,7 +144,6 @@ def example_option_list_filter_by_expiry():
 
         print(f"上交所期权合约总数: {len(df)}")
 
-        # 尝试找到到期日相关列
         expiry_cols = [
             col for col in df.columns
             if any(keyword in col.lower() for keyword in ["expiry", "到期", "maturity", "end"])
@@ -183,7 +188,6 @@ def example_option_list_stats():
         print("\n前5行数据:")
         print(df.head().to_string(index=False))
 
-        # 统计信息
         numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
         if numeric_cols:
             print("\n数值字段统计:")
@@ -204,7 +208,6 @@ def example_option_list_error_handling():
 
     service = get_service()
 
-    # 正常调用
     print("\n测试: 正常调用")
     try:
         _, df = _fetch_option_list(service)
