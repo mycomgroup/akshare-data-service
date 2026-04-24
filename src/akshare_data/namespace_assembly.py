@@ -9,7 +9,7 @@ from __future__ import annotations
 import logging
 from datetime import datetime
 from types import SimpleNamespace
-from typing import List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
 import pandas as pd
 
@@ -66,17 +66,20 @@ class CNStockQuoteAPI:
         source: Optional[Union[str, List[str]]] = None,
     ) -> pd.DataFrame:
         sym = normalize_symbol(symbol)
-        where = {}
+        where: Dict[str, Any] = {"period": freq}
         if start_date:
             where["datetime"] = (
                 start_date,
                 end_date or datetime.today().strftime("%Y-%m-%d"),
             )
+        # The schema registry exposes a single ``stock_minute`` table with a
+        # ``period`` column carrying intra-day frequency (see core/schema.py).
+        # The physical partition is ``week``, so we pass the symbol through
+        # the where-clause instead of ``partition_value``.
+        where["symbol"] = sym
         result = self.service._served.query(
-            table=f"stock_minute_{freq}",
-            where=where or None,
-            partition_by="symbol",
-            partition_value=sym,
+            table="stock_minute",
+            where=where,
         )
         return result.data
 
