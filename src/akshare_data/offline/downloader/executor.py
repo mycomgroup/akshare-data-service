@@ -26,7 +26,7 @@ from akshare_data.core.symbols import normalize_symbol
 
 logger = logging.getLogger("akshare_data")
 
-_RETRY_CONFIG = RetryConfig(max_retries=2, delay=1.0, backoff=1.0)
+_RETRY_CONFIG = RetryConfig(max_retries=4, delay=1.0, backoff=1.0)
 
 
 class TaskExecutor(
