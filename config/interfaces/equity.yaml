@@ -243,16 +243,17 @@ spot_snapshot:
       enabled: true
       input_mapping: {}
       output_mapping:
-        code: "symbol"
-        name: "name"
-        trade: "price"
-        changepercent: "pct_change"
-        volume: "volume"
-        amount: "amount"
-        open: "open"
-        high: "high"
-        low: "low"
-        settlement: "prev_close"
+        代码: "symbol"
+        名称: "name"
+        最新价: "price"
+        涨跌额: "change"
+        涨跌幅: "pct_change"
+        成交量: "volume"
+        成交额: "amount"
+        今开: "open"
+        最高: "high"
+        最低: "low"
+        昨收: "prev_close"
       column_types:
         price: "float"
         change: "float"
@@ -951,7 +952,17 @@ balance_sheet:
   input:
     - {name: "symbol", type: "str", required: true, desc: "股票代码"}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "证券代码"}
+    - {name: "name", type: "str", desc: "证券简称"}
+    - {name: "report_date", type: "date", desc: "报告日期"}
+    - {name: "report_type", type: "str", desc: "报告类型"}
+    - {name: "announce_date", type: "date", desc: "公告日期"}
+    - {name: "update_date", type: "date", desc: "更新日期"}
+    - {name: "currency", type: "str", desc: "货币"}
+    - {name: "total_assets", type: "float", desc: "总资产"}
+    - {name: "total_liabilities", type: "float", desc: "总负债"}
+    - {name: "total_equity", type: "float", desc: "所有者权益"}
 
   rate_limit_key: "em_datacenter"
 
@@ -984,7 +995,23 @@ income_statement:
   input:
     - {name: "symbol", type: "str", required: true, desc: "股票代码，如 600519"}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "证券代码"}
+    - {name: "name", type: "str", desc: "证券简称"}
+    - {name: "report_date", type: "date", desc: "报告日期"}
+    - {name: "report_type", type: "str", desc: "报告类型"}
+    - {name: "announce_date", type: "date", desc: "公告日期"}
+    - {name: "update_date", type: "date", desc: "更新日期"}
+    - {name: "currency", type: "str", desc: "货币"}
+    - {name: "total_revenue", type: "float", desc: "营业总收入"}
+    - {name: "revenue", type: "float", desc: "营业收入"}
+    - {name: "operating_profit", type: "float", desc: "营业利润"}
+    - {name: "total_profit", type: "float", desc: "利润总额"}
+    - {name: "income_tax", type: "float", desc: "所得税"}
+    - {name: "net_profit", type: "float", desc: "净利润"}
+    - {name: "parent_net_profit", type: "float", desc: "归母净利润"}
+    - {name: "basic_eps", type: "float", desc: "基本每股收益"}
+    - {name: "diluted_eps", type: "float", desc: "稀释每股收益"}
 
   rate_limit_key: "default"
 
@@ -1023,7 +1050,20 @@ cash_flow:
   input:
     - {name: "symbol", type: "str", required: true, desc: "股票代码，如 600519"}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "证券代码"}
+    - {name: "name", type: "str", desc: "证券简称"}
+    - {name: "report_date", type: "date", desc: "报告日期"}
+    - {name: "report_type", type: "str", desc: "报告类型"}
+    - {name: "announce_date", type: "date", desc: "公告日期"}
+    - {name: "update_date", type: "date", desc: "更新日期"}
+    - {name: "currency", type: "str", desc: "货币"}
+    - {name: "netcash_operate", type: "float", desc: "经营活动现金流净额"}
+    - {name: "netcash_invest", type: "float", desc: "投资活动现金流净额"}
+    - {name: "netcash_finance", type: "float", desc: "筹资活动现金流净额"}
+    - {name: "begin_cce", type: "float", desc: "期初现金及等价物"}
+    - {name: "end_cce", type: "float", desc: "期末现金及等价物"}
+    - {name: "cce_change", type: "float", desc: "现金及等价物净增加额"}
 
   rate_limit_key: "default"
 
@@ -1061,7 +1101,9 @@ basic_info:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "item", type: "str", desc: "项目"}
+    - {name: "value", type: "str", desc: "值"}
 
   rate_limit_key: "default"
 
@@ -1194,7 +1236,12 @@ hsgt_hold_snapshot:
     - {name: "symbol", type: "str", required: false, default: "北向资金增持行业板块排行"}
     - {name: "indicator", type: "str", required: false, default: "今日"}
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "symbol", type: "str", desc: "代码"}
+    - {name: "name", type: "str", desc: "名称"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
 
   rate_limit_key: "default"
 
@@ -1263,8 +1310,18 @@ chip_distribution:
 
   input:
     - {name: "symbol", type: "str", required: true}
+    - {name: "adjust", type: "str", required: false, default: ""}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "ratio", type: "float", desc: "获利比例"}
+    - {name: "price", type: "float", desc: "平均成本"}
+    - {name: "cost_p90_low", type: "float", desc: "90成本-低"}
+    - {name: "cost_p90_high", type: "float", desc: "90成本-高"}
+    - {name: "concentration_p90", type: "float", desc: "90集中度"}
+    - {name: "cost_p70_low", type: "float", desc: "70成本-低"}
+    - {name: "cost_p70_high", type: "float", desc: "70成本-高"}
+    - {name: "concentration_p70", type: "float", desc: "70集中度"}
 
   rate_limit_key: "default"
 
@@ -1331,7 +1388,14 @@ holding_change:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "announce_date", type: "date", desc: "公告日期"}
+    - {name: "holder_name", type: "str", desc: "变动股东"}
+    - {name: "change_count", type: "float", desc: "变动数量"}
+    - {name: "avg_price", type: "float", desc: "交易均价"}
+    - {name: "remaining_shares", type: "float", desc: "剩余股份总数"}
+    - {name: "change_period", type: "str", desc: "变动期间"}
+    - {name: "change_type", type: "str", desc: "变动途径"}
 
   rate_limit_key: "default"
 
@@ -1361,7 +1425,14 @@ esg_rating:
 
   input: []
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "esg_score", type: "float", desc: "ESG评分"}
+    - {name: "e_score", type: "float", desc: "环境总评"}
+    - {name: "s_score", type: "float", desc: "社会责任总评"}
+    - {name: "g_score", type: "float", desc: "治理总评"}
+    - {name: "rating_date", type: "date", desc: "评级日期"}
+    - {name: "market", type: "str", desc: "交易市场"}
 
   rate_limit_key: "default"
 
@@ -1385,7 +1456,10 @@ esg_rank:
 
   input: []
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "esg_score", type: "float", desc: "ESG评分"}
+    - {name: "rating_date", type: "date", desc: "评级日期"}
 
   rate_limit_key: "default"
 
@@ -1438,7 +1512,14 @@ analyst_rank:
   input:
     - {name: "year", type: "str", required: false, default: "2024"}
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "analyst_name", type: "str", desc: "分析师名称"}
+    - {name: "broker_name", type: "str", desc: "分析师单位"}
+    - {name: "score", type: "float", desc: "年度指数"}
+    - {name: "stock_count", type: "int", desc: "成分股个数"}
+    - {name: "date", type: "date", desc: "更新日期"}
+    - {name: "year", type: "str", desc: "年度"}
 
   rate_limit_key: "default"
 
@@ -1465,7 +1546,15 @@ research_report:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "name", type: "str", desc: "股票简称"}
+    - {name: "title", type: "str", desc: "报告名称"}
+    - {name: "rating", type: "str", desc: "东财评级"}
+    - {name: "broker", type: "str", desc: "机构"}
+    - {name: "industry", type: "str", desc: "行业"}
+    - {name: "report_date", type: "date", desc: "日期"}
+    - {name: "report_url", type: "str", desc: "报告PDF链接"}
 
   rate_limit_key: "default"
 
@@ -1610,7 +1699,11 @@ earnings_forecast:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "symbol", type: "str", desc: "代码"}
+    - {name: "name", type: "str", desc: "名称"}
+    - {name: "report_count", type: "int", desc: "研报数"}
 
   rate_limit_key: "default"
 
@@ -1629,7 +1722,7 @@ earnings_forecast:
 rights_issue:
   name: "rights_issue"
   category: "equity"
-  description: "配股/预约披露时间"
+  description: "配股数据（AkShare 暂无稳定对应接口，当前为预约披露时间）"
 
   input:
     - {name: "symbol", type: "str", required: false, default: "沪深A股"}
@@ -1646,7 +1739,7 @@ rights_issue:
   sources:
     - name: "akshare_em"
       func: "stock_yysj_em"
-      enabled: true
+      enabled: false
       input_mapping:
         symbol: "symbol"
         date: "date"
@@ -1671,7 +1764,21 @@ company_management:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "证券代码"}
+    - {name: "name", type: "str", desc: "证券简称"}
+    - {name: "report_date", type: "date", desc: "截止日期"}
+    - {name: "announce_date", type: "date", desc: "公告日期"}
+    - {name: "insider_name", type: "str", desc: "高管姓名"}
+    - {name: "director_name", type: "str", desc: "董监高姓名"}
+    - {name: "title", type: "str", desc: "董监高职务"}
+    - {name: "shares_begin", type: "float", desc: "期初持股数量"}
+    - {name: "shares_end", type: "float", desc: "期末持股数量"}
+    - {name: "change_count", type: "float", desc: "变动数量"}
+    - {name: "change_ratio", type: "float", desc: "变动比例"}
+    - {name: "avg_price", type: "float", desc: "成交均价"}
+    - {name: "market_value", type: "float", desc: "期末市值"}
+    - {name: "change_reason", type: "str", desc: "持股变动原因"}
 
   rate_limit_key: "default"
 
@@ -1702,12 +1809,17 @@ company_management:
 share_change:
   name: "share_change"
   category: "equity"
-  description: "股本变动"
+  description: "盘口异动数据"
 
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "datetime", type: "datetime", desc: "时间"}
+    - {name: "symbol", type: "str", desc: "代码"}
+    - {name: "name", type: "str", desc: "名称"}
+    - {name: "sector", type: "str", desc: "板块"}
+    - {name: "remark", type: "str", desc: "相关信息"}
 
   rate_limit_key: "default"
 
@@ -1724,8 +1836,6 @@ share_change:
         板块: sector
         相关信息: remark
 
-# ── 新闻/公告 ───────────────────────────────────────────
-
   aliases:
     - capital_change
 disclosure_news:
@@ -1736,7 +1846,13 @@ disclosure_news:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "keyword", type: "str", desc: "关键词"}
+    - {name: "title", type: "str", desc: "新闻标题"}
+    - {name: "content", type: "str", desc: "新闻内容"}
+    - {name: "publish_time", type: "datetime", desc: "发布时间"}
+    - {name: "source", type: "str", desc: "文章来源"}
+    - {name: "url", type: "str", desc: "新闻链接"}
 
   rate_limit_key: "default"
 
@@ -1800,7 +1916,19 @@ restricted_release_calendar:
     - {name: "start_date", type: "str", required: true}
     - {name: "end_date", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "name", type: "str", desc: "股票简称"}
+    - {name: "release_date", type: "date", desc: "解禁时间"}
+    - {name: "release_type", type: "str", desc: "限售股类型"}
+    - {name: "release_shares", type: "float", desc: "解禁数量"}
+    - {name: "actual_release_shares", type: "float", desc: "实际解禁数量"}
+    - {name: "release_value", type: "float", desc: "实际解禁市值"}
+    - {name: "release_ratio", type: "float", desc: "占解禁前流通市值比例"}
+    - {name: "prev_close", type: "float", desc: "解禁前一交易日收盘价"}
+    - {name: "pre20d_change_pct", type: "float", desc: "解禁前20日涨跌幅"}
+    - {name: "post20d_change_pct", type: "float", desc: "解禁后20日涨跌幅"}
 
   rate_limit_key: "default"
 
@@ -1956,7 +2084,23 @@ concept_components:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "symbol", type: "str", desc: "代码"}
+    - {name: "name", type: "str", desc: "名称"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "change", type: "float", desc: "涨跌额"}
+    - {name: "volume", type: "float", desc: "成交量"}
+    - {name: "amount", type: "float", desc: "成交额"}
+    - {name: "amplitude", type: "float", desc: "振幅"}
+    - {name: "high", type: "float", desc: "最高"}
+    - {name: "low", type: "float", desc: "最低"}
+    - {name: "open", type: "float", desc: "今开"}
+    - {name: "prev_close", type: "float", desc: "昨收"}
+    - {name: "turnover_rate", type: "float", desc: "换手率"}
+    - {name: "pe_ttm", type: "float", desc: "市盈率-动态"}
+    - {name: "pb", type: "float", desc: "市净率"}
 
   rate_limit_key: "default"
 
@@ -1997,7 +2141,18 @@ concept_performance:
     - {name: "start_date", type: "str", required: false, default: "20220101"}
     - {name: "end_date", type: "str", required: false, default: "20221128"}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "open", type: "float", desc: "开盘"}
+    - {name: "close", type: "float", desc: "收盘"}
+    - {name: "high", type: "float", desc: "最高"}
+    - {name: "low", type: "float", desc: "最低"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "change", type: "float", desc: "涨跌额"}
+    - {name: "volume", type: "float", desc: "成交量"}
+    - {name: "amount", type: "float", desc: "成交额"}
+    - {name: "amplitude", type: "float", desc: "振幅"}
+    - {name: "turnover_rate", type: "float", desc: "换手率"}
 
   rate_limit_key: "default"
 
@@ -2031,7 +2186,14 @@ stock_industry:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "symbol", type: "str", desc: "代码"}
+    - {name: "name", type: "str", desc: "名称"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "pe_ttm", type: "float", desc: "市盈率-动态"}
+    - {name: "pb", type: "float", desc: "市净率"}
 
   rate_limit_key: "default"
 
@@ -2061,7 +2223,18 @@ industry_performance:
     - {name: "end_date", type: "str", required: false, default: "20220401"}
     - {name: "period", type: "str", required: false, default: "日k"}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "open", type: "float", desc: "开盘"}
+    - {name: "close", type: "float", desc: "收盘"}
+    - {name: "high", type: "float", desc: "最高"}
+    - {name: "low", type: "float", desc: "最低"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "change", type: "float", desc: "涨跌额"}
+    - {name: "volume", type: "float", desc: "成交量"}
+    - {name: "amount", type: "float", desc: "成交额"}
+    - {name: "amplitude", type: "float", desc: "振幅"}
+    - {name: "turnover_rate", type: "float", desc: "换手率"}
 
   rate_limit_key: "default"
 
@@ -2094,7 +2267,19 @@ sw_industry_list:
 
   input: []
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "排名"}
+    - {name: "industry_name", type: "str", desc: "板块名称"}
+    - {name: "industry_code", type: "str", desc: "板块代码"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "change", type: "float", desc: "涨跌额"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "market_cap", type: "float", desc: "总市值"}
+    - {name: "turnover_rate", type: "float", desc: "换手率"}
+    - {name: "up_count", type: "int", desc: "上涨家数"}
+    - {name: "down_count", type: "int", desc: "下跌家数"}
+    - {name: "top_stock_name", type: "str", desc: "领涨股票"}
+    - {name: "top_stock_change_pct", type: "float", desc: "领涨股票-涨跌幅"}
 
   rate_limit_key: "default"
 
@@ -2127,7 +2312,16 @@ sw_industry_daily:
     - {name: "end_date", type: "str", required: false, default: "20220401"}
     - {name: "period", type: "str", required: false, default: "日k"}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "open", type: "float", desc: "开盘"}
+    - {name: "close", type: "float", desc: "收盘"}
+    - {name: "high", type: "float", desc: "最高"}
+    - {name: "low", type: "float", desc: "最低"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "change", type: "float", desc: "涨跌额"}
+    - {name: "volume", type: "float", desc: "成交量"}
+    - {name: "amount", type: "float", desc: "成交额"}
 
   rate_limit_key: "default"
 
@@ -2196,7 +2390,18 @@ main_fund_flow_rank:
   input:
     - {name: "indicator", type: "str", required: false, default: "5日"}
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "symbol", type: "str", desc: "代码"}
+    - {name: "name", type: "str", desc: "名称"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "change_pct", type: "float", desc: "今日涨跌幅"}
+    - {name: "main_net_inflow", type: "float", desc: "今日主力净流入-净额"}
+    - {name: "main_net_inflow_ratio", type: "float", desc: "今日主力净流入-净占比"}
+    - {name: "super_large_net_inflow", type: "float", desc: "今日超大单净流入-净额"}
+    - {name: "large_net_inflow", type: "float", desc: "今日大单净流入-净额"}
+    - {name: "medium_net_inflow", type: "float", desc: "今日中单净流入-净额"}
+    - {name: "small_net_inflow", type: "float", desc: "今日小单净流入-净额"}
 
   rate_limit_key: "default"
 
@@ -2263,7 +2468,8 @@ trade_calendar:
 
   input: []
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "交易日期"}
 
   rate_limit_key: "default"
 
@@ -2416,7 +2622,26 @@ new_stocks:
   input:
     - {name: "symbol", type: "str", required: false, default: "全部股票", desc: "市场: 全部股票/沪市主板/科创板/深市主板/创业板/北交所"}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "name", type: "str", desc: "股票简称"}
+    - {name: "subscribe_code", type: "str", desc: "申购代码"}
+    - {name: "exchange", type: "str", desc: "交易所"}
+    - {name: "board", type: "str", desc: "板块"}
+    - {name: "issue_total", type: "float", desc: "发行总数"}
+    - {name: "online_issue", type: "float", desc: "网上发行"}
+    - {name: "required_market_cap", type: "float", desc: "顶格申购需配市值"}
+    - {name: "subscribe_limit", type: "float", desc: "申购上限"}
+    - {name: "issue_price", type: "float", desc: "发行价格"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "first_day_close", type: "float", desc: "首日收盘价"}
+    - {name: "subscribe_date", type: "date", desc: "申购日期"}
+    - {name: "lottery_announce_date", type: "date", desc: "中签号公布日"}
+    - {name: "payment_date", type: "date", desc: "中签缴款日期"}
+    - {name: "list_date", type: "date", desc: "上市日期"}
+    - {name: "pe_issue", type: "float", desc: "发行市盈率"}
+    - {name: "pe_industry", type: "float", desc: "行业市盈率"}
+    - {name: "lottery_rate", type: "float", desc: "中签率"}
 
   rate_limit_key: "default"
 
@@ -2457,7 +2682,15 @@ ipo_info:
   input:
     - {name: "symbol", type: "str", required: false, default: "全部股票", desc: "市场类型"}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "name", type: "str", desc: "股票简称"}
+    - {name: "subscribe_code", type: "str", desc: "申购代码"}
+    - {name: "issue_price", type: "float", desc: "发行价格"}
+    - {name: "subscribe_date", type: "date", desc: "申购日期"}
+    - {name: "list_date", type: "date", desc: "上市日期"}
+    - {name: "pe_issue", type: "float", desc: "发行市盈率"}
+    - {name: "lottery_rate", type: "float", desc: "中签率"}
 
   rate_limit_key: "default"
 
@@ -2486,7 +2719,16 @@ ipo_benefit:
 
   input: []
 
-  output: []
+  output:
+    - {name: "rank", type: "int", desc: "序号"}
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "name", type: "str", desc: "股票简称"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "benefit", type: "float", desc: "收益"}
+    - {name: "ipo_symbol", type: "str", desc: "关联新股代码"}
+    - {name: "ipo_name", type: "str", desc: "关联新股名称"}
+    - {name: "list_date", type: "date", desc: "上市日期"}
 
   rate_limit_key: "default"
 
@@ -2548,7 +2790,7 @@ dividend_data:
 equity_freeze:
   name: "equity_freeze"
   category: "equity"
-  description: "股权冻结数据"
+  description: "股权冻结数据（AkShare 暂无稳定对应接口）"
 
   input:
     - {name: "symbol", type: "str", required: true, desc: "股票代码"}
@@ -2560,7 +2802,7 @@ equity_freeze:
   sources:
     - name: "akshare_em"
       func: "stock_ggcg_em"
-      enabled: true
+      enabled: false
       input_mapping: {}
       output_mapping:
         股票代码: symbol
@@ -2756,7 +2998,7 @@ insider_trade:
 name_history:
   name: "name_history"
   category: "equity"
-  description: "股票名称变更历史"
+  description: "股票名称变更历史（AkShare 暂无稳定对应接口）"
 
   input:
     - {name: "symbol", type: "str", required: true, desc: "股票代码"}
@@ -2771,7 +3013,7 @@ name_history:
   sources:
     - name: "akshare_cninfo"
       func: "stock_history_dividend"
-      enabled: true
+      enabled: false
       input_mapping:
         symbol: "symbol"
       output_mapping:
@@ -2791,7 +3033,22 @@ performance_express:
   input:
     - {name: "date", type: "str", required: false, default: "20200331", desc: "报告日期 YYYYMMDD"}
 
-  output: []
+  output:
+    - {name: "symbol", type: "str", desc: "股票代码"}
+    - {name: "name", type: "str", desc: "股票简称"}
+    - {name: "eps", type: "float", desc: "每股收益"}
+    - {name: "revenue", type: "float", desc: "营业收入"}
+    - {name: "revenue_yoy", type: "float", desc: "营业收入-同比增长"}
+    - {name: "revenue_qoq", type: "float", desc: "营业收入-季度环比增长"}
+    - {name: "net_profit", type: "float", desc: "净利润"}
+    - {name: "net_profit_yoy", type: "float", desc: "净利润-同比增长"}
+    - {name: "net_profit_qoq", type: "float", desc: "净利润-季度环比增长"}
+    - {name: "bps", type: "float", desc: "每股净资产"}
+    - {name: "roe", type: "float", desc: "净资产收益率"}
+    - {name: "ocf_ps", type: "float", desc: "每股经营现金流量"}
+    - {name: "gross_margin", type: "float", desc: "销售毛利率"}
+    - {name: "industry", type: "str", desc: "所处行业"}
+    - {name: "announce_date", type: "date", desc: "最新公告日期"}
 
   rate_limit_key: "default"
 

@@ -5,6 +5,7 @@ etf_daily:
 
   input:
     - {name: "symbol", type: "str", required: true}
+    - {name: "period", type: "str", required: false, default: "daily", desc: "周期: daily/weekly/monthly"}
     - {name: "start_date", type: "date", required: true}
     - {name: "end_date", type: "date", required: true}
     - {name: "adjust", type: "str", required: false, default: "qfq"}
@@ -26,6 +27,7 @@ etf_daily:
       enabled: true
       input_mapping:
         symbol: "symbol"
+        period: "period"
         start_date: "start_date"
         end_date: "end_date"
         adjust: "adjust"
@@ -111,8 +113,8 @@ etf_list:
       enabled: true
       input_mapping: {}
       output_mapping:
-        基金代码: "symbol"
-        基金简称: "name"
+        代码: "symbol"
+        名称: "name"
       column_types:
         symbol: "str"
         name: "str"
@@ -136,8 +138,8 @@ lof_fund:
       enabled: true
       input_mapping: {}
       output_mapping:
-        基金代码: "symbol"
-        基金简称: "name"
+        代码: "symbol"
+        名称: "name"
       column_types:
         symbol: "str"
         name: "str"
@@ -170,7 +172,14 @@ fof_nav:
     - {name: "end_date", type: "str", required: false, default: "20500101"}
     - {name: "adjust", type: "str", required: false, default: ""}
 
-  output: []
+  output:
+    - {name: "nav_date", type: "date", desc: "净值日期"}
+    - {name: "open", type: "float", desc: "开盘"}
+    - {name: "nav", type: "float", desc: "收盘/净值"}
+    - {name: "high", type: "float", desc: "最高"}
+    - {name: "low", type: "float", desc: "最低"}
+    - {name: "volume", type: "float", desc: "成交量"}
+    - {name: "amount", type: "float", desc: "成交额"}
 
   rate_limit_key: "default"
 
@@ -199,7 +208,21 @@ lof_spot:
 
   input: []
 
-  output: []
+  output:
+    - {name: "fund_code", type: "str", desc: "代码"}
+    - {name: "fund_name", type: "str", desc: "名称"}
+    - {name: "close", type: "float", desc: "最新价"}
+    - {name: "change", type: "float", desc: "涨跌额"}
+    - {name: "change_pct", type: "float", desc: "涨跌幅"}
+    - {name: "volume", type: "float", desc: "成交量"}
+    - {name: "amount", type: "float", desc: "成交额"}
+    - {name: "open", type: "float", desc: "开盘价"}
+    - {name: "high", type: "float", desc: "最高价"}
+    - {name: "low", type: "float", desc: "最低价"}
+    - {name: "prev_close", type: "float", desc: "昨收"}
+    - {name: "turnover_rate", type: "float", desc: "换手率"}
+    - {name: "circulating_market_cap", type: "float", desc: "流通市值"}
+    - {name: "market_cap", type: "float", desc: "总市值"}
 
   rate_limit_key: "default"
 
@@ -234,7 +257,9 @@ lof_nav:
     - {name: "end_date", type: "str", required: false, default: "20500101"}
     - {name: "adjust", type: "str", required: false, default: ""}
 
-  output: []
+  output:
+    - {name: "nav_date", type: "date", desc: "净值日期"}
+    - {name: "nav", type: "float", desc: "收盘/净值"}
 
   rate_limit_key: "default"
 

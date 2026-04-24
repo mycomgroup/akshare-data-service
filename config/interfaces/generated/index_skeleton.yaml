@@ -3386,6 +3386,11 @@ index_si_cx:
       溢出指数: 溢出指数
     param_transforms: {}
 index_stock_cons:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: index
   description: '最新股票指数的成份股目录
 
@@ -3404,16 +3409,28 @@ index_stock_cons:
     required: true
     type: str
   name: index_stock_cons
-  output: []
+  output:
+  - desc: code field
+    name: code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: sina_vip
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
     enabled: true
     func: index_stock_cons
     input_mapping:
       symbol: symbol
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      品种代码: code
+      品种名称: name
+      纳入日期: date
     param_transforms:
       symbol: prepend_prefix:sh/sz
 index_stock_cons_csindex:

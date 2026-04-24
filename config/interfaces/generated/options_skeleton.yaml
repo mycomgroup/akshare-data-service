@@ -2402,7 +2402,7 @@ option_sse_greeks_sina:
   - desc: 'from :return: docstring'
     name: 值
     type: float
-  rate_limit_key: sina_vip
+  rate_limit_key: sina_hq
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
@@ -2582,7 +2582,7 @@ option_sse_underlying_spot_price_sina:
   - desc: 'from :return: docstring'
     name: 值
     type: float
-  rate_limit_key: sina_vip
+  rate_limit_key: sina_hq
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true

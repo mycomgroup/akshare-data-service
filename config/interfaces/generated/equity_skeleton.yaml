@@ -9466,7 +9466,7 @@ stock_hk_index_spot_sina:
   - desc: pct_change field
     name: pct_change
     type: float
-  rate_limit_key: sina_vip
+  rate_limit_key: sina_hq
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
     enabled: true

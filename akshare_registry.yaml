@@ -408,7 +408,7 @@ domains:
     rate_limit_key: default
   zs.zjpwq.net:
     rate_limit_key: default
-generated_at: '2026-04-24T22:21:53.929709'
+generated_at: '2026-04-24T23:19:38.640779'
 interfaces:
   air_city_table:
     category: other
@@ -2631,10 +2631,50 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.chinabond.com.cn
     - yield.chinabond.com.cn
+    - www.chinabond.com.cn
     name: bond_china_yield
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 曲线名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 3月
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 6月
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1年
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 3年
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 5年
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 7年
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 10年
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 30年
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params:
@@ -2871,8 +2911,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 16.push2.eastmoney.com
+    - quote.eastmoney.com
     name: bond_cov_comparison
     output_fields:
     - description: ''
@@ -4280,8 +4320,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: bond_zh_cov
     output_fields:
     - description: ''
@@ -4385,8 +4425,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: bond_zh_cov_info
     output_fields:
     - description: 'from :return: docstring'
@@ -4577,8 +4617,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: bond_zh_cov_value_analysis
     output_fields:
     - description: ''
@@ -4694,8 +4734,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2his.eastmoney.com
     - push2.eastmoney.com
+    - push2his.eastmoney.com
     - quote.eastmoney.com
     name: bond_zh_hs_cov_min
     output_fields:
@@ -4755,7 +4795,7 @@ interfaces:
         start_date: 开始日期
         symbol: 转债代码
       skip: false
-    rate_limit_key: em_push2his
+    rate_limit_key: em_push2
     signature:
     - symbol
     - period
@@ -5386,8 +5426,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: crypto_bitcoin_cme
     output_fields:
     - description: 'from :return: docstring'
@@ -5413,8 +5453,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: crypto_bitcoin_hold_report
     output_fields:
     - description: ''
@@ -5488,8 +5528,8 @@ interfaces:
 
       :return: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: crypto_js_spot
     output_fields:
     - description: ''
@@ -5998,8 +6038,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - k.tanjiaoyi.com
     - www.tanjiaoyi.com
+    - k.tanjiaoyi.com
     name: energy_carbon_domestic
     output_fields:
     - description: ''
@@ -6206,8 +6246,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: energy_oil_detail
     output_fields:
     - description: ''
@@ -6288,8 +6328,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: energy_oil_hist
     output_fields:
     - description: ''
@@ -6586,8 +6626,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_announcement_dividend_em
     output_fields:
     - description: ''
@@ -6633,8 +6673,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_announcement_personnel_em
     output_fields:
     - description: ''
@@ -6680,8 +6720,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_announcement_report_em
     output_fields:
     - description: ''
@@ -6831,7 +6871,15 @@ interfaces:
     domains:
     - fund.eastmoney.com
     name: fund_aum_trend_em
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: value
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -6851,7 +6899,19 @@ interfaces:
     domains:
     - legulegu.com
     name: fund_balance_position_lg
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: position
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -7203,8 +7263,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_etf_fund_info_em
     output_fields:
     - description: ''
@@ -8166,8 +8226,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_financial_fund_info_em
     output_fields:
     - description: ''
@@ -8249,8 +8309,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_graded_fund_info_em
     output_fields:
     - description: ''
@@ -9064,7 +9124,19 @@ interfaces:
     domains:
     - legulegu.com
     name: fund_linghuo_position_lg
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: position
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -9467,8 +9539,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_money_fund_info_em
     output_fields:
     - description: ''
@@ -10239,8 +10311,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api.fund.eastmoney.com
     - fundf10.eastmoney.com
+    - api.fund.eastmoney.com
     name: fund_portfolio_industry_allocation_em
     output_fields:
     - description: ''
@@ -11382,7 +11454,19 @@ interfaces:
     domains:
     - legulegu.com
     name: fund_stock_position_lg
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: position
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -11480,8 +11564,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: futures_comex_inventory
     output_fields:
     - description: 'from :return: docstring'
@@ -12301,8 +12385,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - tsite.shfe.com.cn
     - www.shfe.com.cn
+    - tsite.shfe.com.cn
     name: futures_contract_info_shfe
     output_fields:
     - description: 'from :return: docstring'
@@ -12764,7 +12848,159 @@ interfaces:
     domains:
     - openctp.cn
     name: futures_fees_info
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 交易所
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 品种代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 品种名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约乘数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 最小跳动
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 开仓费率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 开仓费用/手
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 平仓费率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 平仓费用/手
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 平今费率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 平今费用/手
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 做多保证金率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 做多保证金/手
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 做空保证金率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 做空保证金/手
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 上日结算价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 上日收盘价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 最新价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 成交量
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 持仓量
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 1手开仓费用
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1手平仓费用
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1手平今费用
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 做多1手保证金
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 做空1手保证金
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1手市值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1Tick平仓盈亏
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1Tick平仓净利
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 2Tick平仓净利
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1Tick平仓收益率%
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 2Tick平仓收益率%
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1Tick平今净利
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 2Tick平今净利
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 1Tick平今收益率%
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 2Tick平今收益率%
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 更新时间
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -12786,8 +13022,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - hq.sinajs.cn
+    - finance.sina.com.cn
     name: futures_foreign_commodity_realtime
     output_fields:
     - description: ''
@@ -13386,8 +13622,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - push2his.eastmoney.com
     - qhweb.eastmoney.com
+    - push2his.eastmoney.com
     name: futures_hist_em
     output_fields:
     - description: ''
@@ -13786,8 +14022,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.99qh.com
     - centerapi.fx168api.com
+    - www.99qh.com
     name: futures_inventory_99
     output_fields:
     - description: ''
@@ -13825,8 +14061,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: futures_inventory_em
     output_fields:
     - description: ''
@@ -13999,7 +14235,87 @@ interfaces:
       :rtype: pandas.DataFrame'
     domains: []
     name: futures_settle
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: symbol
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: variety
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: settle_price
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: long_margin_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: short_margin_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: spec_long_margin_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: spec_short_margin_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: hedge_long_margin_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: hedge_short_margin_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: trade_fee_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: close_today_fee_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: delivery_fee_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: is_single_market
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: single_market_days
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: limit_ratio
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: position_limit
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: trade_limit
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: rise_limit_rate
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: fall_limit_rate
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -14431,8 +14747,8 @@ interfaces:
 
       :rtype: dict'
     domains:
-    - tsite.shfe.com.cn
     - www.shfe.com.cn
+    - tsite.shfe.com.cn
     name: futures_shfe_warehouse_receipt
     output_fields: []
     probe:
@@ -14587,7 +14903,59 @@ interfaces:
     domains:
     - www.100ppi.com
     name: futures_spot_price_daily
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: symbol
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: spot_price
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: near_contract
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: near_contract_price
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: dominant_contract
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: dominant_contract_price
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: near_month
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: dominant_month
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: near_basis
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: dom_basis
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: near_basis_rate
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: dom_basis_rate
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params:
@@ -14753,8 +15121,8 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: futures_stock_shfe_js
     output_fields:
     - description: 'from :return: docstring'
@@ -15332,8 +15700,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.pae.baidu.com
     - gushitong.baidu.com
+    - finance.pae.baidu.com
     name: fx_quote_baidu
     output_fields:
     - description: ''
@@ -15883,7 +16251,55 @@ interfaces:
     domains:
     - www.gfex.com.cn
     name: get_gfex_daily
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: symbol
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: open
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: high
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: low
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: volume
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: open_interest
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: turnover
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: settle
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: pre_settle
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: variety
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -15912,7 +16328,55 @@ interfaces:
     domains:
     - www.ine.cn
     name: get_ine_daily
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: symbol
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: open
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: high
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: low
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: volume
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: open_interest
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: turnover
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: settle
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: pre_settle
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: variety
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -16651,8 +17115,8 @@ interfaces:
 
       date                        日期                        string YYYYMMDD'
     domains:
-    - tsite.shfe.com.cn
     - www.shfe.com.cn
+    - tsite.shfe.com.cn
     name: get_shfe_rank_table
     output_fields:
     - description: 'from :return: docstring'
@@ -17770,7 +18234,75 @@ interfaces:
     domains:
     - www.csindex.com.cn
     name: index_csindex_all
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 指数代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 指数简称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 指数全称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 基日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 基点
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 指数系列
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 样本数量
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 最新收盘
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近一个月收益率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 资产类别
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 指数热点
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 指数币种
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合作指数
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 跟踪产品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 指数合规
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 指数类别
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 发布时间
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -18688,8 +19220,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - ss.kqindex.cn
     - api.idx365.com
+    - ss.kqindex.cn
     name: index_kq_fashion
     output_fields:
     - description: 'from :return: docstring'
@@ -20043,7 +20575,19 @@ interfaces:
     domains:
     - vip.stock.finance.sina.com.cn
     name: index_stock_cons
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 品种代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 品种名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 纳入日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params:
@@ -20067,8 +20611,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - oss-ch.csindex.com.cn
     - www.csindex.com.cn
+    - oss-ch.csindex.com.cn
     name: index_stock_cons_csindex
     output_fields:
     - description: ''
@@ -20156,8 +20700,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - oss-ch.csindex.com.cn
     - www.csindex.com.cn
+    - oss-ch.csindex.com.cn
     name: index_stock_cons_weight_csindex
     output_fields:
     - description: ''
@@ -20392,8 +20936,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.ywindex.com
     - apiserver.chinagoods.com
+    - www.ywindex.com
     name: index_yw
     output_fields:
     - description: ''
@@ -20617,8 +21161,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_australia_bank_rate
     output_fields:
     - description: ''
@@ -20654,8 +21198,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_australia_cpi_quarterly
     output_fields:
     - description: ''
@@ -20691,8 +21235,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_australia_cpi_yearly
     output_fields:
     - description: ''
@@ -20728,8 +21272,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_australia_ppi_quarterly
     output_fields:
     - description: ''
@@ -20765,8 +21309,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_australia_retail_rate_monthly
     output_fields:
     - description: ''
@@ -20802,8 +21346,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_australia_trade
     output_fields:
     - description: ''
@@ -20839,8 +21383,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_australia_unemployment_rate
     output_fields:
     - description: ''
@@ -20878,10 +21422,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_australia_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -20901,10 +21465,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_brazil_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -20924,10 +21508,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_china_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -20947,10 +21551,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_english_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -20970,10 +21594,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_euro_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -20993,10 +21637,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_india_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -21016,10 +21680,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_japan_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -21039,10 +21723,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_newzealand_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -21062,10 +21766,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_russia_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -21085,10 +21809,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_bank_switzerland_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -21108,7 +21852,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_bank_usa_interest_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -21126,8 +21890,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_bank_rate
     output_fields:
     - description: ''
@@ -21163,8 +21927,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_core_cpi_monthly
     output_fields:
     - description: ''
@@ -21200,8 +21964,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_core_cpi_yearly
     output_fields:
     - description: ''
@@ -21237,8 +22001,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_cpi_monthly
     output_fields:
     - description: ''
@@ -21274,8 +22038,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_cpi_yearly
     output_fields:
     - description: ''
@@ -21311,8 +22075,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_gdp_monthly
     output_fields:
     - description: ''
@@ -21348,8 +22112,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_new_house_rate
     output_fields:
     - description: ''
@@ -21385,8 +22149,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_retail_rate_monthly
     output_fields:
     - description: ''
@@ -21422,8 +22186,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_trade
     output_fields:
     - description: ''
@@ -21459,8 +22223,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_canada_unemployment_rate
     output_fields:
     - description: ''
@@ -21496,8 +22260,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_agricultural_index
     output_fields:
     - description: ''
@@ -21549,8 +22313,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_agricultural_product
     output_fields:
     - description: ''
@@ -21600,8 +22364,8 @@ interfaces:
 
       :return: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_au_report
     output_fields:
     - description: ''
@@ -21677,8 +22441,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_bank_financing
     output_fields:
     - description: ''
@@ -21730,8 +22494,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_bdti_index
     output_fields:
     - description: ''
@@ -21835,8 +22599,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_bsi_index
     output_fields:
     - description: ''
@@ -21888,8 +22652,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_central_bank_balance
     output_fields:
     - description: 'from :return: docstring'
@@ -21913,8 +22677,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_commodity_price_index
     output_fields:
     - description: ''
@@ -21966,8 +22730,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_construction_index
     output_fields:
     - description: ''
@@ -22019,8 +22783,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_construction_price_index
     output_fields:
     - description: ''
@@ -22072,8 +22836,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_consumer_goods_retail
     output_fields:
     - description: ''
@@ -22117,8 +22881,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_cpi
     output_fields:
     - description: ''
@@ -22272,7 +23036,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_china_cx_pmi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -22290,10 +23074,30 @@ interfaces:
 
       :return: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_cx_services_pmi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -22311,8 +23115,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_czsr
     output_fields:
     - description: ''
@@ -22398,8 +23202,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_energy_index
     output_fields:
     - description: ''
@@ -22451,8 +23255,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_enterprise_boom_index
     output_fields:
     - description: ''
@@ -22502,7 +23306,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_china_exports_yoy
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -22520,8 +23344,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_fdi
     output_fields:
     - description: ''
@@ -22565,8 +23389,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_foreign_exchange_gold
     output_fields:
     - description: 'from :return: docstring'
@@ -22590,10 +23414,42 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_freight_index
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 截止日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 波罗的海好望角型船运价指数BCI
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 灵便型船综合运价指数BHMI
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 波罗的海超级大灵便型船BSI指数
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 波罗的海综合运价指数BDI
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: HRCI国际集装箱租船指数
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 油轮运价指数成品油运价指数BCTI
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 油轮运价指数原油运价指数BDTI
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -22611,8 +23467,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_fx_gold
     output_fields:
     - description: ''
@@ -22662,7 +23518,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_china_fx_reserves_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: int
     probe:
       check_interval: 2592000
       params: {}
@@ -22680,8 +23556,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_gdp
     output_fields:
     - description: ''
@@ -22777,8 +23653,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_gdzctz
     output_fields:
     - description: ''
@@ -22818,8 +23694,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_gyzjz
     output_fields:
     - description: ''
@@ -22855,8 +23731,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_hgjck
     output_fields:
     - description: ''
@@ -22926,7 +23802,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_building_amount
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -22946,7 +23838,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_building_volume
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -22966,7 +23874,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_cpi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -22986,7 +23910,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_cpi_ratio
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -23006,7 +23946,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_gbp
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -23026,7 +23982,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_gbp_ratio
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -23046,8 +24018,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_hk_market_info
     output_fields:
     - description: ''
@@ -23081,7 +24053,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_ppi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -23101,7 +24089,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_rate_of_unemployment
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -23121,7 +24125,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_china_hk_trade_diff_ratio
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -23141,10 +24161,30 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_imports_yoy
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -23164,10 +24204,30 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_industrial_production_yoy
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -23185,8 +24245,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_insurance
     output_fields:
     - description: 'from :return: docstring'
@@ -23210,8 +24270,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_insurance_income
     output_fields:
     - description: ''
@@ -23263,8 +24323,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_international_tourism_fx
     output_fields:
     - description: 'from :return: docstring'
@@ -23288,8 +24348,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_lpi_index
     output_fields:
     - description: ''
@@ -23341,10 +24401,30 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_lpr
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: TRADE_DATE
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: LPR1Y
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: LPR5Y
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: RATE_1
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: RATE_2
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -23364,7 +24444,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_china_m2_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -23380,8 +24480,8 @@ interfaces:
 
       :return: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_market_margin_sh
     output_fields:
     - description: ''
@@ -23427,8 +24527,8 @@ interfaces:
 
       :return: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_market_margin_sz
     output_fields:
     - description: ''
@@ -23480,8 +24580,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_mobile_number
     output_fields:
     - description: ''
@@ -23533,8 +24633,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_money_supply
     output_fields:
     - description: ''
@@ -23594,8 +24694,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_national_tax_receipts
     output_fields:
     - description: ''
@@ -23703,8 +24803,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_new_financial_credit
     output_fields:
     - description: ''
@@ -23756,8 +24856,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_new_house_price
     output_fields:
     - description: ''
@@ -23815,7 +24915,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_china_non_man_pmi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -23833,8 +24953,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_passenger_load_factor
     output_fields:
     - description: 'from :return: docstring'
@@ -23858,8 +24978,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_pmi
     output_fields:
     - description: ''
@@ -23901,7 +25021,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_china_pmi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -23919,8 +25059,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_postal_telecommunicational
     output_fields:
     - description: 'from :return: docstring'
@@ -23944,8 +25084,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_ppi
     output_fields:
     - description: ''
@@ -23983,7 +25123,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_china_ppi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -24001,8 +25161,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_qyspjg
     output_fields:
     - description: ''
@@ -24078,8 +25238,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_real_estate
     output_fields:
     - description: ''
@@ -24131,8 +25291,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_reserve_requirement_ratio
     output_fields:
     - description: ''
@@ -24196,8 +25356,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_retail_price_index
     output_fields:
     - description: 'from :return: docstring'
@@ -24221,8 +25381,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_rmb
     output_fields:
     - description: ''
@@ -24252,8 +25412,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_shibor_all
     output_fields:
     - description: ''
@@ -24341,8 +25501,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_society_electricity
     output_fields:
     - description: ''
@@ -24430,8 +25590,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_society_traffic_volume
     output_fields:
     - description: 'from :return: docstring'
@@ -24455,8 +25615,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_stock_market_cap
     output_fields:
     - description: ''
@@ -24528,8 +25688,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: macro_china_supply_of_money
     output_fields:
     - description: 'from :return: docstring'
@@ -24647,10 +25807,30 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_china_trade_balance
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -24700,8 +25880,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_vegetable_basket
     output_fields:
     - description: ''
@@ -24753,8 +25933,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_wbck
     output_fields:
     - description: ''
@@ -24794,8 +25974,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_whxd
     output_fields:
     - description: ''
@@ -24835,8 +26015,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_xfzxx
     output_fields:
     - description: ''
@@ -24896,8 +26076,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_china_yw_electronic_index
     output_fields:
     - description: ''
@@ -25040,8 +26220,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: macro_cons_gold
     output_fields:
     - description: ''
@@ -25083,8 +26263,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: macro_cons_opec_month
     output_fields:
     - description: ''
@@ -25112,8 +26292,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: macro_cons_silver
     output_fields:
     - description: ''
@@ -25151,9 +26331,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_cpi_mom
     output_fields:
     - description: ''
@@ -25199,9 +26379,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_cpi_yoy
     output_fields:
     - description: ''
@@ -25247,9 +26427,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_current_account_mom
     output_fields:
     - description: ''
@@ -25295,9 +26475,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_employment_change_qoq
     output_fields:
     - description: ''
@@ -25341,8 +26521,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: macro_euro_gdp_yoy
     output_fields:
     - description: ''
@@ -25388,9 +26568,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_industrial_production_mom
     output_fields:
     - description: ''
@@ -25436,8 +26616,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_euro_lme_holding
     output_fields:
     - description: ''
@@ -25471,8 +26651,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_euro_lme_stock
     output_fields:
     - description: ''
@@ -25506,9 +26686,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_manufacturing_pmi
     output_fields:
     - description: ''
@@ -25554,9 +26734,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_ppi_mom
     output_fields:
     - description: ''
@@ -25602,9 +26782,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_retail_sales_mom
     output_fields:
     - description: ''
@@ -25650,9 +26830,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_sentix_investor_confidence
     output_fields:
     - description: ''
@@ -25698,9 +26878,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_services_pmi
     output_fields:
     - description: ''
@@ -25746,9 +26926,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_trade_balance
     output_fields:
     - description: ''
@@ -25794,9 +26974,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_unemployment_rate_mom
     output_fields:
     - description: ''
@@ -25842,9 +27022,9 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
+    - datacenter.jin10.com
     - cdn.jin10.com
     - datacenter-api.jin10.com
-    - datacenter.jin10.com
     name: macro_euro_zew_economic_sentiment
     output_fields:
     - description: ''
@@ -25889,8 +27069,8 @@ interfaces:
       :type start_date: str\n:param end_date: 具体交易日, 与 end_date 相同\n:type end_date:\
       \ str\n:return: 投机情绪报告\n:rtype: pandas.DataFrame"
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: macro_fx_sentiment
     output_fields:
     - description: ''
@@ -25928,7 +27108,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_cpi_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -25948,7 +27144,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_cpi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -25968,7 +27180,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_gdp
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -25988,7 +27216,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_ifo
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26008,7 +27252,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_retail_sale_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26028,7 +27288,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_retail_sale_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26048,7 +27324,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_trade_adjusted
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26068,7 +27360,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_germany_zew
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26086,8 +27394,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_global_sox_index
     output_fields:
     - description: ''
@@ -26143,8 +27451,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - api-one-wscn.awtmt.com
     - wallstreetcn.com
+    - api-one-wscn.awtmt.com
     name: macro_info_ws
     output_fields:
     - description: 'from :return: docstring'
@@ -26240,7 +27548,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_japan_bank_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26260,7 +27584,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_japan_core_cpi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26280,7 +27620,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_japan_cpi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26300,7 +27656,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_japan_head_indicator
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26320,7 +27692,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_japan_unemployment_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26456,7 +27844,39 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_shipping_bci
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 最新值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近6月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近1年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近2年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3年涨跌幅
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -26476,7 +27896,39 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_shipping_bcti
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 最新值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近6月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近1年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近2年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3年涨跌幅
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -26496,7 +27948,39 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_shipping_bdi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 最新值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近6月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近1年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近2年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3年涨跌幅
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -26516,7 +28000,39 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_shipping_bpi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 最新值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近6月涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近1年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近2年涨跌幅
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 近3年涨跌幅
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -26596,7 +28112,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_swiss_cpi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26616,7 +28148,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_swiss_gbd_bank_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26636,7 +28184,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_swiss_gbd_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26656,7 +28220,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_swiss_gdp_quarterly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26676,7 +28256,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_swiss_svme
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26696,7 +28292,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_swiss_trade
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26716,7 +28328,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_bank_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26736,7 +28364,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_core_cpi_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26756,7 +28400,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_core_cpi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26776,7 +28436,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_cpi_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26796,7 +28472,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_cpi_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26816,7 +28508,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_gdp_quarterly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26836,7 +28544,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_gdp_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26856,7 +28580,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_halifax_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26876,7 +28616,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_halifax_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26896,7 +28652,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_retail_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26916,7 +28688,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_retail_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26936,7 +28724,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_rightmove_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26956,7 +28760,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_rightmove_yearly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26976,7 +28796,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_trade
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -26996,7 +28832,23 @@ interfaces:
     domains:
     - data.eastmoney.com
     name: macro_uk_unemployment_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 现值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 发布日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -27016,7 +28868,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_adp_employment
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27036,10 +28908,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_api_crude_stock
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27059,7 +28951,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_building_permits
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27079,7 +28991,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_business_inventories
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27099,7 +29031,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_cb_consumer_confidence
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27117,8 +29069,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_cftc_c_holding
     output_fields:
     - description: ''
@@ -27150,8 +29102,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_cftc_merchant_currency_holding
     output_fields:
     - description: ''
@@ -27183,8 +29135,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_cftc_merchant_goods_holding
     output_fields:
     - description: ''
@@ -27216,8 +29168,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_cftc_nc_holding
     output_fields:
     - description: ''
@@ -27249,8 +29201,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_cme_merchant_goods_holding
     output_fields:
     - description: ''
@@ -27292,7 +29244,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_core_cpi_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27312,7 +29284,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_core_pce_price
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27332,7 +29324,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_core_ppi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27352,7 +29364,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_cpi_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27370,8 +29402,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_usa_cpi_yoy
     output_fields:
     - description: ''
@@ -27407,8 +29439,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_crude_inner
     output_fields:
     - description: ''
@@ -27438,7 +29470,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_current_account
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: int
     probe:
       check_interval: 2592000
       params: {}
@@ -27458,7 +29510,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_durable_goods_orders
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27478,7 +29550,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_eia_crude_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27498,7 +29590,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_exist_home_sales
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27518,10 +29630,30 @@ interfaces:
 
       :rtype: pandas.Series'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_export_price
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27541,7 +29673,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_factory_orders
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27561,7 +29713,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_gdp_monthly
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27581,7 +29753,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_house_price_index
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27601,7 +29793,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_house_starts
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27621,7 +29833,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_import_price
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27641,7 +29873,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_industrial_production
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27661,7 +29913,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_initial_jobless
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27681,7 +29953,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_ism_non_pmi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27701,7 +29993,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_ism_pmi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27721,7 +30033,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_job_cuts
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27741,7 +30073,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_lmci
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27761,7 +30113,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_michigan_consumer_sentiment
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27781,7 +30153,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_nahb_house_market_index
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27801,7 +30193,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_new_home_sales
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27821,7 +30233,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_nfib_small_business
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27841,7 +30273,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_non_farm
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27861,7 +30313,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_pending_home_sales
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27881,7 +30353,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_personal_spending
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27899,8 +30391,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: macro_usa_phs
     output_fields:
     - description: ''
@@ -27938,7 +30430,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_pmi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27958,7 +30470,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_ppi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27978,7 +30510,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_real_consumer_spending
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -27998,7 +30550,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_retail_sales
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -28016,8 +30588,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cdn.jin10.com
     - datacenter.jin10.com
+    - cdn.jin10.com
     name: macro_usa_rig_count
     output_fields:
     - description: ''
@@ -28047,7 +30619,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_services_pmi
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -28067,7 +30659,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_spcs20
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -28087,7 +30699,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_trade_balance
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -28107,7 +30739,27 @@ interfaces:
     domains:
     - datacenter.jin10.com
     name: macro_usa_unemployment_rate
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 商品
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 预测值
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前值
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -28708,8 +31360,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - cctv.cntv.cn
     - tv.cctv.com
+    - cctv.cntv.cn
     name: news_cctv
     output_fields: []
     probe:
@@ -29592,8 +32244,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - dict.openctp.cn
     - openctp.cn
+    - dict.openctp.cn
     name: option_contract_info_ctp
     output_fields: []
     probe:
@@ -29616,7 +32268,51 @@ interfaces:
     - www.sse.com.cn
     - query.sse.com.cn
     name: option_current_day_sse
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 合约编码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约交易代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约简称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 标的券名称及代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 类型
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 行权价
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约单位
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 期权行权日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 行权交收日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 到期日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 开始日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -29636,7 +32332,123 @@ interfaces:
     domains:
     - www.sse.org.cn
     name: option_current_day_szse
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 序号
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 合约编码
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 合约代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约简称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 标的证券简称(代码)
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约类型
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 行权价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 合约单位
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 最后交易日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 行权日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 到期日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 交收日
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 新挂
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 涨停价格
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 跌停价格
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 前结算价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 合约调整
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 停牌
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 合约总持仓
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 挂牌原因
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 原合约代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 原合约简称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 原行权价格
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 原合约单位
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 合约到期剩余交易天数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 合约到期剩余自然天数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 下次合约调整剩余交易天数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 下次合约调整剩余自然天数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 交易日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -29976,9 +32788,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.sse.com.cn
     - www.cffex.com.cn
     - www.szse.cn
+    - www.sse.com.cn
     name: option_finance_board
     output_fields:
     - description: ''
@@ -30821,8 +33633,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: option_lhb_em
     output_fields:
     - description: ''
@@ -31013,8 +33825,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: option_premium_analysis_em
     output_fields:
     - description: ''
@@ -31078,8 +33890,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: option_risk_analysis_em
     output_fields:
     - description: ''
@@ -31485,8 +34297,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: option_value_analysis_em
     output_fields:
     - description: ''
@@ -32179,8 +34991,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: rate_interbank
     output_fields:
     - description: ''
@@ -32760,8 +35572,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - stock.finance.sina.com.cn
+    - finance.sina.com.cn
     name: spot_goods
     output_fields:
     - description: ''
@@ -33043,8 +35855,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.99qh.com
     - centerapi.fx168api.com
+    - www.99qh.com
     name: spot_price_qh
     output_fields:
     - description: 'from :return: docstring'
@@ -33259,7 +36071,39 @@ interfaces:
     domains:
     - legulegu.com
     name: stock_a_all_pb
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: middlePB
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: equalWeightAveragePB
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInAllHistoryMiddlePB
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInRecent10YearsMiddlePB
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInAllHistoryEqualWeightAveragePB
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInRecent10YearsEqualWeightAveragePB
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -33281,8 +36125,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.legulegu.com
     - legulegu.com
+    - www.legulegu.com
     name: stock_a_below_net_asset_statistics
     output_fields:
     - description: ''
@@ -33341,7 +36185,19 @@ interfaces:
     domains:
     - legulegu.com
     name: stock_a_congestion_lg
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: congestion
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -33425,10 +36281,66 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.legulegu.com
     - legulegu.com
+    - www.legulegu.com
     name: stock_a_ttm_lyr
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: date
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: middlePETTM
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: averagePETTM
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: middlePELYR
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: averagePELYR
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInAllHistoryMiddlePeTtm
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInRecent10YearsMiddlePeTtm
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInAllHistoryAveragePeTtm
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInRecent10YearsAveragePeTtm
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInAllHistoryMiddlePeLyr
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInRecent10YearsMiddlePeLyr
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInAllHistoryAveragePeLyr
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: quantileInRecent10YearsAveragePeLyr
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: close
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -33446,8 +36358,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_account_statistics_em
     output_fields:
     - description: ''
@@ -34134,8 +37046,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_bj_a_spot_em
     output_fields:
     - description: ''
@@ -34403,8 +37315,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - 91.push2his.eastmoney.com
     - quote.eastmoney.com
+    - 91.push2his.eastmoney.com
     name: stock_board_concept_hist_em
     output_fields:
     - description: ''
@@ -34486,8 +37398,8 @@ interfaces:
       :rtype: pandas.DataFrame'
     domains:
     - push2his.eastmoney.com
-    - 91.push2his.eastmoney.com
     - quote.eastmoney.com
+    - 91.push2his.eastmoney.com
     name: stock_board_concept_hist_min_em
     output_fields:
     - description: ''
@@ -34571,8 +37483,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - d.10jqka.com.cn
     - q.10jqka.com.cn
+    - d.10jqka.com.cn
     name: stock_board_concept_index_ths
     output_fields:
     - description: ''
@@ -34660,8 +37572,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - 79.push2.eastmoney.com
     - quote.eastmoney.com
+    - 79.push2.eastmoney.com
     name: stock_board_concept_name_em
     output_fields:
     - description: ''
@@ -34794,7 +37706,27 @@ interfaces:
     domains:
     - q.10jqka.com.cn
     name: stock_board_concept_summary_ths
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 概念名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 驱动事件
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 龙头股
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 成分股数量
+      source: runtime_capture
+      type: int
     probe:
       check_interval: 2592000
       params: {}
@@ -34816,8 +37748,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - 29.push2.eastmoney.com
+    - data.eastmoney.com
     name: stock_board_industry_cons_em
     output_fields:
     - description: ''
@@ -35091,8 +38023,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - d.10jqka.com.cn
     - q.10jqka.com.cn
+    - d.10jqka.com.cn
     name: stock_board_industry_index_ths
     output_fields:
     - description: ''
@@ -35180,8 +38112,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - 17.push2.eastmoney.com
     - quote.eastmoney.com
+    - 17.push2.eastmoney.com
     name: stock_board_industry_name_em
     output_fields:
     - description: ''
@@ -35894,8 +38826,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_comment_detail_scrd_desire_em
     output_fields: []
     probe:
@@ -35921,8 +38853,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_comment_detail_scrd_focus_em
     output_fields:
     - description: ''
@@ -35964,8 +38896,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_comment_detail_zhpj_lspf_em
     output_fields:
     - description: ''
@@ -36007,8 +38939,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_comment_detail_zlkp_jgcyd_em
     output_fields:
     - description: ''
@@ -36046,8 +38978,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_comment_em
     output_fields:
     - description: ''
@@ -36209,8 +39141,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2his.eastmoney.com
+    - data.eastmoney.com
     name: stock_concept_fund_flow_hist
     output_fields:
     - description: ''
@@ -36276,8 +39208,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 7.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_cy_a_spot_em
     output_fields:
     - description: ''
@@ -36575,8 +39507,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_dxsyl_em
     output_fields:
     - description: ''
@@ -36668,8 +39600,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_dzjy_hygtj
     output_fields:
     - description: ''
@@ -36763,8 +39695,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_dzjy_hyyybtj
     output_fields:
     - description: ''
@@ -36838,8 +39770,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_dzjy_mrmx
     output_fields:
     - description: ''
@@ -36929,8 +39861,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_dzjy_mrtj
     output_fields:
     - description: ''
@@ -37006,8 +39938,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_dzjy_sctj
     output_fields:
     - description: ''
@@ -37067,8 +39999,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_dzjy_yybph
     output_fields:
     - description: ''
@@ -37791,8 +40723,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_fhps_detail_em
     output_fields:
     - description: ''
@@ -37924,8 +40856,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_fhps_em
     output_fields:
     - description: ''
@@ -38639,8 +41571,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emweb.eastmoney.com
     - datacenter.eastmoney.com
+    - emweb.eastmoney.com
     name: stock_financial_us_analysis_indicator_em
     output_fields:
     - description: 'from :return: docstring'
@@ -38679,8 +41611,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - emweb.eastmoney.com
     - datacenter.eastmoney.com
+    - emweb.eastmoney.com
     name: stock_financial_us_report_em
     output_fields: []
     probe:
@@ -39045,8 +41977,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gddh_em
     output_fields:
     - description: ''
@@ -39118,8 +42050,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_free_holding_analyse_em
     output_fields:
     - description: 'from :return: docstring'
@@ -39209,8 +42141,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_free_holding_change_em
     output_fields:
     - description: ''
@@ -39280,8 +42212,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_free_holding_detail_em
     output_fields:
     - description: 'from :return: docstring'
@@ -39375,8 +42307,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_free_holding_statistics_em
     output_fields:
     - description: ''
@@ -39462,8 +42394,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_free_holding_teamwork_em
     output_fields:
     - description: ''
@@ -39581,8 +42513,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_holding_analyse_em
     output_fields:
     - description: 'from :return: docstring'
@@ -39692,8 +42624,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_holding_change_em
     output_fields:
     - description: ''
@@ -39771,8 +42703,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_holding_detail_em
     output_fields:
     - description: 'from :return: docstring'
@@ -39857,8 +42789,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_holding_statistics_em
     output_fields:
     - description: ''
@@ -39944,8 +42876,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gdfx_holding_teamwork_em
     output_fields:
     - description: ''
@@ -40059,8 +42991,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_ggcg_em
     output_fields:
     - description: ''
@@ -40150,8 +43082,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gpzy_distribute_statistics_bank_em
     output_fields:
     - description: ''
@@ -40203,8 +43135,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gpzy_distribute_statistics_company_em
     output_fields:
     - description: ''
@@ -40269,8 +43201,8 @@ interfaces:
 
       :return: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gpzy_industry_data_em
     output_fields:
     - description: ''
@@ -40339,8 +43271,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gpzy_pledge_ratio_em
     output_fields:
     - description: ''
@@ -40413,8 +43345,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gpzy_profile_em
     output_fields:
     - description: ''
@@ -40470,8 +43402,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_gsrl_gsdt_em
     output_fields:
     - description: 'from :return: docstring'
@@ -40915,8 +43847,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - basic.10jqka.com.cn
     - stockpage.10jqka.com.cn
+    - basic.10jqka.com.cn
     name: stock_hk_fhpx_detail_ths
     output_fields:
     - description: ''
@@ -41001,8 +43933,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - 33.push2.eastmoney.com
     - quote.eastmoney.com
+    - 33.push2.eastmoney.com
     name: stock_hk_ggt_components_em
     output_fields:
     - description: ''
@@ -41399,9 +44331,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - push2.eastmoney.com
     - guba.eastmoney.com
     - emappdata.eastmoney.com
-    - push2.eastmoney.com
     name: stock_hk_hot_rank_em
     output_fields:
     - description: ''
@@ -41546,8 +44478,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - 15.push2.eastmoney.com
     - quote.eastmoney.com
+    - 15.push2.eastmoney.com
     name: stock_hk_index_spot_em
     output_fields:
     - description: 'from :return: docstring'
@@ -41741,8 +44673,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 81.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hk_main_board_spot_em
     output_fields:
     - description: ''
@@ -42087,8 +45019,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 72.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_hk_spot_em
     output_fields:
     - description: ''
@@ -42462,8 +45394,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hold_management_detail_em
     output_fields:
     - description: ''
@@ -42567,8 +45499,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hold_management_person_em
     output_fields:
     - description: ''
@@ -42935,9 +45867,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - push2.eastmoney.com
     - guba.eastmoney.com
     - emappdata.eastmoney.com
-    - push2.eastmoney.com
     name: stock_hot_rank_em
     output_fields:
     - description: ''
@@ -43063,8 +45995,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.pae.baidu.com
     - gushitong.baidu.com
+    - finance.pae.baidu.com
     name: stock_hot_search_baidu
     output_fields:
     - description: 'from :return: docstring'
@@ -43156,9 +46088,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - push2.eastmoney.com
     - guba.eastmoney.com
     - emappdata.eastmoney.com
-    - push2.eastmoney.com
     name: stock_hot_up_em
     output_fields:
     - description: ''
@@ -43202,8 +46134,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_board_rank_em
     output_fields:
     - description: ''
@@ -43298,8 +46230,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_fund_flow_summary_em
     output_fields:
     - description: ''
@@ -43375,8 +46307,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_fund_min_em
     output_fields:
     - description: ''
@@ -43434,8 +46366,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_hist_em
     output_fields:
     - description: 'from :return: docstring'
@@ -43522,8 +46454,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_hold_stock_em
     output_fields:
     - description: ''
@@ -43605,8 +46537,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_individual_detail_em
     output_fields:
     - description: 'from :return: docstring'
@@ -43742,8 +46674,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_institution_statistics_em
     output_fields:
     - description: ''
@@ -43909,8 +46841,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_hsgt_stock_statistics_em
     output_fields:
     - description: ''
@@ -44235,8 +47167,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2his.eastmoney.com
+    - data.eastmoney.com
     name: stock_individual_fund_flow
     output_fields:
     - description: ''
@@ -44316,8 +47248,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: stock_individual_fund_flow_rank
     output_fields:
     - description: ''
@@ -45019,8 +47951,8 @@ interfaces:
       :rtype: pandas.DataFrame'
     domains:
     - kuaixun.eastmoney.com
-    - np-weblist.eastmoney.com
     - finance.eastmoney.com
+    - np-weblist.eastmoney.com
     name: stock_info_global_em
     output_fields:
     - description: ''
@@ -45092,8 +48024,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - zhibo.sina.com.cn
+    - finance.sina.com.cn
     name: stock_info_global_sina
     output_fields:
     - description: ''
@@ -45568,8 +48500,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - 70.push2.eastmoney.com
     - quote.eastmoney.com
+    - 70.push2.eastmoney.com
     name: stock_intraday_em
     output_fields:
     - description: ''
@@ -45699,9 +48631,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - pdf.dfcfw.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_ipo_declare_em
     output_fields:
     - description: ''
@@ -45763,7 +48695,79 @@ interfaces:
     domains:
     - data.10jqka.com.cn
     name: stock_ipo_hk_ths
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 股票代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 股票简称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 申购代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 发行总数（万股）
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 网上发行（万股）
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 申购上限（万股）
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 顶格申购需配市值（万元）
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 发行价格
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 发行市盈率
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 行业市盈率
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 申购日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 中签率（%）
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 中签号
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 中签缴款日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 上市日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 打新收益（元）
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 首日最高涨幅
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 连板天数
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -45815,8 +48819,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_ipo_review_em
     output_fields:
     - description: 'from :return: docstring'
@@ -46000,8 +49004,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_ipo_tutor_em
     output_fields:
     - description: 'from :return: docstring'
@@ -46337,8 +49341,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_jgdy_detail_em
     output_fields:
     - description: ''
@@ -46420,8 +49424,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_jgdy_tj_em
     output_fields:
     - description: ''
@@ -46489,8 +49493,8 @@ interfaces:
 
       :rtype: dict'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: stock_js_weibo_nlp_time
     output_fields: []
     probe:
@@ -46515,10 +49519,18 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - datacenter-api.jin10.com
     - datacenter.jin10.com
+    - datacenter-api.jin10.com
     name: stock_js_weibo_report
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: name
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: rate
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -46537,8 +49549,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 7.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_kc_a_spot_em
     output_fields:
     - description: ''
@@ -46652,7 +49664,35 @@ interfaces:
     domains:
     - data.10jqka.com.cn
     name: stock_lh_yyb_capital
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 序号
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 营业部名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今日最高操作
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 今日最高金额
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 今日最高买入金额
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 累计参与金额
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 累计买入金额
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -46672,7 +49712,31 @@ interfaces:
     domains:
     - data.10jqka.com.cn
     name: stock_lh_yyb_control
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 序号
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 营业部名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 携手营业部家数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 年内最佳携手对象
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 年内最佳携手股票数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 年内最佳携手成功率
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -46692,7 +49756,35 @@ interfaces:
     domains:
     - data.10jqka.com.cn
     name: stock_lh_yyb_most
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 序号
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 营业部名称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 上榜次数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 合计动用资金
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 年内上榜次数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 年内买入股票只数
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 年内3日跟买成功率
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -46776,8 +49868,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_detail_em
     output_fields:
     - description: ''
@@ -46956,8 +50048,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_hyyyb_em
     output_fields:
     - description: ''
@@ -47029,8 +50121,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_jgmmtj_em
     output_fields:
     - description: ''
@@ -47154,8 +50246,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_jgstatistic_em
     output_fields:
     - description: 'from :return: docstring'
@@ -47304,8 +50396,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_stock_detail_date_em
     output_fields:
     - description: ''
@@ -47351,8 +50443,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_stock_detail_em
     output_fields:
     - description: ''
@@ -47416,8 +50508,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_stock_statistic_em
     output_fields:
     - description: ''
@@ -47527,8 +50619,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_traderstatistic_em
     output_fields:
     - description: 'from :return: docstring'
@@ -47590,8 +50682,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_yyb_detail_em
     output_fields: []
     probe:
@@ -47617,8 +50709,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lhb_yybph_em
     output_fields:
     - description: 'from :return: docstring'
@@ -47772,8 +50864,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_lrb_em
     output_fields:
     - description: ''
@@ -47863,8 +50955,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: stock_main_fund_flow
     output_fields:
     - description: ''
@@ -48008,8 +51100,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_margin_account_info
     output_fields:
     - description: ''
@@ -48435,8 +51527,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.legulegu.com
     - legulegu.com
+    - www.legulegu.com
     name: stock_market_activity_legu
     output_fields:
     - description: ''
@@ -48464,8 +51556,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2his.eastmoney.com
+    - data.eastmoney.com
     name: stock_market_fund_flow
     output_fields:
     - description: ''
@@ -48637,8 +51729,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_new_a_spot_em
     output_fields:
     - description: ''
@@ -48874,9 +51966,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
+    - finance.eastmoney.com
     - so.eastmoney.com
     - search-api-web.eastmoney.com
-    - finance.eastmoney.com
     name: stock_news_em
     output_fields:
     - description: 'from :return: docstring'
@@ -48987,8 +52079,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_pg_em
     output_fields:
     - description: ''
@@ -49064,8 +52156,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - calendar-api.ushknews.com
     - www.ushknews.com
+    - calendar-api.ushknews.com
     name: stock_price_js
     output_fields:
     - description: ''
@@ -49249,8 +52341,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_profit_forecast_em
     output_fields:
     - description: ''
@@ -49472,8 +52564,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_qbzf_em
     output_fields:
     - description: ''
@@ -49541,8 +52633,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_qsjy_em
     output_fields:
     - description: ''
@@ -50343,9 +53435,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - pdf.dfcfw.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_register_all_em
     output_fields:
     - description: ''
@@ -50413,9 +53505,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - pdf.dfcfw.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_register_bj
     output_fields:
     - description: ''
@@ -50483,9 +53575,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - pdf.dfcfw.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_register_cyb
     output_fields:
     - description: ''
@@ -50553,8 +53645,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_register_db
     output_fields:
     - description: ''
@@ -50582,9 +53674,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - pdf.dfcfw.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_register_kcb
     output_fields:
     - description: ''
@@ -50652,9 +53744,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - pdf.dfcfw.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_register_sh
     output_fields:
     - description: ''
@@ -50722,9 +53814,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - pdf.dfcfw.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_register_sz
     output_fields:
     - description: ''
@@ -50937,8 +54029,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_report_fund_hold_detail
     output_fields:
     - description: ''
@@ -50989,10 +54081,82 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_repurchase_em
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 序号
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: 股票代码
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 股票简称
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 最新价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 计划回购价格区间
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 计划回购数量区间-下限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 计划回购数量区间-上限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 占公告前一日总股本比例-下限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 占公告前一日总股本比例-上限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 计划回购金额区间-下限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 计划回购金额区间-上限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 回购起始时间
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 实施进度
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 已回购股份价格区间-下限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 已回购股份价格区间-上限
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 已回购股份数量
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 已回购金额
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 最新公告日期
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -51014,9 +54178,9 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
-    - reportapi.eastmoney.com
     - pdf.dfcfw.com
+    - reportapi.eastmoney.com
+    - data.eastmoney.com
     name: stock_research_report_em
     output_fields:
     - description: 'from :return: docstring'
@@ -51322,8 +54486,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_restricted_release_detail_em
     output_fields:
     - description: ''
@@ -51399,8 +54563,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_restricted_release_queue_em
     output_fields:
     - description: ''
@@ -51536,8 +54700,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_restricted_release_stockholder_em
     output_fields:
     - description: ''
@@ -51608,8 +54772,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_restricted_release_summary_em
     output_fields:
     - description: ''
@@ -51676,10 +54840,90 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - vip.stock.finance.sina.com.cn
+    - finance.sina.com.cn
     name: stock_sector_detail
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: symbol
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: code
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: name
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: trade
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: pricechange
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: changepercent
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: buy
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: sell
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: settlement
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: open
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: high
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: low
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: volume
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: amount
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: ticktime
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: per
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: pb
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: mktcap
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: nmc
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: turnoverratio
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -51702,8 +54946,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2his.eastmoney.com
+    - data.eastmoney.com
     name: stock_sector_fund_flow_hist
     output_fields:
     - description: ''
@@ -51777,8 +55021,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: stock_sector_fund_flow_rank
     output_fields:
     - description: ''
@@ -51964,8 +55208,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - push2.eastmoney.com
+    - data.eastmoney.com
     name: stock_sector_fund_flow_summary
     output_fields:
     - description: ''
@@ -52132,10 +55376,10 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
-    - vip.stock.finance.sina.com.cn
     - biz.finance.sina.com.cn
+    - vip.stock.finance.sina.com.cn
     - money.finance.sina.com.cn
+    - finance.sina.com.cn
     name: stock_sector_spot
     output_fields:
     - description: ''
@@ -52267,7 +55511,23 @@ interfaces:
     domains:
     - www.szse.cn
     name: stock_sgt_reference_exchange_rate_szse
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 适用日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 参考汇率买入价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 参考汇率卖出价
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 货币种类
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -52344,7 +55604,23 @@ interfaces:
     domains:
     - www.szse.cn
     name: stock_sgt_settlement_exchange_rate_szse
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: 适用日期
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: 买入结算汇兑比率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 卖出结算汇兑比率
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: 货币种类
+      source: runtime_capture
+      type: str
     probe:
       check_interval: 2592000
       params: {}
@@ -52362,8 +55638,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_sh_a_spot_em
     output_fields:
     - description: ''
@@ -53123,8 +56399,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_sy_em
     output_fields:
     - description: 'from :return: docstring'
@@ -53258,8 +56534,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_sy_hy_em
     output_fields:
     - description: 'from :return: docstring'
@@ -53333,8 +56609,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_sy_jz_em
     output_fields:
     - description: 'from :return: docstring'
@@ -53464,8 +56740,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_sy_profile_em
     output_fields:
     - description: ''
@@ -53521,8 +56797,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_sy_yq_em
     output_fields:
     - description: 'from :return: docstring'
@@ -53652,8 +56928,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_sz_a_spot_em
     output_fields:
     - description: ''
@@ -53803,8 +57079,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - www.szse.cn
     - docs.static.szse.cn
+    - www.szse.cn
     name: stock_szse_sector_summary
     output_fields:
     - description: ''
@@ -53914,8 +57190,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_tfp_em
     output_fields:
     - description: ''
@@ -54391,8 +57667,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 72.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_us_spot_em
     output_fields:
     - description: ''
@@ -54529,8 +57805,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_value_em
     output_fields:
     - description: ''
@@ -54608,8 +57884,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_xgsglb_em
     output_fields:
     - description: ''
@@ -54960,8 +58236,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_xjll_em
     output_fields:
     - description: ''
@@ -55038,8 +58314,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_yjbb_em
     output_fields:
     - description: ''
@@ -55320,8 +58596,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_yysj_em
     output_fields:
     - description: ''
@@ -55461,8 +58737,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_zcfz_bj_em
     output_fields:
     - description: ''
@@ -55552,8 +58828,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_zcfz_em
     output_fields:
     - description: ''
@@ -55646,8 +58922,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_zdhtmx_em
     output_fields:
     - description: 'from :return: docstring'
@@ -56148,8 +59424,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_zh_a_gdhs
     output_fields:
     - description: ''
@@ -56243,8 +59519,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - datacenter-web.eastmoney.com
+    - data.eastmoney.com
     name: stock_zh_a_gdhs_detail_em
     output_fields:
     - description: ''
@@ -56619,8 +59895,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - proxy.finance.qq.com
     - gu.qq.com
+    - proxy.finance.qq.com
     name: stock_zh_a_hist_tx
     output_fields:
     - description: ''
@@ -56685,8 +59961,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: stock_zh_a_minute
     output_fields:
     - description: ''
@@ -56750,7 +60026,47 @@ interfaces:
     domains:
     - vip.stock.finance.sina.com.cn
     name: stock_zh_a_new
-    output_fields: []
+    output_fields:
+    - description: ''
+      name: symbol
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: code
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: name
+      source: runtime_capture
+      type: str
+    - description: ''
+      name: open
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: high
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: low
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: volume
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: amount
+      source: runtime_capture
+      type: int
+    - description: ''
+      name: mktcap
+      source: runtime_capture
+      type: float
+    - description: ''
+      name: turnoverratio
+      source: runtime_capture
+      type: float
     probe:
       check_interval: 2592000
       params: {}
@@ -56933,8 +60249,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 82.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_a_spot_em
     output_fields:
     - description: ''
@@ -57232,8 +60548,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - stock.gtimg.cn
     - gu.qq.com
+    - stock.gtimg.cn
     name: stock_zh_a_tick_tx_js
     output_fields:
     - description: ''
@@ -57344,8 +60660,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - web.ifzq.gtimg.cn
     - gu.qq.com
+    - web.ifzq.gtimg.cn
     name: stock_zh_ah_daily
     output_fields:
     - description: ''
@@ -57690,8 +61006,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.sina.com.cn
     - quotes.sina.cn
+    - finance.sina.com.cn
     name: stock_zh_b_minute
     output_fields:
     - description: ''
@@ -57821,8 +61137,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - quote.eastmoney.com
     - 28.push2.eastmoney.com
+    - quote.eastmoney.com
     name: stock_zh_b_spot_em
     output_fields:
     - description: ''
@@ -58097,8 +61413,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - proxy.finance.qq.com
     - gu.qq.com
+    - proxy.finance.qq.com
     name: stock_zh_index_daily_tx
     output_fields:
     - description: ''
@@ -58252,8 +61568,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - 48.push2.eastmoney.com
     - quote.eastmoney.com
+    - 48.push2.eastmoney.com
     name: stock_zh_index_spot_em
     output_fields:
     - description: 'from :return: docstring'
@@ -58433,8 +61749,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - oss-ch.csindex.com.cn
     - www.csindex.com.cn
+    - oss-ch.csindex.com.cn
     name: stock_zh_index_value_csindex
     output_fields:
     - description: ''
@@ -58584,8 +61900,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - data.eastmoney.com
     - np-anotice-stock.eastmoney.com
+    - data.eastmoney.com
     name: stock_zh_kcb_report_em
     output_fields:
     - description: ''
@@ -58842,8 +62158,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - finance.pae.baidu.com
     - gushitong.baidu.com
+    - finance.pae.baidu.com
     name: stock_zh_vote_baidu
     output_fields:
     - description: ''
@@ -60041,8 +63357,8 @@ interfaces:
       \ di=(Li/Oi), oi = ln(Oi/Ci-1)\n# where Hi = high price at time t and Li = low\
       \ price at time t"
     domains:
-    - github.com
     - www.jstor.org
+    - github.com
     name: volatility_yz_rv
     output_fields:
     - description: ''
@@ -60079,8 +63395,8 @@ interfaces:
 
       :rtype: pandas.DataFrame'
     domains:
-    - service.ikuyu.cn
     - www.xcf.cn
+    - service.ikuyu.cn
     name: xincaifu_rank
     output_fields:
     - description: 'from :return: docstring'

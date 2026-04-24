@@ -4120,7 +4120,7 @@ futures_zh_spot:
   - desc: amount field
     name: amount
     type: float
-  rate_limit_key: sina_vip
+  rate_limit_key: sina_hq
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true

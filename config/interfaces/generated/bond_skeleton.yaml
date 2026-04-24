@@ -956,6 +956,11 @@ bond_china_close_return:
       end_date: YYYYMMDD
       start_date: YYYYMMDD
 bond_china_yield:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: bond
   description: '中国债券信息网-国债及其他债券收益率曲线
 
@@ -974,17 +979,57 @@ bond_china_yield:
     required: true
     type: str
   name: bond_china_yield
-  output: []
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 3月 field
+    name: 3月
+    type: float
+  - desc: 6月 field
+    name: 6月
+    type: float
+  - desc: 1年 field
+    name: 1年
+    type: float
+  - desc: 3年 field
+    name: 3年
+    type: float
+  - desc: 5年 field
+    name: 5年
+    type: float
+  - desc: 7年 field
+    name: 7年
+    type: float
+  - desc: 10年 field
+    name: 10年
+    type: float
+  - desc: 30年 field
+    name: 30年
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: bond_china_yield
     input_mapping:
       end_date: end_date
       start_date: start_date
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      10年: 10年
+      1年: 1年
+      30年: 30年
+      3年: 3年
+      3月: 3月
+      5年: 5年
+      6月: 6月
+      7年: 7年
+      日期: date
+      曲线名称: name
     param_transforms:
       end_date: YYYYMMDD
       start_date: YYYYMMDD
@@ -3235,7 +3280,7 @@ bond_zh_hs_cov_min:
   - desc: turnover field
     name: turnover
     type: float
-  rate_limit_key: em_push2his
+  rate_limit_key: em_push2
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
     enabled: true
