@@ -23,12 +23,15 @@ get_conversion_bond_daily() 接口示例
 - amount: 成交额
 """
 
+from datetime import datetime, timedelta
+
 import pandas as pd
 from akshare_data import get_service
 from _example_utils import (
     fetch_with_retry,
     normalize_symbol_input,
     print_df_brief,
+    recent_trade_days,
     stable_df,
 )
 
@@ -53,6 +56,78 @@ def _mock_daily_data(symbol="127045"):
     })
 
 
+def _extract_symbol_candidates(service, seeds: list[str]) -> list[str]:
+    """生成代码候选，优先 seeds，回退到转债列表接口。"""
+    candidates: list[str] = []
+    for seed in seeds:
+        try:
+            candidates.append(normalize_symbol_input(seed))
+        except Exception:  # noqa: BLE001
+            continue
+
+    try:
+        bond_list = fetch_with_retry(lambda: service.get_conversion_bond_list(), retries=1)
+        if bond_list is not None and not bond_list.empty:
+            for col in ("symbol", "code", "债券代码", "代码"):
+                if col in bond_list.columns:
+                    for value in bond_list[col].astype(str).head(30):
+                        try:
+                            candidates.append(normalize_symbol_input(value))
+                        except Exception:  # noqa: BLE001
+                            continue
+                    break
+    except Exception:
+        pass
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for sym in candidates:
+        if sym not in seen:
+            deduped.append(sym)
+            seen.add(sym)
+    return deduped
+
+
+def _fetch_conversion_bond_daily_with_fallback(
+    service,
+    preferred_symbols: list[str],
+) -> tuple[pd.DataFrame, str | None, str]:
+    """稳健回退：日期窗口 -> 代码候选 -> 参数形态。"""
+    symbol_candidates = _extract_symbol_candidates(service, preferred_symbols)
+    if not symbol_candidates:
+        return pd.DataFrame(), None, "无可用代码候选"
+
+    attempts: list[tuple[str, str, dict]] = []
+    for symbol in symbol_candidates:
+        for end_date in recent_trade_days(service, max_backtrack=8):
+            end_dt = datetime.strptime(end_date, "%Y-%m-%d").date()
+            start_date = (end_dt - timedelta(days=365 * 2)).strftime("%Y-%m-%d")
+            attempts.append((
+                symbol,
+                f"日期窗口 start_date={start_date}, end_date={end_date}",
+                {"symbol": symbol, "start_date": start_date, "end_date": end_date},
+            ))
+
+    for symbol in symbol_candidates:
+        attempts.append((symbol, "仅 symbol 参数", {"symbol": symbol}))
+
+    for raw_symbol in preferred_symbols:
+        attempts.append((raw_symbol, "原始 symbol 形态", {"symbol": raw_symbol}))
+
+    for symbol, reason, kwargs in attempts:
+        try:
+            df = fetch_with_retry(
+                lambda params=kwargs: service.get_conversion_bond_daily(**params),
+                retries=1,
+            )
+            if df is not None and not df.empty:
+                return df, symbol, reason
+        except Exception:
+            continue
+
+    return pd.DataFrame(), None, "所有回退组合均无数据"
+
+
 # ============================================================
 # 示例 1: 基本用法 - 获取单只可转债日线数据
 # ============================================================
@@ -65,18 +140,20 @@ def example_basic():
     service = get_service()
 
     try:
-        # 获取牧原转债的日线数据
-        # 注意: 该接口仅接受 symbol 参数，返回全部历史数据
-        symbol = normalize_symbol_input("127045")
+        symbol = "127045"
 
         print("\n查询参数:")
-        print(f"  代码: {symbol}")
-
-        df = fetch_with_retry(lambda: service.get_conversion_bond_daily(symbol=symbol), retries=2)
+        print(f"  首选代码: {symbol}")
+        df, hit_symbol, hit_reason = _fetch_conversion_bond_daily_with_fallback(
+            service, preferred_symbols=[symbol]
+        )
 
         if df is None or df.empty:
             print("\n[数据源不可用，使用演示数据]")
             df = _mock_daily_data(symbol)
+        else:
+            print(f"  命中代码: {hit_symbol}")
+            print(f"  命中策略: {hit_reason}")
 
         print_df_brief(stable_df(df), rows=5)
 
@@ -107,15 +184,15 @@ def example_symbol_formats():
     for symbol, desc in symbols:
         try:
             print(f"\n测试代码格式: {symbol} ({desc})")
-            df = fetch_with_retry(
-                lambda: service.get_conversion_bond_daily(symbol=normalize_symbol_input(symbol)),
-                retries=2,
+            df, hit_symbol, hit_reason = _fetch_conversion_bond_daily_with_fallback(
+                service, preferred_symbols=[symbol]
             )
 
-            if df.empty:
+            if df is None or df.empty:
                 print("  结果: 无数据")
             else:
                 print(f"  结果: 获取到 {len(df)} 条记录")
+                print(f"  命中代码: {hit_symbol}, 命中策略: {hit_reason}")
                 if "date" in df.columns:
                     print(f"  日期范围: {df['date'].iloc[0]} 至 {df['date'].iloc[-1]}")
 
@@ -135,12 +212,9 @@ def example_technical_analysis():
     service = get_service()
 
     try:
-        df = fetch_with_retry(
-            lambda: service.get_conversion_bond_daily(symbol=normalize_symbol_input("127045")),
-            retries=2,
-        )
+        df, _, _ = _fetch_conversion_bond_daily_with_fallback(service, preferred_symbols=["127045"])
 
-        if df.empty:
+        if df is None or df.empty:
             print("[数据源不可用，使用演示数据]")
             df = _mock_daily_data()
 
@@ -199,12 +273,11 @@ def example_compare_bonds():
     results = []
     for symbol, name in symbols:
         try:
-            df = fetch_with_retry(
-                lambda: service.get_conversion_bond_daily(symbol=normalize_symbol_input(symbol)),
-                retries=2,
+            df, hit_symbol, _ = _fetch_conversion_bond_daily_with_fallback(
+                service, preferred_symbols=[symbol]
             )
 
-            if df.empty:
+            if df is None or df.empty:
                 print(f"  {symbol} ({name}): 无数据")
                 continue
 
@@ -218,7 +291,7 @@ def example_compare_bonds():
             min_price = df["close"].min()
 
             results.append({
-                "code": symbol,
+                "code": hit_symbol or symbol,
                 "name": name,
                 "start_price": start_price,
                 "end_price": end_price,
@@ -254,12 +327,9 @@ def example_volume_analysis():
     service = get_service()
 
     try:
-        df = fetch_with_retry(
-            lambda: service.get_conversion_bond_daily(symbol=normalize_symbol_input("127045")),
-            retries=2,
-        )
+        df, _, _ = _fetch_conversion_bond_daily_with_fallback(service, preferred_symbols=["127045"])
 
-        if df.empty:
+        if df is None or df.empty:
             print("[数据源不可用，使用演示数据]")
             df = _mock_daily_data()
 
@@ -305,11 +375,10 @@ def example_error_handling():
     # 测试无效代码
     print("\n测试 1: 无效可转债代码")
     try:
-        df = fetch_with_retry(
-            lambda: service.get_conversion_bond_daily(symbol=normalize_symbol_input("INVALID")),
-            retries=1,
+        df, _, _ = _fetch_conversion_bond_daily_with_fallback(
+            service, preferred_symbols=["INVALID", "127045"]
         )
-        if df.empty:
+        if df is None or df.empty:
             print("  结果: 返回空 DataFrame")
         else:
             print(f"  结果: 获取到 {len(df)} 条记录")
@@ -319,11 +388,11 @@ def example_error_handling():
     # 测试正常调用
     print("\n测试 2: 正常调用")
     try:
-        df = fetch_with_retry(
-            lambda: service.get_conversion_bond_daily(symbol=normalize_symbol_input("127045")),
-            retries=2,
+        df, hit_symbol, hit_reason = _fetch_conversion_bond_daily_with_fallback(
+            service, preferred_symbols=["127045"]
         )
         print(f"  结果: 获取到 {len(df)} 条记录")
+        print(f"  命中代码: {hit_symbol}, 命中策略: {hit_reason}")
     except Exception as e:
         print(f"  捕获异常: {type(e).__name__}: {e}")
 

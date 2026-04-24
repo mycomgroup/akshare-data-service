@@ -1,24 +1,11 @@
 """
-get_lof_spot() 接口示例
+get_lof_spot() 接口示例（增强稳健版）
 
-演示如何使用 DataService.get_lof_spot() 获取LOF基金实时行情数据。
-
-接口说明:
-- get_lof_spot(): 获取全部LOF(Listed Open-end Fund)基金的实时行情
-- 无必需参数
-- 返回: pd.DataFrame，包含LOF基金代码、名称、最新价、涨跌幅等字段
-
-使用方式:
-    from akshare_data import get_service
-    service = get_service()
-    df = service.get_lof_spot()
-
-注意:
-- LOF基金是既可以在场外申购赎回，又可以在场内交易的基金
-- 该接口返回LOF基金的实时交易行情
-- 实时数据不走缓存，每次调用都会获取最新数据
+演示如何使用 DataService.get_lof_spot() 获取LOF基金实时行情，并在无数据场景下通过
+“可交易日回退 + 代码候选 + 字段兼容 + 降级输出”提高示例稳定性。
 """
 
+<<<<<<< HEAD
 import logging
 import warnings
 import pandas as pd
@@ -26,16 +13,130 @@ import pandas as pd
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 logging.getLogger("akshare_data").setLevel(logging.ERROR)
 
+=======
+from __future__ import annotations
+
+from typing import Any
+
+import pandas as pd
+
+from _example_utils import recent_trade_days
+>>>>>>> fbe6b24bca4744d99b8a20f07f01b84e23f4610d
 from akshare_data import get_service
 
+SPOT_CODE_CANDIDATES = ["162605", "163402", "161005", "160222", "161725", "501018", "501019"]
+FIELD_ALIASES = {
+    "code": ["代码", "基金代码", "symbol", "code"],
+    "name": ["名称", "基金简称", "name", "基金名称"],
+    "price": ["最新价", "现价", "最新", "price", "close", "收盘"],
+    "change_pct": ["涨跌幅", "涨跌幅(%)", "pct_chg", "change_pct", "change"],
+    "volume": ["成交量", "成交额", "volume", "vol", "amount"],
+    "date": ["日期", "date", "trade_date"],
+}
 
-def _as_dataframe(data, label: str) -> pd.DataFrame:
+
+def _as_dataframe(data: Any, label: str) -> pd.DataFrame:
     if not isinstance(data, pd.DataFrame):
         print(f"{label}: 返回类型异常，期望 DataFrame，实际 {type(data).__name__}")
         return pd.DataFrame()
-    if data.empty:
-        print(f"{label}: 返回空数据")
     return data
+
+
+def _first_existing_col(df: pd.DataFrame, candidates: list[str]) -> str | None:
+    for col in candidates:
+        if col in df.columns:
+            return col
+    return None
+
+
+def _col(df: pd.DataFrame, key: str) -> str | None:
+    return _first_existing_col(df, FIELD_ALIASES.get(key, []))
+
+
+def _prepare_display_df(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+    out = df.copy()
+    renames: dict[str, str] = {}
+    for canonical, alias_cols in FIELD_ALIASES.items():
+        src = _first_existing_col(out, alias_cols)
+        if src and src != canonical:
+            renames[src] = canonical
+    out = out.rename(columns=renames)
+    for numeric_col in ("price", "change_pct", "volume"):
+        if numeric_col in out.columns:
+            out[numeric_col] = pd.to_numeric(out[numeric_col], errors="coerce")
+    preferred = [c for c in ["code", "name", "price", "change_pct", "volume", "date"] if c in out.columns]
+    others = [c for c in out.columns if c not in preferred]
+    return out[preferred + others]
+
+
+def _build_spot_like_from_daily(service) -> tuple[pd.DataFrame, str | None, str | None]:
+    trade_days = recent_trade_days(service, max_backtrack=8)
+    if not trade_days:
+        return pd.DataFrame(), None, None
+
+    for trade_day in trade_days:
+        rows: list[pd.DataFrame] = []
+        for code in SPOT_CODE_CANDIDATES:
+            try:
+                daily = _as_dataframe(
+                    service.get_lof_daily(symbol=code, start_date=trade_day, end_date=trade_day),
+                    f"daily-{code}-{trade_day}",
+                )
+            except Exception:
+                continue
+            if daily.empty:
+                continue
+            one = daily.tail(1).copy()
+            if _col(one, "code") is None:
+                one["code"] = code
+            rows.append(one)
+        if rows:
+            merged = pd.concat(rows, ignore_index=True)
+            return merged, trade_day, ",".join(SPOT_CODE_CANDIDATES)
+    return pd.DataFrame(), trade_days[-1], ",".join(SPOT_CODE_CANDIDATES)
+
+
+def fetch_lof_spot_stable() -> tuple[pd.DataFrame, dict[str, str | int]]:
+    service = get_service()
+    meta: dict[str, str | int] = {"source": "spot", "hit_trade_day": "", "candidate_codes": ""}
+    try:
+        spot_df = _as_dataframe(service.get_lof_spot(), "spot")
+    except Exception:
+        spot_df = pd.DataFrame()
+
+    if not spot_df.empty:
+        normalized = _prepare_display_df(spot_df)
+        meta["rows"] = len(normalized)
+        return normalized, meta
+
+    fallback_df, hit_day, used_codes = _build_spot_like_from_daily(service)
+    meta["source"] = "daily_fallback"
+    meta["hit_trade_day"] = hit_day or ""
+    meta["candidate_codes"] = used_codes or ""
+    if not fallback_df.empty:
+        normalized = _prepare_display_df(fallback_df)
+        meta["rows"] = len(normalized)
+        return normalized, meta
+
+    meta["source"] = "degraded_empty"
+    meta["rows"] = 0
+    empty = pd.DataFrame(columns=["code", "name", "price", "change_pct", "volume", "date"])
+    return empty, meta
+
+
+def _print_degrade_hint(meta: dict[str, str | int]) -> None:
+    source = str(meta.get("source", "unknown"))
+    if source == "spot":
+        return
+    print(f"已触发回退链路: {source}")
+    hit_day = str(meta.get("hit_trade_day", "")).strip()
+    if hit_day:
+        print(f"命中交易日: {hit_day}")
+    candidate_codes = str(meta.get("candidate_codes", "")).strip()
+    if candidate_codes:
+        print(f"候选代码: {candidate_codes}")
 
 
 # ============================================================
@@ -47,13 +148,12 @@ def example_basic():
     print("示例 1: 获取LOF基金实时行情")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        # 获取全部LOF基金实时行情
-        df = _as_dataframe(service.get_lof_spot(), "示例1")
+        df, meta = fetch_lof_spot_stable()
+        _print_degrade_hint(meta)
 
         if df.empty:
+            print("示例1: 无可用数据（已输出降级空表）")
             return
 
         # 打印数据形状
@@ -82,22 +182,18 @@ def example_price_change():
     print("示例 2: LOF涨跌幅分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _as_dataframe(service.get_lof_spot(), "示例2")
+        df, meta = fetch_lof_spot_stable()
+        _print_degrade_hint(meta)
 
         if df.empty:
+            print("示例2: 无可用数据（已输出降级空表）")
             return
 
         print(f"LOF基金总数: {len(df)}")
 
         # 查找涨跌幅列
-        change_col = None
-        for col in df.columns:
-            if "涨跌幅" in str(col) or "change" in str(col).lower() or "pct" in str(col).lower():
-                change_col = col
-                break
+        change_col = _col(df, "change_pct")
 
         if change_col and change_col in df.columns:
             # 转换为数值类型
@@ -111,12 +207,12 @@ def example_price_change():
             # 涨幅前5
             top_gainers = df.nlargest(5, change_col)
             print("\n涨幅前5:")
-            print(top_gainers[[col for col in df.columns if col in ["代码", "名称", "最新价", change_col]]].to_string(index=False))
+            print(top_gainers[[col for col in df.columns if col in ["code", "name", "price", change_col]]].to_string(index=False))
 
             # 跌幅前5
             top_losers = df.nsmallest(5, change_col)
             print("\n跌幅前5:")
-            print(top_losers[[col for col in df.columns if col in ["代码", "名称", "最新价", change_col]]].to_string(index=False))
+            print(top_losers[[col for col in df.columns if col in ["code", "name", "price", change_col]]].to_string(index=False))
         else:
             print("未找到涨跌幅字段")
             print(f"可用字段: {list(df.columns)}")
@@ -134,25 +230,21 @@ def example_find_lof():
     print("示例 3: 查找特定LOF基金")
     print("=" * 60)
 
-    service = get_service()
-
     # 常见LOF基金代码
     target_codes = ["162605", "163402", "161005"]
 
     try:
-        df = _as_dataframe(service.get_lof_spot(), "示例3")
+        df, meta = fetch_lof_spot_stable()
+        _print_degrade_hint(meta)
 
         if df.empty:
+            print("示例3: 无可用数据（已输出降级空表）")
             return
 
         print(f"LOF基金总数: {len(df)}")
 
         # 查找代码列
-        code_col = None
-        for col in df.columns:
-            if "代码" in str(col) or "code" in str(col).lower() or "symbol" in str(col).lower():
-                code_col = col
-                break
+        code_col = _col(df, "code")
 
         if code_col:
             for code in target_codes:
@@ -178,22 +270,18 @@ def example_volume_analysis():
     print("示例 4: LOF成交量分析")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _as_dataframe(service.get_lof_spot(), "示例4")
+        df, meta = fetch_lof_spot_stable()
+        _print_degrade_hint(meta)
 
         if df.empty:
+            print("示例4: 无可用数据（已输出降级空表）")
             return
 
         print(f"LOF基金总数: {len(df)}")
 
         # 查找成交量列
-        volume_col = None
-        for col in df.columns:
-            if "成交量" in str(col) or "volume" in str(col).lower() or "成交额" in str(col):
-                volume_col = col
-                break
+        volume_col = _col(df, "volume")
 
         if volume_col and volume_col in df.columns:
             df[volume_col] = pd.to_numeric(df[volume_col], errors="coerce")
@@ -206,7 +294,7 @@ def example_volume_analysis():
             # 成交量前10
             top_volume = df.nlargest(10, volume_col)
             print("\n成交量前10:")
-            display_cols = [col for col in df.columns if col in ["代码", "名称", "最新价", volume_col]]
+            display_cols = [col for col in df.columns if col in ["code", "name", "price", volume_col]]
             print(top_volume[display_cols].to_string(index=False))
         else:
             print("未找到成交量字段")
@@ -224,20 +312,16 @@ def example_price_distribution():
     print("示例 5: LOF价格分布")
     print("=" * 60)
 
-    service = get_service()
-
     try:
-        df = _as_dataframe(service.get_lof_spot(), "示例5")
+        df, meta = fetch_lof_spot_stable()
+        _print_degrade_hint(meta)
 
         if df.empty:
+            print("示例5: 无可用数据（已输出降级空表）")
             return
 
         # 查找价格列
-        price_col = None
-        for col in df.columns:
-            if "最新价" in str(col) or "close" in str(col).lower() or "price" in str(col).lower():
-                price_col = col
-                break
+        price_col = _col(df, "price")
 
         if price_col and price_col in df.columns:
             df[price_col] = pd.to_numeric(df[price_col], errors="coerce")
