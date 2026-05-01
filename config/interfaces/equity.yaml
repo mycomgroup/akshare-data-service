@@ -351,7 +351,7 @@ dragon_tiger_list:
   sources:
     - name: "akshare_sina"
       func: "stock_lhb_detail_daily_sina"
-      enabled: false
+      enabled: true
       input_mapping:
         date: "date"
       param_transforms:
@@ -618,7 +618,7 @@ margin_detail:
   sources:
     - name: "akshare_sse"
       func: "stock_margin_detail_sse"
-      enabled: false
+      enabled: true
       input_mapping:
         date: "date"
       param_transforms:
@@ -850,7 +850,31 @@ industry_mapping:
   sources:
     - name: "akshare_cninfo"
       func: "stock_industry_change_cninfo"
-      enabled: false
+      enabled: true
+      input_mapping:
+        symbol: "symbol"
+      output_mapping:
+        证券代码: "symbol"
+        新证券简称: "name"
+        变更日期: "date"
+        行业门类: "industry_1"
+        行业大类: "industry_2"
+        行业中类: "industry_3"
+        行业次类: "industry_4"
+        行业编码: "industry_code"
+        分类标准: "standard"
+        分类标准编码: "standard_code"
+      column_types:
+        symbol: "str"
+        name: "str"
+        date: "date"
+        industry_1: "str"
+        industry_2: "str"
+        industry_3: "str"
+        industry_4: "str"
+        industry_code: "str"
+        standard: "str"
+        standard_code: "str"
 
 industry_list:
   name: "industry_list"
@@ -1282,7 +1306,7 @@ equity_pledge:
 
   sources:
     - name: "akshare_em"
-      func: "stock_ggcg_em"
+      func: "stock_gpzy_individual_pledge_ratio_detail_em"
       enabled: true
       input_mapping:
         symbol: symbol
@@ -1489,7 +1513,7 @@ performance_forecast:
   sources:
     - name: "akshare_em"
       func: "stock_yjyg_em"
-      enabled: false
+      enabled: true
       input_mapping:
         date: "date"
       output_mapping:
@@ -1739,7 +1763,7 @@ rights_issue:
   sources:
     - name: "akshare_em"
       func: "stock_yysj_em"
-      enabled: false
+      enabled: true
       input_mapping:
         symbol: "symbol"
         date: "date"
@@ -2869,7 +2893,7 @@ goodwill:
 
   sources:
     - name: "akshare_em"
-      func: "stock_ycfp_em"
+      func: "stock_sy_em"
       enabled: true
       output_mapping:
         股票代码: "symbol"
@@ -3010,20 +3034,8 @@ name_history:
 
   rate_limit_key: "default"
 
-  sources:
-    - name: "akshare_cninfo"
-      func: "stock_history_dividend"
-      enabled: false
-      input_mapping:
-        symbol: "symbol"
-      output_mapping:
-        变更日期: "change_date"
-        原名称: "old_name"
-        新名称: "new_name"
-      column_types:
-        change_date: "date"
-        old_name: "str"
-        new_name: "str"
+  sources: []
+  # 注：AkShare 暂无稳定的股票名称变更历史接口，此接口保留为占位符
 
 performance_express:
   name: "performance_express"

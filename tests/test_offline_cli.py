@@ -617,42 +617,35 @@ class TestHandleDownload:
 
         mock_cache_manager = MagicMock()
 
-        mock_downloader = MagicMock()
-        mock_downloader.download_incremental.return_value = {"success": 5}
-
         mock_scheduler = MagicMock()
         mock_scheduler.start = MagicMock()
         mock_scheduler.stop = MagicMock()
-        mock_scheduler.set_downloader = MagicMock()
+
+        mock_ingestion_scheduler = MagicMock()
 
         with patch(
             "akshare_data.offline.core.data_loader.get_cache_manager_instance",
             return_value=mock_cache_manager,
         ):
             with patch(
-                "akshare_data.offline.downloader.BatchDownloader",
-                return_value=mock_downloader,
+                "akshare_data.offline.scheduler.Scheduler",
+                return_value=mock_scheduler,
             ):
-                with patch(
-                    "akshare_data.offline.scheduler.Scheduler",
-                    return_value=mock_scheduler,
-                ):
-                    with patch("time.sleep", side_effect=KeyboardInterrupt):
-                        args = MagicMock()
-                        args.schedule = True
-                        args.mode = "incremental"
-                        args.days = 1
-                        args.interface = None
-                        args.start = None
-                        args.end = None
-                        args.workers = 4
-                        args.pipeline = False
+                with patch("time.sleep", side_effect=KeyboardInterrupt):
+                    args = MagicMock()
+                    args.schedule = True
+                    args.mode = "incremental"
+                    args.days = 1
+                    args.interface = None
+                    args.start = None
+                    args.end = None
+                    args.workers = 4
+                    args.domain = None
 
-                        _handle_download(args)
+                    _handle_download(args)
 
-                        mock_scheduler.set_downloader.assert_called_once()
-                        mock_scheduler.start.assert_called_once()
-                        mock_scheduler.stop.assert_called_once()
+                    mock_scheduler.start.assert_called_once()
+                    mock_scheduler.stop.assert_called_once()
 
     @pytest.mark.unit
     def test_handle_download_full_mode(self, capsys):
@@ -660,31 +653,45 @@ class TestHandleDownload:
         from akshare_data.offline.cli.main import _handle_download
 
         mock_cache_manager = MagicMock()
+        mock_scheduler = MagicMock()
+        mock_batch = MagicMock()
+        mock_batch.tasks = []
+        mock_scheduler.generate_full.return_value = mock_batch
 
-        mock_downloader = MagicMock()
-        mock_downloader.download_full.return_value = {"success": 20}
+        mock_executor = MagicMock()
+        mock_result = MagicMock()
+        mock_result.total_groups = 0
+        mock_result.total_published = 0
+        mock_result.total_errors = 0
+        mock_result.duration_ms = 100
+        mock_result.pipeline_results = []
+        mock_executor.execute_batch.return_value = mock_result
 
         with patch(
             "akshare_data.offline.core.data_loader.get_cache_manager_instance",
             return_value=mock_cache_manager,
         ):
             with patch(
-                "akshare_data.offline.downloader.BatchDownloader",
-                return_value=mock_downloader,
+                "akshare_data.ingestion.scheduler.Scheduler",
+                return_value=mock_scheduler,
             ):
-                args = MagicMock()
-                args.schedule = False
-                args.mode = "full"
-                args.interface = "stock_zh_a_hist"
-                args.start = "2024-01-01"
-                args.end = "2024-01-31"
-                args.days = 1
-                args.workers = 4
-                args.pipeline = False
+                with patch(
+                    "akshare_data.ingestion.pipeline_executor.PipelineExecutor",
+                    return_value=mock_executor,
+                ):
+                    args = MagicMock()
+                    args.schedule = False
+                    args.mode = "full"
+                    args.interface = "stock_zh_a_hist"
+                    args.start = "2024-01-01"
+                    args.end = "2024-01-31"
+                    args.days = 1
+                    args.workers = 4
+                    args.domain = None
 
-                _handle_download(args)
+                    _handle_download(args)
 
-                mock_downloader.download_full.assert_called_once()
+                    mock_scheduler.generate_full.assert_called_once()
 
     @pytest.mark.unit
     def test_handle_download_incremental_mode(self, capsys):
@@ -692,33 +699,47 @@ class TestHandleDownload:
         from akshare_data.offline.cli.main import _handle_download
 
         mock_cache_manager = MagicMock()
+        mock_scheduler = MagicMock()
+        mock_batch = MagicMock()
+        mock_batch.tasks = []
+        mock_scheduler.generate_incremental.return_value = mock_batch
 
-        mock_downloader = MagicMock()
-        mock_downloader.download_incremental.return_value = {"success": 15}
+        mock_executor = MagicMock()
+        mock_result = MagicMock()
+        mock_result.total_groups = 0
+        mock_result.total_published = 0
+        mock_result.total_errors = 0
+        mock_result.duration_ms = 100
+        mock_result.pipeline_results = []
+        mock_executor.execute_batch.return_value = mock_result
 
         with patch(
             "akshare_data.offline.core.data_loader.get_cache_manager_instance",
             return_value=mock_cache_manager,
         ):
             with patch(
-                "akshare_data.offline.downloader.BatchDownloader",
-                return_value=mock_downloader,
+                "akshare_data.ingestion.scheduler.Scheduler",
+                return_value=mock_scheduler,
             ):
-                args = MagicMock()
-                args.schedule = False
-                args.mode = "incremental"
-                args.days = 7
-                args.interface = None
-                args.start = None
-                args.end = None
-                args.workers = 8
-                args.pipeline = False
+                with patch(
+                    "akshare_data.ingestion.pipeline_executor.PipelineExecutor",
+                    return_value=mock_executor,
+                ):
+                    args = MagicMock()
+                    args.schedule = False
+                    args.mode = "incremental"
+                    args.days = 7
+                    args.interface = None
+                    args.start = None
+                    args.end = None
+                    args.workers = 8
+                    args.domain = None
 
-                _handle_download(args)
+                    _handle_download(args)
 
-                mock_downloader.download_incremental.assert_called_once_with(
-                    days_back=7
-                )
+                    mock_scheduler.generate_incremental.assert_called_once_with(
+                        days_back=7, domain_filter=None
+                    )
 
 
 class TestLoadTableData:

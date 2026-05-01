@@ -75,6 +75,12 @@ domains:
     description: "国家统计局"
     max_concurrent: 3
 
+  tickflow:
+    url_pattern: "api.tickflow.io"
+    rate_limit_key: "tickflow"
+    description: "TickFlow SDK API"
+    max_concurrent: 3
+
   default:
     rate_limit_key: "default"
     description: "默认限速"

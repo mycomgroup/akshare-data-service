@@ -1,4 +1,9 @@
 stock_a_all_pb:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '全部A股-等权重市净率、中位数市净率
 
@@ -9,7 +14,31 @@ stock_a_all_pb:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_a_all_pb
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: middlePB field
+    name: middlePB
+    type: float
+  - desc: equalWeightAveragePB field
+    name: equalWeightAveragePB
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: quantileInAllHistoryMiddlePB field
+    name: quantileInAllHistoryMiddlePB
+    type: float
+  - desc: quantileInRecent10YearsMiddlePB field
+    name: quantileInRecent10YearsMiddlePB
+    type: float
+  - desc: quantileInAllHistoryEqualWeightAveragePB field
+    name: quantileInAllHistoryEqualWeightAveragePB
+    type: float
+  - desc: quantileInRecent10YearsEqualWeightAveragePB field
+    name: quantileInRecent10YearsEqualWeightAveragePB
+    type: float
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -17,7 +46,15 @@ stock_a_all_pb:
     func: stock_a_all_pb
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      close: close
+      date: date
+      equalWeightAveragePB: equalWeightAveragePB
+      middlePB: middlePB
+      quantileInAllHistoryEqualWeightAveragePB: quantileInAllHistoryEqualWeightAveragePB
+      quantileInAllHistoryMiddlePB: quantileInAllHistoryMiddlePB
+      quantileInRecent10YearsEqualWeightAveragePB: quantileInRecent10YearsEqualWeightAveragePB
+      quantileInRecent10YearsMiddlePB: quantileInRecent10YearsMiddlePB
     param_transforms: {}
 stock_a_below_net_asset_statistics:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -97,6 +134,11 @@ stock_a_code_to_symbol:
     param_transforms:
       symbol: prepend_prefix:sh/sz
 stock_a_congestion_lg:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '乐咕乐股-大盘拥挤度
 
@@ -107,7 +149,16 @@ stock_a_congestion_lg:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_a_congestion_lg
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: close field
+    name: close
+    type: float
+  - desc: congestion field
+    name: congestion
+    type: float
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -115,7 +166,10 @@ stock_a_congestion_lg:
     func: stock_a_congestion_lg
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      close: close
+      congestion: congestion
+      date: date
     param_transforms: {}
 stock_a_gxl_lg:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -201,6 +255,11 @@ stock_a_high_low_statistics:
     param_transforms:
       symbol: prepend_prefix:sh/sz
 stock_a_ttm_lyr:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '全部 A 股-等权重市盈率、中位数市盈率
 
@@ -209,7 +268,49 @@ stock_a_ttm_lyr:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_a_ttm_lyr
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: middlePETTM field
+    name: middlePETTM
+    type: float
+  - desc: averagePETTM field
+    name: averagePETTM
+    type: float
+  - desc: middlePELYR field
+    name: middlePELYR
+    type: float
+  - desc: averagePELYR field
+    name: averagePELYR
+    type: float
+  - desc: quantileInAllHistoryMiddlePeTtm field
+    name: quantileInAllHistoryMiddlePeTtm
+    type: float
+  - desc: quantileInRecent10YearsMiddlePeTtm field
+    name: quantileInRecent10YearsMiddlePeTtm
+    type: float
+  - desc: quantileInAllHistoryAveragePeTtm field
+    name: quantileInAllHistoryAveragePeTtm
+    type: float
+  - desc: quantileInRecent10YearsAveragePeTtm field
+    name: quantileInRecent10YearsAveragePeTtm
+    type: float
+  - desc: quantileInAllHistoryMiddlePeLyr field
+    name: quantileInAllHistoryMiddlePeLyr
+    type: float
+  - desc: quantileInRecent10YearsMiddlePeLyr field
+    name: quantileInRecent10YearsMiddlePeLyr
+    type: float
+  - desc: quantileInAllHistoryAveragePeLyr field
+    name: quantileInAllHistoryAveragePeLyr
+    type: float
+  - desc: quantileInRecent10YearsAveragePeLyr field
+    name: quantileInRecent10YearsAveragePeLyr
+    type: float
+  - desc: close field
+    name: close
+    type: float
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -217,7 +318,21 @@ stock_a_ttm_lyr:
     func: stock_a_ttm_lyr
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      averagePELYR: averagePELYR
+      averagePETTM: averagePETTM
+      close: close
+      date: date
+      middlePELYR: middlePELYR
+      middlePETTM: middlePETTM
+      quantileInAllHistoryAveragePeLyr: quantileInAllHistoryAveragePeLyr
+      quantileInAllHistoryAveragePeTtm: quantileInAllHistoryAveragePeTtm
+      quantileInAllHistoryMiddlePeLyr: quantileInAllHistoryMiddlePeLyr
+      quantileInAllHistoryMiddlePeTtm: quantileInAllHistoryMiddlePeTtm
+      quantileInRecent10YearsAveragePeLyr: quantileInRecent10YearsAveragePeLyr
+      quantileInRecent10YearsAveragePeTtm: quantileInRecent10YearsAveragePeTtm
+      quantileInRecent10YearsMiddlePeLyr: quantileInRecent10YearsMiddlePeLyr
+      quantileInRecent10YearsMiddlePeTtm: quantileInRecent10YearsMiddlePeTtm
     param_transforms: {}
 stock_account_statistics_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -1723,6 +1838,11 @@ stock_board_concept_spot_em:
     param_transforms:
       symbol: prepend_prefix:sh/sz
 stock_board_concept_summary_ths:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '同花顺-数据中心-概念板块-概念时间表
 
@@ -1733,15 +1853,35 @@ stock_board_concept_summary_ths:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_board_concept_summary_ths
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 驱动事件 field
+    name: 驱动事件
+    type: str
+  - desc: 龙头股 field
+    name: 龙头股
+    type: str
+  - desc: quantity field
+    name: quantity
+    type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: stock_board_concept_summary_ths
     input_mapping: {}
     name: akshare_ths
-    output_mapping: {}
+    output_mapping:
+      成分股数量: quantity
+      日期: date
+      概念名称: name
+      驱动事件: 驱动事件
+      龙头股: 龙头股
     param_transforms: {}
 stock_board_industry_cons_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -9466,7 +9606,7 @@ stock_hk_index_spot_sina:
   - desc: pct_change field
     name: pct_change
     type: float
-  rate_limit_key: sina_hq
+  rate_limit_key: sina_vip
   sources:
   - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
     enabled: true
@@ -14072,6 +14212,11 @@ stock_ipo_declare_em:
       index: index
     param_transforms: {}
 stock_ipo_hk_ths:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '同花顺-数据中心-新股申购与中签-港股
 
@@ -14082,15 +14227,87 @@ stock_ipo_hk_ths:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_ipo_hk_ths
-  output: []
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: 发行总数（万股） field
+    name: 发行总数（万股）
+    type: str
+  - desc: 网上发行（万股） field
+    name: 网上发行（万股）
+    type: str
+  - desc: subscription_limit field
+    name: subscription_limit
+    type: str
+  - desc: market_cap field
+    name: market_cap
+    type: str
+  - desc: issue_price field
+    name: issue_price
+    type: str
+  - desc: pe field
+    name: pe
+    type: str
+  - desc: industry field
+    name: industry
+    type: str
+  - desc: subscription_date field
+    name: subscription_date
+    type: str
+  - desc: lottery_rate field
+    name: lottery_rate
+    type: str
+  - desc: 中签号 field
+    name: 中签号
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: listing_date field
+    name: listing_date
+    type: str
+  - desc: 打新收益（元） field
+    name: 打新收益（元）
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: 连板天数 field
+    name: 连板天数
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: stock_ipo_hk_ths
     input_mapping: {}
     name: akshare_ths
-    output_mapping: {}
+    output_mapping:
+      上市日期: listing_date
+      中签号: 中签号
+      中签率（%）: lottery_rate
+      中签缴款日期: date
+      发行价格: issue_price
+      发行市盈率: pe
+      发行总数（万股）: 发行总数（万股）
+      打新收益（元）: 打新收益（元）
+      申购上限（万股）: subscription_limit
+      申购代码: code
+      申购日期: subscription_date
+      网上发行（万股）: 网上发行（万股）
+      股票代码: symbol
+      股票简称: name
+      行业市盈率: industry
+      连板天数: 连板天数
+      顶格申购需配市值（万元）: market_cap
+      首日最高涨幅: day
     param_transforms: {}
 stock_ipo_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -14894,6 +15111,11 @@ stock_js_weibo_nlp_time:
     output_mapping: {}
     param_transforms: {}
 stock_js_weibo_report:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '金十数据中心-实时监控-微博舆情报告
 
@@ -14909,7 +15131,13 @@ stock_js_weibo_report:
     required: true
     type: str
   name: stock_js_weibo_report
-  output: []
+  output:
+  - desc: name field
+    name: name
+    type: str
+  - desc: rate field
+    name: rate
+    type: float
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -14918,7 +15146,9 @@ stock_js_weibo_report:
     input_mapping:
       time_period: time_period
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      name: name
+      rate: rate
     param_transforms: {}
 stock_kc_a_spot_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -15039,6 +15269,11 @@ stock_kc_a_spot_em:
       量比: volume_ratio
     param_transforms: {}
 stock_lh_yyb_capital:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '同花顺-数据中心-营业部排名-资金实力最强
 
@@ -15049,17 +15284,50 @@ stock_lh_yyb_capital:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_lh_yyb_capital
-  output: []
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: day field
+    name: day
+    type: int
+  - desc: day field
+    name: day
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: 累计参与金额 field
+    name: 累计参与金额
+    type: str
+  - desc: bid field
+    name: bid
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: stock_lh_yyb_capital
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      今日最高买入金额: day
+      今日最高操作: day
+      今日最高金额: day
+      序号: 序号
+      累计买入金额: bid
+      累计参与金额: 累计参与金额
+      营业部名称: name
     param_transforms: {}
 stock_lh_yyb_control:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '同花顺-数据中心-营业部排名-抱团操作实力
 
@@ -15070,17 +15338,46 @@ stock_lh_yyb_control:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_lh_yyb_control
-  output: []
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 携手营业部家数 field
+    name: 携手营业部家数
+    type: int
+  - desc: 年内最佳携手对象 field
+    name: 年内最佳携手对象
+    type: str
+  - desc: shares field
+    name: shares
+    type: int
+  - desc: 年内最佳携手成功率 field
+    name: 年内最佳携手成功率
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: stock_lh_yyb_control
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      年内最佳携手对象: 年内最佳携手对象
+      年内最佳携手成功率: 年内最佳携手成功率
+      年内最佳携手股票数: shares
+      序号: 序号
+      携手营业部家数: 携手营业部家数
+      营业部名称: name
     param_transforms: {}
 stock_lh_yyb_most:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '同花顺-数据中心-营业部排名-上榜次数最多
 
@@ -15091,15 +15388,43 @@ stock_lh_yyb_most:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_lh_yyb_most
-  output: []
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: int
+  - desc: name field
+    name: name
+    type: str
+  - desc: 上榜次数 field
+    name: 上榜次数
+    type: int
+  - desc: 合计动用资金 field
+    name: 合计动用资金
+    type: str
+  - desc: 年内上榜次数 field
+    name: 年内上榜次数
+    type: int
+  - desc: bid field
+    name: bid
+    type: int
+  - desc: day field
+    name: day
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: stock_lh_yyb_most
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      上榜次数: 上榜次数
+      合计动用资金: 合计动用资金
+      年内3日跟买成功率: day
+      年内上榜次数: 年内上榜次数
+      年内买入股票只数: bid
+      序号: 序号
+      营业部名称: name
     param_transforms: {}
 stock_lhb_detail_daily_sina:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -19903,6 +20228,11 @@ stock_report_fund_hold_detail:
       date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 stock_repurchase_em:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '东方财富网-数据中心-股票回购-股票回购数据
 
@@ -19913,15 +20243,87 @@ stock_repurchase_em:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_repurchase_em
-  output: []
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: int
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: price field
+    name: price
+    type: float
+  - desc: 计划回购价格区间 field
+    name: 计划回购价格区间
+    type: float
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: day field
+    name: day
+    type: float
+  - desc: day field
+    name: day
+    type: float
+  - desc: 计划回购金额区间-下限 field
+    name: 计划回购金额区间-下限
+    type: float
+  - desc: 计划回购金额区间-上限 field
+    name: 计划回购金额区间-上限
+    type: float
+  - desc: time field
+    name: time
+    type: str
+  - desc: 实施进度 field
+    name: 实施进度
+    type: str
+  - desc: 已回购股份价格区间-下限 field
+    name: 已回购股份价格区间-下限
+    type: float
+  - desc: 已回购股份价格区间-上限 field
+    name: 已回购股份价格区间-上限
+    type: float
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: 已回购金额 field
+    name: 已回购金额
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: em_datacenter
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: stock_repurchase_em
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      占公告前一日总股本比例-上限: day
+      占公告前一日总股本比例-下限: day
+      回购起始时间: time
+      实施进度: 实施进度
+      已回购股份价格区间-上限: 已回购股份价格区间-上限
+      已回购股份价格区间-下限: 已回购股份价格区间-下限
+      已回购股份数量: quantity
+      已回购金额: 已回购金额
+      序号: 序号
+      最新价: price
+      最新公告日期: date
+      股票代码: symbol
+      股票简称: name
+      计划回购价格区间: 计划回购价格区间
+      计划回购数量区间-上限: quantity
+      计划回购数量区间-下限: quantity
+      计划回购金额区间-上限: 计划回购金额区间-上限
+      计划回购金额区间-下限: 计划回购金额区间-下限
     param_transforms: {}
 stock_research_report_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -20640,6 +21042,11 @@ stock_restricted_release_summary_em:
       start_date: YYYYMMDD
       symbol: prepend_prefix:sh/sz
 stock_sector_detail:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '新浪行业-板块行情-成份详情
 
@@ -20659,7 +21066,67 @@ stock_sector_detail:
     required: true
     type: str
   name: stock_sector_detail
-  output: []
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: trade field
+    name: trade
+    type: float
+  - desc: pricechange field
+    name: pricechange
+    type: float
+  - desc: changepercent field
+    name: changepercent
+    type: float
+  - desc: buy field
+    name: buy
+    type: float
+  - desc: sell field
+    name: sell
+    type: float
+  - desc: settlement field
+    name: settlement
+    type: float
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: int
+  - desc: amount field
+    name: amount
+    type: int
+  - desc: ticktime field
+    name: ticktime
+    type: str
+  - desc: per field
+    name: per
+    type: float
+  - desc: pb field
+    name: pb
+    type: float
+  - desc: mktcap field
+    name: mktcap
+    type: float
+  - desc: nmc field
+    name: nmc
+    type: float
+  - desc: turnoverratio field
+    name: turnoverratio
+    type: float
   rate_limit_key: sina_vip
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -20668,7 +21135,27 @@ stock_sector_detail:
     input_mapping:
       sector: sector
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      amount: amount
+      buy: buy
+      changepercent: changepercent
+      code: code
+      high: high
+      low: low
+      mktcap: mktcap
+      name: name
+      nmc: nmc
+      open: open
+      pb: pb
+      per: per
+      pricechange: pricechange
+      sell: sell
+      settlement: settlement
+      symbol: symbol
+      ticktime: ticktime
+      trade: trade
+      turnoverratio: turnoverratio
+      volume: volume
     param_transforms: {}
 stock_sector_fund_flow_hist:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -21279,6 +21766,11 @@ stock_sgt_reference_exchange_rate_sse:
       适用日期: date
     param_transforms: {}
 stock_sgt_reference_exchange_rate_szse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '深港通-港股通业务信息-参考汇率
 
@@ -21289,15 +21781,31 @@ stock_sgt_reference_exchange_rate_szse:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_sgt_reference_exchange_rate_szse
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: ask field
+    name: ask
+    type: float
+  - desc: currency field
+    name: currency
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
     enabled: true
     func: stock_sgt_reference_exchange_rate_szse
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      参考汇率买入价: bid
+      参考汇率卖出价: ask
+      货币种类: currency
+      适用日期: date
     param_transforms: {}
 stock_sgt_settlement_exchange_rate_sse:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -21362,6 +21870,11 @@ stock_sgt_settlement_exchange_rate_sse:
       适用日期: date
     param_transforms: {}
 stock_sgt_settlement_exchange_rate_szse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: complete)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '深港通-港股通业务信息-结算汇率
 
@@ -21372,15 +21885,31 @@ stock_sgt_settlement_exchange_rate_szse:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_sgt_settlement_exchange_rate_szse
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: bid field
+    name: bid
+    type: float
+  - desc: ask field
+    name: ask
+    type: float
+  - desc: currency field
+    name: currency
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': 请审核 output_mapping 和 param_transforms 是否正确
     enabled: true
     func: stock_sgt_settlement_exchange_rate_szse
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      买入结算汇兑比率: bid
+      卖出结算汇兑比率: ask
+      货币种类: currency
+      适用日期: date
     param_transforms: {}
 stock_sh_a_spot_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -26243,6 +26772,11 @@ stock_zh_a_minute:
       adjust: pass_through
       symbol: prepend_prefix:sh/sz
 stock_zh_a_new:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: equity
   description: '新浪财经-行情中心-沪深股市-次新股
 
@@ -26253,7 +26787,37 @@ stock_zh_a_new:
     :rtype: pandas.DataFrame'
   input: []
   name: stock_zh_a_new
-  output: []
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: volume field
+    name: volume
+    type: int
+  - desc: amount field
+    name: amount
+    type: int
+  - desc: mktcap field
+    name: mktcap
+    type: float
+  - desc: turnoverratio field
+    name: turnoverratio
+    type: float
   rate_limit_key: sina_vip
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -26261,7 +26825,17 @@ stock_zh_a_new:
     func: stock_zh_a_new
     input_mapping: {}
     name: akshare_sina
-    output_mapping: {}
+    output_mapping:
+      amount: amount
+      code: code
+      high: high
+      low: low
+      mktcap: mktcap
+      name: name
+      open: open
+      symbol: symbol
+      turnoverratio: turnoverratio
+      volume: volume
     param_transforms: {}
 stock_zh_a_new_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml

@@ -43,3 +43,23 @@ sources:
     type: "adapter"
     adapter_class: "LixingerAdapter"
     description: "理杏仁 OpenAPI"
+
+  eastmoney:
+    type: "adapter"
+    adapter_class: "EastMoneyAdapter"
+    description: "东方财富 (via AKShare)"
+
+  efinance:
+    type: "adapter"
+    adapter_class: "EFinanceAdapter"
+    description: "EFinance 数据源"
+
+  baostock:
+    type: "adapter"
+    adapter_class: "BaoStockAdapter"
+    description: "BaoStock 数据源"
+
+  tickflow:
+    type: "adapter"
+    adapter_class: "TickFlowAdapter"
+    description: "TickFlow SDK 数据源"

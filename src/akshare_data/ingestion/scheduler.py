@@ -135,6 +135,37 @@ class ScheduleDef:
 # ---------------------------------------------------------------------------
 
 
+INTERFACE_MAX_DAYS = {
+    "limit_down_pool": 30,
+    "limit_up_pool": 30,
+}
+
+DEFAULT_PRIORITY_CONFIG = {
+    "stock_zh_a_hist": 0,
+    "index_zh_a_hist": 0,
+    "fund_etf_hist_em": 1,
+    "stock_financial_analysis_indicator": 1,
+}
+
+
+def _load_priority_config() -> Dict[str, int]:
+    """Load priority from config/download/priority.yaml."""
+    from pathlib import Path
+
+    priority_file = Path(__file__).parent.parent.parent.parent / "config" / "download" / "priority.yaml"
+    if not priority_file.exists():
+        return DEFAULT_PRIORITY_CONFIG
+    try:
+        import yaml
+
+        with open(priority_file, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
+        priorities = data.get("priorities", {})
+        return {k: int(v) for k, v in priorities.items()}
+    except Exception:
+        return DEFAULT_PRIORITY_CONFIG
+
+
 class Scheduler:
     """Generates ingestion tasks from schedule configuration.
 
@@ -151,10 +182,13 @@ class Scheduler:
         schedules: Optional[List[ScheduleDef]] = None,
         config_path: Optional[str] = None,
         trade_calendar: Optional[Set[date]] = None,
+        cache_manager=None,
     ) -> None:
         self._schedules: List[ScheduleDef] = schedules or []
         self._trade_calendar: Optional[Set[date]] = trade_calendar
         self._config_path = config_path
+        self._cache_manager = cache_manager
+        self._priority_config = _load_priority_config()
 
         if not self._schedules:
             self._load_from_config()
@@ -295,6 +329,160 @@ class Scheduler:
             schedule_filter={s.name for s in self._schedules if s.dataset == dataset}
             if dataset
             else None,
+        )
+
+    def set_cache_manager(self, cache_manager) -> None:
+        self._cache_manager = cache_manager
+
+    def generate_incremental(
+        self,
+        days_back: int = 1,
+        domain_filter: Optional[str] = None,
+    ) -> BatchContext:
+        """Generate batch for incremental download, skipping already-cached tasks.
+
+        Args
+        ----
+        days_back : int
+            Number of days to look back from today.
+        domain_filter : str
+            Only include schedules matching this domain.
+
+        Returns
+        -------
+        BatchContext with tasks that need downloading (cached ones skipped).
+        """
+        extract_date = date.today()
+        start_date = extract_date - timedelta(days=days_back)
+
+        batch = self.generate_batch(
+            start_date=start_date,
+            end_date=extract_date,
+            domain_filter=domain_filter,
+        )
+
+        if not batch.tasks:
+            return batch
+
+        pending, skipped = self._detect_incremental(batch.tasks, start_date, extract_date)
+
+        if skipped:
+            import logging
+
+            logger = logging.getLogger("akshare_data.scheduler")
+            logger.info("Skipped %d cached tasks: %s", len(skipped), [t.task_id for t in skipped[:5]])
+
+        return BatchContext.new(tasks=pending, domain=batch.domain)
+
+    def _detect_incremental(
+        self,
+        tasks: List[ExtractTask],
+        start_date: date,
+        end_date: date,
+    ) -> tuple[List[ExtractTask], List[ExtractTask]]:
+        """Detect which tasks are already cached.
+
+        Returns (pending_tasks, skipped_tasks).
+        """
+        if self._cache_manager is None:
+            return tasks, []
+
+        pending: List[ExtractTask] = []
+        skipped: List[ExtractTask] = []
+
+        for task in tasks:
+            table = task.dataset
+            max_days = INTERFACE_MAX_DAYS.get(task.interface_name)
+            if max_days:
+                days_range = (end_date - start_date).days
+                if days_range > max_days:
+                    import logging
+
+                    logger = logging.getLogger("akshare_data.scheduler")
+                    logger.warning(
+                        "Skipping %s: date range %s-%s exceeds max %d days",
+                        task.interface_name,
+                        start_date,
+                        end_date,
+                        max_days,
+                    )
+                    skipped.append(task)
+                    continue
+
+            if self._cache_manager.has_range(
+                table,
+                start=start_date.isoformat(),
+                end=end_date.isoformat(),
+            ):
+                skipped.append(task)
+            else:
+                pending.append(task)
+
+        return pending, skipped
+
+    @staticmethod
+    def get_stock_list() -> List[str]:
+        """Fetch A-share stock list from akshare (沪深主板/创业板)."""
+        import akshare as ak
+
+        try:
+            df = ak.stock_zh_a_spot_em()
+            raw_codes = [str(code).strip() for code in df["代码"].tolist()]
+            return [
+                code
+                for code in raw_codes
+                if code.isdigit() and code.startswith(("0", "3", "6"))
+            ][:100]
+        except Exception:
+            return ["000001", "000002", "600000"]
+
+    @staticmethod
+    def get_symbol_list(category: str = "index") -> List[str]:
+        """Fetch symbol list by category from akshare."""
+        import akshare as ak
+
+        try:
+            if category == "index":
+                df = ak.stock_zh_index_spot_em()
+            elif category == "fund":
+                df = ak.fund_etf_spot_em()
+            elif category == "futures":
+                df = ak.futures_main_sina()
+            else:
+                return ["000001"]
+            return df.iloc[:, 0].tolist()[:50]
+        except Exception:
+            return ["000001"]
+
+    def generate_full(
+        self,
+        start_date: date,
+        end_date: date,
+        interface: Optional[str] = None,
+        domain_filter: Optional[str] = None,
+    ) -> BatchContext:
+        """Generate batch for full download of date range.
+
+        Args
+        ----
+        start_date : date
+            Start of date range.
+        end_date : date
+            End of date range.
+        interface : str, optional
+            Filter to specific interface name.
+        domain_filter : str, optional
+            Filter to specific domain.
+        """
+        schedule_filter = None
+        if interface:
+            schedule_filter = {s.name for s in self._schedules if s.interface_name == interface}
+
+        return self.generate_batch(
+            start_date=start_date,
+            end_date=end_date,
+            domain_filter=domain_filter,
+            schedule_filter=schedule_filter,
         )
 
     # -- schedule access -------------------------------------------------

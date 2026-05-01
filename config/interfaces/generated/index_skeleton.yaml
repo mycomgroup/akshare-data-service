@@ -792,6 +792,11 @@ index_component_sw:
     param_transforms:
       symbol: prepend_prefix:sh/sz
 index_csindex_all:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: index
   description: '中证指数网站-指数列表
 
@@ -804,15 +809,83 @@ index_csindex_all:
     :rtype: pandas.DataFrame'
   input: []
   name: index_csindex_all
-  output: []
+  output:
+  - desc: code field
+    name: code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: 指数全称 field
+    name: 指数全称
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: 基点 field
+    name: 基点
+    type: float
+  - desc: 指数系列 field
+    name: 指数系列
+    type: str
+  - desc: quantity field
+    name: quantity
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: 资产类别 field
+    name: 资产类别
+    type: str
+  - desc: 指数热点 field
+    name: 指数热点
+    type: str
+  - desc: 指数币种 field
+    name: 指数币种
+    type: str
+  - desc: 合作指数 field
+    name: 合作指数
+    type: str
+  - desc: 跟踪产品 field
+    name: 跟踪产品
+    type: str
+  - desc: 指数合规 field
+    name: 指数合规
+    type: str
+  - desc: 指数类别 field
+    name: 指数类别
+    type: str
+  - desc: time field
+    name: time
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: index_csindex_all
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      发布时间: time
+      合作指数: 合作指数
+      基日: day
+      基点: 基点
+      指数代码: code
+      指数全称: 指数全称
+      指数合规: 指数合规
+      指数币种: 指数币种
+      指数热点: 指数热点
+      指数简称: name
+      指数类别: 指数类别
+      指数系列: 指数系列
+      最新收盘: close
+      样本数量: quantity
+      资产类别: 资产类别
+      跟踪产品: 跟踪产品
+      近一个月收益率: yield
     param_transforms: {}
 index_dei_cx:
   _generated_note: '# Auto-generated from akshare_registry.yaml

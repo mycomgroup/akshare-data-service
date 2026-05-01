@@ -3195,6 +3195,11 @@ get_futures_daily:
       end_date: YYYYMMDD
       start_date: YYYYMMDD
 get_gfex_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: '广州期货交易所-日频率-量价数据
 
@@ -3213,7 +3218,43 @@ get_gfex_daily:
     required: true
     type: str
   name: get_gfex_daily
-  output: []
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: int
+  - desc: open_interest field
+    name: open_interest
+    type: int
+  - desc: turnover field
+    name: turnover
+    type: float
+  - desc: settle field
+    name: settle
+    type: float
+  - desc: pre_settle field
+    name: pre_settle
+    type: float
+  - desc: variety field
+    name: variety
+    type: str
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -3222,10 +3263,27 @@ get_gfex_daily:
     input_mapping:
       date: date
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      open_interest: open_interest
+      pre_settle: pre_settle
+      settle: settle
+      symbol: symbol
+      turnover: turnover
+      variety: variety
+      volume: volume
     param_transforms:
       date: YYYYMMDD
 get_ine_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: other
   description: '上海国际能源交易中心-日频率-量价数据
 
@@ -3242,7 +3300,43 @@ get_ine_daily:
     required: true
     type: str
   name: get_ine_daily
-  output: []
+  output:
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: open field
+    name: open
+    type: float
+  - desc: high field
+    name: high
+    type: float
+  - desc: low field
+    name: low
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: volume field
+    name: volume
+    type: float
+  - desc: open_interest field
+    name: open_interest
+    type: float
+  - desc: turnover field
+    name: turnover
+    type: float
+  - desc: settle field
+    name: settle
+    type: float
+  - desc: pre_settle field
+    name: pre_settle
+    type: float
+  - desc: variety field
+    name: variety
+    type: str
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -3251,7 +3345,19 @@ get_ine_daily:
     input_mapping:
       date: date
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      close: close
+      date: date
+      high: high
+      low: low
+      open: open
+      open_interest: open_interest
+      pre_settle: pre_settle
+      settle: settle
+      symbol: symbol
+      turnover: turnover
+      variety: variety
+      volume: volume
     param_transforms:
       date: YYYYMMDD
 get_qhkc_fund_bs:

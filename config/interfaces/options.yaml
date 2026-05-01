@@ -171,31 +171,36 @@ options_hist:
   input:
     - {name: "symbol", type: "str", required: true}
 
-  output: []
+  output:
+    - {name: "date", type: "date", desc: "日期"}
+    - {name: "open", type: "float", desc: "开盘价"}
+    - {name: "high", type: "float", desc: "最高价"}
+    - {name: "low", type: "float", desc: "最低价"}
+    - {name: "close", type: "float", desc: "收盘价"}
+    - {name: "volume", type: "float", desc: "成交量"}
 
   rate_limit_key: "default"
 
   sources:
-    - name: "akshare_em"
-      func: "option_comm_info"
+    - name: "akshare_sina"
+      func: "option_commodity_hist_sina"
       enabled: true
       input_mapping:
         symbol: "symbol"
       output_mapping:
-        期权品种: variety
-        现价: close
-        涨/跌停板: limit
-        成交量: volume
-        类型: option_type
-        权利金: premium
-        开仓: open_position_fee
-        平昨: close_yesterday_fee
-        平今: close_today_fee
-        行权: exercise_fee
-        备注: remark
-        交易所: exchange
-        手续费更新时间: fee_update_time
-        价格更新时间: price_update_time
+        date: "date"
+        open: "open"
+        high: "high"
+        low: "low"
+        close: "close"
+        volume: "volume"
+      column_types:
+        date: "date"
+        open: "float"
+        high: "float"
+        low: "float"
+        close: "float"
+        volume: "float"
 
 option_sse_greeks_sina:
   name: "option_sse_greeks_sina"
@@ -206,12 +211,8 @@ option_sse_greeks_sina:
     - {name: "symbol", type: "str", required: true, desc: "期权代码"}
 
   output:
-    - {name: "symbol", type: "str", desc: "期权代码"}
-    - {name: "delta", type: "float", desc: "Delta"}
-    - {name: "gamma", type: "float", desc: "Gamma"}
-    - {name: "theta", type: "float", desc: "Theta"}
-    - {name: "vega", type: "float", desc: "Vega"}
-    - {name: "rho", type: "float", desc: "Rho"}
+    - {name: "item", type: "str", desc: "希腊值名称 (如 Delta, Gamma, Theta, Vega, 隐含波动率等)"}
+    - {name: "value", type: "float", desc: "对应数值"}
 
   rate_limit_key: "default"
 

@@ -65,9 +65,8 @@ def _add_download_parser(subparsers):
     parser.add_argument("--end", type=str, help="End date YYYY-MM-DD")
     parser.add_argument("--workers", type=int, default=4, help="Max workers")
     parser.add_argument("--schedule", action="store_true", help="Start scheduler")
-    parser.add_argument("--pipeline", action="store_true", help="Use ingestion pipeline")
     parser.add_argument(
-        "--domain", type=str, default=None, help="Domain filter (pipeline mode)"
+        "--domain", type=str, default=None, help="Domain filter"
     )
 
 
@@ -104,23 +103,21 @@ def _add_backfill_parser(subparsers):
 
 
 def _handle_download(args):
-    """处理下载命令"""
-    if args.pipeline:
-        _handle_download_pipeline(args)
-        return
+    """Unified download handler using ingestion pipeline."""
+    from datetime import date, timedelta
 
-    from akshare_data.offline.downloader import BatchDownloader
+    from akshare_data.ingestion.scheduler import Scheduler
+    from akshare_data.ingestion.pipeline_executor import PipelineExecutor
     from akshare_data.offline.core.data_loader import get_cache_manager_instance
 
     cache_manager = get_cache_manager_instance()
-    downloader = BatchDownloader(cache_manager=cache_manager, max_workers=args.workers)
+    scheduler = Scheduler(cache_manager=cache_manager)
 
     if args.schedule:
-        from akshare_data.offline.scheduler import Scheduler
+        from akshare_data.offline.scheduler import Scheduler as OfflineScheduler
 
-        scheduler = Scheduler()
-        scheduler.set_downloader(downloader)
-        scheduler.start()
+        offline_scheduler = OfflineScheduler()
+        offline_scheduler.start()
         print("Scheduler started. Press Ctrl+C to stop.")
         try:
             while True:
@@ -128,42 +125,29 @@ def _handle_download(args):
 
                 time.sleep(1)
         except KeyboardInterrupt:
-            scheduler.stop()
+            offline_scheduler.stop()
         return
 
-    if args.mode == "incremental":
-        result = downloader.download_incremental(days_back=args.days)
-    else:
-        interfaces = [args.interface] if args.interface else None
-        result = downloader.download_full(
-            interfaces=interfaces,
-            start=args.start or "2020-01-01",
-            end=args.end,
-        )
-
-    print(f"Download completed: {result}")
-
-
-def _handle_download_pipeline(args):
-    """Handle download using the ingestion pipeline (--pipeline flag)."""
-    from datetime import date, timedelta
-
-    from akshare_data.ingestion.pipeline_executor import PipelineExecutor
-    from akshare_data.ingestion.scheduler import Scheduler
-
     extract_date = date.today()
-    if args.days and args.days > 1:
-        start_date = extract_date - timedelta(days=args.days)
-        scheduler = Scheduler()
-        batch = scheduler.generate_backfill_tasks(
-            start_date=start_date,
-            end_date=extract_date,
-            domain_filter=args.domain,
-        )
+
+    if args.mode == "incremental":
+        if args.days and args.days > 1:
+            batch = scheduler.generate_incremental(
+                days_back=args.days,
+                domain_filter=args.domain,
+            )
+        else:
+            batch = scheduler.generate_batch(
+                extract_date=extract_date,
+                domain_filter=args.domain,
+            )
     else:
-        scheduler = Scheduler()
-        batch = scheduler.generate_batch(
-            extract_date=extract_date,
+        start = date.fromisoformat(args.start) if args.start else extract_date - timedelta(days=90)
+        end = date.fromisoformat(args.end) if args.end else extract_date
+        batch = scheduler.generate_full(
+            start_date=start,
+            end_date=end,
+            interface=args.interface,
             domain_filter=args.domain,
         )
 
@@ -171,13 +155,13 @@ def _handle_download_pipeline(args):
         print("No tasks generated for the given date/filter.")
         return
 
-    print(f"Pipeline mode: batch_id={batch.batch_id}, tasks={len(batch.tasks)}")
+    print(f"Download: batch_id={batch.batch_id}, tasks={len(batch.tasks)}, mode={args.mode}")
 
     executor = PipelineExecutor()
     result = executor.execute_batch(batch)
 
     print(
-        f"Pipeline completed: "
+        f"Download completed: "
         f"groups={result.total_groups}, "
         f"published={result.total_published}, "
         f"errors={result.total_errors}, "

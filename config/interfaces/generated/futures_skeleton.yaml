@@ -1439,6 +1439,11 @@ futures_display_main_sina:
     output_mapping: {}
     param_transforms: {}
 futures_fees_info:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
   description: 'openctp 期货交易费用参照表
 
@@ -1449,15 +1454,167 @@ futures_fees_info:
     :rtype: pandas.DataFrame'
   input: []
   name: futures_fees_info
-  output: []
+  output:
+  - desc: exchange field
+    name: exchange
+    type: str
+  - desc: contract_code field
+    name: contract_code
+    type: str
+  - desc: contract_name field
+    name: contract_name
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: contract_multiplier field
+    name: contract_multiplier
+    type: int
+  - desc: 最小跳动 field
+    name: 最小跳动
+    type: float
+  - desc: open field
+    name: open
+    type: float
+  - desc: fee field
+    name: fee
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: fee field
+    name: fee
+    type: float
+  - desc: 平今费率 field
+    name: 平今费率
+    type: float
+  - desc: fee field
+    name: fee
+    type: float
+  - desc: margin field
+    name: margin
+    type: float
+  - desc: margin field
+    name: margin
+    type: int
+  - desc: margin field
+    name: margin
+    type: float
+  - desc: margin field
+    name: margin
+    type: int
+  - desc: day field
+    name: day
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: price field
+    name: price
+    type: float
+  - desc: volume field
+    name: volume
+    type: int
+  - desc: open_interest field
+    name: open_interest
+    type: int
+  - desc: fee field
+    name: fee
+    type: float
+  - desc: fee field
+    name: fee
+    type: float
+  - desc: fee field
+    name: fee
+    type: float
+  - desc: margin field
+    name: margin
+    type: float
+  - desc: margin field
+    name: margin
+    type: float
+  - desc: market_cap field
+    name: market_cap
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: close field
+    name: close
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: 1Tick平今净利 field
+    name: 1Tick平今净利
+    type: float
+  - desc: 2Tick平今净利 field
+    name: 2Tick平今净利
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: yield field
+    name: yield
+    type: float
+  - desc: time field
+    name: time
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: futures_fees_info
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      1Tick平今净利: 1Tick平今净利
+      1Tick平今收益率%: yield
+      1Tick平仓净利: close
+      1Tick平仓收益率%: yield
+      1Tick平仓盈亏: close
+      1手市值: market_cap
+      1手平今费用: fee
+      1手平仓费用: fee
+      1手开仓费用: fee
+      2Tick平今净利: 2Tick平今净利
+      2Tick平今收益率%: yield
+      2Tick平仓净利: close
+      2Tick平仓收益率%: yield
+      上日收盘价: close
+      上日结算价: day
+      交易所: exchange
+      做多1手保证金: margin
+      做多保证金/手: margin
+      做多保证金率: margin
+      做空1手保证金: margin
+      做空保证金/手: margin
+      做空保证金率: margin
+      合约乘数: contract_multiplier
+      合约代码: contract_code
+      合约名称: contract_name
+      品种代码: code
+      品种名称: name
+      平今费率: 平今费率
+      平今费用/手: fee
+      平仓费率: close
+      平仓费用/手: fee
+      开仓费率: open
+      开仓费用/手: fee
+      成交量: volume
+      持仓量: open_interest
+      更新时间: time
+      最小跳动: 最小跳动
+      最新价: price
     param_transforms: {}
 futures_foreign_commodity_realtime:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2790,6 +2947,11 @@ futures_rule:
     param_transforms:
       date: YYYYMMDD
 futures_settle:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
   description: '期货交易所结算参数
 
@@ -2810,7 +2972,67 @@ futures_settle:
     required: true
     type: str
   name: futures_settle
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: variety field
+    name: variety
+    type: str
+  - desc: settle_price field
+    name: settle_price
+    type: str
+  - desc: long_margin_ratio field
+    name: long_margin_ratio
+    type: str
+  - desc: short_margin_ratio field
+    name: short_margin_ratio
+    type: str
+  - desc: spec_long_margin_ratio field
+    name: spec_long_margin_ratio
+    type: str
+  - desc: spec_short_margin_ratio field
+    name: spec_short_margin_ratio
+    type: str
+  - desc: hedge_long_margin_ratio field
+    name: hedge_long_margin_ratio
+    type: str
+  - desc: hedge_short_margin_ratio field
+    name: hedge_short_margin_ratio
+    type: str
+  - desc: trade_fee_ratio field
+    name: trade_fee_ratio
+    type: str
+  - desc: close_today_fee_ratio field
+    name: close_today_fee_ratio
+    type: str
+  - desc: delivery_fee_ratio field
+    name: delivery_fee_ratio
+    type: str
+  - desc: is_single_market field
+    name: is_single_market
+    type: str
+  - desc: single_market_days field
+    name: single_market_days
+    type: str
+  - desc: limit_ratio field
+    name: limit_ratio
+    type: str
+  - desc: position_limit field
+    name: position_limit
+    type: str
+  - desc: trade_limit field
+    name: trade_limit
+    type: str
+  - desc: rise_limit_rate field
+    name: rise_limit_rate
+    type: str
+  - desc: fall_limit_rate field
+    name: fall_limit_rate
+    type: str
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -2820,7 +3042,27 @@ futures_settle:
       date: date
       market: market
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      close_today_fee_ratio: close_today_fee_ratio
+      date: date
+      delivery_fee_ratio: delivery_fee_ratio
+      fall_limit_rate: fall_limit_rate
+      hedge_long_margin_ratio: hedge_long_margin_ratio
+      hedge_short_margin_ratio: hedge_short_margin_ratio
+      is_single_market: is_single_market
+      limit_ratio: limit_ratio
+      long_margin_ratio: long_margin_ratio
+      position_limit: position_limit
+      rise_limit_rate: rise_limit_rate
+      settle_price: settle_price
+      short_margin_ratio: short_margin_ratio
+      single_market_days: single_market_days
+      spec_long_margin_ratio: spec_long_margin_ratio
+      spec_short_margin_ratio: spec_short_margin_ratio
+      symbol: symbol
+      trade_fee_ratio: trade_fee_ratio
+      trade_limit: trade_limit
+      variety: variety
     param_transforms:
       date: YYYYMMDD
 futures_settle_cffex:
@@ -3413,6 +3655,11 @@ futures_spot_price:
     param_transforms:
       date: YYYYMMDD
 futures_spot_price_daily:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: futures
   description: '指定时间段内大宗商品现货价格及相应基差
 
@@ -3435,7 +3682,46 @@ futures_spot_price_daily:
     required: true
     type: str
   name: futures_spot_price_daily
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: symbol field
+    name: symbol
+    type: str
+  - desc: spot_price field
+    name: spot_price
+    type: float
+  - desc: near_contract field
+    name: near_contract
+    type: str
+  - desc: near_contract_price field
+    name: near_contract_price
+    type: float
+  - desc: dominant_contract field
+    name: dominant_contract
+    type: str
+  - desc: dominant_contract_price field
+    name: dominant_contract_price
+    type: float
+  - desc: near_month field
+    name: near_month
+    type: str
+  - desc: dominant_month field
+    name: dominant_month
+    type: str
+  - desc: near_basis field
+    name: near_basis
+    type: float
+  - desc: dom_basis field
+    name: dom_basis
+    type: float
+  - desc: near_basis_rate field
+    name: near_basis_rate
+    type: float
+  - desc: dom_basis_rate field
+    name: dom_basis_rate
+    type: float
   rate_limit_key: default
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -3446,7 +3732,20 @@ futures_spot_price_daily:
       start_day: start_day
       vars_list: vars_list
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      date: date
+      dom_basis: dom_basis
+      dom_basis_rate: dom_basis_rate
+      dominant_contract: dominant_contract
+      dominant_contract_price: dominant_contract_price
+      dominant_month: dominant_month
+      near_basis: near_basis
+      near_basis_rate: near_basis_rate
+      near_contract: near_contract
+      near_contract_price: near_contract_price
+      near_month: near_month
+      spot_price: spot_price
+      symbol: symbol
     param_transforms: {}
 futures_spot_price_previous:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -4120,7 +4419,7 @@ futures_zh_spot:
   - desc: amount field
     name: amount
     type: float
-  rate_limit_key: sina_hq
+  rate_limit_key: sina_vip
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true

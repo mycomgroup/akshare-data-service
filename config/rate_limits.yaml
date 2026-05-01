@@ -52,3 +52,7 @@ cffex:
 stats:
   interval: 0.5
   description: "国家统计局 (stats.gov.cn)"
+
+tickflow:
+  interval: 0.5
+  description: "TickFlow SDK API (api.tickflow.io)"

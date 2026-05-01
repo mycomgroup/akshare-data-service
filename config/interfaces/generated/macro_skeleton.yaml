@@ -293,6 +293,11 @@ macro_australia_unemployment_rate:
       现值: 现值
     param_transforms: {}
 macro_bank_australia_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '澳洲联储决议报告, 数据区间从 19800201-至今
 
@@ -303,17 +308,42 @@ macro_bank_australia_interest_rate:
     :return...'
   input: []
   name: macro_bank_australia_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_australia_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_brazil_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '巴西利率决议报告, 数据区间从 20080201-至今
 
@@ -324,17 +354,42 @@ macro_bank_brazil_interest_rate:
     :return: 巴西利率...'
   input: []
   name: macro_bank_brazil_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_brazil_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_china_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国央行决议报告, 数据区间从 19990105-至今
 
@@ -345,17 +400,42 @@ macro_bank_china_interest_rate:
     :retu...'
   input: []
   name: macro_bank_china_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_china_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_english_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '英国央行决议报告, 数据区间从 19700101-至今
 
@@ -366,17 +446,42 @@ macro_bank_english_interest_rate:
     :return: 英国...'
   input: []
   name: macro_bank_english_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_english_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_euro_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '欧洲央行决议报告, 数据区间从 19990101-至今
 
@@ -389,17 +494,42 @@ macro_bank_euro_interest_rate:
     :rt...'
   input: []
   name: macro_bank_euro_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_euro_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_india_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '印度利率决议报告, 数据区间从 20000801-至今
 
@@ -410,17 +540,42 @@ macro_bank_india_interest_rate:
     :return: 印度利率决议...'
   input: []
   name: macro_bank_india_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_india_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_japan_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '日本利率决议报告, 数据区间从 20080214-至今
 
@@ -431,17 +586,42 @@ macro_bank_japan_interest_rate:
     :return: 日本利率决议...'
   input: []
   name: macro_bank_japan_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_japan_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_newzealand_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '新西兰联储决议报告, 数据区间从 19990401-至今
 
@@ -452,17 +632,42 @@ macro_bank_newzealand_interest_rate:
     :ret...'
   input: []
   name: macro_bank_newzealand_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_newzealand_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_russia_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '俄罗斯利率决议报告, 数据区间从 20030601-至今
 
@@ -473,17 +678,42 @@ macro_bank_russia_interest_rate:
     :return: 俄罗斯...'
   input: []
   name: macro_bank_russia_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_russia_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_switzerland_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '瑞士央行利率决议报告, 数据区间从 20080313-至今
 
@@ -494,17 +724,42 @@ macro_bank_switzerland_interest_rate:
     :...'
   input: []
   name: macro_bank_switzerland_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_switzerland_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_bank_usa_interest_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美联储利率决议报告, 数据区间从 19820927-至今
 
@@ -515,15 +770,35 @@ macro_bank_usa_interest_rate:
     :rtype: pandas.Series'
   input: []
   name: macro_bank_usa_interest_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_bank_usa_interest_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_canada_bank_rate:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -1798,6 +2073,11 @@ macro_china_cpi_yearly:
       预测值: 预测值
     param_transforms: {}
 macro_china_cx_pmi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国年度财新 PMI 数据, 数据区间从 20120120-至今
 
@@ -1808,17 +2088,42 @@ macro_china_cx_pmi_yearly:
     :return: pandas.DataFrame'
   input: []
   name: macro_china_cx_pmi_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_cx_pmi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_cx_services_pmi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国财新服务业PMI报告, 数据区间从 20120405-至今
 
@@ -1829,15 +2134,35 @@ macro_china_cx_services_pmi_yearly:
     :return: pand...'
   input: []
   name: macro_china_cx_services_pmi_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_cx_services_pmi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_czsr:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2050,6 +2375,11 @@ macro_china_enterprise_boom_index:
       季度: quarter
     param_transforms: {}
 macro_china_exports_yoy:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国以美元计算出口年率报告, 数据区间从 19820201-至今
 
@@ -2060,15 +2390,35 @@ macro_china_exports_yoy:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_exports_yoy
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_exports_yoy
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_fdi:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2151,6 +2501,11 @@ macro_china_foreign_exchange_gold:
       item[1: item[1
     param_transforms: {}
 macro_china_freight_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '新浪财经-中国宏观经济数据-航贸运价指数
 
@@ -2161,15 +2516,47 @@ macro_china_freight_index:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_freight_index
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: 波罗的海好望角型船运价指数BCI field
+    name: 波罗的海好望角型船运价指数BCI
+    type: float
+  - desc: 灵便型船综合运价指数BHMI field
+    name: 灵便型船综合运价指数BHMI
+    type: float
+  - desc: 波罗的海超级大灵便型船BSI指数 field
+    name: 波罗的海超级大灵便型船BSI指数
+    type: float
+  - desc: 波罗的海综合运价指数BDI field
+    name: 波罗的海综合运价指数BDI
+    type: float
+  - desc: HRCI国际集装箱租船指数 field
+    name: HRCI国际集装箱租船指数
+    type: float
+  - desc: 油轮运价指数成品油运价指数BCTI field
+    name: 油轮运价指数成品油运价指数BCTI
+    type: float
+  - desc: 油轮运价指数原油运价指数BDTI field
+    name: 油轮运价指数原油运价指数BDTI
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_freight_index
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      HRCI国际集装箱租船指数: HRCI国际集装箱租船指数
+      截止日期: date
+      油轮运价指数原油运价指数BDTI: 油轮运价指数原油运价指数BDTI
+      油轮运价指数成品油运价指数BCTI: 油轮运价指数成品油运价指数BCTI
+      波罗的海好望角型船运价指数BCI: 波罗的海好望角型船运价指数BCI
+      波罗的海综合运价指数BDI: 波罗的海综合运价指数BDI
+      波罗的海超级大灵便型船BSI指数: 波罗的海超级大灵便型船BSI指数
+      灵便型船综合运价指数BHMI: 灵便型船综合运价指数BHMI
     param_transforms: {}
 macro_china_fx_gold:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2226,6 +2613,11 @@ macro_china_fx_gold:
       黄金储备-环比: 黄金储备-环比
     param_transforms: {}
 macro_china_fx_reserves_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国年度外汇储备数据, 数据区间从 20140115-至今
 
@@ -2236,15 +2628,35 @@ macro_china_fx_reserves_yearly:
     :return: pandas.DataFrame'
   input: []
   name: macro_china_fx_reserves_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_fx_reserves_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_gdp:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2517,6 +2929,11 @@ macro_china_hgjck:
       TIME: TIME
     param_transforms: {}
 macro_china_hk_building_amount:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-香港楼宇买卖合约成交金额
 
@@ -2527,17 +2944,38 @@ macro_china_hk_building_amount:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_building_amount
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: int
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_building_amount
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_building_volume:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-香港楼宇买卖合约数量
 
@@ -2548,17 +2986,38 @@ macro_china_hk_building_volume:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_building_volume
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: int
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_building_volume
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_cpi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-消费者物价指数
 
@@ -2569,17 +3028,38 @@ macro_china_hk_cpi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_cpi
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_cpi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_cpi_ratio:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-消费者物价指数年率
 
@@ -2590,17 +3070,38 @@ macro_china_hk_cpi_ratio:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_cpi_ratio
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_cpi_ratio
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_gbp:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-香港 GDP
 
@@ -2611,17 +3112,38 @@ macro_china_hk_gbp:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_gbp
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: int
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_gbp
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_gbp_ratio:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-香港 GDP 同比
 
@@ -2632,15 +3154,31 @@ macro_china_hk_gbp_ratio:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_gbp_ratio
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_gbp_ratio
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_market_info:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2683,6 +3221,11 @@ macro_china_hk_market_info:
       日期: date
     param_transforms: {}
 macro_china_hk_ppi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-香港制造业 PPI 年率
 
@@ -2693,17 +3236,38 @@ macro_china_hk_ppi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_ppi
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_ppi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_rate_of_unemployment:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-失业率
 
@@ -2714,17 +3278,38 @@ macro_china_hk_rate_of_unemployment:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_rate_of_unemployment
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_rate_of_unemployment
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_hk_trade_diff_ratio:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据一览-中国香港-香港商品贸易差额年率
 
@@ -2735,17 +3320,38 @@ macro_china_hk_trade_diff_ratio:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_hk_trade_diff_ratio
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_hk_trade_diff_ratio
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_china_imports_yoy:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国以美元计算进口年率报告, 数据区间从 19960201-至今
 
@@ -2758,17 +3364,42 @@ macro_china_imports_yoy:
     :rtyp...'
   input: []
   name: macro_china_imports_yoy
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_imports_yoy
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_industrial_production_yoy:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国规模以上工业增加值年率报告, 数据区间从19900301-至今
 
@@ -2777,15 +3408,35 @@ macro_china_industrial_production_yoy:
     https://cdn.jin10.com/dc/reports/dc_chinese_industrial_production_yoy_all.js?v=1578754779...'
   input: []
   name: macro_china_industrial_production_yoy
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_industrial_production_yoy
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_insurance:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2964,6 +3615,11 @@ macro_china_lpi_index:
       近6月涨跌幅: change
     param_transforms: {}
 macro_china_lpr:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: empty)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: 'LPR品种详细数据
 
@@ -2974,7 +3630,22 @@ macro_china_lpr:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_lpr
-  output: []
+  output:
+  - desc: TRADE_DATE field
+    name: TRADE_DATE
+    type: str
+  - desc: LPR1Y field
+    name: LPR1Y
+    type: float
+  - desc: LPR5Y field
+    name: LPR5Y
+    type: float
+  - desc: RATE_1 field
+    name: RATE_1
+    type: float
+  - desc: RATE_2 field
+    name: RATE_2
+    type: float
   rate_limit_key: em_datacenter
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
@@ -2982,9 +3653,19 @@ macro_china_lpr:
     func: macro_china_lpr
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      LPR1Y: LPR1Y
+      LPR5Y: LPR5Y
+      RATE_1: RATE_1
+      RATE_2: RATE_2
+      TRADE_DATE: TRADE_DATE
     param_transforms: {}
 macro_china_m2_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国年度 M2 数据, 数据区间从 19980201-至今
 
@@ -2995,15 +3676,35 @@ macro_china_m2_yearly:
     :return: pandas.DataFrame'
   input: []
   name: macro_china_m2_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_m2_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_market_margin_sh:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -3500,6 +4201,11 @@ macro_china_new_house_price:
       日期: date
     param_transforms: {}
 macro_china_non_man_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国官方非制造业 PMI, 数据区间从 20160101-至今
 
@@ -3510,15 +4216,35 @@ macro_china_non_man_pmi:
     :return: pandas.DataFrame'
   input: []
   name: macro_china_non_man_pmi
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_non_man_pmi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_passenger_load_factor:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -3597,6 +4323,11 @@ macro_china_pmi:
       非制造业-指数: 非制造业-指数
     param_transforms: {}
 macro_china_pmi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国年度 PMI 数据, 数据区间从 20050201-至今
 
@@ -3607,15 +4338,35 @@ macro_china_pmi_yearly:
     :return: pandas.DataFrame'
   input: []
   name: macro_china_pmi_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_pmi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_postal_telecommunicational:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -3690,6 +4441,11 @@ macro_china_ppi:
       累计: 累计
     param_transforms: {}
 macro_china_ppi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国年度 PPI 数据, 数据区间从 19950801-至今
 
@@ -3700,15 +4456,35 @@ macro_china_ppi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_china_ppi_yearly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_ppi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_qyspjg:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -4379,6 +5155,11 @@ macro_china_swap_rate:
       end_date: YYYYMMDD
       start_date: YYYYMMDD
 macro_china_trade_balance:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '中国以美元计算贸易帐报告, 数据区间从 19810201-至今
 
@@ -4391,15 +5172,35 @@ macro_china_trade_balance:
     :rt...'
   input: []
   name: macro_china_trade_balance
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_china_trade_balance
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_china_urban_unemployment:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -5760,6 +6561,11 @@ macro_fx_sentiment:
       end_date: YYYYMMDD
       start_date: YYYYMMDD
 macro_germany_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-消费者物价指数月率终值
 
@@ -5770,17 +6576,38 @@ macro_germany_cpi_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_cpi_monthly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_cpi_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_germany_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-消费者物价指数年率终值
 
@@ -5791,17 +6618,38 @@ macro_germany_cpi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_cpi_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_cpi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_germany_gdp:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-GDP
 
@@ -5812,17 +6660,38 @@ macro_germany_gdp:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_gdp
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_gdp
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_germany_ifo:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-IFO商业景气指数
 
@@ -5833,17 +6702,38 @@ macro_germany_ifo:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_ifo
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_ifo
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_germany_retail_sale_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-实际零售销售月率
 
@@ -5854,17 +6744,38 @@ macro_germany_retail_sale_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_retail_sale_monthly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_retail_sale_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_germany_retail_sale_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-实际零售销售年率
 
@@ -5875,17 +6786,38 @@ macro_germany_retail_sale_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_retail_sale_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_retail_sale_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_germany_trade_adjusted:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-贸易帐(季调后)
 
@@ -5896,17 +6828,38 @@ macro_germany_trade_adjusted:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_trade_adjusted
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_trade_adjusted
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_germany_zew:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-数据中心-经济数据一览-德国-ZEW 经济景气指数
 
@@ -5917,15 +6870,31 @@ macro_germany_zew:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_germany_zew
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_germany_zew
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_global_sox_index:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -6094,6 +7063,11 @@ macro_info_ws:
     param_transforms:
       date: YYYYMMDD
 macro_japan_bank_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-日本-央行公布利率决议
 
@@ -6104,17 +7078,38 @@ macro_japan_bank_rate:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_japan_bank_rate
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_japan_bank_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_japan_core_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-日本-全国核心消费者物价指数年率
 
@@ -6125,17 +7120,38 @@ macro_japan_core_cpi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_japan_core_cpi_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_japan_core_cpi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_japan_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-日本-全国消费者物价指数年率
 
@@ -6146,17 +7162,38 @@ macro_japan_cpi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_japan_cpi_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_japan_cpi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_japan_head_indicator:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-日本-领先指标终值
 
@@ -6167,17 +7204,38 @@ macro_japan_head_indicator:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_japan_head_indicator
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_japan_head_indicator
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_japan_unemployment_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-日本-失业率
 
@@ -6188,15 +7246,31 @@ macro_japan_unemployment_rate:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_japan_unemployment_rate
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_japan_unemployment_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_rmb_deposit:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -6327,6 +7401,11 @@ macro_rmb_loan:
       累计人民币贷款-总额: 累计人民币贷款-总额
     param_transforms: {}
 macro_shipping_bci:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '海岬型运费指数(BCI)
 
@@ -6337,17 +7416,54 @@ macro_shipping_bci:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_shipping_bci
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: 最新值 field
+    name: 最新值
+    type: int
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_shipping_bci
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      日期: date
+      最新值: 最新值
+      涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_shipping_bcti:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '成品油运输指数（BCTI）
 
@@ -6358,17 +7474,54 @@ macro_shipping_bcti:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_shipping_bcti
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: 最新值 field
+    name: 最新值
+    type: int
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_shipping_bcti
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      日期: date
+      最新值: 最新值
+      涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_shipping_bdi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '波罗的海干散货指数(BDI)
 
@@ -6379,17 +7532,54 @@ macro_shipping_bdi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_shipping_bdi
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: 最新值 field
+    name: 最新值
+    type: int
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_shipping_bdi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      日期: date
+      最新值: 最新值
+      涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_shipping_bpi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '巴拿马型运费指数(BPI)
 
@@ -6400,15 +7590,47 @@ macro_shipping_bpi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_shipping_bpi
-  output: []
+  output:
+  - desc: date field
+    name: date
+    type: str
+  - desc: 最新值 field
+    name: 最新值
+    type: int
+  - desc: pct_change field
+    name: pct_change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
+  - desc: change field
+    name: change
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_shipping_bpi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      日期: date
+      最新值: 最新值
+      涨跌幅: pct_change
+      近1年涨跌幅: change
+      近2年涨跌幅: change
+      近3年涨跌幅: change
+      近3月涨跌幅: change
+      近6月涨跌幅: change
     param_transforms: {}
 macro_stock_finance:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -6477,6 +7699,11 @@ macro_stock_finance:
       首发募集资金(亿元): 首发募集资金(亿元)
     param_transforms: {}
 macro_swiss_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-瑞士-消费者物价指数年率
 
@@ -6487,17 +7714,38 @@ macro_swiss_cpi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_swiss_cpi_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_swiss_cpi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_swiss_gbd_bank_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-瑞士-央行公布利率决议
 
@@ -6508,17 +7756,38 @@ macro_swiss_gbd_bank_rate:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_swiss_gbd_bank_rate
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_swiss_gbd_bank_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_swiss_gbd_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-瑞士-GDP 年率
 
@@ -6529,17 +7798,38 @@ macro_swiss_gbd_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_swiss_gbd_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_swiss_gbd_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_swiss_gdp_quarterly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-瑞士-GDP季率
 
@@ -6550,17 +7840,38 @@ macro_swiss_gdp_quarterly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_swiss_gdp_quarterly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_swiss_gdp_quarterly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_swiss_svme:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-瑞士-SVME采购经理人指数
 
@@ -6571,17 +7882,38 @@ macro_swiss_svme:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_swiss_svme
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_swiss_svme
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_swiss_trade:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-瑞士-贸易帐
 
@@ -6592,17 +7924,38 @@ macro_swiss_trade:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_swiss_trade
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_swiss_trade
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_bank_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-央行公布利率决议
 
@@ -6613,17 +7966,38 @@ macro_uk_bank_rate:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_bank_rate
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_bank_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_core_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-核心消费者物价指数月率
 
@@ -6634,17 +8008,38 @@ macro_uk_core_cpi_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_core_cpi_monthly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_core_cpi_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_core_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-核心消费者物价指数年率
 
@@ -6655,17 +8050,38 @@ macro_uk_core_cpi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_core_cpi_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_core_cpi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-消费者物价指数月率
 
@@ -6676,17 +8092,38 @@ macro_uk_cpi_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_cpi_monthly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_cpi_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_cpi_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-消费者物价指数年率
 
@@ -6697,17 +8134,38 @@ macro_uk_cpi_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_cpi_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_cpi_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_gdp_quarterly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-GDP 季率初值
 
@@ -6718,17 +8176,38 @@ macro_uk_gdp_quarterly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_gdp_quarterly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_gdp_quarterly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_gdp_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-GDP 年率初值
 
@@ -6739,17 +8218,38 @@ macro_uk_gdp_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_gdp_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_gdp_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_halifax_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-Halifax 房价指数月率
 
@@ -6760,17 +8260,38 @@ macro_uk_halifax_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_halifax_monthly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_halifax_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_halifax_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-Halifax 房价指数年率
 
@@ -6781,17 +8302,38 @@ macro_uk_halifax_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_halifax_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_halifax_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_retail_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-零售销售月率
 
@@ -6802,17 +8344,38 @@ macro_uk_retail_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_retail_monthly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_retail_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_retail_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-零售销售年率
 
@@ -6823,17 +8386,38 @@ macro_uk_retail_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_retail_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_retail_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_rightmove_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-Rightmove 房价指数月率
 
@@ -6844,17 +8428,38 @@ macro_uk_rightmove_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_rightmove_monthly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_rightmove_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_rightmove_yearly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-Rightmove 房价指数年率
 
@@ -6865,17 +8470,38 @@ macro_uk_rightmove_yearly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_rightmove_yearly
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_rightmove_yearly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_trade:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-贸易帐
 
@@ -6886,17 +8512,38 @@ macro_uk_trade:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_trade
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: int
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_trade
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_uk_unemployment_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '东方财富-经济数据-英国-失业率
 
@@ -6907,17 +8554,38 @@ macro_uk_unemployment_rate:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_uk_unemployment_rate
-  output: []
+  output:
+  - desc: time field
+    name: time
+    type: str
+  - desc: 前值 field
+    name: 前值
+    type: float
+  - desc: 现值 field
+    name: 现值
+    type: float
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_uk_unemployment_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      前值: 前值
+      发布日期: date
+      时间: time
+      现值: 现值
     param_transforms: {}
 macro_usa_adp_employment:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国ADP就业人数报告, 数据区间从 20010601-至今
 
@@ -6928,17 +8596,42 @@ macro_usa_adp_employment:
     :rtype: pandas.Series'
   input: []
   name: macro_usa_adp_employment
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_adp_employment
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_api_crude_stock:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国 API 原油库存报告, 数据区间从 20120328-至今
 
@@ -6951,17 +8644,42 @@ macro_usa_api_crude_stock:
     ...'
   input: []
   name: macro_usa_api_crude_stock
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_api_crude_stock
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_building_permits:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国营建许可总数报告, 数据区间从 20080220-至今
 
@@ -6972,17 +8690,42 @@ macro_usa_building_permits:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_building_permits
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_building_permits
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_business_inventories:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国商业库存月率报告, 数据区间从 19920301-至今
 
@@ -6993,17 +8736,42 @@ macro_usa_business_inventories:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_business_inventories
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_business_inventories
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_cb_consumer_confidence:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '金十数据中心-经济指标-美国-领先指标-美国谘商会消费者信心指数报告, 数据区间从 19700101-至今
 
@@ -7014,15 +8782,35 @@ macro_usa_cb_consumer_confidence:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_cb_consumer_confidence
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cb_consumer_confidence
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_cftc_c_holding:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -7215,6 +9003,11 @@ macro_usa_cme_merchant_goods_holding:
       日期: date
     param_transforms: {}
 macro_usa_core_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国核心 CPI 月率报告, 数据区间从 19700101-至今
 
@@ -7225,17 +9018,42 @@ macro_usa_core_cpi_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_core_cpi_monthly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_core_cpi_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_core_pce_price:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国核心PCE物价指数年率报告, 数据区间从 19700101-至今
 
@@ -7246,17 +9064,42 @@ macro_usa_core_pce_price:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_core_pce_price
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_core_pce_price
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_core_ppi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国核心生产者物价指数(PPI)报告, 数据区间从20080318-至今
 
@@ -7267,17 +9110,42 @@ macro_usa_core_ppi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_core_ppi
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_core_ppi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_cpi_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国 CPI 月率报告, 数据区间从 19700101-至今
 
@@ -7288,15 +9156,35 @@ macro_usa_cpi_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_cpi_monthly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_cpi_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_cpi_yoy:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -7375,6 +9263,11 @@ macro_usa_crude_inner:
       日期: date
     param_transforms: {}
 macro_usa_current_account:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国经常帐报告, 数据区间从 20080317-至今
 
@@ -7385,17 +9278,42 @@ macro_usa_current_account:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_current_account
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: int
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_current_account
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_durable_goods_orders:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国耐用品订单月率报告, 数据区间从 20080227-至今
 
@@ -7406,17 +9324,42 @@ macro_usa_durable_goods_orders:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_durable_goods_orders
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_durable_goods_orders
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_eia_crude_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国 EIA 原油库存报告, 数据区间从 19950801-至今
 
@@ -7427,17 +9370,42 @@ macro_usa_eia_crude_rate:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_eia_crude_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_eia_crude_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_exist_home_sales:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国成屋销售总数年化报告, 数据区间从 19700101-至今
 
@@ -7448,17 +9416,42 @@ macro_usa_exist_home_sales:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_exist_home_sales
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_exist_home_sales
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_export_price:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国出口价格指数报告, 数据区间从19890201-至今
 
@@ -7471,17 +9464,42 @@ macro_usa_export_price:
     :rtype: pand...'
   input: []
   name: macro_usa_export_price
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_export_price
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_factory_orders:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国工厂订单月率报告, 数据区间从 19920401-至今
 
@@ -7492,17 +9510,42 @@ macro_usa_factory_orders:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_factory_orders
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_factory_orders
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_gdp_monthly:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '金十数据-美国国内生产总值(GDP)报告, 数据区间从 20080228-至今
 
@@ -7513,17 +9556,42 @@ macro_usa_gdp_monthly:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_gdp_monthly
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_gdp_monthly
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_house_price_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国FHFA房价指数月率报告, 数据区间从 19910301-至今
 
@@ -7534,17 +9602,42 @@ macro_usa_house_price_index:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_house_price_index
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_house_price_index
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_house_starts:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国新屋开工总数年化报告, 数据区间从 19700101-至今
 
@@ -7555,17 +9648,42 @@ macro_usa_house_starts:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_house_starts
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_house_starts
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_import_price:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国进口物价指数报告, 数据区间从19890201-至今
 
@@ -7576,17 +9694,42 @@ macro_usa_import_price:
     :rtype: pandas.Series'
   input: []
   name: macro_usa_import_price
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_import_price
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_industrial_production:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国工业产出月率报告, 数据区间从 19700101-至今
 
@@ -7597,17 +9740,42 @@ macro_usa_industrial_production:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_industrial_production
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_industrial_production
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_initial_jobless:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国初请失业金人数报告, 数据区间从 19700101-至今
 
@@ -7618,17 +9786,42 @@ macro_usa_initial_jobless:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_initial_jobless
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_initial_jobless
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_ism_non_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国ISM非制造业PMI报告, 数据区间从 19970801-至今
 
@@ -7639,17 +9832,42 @@ macro_usa_ism_non_pmi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_ism_non_pmi
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_ism_non_pmi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_ism_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国 ISM 制造业 PMI 报告, 数据区间从 19700101-至今
 
@@ -7660,17 +9878,42 @@ macro_usa_ism_pmi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_ism_pmi
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_ism_pmi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_job_cuts:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国挑战者企业裁员人数报告, 数据区间从 19940201-至今
 
@@ -7681,17 +9924,42 @@ macro_usa_job_cuts:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_job_cuts
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_job_cuts
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_lmci:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美联储劳动力市场状况指数报告, 数据区间从 20141006-至今
 
@@ -7702,17 +9970,42 @@ macro_usa_lmci:
     :rtype: pandas.Series'
   input: []
   name: macro_usa_lmci
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_lmci
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_michigan_consumer_sentiment:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国密歇根大学消费者信心指数初值报告, 数据区间从 19700301-至今
 
@@ -7723,17 +10016,42 @@ macro_usa_michigan_consumer_sentiment:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_michigan_consumer_sentiment
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_michigan_consumer_sentiment
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_nahb_house_market_index:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国NAHB房产市场指数报告, 数据区间从 19850201-至今
 
@@ -7744,17 +10062,42 @@ macro_usa_nahb_house_market_index:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_nahb_house_market_index
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_nahb_house_market_index
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_new_home_sales:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国新屋销售总数年化报告, 数据区间从 19700101-至今
 
@@ -7765,17 +10108,42 @@ macro_usa_new_home_sales:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_new_home_sales
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_new_home_sales
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_nfib_small_business:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国NFIB小型企业信心指数报告, 数据区间从 19750201-至今
 
@@ -7786,17 +10154,42 @@ macro_usa_nfib_small_business:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_nfib_small_business
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_nfib_small_business
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_non_farm:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国非农就业人数报告, 数据区间从19700102-至今
 
@@ -7807,17 +10200,42 @@ macro_usa_non_farm:
     :rtype: pandas.Series'
   input: []
   name: macro_usa_non_farm
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_non_farm
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_pending_home_sales:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国成屋签约销售指数月率报告, 数据区间从 20010301-至今
 
@@ -7828,17 +10246,42 @@ macro_usa_pending_home_sales:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_pending_home_sales
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_pending_home_sales
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_personal_spending:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国个人支出月率报告, 数据区间从19700101-至今
 
@@ -7849,15 +10292,35 @@ macro_usa_personal_spending:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_personal_spending
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_personal_spending
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_phs:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -7902,6 +10365,11 @@ macro_usa_phs:
       现值: 现值
     param_transforms: {}
 macro_usa_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国 Markit 制造业 PMI 初值报告, 数据区间从 20120601-至今
 
@@ -7912,17 +10380,42 @@ macro_usa_pmi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_pmi
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_pmi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_ppi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国生产者物价指数(PPI)报告, 数据区间从 20080226-至今
 
@@ -7933,17 +10426,42 @@ macro_usa_ppi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_ppi
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_ppi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_real_consumer_spending:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国实际个人消费支出季率初值报告, 数据区间从 20131107-至今
 
@@ -7954,17 +10472,42 @@ macro_usa_real_consumer_spending:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_real_consumer_spending
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_real_consumer_spending
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_retail_sales:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国零售销售月率报告, 数据区间从 19920301-至今
 
@@ -7975,15 +10518,35 @@ macro_usa_retail_sales:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_retail_sales
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_retail_sales
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_rig_count:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -8020,6 +10583,11 @@ macro_usa_rig_count:
       日期: date
     param_transforms: {}
 macro_usa_services_pmi:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国Markit服务业PMI初值报告, 数据区间从 20120701-至今
 
@@ -8030,17 +10598,42 @@ macro_usa_services_pmi:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_services_pmi
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_services_pmi
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_spcs20:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国S&P/CS20座大城市房价指数年率报告, 数据区间从 20010201-至今
 
@@ -8051,17 +10644,42 @@ macro_usa_spcs20:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_spcs20
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_spcs20
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_trade_balance:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国贸易帐报告, 数据区间从 19700101-至今
 
@@ -8072,17 +10690,42 @@ macro_usa_trade_balance:
     :rtype: pandas.DataFrame'
   input: []
   name: macro_usa_trade_balance
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_trade_balance
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 macro_usa_unemployment_rate:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: macro
   description: '美国失业率报告, 数据区间从 19700101-至今
 
@@ -8093,15 +10736,35 @@ macro_usa_unemployment_rate:
     :rtype: pandas.Series'
   input: []
   name: macro_usa_unemployment_rate
-  output: []
+  output:
+  - desc: 商品 field
+    name: 商品
+    type: str
+  - desc: date field
+    name: date
+    type: str
+  - desc: 今值 field
+    name: 今值
+    type: float
+  - desc: 预测值 field
+    name: 预测值
+    type: float
+  - desc: 前值 field
+    name: 前值
+    type: float
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: macro_usa_unemployment_rate
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      今值: 今值
+      前值: 前值
+      商品: 商品
+      日期: date
+      预测值: 预测值
     param_transforms: {}
 rate_interbank:
   _generated_note: '# Auto-generated from akshare_registry.yaml

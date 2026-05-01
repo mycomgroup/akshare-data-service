@@ -571,6 +571,11 @@ option_contract_info_ctp:
     output_mapping: {}
     param_transforms: {}
 option_current_day_sse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: options
   description: '上海证券交易所-产品-股票期权-信息披露-当日合约
 
@@ -581,17 +586,66 @@ option_current_day_sse:
     :rtype: pandas.DataFrame'
   input: []
   name: option_current_day_sse
-  output: []
+  output:
+  - desc: 合约编码 field
+    name: 合约编码
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 行权价 field
+    name: 行权价
+    type: str
+  - desc: contract_unit field
+    name: contract_unit
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: maturity_date field
+    name: maturity_date
+    type: str
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: option_current_day_sse
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      到期日: maturity_date
+      合约交易代码: code
+      合约单位: contract_unit
+      合约简称: name
+      合约编码: 合约编码
+      开始日期: date
+      期权行权日: day
+      标的券名称及代码: code
+      类型: type
+      行权交收日: day
+      行权价: 行权价
     param_transforms: {}
 option_current_day_szse:
+  _generated_note: '# Auto-generated from akshare_registry.yaml
+
+    # TODO: 审核 output_mapping 和 param_transforms 是否正确 (mapping_quality: partial)
+
+    # TODO: 根据需要添加 aliases 和 cache_table'
   category: options
   description: '深圳证券交易所-期权子网-行情数据-当日合约
 
@@ -602,15 +656,131 @@ option_current_day_szse:
     :rtype: pandas.DataFrame'
   input: []
   name: option_current_day_szse
-  output: []
+  output:
+  - desc: 序号 field
+    name: 序号
+    type: int
+  - desc: 合约编码 field
+    name: 合约编码
+    type: int
+  - desc: contract_code field
+    name: contract_code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: type field
+    name: type
+    type: str
+  - desc: 行权价 field
+    name: 行权价
+    type: float
+  - desc: contract_unit field
+    name: contract_unit
+    type: int
+  - desc: day field
+    name: day
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: maturity_date field
+    name: maturity_date
+    type: str
+  - desc: day field
+    name: day
+    type: str
+  - desc: 新挂 field
+    name: 新挂
+    type: str
+  - desc: 涨停价格 field
+    name: 涨停价格
+    type: float
+  - desc: 跌停价格 field
+    name: 跌停价格
+    type: float
+  - desc: 前结算价 field
+    name: 前结算价
+    type: float
+  - desc: 合约调整 field
+    name: 合约调整
+    type: str
+  - desc: 停牌 field
+    name: 停牌
+    type: str
+  - desc: position field
+    name: position
+    type: float
+  - desc: 挂牌原因 field
+    name: 挂牌原因
+    type: str
+  - desc: code field
+    name: code
+    type: str
+  - desc: name field
+    name: name
+    type: str
+  - desc: exercise_price field
+    name: exercise_price
+    type: float
+  - desc: unit field
+    name: unit
+    type: int
+  - desc: 合约到期剩余交易天数 field
+    name: 合约到期剩余交易天数
+    type: int
+  - desc: 合约到期剩余自然天数 field
+    name: 合约到期剩余自然天数
+    type: int
+  - desc: 下次合约调整剩余交易天数 field
+    name: 下次合约调整剩余交易天数
+    type: int
+  - desc: 下次合约调整剩余自然天数 field
+    name: 下次合约调整剩余自然天数
+    type: int
+  - desc: date field
+    name: date
+    type: str
   rate_limit_key: default
   sources:
-  - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
+  - '# TODO_note': ⚠️ 部分字段未映射，请审核 output_mapping 是否正确
     enabled: true
     func: option_current_day_szse
     input_mapping: {}
     name: akshare_em
-    output_mapping: {}
+    output_mapping:
+      下次合约调整剩余交易天数: 下次合约调整剩余交易天数
+      下次合约调整剩余自然天数: 下次合约调整剩余自然天数
+      交收日: day
+      交易日期: date
+      停牌: 停牌
+      到期日: maturity_date
+      前结算价: 前结算价
+      原合约代码: code
+      原合约单位: unit
+      原合约简称: name
+      原行权价格: exercise_price
+      合约代码: contract_code
+      合约到期剩余交易天数: 合约到期剩余交易天数
+      合约到期剩余自然天数: 合约到期剩余自然天数
+      合约单位: contract_unit
+      合约总持仓: position
+      合约简称: name
+      合约类型: type
+      合约编码: 合约编码
+      合约调整: 合约调整
+      序号: 序号
+      挂牌原因: 挂牌原因
+      新挂: 新挂
+      最后交易日: day
+      标的证券简称(代码): code
+      涨停价格: 涨停价格
+      行权价: 行权价
+      行权日: day
+      跌停价格: 跌停价格
     param_transforms: {}
 option_current_em:
   _generated_note: '# Auto-generated from akshare_registry.yaml
@@ -2402,7 +2572,7 @@ option_sse_greeks_sina:
   - desc: 'from :return: docstring'
     name: 值
     type: float
-  rate_limit_key: sina_hq
+  rate_limit_key: sina_vip
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true
@@ -2582,7 +2752,7 @@ option_sse_underlying_spot_price_sina:
   - desc: 'from :return: docstring'
     name: 值
     type: float
-  rate_limit_key: sina_hq
+  rate_limit_key: sina_vip
   sources:
   - '# TODO_note': ⚠️ 无输出字段，需手动补充 output_mapping
     enabled: true

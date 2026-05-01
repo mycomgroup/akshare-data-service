@@ -21,7 +21,9 @@ dependencies = [
 [project.optional-dependencies]
 tushare = ["tushare>=1.2"]
 baostock = ["baostock>=0.8"]
-all = ["tushare>=1.2", "baostock>=0.8"]
+efinance = ["efinance>=0.5"]
+tickflow = ["tickflow>=0.1"]
+all = ["tushare>=1.2", "baostock>=0.8", "efinance>=0.5", "tickflow>=0.1"]
 dev = ["pytest>=7.0", "pytest-asyncio", "pytest-cov>=4.0"]
 
 [tool.hatch.build.targets.wheel]
